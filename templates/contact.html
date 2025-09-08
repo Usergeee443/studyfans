@@ -1,0 +1,471 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{% if lang == 'uz' %}Aloqa - Study Fans{% elif lang == 'ru' %}Контакты - Study Fans{% else %}Contact - Study Fans{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="relative bg-[#004AAD] py-24 mt-[3rem] overflow-hidden">
+	<div class="absolute inset-0">
+		<div class="absolute -top-40 -right-40 w-80 h-80 bg-white/50 rounded-full blur-3xl animate-bounce-slow"></div>
+	</div>
+	
+	<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+		<h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
+			{% if lang == 'uz' %}
+				<span class="block">Biz Bilan</span>
+				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Bog'laning</span>
+			{% elif lang == 'ru' %}
+				<span class="block">Свяжитесь</span>
+				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">с Нами</span>
+			{% else %}
+				<span class="block">Contact</span>
+				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Us</span>
+			{% endif %}
+		</h1>
+		<p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+			{% if lang == 'uz' %}
+				Ta'lim yo'lingizda yordam kerakmi? Biz bilan bog'laning va bepul maslahat oling!
+			{% elif lang == 'ru' %}
+				Нужна помощь в образовательном пути? Свяжитесь с нами и получите бесплатную консультацию!
+			{% else %}
+				Need help on your educational journey? Contact us and get a free consultation!
+			{% endif %}
+		</p>
+	</div>
+</section>
+
+<!-- Contact Info Section -->
+<section class="py-20 bg-white">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+			<!-- Contact Card 1 -->
+			<div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-yellow-100">
+				<div class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-2xl flex items-center justify-center mb-6">
+					<i class="fas fa-phone text-2xl text-white"></i>
+				</div>
+				<h3 class="text-2xl font-bold text-gray-900 mb-4">
+					{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% else %}Phone{% endif %}
+				</h3>
+				<p class="text-gray-600 mb-4">
+					{% if lang == 'uz' %}
+						Biz bilan telefon orqali bog'laning
+					{% elif lang == 'ru' %}
+						Свяжитесь с нами по телефону
+					{% else %}
+						Contact us by phone
+					{% endif %}
+				</p>
+				<div class="space-y-2">
+					<p class="text-lg font-semibold text-gray-900">+998 90 123 45 67</p>
+					<p class="text-lg font-semibold text-gray-900">+998 71 234 56 78</p>
+				</div>
+			</div>
+
+			<!-- Contact Card 2 -->
+			<div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-blue-100">
+				<div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
+					<i class="fas fa-envelope text-2xl text-white"></i>
+				</div>
+				<h3 class="text-2xl font-bold text-gray-900 mb-4">
+					{% if lang == 'uz' %}Email{% elif lang == 'ru' %}Электронная почта{% else %}Email{% endif %}
+				</h3>
+				<p class="text-gray-600 mb-4">
+					{% if lang == 'uz' %}
+						Bizga email yuboring
+					{% elif lang == 'ru' %}
+						Отправьте нам email
+					{% else %}
+						Send us an email
+					{% endif %}
+				</p>
+				<div class="space-y-2">
+					<p class="text-lg font-semibold text-gray-900">info@studyfans.uz</p>
+					<p class="text-lg font-semibold text-gray-900">support@studyfans.uz</p>
+				</div>
+			</div>
+
+			<!-- Contact Card 3 -->
+			<div class="bg-gradient-to-br from-green-50 to-teal-50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-green-100">
+				<div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6">
+					<i class="fas fa-map-marker-alt text-2xl text-white"></i>
+				</div>
+				<h3 class="text-2xl font-bold text-gray-900 mb-4">
+					{% if lang == 'uz' %}Manzil{% elif lang == 'ru' %}Адрес{% else %}Address{% endif %}
+				</h3>
+				<p class="text-gray-600 mb-4">
+					{% if lang == 'uz' %}
+						Bizning ofisimizga tashrif buyuring
+					{% elif lang == 'ru' %}
+						Посетите наш офис
+					{% else %}
+						Visit our office
+					{% endif %}
+				</p>
+				<div class="space-y-2">
+					<p class="text-lg font-semibold text-gray-900">
+						{% if lang == 'uz' %}
+							Toshkent shahar, Yunusobod tumani,<br>
+							Amir Temur ko'chasi, 15-uy
+						{% elif lang == 'ru' %}
+							г. Ташкент, Юнусабадский район,<br>
+							ул. Амира Темура, дом 15
+						{% else %}
+							Tashkent city, Yunusabad district,<br>
+							Amir Temur street, house 15
+						{% endif %}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Contact Form Section -->
+<section class="py-20 bg-gray-50">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+			<!-- Contact Form -->
+			<div class="bg-white rounded-3xl p-8 shadow-xl">
+				<h2 class="text-3xl font-bold text-gray-900 mb-6">
+					{% if lang == 'uz' %}Xabar Yuborish{% elif lang == 'ru' %}Отправить Сообщение{% else %}Send Message{% endif %}
+				</h2>
+				<p class="text-gray-600 mb-8">
+					{% if lang == 'uz' %}
+						Bizga xabar yuboring va biz sizga tez orada javob beramiz
+					{% elif lang == 'ru' %}
+						Отправьте нам сообщение, и мы быстро ответим вам
+					{% else %}
+						Send us a message and we'll get back to you soon
+					{% endif %}
+				</p>
+				
+				<form class="space-y-6">
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+						<div>
+							<label class="block text-gray-700 text-sm font-medium mb-2">
+								{% if lang == 'uz' %}Ism{% elif lang == 'ru' %}Имя{% else %}Name{% endif %} *
+							</label>
+							<input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
+						</div>
+						<div>
+							<label class="block text-gray-700 text-sm font-medium mb-2">
+								{% if lang == 'uz' %}Familiya{% elif lang == 'ru' %}Фамилия{% else %}Surname{% endif %} *
+							</label>
+							<input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
+						</div>
+					</div>
+					
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+						<div>
+							<label class="block text-gray-700 text-sm font-medium mb-2">
+								{% if lang == 'uz' %}Email{% elif lang == 'ru' %}Электронная почта{% else %}Email{% endif %} *
+							</label>
+							<input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
+						</div>
+						<div>
+							<label class="block text-gray-700 text-sm font-medium mb-2">
+								{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% else %}Phone{% endif %} *
+							</label>
+							<input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
+						</div>
+					</div>
+					
+					<div>
+						<label class="block text-gray-700 text-sm font-medium mb-2">
+							{% if lang == 'uz' %}Mavzu{% elif lang == 'ru' %}Тема{% else %}Subject{% endif %} *
+						</label>
+						<select required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
+							<option value="">
+								{% if lang == 'uz' %}Mavzuni tanlang{% elif lang == 'ru' %}Выберите тему{% else %}Select subject{% endif %}
+							</option>
+							<option value="consultation">
+								{% if lang == 'uz' %}Maslahat{% elif lang == 'ru' %}Консультация{% else %}Consultation{% endif %}
+							</option>
+							<option value="university">
+								{% if lang == 'uz' %}Universitet tanlash{% elif lang == 'ru' %}Выбор университета{% else %}University Selection{% endif %}
+							</option>
+							<option value="scholarship">
+								{% if lang == 'uz' %}Grant yordami{% elif lang == 'ru' %}Помощь с грантом{% else %}Scholarship Help{% endif %}
+							</option>
+							<option value="visa">
+								{% if lang == 'uz' %}Viza yordami{% elif lang == 'ru' %}Помощь с визой{% else %}Visa Help{% endif %}
+							</option>
+							<option value="other">
+								{% if lang == 'uz' %}Boshqa{% elif lang == 'ru' %}Другое{% else %}Other{% endif %}
+							</option>
+						</select>
+					</div>
+					
+					<div>
+						<label class="block text-gray-700 text-sm font-medium mb-2">
+							{% if lang == 'uz' %}Xabar{% elif lang == 'ru' %}Сообщение{% else %}Message{% endif %} *
+						</label>
+						<textarea rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300" placeholder="{% if lang == 'uz' %}Xabaringizni yozing...{% elif lang == 'ru' %}Напишите ваше сообщение...{% else %}Write your message...{% endif %}"></textarea>
+					</div>
+					
+					<button type="submit" class="w-full bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-gray-900 font-bold py-4 px-6 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+						<i class="fas fa-paper-plane mr-2"></i>
+						{% if lang == 'uz' %}Xabar Yuborish{% elif lang == 'ru' %}Отправить Сообщение{% else %}Send Message{% endif %}
+					</button>
+				</form>
+			</div>
+
+			<!-- Map and Additional Info -->
+			<div class="space-y-8">
+				<!-- Map -->
+				<div class="bg-white rounded-3xl p-8 shadow-xl">
+					<h3 class="text-2xl font-bold text-gray-900 mb-6">
+						{% if lang == 'uz' %}Bizning Manzilimiz{% elif lang == 'ru' %}Наш Адрес{% else %}Our Location{% endif %}
+					</h3>
+					<div class="bg-gray-200 rounded-xl h-64 flex items-center justify-center">
+						<div class="text-center">
+							<i class="fas fa-map-marked-alt text-4xl text-gray-400 mb-4"></i>
+							<p class="text-gray-600">
+								{% if lang == 'uz' %}
+									Xarita yuklanmoqda...
+								{% elif lang == 'ru' %}
+									Загрузка карты...
+								{% else %}
+									Loading map...
+								{% endif %}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Working Hours -->
+				<div class="bg-white rounded-3xl p-8 shadow-xl">
+					<h3 class="text-2xl font-bold text-gray-900 mb-6">
+						{% if lang == 'uz' %}Ish Vaqtlari{% elif lang == 'ru' %}Часы Работы{% else %}Working Hours{% endif %}
+					</h3>
+					<div class="space-y-4">
+						<div class="flex justify-between items-center">
+							<span class="text-gray-600">
+								{% if lang == 'uz' %}Dushanba - Juma{% elif lang == 'ru' %}Понедельник - Пятница{% else %}Monday - Friday{% endif %}
+							</span>
+							<span class="font-semibold text-gray-900">09:00 - 18:00</span>
+						</div>
+						<div class="flex justify-between items-center">
+							<span class="text-gray-600">
+								{% if lang == 'uz' %}Shanba{% elif lang == 'ru' %}Суббота{% else %}Saturday{% endif %}
+							</span>
+							<span class="font-semibold text-gray-900">10:00 - 16:00</span>
+						</div>
+						<div class="flex justify-between items-center">
+							<span class="text-gray-600">
+								{% if lang == 'uz' %}Yakshanba{% elif lang == 'ru' %}Воскресенье{% else %}Sunday{% endif %}
+							</span>
+							<span class="font-semibold text-gray-900">
+								{% if lang == 'uz' %}Yopiq{% elif lang == 'ru' %}Закрыто{% else %}Closed{% endif %}
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Social Media -->
+				<div class="bg-white rounded-3xl p-8 shadow-xl">
+					<h3 class="text-2xl font-bold text-gray-900 mb-6">
+						{% if lang == 'uz' %}Ijtimoiy Tarmoqlar{% elif lang == 'ru' %}Социальные Сети{% else %}Social Media{% endif %}
+					</h3>
+					<div class="flex space-x-4">
+						<a href="#" class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+							<i class="fab fa-facebook-f"></i>
+						</a>
+						<a href="#" class="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center text-white hover:bg-blue-500 transition-colors">
+							<i class="fab fa-twitter"></i>
+						</a>
+						<a href="#" class="w-12 h-12 bg-blue-700 rounded-full flex items-center justify-center text-white hover:bg-blue-800 transition-colors">
+							<i class="fab fa-linkedin-in"></i>
+						</a>
+						<a href="#" class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white hover:bg-pink-600 transition-colors">
+							<i class="fab fa-instagram"></i>
+						</a>
+						<a href="#" class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white hover:bg-red-700 transition-colors">
+							<i class="fab fa-youtube"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-20 bg-white">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="text-center mb-16">
+			<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+				{% if lang == 'uz' %}Tez-tez So'raladigan Savollar{% elif lang == 'ru' %}Часто Задаваемые Вопросы{% else %}Frequently Asked Questions{% endif %}
+			</h2>
+			<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+				{% if lang == 'uz' %}
+					Mijozlarimiz tomonidan eng ko'p so'raladigan savollar va javoblar
+				{% elif lang == 'ru' %}
+					Самые часто задаваемые вопросы от наших клиентов и ответы на них
+				{% else %}
+					Most frequently asked questions from our clients and their answers
+				{% endif %}
+			</p>
+		</div>
+
+		<div class="max-w-4xl mx-auto space-y-6">
+			<!-- FAQ Item 1 -->
+			<div class="bg-gray-50 rounded-2xl p-6">
+				<button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(this)">
+					<h3 class="text-lg font-semibold text-gray-900">
+						{% if lang == 'uz' %}
+							Qabul jarayoni qancha vaqt davom etadi?
+						{% elif lang == 'ru' %}
+							Сколько времени занимает процесс поступления?
+						{% else %}
+							How long does the admission process take?
+						{% endif %}
+					</h3>
+					<i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+				</button>
+				<div class="mt-4 text-gray-600 hidden">
+					<p>
+						{% if lang == 'uz' %}
+							Qabul jarayoni universitet va yo'nalishga qarab 2-6 oy davom etadi. Biz sizga barcha jarayonlarni tezlashtirishda yordam beramiz.
+						{% elif lang == 'ru' %}
+							Процесс поступления занимает от 2 до 6 месяцев в зависимости от университета и направления. Мы поможем ускорить все процессы.
+						{% else %}
+							The admission process takes 2-6 months depending on the university and major. We help speed up all processes.
+						{% endif %}
+					</p>
+				</div>
+			</div>
+
+			<!-- FAQ Item 2 -->
+			<div class="bg-gray-50 rounded-2xl p-6">
+				<button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(this)">
+					<h3 class="text-lg font-semibold text-gray-900">
+						{% if lang == 'uz' %}
+							Grant olish imkoniyati qanday?
+						{% elif lang == 'ru' %}
+							Какие возможности получения гранта?
+						{% else %}
+							What are the scholarship opportunities?
+						{% endif %}
+					</h3>
+					<i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+				</button>
+				<div class="mt-4 text-gray-600 hidden">
+					<p>
+						{% if lang == 'uz' %}
+							Biz turli grant dasturlarida qatnashishda yordam beramiz. Muvaffaqiyat ehtimoli 85% dan yuqori.
+						{% elif lang == 'ru' %}
+							Мы помогаем участвовать в различных программах грантов. Вероятность успеха более 85%.
+						{% else %}
+							We help participate in various grant programs. Success probability is over 85%.
+						{% endif %}
+					</p>
+				</div>
+			</div>
+
+			<!-- FAQ Item 3 -->
+			<div class="bg-gray-50 rounded-2xl p-6">
+				<button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(this)">
+					<h3 class="text-lg font-semibold text-gray-900">
+						{% if lang == 'uz' %}
+							Xizmat haqlari qanday?
+						{% elif lang == 'ru' %}
+							Какие цены на услуги?
+						{% else %}
+							What are the service fees?
+						{% endif %}
+					</h3>
+					<i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+				</button>
+				<div class="mt-4 text-gray-600 hidden">
+					<p>
+						{% if lang == 'uz' %}
+							Bizning xizmatlarimiz arzon va sifatli. Bepul maslahat va individual yondashuv taqdim etamiz.
+						{% elif lang == 'ru' %}
+							Наши услуги доступны и качественны. Предоставляем бесплатные консультации и индивидуальный подход.
+						{% else %}
+							Our services are affordable and quality. We provide free consultations and individual approach.
+						{% endif %}
+					</p>
+				</div>
+			</div>
+
+			<!-- FAQ Item 4 -->
+			<div class="bg-gray-50 rounded-2xl p-6">
+				<button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(this)">
+					<h3 class="text-lg font-semibold text-gray-900">
+						{% if lang == 'uz' %}
+							Qaysi mamlakatlarda universitetlar mavjud?
+						{% elif lang == 'ru' %}
+							В каких странах есть университеты?
+						{% else %}
+							Which countries have universities available?
+						{% endif %}
+					</h3>
+					<i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+				</button>
+				<div class="mt-4 text-gray-600 hidden">
+					<p>
+						{% if lang == 'uz' %}
+							Biz 15+ mamlakatdagi universitetlar bilan ishlaymiz: Turkiya, AQSH, Buyuk Britaniya, Kanada, Germaniya va boshqalar.
+						{% elif lang == 'ru' %}
+							Мы работаем с университетами в 15+ странах: Турция, США, Великобритания, Канада, Германия и другие.
+						{% else %}
+							We work with universities in 15+ countries: Turkey, USA, UK, Canada, Germany and others.
+						{% endif %}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 bg-gradient-to-r from-[#003262] to-blue-800">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+		<h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+			{% if lang == 'uz' %}Bugun Boshlang{% elif lang == 'ru' %}Начните Сегодня{% else %}Start Today{% endif %}
+		</h2>
+		<p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+			{% if lang == 'uz' %}
+				Ta'lim yo'lingizda muvaffaqiyatga erishish uchun biz bilan bog'laning. Bepul maslahat oling!
+			{% elif lang == 'ru' %}
+				Свяжитесь с нами для достижения успеха в вашем образовательном пути. Получите бесплатную консультацию!
+			{% else %}
+				Contact us to achieve success in your educational journey. Get a free consultation!
+			{% endif %}
+		</p>
+		<div class="flex flex-col sm:flex-row gap-4 justify-center">
+			<a href="tel:+998901234567" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+				<i class="fas fa-phone mr-2"></i>
+				{% if lang == 'uz' %}Hozir Qo'ng'iroq Qiling{% elif lang == 'ru' %}Позвонить Сейчас{% else %}Call Now{% endif %}
+			</a>
+			<a href="mailto:info@studyfans.uz" class="bg-white/10 backdrop-blur-lg border border-white/20 text-white hover:bg-white/20 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300">
+				<i class="fas fa-envelope mr-2"></i>
+				{% if lang == 'uz' %}Email Yuboring{% elif lang == 'ru' %}Отправить Email{% else %}Send Email{% endif %}
+			</a>
+		</div>
+	</div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+	function toggleFAQ(button) {
+		const content = button.nextElementSibling;
+		const icon = button.querySelector('i');
+		
+		if (content.classList.contains('hidden')) {
+			content.classList.remove('hidden');
+			icon.style.transform = 'rotate(180deg)';
+		} else {
+			content.classList.add('hidden');
+			icon.style.transform = 'rotate(0deg)';
+		}
+	}
+</script>
+{% endblock %}

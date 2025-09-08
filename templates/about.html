@@ -1,0 +1,433 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{% if lang == 'uz' %}Biz Haqimizda - Study Fans{% elif lang == 'ru' %}О Нас - Study Fans{% else %}About Us - Study Fans{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="relative bg-[#004AAD] py-24 mt-[3rem] overflow-hidden">
+	<div class="absolute inset-0">
+		<div class="absolute -top-40 -right-40 w-80 h-80 bg-white/50 rounded-full blur-3xl animate-bounce-slow"></div>
+	</div>
+	
+	<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+		<h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
+			{% if lang == 'uz' %}
+				<span class="block">Biz Haqimizda</span>
+				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Study Fans</span>
+			{% elif lang == 'ru' %}
+				<span class="block">О Нас</span>
+				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Study Fans</span>
+			{% else %}
+				<span class="block">About</span>
+				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Study Fans</span>
+			{% endif %}
+		</h1>
+		<p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+			{% if lang == 'uz' %}
+				Ta'lim sohasida professional yordam va maslahat beruvchi yetakchi kompaniya
+			{% elif lang == 'ru' %}
+				Ведущая компания, предоставляющая профессиональную помощь и консультации в сфере образования
+			{% else %}
+				Leading company providing professional assistance and consultation in education
+			{% endif %}
+		</p>
+	</div>
+</section>
+
+<!-- Mission & Vision Section -->
+<section class="py-20 bg-white">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+			<div>
+				<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+					{% if lang == 'uz' %}Bizning Missiyamiz{% elif lang == 'ru' %}Наша Миссия{% else %}Our Mission{% endif %}
+				</h2>
+				<p class="text-xl text-gray-600 mb-8 leading-relaxed">
+					{% if lang == 'uz' %}
+						Har bir talabaning orzularini amalga oshirish va ularga eng yaxshi ta'lim imkoniyatlarini taqdim etish. Biz ta'lim yo'lingizda ishonchli sherik bo'lishni maqsad qilganmiz.
+					{% elif lang == 'ru' %}
+						Реализация мечтаний каждого студента и предоставление им лучших образовательных возможностей. Мы стремимся быть надежным партнером на вашем образовательном пути.
+					{% else %}
+						To fulfill every student's dreams and provide them with the best educational opportunities. We aim to be your trusted partner on your educational journey.
+					{% endif %}
+				</p>
+				<div class="space-y-4">
+					<div class="flex items-center space-x-4">
+						<div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center">
+							<i class="fas fa-target text-white text-xl"></i>
+						</div>
+						<div>
+							<h3 class="text-xl font-semibold text-gray-900">
+								{% if lang == 'uz' %}Maqsad{% elif lang == 'ru' %}Цель{% else %}Goal{% endif %}
+							</h3>
+							<p class="text-gray-600">
+								{% if lang == 'uz' %}Har bir talabaning muvaffaqiyatini ta'minlash{% elif lang == 'ru' %}Обеспечение успеха каждого студента{% else %}Ensuring every student's success{% endif %}
+							</p>
+						</div>
+					</div>
+					<div class="flex items-center space-x-4">
+						<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+							<i class="fas fa-heart text-white text-xl"></i>
+						</div>
+						<div>
+							<h3 class="text-xl font-semibold text-gray-900">
+								{% if lang == 'uz' %}Qadriyat{% elif lang == 'ru' %}Ценность{% else %}Value{% endif %}
+							</h3>
+							<p class="text-gray-600">
+								{% if lang == 'uz' %}Professional yondashuv va shaxsiy e'tibor{% elif lang == 'ru' %}Профессиональный подход и личное внимание{% else %}Professional approach and personal attention{% endif %}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="relative">
+				<div class="bg-gradient-to-br from-[#003262] to-blue-800 rounded-3xl p-8 text-white">
+					<div class="text-center">
+						<i class="fas fa-lightbulb text-6xl mb-6 text-yellow-400"></i>
+						<h3 class="text-2xl font-bold mb-4">
+							{% if lang == 'uz' %}Bizning Vizyonimiz{% elif lang == 'ru' %}Наше Видение{% else %}Our Vision{% endif %}
+						</h3>
+						<p class="text-lg leading-relaxed">
+							{% if lang == 'uz' %}
+								Jahon miqyosida ta'lim sohasida yetakchi kompaniya bo'lish va har bir talabaning orzularini amalga oshirishda yordam berish.
+							{% elif lang == 'ru' %}
+								Стать ведущей компанией в сфере образования в мировом масштабе и помочь каждому студенту реализовать свои мечты.
+							{% else %}
+								To become a leading company in education worldwide and help every student realize their dreams.
+							{% endif %}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Values Section -->
+<section class="py-20 bg-gray-50">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="text-center mb-16">
+			<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+				{% if lang == 'uz' %}Bizning Qadriyatlarimiz{% elif lang == 'ru' %}Наши Ценности{% else %}Our Values{% endif %}
+			</h2>
+			<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+				{% if lang == 'uz' %}
+					Bizning ish uslubimiz va mijozlarimizga yondashuvimizni shakllantiruvchi asosiy qadriyatlar
+				{% elif lang == 'ru' %}
+					Основные ценности, формирующие наш стиль работы и подход к клиентам
+				{% else %}
+					Core values that shape our work style and approach to clients
+				{% endif %}
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			<!-- Value 1 -->
+			<div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+				<div class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-2xl flex items-center justify-center mb-6">
+					<i class="fas fa-handshake text-2xl text-white"></i>
+				</div>
+				<h3 class="text-2xl font-bold text-gray-900 mb-4">
+					{% if lang == 'uz' %}Ishonchlilik{% elif lang == 'ru' %}Надежность{% else %}Reliability{% endif %}
+				</h3>
+				<p class="text-gray-600 leading-relaxed">
+					{% if lang == 'uz' %}
+						Har bir mijozimizga ishonchli va professional xizmat ko'rsatish. Vaatlarimizni bajarish va natijalarni kafolatlash.
+					{% elif lang == 'ru' %}
+						Предоставление надежных и профессиональных услуг каждому клиенту. Выполнение обещаний и гарантия результатов.
+					{% else %}
+						Providing reliable and professional service to each client. Fulfilling promises and guaranteeing results.
+					{% endif %}
+				</p>
+			</div>
+
+			<!-- Value 2 -->
+			<div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+				<div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
+					<i class="fas fa-users text-2xl text-white"></i>
+				</div>
+				<h3 class="text-2xl font-bold text-gray-900 mb-4">
+					{% if lang == 'uz' %}Shaxsiy Yondashuv{% elif lang == 'ru' %}Личный Подход{% else %}Personal Approach{% endif %}
+				</h3>
+				<p class="text-gray-600 leading-relaxed">
+					{% if lang == 'uz' %}
+						Har bir mijozning individual ehtiyojlarini hisobga olgan holda maxsus yechimlar ishlab chiqish va shaxsiy e'tibor berish.
+					{% elif lang == 'ru' %}
+						Разработка специальных решений с учетом индивидуальных потребностей каждого клиента и оказание личного внимания.
+					{% else %}
+						Developing special solutions considering each client's individual needs and providing personal attention.
+					{% endif %}
+				</p>
+			</div>
+
+			<!-- Value 3 -->
+			<div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+				<div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6">
+					<i class="fas fa-star text-2xl text-white"></i>
+				</div>
+				<h3 class="text-2xl font-bold text-gray-900 mb-4">
+					{% if lang == 'uz' %}Sifat{% elif lang == 'ru' %}Качество{% else %}Quality{% endif %}
+				</h3>
+				<p class="text-gray-600 leading-relaxed">
+					{% if lang == 'uz' %}
+						Eng yuqori sifat standartlarini qo'llab-quvvatlash va doimiy ravishda xizmatlarimizni yaxshilash.
+					{% elif lang == 'ru' %}
+						Поддержание высочайших стандартов качества и постоянное улучшение наших услуг.
+					{% else %}
+						Maintaining the highest quality standards and continuously improving our services.
+					{% endif %}
+				</p>
+			</div>
+
+			<!-- Value 4 -->
+			<div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+				<div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6">
+					<i class="fas fa-lightbulb text-2xl text-white"></i>
+				</div>
+				<h3 class="text-2xl font-bold text-gray-900 mb-4">
+					{% if lang == 'uz' %}Innovatsiya{% elif lang == 'ru' %}Инновации{% else %}Innovation{% endif %}
+				</h3>
+				<p class="text-gray-600 leading-relaxed">
+					{% if lang == 'uz' %}
+						Zamonaviy texnologiyalar va innovatsion yondashuvlar orqali xizmatlarimizni takomillashtirish.
+					{% elif lang == 'ru' %}
+						Совершенствование наших услуг через современные технологии и инновационные подходы.
+					{% else %}
+						Improving our services through modern technologies and innovative approaches.
+					{% endif %}
+				</p>
+			</div>
+
+			<!-- Value 5 -->
+			<div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+				<div class="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-2xl flex items-center justify-center mb-6">
+					<i class="fas fa-heart text-2xl text-white"></i>
+				</div>
+				<h3 class="text-2xl font-bold text-gray-900 mb-4">
+					{% if lang == 'uz' %}Passion{% elif lang == 'ru' %}Страсть{% else %}Passion{% endif %}
+				</h3>
+				<p class="text-gray-600 leading-relaxed">
+					{% if lang == 'uz' %}
+						Ta'lim sohasiga qiziqish va har bir mijozning muvaffaqiyatiga ishonch. Bizning ishimizni sevamiz.
+					{% elif lang == 'ru' %}
+						Интерес к сфере образования и вера в успех каждого клиента. Мы любим свою работу.
+					{% else %}
+						Interest in education and belief in each client's success. We love our work.
+					{% endif %}
+				</p>
+			</div>
+
+			<!-- Value 6 -->
+			<div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+				<div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
+					<i class="fas fa-globe text-2xl text-white"></i>
+				</div>
+				<h3 class="text-2xl font-bold text-gray-900 mb-4">
+					{% if lang == 'uz' %}Global Yondashuv{% elif lang == 'ru' %}Глобальный Подход{% else %}Global Approach{% endif %}
+				</h3>
+				<p class="text-gray-600 leading-relaxed">
+					{% if lang == 'uz' %}
+						Jahon miqyosidagi ta'lim imkoniyatlarini taqdim etish va xalqaro standartlarda xizmat ko'rsatish.
+					{% elif lang == 'ru' %}
+						Предоставление образовательных возможностей мирового уровня и оказание услуг по международным стандартам.
+					{% else %}
+						Providing world-class educational opportunities and delivering services to international standards.
+					{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Team Section -->
+<section class="py-20 bg-white">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="text-center mb-16">
+			<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+				{% if lang == 'uz' %}Bizning Jamoa{% elif lang == 'ru' %}Наша Команда{% else %}Our Team{% endif %}
+			</h2>
+			<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+				{% if lang == 'uz' %}
+					Professional va tajribali mutaxassislar jamoasi
+				{% elif lang == 'ru' %}
+					Команда профессиональных и опытных специалистов
+				{% else %}
+					Team of professional and experienced specialists
+				{% endif %}
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			<!-- Team Member 1 -->
+			<div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
+				<div class="text-center">
+					<div class="w-24 h-24 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center mx-auto mb-6">
+						<i class="fas fa-user text-3xl text-white"></i>
+					</div>
+					<h3 class="text-2xl font-bold text-gray-900 mb-2">Ahmad Karimov</h3>
+					<p class="text-blue-600 font-semibold mb-4">
+						{% if lang == 'uz' %}Bosh Direktor{% elif lang == 'ru' %}Генеральный Директор{% else %}CEO{% endif %}
+					</p>
+					<p class="text-gray-600 leading-relaxed">
+						{% if lang == 'uz' %}
+							10+ yillik tajriba, ta'lim sohasida yetakchi mutaxassis. 500+ talabaning muvaffaqiyatiga yordam bergan.
+						{% elif lang == 'ru' %}
+							10+ лет опыта, ведущий специалист в сфере образования. Помог 500+ студентам достичь успеха.
+						{% else %}
+							10+ years experience, leading specialist in education. Helped 500+ students achieve success.
+						{% endif %}
+					</p>
+					<div class="flex justify-center space-x-4 mt-6">
+						<a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+							<i class="fab fa-linkedin-in"></i>
+						</a>
+						<a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-white hover:bg-blue-500 transition-colors">
+							<i class="fab fa-twitter"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Team Member 2 -->
+			<div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
+				<div class="text-center">
+					<div class="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+						<i class="fas fa-user text-3xl text-white"></i>
+					</div>
+					<h3 class="text-2xl font-bold text-gray-900 mb-2">Malika Toshmatova</h3>
+					<p class="text-blue-600 font-semibold mb-4">
+						{% if lang == 'uz' %}Ta'lim Maslahatchisi{% elif lang == 'ru' %}Образовательный Консультант{% else %}Educational Consultant{% endif %}
+					</p>
+					<p class="text-gray-600 leading-relaxed">
+						{% if lang == 'uz' %}
+							8+ yillik tajriba, universitet tanlash va qabul jarayonlarida mutaxassis. 300+ muvaffaqiyatli qabul.
+						{% elif lang == 'ru' %}
+							8+ лет опыта, специалист по выбору университетов и процессам поступления. 300+ успешных поступлений.
+						{% else %}
+							8+ years experience, specialist in university selection and admission processes. 300+ successful admissions.
+						{% endif %}
+					</p>
+					<div class="flex justify-center space-x-4 mt-6">
+						<a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+							<i class="fab fa-linkedin-in"></i>
+						</a>
+						<a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-white hover:bg-blue-500 transition-colors">
+							<i class="fab fa-twitter"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Team Member 3 -->
+			<div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
+				<div class="text-center">
+					<div class="w-24 h-24 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6">
+						<i class="fas fa-user text-3xl text-white"></i>
+					</div>
+					<h3 class="text-2xl font-bold text-gray-900 mb-2">Otabek Rahimov</h3>
+					<p class="text-blue-600 font-semibold mb-4">
+						{% if lang == 'uz' %}Grant Mutaxassisi{% elif lang == 'ru' %}Специалист по Грантам{% else %}Scholarship Specialist{% endif %}
+					</p>
+					<p class="text-gray-600 leading-relaxed">
+						{% if lang == 'uz' %}
+							6+ yillik tajriba, grant va stipendiya dasturlarida mutaxassis. 200+ muvaffaqiyatli grant olish.
+						{% elif lang == 'ru' %}
+							6+ лет опыта, специалист по программам грантов и стипендий. 200+ успешных получений грантов.
+						{% else %}
+							6+ years experience, specialist in grant and scholarship programs. 200+ successful grant acquisitions.
+						{% endif %}
+					</p>
+					<div class="flex justify-center space-x-4 mt-6">
+						<a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+							<i class="fab fa-linkedin-in"></i>
+						</a>
+						<a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-white hover:bg-blue-500 transition-colors">
+							<i class="fab fa-twitter"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Statistics Section -->
+<section class="py-20 bg-gradient-to-r from-[#003262] to-blue-800">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="text-center mb-16">
+			<h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+				{% if lang == 'uz' %}Bizning Natijalarimiz{% elif lang == 'ru' %}Наши Результаты{% else %}Our Results{% endif %}
+			</h2>
+			<p class="text-xl text-blue-100 max-w-3xl mx-auto">
+				{% if lang == 'uz' %}
+					Yillar davomida erishgan muvaffaqiyatlarimiz va raqamlar
+				{% elif lang == 'ru' %}
+					Наши достижения и цифры за годы работы
+				{% else %}
+					Our achievements and numbers over the years
+				{% endif %}
+			</p>
+		</div>
+
+		<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+			<div class="text-center">
+				<div class="text-5xl md:text-6xl font-bold text-white mb-2">500+</div>
+				<div class="text-blue-200 text-lg">
+					{% if lang == 'uz' %}Muvaffaqiyatli Talabalar{% elif lang == 'ru' %}Успешных Студентов{% else %}Successful Students{% endif %}
+				</div>
+			</div>
+			<div class="text-center">
+				<div class="text-5xl md:text-6xl font-bold text-white mb-2">50+</div>
+				<div class="text-blue-200 text-lg">
+					{% if lang == 'uz' %}Hamkor Universitetlar{% elif lang == 'ru' %}Партнерских Университетов{% else %}Partner Universities{% endif %}
+				</div>
+			</div>
+			<div class="text-center">
+				<div class="text-5xl md:text-6xl font-bold text-white mb-2">15+</div>
+				<div class="text-blue-200 text-lg">
+					{% if lang == 'uz' %}Mamlakatlar{% elif lang == 'ru' %}Стран{% else %}Countries{% endif %}
+				</div>
+			</div>
+			<div class="text-center">
+				<div class="text-5xl md:text-6xl font-bold text-white mb-2">98%</div>
+				<div class="text-blue-200 text-lg">
+					{% if lang == 'uz' %}Mijozlar Qoniqishi{% elif lang == 'ru' %}Удовлетворенность Клиентов{% else %}Client Satisfaction{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 bg-white">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+		<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+			{% if lang == 'uz' %}Biz Bilan Bog'laning{% elif lang == 'ru' %}Свяжитесь с Нами{% else %}Contact Us{% endif %}
+		</h2>
+		<p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+			{% if lang == 'uz' %}
+				Ta'lim yo'lingizda muvaffaqiyatga erishish uchun biz bilan bog'laning. Bepul maslahat oling!
+			{% elif lang == 'ru' %}
+				Свяжитесь с нами для достижения успеха в вашем образовательном пути. Получите бесплатную консультацию!
+			{% else %}
+				Contact us to achieve success in your educational journey. Get a free consultation!
+			{% endif %}
+		</p>
+		<div class="flex flex-col sm:flex-row gap-4 justify-center">
+			<a href="{{ url_for('contact') }}" class="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-gray-900 font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+				<i class="fas fa-phone mr-2"></i>
+				{% if lang == 'uz' %}Bepul Maslahat{% elif lang == 'ru' %}Бесплатная Консультация{% else %}Free Consultation{% endif %}
+			</a>
+			<a href="{{ url_for('universities') }}" class="bg-gradient-to-r from-[#003262] to-blue-800 text-white hover:from-blue-800 hover:to-indigo-900 font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+				<i class="fas fa-university mr-2"></i>
+				{% if lang == 'uz' %}Universitetlarni Ko'rish{% elif lang == 'ru' %}Посмотреть Университеты{% else %}View Universities{% endif %}
+			</a>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

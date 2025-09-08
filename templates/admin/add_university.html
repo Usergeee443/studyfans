@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yangi Universitet Qo'shish - Study Fans Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <a href="{{ url_for('admin_dashboard') }}" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-sm"></i>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">Study Fans Admin</span>
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-600">Xush kelibsiz, {{ session.admin_username }}</span>
+                    <a href="{{ url_for('admin_logout') }}" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors duration-200">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Chiqish
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="mb-6 space-y-2">
+                    {% for category, message in messages %}
+                        <div class="p-4 rounded-lg {% if category == 'success' %}bg-green-100 text-green-800 border border-green-200{% elif category == 'error' %}bg-red-100 text-red-800 border border-red-200{% else %}bg-blue-100 text-blue-800 border border-blue-200{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Yangi Universitet Qo'shish</h1>
+                <p class="text-gray-600">Yangi universitet yaratish va barcha tillarda ma'lumot kiritish</p>
+            </div>
+            <a href="{{ url_for('admin_universities') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors duration-200">
+                <i class="fas fa-arrow-left mr-2"></i>Orqaga
+            </a>
+        </div>
+
+        <!-- Form -->
+        <div class="bg-white rounded-xl shadow-lg p-8">
+            <form method="POST" enctype="multipart/form-data" class="space-y-8">
+                <!-- University Name Section -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Universitet Nomi (3 tilda)</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-flag mr-2 text-red-500"></i>O'zbek tilida
+                            </label>
+                            <input type="text" name="name_uz" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Universitet nomini o'zbek tilida kiriting">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-flag mr-2 text-blue-500"></i>Ingliz tilida
+                            </label>
+                            <input type="text" name="name_en" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Enter university name in English">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-flag mr-2 text-green-500"></i>Rus tilida
+                            </label>
+                            <input type="text" name="name_ru" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Введите название университета на русском">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Country Section -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Mamlakat (3 tilda)</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-globe mr-2 text-red-500"></i>O'zbek tilida
+                            </label>
+                            <input type="text" name="country_uz" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Mamlakat nomini o'zbek tilida kiriting">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-globe mr-2 text-blue-500"></i>Ingliz tilida
+                            </label>
+                            <input type="text" name="country_en" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Enter country name in English">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-globe mr-2 text-green-500"></i>Rus tilida
+                            </label>
+                            <input type="text" name="country_ru" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Введите название страны на русском">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description Section -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Universitet Tavsifi (3 tilda)</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-align-left mr-2 text-red-500"></i>O'zbek tilida
+                            </label>
+                            <textarea name="description_uz" rows="4" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Universitet haqida batafsil ma'lumot o'zbek tilida"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-align-left mr-2 text-blue-500"></i>Ingliz tilida
+                            </label>
+                            <textarea name="description_en" rows="4" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Detailed university information in English"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-align-left mr-2 text-green-500"></i>Rus tilida
+                            </label>
+                            <textarea name="description_ru" rows="4" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Подробная информация об университете на русском"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information Section -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Qo'shimcha Ma'lumotlar</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-globe mr-2 text-blue-500"></i>Veb-sayt
+                            </label>
+                            <input type="url" name="website" 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="https://example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-star mr-2 text-yellow-500"></i>Reyting
+                            </label>
+                            <input type="number" name="ranking" min="1" 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Masalan: 1, 2, 3...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logo Upload Section -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Universitet Logosi</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-image mr-2 text-purple-500"></i>Logo faylini tanlang
+                            </label>
+                            <input type="file" name="logo" accept="image/*" id="logo-input"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200">
+                            <p class="text-sm text-gray-500 mt-2">
+                                Ruxsat etilgan formatlar: PNG, JPG, JPEG, GIF, WEBP. Maksimal hajm: 16MB
+                            </p>
+                        </div>
+                        
+                        <!-- Logo Preview -->
+                        <div id="logo-preview" class="hidden">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Logo ko'rinishi:</label>
+                            <div class="w-32 h-32 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center overflow-hidden">
+                                <img id="preview-image" src="" alt="Logo preview" class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Buttons -->
+                <div class="flex items-center justify-end space-x-4">
+                    <a href="{{ url_for('admin_universities') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors duration-200">
+                        Bekor qilish
+                    </a>
+                    <button type="submit" class="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-gray-900 font-bold px-8 py-3 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg">
+                        <i class="fas fa-save mr-2"></i>Universitetni Saqlash
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Logo preview functionality
+        document.getElementById('logo-input').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('preview-image').src = e.target.result;
+                    document.getElementById('logo-preview').classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                document.getElementById('logo-preview').classList.add('hidden');
+            }
+        });
+
+        // Form validation
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const requiredFields = document.querySelectorAll('input[required], textarea[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('border-red-500');
+                    isValid = false;
+                } else {
+                    field.classList.remove('border-red-500');
+                }
+            });
+
+            if (!isValid) {
+                e.preventDefault();
+                alert('Iltimos, barcha majburiy maydonlarni to\'ldiring!');
+            }
+        });
+
+        // Remove red border on input
+        document.querySelectorAll('input, textarea').forEach(field => {
+            field.addEventListener('input', function() {
+                this.classList.remove('border-red-500');
+            });
+        });
+
+        // File size validation
+        document.getElementById('logo-input').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file && file.size > 16 * 1024 * 1024) { // 16MB
+                alert('Fayl hajmi 16MB dan katta bo\'lmasligi kerak!');
+                this.value = '';
+                document.getElementById('logo-preview').classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
