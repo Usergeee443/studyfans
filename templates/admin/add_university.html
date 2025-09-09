@@ -14,15 +14,11 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center space-x-4">
                     <a href="{{ url_for('admin_dashboard') }}" class="flex items-center space-x-2">
-                        <div class="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-graduation-cap text-white text-sm"></i>
-                        </div>
                         <span class="text-xl font-bold text-gray-900">Study Fans Admin</span>
                     </a>
                 </div>
                 
                 <div class="flex items-center space-x-4">
-                    <span class="text-gray-600">Xush kelibsiz, {{ session.admin_username }}</span>
                     <a href="{{ url_for('admin_logout') }}" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors duration-200">
                         <i class="fas fa-sign-out-alt mr-2"></i>Chiqish
                     </a>
@@ -62,8 +58,8 @@
             <form method="POST" enctype="multipart/form-data" class="space-y-8">
                 <!-- University Name Section -->
                 <div class="border-b border-gray-200 pb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Universitet Nomi (3 tilda)</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Universitet Nomi (4 tilda)</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 <i class="fas fa-flag mr-2 text-red-500"></i>O'zbek tilida
@@ -88,13 +84,21 @@
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
                                 placeholder="Введите название университета на русском">
                         </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-flag mr-2 text-orange-500"></i>Turk tilida
+                            </label>
+                            <input type="text" name="name_tr" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Üniversite adını Türkçe girin">
+                        </div>
                     </div>
                 </div>
 
                 <!-- Country Section -->
                 <div class="border-b border-gray-200 pb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Mamlakat (3 tilda)</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Mamlakat (4 tilda)</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 <i class="fas fa-globe mr-2 text-red-500"></i>O'zbek tilida
@@ -119,12 +123,20 @@
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
                                 placeholder="Введите название страны на русском">
                         </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-globe mr-2 text-orange-500"></i>Turk tilida
+                            </label>
+                            <input type="text" name="country_tr" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Ülke adını Türkçe girin">
+                        </div>
                     </div>
                 </div>
 
                 <!-- Description Section -->
                 <div class="border-b border-gray-200 pb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Universitet Tavsifi (3 tilda)</h2>
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Universitet Tavsifi (4 tilda)</h2>
                     <div class="space-y-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
@@ -150,13 +162,104 @@
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
                                 placeholder="Подробная информация об университете на русском"></textarea>
                         </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-align-left mr-2 text-orange-500"></i>Turk tilida
+                            </label>
+                            <textarea name="description_tr" rows="4" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Üniversite hakkında detaylı bilgi Türkçe"></textarea>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Additional Information Section -->
+                <!-- City Section -->
                 <div class="border-b border-gray-200 pb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Qo'shimcha Ma'lumotlar</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Shahar (4 tilda)</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-city mr-2 text-red-500"></i>O'zbek tilida
+                            </label>
+                            <input type="text" name="city_uz" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Shahar nomini o'zbek tilida kiriting">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-city mr-2 text-blue-500"></i>Ingliz tilida
+                            </label>
+                            <input type="text" name="city_en" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Enter city name in English">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-city mr-2 text-green-500"></i>Rus tilida
+                            </label>
+                            <input type="text" name="city_ru" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Введите название города на русском">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-city mr-2 text-orange-500"></i>Turk tilida
+                            </label>
+                            <input type="text" name="city_tr" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Şehir adını Türkçe girin">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Basic Information Section -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Asosiy Ma'lumotlar</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-calendar mr-2 text-green-500"></i>Asos solingan yili
+                            </label>
+                            <input type="number" name="founded_year" min="1000" max="2024"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Masalan: 1636">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-building mr-2 text-purple-500"></i>Universitet turi
+                            </label>
+                            <select name="university_type" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200">
+                                <option value="">Turi tanlang</option>
+                                <option value="Private">Xususiy</option>
+                                <option value="Public">Davlat</option>
+                                <option value="Community">Jamiyat</option>
+                                <option value="Research">Tadqiqot</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-users mr-2 text-orange-500"></i>Talabalar soni
+                            </label>
+                            <input type="number" name="student_count" min="1"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Masalan: 23000">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Information Section -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Tezkor Ma'lumot</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-star mr-2 text-yellow-500"></i>Reyting
+                            </label>
+                            <input type="number" name="ranking" min="1" 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Masalan: 1, 2, 3...">
+                        </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 <i class="fas fa-globe mr-2 text-blue-500"></i>Veb-sayt
@@ -167,11 +270,77 @@
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
-                                <i class="fas fa-star mr-2 text-yellow-500"></i>Reyting
+                                <i class="fas fa-calendar-alt mr-2 text-red-500"></i>Ariza berish muddati
                             </label>
-                            <input type="number" name="ranking" min="1" 
+                            <input type="date" name="application_deadline"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tuition Fee Section -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">O'qish To'lovi</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-dollar-sign mr-2 text-green-500"></i>Minimal to'lov (USD)
+                            </label>
+                            <input type="number" name="tuition_fee_min" min="0" step="1000"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
-                                placeholder="Masalan: 1, 2, 3...">
+                                placeholder="Masalan: 50000">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-dollar-sign mr-2 text-green-500"></i>Maksimal to'lov (USD)
+                            </label>
+                            <input type="number" name="tuition_fee_max" min="0" step="1000"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Masalan: 60000">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Requirements Section -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Talablar</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-language mr-2 text-blue-500"></i>Til talablari
+                            </label>
+                            <textarea name="language_requirements" rows="3"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Masalan: IELTS 7.0+ yoki TOEFL 100+"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-file-alt mr-2 text-purple-500"></i>Qabul talablari
+                            </label>
+                            <textarea name="admission_requirements" rows="4"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                placeholder="Masalan: Diplom, transkript, til sertifikati, pasport, SAT/ACT"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opportunities Section -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Imkoniyatlar</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" name="scholarship_available" id="scholarship" value="1"
+                                class="w-5 h-5 text-yellow-400 focus:ring-yellow-400 border-gray-300 rounded">
+                            <label for="scholarship" class="text-sm font-medium text-gray-700">
+                                <i class="fas fa-graduation-cap mr-2 text-green-500"></i>Grant imkoniyati
+                            </label>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" name="accommodation_available" id="accommodation" value="1"
+                                class="w-5 h-5 text-yellow-400 focus:ring-yellow-400 border-gray-300 rounded">
+                            <label for="accommodation" class="text-sm font-medium text-gray-700">
+                                <i class="fas fa-bed mr-2 text-blue-500"></i>Yotoqxona imkoniyati
+                            </label>
                         </div>
                     </div>
                 </div>

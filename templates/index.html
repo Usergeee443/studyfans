@@ -8,7 +8,8 @@
 
 <section id="home" class="relative mobile-hero-container h-[100vh] flex items-center justify-center overflow-hidden">
 	<!-- Video Background with Mobile Optimization -->
-	<video autoplay muted loop playsinline class="absolute inset-0 hero-video z-0"
+	<video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0"
+		style="width: 100%; height: 100%; object-fit: cover;"
 		poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect width='1920' height='1080' fill='%23003262'/%3E%3C/svg%3E">
 		<source src="static/video/heroVideo.mp4" type="video/mp4">
 		<!-- Fallback for browsers that don't support video -->
@@ -290,79 +291,135 @@
 		</section>
 
 		<!-- About Section -->
-		<section class="py-20 px-4 bg-gray-50" data-aos="fade-up">
-			<div class="max-w-6xl mx-auto">
-				<div class="text-center mb-16" data-aos="fade-up" data-aos-delay="100">
+		<section class="py-20 bg-white" data-aos="fade-up">
+			<div class="max-w-6xl mx-auto px-4">
+				<!-- Hero Section -->
+				<div class="text-center mb-16" data-aos="fade-up">
+					<div class="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full mb-6">
+						<i class="fas fa-info-circle text-blue-600 mr-2"></i>
+						<span class="text-blue-600 font-medium">
+							{% if lang == 'uz' %}Biz haqimizda{% elif lang == 'ru' %}О нас{% elif lang == 'tr' %}Hakkımızda{% else %}About Us{% endif %}
+						</span>
+					</div>
 					<h2 class="text-4xl md:text-5xl font-bold text-[#003262] mb-6">
-						{% if lang == 'uz' %}StudyFans Haqida{% elif lang == 'ru' %}О StudyFans{% elif lang == 'tr' %}StudyFans Hakkında{% else %}About StudyFans{% endif %}
+						{% if lang == 'uz' %}StudyFans - Ta'lim Sohasi{% elif lang == 'ru' %}StudyFans - Образовательная Сфера{% elif lang == 'tr' %}StudyFans - Eğitim Alanı{% else %}StudyFans - Educational Field{% endif %}
+						<span class="text-[#ff9015]">{% if lang == 'uz' %}Lideri{% elif lang == 'ru' %}Лидер{% elif lang == 'tr' %}Lideri{% else %}Leader{% endif %}</span>
 					</h2>
-					<p class="text-lg text-gray-600 max-w-3xl mx-auto">
+					<p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
 						{% if lang == 'uz' %}
-							Turkiya markazidagi xalqaro ta'lim konsalting agentligi bo'lib, talabalarni eng nufuzli xususiy universitetlarga o'qishga qabul qilishda yordam beradi.
+							Turkiya markazidagi eng yirik xalqaro ta'lim konsalting agentligimiz orqali minglab talabalar o'z orzulariga erishdilar. Bizning professional jamoamiz har bir talabaning individual ehtiyojlarini hisobga olgan holda eng yaxshi ta'lim imkoniyatlarini taqdim etadi.
 						{% elif lang == 'ru' %}
-							Международное образовательное консультационное агентство в центре Турции, которое помогает студентам поступить в самые престижные частные университеты.
+							Через наше крупнейшее международное образовательное консультационное агентство в Турции тысячи студентов достигли своих мечтаний. Наша профессиональная команда предоставляет лучшие образовательные возможности с учетом индивидуальных потребностей каждого студента.
 						{% elif lang == 'tr' %}
-							Türkiye merkezli uluslararası eğitim danışmanlık ajansı olarak öğrencilerin en prestijli özel üniversitelere kabul edilmesine yardımcı oluyoruz.
+							Türkiye merkezli en büyük uluslararası eğitim danışmanlık ajansımız aracılığıyla binlerce öğrenci hayallerine ulaştı. Profesyonel ekibimiz her öğrencinin bireysel ihtiyaçlarını göz önünde bulundurarak en iyi eğitim fırsatlarını sunmaktadır.
 						{% else %}
-							International educational consulting agency based in Turkey, helping students get admitted to the most prestigious private universities.
+							Through our largest international educational consulting agency based in Turkey, thousands of students have achieved their dreams. Our professional team provides the best educational opportunities taking into account the individual needs of each student.
 						{% endif %}
 					</p>
 				</div>
 
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-					<!-- Left Content -->
-					<div data-aos="fade-right" data-aos-delay="200">
-							<div class="flex items-start space-x-4">
-								<div class="w-8 h-8 bg-[#ff9015] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-									<i class="fas fa-check text-white text-sm"></i>
-								</div>
-								<div>
-									<h3 class="text-xl font-semibold text-gray-900 mb-2">
-										{% if lang == 'uz' %}Professional Yondashuv{% elif lang == 'ru' %}Профессиональный подход{% elif lang == 'tr' %}Profesyonel Yaklaşım{% else %}Professional Approach{% endif %}
-									</h3>
-									<p class="text-gray-600">
-										{% if lang == 'uz' %}Har bir talaba uchun individual yondashuv va strategiya{% elif lang == 'ru' %}Индивидуальный подход и стратегия для каждого студента{% elif lang == 'tr' %}Her öğrenci için bireysel yaklaşım ve strateji{% else %}Individual approach and strategy for each student{% endif %}
-									</p>
-								</div>
-							</div>
-
-							<div class="flex items-start space-x-4">
-								<div class="w-8 h-8 bg-[#ff9015] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-									<i class="fas fa-graduation-cap text-white text-sm"></i>
-								</div>
-								<div>
-									<h3 class="text-xl font-semibold text-gray-900 mb-2">
-										{% if lang == 'uz' %}Keng Tajriba{% elif lang == 'ru' %}Обширный опыт{% elif lang == 'tr' %}Geniş Deneyim{% else %}Extensive Experience{% endif %}
-									</h3>
-									<p class="text-gray-600">
-										{% if lang == 'uz' %}13 yillik tajriba va minglab muvaffaqiyatli talabalar{% elif lang == 'ru' %}13 лет опыта и тысячи успешных студентов{% elif lang == 'tr' %}13 yıllık deneyim ve binlerce başarılı öğrenci{% else %}13 years of experience and thousands of successful students{% endif %}
-									</p>
-								</div>
-							</div>
-
-							<div class="flex items-start space-x-4">
-								<div class="w-8 h-8 bg-[#ff9015] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-									<i class="fas fa-globe text-white text-sm"></i>
-								</div>
-								<div>
-									<h3 class="text-xl font-semibold text-gray-900 mb-2">
-										{% if lang == 'uz' %}Xalqaro Hamkorlik{% elif lang == 'ru' %}Международное сотрудничество{% elif lang == 'tr' %}Uluslararası İşbirliği{% else %}International Cooperation{% endif %}
-									</h3>
-									<p class="text-gray-600">
-										{% if lang == 'uz' %}60+ davlatdan talabalar va 54+ universitet bilan hamkorlik{% elif lang == 'ru' %}Студенты из 60+ стран и сотрудничество с 54+ университетами{% elif lang == 'tr' %}60+ ülkeden öğrenciler ve 54+ üniversite ile işbirliği{% else %}Students from 60+ countries and cooperation with 54+ universities{% endif %}
-									</p>
-								</div>
-							</div>
+				<!-- Mission & Vision -->
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+					<!-- Mission -->
+					<div class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-blue-100" data-aos="fade-right" data-aos-delay="100">
+						<div class="w-16 h-16 bg-[#003262] rounded-2xl flex items-center justify-center mb-6">
+							<i class="fas fa-bullseye text-white text-2xl"></i>
 						</div>
+						<h3 class="text-2xl font-bold text-[#003262] mb-4">
+							{% if lang == 'uz' %}Bizning Maqsadimiz{% elif lang == 'ru' %}Наша Миссия{% elif lang == 'tr' %}Misyonumuz{% else %}Our Mission{% endif %}
+						</h3>
+						<p class="text-gray-600 leading-relaxed">
+							{% if lang == 'uz' %}
+								Har bir talabaning ta'lim olish orzusini amalga oshirish va ularga eng yaxshi universitetlarda o'qish imkoniyatini yaratish. Biz har bir talabaning muvaffaqiyati uchun mas'ulmiz.
+							{% elif lang == 'ru' %}
+								Воплотить мечту каждого студента о получении образования и предоставить им возможность учиться в лучших университетах. Мы несем ответственность за успех каждого студента.
+							{% elif lang == 'tr' %}
+								Her öğrencinin eğitim alma hayalini gerçekleştirmek ve onlara en iyi üniversitelerde okuma fırsatı yaratmak. Her öğrencinin başarısından sorumluyuz.
+							{% else %}
+								To realize every student's dream of getting an education and provide them with the opportunity to study at the best universities. We are responsible for the success of every student.
+							{% endif %}
+						</p>
 					</div>
 
-					<!-- Right Content - Image -->
-					<div data-aos="fade-left" data-aos-delay="300">
-						<div class="relative rounded-2xl overflow-hidden">
-							<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0"
-								alt="About StudyFans"
-								class="w-full h-80 object-cover">
+					<!-- Vision -->
+					<div class="bg-gradient-to-br from-orange-50 to-white p-8 rounded-2xl border border-orange-100" data-aos="fade-left" data-aos-delay="200">
+						<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6">
+							<i class="fas fa-eye text-white text-2xl"></i>
 						</div>
+						<h3 class="text-2xl font-bold text-[#003262] mb-4">
+							{% if lang == 'uz' %}Bizning Vizyonimiz{% elif lang == 'ru' %}Наше Видение{% elif lang == 'tr' %}Vizyonumuz{% else %}Our Vision{% endif %}
+						</h3>
+						<p class="text-gray-600 leading-relaxed">
+							{% if lang == 'uz' %}
+								Dunyodagi eng ishonchli ta'lim konsalting kompaniyasiga aylanish va har bir talabaning kelajagi uchun eng yaxshi yo'lni ko'rsatish. Innovatsion yondashuvlar bilan ta'lim sohasida yangi standartlar yaratish.
+							{% elif lang == 'ru' %}
+								Стать самой надежной образовательной консалтинговой компанией в мире и показать лучший путь для будущего каждого студента. Создавать новые стандарты в сфере образования с помощью инновационных подходов.
+							{% elif lang == 'tr' %}
+								Dünyadaki en güvenilir eğitim danışmanlık şirketine dönüşmek ve her öğrencinin geleceği için en iyi yolu göstermek. İnovatif yaklaşımlarla eğitim alanında yeni standartlar yaratmak.
+							{% else %}
+								To become the most trusted educational consulting company in the world and show the best path for every student's future. Creating new standards in education with innovative approaches.
+							{% endif %}
+						</p>
+					</div>
+				</div>
+
+				<!-- Our Values -->
+				<div class="text-center mb-12" data-aos="fade-up" data-aos-delay="300">
+					<h3 class="text-3xl font-bold text-[#003262] mb-6">
+						{% if lang == 'uz' %}Bizning Qadriyatlarimiz{% elif lang == 'ru' %}Наши Ценности{% elif lang == 'tr' %}Değerlerimiz{% else %}Our Values{% endif %}
+					</h3>
+					<p class="text-lg text-gray-600 max-w-2xl mx-auto">
+						{% if lang == 'uz' %}
+							Bizning muvaffaqiyatimiz asosida yotuvchi asosiy tamoyillar
+						{% elif lang == 'ru' %}
+							Основные принципы, лежащие в основе нашего успеха
+						{% elif lang == 'tr' %}
+							Başarımızın temelinde yatan temel ilkeler
+						{% else %}
+							Core principles underlying our success
+						{% endif %}
+					</p>
+				</div>
+
+				<!-- Values Grid -->
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<!-- Professional Approach -->
+					<div class="text-center group" data-aos="fade-up" data-aos-delay="100">
+						<div class="w-20 h-20 bg-gradient-to-r from-[#003262] to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+							<i class="fas fa-user-tie text-white text-2xl"></i>
+						</div>
+						<h4 class="text-xl font-bold text-[#003262] mb-4">
+							{% if lang == 'uz' %}Professional Yondashuv{% elif lang == 'ru' %}Профессиональный подход{% elif lang == 'tr' %}Profesyonel Yaklaşım{% else %}Professional Approach{% endif %}
+						</h4>
+						<p class="text-gray-600">
+							{% if lang == 'uz' %}Har bir talaba uchun individual strategiya va professional maslahat{% elif lang == 'ru' %}Индивидуальная стратегия и профессиональная консультация для каждого студента{% elif lang == 'tr' %}Her öğrenci için bireysel strateji ve profesyonel danışmanlık{% else %}Individual strategy and professional consultation for each student{% endif %}
+						</p>
+					</div>
+
+					<!-- Experience -->
+					<div class="text-center group" data-aos="fade-up" data-aos-delay="200">
+						<div class="w-20 h-20 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+							<i class="fas fa-medal text-white text-2xl"></i>
+						</div>
+						<h4 class="text-xl font-bold text-[#003262] mb-4">
+							{% if lang == 'uz' %}Keng Tajriba{% elif lang == 'ru' %}Обширный опыт{% elif lang == 'tr' %}Geniş Deneyim{% else %}Extensive Experience{% endif %}
+						</h4>
+						<p class="text-gray-600">
+							{% if lang == 'uz' %}13 yillik tajriba va 10,000+ muvaffaqiyatli talaba{% elif lang == 'ru' %}13 лет опыта и 10,000+ успешных студентов{% elif lang == 'tr' %}13 yıllık deneyim ve 10,000+ başarılı öğrenci{% else %}13 years of experience and 10,000+ successful students{% endif %}
+						</p>
+					</div>
+
+					<!-- Global Network -->
+					<div class="text-center group" data-aos="fade-up" data-aos-delay="300">
+						<div class="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+							<i class="fas fa-globe text-white text-2xl"></i>
+						</div>
+						<h4 class="text-xl font-bold text-[#003262] mb-4">
+							{% if lang == 'uz' %}Global Tarmoq{% elif lang == 'ru' %}Глобальная Сеть{% elif lang == 'tr' %}Küresel Ağ{% else %}Global Network{% endif %}
+						</h4>
+						<p class="text-gray-600">
+							{% if lang == 'uz' %}60+ davlat va 100+ universitet bilan hamkorlik{% elif lang == 'ru' %}Сотрудничество с 60+ странами и 100+ университетами{% elif lang == 'tr' %}60+ ülke ve 100+ üniversite ile işbirliği{% else %}Partnership with 60+ countries and 100+ universities{% endif %}
+						</p>
 					</div>
 				</div>
 			</div>
@@ -937,374 +994,6 @@
 
 
 
-		<!-- Testimonials Section -->
-		<section class="py-12 md:py-16">
-			<div class="max-w-9xl mx-auto px-4">
-				<!-- Header -->
-				<div class="text-center mb-12">
-					<h2 class="text-2xl md:text-3xl font-bold text-[#003262] mb-2">
-						{% if lang == 'uz' %}Talabalarimiz Fikri{% elif lang == 'ru' %}Мнения наших студентов{% else %}Student Testimonials{% endif %}
-					</h2>
-					<p class="text-gray-600">
-						{% if lang == 'uz' %}Muvaffaqiyatli bitiruvchilarning haqiqiy tajribalari{% elif lang == 'ru' %}Реальный опыт успешных выпускников{% else %}Real experiences of successful graduates{% endif %}
-					</p>
-				</div>
-
-				<!-- Testimonials -->
-				<div class="space-y-6">
-					<!-- Row 1 -->
-					<div class="testimonial-row overflow-hidden">
-						<div class="flex gap-4 scroll-left">
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										A
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Aziza Karimova</h3>
-										<p class="text-xs text-gray-500">Istanbul Universiteti bitiruvchisi</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"StudyFans orqali Turkiyada o'qish orzuim amalga oshdi. Professional yordam
-									bilan hamma jarayon oson bo'ldi."
-								</p>
-							</div>
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										D
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Davron Abdullayev</h3>
-										<p class="text-xs text-gray-500">Kipr universiteti talabasi</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"40% chegirma olishga yordam berishdi. Endi Kiprda o'qiyapman va juda
-									baxtliman."
-								</p>
-							</div>
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										N
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Nilufar Toshmatova</h3>
-										<p class="text-xs text-gray-500">Gruziya universiteti bitiruvchisi</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"Viza olishdan tortib, yashash joyini topishgacha hamma narsada yordam
-									berishdi."
-								</p>
-							</div>
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										S
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Sardor Rahimov</h3>
-										<p class="text-xs text-gray-500">Malayziya universiteti talabasi</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"Kasb yo'nalishini tanlashda ajoyib maslahat berishdi. Endi IT sohasida
-									o'qiyapman."
-								</p>
-							</div>
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-pink-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										M
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Madina Yusupova</h3>
-										<p class="text-xs text-gray-500">Istanbul Texnika Universiteti</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"Imtihonsiz qabul jarayoni haqida to'liq ma'lumot berishdi. Hozir muhandislik
-									o'qiyapman."
-								</p>
-							</div>
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										F
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Farrux Bobojonov</h3>
-										<p class="text-xs text-gray-500">Tbilisi Davlat Universiteti</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"Gruziyada o'qish uchun barcha hujjatlarni tayyorlashda katta yordam
-									ko'rsatishdi."
-								</p>
-							</div>
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										G
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Gulnora Ismoilova</h3>
-										<p class="text-xs text-gray-500">Lefkosha Universiteti talabasi</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"Kiprda tibbiyot o'qish orzuim ro'yobga chiqdi. Ajoyib qo'llab-quvvatlash uchun
-									rahmat!"
-								</p>
-							</div>
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										J
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Javohir Mirzayev</h3>
-										<p class="text-xs text-gray-500">Kuala Lumpur Universiteti</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"Malayziyada biznes yo'nalishida o'qish imkoniyatini berganlar uchun ming
-									rahmat."
-								</p>
-							</div>
-
-							<!-- Duplicates for seamless loop -->
-
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										D
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Davron Abdullayev</h3>
-										<p class="text-xs text-gray-500">Kipr universiteti talabasi</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"40% chegirma olishga yordam berishdi. Endi Kiprda o'qiyapman va juda
-									baxtliman."
-								</p>
-							</div>
-						</div>
-					</div>
-
-					<!-- Row 2 -->
-					<div class="testimonial-row overflow-hidden">
-						<div class="flex gap-4 scroll-right">
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										Z
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Zarina Normatova</h3>
-										<p class="text-xs text-gray-500">Ankara Universiteti bitiruvchisi</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"Turkcha til kurslaridan tortib, universitetga qabulga qadar barcha bosqichlarda
-									yordam berishdi."
-								</p>
-							</div>
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										R
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Rustam Umarov</h3>
-										<p class="text-xs text-gray-500">Batumi Universiteti talabasi</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"Gruziyada tijorat yo'nalishida o'qish uchun grant olishga yordam berishdi."
-								</p>
-							</div>
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-pink-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										S
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Sevara Nazarova</h3>
-										<p class="text-xs text-gray-500">Nikosia Universiteti talabasi</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"Kiprda psixologiya o'qish imkoniyatini berdi. Yashash ruxsatnomasi olishda ham
-									yordam berishdi."
-								</p>
-							</div>
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										O
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Otabek Aliyev</h3>
-										<p class="text-xs text-gray-500">Penang Universiteti bitiruvchisi</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"Malayziyada muhandislik o'qib tugatdim. Ish topishda ham maslahat berishdi."
-								</p>
-							</div>
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-violet-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										D
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Dilnoza Qodirova</h3>
-										<p class="text-xs text-gray-500">Bogazici Universiteti talabasi</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"Turkiyaning eng yaxshi universitetlaridan biriga kirish imkoniyatini berdi."
-								</p>
-							</div>
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										B
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Bobur Sharipov</h3>
-										<p class="text-xs text-gray-500">Ivane Javaxishvili Universiteti</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"Gruziyada o'qish uchun barcha zarur hujjatlarni tayyorlashda yordam berishdi."
-								</p>
-							</div>
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-rose-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										F
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Feruza Maxmudova</h3>
-										<p class="text-xs text-gray-500">Eastern Mediterranean Universiteti</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"Kiprda tibbiyot o'qish uchun imtihonsiz qabul jarayonida professional yordam
-									oldi."
-								</p>
-							</div>
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										A
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Akmal Tursunov</h3>
-										<p class="text-xs text-gray-500">Multimedia Universiteti Malayziya</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"IT sohasida o'qish uchun eng yaxshi universitetni tanlashda yordam berishdi."
-								</p>
-							</div>
-
-							<!-- Duplicates for seamless loop -->
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										A
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Aziza Karimova</h3>
-										<p class="text-xs text-gray-500">Istanbul Universiteti bitiruvchisi</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"StudyFans orqali Turkiyada o'qish orzuim amalga oshdi. Professional yordam
-									bilan hamma jarayon oson bo'ldi."
-								</p>
-							</div>
-
-							<div class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div
-										class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-										D
-									</div>
-									<div>
-										<h3 class="font-medium text-sm">Davron Abdullayev</h3>
-										<p class="text-xs text-gray-500">Kipr universiteti talabasi</p>
-									</div>
-								</div>
-								<p class="text-sm text-gray-700">
-									"40% chegirma olishga yordam berishdi. Endi Kiprda o'qiyapman va juda
-									baxtliman."
-								</p>
-							</div>
-						</div>
-					</div>
-
-					<!-- Row 2 -->
-				</div>
-
-			</div>
-			</div>
-
-			<!-- Simple CTA -->
-			<div class="text-center mt-12">
-				<h3 class="text-xl font-semibold mb-2 text-gray-900">
-					{% if lang == 'uz' %}Yo'lingizni boshlashga tayyormisiz?{% elif lang == 'ru' %}Готовы начать свой путь?{% else %}Ready to start your journey?{% endif %}
-				</h3>
-				<p class="text-gray-600 mb-6">
-					{% if lang == 'uz' %}Minglab muvaffaqiyatli talabalarga qo'shiling{% elif lang == 'ru' %}Присоединяйтесь к тысячам успешных студентов{% else %}Join thousands of successful students{% endif %}
-				</p>
-				<button class=" bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg shadow-lg
-							hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-					{% if lang == 'uz' %}Batafsil Ma'lumot{% elif lang == 'ru' %}Подробная информация{% else %}More Details{% endif %}
-				</button>
-			</div>
-			</div>
-
 		</section>
 		<section class="py-16 px-4 bg-gray-50" data-aos="fade-up" data-aos-duration="1000">
 			<div class="max-w-7xl mx-auto">
@@ -1728,13 +1417,21 @@
 		}
 	});
 
-	// Enhanced video loading for mobile
+	// Enhanced video loading for all devices
 	document.addEventListener('DOMContentLoaded', function () {
 		const video = document.querySelector('video');
 
-		// Force video to load and play on mobile
+		// Force video to load and play on all devices
 		if (video) {
 			video.load();
+
+			// Set video properties for all devices
+			video.style.width = '100%';
+			video.style.height = '100%';
+			video.style.objectFit = 'cover';
+			video.style.position = 'absolute';
+			video.style.top = '0';
+			video.style.left = '0';
 
 			// Try to play video after a short delay
 			setTimeout(() => {
@@ -1746,10 +1443,17 @@
 				});
 			}, 100);
 
-			// Ensure video covers the full screen on mobile
-			video.style.width = '100%';
-			video.style.height = '100%';
-			video.style.objectFit = 'cover';
+			// Handle video load event
+			video.addEventListener('loadeddata', function() {
+				console.log('Video loaded successfully');
+			});
+
+			// Handle video error
+			video.addEventListener('error', function(e) {
+				console.log('Video error:', e);
+				video.style.display = 'none';
+				video.parentElement.style.background = 'linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%)';
+			});
 		}
 	});
 

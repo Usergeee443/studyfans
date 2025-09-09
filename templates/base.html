@@ -188,33 +188,33 @@
 				<div class="hidden md:block">
 					<div class="ml-10 flex items-baseline space-x-4">
 						<a href="{{ url_for('index') }}"
-							class="nav-link relative px-6 py-3 font-medium text-sm transition-all duration-300 group {% if request.endpoint == 'index' %}text-[#003262] bg-[#ff9015] text-white rounded-[10px]{% else %}text-gray-700 hover:text-white{% endif %}">
+							class="nav-link relative px-6 py-3 font-medium text-sm transition-all duration-300 group {% if request.endpoint == 'index' %}text-[#003262] bg-[#ff9015] text-white rounded-[1rem] shadow-xl{% else %}text-gray-700 hover:text-white{% endif %}">
 							<span class="relative z-10" data-lang="nav.home">{% if lang == 'uz' %}Bosh sahifa{% elif lang == 'ru' %}Главная{% elif lang == 'tr' %}Ana Sayfa{% else %}Home{% endif %}</span>
-							{% if request.endpoint != 'index' %}<div class="absolute inset-0 bg-[#ff9015] rounded-[10px] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></div>{% endif %}
+							{% if request.endpoint != 'index' %}<div class="absolute inset-0 bg-[#ff9015] rounded-[1rem] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out shadow-xl"></div>{% endif %}
 						</a>
 
 						<a href="{{ url_for('universities') }}"
-							class="nav-link relative px-6 py-3 font-medium text-sm transition-all duration-300 group {% if request.endpoint == 'universities' %}text-[#003262] bg-[#ff9015] text-white rounded-[10px]{% else %}text-gray-700 hover:text-white{% endif %}">
+							class="nav-link relative px-6 py-3 font-medium text-sm transition-all duration-300 group {% if request.endpoint == 'universities' %}text-[#003262] bg-[#ff9015] text-white rounded-[1rem] shadow-xl{% else %}text-gray-700 hover:text-white{% endif %}">
 							<span class="relative z-10" data-lang="nav.universities">{% if lang == 'uz' %}Universitetlar{% elif lang == 'ru' %}Университеты{% elif lang == 'tr' %}Üniversiteler{% else %}Universities{% endif %}</span>
-							{% if request.endpoint != 'universities' %}<div class="absolute inset-0 bg-[#ff9015] rounded-[10px] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></div>{% endif %}
+							{% if request.endpoint != 'universities' %}<div class="absolute inset-0 bg-[#ff9015] rounded-[1rem] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out shadow-xl"></div>{% endif %}
 						</a>
 
 						<a href="{{ url_for('services') }}"
-							class="nav-link relative px-6 py-3 font-medium text-sm transition-all duration-300 group {% if request.endpoint == 'services' %}text-[#003262] bg-[#ff9015] text-white rounded-[10px]{% else %}text-gray-700 hover:text-white{% endif %}">
+							class="nav-link relative px-6 py-3 font-medium text-sm transition-all duration-300 group {% if request.endpoint == 'services' %}text-[#003262] bg-[#ff9015] text-white rounded-[1rem] shadow-xl{% else %}text-gray-700 hover:text-white{% endif %}">
 							<span class="relative z-10" data-lang="nav.services">{% if lang == 'uz' %}Xizmatlar{% elif lang == 'ru' %}Услуги{% elif lang == 'tr' %}Hizmetler{% else %}Services{% endif %}</span>
-							{% if request.endpoint != 'services' %}<div class="absolute inset-0 bg-[#ff9015] rounded-[10px] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></div>{% endif %}
+							{% if request.endpoint != 'services' %}<div class="absolute inset-0 bg-[#ff9015] rounded-[1rem] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out shadow-xl"></div>{% endif %}
 						</a>
 
 						<a href="{{ url_for('about') }}"
-							class="nav-link relative px-6 py-3 font-medium text-sm transition-all duration-300 group {% if request.endpoint == 'about' %}text-[#003262] bg-[#ff9015] text-white rounded-[10px]{% else %}text-gray-700 hover:text-white{% endif %}">
+							class="nav-link relative px-6 py-3 font-medium text-sm transition-all duration-300 group {% if request.endpoint == 'about' %}text-[#003262] bg-[#ff9015] text-white rounded-[1rem] shadow-xl{% else %}text-gray-700 hover:text-white{% endif %}">
 							<span class="relative z-10" data-lang="nav.about">{% if lang == 'uz' %}Biz haqimizda{% elif lang == 'ru' %}О нас{% elif lang == 'tr' %}Hakkımızda{% else %}About{% endif %}</span>
-							{% if request.endpoint != 'about' %}<div class="absolute inset-0 bg-[#ff9015] rounded-[10px] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></div>{% endif %}
+							{% if request.endpoint != 'about' %}<div class="absolute inset-0 bg-[#ff9015] rounded-[1rem] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out shadow-xl"></div>{% endif %}
 						</a>
 
 						<a href="{{ url_for('contact') }}"
-							class="nav-link relative px-6 py-3 font-medium text-sm transition-all duration-300 group {% if request.endpoint == 'contact' %}text-[#003262] bg-[#ff9015] text-white rounded-[10px]{% else %}text-gray-700 hover:text-white{% endif %}">
+							class="nav-link relative px-6 py-3 font-medium text-sm transition-all duration-300 group {% if request.endpoint == 'contact' %}text-[#003262] bg-[#ff9015] text-white rounded-[1rem] shadow-xl{% else %}text-gray-700 hover:text-white{% endif %}">
 							<span class="relative z-10" data-lang="nav.contact">{% if lang == 'uz' %}Aloqa{% elif lang == 'ru' %}Контакты{% elif lang == 'tr' %}İletişim{% else %}Contact{% endif %}</span>
-							{% if request.endpoint != 'contact' %}<div class="absolute inset-0 bg-[#ff9015] rounded-[10px] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></div>{% endif %}
+							{% if request.endpoint != 'contact' %}<div class="absolute inset-0 bg-[#ff9015] rounded-[1rem] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out shadow-xl"></div>{% endif %}
 						</a>
 					</div>
 				</div>
@@ -222,33 +222,33 @@
 				<!-- Language Switcher -->
 				<div class="hidden md:flex items-center">
 					<div class="relative group">
-						<button class="flex items-center space-x-1 px-3 py-3 text-sm rounded-lg bg-gray-200 hover:bg-gray-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+						<button class="flex items-center space-x-1 px-3 py-3 text-sm rounded-[1rem] shadow-xl bg-gray-300 hover:bg-gray-200 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400">
 							<span class="font-medium">
 								{% if lang == 'uz' %}UZ{% elif lang == 'en' %}EN{% elif lang == 'ru' %}RU{% else %}TR{% endif %}
 							</span>
 							<i class="fas fa-chevron-down text-xs transition-transform duration-200 group-hover:rotate-180"></i>
 						</button>
 						
-						<div class="absolute right-0 mt-2 w-20 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+						<div class="absolute right-0 mt-2 w-20 bg-white rounded-[1rem] shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
 							<a href="{{ request.url | replace_query_param('lang', 'uz') }}" 
-								class="block px-3 py-2 text-sm text-gray-700 hover:bg-yellow-100 hover:text-gray-900 rounded-t-lg transition-colors duration-200 {% if lang == 'uz' %}bg-yellow-100 text-gray-900{% endif %}">
+								class="block px-3 py-2 text-sm hover:bg-gray-200 rounded-t-[1rem] transition-colors duration-200 {% if lang == 'uz' %}bg-gray-300{% endif %}">
 								UZ
 							</a>
 							<a href="{{ request.url | replace_query_param('lang', 'en') }}" 
-								class="block px-3 py-2 text-sm text-gray-700 hover:bg-yellow-100 hover:text-gray-900 transition-colors duration-200 {% if lang == 'en' %}bg-yellow-100 text-gray-900{% endif %}">
+								class="block px-3 py-2 text-sm hover:bg-gray-200 transition-colors duration-200 {% if lang == 'en' %}bg-gray-300{% endif %}">
 								EN
 							</a>
 							<a href="{{ request.url | replace_query_param('lang', 'ru') }}" 
-								class="block px-3 py-2 text-sm text-gray-700 hover:bg-yellow-100 hover:text-gray-900 transition-colors duration-200 {% if lang == 'ru' %}bg-yellow-100 text-gray-900{% endif %}">
+								class="block px-3 py-2 text-sm hover:bg-gray-200 transition-colors duration-200 {% if lang == 'ru' %}bg-gray-300{% endif %}">
 								RU
 							</a>
 							<a href="{{ request.url | replace_query_param('lang', 'tr') }}" 
-								class="block px-3 py-2 text-sm text-gray-700 hover:bg-yellow-100 hover:text-gray-900 rounded-b-lg transition-colors duration-200 {% if lang == 'tr' %}bg-yellow-100 text-gray-900{% endif %}">
+								class="block px-3 py-2 text-sm hover:bg-gray-200 rounded-b-[1rem] transition-colors duration-200 {% if lang == 'tr' %}bg-gray-300{% endif %}">
 								TR
 							</a>
 						</div>
 					</div>
-				</div>
+				</div>	
 
 				<!-- Mobile Language Switcher -->
 				<div class="md:hidden flex items-center space-x-2">
@@ -433,13 +433,27 @@
 					</div>
 				</div>
 			</div>
-
-			<div class="border-t border-gray-800 mt-8 pt-8 text-center">
-				<p class="text-gray-400">
-					&copy; 2024 Study Fans. 
-					{% if lang == 'uz' %}Barcha huquqlar himoyalangan.{% elif lang == 'ru' %}Все права защищены.{% elif lang == 'tr' %}Tüm haklar saklıdır.{% else %}All rights reserved.{% endif %}
-				</p>
-			</div>
+			
+			<!-- Bottom Section -->
+            <div class="border-t border-gray-700 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-center md:text-left mb-4 md:mb-0">
+						<p class="text-gray-400 text-sm">
+							&copy; 2024 Study Fans. 
+							{% if lang == 'uz' %}Barcha huquqlar himoyalangan.{% elif lang == 'ru' %}Все права защищены.{% elif lang == 'tr' %}Tüm haklar saklıdır.{% else %}All rights reserved.{% endif %}
+						</p>
+                    </div>
+                    <div class="flex flex-wrap justify-center md:justify-end items-center space-x-6 text-sm">
+                        <a href="https://nurkom.uz/" class="text-gray-400 hover:text-white transition-colors duration-200">
+							{% if lang == 'uz' %}<span class="bg-[#00FFAA] font-bold text-white px-2 py-1">NURKOM</span> tomonidan ishlab chiqilgan
+							{% elif lang == 'ru' %}Pазработано <span class="bg-[#00FFAA] font-bold text-white px-2 py-1">NURKOM</span>
+							{% elif lang == 'tr' %}<span class="bg-[#00FFAA] font-bold text-white px-2 py-1">NURKOM</span> tarafından geliştirildi
+							{% elif lang == 'en' %}Developed by <span class="bg-[#00FFAA] font-bold text-white px-2 py-1">NURKOM</span>
+							{% endif %}
+						</a>
+                    </div>
+                </div>
+            </div>
 		</div>
 	</footer>
 
