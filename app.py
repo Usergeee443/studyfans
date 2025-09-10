@@ -12,40 +12,9 @@ load_dotenv('config.env')
 
 app = Flask(__name__)
 
-# Database configuration from environment variables
-DB_HOST = os.getenv('DB_HOST', 'localhost')
-DB_NAME = os.getenv('DB_NAME', 'studyfans')
-DB_USER = os.getenv('DB_USER', 'postgres')
-DB_PASSWORD = os.getenv('DB_PASSWORD', 'password')
-
-# Try MySQL first, fallback to SQLite
-try:
-    # MySQL ulanishi PyMySQL bilan
-    DATABASE_URI = f'mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}'
-    # Test connection
-    import pymysql
-    conn = pymysql.connect(
-        host=DB_HOST, 
-        user=DB_USER, 
-        password=DB_PASSWORD, 
-        database=DB_NAME,
-        connect_timeout=10,
-        read_timeout=10,
-        write_timeout=10
-    )
-    conn.close()
-    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
-    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-        'pool_pre_ping': True,
-        'pool_recycle': 300,
-        'pool_timeout': 20,
-        'max_overflow': 0
-    }
-    print(f"✅ Using MySQL database: {DB_NAME} on {DB_HOST}")
-except Exception as e:
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///studyfans.db'
-    print(f"❌ MySQL connection failed: {e}")
-    print("🔄 Using SQLite database as fallback")
+# Database configuration - using SQLite for simplicity and deployment
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///studyfans.db'
+print("✅ Using SQLite database: studyfans.db")
 
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'your-secret-key-here')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -472,8 +441,7 @@ def replace_query_param(url, param, value):
 # Initialize database and create admin user
 def init_db():
     with app.app_context():
-        # Drop all tables and recreate (for development only)
-        db.drop_all()
+        # Create all tables
         db.create_all()
         
         # Create default admin user if not exists

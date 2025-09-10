@@ -309,11 +309,11 @@
 			{% endif %}
 		</p>
 		<div class="flex flex-col sm:flex-row gap-4 justify-center">
-			<a href="{{ url_for('contact') }}" class="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-gray-900 font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+			<a href="{{ url_for('contact') }}" class="bg-[#ff9015] hover:from-yellow-500 hover:to-orange-500 text-white font-bold py-4 px-8 rounded-[1.5rem] text-lg shadow-xl hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 				<i class="fas fa-phone mr-2"></i>
 				{% if lang == 'uz' %}Bepul Maslahat{% elif lang == 'ru' %}Бесплатная Консультация{% else %}Free Consultation{% endif %}
 			</a>
-			<a href="{{ url_for('services') }}" class="bg-gradient-to-r from-[#003262] to-blue-800 text-white hover:from-blue-800 hover:to-indigo-900 font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+			<a href="{{ url_for('services') }}" class="bg-blue-600 text-white hover:from-blue-800 hover:to-indigo-900 font-bold py-4 px-8 rounded-[1.5rem] text-lg shadow-xl hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 				<i class="fas fa-cogs mr-2"></i>
 				{% if lang == 'uz' %}Xizmatlarimiz{% elif lang == 'ru' %}Наши Услуги{% else %}Our Services{% endif %}
 			</a>

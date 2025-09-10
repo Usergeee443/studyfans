@@ -68,7 +68,7 @@
 				<!-- Degree Dropdown -->
 				<div class="relative group w-full lg:w-auto">
 					<button
-						class="search-dropdown mobile-dropdown bg-white/15 backdrop-blur-lg border border-white/20 text-white px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 md:py-3.5 rounded-lg flex items-center space-x-2 w-full lg:min-w-[260px] hover:bg-white/20 hover:border-white/30 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm md:text-base"
+						class="search-dropdown mobile-dropdown bg-white/15 backdrop-blur-lg border border-white/20 text-white px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 md:py-3.5 rounded-[1rem] flex items-center space-x-2 w-full lg:min-w-[260px] hover:bg-white/20 hover:border-white/30 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm md:text-base"
 						onclick="toggleDropdown('degree')">
 						<i class="fas fa-graduation-cap text-sm text-yellow-400"></i>
 						<span class="flex-1 text-left truncate" id="degree-text">
@@ -103,7 +103,7 @@
 				<!-- Language Dropdown -->
 				<div class="relative group w-full lg:w-auto">
 					<button
-						class="search-dropdown mobile-dropdown bg-white/15 backdrop-blur-lg border border-white/20 text-white px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 md:py-3.5 rounded-lg flex items-center space-x-2 w-full lg:min-w-[260px] hover:bg-white/20 hover:border-white/30 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm md:text-base"
+						class="search-dropdown mobile-dropdown bg-white/15 backdrop-blur-lg border border-white/20 text-white px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 md:py-3.5 rounded-[1rem] flex items-center space-x-2 w-full lg:min-w-[260px] hover:bg-white/20 hover:border-white/30 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm md:text-base"
 						onclick="toggleDropdown('language')">
 						<i class="fas fa-globe text-sm text-yellow-400"></i>
 						<span class="flex-1 text-left truncate" id="language-text">
@@ -138,7 +138,7 @@
 				<!-- Major Dropdown -->
 				<div class="relative group w-full lg:w-auto">
 					<button
-						class="search-dropdown mobile-dropdown bg-white/15 backdrop-blur-lg border border-white/20 text-white px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 md:py-3.5 rounded-lg flex items-center space-x-2 w-full lg:min-w-[260px] hover:bg-white/20 hover:border-white/30 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm md:text-base"
+						class="search-dropdown mobile-dropdown bg-white/15 backdrop-blur-lg border border-white/20 text-white px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 md:py-3.5 rounded-[1rem] flex items-center space-x-2 w-full lg:min-w-[260px] hover:bg-white/20 hover:border-white/30 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm md:text-base"
 						onclick="toggleDropdown('major')">
 						<i class="fas fa-book text-yellow-400 text-sm"></i>
 						<span class="flex-1 text-left truncate" id="major-text">
@@ -180,7 +180,7 @@
 
 				<!-- Search Button -->
 				<button
-					class="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-gray-900 font-bold px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg font-semibold transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg flex items-center space-x-2 w-full lg:w-auto lg:min-w-[120px] justify-center text-xs sm:text-sm md:text-base min-h-[48px]"
+					class="bg-[#ff9015] text-white px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-[1rem] transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg flex items-center space-x-2 w-full lg:w-auto lg:min-w-[120px] justify-center text-xs sm:text-sm md:text-base min-h-[48px]"
 					onclick="performSearch()">
 					<span>{% if lang == 'uz' %}Qidirish{% elif lang == 'ru' %}Поиск{% else %}Search{% endif %}</span>
 					<i class="fas fa-search text-sm"></i>
@@ -385,7 +385,7 @@
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 					<!-- Professional Approach -->
 					<div class="text-center group" data-aos="fade-up" data-aos-delay="100">
-						<div class="w-20 h-20 bg-gradient-to-r from-[#003262] to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+						<div class="w-20 h-20 bg-[#003262] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
 							<i class="fas fa-user-tie text-white text-2xl"></i>
 						</div>
 						<h4 class="text-xl font-bold text-[#003262] mb-4">
@@ -411,7 +411,7 @@
 
 					<!-- Global Network -->
 					<div class="text-center group" data-aos="fade-up" data-aos-delay="300">
-						<div class="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+						<div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
 							<i class="fas fa-globe text-white text-2xl"></i>
 						</div>
 						<h4 class="text-xl font-bold text-[#003262] mb-4">
@@ -693,8 +693,12 @@
 			</div>
 		</section>
 
+
 		<!-- Contact CTA Section -->
-		<section class="py-20 px-4 bg-[#003262]" data-aos="fade-up">
+		<section class="relative py-24 mt-[3rem] px-4 bg-[#004AAD] overflow-hidden" data-aos="fade-up">
+			<div class="absolute inset-0">
+				<div class="absolute -top-40 -right-40 w-80 h-80 bg-white/50 rounded-full blur-3xl animate-bounce-slow"></div>
+			</div>
 			<div class="max-w-6xl mx-auto text-center">
 				<h2 class="text-4xl md:text-5xl font-bold text-white mb-6" data-aos="fade-up" data-aos-delay="100">
 					{% if lang == 'uz' %}Bugun Boshlang{% elif lang == 'ru' %}Начните сегодня{% elif lang == 'tr' %}Bugün Başlayın{% else %}Start Today{% endif %}
@@ -711,10 +715,10 @@
 					{% endif %}
 				</p>
 				<div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
-					<a href="/contact" class="bg-[#ff9015] text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-colors">
+					<a href="/contact" class="bg-[#ff9015] border-2 border-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-colors">
 						{% if lang == 'uz' %}Bepul Konsultatsiya{% elif lang == 'ru' %}Бесплатная консультация{% elif lang == 'tr' %}Ücretsiz Danışmanlık{% else %}Free Consultation{% endif %}
 					</a>
-					<a href="/universities" class="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-colors">
+					<a href="/universities" class="border-2 border-white text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-colors">
 						{% if lang == 'uz' %}Universitetlarni Ko'rish{% elif lang == 'ru' %}Посмотреть университеты{% elif lang == 'tr' %}Üniversiteleri Gör{% else %}View Universities{% endif %}
 					</a>
 				</div>
@@ -726,33 +730,32 @@
 
 		<section class="bg-gray-50 py-8 md:py-12 lg:py-20 px-4">
 			<div class="max-w-7xl mx-auto">
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-16 items-center">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
 					<!-- Left Side - Content -->
-					<div class="order-2 lg:order-1 space-y-4 md:space-y-6 lg:space-y-8">
-						<div class="space-y-2 md:space-y-3 lg:space-y-4  lg:text-left">
-							<h1
-								class="text-2xl sm:text-3xl md:text-3xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold text-[#003262] leading-tight px-2 lg:px-0">
+					<div class="order-2 lg:order-1 space-y-6">
+						<div class="space-y-4">
+							<h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#004AAD] leading-tight">
 								{% if lang == 'uz' %}
-									<span class="block sm:inline">Konsultatsiya</span>
-									<span class="text-yellow-500 block sm:inline">Video qo'ng'iroq orqali</span>
-									<span class="block sm:inline">Buyurtma bering!</span>
+									<span class="block">Konsultatsiya</span>
+									<span class="text-[#ff9015] block">Video qo'ng'iroq orqali</span>
+									<span class="block">Buyurtma bering!</span>
 								{% elif lang == 'ru' %}
-									<span class="block sm:inline">Закажите</span>
-									<span class="text-yellow-500 block sm:inline">видео консультацию</span>
-									<span class="block sm:inline">прямо сейчас!</span>
+									<span class="block">Закажите</span>
+									<span class="text-[#ff9015] block">видео консультацию</span>
+									<span class="block">прямо сейчас!</span>
 								{% else %}
-									<span class="block sm:inline">Book a</span>
-									<span class="text-yellow-500 block sm:inline">video consultation</span>
-									<span class="block sm:inline">now!</span>
+									<span class="block">Book a</span>
+									<span class="text-[#ff9015] block">video consultation</span>
+									<span class="block">now!</span>
 								{% endif %}
 							</h1>
 						</div>
 
 						<!-- CTA Button -->
-						<div class="pt-2 md:pt-4 text-center lg:text-left">
+						<div class="pt-4">
 							<button onclick="openModal()"
-								class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full sm:w-auto">
+								class="bg-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg shadow-xl hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 								{% if lang == 'uz' %}Konsultatsiya uchun vaqt belgilash{% elif lang == 'ru' %}Записаться на консультацию{% else %}Schedule a consultation{% endif %}
 							</button>
 						</div>
@@ -762,22 +765,15 @@
 					<div class="order-1 lg:order-2 relative">
 						<div class="relative">
 							<!-- Main Image Container -->
-							<div
-								class="rounded-bl-[100px] md:rounded-bl-[100px] lg:rounded-bl-[150px] rounded-tr-[100px] md:rounded-tr-[100px] lg:rounded-tr-[150px] overflow-hidden rounded-2xl">
-								<div class="relative z-10">
-									<div class="w-full h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[32rem] shadow-xl rounded-bl-3xl bg-cover bg-center"
-										style="background-image: linear-gradient(to top, #003262, transparent), url('https://img.freepik.com/premium-photo/overjoyed-bearded-man-winner-holding-laptop-looking-camera-isolated-blue-background_695242-21509.jpg');">
-									</div>
+							<div class="rounded-3xl overflow-hidden shadow-2xl">
+								<div class="w-full h-80 lg:h-96 bg-cover bg-center"
+									style="background-image: linear-gradient(to top, #004AAD, transparent), url('https://img.freepik.com/premium-photo/overjoyed-bearded-man-winner-holding-laptop-looking-camera-isolated-blue-background_695242-21509.jpg');">
 								</div>
 							</div>
 
-							<!-- Decorative Circles - Smaller on mobile -->
-							<div
-								class="absolute -z-10 -top-2 md:-top-4 lg:-top-8 -left-2 md:-left-4 lg:-left-8 w-8 h-8 md:w-16 md:h-16 lg:w-32 lg:h-32 bg-yellow-400/20 rounded-full blur-xl md:blur-2xl">
-							</div>
-							<div
-								class="absolute -z-10 -bottom-2 md:-bottom-4 lg:-bottom-8 -right-2 md:-right-4 lg:-right-8 w-10 h-10 md:w-20 md:h-20 lg:w-40 lg:h-40 bg-blue-600/15 rounded-full blur-xl md:blur-2xl">
-							</div>
+							<!-- Decorative Elements -->
+							<div class="absolute -z-10 -top-4 -left-4 w-16 h-16 bg-yellow-400/30 rounded-full blur-xl"></div>
+							<div class="absolute -z-10 -bottom-4 -right-4 w-20 h-20 bg-[#004AAD]/20 rounded-full blur-xl"></div>
 						</div>
 					</div>
 
