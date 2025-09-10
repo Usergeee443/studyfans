@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-	{% if lang == 'uz' %}Xizmatlar - Study Fans{% elif lang == 'ru' %}Услуги - Study Fans{% else %}Services - Study Fans{% endif %}
+	{% if lang == 'uz' %}Xizmatlar - Study Fans{% elif lang == 'ru' %}Услуги - Study Fans{% elif lang == 'tr' %}Hizmetler - Study Fans{% else %}Services - Study Fans{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -16,10 +16,13 @@
 		<h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
 			{% if lang == 'uz' %}
 				<span class="block">Professional</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Xizmatlarimiz</span>
+				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">xizmatlarimiz</span>
 			{% elif lang == 'ru' %}
 				<span class="block">Наши</span>
 				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Профессиональные Услуги</span>
+			{% elif lang == 'tr' %}
+				<span class="block">Profesyonel</span>
+				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">hizmetlerimiz</span>
 			{% else %}
 				<span class="block">Our</span>
 				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Professional Services</span>
@@ -30,6 +33,8 @@
 				Ta'lim yo'lingizda to'liq qo'llab-quvvatlash va professional yordam
 			{% elif lang == 'ru' %}
 				Полная поддержка и профессиональная помощь на вашем образовательном пути
+			{% elif lang == 'tr' %}
+				Eğitim yolculuğunuzda tam destek ve profesyonel yardım
 			{% else %}
 				Complete support and professional assistance on your educational journey
 			{% endif %}
@@ -49,7 +54,7 @@
 					</div>
 					<div class="ml-6">
 						<h3 class="text-3xl font-bold text-gray-900 mb-2">
-							{% if lang == 'uz' %}Ta'lim Konsaltingi{% elif lang == 'ru' %}Образовательное консультирование{% else %}Educational Consulting{% endif %}
+							{% if lang == 'uz' %}Ta'lim Konsaltingi{% elif lang == 'ru' %}Образовательное консультирование{% elif lang == 'tr' %}Eğitim Danışmanlığı{% else %}Educational Consulting{% endif %}
 						</h3>
 						<div class="w-16 h-1 bg-[#ff9015] rounded-full"></div>
 					</div>
@@ -59,6 +64,8 @@
 						Universitet tanlash, yo'nalish maslahati va qabul strategiyasi bo'yicha professional yordam. Har bir talaba uchun individual yondashuv.
 					{% elif lang == 'ru' %}
 						Профессиональная помощь в выборе университета, консультации по направлению и стратегии поступления. Индивидуальный подход к каждому студенту.
+					{% elif lang == 'tr' %}
+						Üniversite seçimi, bölüm danışmanlığı ve kabul stratejisi konusunda profesyonel yardım. Her öğrenci için bireysel yaklaşım.
 					{% else %}
 						Professional assistance in university selection, major guidance and admission strategy. Individual approach for each student.
 					{% endif %}
@@ -67,25 +74,25 @@
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Universitet tanlash{% elif lang == 'ru' %}Выбор университета{% else %}University Selection{% endif %}
+							{% if lang == 'uz' %}Universitet tanlash{% elif lang == 'ru' %}Выбор университета{% elif lang == 'tr' %}Üniversite seçimi{% else %}University Selection{% endif %}
 						</span>
 					</div>
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Yo'nalish maslahati{% elif lang == 'ru' %}Консультация по направлению{% else %}Major Guidance{% endif %}
+							{% if lang == 'uz' %}Yo'nalish maslahati{% elif lang == 'ru' %}Консультация по направлению{% elif lang == 'tr' %}Bölüm danışmanlığı{% else %}Major Guidance{% endif %}
 						</span>
 					</div>
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Qabul strategiyasi{% elif lang == 'ru' %}Стратегия поступления{% else %}Admission Strategy{% endif %}
+							{% if lang == 'uz' %}Qabul strategiyasi{% elif lang == 'ru' %}Стратегия поступления{% elif lang == 'tr' %}Kabul stratejisi{% else %}Admission Strategy{% endif %}
 						</span>
 					</div>
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Shaxsiy yondashuv{% elif lang == 'ru' %}Личный подход{% else %}Personal Approach{% endif %}
+							{% if lang == 'uz' %}Shaxsiy yondashuv{% elif lang == 'ru' %}Личный подход{% elif lang == 'tr' %}Bireysel yaklaşım{% else %}Personal Approach{% endif %}
 						</span>
 					</div>
 				</div>
@@ -99,7 +106,7 @@
 					</div>
 					<div class="ml-6">
 						<h3 class="text-3xl font-bold text-gray-900 mb-2">
-							{% if lang == 'uz' %}Huquqiy Yordam{% elif lang == 'ru' %}Правовая Помощь{% else %}Legal Assistance{% endif %}
+							{% if lang == 'uz' %}Huquqiy Yordam{% elif lang == 'ru' %}Правовая Помощь{% elif lang == 'tr' %}Hukuki Yardım{% else %}Legal Assistance{% endif %}
 						</h3>
 						<div class="w-16 h-1 bg-[#ff9015] rounded-full"></div>
 					</div>
@@ -109,6 +116,8 @@
 						Viza, ruxsatnoma va boshqa huquqiy hujjatlarni rasmiylashtirishda to'liq yordam. Barcha jarayonlarni professional darajada boshqarish.
 					{% elif lang == 'ru' %}
 						Полная помощь в оформлении виз, разрешений и других правовых документов. Профессиональное управление всеми процессами.
+					{% elif lang == 'tr' %}
+						Vize, izin ve diğer yasal belgelerin düzenlenmesinde tam yardım. Tüm süreçleri profesyonel düzeyde yönetme.
 					{% else %}
 						Complete assistance in processing visas, permits and other legal documents. Professional management of all processes.
 					{% endif %}
@@ -117,25 +126,25 @@
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Viza rasmiylashtirish{% elif lang == 'ru' %}Оформление визы{% else %}Visa Processing{% endif %}
+							{% if lang == 'uz' %}Viza rasmiylashtirish{% elif lang == 'ru' %}Оформление визы{% elif lang == 'tr' %}Vize düzenleme{% else %}Visa Processing{% endif %}
 						</span>
 					</div>
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Ruxsatnoma olish{% elif lang == 'ru' %}Получение разрешения{% else %}Permit Acquisition{% endif %}
+							{% if lang == 'uz' %}Ruxsatnoma olish{% elif lang == 'ru' %}Получение разрешения{% elif lang == 'tr' %}İzin alma{% else %}Permit Acquisition{% endif %}
 						</span>
 					</div>
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Hujjatlar tayyorlash{% elif lang == 'ru' %}Подготовка документов{% else %}Document Preparation{% endif %}
+							{% if lang == 'uz' %}Hujjatlar tayyorlash{% elif lang == 'ru' %}Подготовка документов{% elif lang == 'tr' %}Belge hazırlama{% else %}Document Preparation{% endif %}
 						</span>
 					</div>
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Huquqiy maslahat{% elif lang == 'ru' %}Правовые консультации{% else %}Legal Consultation{% endif %}
+							{% if lang == 'uz' %}Huquqiy maslahat{% elif lang == 'ru' %}Правовые консультации{% elif lang == 'tr' %}Hukuki danışmanlık{% else %}Legal Consultation{% endif %}
 						</span>
 					</div>
 				</div>
@@ -151,7 +160,7 @@
 					</div>
 					<div class="ml-6">
 						<h3 class="text-3xl font-bold text-gray-900 mb-2">
-							{% if lang == 'uz' %}Grant Yordami{% elif lang == 'ru' %}Помощь с Грантами{% else %}Scholarship Assistance{% endif %}
+							{% if lang == 'uz' %}Grant Yordami{% elif lang == 'ru' %}Помощь с Грантами{% elif lang == 'tr' %}Burs Yardımı{% else %}Scholarship Assistance{% endif %}
 						</h3>
 						<div class="w-16 h-1 bg-[#ff9015] rounded-full"></div>
 					</div>
@@ -161,6 +170,8 @@
 						Turli grant va stipendiya dasturlarida qatnashishda yordam va ariza yozish. Muvaffaqiyatli natijalar uchun professional yondashuv.
 					{% elif lang == 'ru' %}
 						Помощь в участии в различных программах грантов и стипендий, написание заявлений. Профессиональный подход для успешных результатов.
+					{% elif lang == 'tr' %}
+						Çeşitli burs ve stipend programlarına katılımda yardım ve başvuru yazma. Başarılı sonuçlar için profesyonel yaklaşım.
 					{% else %}
 						Assistance in participating in various grant and scholarship programs, application writing. Professional approach for successful results.
 					{% endif %}
@@ -169,25 +180,25 @@
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Grant dasturlari{% elif lang == 'ru' %}Программы грантов{% else %}Grant Programs{% endif %}
+							{% if lang == 'uz' %}Grant dasturlari{% elif lang == 'ru' %}Программы грантов{% elif lang == 'tr' %}Burs programları{% else %}Grant Programs{% endif %}
 						</span>
 					</div>
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Ariza yozish{% elif lang == 'ru' %}Написание заявлений{% else %}Application Writing{% endif %}
+							{% if lang == 'uz' %}Ariza yozish{% elif lang == 'ru' %}Написание заявлений{% elif lang == 'tr' %}Başvuru yazma{% else %}Application Writing{% endif %}
 						</span>
 					</div>
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Intervyu tayyorlash{% elif lang == 'ru' %}Подготовка к интервью{% else %}Interview Preparation{% endif %}
+							{% if lang == 'uz' %}Intervyu tayyorlash{% elif lang == 'ru' %}Подготовка к интервью{% elif lang == 'tr' %}Mülakat hazırlığı{% else %}Interview Preparation{% endif %}
 						</span>
 					</div>
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Natija kafolati{% elif lang == 'ru' %}Гарантия результата{% else %}Result Guarantee{% endif %}
+							{% if lang == 'uz' %}Natija kafolati{% elif lang == 'ru' %}Гарантия результата{% elif lang == 'tr' %}Sonuç garantisi{% else %}Result Guarantee{% endif %}
 						</span>
 					</div>
 				</div>
@@ -201,7 +212,7 @@
 					</div>
 					<div class="ml-6">
 						<h3 class="text-3xl font-bold text-gray-900 mb-2">
-							{% if lang == 'uz' %}Yashash Joyi{% elif lang == 'ru' %}Жилье{% else %}Accommodation{% endif %}
+							{% if lang == 'uz' %}Yashash Joyi{% elif lang == 'ru' %}Жилье{% elif lang == 'tr' %}Konaklama{% else %}Accommodation{% endif %}
 						</h3>
 						<div class="w-16 h-1 bg-[#ff9015] rounded-full"></div>
 					</div>
@@ -211,6 +222,8 @@
 						Universitet yotoqxonalari va shaxsiy kvartiralarni topishda yordam. Xavfsiz va qulay yashash sharoitlarini ta'minlash.
 					{% elif lang == 'ru' %}
 						Помощь в поиске общежитий университетов и частных квартир. Обеспечение безопасных и комфортных условий проживания.
+					{% elif lang == 'tr' %}
+						Üniversite yurtları ve özel daireleri bulmada yardım. Güvenli ve rahat yaşam koşullarını sağlama.
 					{% else %}
 						Assistance in finding university dormitories and private apartments. Ensuring safe and comfortable living conditions.
 					{% endif %}
@@ -219,25 +232,25 @@
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Yotoqxona topish{% elif lang == 'ru' %}Поиск общежития{% else %}Dormitory Search{% endif %}
+							{% if lang == 'uz' %}Yotoqxona topish{% elif lang == 'ru' %}Поиск общежития{% elif lang == 'tr' %}Yurt bulma{% else %}Dormitory Search{% endif %}
 						</span>
 					</div>
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Kvartira topish{% elif lang == 'ru' %}Поиск квартиры{% else %}Apartment Search{% endif %}
+							{% if lang == 'uz' %}Kvartira topish{% elif lang == 'ru' %}Поиск квартиры{% elif lang == 'tr' %}Daire bulma{% else %}Apartment Search{% endif %}
 						</span>
 					</div>
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Shartnoma tuzish{% elif lang == 'ru' %}Заключение договора{% else %}Contract Signing{% endif %}
+							{% if lang == 'uz' %}Shartnoma tuzish{% elif lang == 'ru' %}Заключение договора{% elif lang == 'tr' %}Sözleşme imzalama{% else %}Contract Signing{% endif %}
 						</span>
 					</div>
 					<div class="flex items-center space-x-3">
 						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
 						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Xavfsizlik{% elif lang == 'ru' %}Безопасность{% else %}Safety{% endif %}
+							{% if lang == 'uz' %}Xavfsizlik{% elif lang == 'ru' %}Безопасность{% elif lang == 'tr' %}Güvenlik{% else %}Safety{% endif %}
 						</span>
 					</div>
 				</div>
@@ -276,13 +289,15 @@
 					</div>
 				</div>
 				<h3 class="text-xl font-bold text-gray-900 mb-3">
-					{% if lang == 'uz' %}Maslahat{% elif lang == 'ru' %}Консультация{% else %}Consultation{% endif %}
+					{% if lang == 'uz' %}Maslahat{% elif lang == 'ru' %}Консультация{% elif lang == 'tr' %}Danışmanlık{% else %}Consultation{% endif %}
 				</h3>
 				<p class="text-gray-600">
 					{% if lang == 'uz' %}
 						Birinchi maslahat va ehtiyojlarni aniqlash
 					{% elif lang == 'ru' %}
 						Первая консультация и определение потребностей
+					{% elif lang == 'tr' %}
+						İlk danışmanlık ve ihtiyaçları belirleme
 					{% else %}
 						Initial consultation and needs assessment
 					{% endif %}
@@ -383,10 +398,10 @@
 		</p>
 		<div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
 			<a href="/contact" class="bg-[#ff9015] border-2 border-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-colors">
-				{% if lang == 'uz' %}Bepul Konsultatsiya{% elif lang == 'ru' %}Бесплатная консультация{% elif lang == 'tr' %}Ücretsiz Danışmanlık{% else %}Free Consultation{% endif %}
+				{% if lang == 'uz' %}Bepul konsultatsiya{% elif lang == 'ru' %}Бесплатная консультация{% elif lang == 'tr' %}Ücretsiz danışmanlık{% else %}Free Consultation{% endif %}
 			</a>
 			<a href="/universities" class="border-2 border-white text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-colors">
-				{% if lang == 'uz' %}Universitetlarni Ko'rish{% elif lang == 'ru' %}Посмотреть университеты{% elif lang == 'tr' %}Üniversiteleri Gör{% else %}View Universities{% endif %}
+				{% if lang == 'uz' %}Universitetlarni ko'rish{% elif lang == 'ru' %}Посмотреть университеты{% elif lang == 'tr' %}Üniversiteleri gör{% else %}View Universities{% endif %}
 			</a>
 		</div>
 	</div>

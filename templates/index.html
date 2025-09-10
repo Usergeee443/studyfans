@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-	{% if lang == 'uz' %}Study Fans - Ta'lim maslahati{% elif lang == 'ru' %}Study Fans - Образовательные консультации{% else %}Study Fans - Educational Consulting{% endif %}
+	{% if lang == 'uz' %}Study Fans - Ta'lim maslahati{% elif lang == 'ru' %}Study Fans - Образовательные консультации{% elif lang == 'tr' %}Study Fans - Eğitim danışmanlığı{% else %}Study Fans - Educational Consulting{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -40,6 +40,13 @@
 					<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text animate-slide-in-right animation-delay-600">для обучения</span>
 					<span class="block text-white animate-slide-in-left animation-delay-800">в Турции</span>
 				</h1>
+				{% elif lang == 'tr' %}
+				<h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight">
+					<span class="block text-white animate-slide-in-left">Türkiye'de</span>
+					<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text animate-slide-in-right animation-delay-200">eğitim için</span>
+					<span class="block text-white animate-slide-in-left animation-delay-400">ilk eğitim</span>
+					<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text animate-slide-in-right animation-delay-600">danışmanınız</span>
+				</h1>
 				{% else %}
 				<h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight">
 					<span class="block text-white animate-slide-in-left">Your</span>
@@ -59,7 +66,7 @@
 		<div class="mobile-search-container max-w-7xl mx-auto px-2 sm:px-4 md:px-6">
 			<div class="text-center mb-3 sm:mb-4 md:mb-6">
 				<h2 class="mobile-search-title text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-white drop-shadow-lg">
-					{% if lang == 'uz' %}Istalgan mutaxassislikni toping{% elif lang == 'ru' %}Найдите желаемую специальность{% else %}Find the major you desire{% endif %}
+					{% if lang == 'uz' %}Istalgan mutaxassislikni toping{% elif lang == 'ru' %}Найдите желаемую специальность{% elif lang == 'tr' %}İstediğiniz bölümü bulun{% else %}Find the major you desire{% endif %}
 				</h2>
 			</div>
 
@@ -72,7 +79,7 @@
 						onclick="toggleDropdown('degree')">
 						<i class="fas fa-graduation-cap text-sm text-yellow-400"></i>
 						<span class="flex-1 text-left truncate" id="degree-text">
-							{% if lang == 'uz' %}Istalgan darajani tanlang{% elif lang == 'ru' %}Выберите желаемую степень{% else %}Choose the degree you desire{% endif %}
+							{% if lang == 'uz' %}Istalgan darajani tanlang{% elif lang == 'ru' %}Выберите желаемую степень{% elif lang == 'tr' %}İstediğiniz dereceyi seçin{% else %}Choose the degree you desire{% endif %}
 						</span>
 						<i class="fas fa-chevron-down transition-transform duration-300 text-xs"
 							id="degree-arrow"></i>
@@ -82,19 +89,19 @@
 						<div class="p-1">
 							<div class="dropdown-item px-3 py-2.5 text-gray-800 hover:bg-blue-50 rounded-md cursor-pointer transition-colors text-xs sm:text-sm"
 								onclick="selectOption('degree', 'Bachelor')">
-								{% if lang == 'uz' %}Bakalavr{% elif lang == 'ru' %}Бакалавр{% else %}Bachelor{% endif %}
+								{% if lang == 'uz' %}Bakalavr{% elif lang == 'ru' %}Бакалавр{% elif lang == 'tr' %}Lisans{% else %}Bachelor{% endif %}
 							</div>
 							<div class="dropdown-item px-3 py-2.5 text-gray-800 hover:bg-blue-50 rounded-md cursor-pointer transition-colors text-xs sm:text-sm"
 								onclick="selectOption('degree', 'Master')">
-								{% if lang == 'uz' %}Magistr{% elif lang == 'ru' %}Магистр{% else %}Master{% endif %}
+								{% if lang == 'uz' %}Magistr{% elif lang == 'ru' %}Магистр{% elif lang == 'tr' %}Yüksek Lisans{% else %}Master{% endif %}
 							</div>
 							<div class="dropdown-item px-3 py-2.5 text-gray-800 hover:bg-blue-50 rounded-md cursor-pointer transition-colors text-xs sm:text-sm"
 								onclick="selectOption('degree', 'PhD')">
-								{% if lang == 'uz' %}PhD{% elif lang == 'ru' %}Доктор наук{% else %}PhD{% endif %}
+								{% if lang == 'uz' %}PhD{% elif lang == 'ru' %}Доктор наук{% elif lang == 'tr' %}Doktora{% else %}PhD{% endif %}
 							</div>
 							<div class="dropdown-item px-3 py-2.5 text-gray-800 hover:bg-blue-50 rounded-md cursor-pointer transition-colors text-xs sm:text-sm"
 								onclick="selectOption('degree', 'Associate')">
-								{% if lang == 'uz' %}Associate{% elif lang == 'ru' %}Младший специалист{% else %}Associate{% endif %}
+								{% if lang == 'uz' %}Associate{% elif lang == 'ru' %}Младший специалист{% elif lang == 'tr' %}Ön Lisans{% else %}Associate{% endif %}
 							</div>
 						</div>
 					</div>
@@ -107,7 +114,7 @@
 						onclick="toggleDropdown('language')">
 						<i class="fas fa-globe text-sm text-yellow-400"></i>
 						<span class="flex-1 text-left truncate" id="language-text">
-							{% if lang == 'uz' %}O'qish tilini tanlang{% elif lang == 'ru' %}Выберите язык обучения{% else %}Choose the language of study{% endif %}
+							{% if lang == 'uz' %}O'qish tilini tanlang{% elif lang == 'ru' %}Выберите язык обучения{% elif lang == 'tr' %}Eğitim dilini seçin{% else %}Choose the language of study{% endif %}
 						</span>
 						<i class="fas fa-chevron-down transition-transform duration-300 text-xs"
 							id="language-arrow"></i>
@@ -117,19 +124,19 @@
 						<div class="p-1">
 							<div class="dropdown-item px-3 py-2.5 text-gray-800 hover:bg-blue-50 rounded-md cursor-pointer transition-colors text-xs sm:text-sm"
 								onclick="selectOption('language', 'English')">
-								{% if lang == 'uz' %}Ingliz tili{% elif lang == 'ru' %}Английский язык{% else %}English{% endif %}
+								{% if lang == 'uz' %}Ingliz tili{% elif lang == 'ru' %}Английский язык{% elif lang == 'tr' %}İngilizce{% else %}English{% endif %}
 							</div>
 							<div class="dropdown-item px-3 py-2.5 text-gray-800 hover:bg-blue-50 rounded-md cursor-pointer transition-colors text-xs sm:text-sm"
 								onclick="selectOption('language', 'Turkish')">
-								{% if lang == 'uz' %}Turk tili{% elif lang == 'ru' %}Турецкий язык{% else %}Turkish{% endif %}
+								{% if lang == 'uz' %}Turk tili{% elif lang == 'ru' %}Турецкий язык{% elif lang == 'tr' %}Türkçe{% else %}Turkish{% endif %}
 							</div>
 							<div class="dropdown-item px-3 py-2.5 text-gray-800 hover:bg-blue-50 rounded-md cursor-pointer transition-colors text-xs sm:text-sm"
 								onclick="selectOption('language', 'Uzbek')">
-								{% if lang == 'uz' %}O'zbek tili{% elif lang == 'ru' %}Узбекский язык{% else %}Uzbek{% endif %}
+								{% if lang == 'uz' %}O'zbek tili{% elif lang == 'ru' %}Узбекский язык{% elif lang == 'tr' %}Özbekçe{% else %}Uzbek{% endif %}
 							</div>
 							<div class="dropdown-item px-3 py-2.5 text-gray-800 hover:bg-blue-50 rounded-md cursor-pointer transition-colors text-xs sm:text-sm"
 								onclick="selectOption('language', 'Russian')">
-								{% if lang == 'uz' %}Rus tili{% elif lang == 'ru' %}Русский язык{% else %}Russian{% endif %}
+								{% if lang == 'uz' %}Rus tili{% elif lang == 'ru' %}Русский язык{% elif lang == 'tr' %}Rusça{% else %}Russian{% endif %}
 							</div>
 						</div>
 					</div>
@@ -302,8 +309,8 @@
 						</span>
 					</div>
 					<h2 class="text-4xl md:text-5xl font-bold text-[#003262] mb-6">
-						{% if lang == 'uz' %}StudyFans - Ta'lim Sohasi{% elif lang == 'ru' %}StudyFans - Образовательная Сфера{% elif lang == 'tr' %}StudyFans - Eğitim Alanı{% else %}StudyFans - Educational Field{% endif %}
-						<span class="text-[#ff9015]">{% if lang == 'uz' %}Lideri{% elif lang == 'ru' %}Лидер{% elif lang == 'tr' %}Lideri{% else %}Leader{% endif %}</span>
+						{% if lang == 'uz' %}StudyFans - ta'lim sohasi{% elif lang == 'ru' %}StudyFans - образовательная сфера{% elif lang == 'tr' %}StudyFans - eğitim alanı{% else %}StudyFans - educational field{% endif %}
+						<span class="text-[#ff9015]">{% if lang == 'uz' %}lideri{% elif lang == 'ru' %}лидер{% elif lang == 'tr' %}lideri{% else %}leader{% endif %}</span>
 					</h2>
 					<p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
 						{% if lang == 'uz' %}
@@ -366,7 +373,7 @@
 				<!-- Our Values -->
 				<div class="text-center mb-12">
 					<h3 class="text-3xl font-bold text-[#003262] mb-6">
-						{% if lang == 'uz' %}Bizning Qadriyatlarimiz{% elif lang == 'ru' %}Наши Ценности{% elif lang == 'tr' %}Değerlerimiz{% else %}Our Values{% endif %}
+						{% if lang == 'uz' %}Bizning qadriyatlarimiz{% elif lang == 'ru' %}Наши ценности{% elif lang == 'tr' %}Değerlerimiz{% else %}Our Values{% endif %}
 					</h3>
 					<p class="text-lg text-gray-600 max-w-2xl mx-auto">
 						{% if lang == 'uz' %}
@@ -605,7 +612,7 @@
 			<div class="max-w-6xl mx-auto">
 				<div class="text-center mb-16">
 					<h2 class="text-4xl md:text-5xl font-bold text-[#003262] mb-6">
-						{% if lang == 'uz' %}Muvaffaqiyat Hikoyalari{% elif lang == 'ru' %}Истории успеха{% elif lang == 'tr' %}Başarı Hikayeleri{% else %}Success Stories{% endif %}
+						{% if lang == 'uz' %}Muvaffaqiyat hikoyalari{% elif lang == 'ru' %}Истории успеха{% elif lang == 'tr' %}Başarı hikayeleri{% else %}Success stories{% endif %}
 					</h2>
 					<p class="text-lg text-gray-600 max-w-3xl mx-auto">
 						{% if lang == 'uz' %}
@@ -701,7 +708,7 @@
 			</div>
 			<div class="max-w-6xl mx-auto text-center">
 				<h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-					{% if lang == 'uz' %}Bugun Boshlang{% elif lang == 'ru' %}Начните сегодня{% elif lang == 'tr' %}Bugün Başlayın{% else %}Start Today{% endif %}
+					{% if lang == 'uz' %}Bugun boshlang{% elif lang == 'ru' %}Начните сегодня{% elif lang == 'tr' %}Bugün başlayın{% else %}Start today{% endif %}
 				</h2>
 				<p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
 					{% if lang == 'uz' %}
@@ -716,10 +723,10 @@
 				</p>
 				<div class="flex flex-col sm:flex-row gap-4 justify-center">
 					<a href="/contact" class="bg-[#ff9015] border-2 border-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-colors">
-						{% if lang == 'uz' %}Bepul Konsultatsiya{% elif lang == 'ru' %}Бесплатная консультация{% elif lang == 'tr' %}Ücretsiz Danışmanlık{% else %}Free Consultation{% endif %}
+						{% if lang == 'uz' %}Bepul konsultatsiya{% elif lang == 'ru' %}Бесплатная консультация{% elif lang == 'tr' %}Ücretsiz Danışmanlık{% else %}Free Consultation{% endif %}
 					</a>
 					<a href="/universities" class="border-2 border-white text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-colors">
-						{% if lang == 'uz' %}Universitetlarni Ko'rish{% elif lang == 'ru' %}Посмотреть университеты{% elif lang == 'tr' %}Üniversiteleri Gör{% else %}View Universities{% endif %}
+						{% if lang == 'uz' %}Universitetlarni ko'rish{% elif lang == 'ru' %}Посмотреть университеты{% elif lang == 'tr' %}Üniversiteleri Gör{% else %}View Universities{% endif %}
 					</a>
 				</div>
 			</div>
@@ -739,7 +746,7 @@
 								{% if lang == 'uz' %}
 									<span class="block">Konsultatsiya</span>
 									<span class="text-[#ff9015] block">Video qo'ng'iroq orqali</span>
-									<span class="block">Buyurtma bering!</span>
+									<span class="block">buyurtma bering!</span>
 								{% elif lang == 'ru' %}
 									<span class="block">Закажите</span>
 									<span class="text-[#ff9015] block">видео консультацию</span>
@@ -756,7 +763,7 @@
 						<div class="pt-4">
 							<button onclick="openModal()"
 								class="bg-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg shadow-xl hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-								{% if lang == 'uz' %}Konsultatsiya uchun vaqt belgilash{% elif lang == 'ru' %}Записаться на консультацию{% else %}Schedule a consultation{% endif %}
+								{% if lang == 'uz' %}konsultatsiya uchun vaqt belgilash{% elif lang == 'ru' %}Записаться на консультацию{% else %}Schedule a consultation{% endif %}
 							</button>
 						</div>
 					</div>

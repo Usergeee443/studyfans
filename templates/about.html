@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-	{% if lang == 'uz' %}Biz Haqimizda - Study Fans{% elif lang == 'ru' %}О Нас - Study Fans{% else %}About Us - Study Fans{% endif %}
+	{% if lang == 'uz' %}Biz haqimizda - Study Fans{% elif lang == 'ru' %}О Нас - Study Fans{% elif lang == 'tr' %}Hakkımızda - Study Fans{% else %}About Us - Study Fans{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -15,23 +15,24 @@
 	<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 		<h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
 			{% if lang == 'uz' %}
-				<span class="block">Biz Haqimizda</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Study Fans</span>
+				<span class="block">Biz haqimizda</span>
 			{% elif lang == 'ru' %}
 				<span class="block">О Нас</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Study Fans</span>
+			{% elif lang == 'tr' %}
+				<span class="block">Hakkımızda</span>
 			{% else %}
 				<span class="block">About</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Study Fans</span>
 			{% endif %}
 		</h1>
 		<p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
 			{% if lang == 'uz' %}
-				Ta'lim sohasida professional yordam va maslahat beruvchi yetakchi kompaniya
+				Turkiya markazidagi xalqaro ta'lim konsalting agentligi - minglab yoshlarning orzularini amalga oshirishga yordam beradi
 			{% elif lang == 'ru' %}
-				Ведущая компания, предоставляющая профессиональную помощь и консультации в сфере образования
+				Международное образовательное консалтинговое агентство с центром в Турции - помогает осуществить мечты тысяч молодых людей
+			{% elif lang == 'tr' %}
+				Türkiye merkezli uluslararası eğitim danışmanlık ajansı - binlerce gencin hayallerini gerçekleştirmesine yardımcı oluyor
 			{% else %}
-				Leading company providing professional assistance and consultation in education
+				International educational consulting agency based in Turkey - helping thousands of young people realize their dreams
 			{% endif %}
 		</p>
 	</div>
@@ -43,15 +44,17 @@
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
 			<div>
 				<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-					{% if lang == 'uz' %}Bizning Missiyamiz{% elif lang == 'ru' %}Наша Миссия{% else %}Our Mission{% endif %}
+					{% if lang == 'uz' %}Bizning missiyamiz{% elif lang == 'ru' %}Наша миссия{% elif lang == 'tr' %}Misyonumuz{% else %}Our mission{% endif %}
 				</h2>
 				<p class="text-xl text-gray-600 mb-8 leading-relaxed">
 					{% if lang == 'uz' %}
-						Har bir talabaning orzularini amalga oshirish va ularga eng yaxshi ta'lim imkoniyatlarini taqdim etish. Biz ta'lim yo'lingizda ishonchli sherik bo'lishni maqsad qilganmiz.
+						O'zbekiston, Qozog'iston, Qirg'iziston, Tojikiston, Rossiya, Ukraina va boshqa davlatlardan kelgan talabalarni eng nufuzli xususiy universitetlarga o'qishga qabul qilishda yordam berish. Ta'lim turizmi sohasida ishonchli hamkor sifatida minglab yoshlarning orzularini amalga oshirishga ko'maklashmoqda.
 					{% elif lang == 'ru' %}
-						Реализация мечтаний каждого студента и предоставление им лучших образовательных возможностей. Мы стремимся быть надежным партнером на вашем образовательном пути.
+						Помощь студентам из Узбекистана, Казахстана, Кыргызстана, Таджикистана, России, Украины и других стран в поступлении в самые престижные частные университеты. Как надежный партнер в сфере образовательного туризма, помогает тысячам молодых людей осуществить свои мечты.
+					{% elif lang == 'tr' %}
+						Özbekistan, Kazakistan, Kırgızistan, Tacikistan, Rusya, Ukrayna ve diğer ülkelerden gelen öğrencilerin en prestijli özel üniversitelere kabul edilmelerinde yardım etmek. Eğitim turizmi alanında güvenilir bir ortak olarak binlerce gencin hayallerini gerçekleştirmelerine yardımcı olmaktadır.
 					{% else %}
-						To fulfill every student's dreams and provide them with the best educational opportunities. We aim to be your trusted partner on your educational journey.
+						Helping students from Uzbekistan, Kazakhstan, Kyrgyzstan, Tajikistan, Russia, Ukraine and other countries get admitted to the most prestigious private universities. As a trusted partner in educational tourism, helping thousands of young people realize their dreams.
 					{% endif %}
 				</p>
 				<div class="space-y-4">
@@ -61,10 +64,10 @@
 						</div>
 						<div>
 							<h3 class="text-xl font-semibold text-gray-900">
-								{% if lang == 'uz' %}Maqsad{% elif lang == 'ru' %}Цель{% else %}Goal{% endif %}
+								{% if lang == 'uz' %}Maqsad{% elif lang == 'ru' %}Цель{% elif lang == 'tr' %}Hedef{% else %}Goal{% endif %}
 							</h3>
 							<p class="text-gray-600">
-								{% if lang == 'uz' %}Har bir talabaning muvaffaqiyatini ta'minlash{% elif lang == 'ru' %}Обеспечение успеха каждого студента{% else %}Ensuring every student's success{% endif %}
+								{% if lang == 'uz' %}Har bir talabaning muvaffaqiyatini ta'minlash{% elif lang == 'ru' %}Обеспечение успеха каждого студента{% elif lang == 'tr' %}Her öğrencinin başarısını sağlamak{% else %}Ensuring every student's success{% endif %}
 							</p>
 						</div>
 					</div>
@@ -89,7 +92,7 @@
 					<div class="text-center">
 						<i class="fas fa-lightbulb text-6xl mb-6 text-yellow-400"></i>
 						<h3 class="text-2xl font-bold mb-4">
-							{% if lang == 'uz' %}Bizning Vizyonimiz{% elif lang == 'ru' %}Наше Видение{% else %}Our Vision{% endif %}
+							{% if lang == 'uz' %}Bizning vizyonimiz{% elif lang == 'ru' %}Наше бидение{% else %}Our vision{% endif %}
 						</h3>
 						<p class="text-lg leading-relaxed">
 							{% if lang == 'uz' %}
@@ -112,7 +115,7 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-16">
 			<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-				{% if lang == 'uz' %}Bizning Qadriyatlarimiz{% elif lang == 'ru' %}Наши Ценности{% else %}Our Values{% endif %}
+				{% if lang == 'uz' %}Bizning qadriyatlarimiz{% elif lang == 'ru' %}Наши ценности{% else %}Our values{% endif %}
 			</h2>
 			<p class="text-xl text-gray-600 max-w-3xl mx-auto">
 				{% if lang == 'uz' %}
@@ -300,7 +303,7 @@
 					</div>
 					<h3 class="text-2xl font-bold text-gray-900 mb-2">Malika Toshmatova</h3>
 					<p class="text-blue-600 font-semibold mb-4">
-						{% if lang == 'uz' %}Ta'lim Maslahatchisi{% elif lang == 'ru' %}Образовательный Консультант{% else %}Educational Consultant{% endif %}
+						{% if lang == 'uz' %}Ta'lim maslahatchisi{% elif lang == 'ru' %}Образовательный Консультант{% else %}Educational Consultant{% endif %}
 					</p>
 					<p class="text-gray-600 leading-relaxed">
 						{% if lang == 'uz' %}
@@ -360,7 +363,7 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-16">
 			<h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-				{% if lang == 'uz' %}Bizning Natijalarimiz{% elif lang == 'ru' %}Наши Результаты{% else %}Our Results{% endif %}
+				{% if lang == 'uz' %}Bizning natijalarimiz{% elif lang == 'ru' %}Наши результаты{% else %}Our results{% endif %}
 			</h2>
 			<p class="text-xl text-blue-100 max-w-3xl mx-auto">
 				{% if lang == 'uz' %}
@@ -406,7 +409,7 @@
 <section class="py-20 bg-white">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 		<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-			{% if lang == 'uz' %}Biz Bilan Bog'laning{% elif lang == 'ru' %}Свяжитесь с Нами{% else %}Contact Us{% endif %}
+			{% if lang == 'uz' %}Biz bilan bog'laning{% elif lang == 'ru' %}Свяжитесь с нами{% else %}Contact us{% endif %}
 		</h2>
 		<p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
 			{% if lang == 'uz' %}
@@ -420,11 +423,11 @@
 		<div class="flex flex-col sm:flex-row gap-4 justify-center">
 			<a href="{{ url_for('contact') }}" class="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-gray-900 font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 				<i class="fas fa-phone mr-2"></i>
-				{% if lang == 'uz' %}Bepul Maslahat{% elif lang == 'ru' %}Бесплатная Консультация{% else %}Free Consultation{% endif %}
+				{% if lang == 'uz' %}Bepul maslahat{% elif lang == 'ru' %}Бесплатная Консультация{% else %}Free Consultation{% endif %}
 			</a>
 			<a href="{{ url_for('universities') }}" class="bg-gradient-to-r from-[#003262] to-blue-800 text-white hover:from-blue-800 hover:to-indigo-900 font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 				<i class="fas fa-university mr-2"></i>
-				{% if lang == 'uz' %}Universitetlarni Ko'rish{% elif lang == 'ru' %}Посмотреть Университеты{% else %}View Universities{% endif %}
+				{% if lang == 'uz' %}Universitetlarni ko'rish{% elif lang == 'ru' %}Посмотреть Университеты{% else %}View Universities{% endif %}
 			</a>
 		</div>
 	</div>

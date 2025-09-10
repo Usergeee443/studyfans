@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-	{% if lang == 'uz' %}Universitetlar - Study Fans{% elif lang == 'ru' %}Университеты - Study Fans{% else %}Universities - Study Fans{% endif %}
+	{% if lang == 'uz' %}Universitetlar - Study Fans{% elif lang == 'ru' %}Университеты - Study Fans{% elif lang == 'tr' %}Üniversiteler - Study Fans{% else %}Universities - Study Fans{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -21,6 +21,9 @@
 			{% elif lang == 'ru' %}
 				<span class="block">Партнерские</span>
 				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Университеты</span>
+			{% elif lang == 'tr' %}
+				<span class="block">Ortak</span>
+				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Üniversiteler</span>
 			{% else %}
 				<span class="block">Partner</span>
 				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Universities</span>
@@ -125,7 +128,7 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-16">
 			<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-				{% if lang == 'uz' %}Barcha Universitetlar{% elif lang == 'ru' %}Все Университеты{% else %}All Universities{% endif %}
+				{% if lang == 'uz' %}Barcha universitetlar{% elif lang == 'ru' %}Все Университеты{% else %}All Universities{% endif %}
 			</h2>
 			<p class="text-xl text-gray-600 max-w-3xl mx-auto">
 				{% if lang == 'uz' %}
@@ -311,11 +314,11 @@
 		<div class="flex flex-col sm:flex-row gap-4 justify-center">
 			<a href="{{ url_for('contact') }}" class="bg-[#ff9015] hover:from-yellow-500 hover:to-orange-500 text-white font-bold py-4 px-8 rounded-[1.5rem] text-lg shadow-xl hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 				<i class="fas fa-phone mr-2"></i>
-				{% if lang == 'uz' %}Bepul Maslahat{% elif lang == 'ru' %}Бесплатная Консультация{% else %}Free Consultation{% endif %}
+				{% if lang == 'uz' %}Bepul maslahat{% elif lang == 'ru' %}Бесплатная Консультация{% else %}Free Consultation{% endif %}
 			</a>
 			<a href="{{ url_for('services') }}" class="bg-blue-600 text-white hover:from-blue-800 hover:to-indigo-900 font-bold py-4 px-8 rounded-[1.5rem] text-lg shadow-xl hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 				<i class="fas fa-cogs mr-2"></i>
-				{% if lang == 'uz' %}Xizmatlarimiz{% elif lang == 'ru' %}Наши Услуги{% else %}Our Services{% endif %}
+				{% if lang == 'uz' %}xizmatlarimiz{% elif lang == 'ru' %}Наши Услуги{% else %}Our Services{% endif %}
 			</a>
 		</div>
 	</div>
