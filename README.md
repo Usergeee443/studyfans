@@ -67,3 +67,4 @@ SQLite fayli avtomatik yaratiladi va `studyfans.db` nomi bilan saqlanadi.
 ## Litsenziya
 
 MIT License
+
