@@ -147,42 +147,34 @@
 					{% endif %}
 				</p>
 				
-				<form class="space-y-6">
+				<form method="POST" action="/contact" class="space-y-6">
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<div>
 							<label class="block text-gray-700 text-sm font-medium mb-2">
 								{% if lang == 'uz' %}Ism{% elif lang == 'ru' %}Имя{% else %}Name{% endif %} *
 							</label>
-							<input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
+							<input type="text" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
 						</div>
-						<div>
-							<label class="block text-gray-700 text-sm font-medium mb-2">
-								{% if lang == 'uz' %}Familiya{% elif lang == 'ru' %}Фамилия{% else %}Surname{% endif %} *
-							</label>
-							<input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
-						</div>
-					</div>
-					
-					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<div>
 							<label class="block text-gray-700 text-sm font-medium mb-2">
 								{% if lang == 'uz' %}Email{% elif lang == 'ru' %}Электронная почта{% else %}Email{% endif %} *
 							</label>
-							<input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
+							<input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
 						</div>
-						<div>
-							<label class="block text-gray-700 text-sm font-medium mb-2">
-								{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% else %}Phone{% endif %} *
-							</label>
-							<input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
-						</div>
+					</div>
+					
+					<div>
+						<label class="block text-gray-700 text-sm font-medium mb-2">
+							{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% else %}Phone{% endif %} *
+						</label>
+						<input type="tel" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
 					</div>
 					
 					<div>
 						<label class="block text-gray-700 text-sm font-medium mb-2">
 							{% if lang == 'uz' %}Mavzu{% elif lang == 'ru' %}Тема{% else %}Subject{% endif %} *
 						</label>
-						<select required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
+						<select name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
 							<option value="">
 								{% if lang == 'uz' %}Mavzuni tanlang{% elif lang == 'ru' %}Выберите тему{% else %}Select subject{% endif %}
 							</option>
@@ -208,7 +200,7 @@
 						<label class="block text-gray-700 text-sm font-medium mb-2">
 							{% if lang == 'uz' %}Xabar{% elif lang == 'ru' %}Сообщение{% else %}Message{% endif %} *
 						</label>
-						<textarea rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300" placeholder="{% if lang == 'uz' %}Xabaringizni yozing...{% elif lang == 'ru' %}Напишите ваше сообщение...{% else %}Write your message...{% endif %}"></textarea>
+						<textarea name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300" placeholder="{% if lang == 'uz' %}Xabaringizni yozing...{% elif lang == 'ru' %}Напишите ваше сообщение...{% else %}Write your message...{% endif %}"></textarea>
 					</div>
 					
 					<button type="submit" class="w-full bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-gray-900 font-bold py-4 px-6 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">

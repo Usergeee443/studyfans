@@ -4,11 +4,31 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from datetime import datetime
 import os
+import requests
 from urllib.parse import urlencode
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv('config.env')
+
+# Telegram Bot Configuration
+TELEGRAM_BOT_TOKEN = "7900459082:AAHKlcfwfRPSmCJwZk5dJ3hr1NHXQ5xOJew"
+TELEGRAM_CHAT_ID = "6429299277"
+
+def send_telegram_message(message):
+    """Send message to Telegram bot"""
+    try:
+        url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+        data = {
+            'chat_id': TELEGRAM_CHAT_ID,
+            'text': message,
+            'parse_mode': 'HTML'
+        }
+        response = requests.post(url, data=data)
+        return response.status_code == 200
+    except Exception as e:
+        print(f"Telegram error: {e}")
+        return False
 
 app = Flask(__name__)
 
@@ -198,14 +218,42 @@ def about():
     lang = request.args.get('lang', 'uz')
     return render_template('about.html', lang=lang)
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
     lang = request.args.get('lang', 'uz')
+    
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        subject = request.form.get('subject')
+        message = request.form.get('message')
+        
+        # Send to Telegram
+        telegram_message = f"""
+<b>📞 Yangi Aloqa Xabari</b>
+
+👤 <b>Ism:</b> {name}
+📧 <b>Email:</b> {email}
+📱 <b>Telefon:</b> {phone}
+📝 <b>Mavzu:</b> {subject}
+
+💬 <b>Xabar:</b>
+{message}
+
+⏰ <b>Vaqt:</b> {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+        """
+        
+        if send_telegram_message(telegram_message):
+            return redirect(url_for('contact', lang=lang, success='true'))
+        else:
+            return redirect(url_for('contact', lang=lang, error='true'))
+    
     return render_template('contact.html', lang=lang)
 
 @app.route('/university/<int:university_id>/apply', methods=['POST'])
 def apply_university(university_id):
-    lang = request.args.get('lang', 'uz')
+    lang = request.form.get('lang', request.args.get('lang', 'uz'))
     university = University.query.get_or_404(university_id)
     
     full_name = request.form.get('full_name')
@@ -231,11 +279,25 @@ def apply_university(university_id):
     db.session.add(application)
     db.session.commit()
     
-    # Send to Telegram bot (placeholder for now)
-    # TODO: Implement Telegram bot integration
+    # Send to Telegram bot
+    university_name = getattr(university, f'name_{lang}', university.name_en)
+    telegram_message = f"""
+<b>🎓 Yangi Universitet Arizasi</b>
+
+🏫 <b>Universitet:</b> {university_name}
+👤 <b>Ism:</b> {full_name}
+⚧ <b>Jins:</b> {gender}
+🌍 <b>Mamlakat:</b> {country}
+📍 <b>Viloyat:</b> {region}
+📱 <b>Telefon:</b> {phone_number}
+
+⏰ <b>Vaqt:</b> {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+    """
     
-    flash('Ariza muvaffaqiyatli yuborildi! Tez orada siz bilan bog\'lanamiz.', 'success')
-    return redirect(url_for('university_detail', university_id=university_id, lang=lang))
+    if send_telegram_message(telegram_message):
+        return redirect(url_for('university_detail', university_id=university_id, lang=lang, success='true'))
+    else:
+        return redirect(url_for('university_detail', university_id=university_id, lang=lang, error='true'))
 
 @app.route('/admin')
 def admin_login():

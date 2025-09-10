@@ -145,12 +145,15 @@
 			{% for university in universities %}
 			<div class="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
 				<!-- University Image -->
-				<div class="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 overflow-hidden">
-					{% if university.logo_url %}
-					<img src="{{ university.logo_url }}" alt="{{ university.name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+				<div class="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden flex items-center justify-center">
+					{% if university.logo_url and university.logo_url != '' %}
+					<img src="{{ url_for('static', filename=university.logo_url) }}" alt="{{ university.name_uz if lang == 'uz' else university.name_ru if lang == 'ru' else university.name_tr if lang == 'tr' else university.name_en }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+					<div class="w-full h-full flex items-center justify-center" style="display: none;">
+						<i class="fas fa-university text-6xl text-gray-400"></i>
+					</div>
 					{% else %}
 					<div class="w-full h-full flex items-center justify-center">
-						<i class="fas fa-university text-6xl text-white/80"></i>
+						<i class="fas fa-university text-6xl text-gray-400"></i>
 					</div>
 					{% endif %}
 					<div class="absolute top-4 right-4">

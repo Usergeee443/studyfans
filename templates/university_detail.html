@@ -332,8 +332,9 @@
 			</button>
 		</div>
 		
-		<form id="applicationForm" class="space-y-6">
+		<form id="applicationForm" method="POST" action="/university/{{ university.id }}/apply" class="space-y-6">
 			<input type="hidden" name="university_id" value="{{ university.id }}">
+			<input type="hidden" name="lang" value="{{ lang }}">
 			
 			<div>
 				<label class="block text-gray-700 text-sm font-medium mb-2">
@@ -429,6 +430,47 @@
 		document.getElementById('applicationModal').classList.add('hidden');
 		document.body.style.overflow = 'auto';
 	}
+
+	// Modal functions for success/error
+	function showSuccessModal() {
+		const modal = document.getElementById('successModal');
+		const content = document.getElementById('successModalContent');
+		modal.classList.remove('hidden');
+		setTimeout(() => {
+			content.classList.remove('scale-95', 'opacity-0');
+			content.classList.add('scale-100', 'opacity-100');
+		}, 10);
+	}
+
+	function closeSuccessModal() {
+		const modal = document.getElementById('successModal');
+		const content = document.getElementById('successModalContent');
+		content.classList.remove('scale-100', 'opacity-100');
+		content.classList.add('scale-95', 'opacity-0');
+		setTimeout(() => {
+			modal.classList.add('hidden');
+		}, 300);
+	}
+
+	function showErrorModal() {
+		const modal = document.getElementById('errorModal');
+		const content = document.getElementById('errorModalContent');
+		modal.classList.remove('hidden');
+		setTimeout(() => {
+			content.classList.remove('scale-95', 'opacity-0');
+			content.classList.add('scale-100', 'opacity-100');
+		}, 10);
+	}
+
+	function closeErrorModal() {
+		const modal = document.getElementById('errorModal');
+		const content = document.getElementById('errorModalContent');
+		content.classList.remove('scale-100', 'opacity-100');
+		content.classList.add('scale-95', 'opacity-0');
+		setTimeout(() => {
+			modal.classList.add('hidden');
+		}, 300);
+	}
 	
 	// Close modal when clicking outside
 	document.getElementById('applicationModal').addEventListener('click', function(e) {
@@ -436,43 +478,53 @@
 			closeApplicationModal();
 		}
 	});
+
+	// Close success/error modals when clicking outside
+	if (document.getElementById('successModal')) {
+		document.getElementById('successModal').addEventListener('click', function(e) {
+			if (e.target === this) {
+				closeSuccessModal();
+			}
+		});
+	}
+
+	if (document.getElementById('errorModal')) {
+		document.getElementById('errorModal').addEventListener('click', function(e) {
+			if (e.target === this) {
+				closeErrorModal();
+			}
+		});
+	}
+
+	// Check for success/error parameters in URL and show modals
+	document.addEventListener('DOMContentLoaded', function() {
+		const urlParams = new URLSearchParams(window.location.search);
+		const success = urlParams.get('success');
+		const error = urlParams.get('error');
+		
+		if (success === 'true') {
+			showSuccessModal();
+			// Remove success parameter from URL
+			urlParams.delete('success');
+			window.history.replaceState({}, '', window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : ''));
+		} else if (error === 'true') {
+			showErrorModal();
+			// Remove error parameter from URL
+			urlParams.delete('error');
+			window.history.replaceState({}, '', window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : ''));
+		}
+	});
 	
 	// Handle form submission
 	document.getElementById('applicationForm').addEventListener('submit', function(e) {
-		e.preventDefault();
-		
-		const formData = new FormData(this);
-		const universityId = formData.get('university_id');
-		
 		// Show loading state
 		const submitBtn = this.querySelector('button[type="submit"]');
 		const originalText = submitBtn.innerHTML;
 		submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Yuborilmoqda...';
 		submitBtn.disabled = true;
 		
-		// Submit form
-		fetch(`/university/${universityId}/apply`, {
-			method: 'POST',
-			body: formData
-		})
-		.then(response => response.json())
-		.then(data => {
-			if (data.success) {
-				alert('{% if lang == "uz" %}Ariza muvaffaqiyatli yuborildi!{% elif lang == "ru" %}Заявление успешно отправлено!{% else %}Application submitted successfully!{% endif %}');
-				closeApplicationModal();
-				this.reset();
-			} else {
-				alert('{% if lang == "uz" %}Xatolik yuz berdi. Qaytadan urinib ko\'ring.{% elif lang == "ru" %}Произошла ошибка. Попробуйте еще раз.{% else %}An error occurred. Please try again.{% endif %}');
-			}
-		})
-		.catch(error => {
-			console.error('Error:', error);
-			alert('{% if lang == "uz" %}Xatolik yuz berdi. Qaytadan urinib ko\'ring.{% elif lang == "ru" %}Произошла ошибка. Попробуйте еще раз.{% else %}An error occurred. Please try again.{% endif %}');
-		})
-		.finally(() => {
-			submitBtn.innerHTML = originalText;
-			submitBtn.disabled = false;
-		});
+		// Let the form submit naturally - server will redirect with URL parameters
+		// The modals will be shown based on URL parameters when page loads
 	});
 </script>
 {% endblock %}
