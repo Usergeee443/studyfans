@@ -197,14 +197,38 @@ def search():
     language = request.args.get('language', '')
     major = request.args.get('major', '')
     
-    # Search universities instead of courses
+    # Search universities
     query = University.query
     
     # Filter by language requirements if specified
     if language:
-        query = query.filter(University.language_requirements.contains(language))
+        # Search in language_requirements field for the selected language
+        language_filters = []
+        if language == 'English':
+            language_filters.append(University.language_requirements.contains('IELTS'))
+            language_filters.append(University.language_requirements.contains('TOEFL'))
+        elif language == 'Turkish':
+            language_filters.append(University.language_requirements.contains('TÖMER'))
+            language_filters.append(University.language_requirements.contains('Turkish'))
+        elif language == 'Uzbek':
+            language_filters.append(University.language_requirements.contains('Uzbek'))
+        elif language == 'Russian':
+            language_filters.append(University.language_requirements.contains('Russian'))
+        
+        if language_filters:
+            from sqlalchemy import or_
+            query = query.filter(or_(*language_filters))
+    
+    # For degree and major, we'll return all universities for now
+    # since we don't have specific program data in the University model
+    # In the future, we can create a separate Programs table
     
     universities = query.all()
+    
+    # If no filters are applied, return all universities
+    if not language and not degree and not major:
+        universities = University.query.all()
+    
     return render_template('search_results.html', universities=universities, lang=lang, 
                          degree=degree, language=language, major=major)
 
@@ -587,7 +611,7 @@ def init_db():
                     student_count="15000+",
                     tuition_fee_min="2000",
                     tuition_fee_max="5000",
-                    language_requirements="IELTS 5.0+ yoki TOEFL 60+",
+                    language_requirements="IELTS 5.0+ yoki TOEFL 60+ yoki English",
                     admission_requirements="Diplom, transkript, til sertifikati, pasport",
                     application_deadline="1-avgust",
                     scholarship_available=True,
@@ -617,7 +641,7 @@ def init_db():
                     student_count="50000+",
                     tuition_fee_min="500",
                     tuition_fee_max="2000",
-                    language_requirements="IELTS 5.5+ yoki TOEFL 70+",
+                    language_requirements="IELTS 5.5+ yoki TOEFL 70+ yoki English, Russian",
                     admission_requirements="Diplom, transkript, til sertifikati, pasport",
                     application_deadline="15-iyul",
                     scholarship_available=True,
@@ -647,9 +671,39 @@ def init_db():
                     student_count="23000+",
                     tuition_fee_min="50000",
                     tuition_fee_max="60000",
-                    language_requirements="IELTS 7.0+ yoki TOEFL 100+",
+                    language_requirements="IELTS 7.0+ yoki TOEFL 100+ yoki English",
                     admission_requirements="Diplom, transkript, til sertifikati, pasport, SAT/ACT",
                     application_deadline="1-yanvar",
+                    scholarship_available=True,
+                    accommodation_available=True
+                ),
+                University(
+                    name_uz="Istanbul Texnik Universiteti",
+                    name_en="Istanbul Technical University",
+                    name_ru="Стамбульский технический университет",
+                    name_tr="İstanbul Teknik Üniversitesi",
+                    country_uz="Turkiya",
+                    country_en="Turkey",
+                    country_ru="Турция",
+                    country_tr="Türkiye",
+                    city_uz="Istanbul",
+                    city_en="Istanbul",
+                    city_ru="Стамбул",
+                    city_tr="İstanbul",
+                    description_uz="Turkiyaning eng nufuzli texnik universiteti. Muhandislik va texnologiya sohasida yetakchi.",
+                    description_en="Turkey's most prestigious technical university. Leading in engineering and technology.",
+                    description_ru="Самый престижный технический университет Турции. Лидер в области инженерии и технологий.",
+                    description_tr="Türkiye'nin en prestijli teknik üniversitesi. Mühendislik ve teknoloji alanında öncü.",
+                    website="https://itu.edu.tr",
+                    ranking=3,
+                    founded_year=1773,
+                    university_type="Public",
+                    student_count="35000+",
+                    tuition_fee_min="1000",
+                    tuition_fee_max="3000",
+                    language_requirements="TÖMER B2+ yoki Turkish, English",
+                    admission_requirements="Diplom, transkript, til sertifikati, pasport",
+                    application_deadline="15-avgust",
                     scholarship_available=True,
                     accommodation_available=True
                 )

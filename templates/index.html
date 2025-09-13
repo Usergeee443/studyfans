@@ -249,7 +249,7 @@
 
 			<!-- Main Toggle Button - Mobile Optimized -->
 			<button id="socialButton"
-				class="bg-yellow-400 hover:bg-yellow-500  text-black w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-all duration-300 relative z-10">
+				class="bg-[#ff9015] text-white w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-all duration-300 relative z-10">
 				<svg id="socialButtonIcon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
 					class="transition-transform duration-300">
 					<path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
@@ -333,7 +333,7 @@
 							<i class="fas fa-bullseye text-white text-2xl"></i>
 						</div>
 						<h3 class="text-2xl font-bold text-[#003262] mb-4">
-							{% if lang == 'uz' %}Bizning Maqsadimiz{% elif lang == 'ru' %}Наша миссия{% elif lang == 'tr' %}Misyonumuz{% else %}Our mission{% endif %}
+							{% if lang == 'uz' %}Bizning maqsadimiz{% elif lang == 'ru' %}Наша миссия{% elif lang == 'tr' %}Misyonumuz{% else %}Our mission{% endif %}
 						</h3>
 						<p class="text-gray-600 leading-relaxed">
 							{% if lang == 'uz' %}
@@ -735,63 +735,7 @@
 
 
 
-		<section class="bg-gray-50 py-8 md:py-12 lg:py-20 px-4">
-			<div class="max-w-7xl mx-auto">
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-
-					<!-- Left Side - Content -->
-					<div class="order-2 lg:order-1 space-y-6">
-						<div class="space-y-4">
-							<h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#004AAD] leading-tight">
-								{% if lang == 'uz' %}
-									<span class="block">Konsultatsiya</span>
-									<span class="text-[#ff9015] block">Video qo'ng'iroq orqali</span>
-									<span class="block">buyurtma bering!</span>
-								{% elif lang == 'ru' %}
-									<span class="block">Закажите</span>
-									<span class="text-[#ff9015] block">видео консультацию</span>
-									<span class="block">прямо сейчас!</span>
-								{% elif lang == 'tr' %}
-									<span class="block">Danışmanlık için</span>
-									<span class="text-[#ff9015] block">görüntülü görüşme</span>
-									<span class="block">randevusu alın!</span>
-								{% else %}
-									<span class="block">Book a</span>
-									<span class="text-[#ff9015] block">video consultation</span>
-									<span class="block">now!</span>
-								{% endif %}
-							</h1>
-						</div>
-
-						<!-- CTA Button -->
-						<div class="pt-4">
-							<button onclick="openModal()"
-								class="bg-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg shadow-xl hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-								{% if lang == 'uz' %}konsultatsiya uchun vaqt belgilash{% elif lang == 'ru' %}Записаться на консультацию{% elif lang == 'tr' %}Danışmanlık randevusu al{% else %}Schedule a consultation{% endif %}
-							</button>
-						</div>
-					</div>
-
-					<!-- Right Side - Image -->
-					<div class="order-1 lg:order-2 relative">
-						<div class="relative">
-							<!-- Main Image Container -->
-							<div class="rounded-3xl overflow-hidden shadow-2xl">
-								<div class="w-full h-80 lg:h-96 bg-cover bg-center"
-									style="background-image: linear-gradient(to top, #004AAD, transparent), url('https://img.freepik.com/premium-photo/overjoyed-bearded-man-winner-holding-laptop-looking-camera-isolated-blue-background_695242-21509.jpg');">
-								</div>
-							</div>
-
-							<!-- Decorative Elements -->
-							<div class="absolute -z-10 -top-4 -left-4 w-16 h-16 bg-yellow-400/30 rounded-full blur-xl"></div>
-							<div class="absolute -z-10 -bottom-4 -right-4 w-20 h-20 bg-[#004AAD]/20 rounded-full blur-xl"></div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</section>
-
+		
 			<!-- Modal Overlay -->
 			<div id="modalOverlay"
 				class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 hidden transition-opacity duration-300">

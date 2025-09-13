@@ -16,11 +16,31 @@
 	<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 			<!-- University Info -->
-			<div>
-				<div class="flex items-center space-x-6 mb-8">
+			<div class="order-2 lg:order-1">
+				<!-- Mobile: University Logo (centered) -->
+				<div class="flex justify-center mb-8 lg:hidden">
+					{% if university.logo_url %}
+					<div class="w-32 h-32 bg-white rounded-2xl shadow-xl flex items-center justify-center overflow-hidden">
+						<img src="{{ url_for('static', filename=university.logo_url) }}" alt="{{ university.name_uz if lang == 'uz' else university.name_ru if lang == 'ru' else university.name_en }}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+						<div class="w-full h-full bg-gradient-to-r from-yellow-400 to-orange-400 flex items-center justify-center" style="display: none;">
+							<i class="fas fa-university text-white text-4xl"></i>
+						</div>
+					</div>
+					{% else %}
+					<div class="w-32 h-32 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-2xl flex items-center justify-center shadow-xl">
+						<i class="fas fa-university text-white text-5xl"></i>
+					</div>
+					{% endif %}
+				</div>
+
+				<!-- Desktop: University Logo and Name (side by side) -->
+				<div class="hidden lg:flex items-center space-x-6 mb-8">
 					{% if university.logo_url %}
 					<div class="w-24 h-24 bg-white rounded-2xl shadow-xl flex items-center justify-center overflow-hidden">
-						<img src="{{ url_for('static', filename=university.logo_url) }}" alt="{{ university.name_uz if lang == 'uz' else university.name_ru if lang == 'ru' else university.name_en }}" class="w-full h-full object-contain">
+						<img src="{{ url_for('static', filename=university.logo_url) }}" alt="{{ university.name_uz if lang == 'uz' else university.name_ru if lang == 'ru' else university.name_en }}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+						<div class="w-full h-full bg-gradient-to-r from-yellow-400 to-orange-400 flex items-center justify-center" style="display: none;">
+							<i class="fas fa-university text-white text-2xl"></i>
+						</div>
 					</div>
 					{% else %}
 					<div class="w-24 h-24 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-2xl flex items-center justify-center shadow-xl">
@@ -36,10 +56,20 @@
 						</p>
 					</div>
 				</div>
+
+				<!-- Mobile: University Name (centered) -->
+				<div class="text-center lg:text-left mb-8">
+					<h1 class="text-3xl sm:text-4xl font-bold text-white mb-2">
+						{{ university.name_uz if lang == 'uz' else university.name_ru if lang == 'ru' else university.name_tr if lang == 'tr' else university.name_en }}
+					</h1>
+					<p class="text-lg text-blue-100">
+						{{ university.country_uz if lang == 'uz' else university.country_ru if lang == 'ru' else university.country_tr if lang == 'tr' else university.country_en }}, {{ university.city_uz if lang == 'uz' else university.city_ru if lang == 'ru' else university.city_tr if lang == 'tr' else university.city_en }}
+					</p>
+				</div>
 				
 				<div class="flex flex-wrap gap-4 mb-8">
 					{% if university.ranking %}
-					<div class="bg-yellow-400 text-gray-900 px-4 py-2 rounded-full text-sm font-bold flex items-center">
+					<div class="bg-[#ff9015] text-white px-4 py-2 rounded-[0.8rem] text-sm font-bold flex items-center">
 						<i class="fas fa-trophy mr-2"></i>
 						#{{ university.ranking }} 
 						{% if lang == 'uz' %}Reyting{% elif lang == 'ru' %}Рейтинг{% else %}Ranking{% endif %}
@@ -47,13 +77,13 @@
 					{% endif %}
 					
 					{% if university.university_type %}
-					<div class="bg-white/20 backdrop-blur-lg text-white px-4 py-2 rounded-full text-sm font-semibold">
+					<div class="bg-white/20 backdrop-blur-lg text-white px-4 py-2 rounded-[0.8rem] text-sm font-semibold">
 						{{ university.university_type }}
 					</div>
 					{% endif %}
 					
 					{% if university.founded_year %}
-					<div class="bg-white/20 backdrop-blur-lg text-white px-4 py-2 rounded-full text-sm font-semibold">
+					<div class="bg-white/20 backdrop-blur-lg text-white px-4 py-2 rounded-[0.8rem] text-sm font-semibold">
 						{% if lang == 'uz' %}Asos solingan:{% elif lang == 'ru' %}Основан:{% else %}Founded:{% endif %} {{ university.founded_year }}
 					</div>
 					{% endif %}
@@ -64,12 +94,12 @@
 				</p>
 				
 				<div class="flex flex-col sm:flex-row gap-4">
-					<button onclick="openApplicationModal()" class="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-gray-900 font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+					<button onclick="openApplicationModal()" class="bg-[#ff9015] text-white font-bold py-4 px-8 rounded-[1.5rem] text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 						<i class="fas fa-graduation-cap mr-2"></i>
 						{% if lang == 'uz' %}Universitetga Ariza Berish{% elif lang == 'ru' %}Подать Заявление в Университет{% else %}Apply to University{% endif %}
 					</button>
 					{% if university.website %}
-					<a href="{{ university.website }}" target="_blank" class="bg-white/10 backdrop-blur-lg border border-white/20 text-white hover:bg-white/20 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300">
+					<a href="{{ university.website }}" target="_blank" class="bg-white/10 backdrop-blur-lg border border-white/20 text-white hover:bg-white/20 font-bold py-4 px-8 rounded-[1.5rem] text-lg transition-all duration-300">
 						<i class="fas fa-external-link-alt mr-2"></i>
 						{% if lang == 'uz' %}Rasmiy Sayt{% elif lang == 'ru' %}Официальный Сайт{% else %}Official Website{% endif %}
 					</a>
@@ -77,21 +107,7 @@
 				</div>
 			</div>
 			
-			<!-- University Image -->
-			<div class="relative">
-				{% if university.logo_url %}
-				<div class="bg-white rounded-3xl p-8 shadow-2xl">
-					<img src="{{ url_for('static', filename=university.logo_url) }}" alt="{{ university.name_uz if lang == 'uz' else university.name_ru if lang == 'ru' else university.name_en }}" class="w-full h-64 object-contain rounded-2xl">
-				</div>
-				{% else %}
-				<div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl p-8 shadow-2xl text-center">
-					<i class="fas fa-university text-8xl text-white/80 mb-4"></i>
-					<h3 class="text-2xl font-bold text-white">
-						{% if lang == 'uz' %}Universitet Rasmi{% elif lang == 'ru' %}Фото Университета{% else %}University Photo{% endif %}
-					</h3>
-				</div>
-				{% endif %}
-			</div>
+			
 		</div>
 	</div>
 </section>
@@ -405,11 +421,11 @@
 			{% endif %}
 		</p>
 		<div class="flex flex-col sm:flex-row gap-4 justify-center">
-			<button onclick="openApplicationModal()" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+			<button onclick="openApplicationModal()" class="bg-[#ff9015] text-white font-bold py-4 px-8 rounded-[1.5rem] text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 				<i class="fas fa-graduation-cap mr-2"></i>
 				{% if lang == 'uz' %}Ariza Berish{% elif lang == 'ru' %}Подать Заявление{% else %}Apply Now{% endif %}
 			</button>
-			<a href="{{ url_for('universities') }}" class="bg-white/10 backdrop-blur-lg border border-white/20 text-white hover:bg-white/20 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300">
+			<a href="{{ url_for('universities') }}" class="bg-white/10 backdrop-blur-lg border border-white/20 text-white hover:bg-white/20 font-bold py-4 px-8 rounded-[1.5rem] text-lg transition-all duration-300">
 				<i class="fas fa-arrow-left mr-2"></i>
 				{% if lang == 'uz' %}Boshqa Universitetlar{% elif lang == 'ru' %}Другие Университеты{% else %}Other Universities{% endif %}
 			</a>
