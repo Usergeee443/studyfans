@@ -6,14 +6,15 @@
 
 {% block content %}
 
-<!-- Hero Section -->
-<section class="relative bg-[#004AAD] py-24 mt-[3rem] overflow-hidden">
+
+<section class="relative bg-gradient-to-r mt-[4rem] from-[#003262] to-blue-800 py-24 overflow-hidden">
 	<div class="absolute inset-0">
-		<div class="absolute -top-40 -right-40 w-80 h-80 bg-white/50 rounded-full blur-3xl animate-bounce-slow"></div>
+		<div class="absolute -top-40 -right-40 w-80 h-80 bg-yellow-400/20 rounded-full blur-3xl animate-bounce-slow"></div>
+		<div class="absolute -bottom-40 -left-40 w-80 h-80 bg-orange-400/20 rounded-full blur-3xl animate-bounce-slow animation-delay-1000"></div>
 	</div>
 	
 	<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-		<h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
+		<h1 class="text-5xl md:text-7xl font-bold text-white mb-8" data-aos="fade-up">
 			{% if lang == 'uz' %}
 				<span class="block">Professional</span>
 				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">xizmatlarimiz</span>
@@ -28,7 +29,7 @@
 				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Professional Services</span>
 			{% endif %}
 		</h1>
-		<p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+		<p class="text-xl md:text-2xl text-blue-100 mb-2 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
 			{% if lang == 'uz' %}
 				Ta'lim yo'lingizda to'liq qo'llab-quvvatlash va professional yordam
 			{% elif lang == 'ru' %}
@@ -47,9 +48,9 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
 			<!-- Service 1 -->
-			<div class="group bg-white rounded-3xl p-8 shadow-xl">
+			<div class="group bg-gray-50 rounded-[2.5rem] p-8" data-aos="fade-up">
 				<div class="flex items-center mb-6">
-					<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center transition-transform duration-300">
+					<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center transition-transform duration-300 service-icon">
 						<i class="fas fa-graduation-cap text-3xl text-white"></i>
 					</div>
 					<div class="ml-6">
@@ -99,9 +100,9 @@
 			</div>
 
 			<!-- Service 2 -->
-			<div class="group bg-white rounded-3xl p-8 shadow-xl">
+			<div class="group bg-gray-50 rounded-[2.5rem] p-8" data-aos="fade-up">
 				<div class="flex items-center mb-6">
-					<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center transition-transform duration-300">
+					<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center transition-transform duration-300 service-icon">
 						<i class="fas fa-balance-scale text-3xl text-white"></i>
 					</div>
 					<div class="ml-6">
@@ -153,9 +154,9 @@
 
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
 			<!-- Service 3 -->
-			<div class="group bg-white rounded-3xl p-8 shadow-xl">
+			<div class="group bg-gray-50 rounded-[2.5rem] p-8" data-aos="fade-up">
 				<div class="flex items-center mb-6">
-					<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center transition-transform duration-300">
+					<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center transition-transform duration-300 service-icon">
 						<i class="fas fa-award text-3xl text-white"></i>
 					</div>
 					<div class="ml-6">
@@ -205,9 +206,9 @@
 			</div>
 
 			<!-- Service 4 -->
-			<div class="group bg-white rounded-3xl p-8 shadow-xl">
+			<div class="group bg-gray-50 rounded-[2.5rem] p-8" data-aos="fade-up">
 				<div class="flex items-center mb-6">
-					<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center transition-transform duration-300">
+					<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center transition-transform duration-300 service-icon">
 						<i class="fas fa-home text-3xl text-white"></i>
 					</div>
 					<div class="ml-6">
@@ -255,6 +256,64 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- Service 5 -->
+			<div class="group bg-gradient-to-r from-orange-500 to-yellow-500 rounded-[2.5rem] p-8" data-aos="fade-up">
+				<div class="flex items-center mb-6">
+					<div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center transition-transform duration-300 service-icon">
+						<i class="fas fa-shopping-cart text-3xl text-[#ff9015]"></i>
+					</div>
+					<div class="ml-6">
+						<h3 class="text-3xl font-bold text-white mb-2">
+							{% if lang == 'uz' %}Buyurtma Berish{% elif lang == 'ru' %}Заказ Услуг{% elif lang == 'tr' %}Hizmet Siparişi{% else %}Order Services{% endif %}
+						</h3>
+						<div class="w-16 h-1 bg-white rounded-full"></div>
+					</div>
+				</div>
+				<p class="text-white mb-6 leading-relaxed text-lg">
+					{% if lang == 'uz' %}
+						Kerakli xizmatlarni onlayn buyurtma qiling va professional yordam oling. Barcha jarayonlar soddalashtirilgan va tez.
+					{% elif lang == 'ru' %}
+						Закажите необходимые услуги онлайн и получите профессиональную помощь. Все процессы упрощены и быстры.
+					{% elif lang == 'tr' %}
+						Gerekli hizmetleri online sipariş edin ve profesyonel yardım alın. Tüm süreçler basitleştirilmiş ve hızlı.
+					{% else %}
+						Order necessary services online and get professional help. All processes are simplified and fast.
+					{% endif %}
+				</p>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+					<div class="flex items-center space-x-3">
+						<i class="fas fa-check-circle text-white text-xl"></i>
+						<span class="text-white font-medium">
+							{% if lang == 'uz' %}Onlayn buyurtma{% elif lang == 'ru' %}Онлайн заказ{% elif lang == 'tr' %}Online sipariş{% else %}Online Order{% endif %}
+						</span>
+					</div>
+					<div class="flex items-center space-x-3">
+						<i class="fas fa-check-circle text-white text-xl"></i>
+						<span class="text-white font-medium">
+							{% if lang == 'uz' %}Tez javob{% elif lang == 'ru' %}Быстрый ответ{% elif lang == 'tr' %}Hızlı yanıt{% else %}Quick Response{% endif %}
+						</span>
+					</div>
+					<div class="flex items-center space-x-3">
+						<i class="fas fa-check-circle text-white text-xl"></i>
+						<span class="text-white font-medium">
+							{% if lang == 'uz' %}Professional yordam{% elif lang == 'ru' %}Профессиональная помощь{% elif lang == 'tr' %}Profesyonel yardım{% else %}Professional Help{% endif %}
+						</span>
+					</div>
+					<div class="flex items-center space-x-3">
+						<i class="fas fa-check-circle text-white text-xl"></i>
+						<span class="text-white font-medium">
+							{% if lang == 'uz' %}24/7 qo'llab-quvvatlash{% elif lang == 'ru' %}Поддержка 24/7{% elif lang == 'tr' %}7/24 destek{% else %}24/7 Support{% endif %}
+						</span>
+					</div>
+				</div>
+				<div class="mt-8 text-center">
+					<a href="{{ url_for('contact') }}" class="bg-white text-[#ff9015] hover:from-orange-500 hover:to-red-500 font-bold py-3 px-8 rounded-[1.2rem] text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center">
+						<i class="fas fa-shopping-cart mr-2"></i>
+						{% if lang == 'uz' %}Hozir Buyurtma Berish{% elif lang == 'ru' %}Заказать Сейчас{% elif lang == 'tr' %}Şimdi Sipariş Ver{% else %}Order Now{% endif %}
+					</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -264,7 +323,7 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-16">
 			<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-				{% if lang == 'uz' %}Ish Jarayoni{% elif lang == 'ru' %}Процесс Работы{% else %}Our Process{% endif %}
+				{% if lang == 'uz' %}Ish jarayoni{% elif lang == 'ru' %}Процесс работы{% else %}Our process{% endif %}
 			</h2>
 			<p class="text-xl text-gray-600 max-w-3xl mx-auto">
 				{% if lang == 'uz' %}
@@ -397,10 +456,10 @@
 			{% endif %}
 		</p>
 		<div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
-			<a href="/contact" class="bg-[#ff9015] border-2 border-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-colors">
+			<a href="/contact" class="bg-[#ff9015] border-2 border-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-[#ff9015]/80 hover:shadow-[0_0_30px_rgba(255,144,21,0.5)] hover:scale-105 hover:border-[#ff9015]/80">
 				{% if lang == 'uz' %}Bepul konsultatsiya{% elif lang == 'ru' %}Бесплатная консультация{% elif lang == 'tr' %}Ücretsiz danışmanlık{% else %}Free Consultation{% endif %}
 			</a>
-			<a href="/universities" class="border-2 border-white text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-colors">
+			<a href="/universities" class="border-2 border-white text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[#004AAD] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
 				{% if lang == 'uz' %}Universitetlarni ko'rish{% elif lang == 'ru' %}Посмотреть университеты{% elif lang == 'tr' %}Üniversiteleri gör{% else %}View Universities{% endif %}
 			</a>
 		</div>

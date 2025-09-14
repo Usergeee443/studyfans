@@ -275,6 +275,11 @@ def contact():
     
     return render_template('contact.html', lang=lang)
 
+@app.route('/success-stories')
+def success_stories():
+    lang = request.args.get('lang', 'uz')
+    return render_template('success_stories.html', lang=lang)
+
 @app.route('/university/<int:university_id>/apply', methods=['POST'])
 def apply_university(university_id):
     lang = request.form.get('lang', request.args.get('lang', 'uz'))

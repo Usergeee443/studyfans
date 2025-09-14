@@ -298,8 +298,14 @@
 		</section>
 
 		<!-- About Section -->
-		<section class="py-20 bg-white">
-			<div class="max-w-6xl mx-auto px-4">
+		<section class="py-20 bg-white relative overflow-hidden">
+			<!-- Blur Background -->
+			<div class="absolute inset-0">
+				<div class="absolute top-20 left-10 w-72 h-72 bg-blue-200/30 rounded-full blur-3xl"></div>
+				<div class="absolute bottom-20 right-10 w-96 h-96 bg-orange-200/30 rounded-full blur-3xl"></div>
+				<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-yellow-200/20 rounded-full blur-3xl"></div>
+			</div>
+			<div class="max-w-6xl mx-auto px-4 relative z-10">
 				<!-- Hero Section -->
 				<div class="text-center mb-16">
 					<div class="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full mb-6">
@@ -328,7 +334,7 @@
 				<!-- Mission & Vision -->
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
 					<!-- Mission -->
-					<div class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-blue-100">
+					<div class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-[1.5rem] border border-blue-100 card-hover" data-aos="fade-up" data-aos-delay="100">
 						<div class="w-16 h-16 bg-[#003262] rounded-2xl flex items-center justify-center mb-6">
 							<i class="fas fa-bullseye text-white text-2xl"></i>
 						</div>
@@ -349,8 +355,8 @@
 					</div>
 
 					<!-- Vision -->
-					<div class="bg-gradient-to-br from-orange-50 to-white p-8 rounded-2xl border border-orange-100">
-						<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6">
+					<div class="bg-gradient-to-br from-orange-50 to-white p-8 rounded-[1.5rem] border border-orange-100 card-hover" data-aos="fade-up" data-aos-delay="200">
+						<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6 ">
 							<i class="fas fa-eye text-white text-2xl"></i>
 						</div>
 						<h3 class="text-2xl font-bold text-[#003262] mb-4">
@@ -391,8 +397,8 @@
 				<!-- Values Grid -->
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 					<!-- Professional Approach -->
-					<div class="text-center group">
-						<div class="w-20 h-20 bg-[#003262] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+					<div class="text-center group" data-aos="fade-up" data-aos-delay="100">
+						<div class="w-20 h-20 bg-[#003262] rounded-full flex items-center justify-center mx-auto mb-6 ">
 							<i class="fas fa-user-tie text-white text-2xl"></i>
 						</div>
 						<h4 class="text-xl font-bold text-[#003262] mb-4">
@@ -404,8 +410,8 @@
 					</div>
 
 					<!-- Experience -->
-					<div class="text-center group">
-						<div class="w-20 h-20 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+					<div class="text-center group" data-aos="fade-up" data-aos-delay="200">
+						<div class="w-20 h-20 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 ">
 							<i class="fas fa-medal text-white text-2xl"></i>
 						</div>
 						<h4 class="text-xl font-bold text-[#003262] mb-4">
@@ -417,8 +423,8 @@
 					</div>
 
 					<!-- Global Network -->
-					<div class="text-center group">
-						<div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+					<div class="text-center group" data-aos="fade-up" data-aos-delay="300">
+						<div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 ">
 							<i class="fas fa-globe text-white text-2xl"></i>
 						</div>
 						<h4 class="text-xl font-bold text-[#003262] mb-4">
@@ -436,9 +442,43 @@
 			</div>
 		</section>
 
+		<!-- Contact CTA Section -->
+		<section class="relative py-24 mt-[3rem] px-4 bg-gradient-to-r from-orange-500 to-yellow-500 overflow-hidden">
+			<div class="max-w-6xl mx-auto text-center">
+				<h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+					{% if lang == 'uz' %}Kelajagingizni biz bilan quring{% elif lang == 'ru' %}Постройте свое будущее с нами{% elif lang == 'tr' %}Geleceğinizi bizimle inşa edin{% else %}Build your future with us{% endif %}
+				</h2>
+				<p class="text-xl text-white/80 mb-8 max-w-3xl mx-auto">
+					{% if lang == 'uz' %}
+						Keling, birgalikda sizning ta'lim maqsadlaringizga erishamiz. Hoziroq bepul maslahat uchun murojaat qiling!
+					{% elif lang == 'ru' %}
+						Давайте вместе достигнем ваших образовательных целей. Запишитесь на бесплатную консультацию прямо сейчас!
+					{% elif lang == 'tr' %}
+						Eğitim hedeflerinize birlikte ulaşalım. Hemen ücretsiz danışmanlık için başvurun!
+					{% else %}
+						Let's achieve your educational goals together. Apply for a free consultation right now!
+					{% endif %}
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
+					<a href="/contact" class="bg-blue-800 border-2 border-blue-800 text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-blue-800/80 hover:shadow-[0_0_30px_rgba(30,64,175,0.5)] hover:scale-105 hover:border-blue-800/80">
+						{% if lang == 'uz' %}Bepul konsultatsiya{% elif lang == 'ru' %}Бесплатная консультация{% elif lang == 'tr' %}Ücretsiz danışmanlık{% else %}Free Consultation{% endif %}
+					</a>
+					<a href="/universities" class="bg-white text-[#004AAD] border-2 border-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-transparent hover:text-white hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
+						{% if lang == 'uz' %}Universitetlarni ko'rish{% elif lang == 'ru' %}Посмотреть университеты{% elif lang == 'tr' %}Üniversiteleri gör{% else %}View Universities{% endif %}
+					</a>
+				</div>
+			</div>
+		</section>
+
 		<!-- Services Section -->
-		<section class="py-20 px-4 bg-white">
-			<div class="max-w-6xl mx-auto">
+		<section class="py-20 px-4 bg-white relative overflow-hidden">
+			<!-- Blur Background -->
+			<div class="absolute inset-0">
+				<div class="absolute top-10 right-20 w-64 h-64 bg-green-200/30 rounded-full blur-3xl"></div>
+				<div class="absolute bottom-10 left-20 w-80 h-80 bg-purple-200/30 rounded-full blur-3xl"></div>
+				<div class="absolute top-1/3 right-1/3 w-72 h-72 bg-pink-200/20 rounded-full blur-3xl"></div>
+			</div>
+			<div class="max-w-6xl mx-auto relative z-10">
 				<!-- Section Header -->
 				<div class="text-center mb-16">
 					<h2 class="text-4xl md:text-5xl font-bold text-[#003262] mb-6">
@@ -460,8 +500,8 @@
 				<!-- Services Grid -->
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 					<!-- Service 1 -->
-					<div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-						<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6">
+					<div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 service-card" data-aos="fade-up" data-aos-delay="100">
+						<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6 ">
 							<i class="fas fa-graduation-cap text-white text-2xl"></i>
 						</div>
 						<h3 class="text-xl font-bold text-gray-900 mb-4">
@@ -483,8 +523,8 @@
 					</div>
 
 					<!-- Service 2 -->
-					<div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-						<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6">
+					<div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 service-card" data-aos="fade-up" data-aos-delay="200">
+						<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6 ">
 							<i class="fas fa-file-alt text-white text-2xl"></i>
 						</div>
 						<h3 class="text-xl font-bold text-gray-900 mb-4">
@@ -506,8 +546,8 @@
 					</div>
 
 					<!-- Service 3 -->
-					<div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-						<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6">
+					<div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 service-card" data-aos="fade-up" data-aos-delay="300">
+						<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6 ">
 							<i class="fas fa-home text-white text-2xl"></i>
 						</div>
 						<h3 class="text-xl font-bold text-gray-900 mb-4">
@@ -553,8 +593,8 @@
 
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 					<!-- Feature 1 -->
-					<div class="text-center">
-						<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center mx-auto mb-6">
+					<div class="text-center" data-aos="fade-up" data-aos-delay="100">
+						<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center mx-auto mb-6 ">
 							<i class="fas fa-clock text-white text-2xl"></i>
 						</div>
 						<h3 class="text-xl font-bold text-gray-900 mb-4">
@@ -566,8 +606,8 @@
 					</div>
 
 					<!-- Feature 2 -->
-					<div class="text-center">
-						<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center mx-auto mb-6">
+					<div class="text-center" data-aos="fade-up" data-aos-delay="200">
+						<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center mx-auto mb-6 ">
 							<i class="fas fa-shield-alt text-white text-2xl"></i>
 						</div>
 						<h3 class="text-xl font-bold text-gray-900 mb-4">
@@ -579,8 +619,8 @@
 					</div>
 
 					<!-- Feature 3 -->
-					<div class="text-center">
-						<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center mx-auto mb-6">
+					<div class="text-center" data-aos="fade-up" data-aos-delay="300">
+						<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center mx-auto mb-6 ">
 							<i class="fas fa-headset text-white text-2xl"></i>
 						</div>
 						<h3 class="text-xl font-bold text-gray-900 mb-4">
@@ -592,8 +632,8 @@
 					</div>
 
 					<!-- Feature 4 -->
-						<div class="text-center">
-						<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center mx-auto mb-6">
+					<div class="text-center" data-aos="fade-up" data-aos-delay="400">
+						<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center mx-auto mb-6 ">
 							<i class="fas fa-award text-white text-2xl"></i>
 						</div>
 						<h3 class="text-xl font-bold text-gray-900 mb-4">
@@ -608,8 +648,14 @@
 		</section>
 
 		<!-- Success Stories Section -->
-		<section class="py-20 px-4 bg-white">
-			<div class="max-w-6xl mx-auto">
+		<section class="py-20 px-4 bg-white relative overflow-hidden">
+			<!-- Blur Background -->
+			<div class="absolute inset-0 -z-10 pointer-events-none">
+				<div class="absolute top-20 left-20 w-72 h-72 bg-blue-200/30 rounded-full blur-3xl"></div>
+				<div class="absolute bottom-20 right-20 w-96 h-96 bg-orange-200/30 rounded-full blur-3xl"></div>
+				<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-yellow-200/20 rounded-full blur-3xl"></div>
+			</div>
+			<div class="max-w-6xl mx-auto relative z-10">
 				<div class="text-center mb-16">
 					<h2 class="text-4xl md:text-5xl font-bold text-[#003262] mb-6">
 						{% if lang == 'uz' %}Muvaffaqiyat hikoyalari{% elif lang == 'ru' %}Истории успеха{% elif lang == 'tr' %}Başarı hikayeleri{% else %}Success stories{% endif %}
@@ -629,9 +675,9 @@
 
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 					<!-- Story 1 -->
-					<div class="bg-gray-50 rounded-2xl p-8">
+					<div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 success-story-card border border-blue-100" data-aos="fade-up" data-aos-delay="100">
 						<div class="flex items-center mb-6">
-							<div class="w-16 h-16 bg-[#ff9015] rounded-full flex items-center justify-center mr-4">
+							<div class="w-16 h-16 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mr-4 ">
 								<span class="text-white font-bold text-xl">A</span>
 							</div>
 							<div>
@@ -639,22 +685,22 @@
 								<p class="text-gray-600 text-sm">Istanbul Universiteti</p>
 							</div>
 						</div>
-						<p class="text-gray-600 mb-4">
+						<p class="text-gray-600 mb-4 italic">
 							{% if lang == 'uz' %}"StudyFans orqali Turkiyada o'qish orzuim amalga oshdi. Professional yordam bilan hamma jarayon oson bo'ldi."{% elif lang == 'ru' %}"С помощью StudyFans моя мечта об учебе в Турции осуществилась. С профессиональной помощью весь процесс прошел легко."{% elif lang == 'tr' %}"StudyFans sayesinde Türkiye'de okuma hayalim gerçekleşti. Profesyonel yardımla her şey kolay oldu."{% else %}"Through StudyFans, my dream of studying in Turkey came true. With professional help, everything was easy."{% endif %}
 						</p>
-						<div class="flex text-[#ff9015]">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
+						<div class="flex text-[#ff9015] text-lg">
+							<i class="fas fa-star "></i>
+							<i class="fas fa-star  animation-delay-200"></i>
+							<i class="fas fa-star  animation-delay-400"></i>
+							<i class="fas fa-star  animation-delay-600"></i>
+							<i class="fas fa-star  animation-delay-800"></i>
 						</div>
 					</div>
 
 					<!-- Story 2 -->
-					<div class="bg-gray-50 rounded-2xl p-8">
+					<div class="bg-gradient-to-br from-orange-50 to-white rounded-2xl p-8 success-story-card border border-orange-100" data-aos="fade-up" data-aos-delay="200">
 						<div class="flex items-center mb-6">
-							<div class="w-16 h-16 bg-[#ff9015] rounded-full flex items-center justify-center mr-4">
+							<div class="w-16 h-16 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mr-4 ">
 								<span class="text-white font-bold text-xl">D</span>
 							</div>
 							<div>
@@ -662,22 +708,22 @@
 								<p class="text-gray-600 text-sm">Kipr Universiteti</p>
 							</div>
 						</div>
-						<p class="text-gray-600 mb-4">
+						<p class="text-gray-600 mb-4 italic">
 							{% if lang == 'uz' %}"40% chegirma olishga yordam berishdi. Endi Kiprda o'qiyapman va juda baxtliman."{% elif lang == 'ru' %}"Помогли получить скидку 40%. Теперь учусь на Кипре и очень счастлив."{% elif lang == 'tr' %}"%40 indirim almama yardım ettiler. Şimdi Kıbrıs'ta okuyorum ve çok mutluyum."{% else %}"They helped me get a 40% discount. Now I'm studying in Cyprus and very happy."{% endif %}
 						</p>
-						<div class="flex text-[#ff9015]">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
+						<div class="flex text-[#ff9015] text-lg">
+							<i class="fas fa-star "></i>
+							<i class="fas fa-star  animation-delay-200"></i>
+							<i class="fas fa-star  animation-delay-400"></i>
+							<i class="fas fa-star  animation-delay-600"></i>
+							<i class="fas fa-star  animation-delay-800"></i>
 						</div>
 					</div>
 
 					<!-- Story 3 -->
-					<div class="bg-gray-50 rounded-2xl p-8">
+					<div class="bg-gradient-to-br from-green-50 to-white rounded-2xl p-8 success-story-card border border-green-100" data-aos="fade-up" data-aos-delay="300">
 						<div class="flex items-center mb-6">
-							<div class="w-16 h-16 bg-[#ff9015] rounded-full flex items-center justify-center mr-4">
+							<div class="w-16 h-16 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mr-4 ">
 								<span class="text-white font-bold text-xl">N</span>
 							</div>
 							<div>
@@ -685,17 +731,95 @@
 								<p class="text-gray-600 text-sm">Gruziya Universiteti</p>
 							</div>
 						</div>
-						<p class="text-gray-600 mb-4">
+						<p class="text-gray-600 mb-4 italic">
 							{% if lang == 'uz' %}"Viza olishdan tortib, yashash joyini topishgacha hamma narsada yordam berishdi."{% elif lang == 'ru' %}"Помогали во всем - от получения визы до поиска жилья."{% elif lang == 'tr' %}"Vize almaktan konaklama bulmaya kadar her şeyde yardım ettiler."{% else %}"They helped with everything from getting a visa to finding accommodation."{% endif %}
 						</p>
-						<div class="flex text-[#ff9015]">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
+						<div class="flex text-[#ff9015] text-lg">
+							<i class="fas fa-star "></i>
+							<i class="fas fa-star  animation-delay-200"></i>
+							<i class="fas fa-star  animation-delay-400"></i>
+							<i class="fas fa-star  animation-delay-600"></i>
+							<i class="fas fa-star  animation-delay-800"></i>
 						</div>
 					</div>
+
+					<!-- Story 4 -->
+					<div class="bg-gradient-to-br from-purple-50 to-white rounded-2xl p-8 success-story-card border border-purple-100" data-aos="fade-up" data-aos-delay="400">
+						<div class="flex items-center mb-6">
+							<div class="w-16 h-16 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mr-4 ">
+								<span class="text-white font-bold text-xl">S</span>
+							</div>
+							<div>
+								<h4 class="text-lg font-bold text-gray-900">Sardor Rahimov</h4>
+								<p class="text-gray-600 text-sm">Malayziya Universiteti</p>
+							</div>
+						</div>
+						<p class="text-gray-600 mb-4 italic">
+							{% if lang == 'uz' %}"IELTS imtihonini topshirishda yordam berishdi va 7.0 ball olishga erishdim. Malayziyada o'qish juda qiziq!"{% elif lang == 'ru' %}"Помогли сдать IELTS и получить 7.0 баллов. Учеба в Малайзии очень интересная!"{% elif lang == 'tr' %}"IELTS sınavında yardım ettiler ve 7.0 puan aldım. Malezya'da okumak çok ilginç!"{% else %}"They helped me take IELTS and get 7.0 points. Studying in Malaysia is very interesting!"{% endif %}
+						</p>
+						<div class="flex text-[#ff9015] text-lg">
+							<i class="fas fa-star "></i>
+							<i class="fas fa-star  animation-delay-200"></i>
+							<i class="fas fa-star  animation-delay-400"></i>
+							<i class="fas fa-star  animation-delay-600"></i>
+							<i class="fas fa-star  animation-delay-800"></i>
+						</div>
+					</div>
+
+					<!-- Story 5 -->
+					<div class="bg-gradient-to-br from-indigo-50 to-white rounded-2xl p-8 success-story-card border border-indigo-100" data-aos="fade-up" data-aos-delay="500">
+						<div class="flex items-center mb-6">
+							<div class="w-16 h-16 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mr-4 ">
+								<span class="text-white font-bold text-xl">M</span>
+							</div>
+							<div>
+								<h4 class="text-lg font-bold text-gray-900">Malika Yusupova</h4>
+								<p class="text-gray-600 text-sm">Harvard Universiteti</p>
+							</div>
+						</div>
+						<p class="text-gray-600 mb-4 italic">
+							{% if lang == 'uz' %}"Harvard universitetiga qabul bo'lish orzuim edi. StudyFans yordami bilan bu orzu amalga oshdi!"{% elif lang == 'ru' %}"Моя мечта была поступить в Гарвард. С помощью StudyFans эта мечта осуществилась!"{% elif lang == 'tr' %}"Harvard Üniversitesi'ne kabul olmak hayalimdi. StudyFans'ın yardımıyla bu hayal gerçekleşti!"{% else %}"My dream was to get into Harvard. With StudyFans' help, this dream came true!"{% endif %}
+						</p>
+						<div class="flex text-[#ff9015] text-lg">
+							<i class="fas fa-star "></i>
+							<i class="fas fa-star  animation-delay-200"></i>
+							<i class="fas fa-star  animation-delay-400"></i>
+							<i class="fas fa-star  animation-delay-600"></i>
+							<i class="fas fa-star  animation-delay-800"></i>
+						</div>
+					</div>
+
+					<!-- Story 6 -->
+					<div class="bg-gradient-to-br from-pink-50 to-white rounded-2xl p-8 success-story-card border border-pink-100" data-aos="fade-up" data-aos-delay="600">
+						<div class="flex items-center mb-6">
+							<div class="w-16 h-16 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mr-4 ">
+								<span class="text-white font-bold text-xl">J</span>
+							</div>
+							<div>
+								<h4 class="text-lg font-bold text-gray-900">Javlon Toshmatov</h4>
+								<p class="text-gray-600 text-sm">Istanbul Texnik Universiteti</p>
+							</div>
+						</div>
+						<p class="text-gray-600 mb-4 italic">
+							{% if lang == 'uz' %}"Muhandislik yo'nalishida o'qishni xohlagan edim. StudyFans eng yaxshi variantni topishga yordam berdi."{% elif lang == 'ru' %}"Я хотел изучать инженерию. StudyFans помог найти лучший вариант."{% elif lang == 'tr' %}"Mühendislik alanında okumak istiyordum. StudyFans en iyi seçeneği bulmama yardım etti."{% else %}"I wanted to study engineering. StudyFans helped me find the best option."{% endif %}
+						</p>
+						<div class="flex text-[#ff9015] text-lg">
+							<i class="fas fa-star "></i>
+							<i class="fas fa-star  animation-delay-200"></i>
+							<i class="fas fa-star  animation-delay-400"></i>
+							<i class="fas fa-star  animation-delay-600"></i>
+							<i class="fas fa-star  animation-delay-800"></i>
+						</div>
+					</div>
+				</div>
+				
+				<!-- View All Button -->
+				<div class="text-center mt-12 relative z-50" data-aos="fade-up" data-aos-delay="700">
+					<a href="/success-stories" class="inline-block bg-[#ff9015] hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-2xl text-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" style="position: relative; z-index: 999;">
+						<i class="fas fa-eye mr-3"></i>
+						{% if lang == 'uz' %}Hammasini ko'rish{% elif lang == 'ru' %}Посмотреть все{% elif lang == 'tr' %}Hepsini gör{% else %}View All{% endif %}
+						<i class="fas fa-arrow-right ml-3"></i>
+					</a>
 				</div>
 			</div>
 		</section>
@@ -721,232 +845,17 @@
 						Need help on your educational journey? Contact us and get a free consultation!
 					{% endif %}
 				</p>
-				<div class="flex flex-col sm:flex-row gap-4 justify-center">
-					<a href="/contact" class="bg-[#ff9015] border-2 border-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-colors hover:bg-[#ff9015]/90">
+				<div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
+					<a href="/contact" class="bg-[#ff9015] border-2 border-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-[#ff9015]/80 hover:shadow-[0_0_30px_rgba(255,144,21,0.5)] hover:scale-105 hover:border-[#ff9015]/80">
 						{% if lang == 'uz' %}Bepul konsultatsiya{% elif lang == 'ru' %}Бесплатная консультация{% elif lang == 'tr' %}Ücretsiz danışmanlık{% else %}Free Consultation{% endif %}
 					</a>
-					<a href="/universities" class="border-2 border-white text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-colors hover:bg-white/10">
+					<a href="/universities" class="border-2 border-white text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[#004AAD] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
 						{% if lang == 'uz' %}Universitetlarni ko'rish{% elif lang == 'ru' %}Посмотреть университеты{% elif lang == 'tr' %}Üniversiteleri gör{% else %}View Universities{% endif %}
 					</a>
 				</div>
 			</div>
 		</section>
 
-
-
-
-		
-			<!-- Modal Overlay -->
-			<div id="modalOverlay"
-				class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 hidden transition-opacity duration-300">
-				<!-- Modal Container -->
-				<div class="flex items-center justify-center min-h-screen p-4">
-					<div id="modalContent"
-						class="bg-white rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-sm md:max-w-md mx-auto transform transition-all duration-300 scale-95 opacity-0 max-h-[90vh] overflow-y-auto">
-
-						<!-- Modal Header -->
-						<div class="flex items-center justify-between p-4 md:p-6 pb-3 md:pb-4 border-b border-gray-100">
-							<h2 class="text-lg md:text-2xl font-bold text-gray-900">
-								{% if lang == 'uz' %}Uchrashuv so'rash{% elif lang == 'ru' %}Запрос на встречу{% else %}Request a meeting{% endif %}
-							</h2>
-							<button onclick="closeModal()"
-								class="text-gray-400 hover:text-gray-600 transition-colors duration-200 p-1">
-								<svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor"
-									viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-										d="M6 18L18 6M6 6l12 12"></path>
-								</svg>
-							</button>
-						</div>
-
-						<!-- Modal Form -->
-						<form class="p-4 md:p-6 pt-4 md:pt-4 space-y-4">
-							<!-- Name Fields -->
-							<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-								<div class="relative">
-									<div
-										class="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-										<svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor"
-											viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-												d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
-											</path>
-										</svg>
-									</div>
-									<input type="text" placeholder="{% if lang == 'uz' %}Ism{% elif lang == 'ru' %}Имя{% else %}First Name{% endif %}"
-										class="w-full pl-10 md:pl-12 pr-3 md:pr-4 py-3 md:py-4 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200 text-sm md:text-base">
-								</div>
-								<div class="relative">
-									<div
-										class="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-										<svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor"
-											viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-												d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
-											</path>
-										</svg>
-									</div>
-									<input type="text" placeholder="{% if lang == 'uz' %}Familiya{% elif lang == 'ru' %}Фамилия{% else %}Last Name{% endif %}"
-										class="w-full pl-10 md:pl-12 pr-3 md:pr-4 py-3 md:py-4 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200 text-sm md:text-base">
-								</div>
-							</div>
-
-							<!-- Gender Selection -->
-							<div class="border border-gray-300 rounded-full p-3 md:p-4">
-								<div
-									class="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-6">
-									<span class="text-gray-600 font-medium text-sm md:text-base">
-										{% if lang == 'uz' %}Jins{% elif lang == 'ru' %}Пол{% else %}Gender{% endif %}
-									</span>
-									<div class="flex items-center space-x-4">
-										<label class="flex items-center space-x-2 cursor-pointer">
-											<input type="radio" name="gender" value="male"
-												class="text-yellow-400 focus:ring-yellow-400 w-4 h-4">
-											<span class="text-gray-700 text-sm md:text-base">
-												{% if lang == 'uz' %}Erkak{% elif lang == 'ru' %}Мужской{% else %}Male{% endif %}
-											</span>
-										</label>
-										<label class="flex items-center space-x-2 cursor-pointer">
-											<input type="radio" name="gender" value="female"
-												class="text-yellow-400 focus:ring-yellow-400 w-4 h-4">
-											<span class="text-gray-700 text-sm md:text-base">
-												{% if lang == 'uz' %}Ayol{% elif lang == 'ru' %}Женский{% else %}Female{% endif %}
-											</span>
-										</label>
-									</div>
-								</div>
-							</div>
-
-							<!-- Country Dropdown -->
-							<div class="relative">
-								<div class="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-									<svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor"
-										viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-										</path>
-									</svg>
-								</div>
-								<select
-									class="w-full pl-10 md:pl-12 pr-10 md:pr-12 py-3 md:py-4 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200 appearance-none bg-white text-sm md:text-base">
-									<option value="">
-										{% if lang == 'uz' %}Yashash mamlakati{% elif lang == 'ru' %}Страна проживания{% else %}Country of residence{% endif %}
-									</option>
-									<option value="uz">O'zbekiston</option>
-									<option value="kz">Qozog'iston</option>
-									<option value="kg">Qirg'iziston</option>
-									<option value="tj">Tojikiston</option>
-									<option value="tm">Turkmaniston</option>
-									<option value="ru">Rossiya</option>
-									<option value="other">
-										{% if lang == 'uz' %}Boshqa{% elif lang == 'ru' %}Другое{% else %}Other{% endif %}
-									</option>
-								</select>
-								<div
-									class="absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none">
-									<svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor"
-										viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M19 9l-7 7-7-7"></path>
-									</svg>
-								</div>
-							</div>
-
-							<!-- Help Dropdown -->
-							<div class="relative">
-								<div class="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-									<svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor"
-										viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-										</path>
-									</svg>
-								</div>
-								<select
-									class="w-full pl-10 md:pl-12 pr-10 md:pr-12 py-3 md:py-4 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200 appearance-none bg-white text-sm md:text-base">
-									<option value="">
-										{% if lang == 'uz' %}Sizga qanday yordam bera olamiz?{% elif lang == 'ru' %}Как мы можем вам помочь?{% else %}How can we help you?{% endif %}
-									</option>
-									<option value="university-admission">
-										{% if lang == 'uz' %}Universitetga qabul{% elif lang == 'ru' %}Поступление в университет{% else %}University admission{% endif %}
-									</option>
-									<option value="study-abroad">
-										{% if lang == 'uz' %}Chet elda o'qish dasturlari{% elif lang == 'ru' %}Программы обучения за рубежом{% else %}Study abroad programs{% endif %}
-									</option>
-									<option value="scholarship">
-										{% if lang == 'uz' %}Grant va chegirmalar{% elif lang == 'ru' %}Гранты и скидки{% else %}Scholarships and discounts{% endif %}
-									</option>
-									<option value="career-counseling">
-										{% if lang == 'uz' %}Kasb yo'nalishi bo'yicha maslahat{% elif lang == 'ru' %}Консультация по выбору профессии{% else %}Career counseling{% endif %}
-									</option>
-									<option value="legal-support">
-										{% if lang == 'uz' %}Huquqiy yordam{% elif lang == 'ru' %}Правовая помощь{% else %}Legal support{% endif %}
-									</option>
-									<option value="other">
-										{% if lang == 'uz' %}Boshqa xizmatlar{% elif lang == 'ru' %}Другие услуги{% else %}Other services{% endif %}
-									</option>
-								</select>
-								<div
-									class="absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none">
-									<svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor"
-										viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M19 9l-7 7-7-7"></path>
-									</svg>
-								</div>
-							</div>
-
-							<!-- Phone Input -->
-							<div class="relative">
-								<div
-									class="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
-									<div class="w-4 h-3 md:w-6 md:h-4 bg-green-500 rounded-sm"></div>
-									<span class="text-xs md:text-sm text-gray-600">+</span>
-								</div>
-								<input type="tel" placeholder="{% if lang == 'uz' %}Telefon raqam{% elif lang == 'ru' %}Номер телефона{% else %}Phone number{% endif %}"
-									class="w-full pl-12 md:pl-16 pr-3 md:pr-4 py-3 md:py-4 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200 text-sm md:text-base">
-							</div>
-
-							<!-- Submit Button -->
-							<button type="submit"
-								class="w-full bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-white py-3 md:py-4 rounded-full font-semibold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mt-4 md:mt-6">
-								{% if lang == 'uz' %}Yuborish{% elif lang == 'ru' %}Отправить{% else %}Submit{% endif %}
-							</button>
-						</form>
-					</div>
-				</div>
-
-				<!-- Right Side - Image -->
-				<div class="order-1 lg:order-2 relative">
-					<div class="relative">
-						<!-- Main Image Container -->
-						<div
-							class="rounded-bl-[100px] md:rounded-bl-[100px] lg:rounded-bl-[150px] rounded-tr-[100px] md:rounded-tr-[100px] lg:rounded-tr-[150px] overflow-hidden rounded-2xl">
-							<div class="relative z-10">
-								<div class="w-full h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[32rem] shadow-xl rounded-bl-3xl bg-cover bg-center"
-									style="background-image: linear-gradient(to top, #003262, transparent), url('https://img.freepik.com/premium-photo/overjoyed-bearded-man-winner-holding-laptop-looking-camera-isolated-blue-background_695242-21509.jpg');">
-								</div>
-							</div>
-						</div>
-
-						<!-- Decorative Circles - Smaller on mobile -->
-						<div
-							class="absolute -z-10 -top-2 md:-top-4 lg:-top-8 -left-2 md:-left-4 lg:-left-8 w-8 h-8 md:w-16 md:h-16 lg:w-32 lg:h-32 bg-yellow-400/20 rounded-full blur-xl md:blur-2xl">
-						</div>
-						<div
-							class="absolute -z-10 -bottom-2 md:-bottom-4 lg:-bottom-8 -right-2 md:-right-4 lg:-right-8 w-10 h-10 md:w-20 md:h-20 lg:w-40 lg:h-40 bg-blue-600/15 rounded-full blur-xl md:blur-2xl">
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-		</section>
-
-
-
-
-		</section>
 		
 		<!-- Team Section -->
 		<section class="py-20 bg-white">

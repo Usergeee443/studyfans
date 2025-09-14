@@ -58,21 +58,176 @@
 		}
 
 		@keyframes bounce-slow {
-
-			0%,
-			20%,
-			50%,
-			80%,
-			100% {
+			0%, 20%, 50%, 80%, 100% {
 				transform: translateY(0);
 			}
-
 			40% {
 				transform: translateY(-10px);
 			}
-
 			60% {
 				transform: translateY(-5px);
+			}
+		}
+
+		@keyframes pulse {
+			0% {
+				transform: scale(1);
+			}
+			50% {
+				transform: scale(1.05);
+			}
+			100% {
+				transform: scale(1);
+			}
+		}
+
+		@keyframes rotate {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes float {
+			0%, 100% {
+				transform: translateY(0px);
+			}
+			50% {
+				transform: translateY(-10px);
+			}
+		}
+
+		@keyframes glow {
+			0%, 100% {
+				box-shadow: 0 0 5px rgba(255, 144, 21, 0.5);
+			}
+			50% {
+				box-shadow: 0 0 20px rgba(255, 144, 21, 0.8), 0 0 30px rgba(255, 144, 21, 0.6);
+			}
+		}
+
+		@keyframes shake {
+			0%, 100% {
+				transform: translateX(0);
+			}
+			25% {
+				transform: translateX(-5px);
+			}
+			75% {
+				transform: translateX(5px);
+			}
+		}
+
+		@keyframes slide-in-left-continuous {
+			0% {
+				transform: translateX(-100%);
+			}
+			100% {
+				transform: translateX(100vw);
+			}
+		}
+
+		@keyframes slide-in-right-continuous {
+			0% {
+				transform: translateX(100%);
+			}
+			100% {
+				transform: translateX(-100vw);
+			}
+		}
+
+		@keyframes gentle-bounce {
+			0%, 100% {
+				transform: translateY(0px);
+			}
+			50% {
+				transform: translateY(-8px);
+			}
+		}
+
+		@keyframes gentle-rotate {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes gentle-scale {
+			0%, 100% {
+				transform: scale(1);
+			}
+			50% {
+				transform: scale(1.05);
+			}
+		}
+
+		@keyframes gentle-glow {
+			0%, 100% {
+				box-shadow: 0 0 5px rgba(255, 144, 21, 0.3);
+			}
+			50% {
+				box-shadow: 0 0 20px rgba(255, 144, 21, 0.6);
+			}
+		}
+
+		@keyframes wave {
+			0%, 100% {
+				transform: translateY(0px);
+			}
+			25% {
+				transform: translateY(-5px);
+			}
+			75% {
+				transform: translateY(5px);
+			}
+		}
+
+		@keyframes scroll-left {
+			0% {
+				transform: translateX(0);
+			}
+			100% {
+				transform: translateX(-50%);
+			}
+		}
+
+		@keyframes scroll-right {
+			0% {
+				transform: translateX(-50%);
+			}
+			100% {
+				transform: translateX(0);
+			}
+		}
+		
+		@keyframes scroll-up {
+			0% {
+				transform: translateY(0%);
+			}
+			100% {
+				transform: translateY(-50%);
+			}
+		}
+		
+		@keyframes scroll-down {
+			0% {
+				transform: translateY(-50%);
+			}
+			100% {
+				transform: translateY(0%);
+			}
+		}
+		
+		@keyframes scroll-horizontal {
+			0% {
+				transform: translateX(0%);
+			}
+			100% {
+				transform: translateX(-50%);
 			}
 		}
 
@@ -94,6 +249,123 @@
 
 		.animate-bounce-slow {
 			animation: bounce-slow 3s infinite;
+		}
+
+		.animate-pulse {
+			animation: pulse 2s infinite;
+		}
+
+		.animate-rotate {
+			animation: rotate 3s linear infinite;
+		}
+
+		.animate-float {
+			animation: float 3s ease-in-out infinite;
+		}
+
+		.animate-glow {
+			animation: glow 2s ease-in-out infinite;
+		}
+
+		.animate-shake {
+			animation: shake 0.5s ease-in-out;
+		}
+
+		.animate-scroll-left {
+			animation: scroll-left 30s linear infinite;
+		}
+		
+		.animate-scroll-right {
+			animation: scroll-right 30s linear infinite;
+		}
+		
+		.animate-scroll-down {
+			animation: scroll-down 30s linear infinite;
+		}
+		
+		.animate-scroll-up {
+			animation: scroll-up 30s linear infinite;
+		}
+		
+		.animate-scroll-horizontal {
+			animation: scroll-horizontal 20s linear infinite;
+		}
+		
+		.animation-delay-200 {
+			animation-delay: 0.2s;
+		}
+		
+		.animation-delay-400 {
+			animation-delay: 0.4s;
+		}
+		
+		.animation-delay-600 {
+			animation-delay: 0.6s;
+		}
+		
+		.animation-delay-800 {
+			animation-delay: 0.8s;
+		}
+
+
+		/* Icon hover effects */
+		.icon-hover {
+			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		.icon-hover:hover {
+			transform: scale(1.1) rotate(5deg);
+			color: #ff9015;
+		}
+
+		.icon-bounce:hover {
+			animation: bounce-slow 0.6s ease-in-out;
+		}
+
+		.icon-pulse:hover {
+			animation: pulse 1s ease-in-out;
+		}
+
+		.icon-float:hover {
+			animation: float 2s ease-in-out infinite;
+		}
+
+		/* Card hover effects */
+		.card-hover {
+			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		.card-hover:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+		}
+
+		/* Service card animations */
+		.service-card {
+			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		.service-card:hover {
+			transform: translateY(-8px);
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+		}
+
+		.service-icon {
+			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		.service-card:hover .service-icon {
+			transform: scale(1.1) rotate(5deg);
+		}
+
+		/* Success story animations */
+		.success-story-card {
+			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		.success-story-card:hover {
+			transform: translateY(-10px) scale(1.02);
+			box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 		}
 
 		.animation-delay-200 {
@@ -205,6 +477,12 @@
 							{% if request.endpoint != 'services' %}<div class="absolute inset-0 bg-[#ff9015] rounded-[1rem] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out shadow-xl"></div>{% endif %}
 						</a>
 
+						<a href="{{ url_for('success_stories') }}"
+							class="nav-link relative px-6 py-3 font-medium text-sm transition-all duration-300 group {% if request.endpoint == 'success_stories' %}text-[#003262] bg-[#ff9015] text-white rounded-[1rem] shadow-xl{% else %}text-gray-700 hover:text-white{% endif %}">
+							<span class="relative z-10" data-lang="nav.success_stories">{% if lang == 'uz' %}Muvaffaqiyat hikoyalari{% elif lang == 'ru' %}Истории успеха{% elif lang == 'tr' %}Başarı hikayeleri{% else %}Success Stories{% endif %}</span>
+							{% if request.endpoint != 'success_stories' %}<div class="absolute inset-0 bg-[#ff9015] rounded-[1rem] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out shadow-xl"></div>{% endif %}
+						</a>
+
 						<a href="{{ url_for('about') }}"
 							class="nav-link relative px-6 py-3 font-medium text-sm transition-all duration-300 group {% if request.endpoint == 'about' %}text-[#003262] bg-[#ff9015] text-white rounded-[1rem] shadow-xl{% else %}text-gray-700 hover:text-white{% endif %}">
 							<span class="relative z-10" data-lang="nav.about">{% if lang == 'uz' %}Biz haqimizda{% elif lang == 'ru' %}О нас{% elif lang == 'tr' %}Hakkımızda{% else %}About{% endif %}</span>
@@ -310,6 +588,13 @@
 					<i class="fas fa-cogs text-lg"></i>
 					<span class="relative z-10" data-lang="nav.services">{% if lang == 'uz' %}Xizmatlar{% elif lang == 'ru' %}Услуги{% elif lang == 'tr' %}Hizmetler{% else %}Services{% endif %}</span>
 					{% if request.endpoint != 'services' %}<div class="absolute inset-0 bg-[#ff9015] rounded-[1rem] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out shadow-xl"></div>{% endif %}
+				</a>
+
+				<a href="{{ url_for('success_stories') }}"
+					class="nav-link relative px-6 py-3 font-medium text-sm transition-all duration-300 group flex items-center space-x-4 {% if request.endpoint == 'success_stories' %}text-[#003262] bg-[#ff9015] text-white rounded-[1rem] shadow-xl{% else %}text-gray-700 hover:text-white{% endif %}">
+					<i class="fas fa-star text-lg"></i>
+					<span class="relative z-10" data-lang="nav.success_stories">{% if lang == 'uz' %}Muvaffaqiyat hikoyalari{% elif lang == 'ru' %}Истории успеха{% elif lang == 'tr' %}Başarı hikayeleri{% else %}Success Stories{% endif %}</span>
+					{% if request.endpoint != 'success_stories' %}<div class="absolute inset-0 bg-[#ff9015] rounded-[1rem] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out shadow-xl"></div>{% endif %}
 				</a>
 
 				<a href="{{ url_for('about') }}"
@@ -468,6 +753,9 @@
 						</a></li>
 						<li><a href="{{ url_for('services') }}" class="text-gray-400 hover:text-yellow-400 transition-colors duration-200">
 							{% if lang == 'uz' %}Xizmatlar{% elif lang == 'ru' %}Услуги{% else %}Services{% endif %}
+						</a></li>
+						<li><a href="{{ url_for('success_stories') }}" class="text-gray-400 hover:text-yellow-400 transition-colors duration-200">
+							{% if lang == 'uz' %}Muvaffaqiyat hikoyalari{% elif lang == 'ru' %}Истории успеха{% else %}Success Stories{% endif %}
 						</a></li>
 						<li><a href="{{ url_for('about') }}" class="text-gray-400 hover:text-yellow-400 transition-colors duration-200">
 							{% if lang == 'uz' %}Biz haqimizda{% elif lang == 'ru' %}О нас{% else %}About{% endif %}
