@@ -334,9 +334,20 @@
 				<!-- Mission & Vision -->
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
 					<!-- Mission -->
-					<div class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-[1.5rem] border border-blue-100 transition-all duration-500 hover:shadow-lg hover:scale-[1.02]" data-aos="fade-up" data-aos-delay="100">
-						<div class="w-16 h-16 bg-[#003262] rounded-2xl flex items-center justify-center mb-6">
-							<i class="fas fa-bullseye text-white text-2xl"></i>
+					<div class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-[1.5rem] border border-blue-100" data-aos="fade-up" data-aos-delay="100">
+						<div class="w-16 h-16 bg-gradient-to-br from-[#003262] via-blue-600 to-[#004AAD] rounded-2xl flex items-center justify-center mb-6 relative backdrop-blur-sm" style="box-shadow: 0 8px 32px rgba(0, 50, 98, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<!-- Liquid Glass Overlay -->
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-tl from-white/15 via-transparent to-white/5 opacity-60"></div>
+							<!-- 3D Colorful Target Icon -->
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<!-- Target Circles -->
+								<circle cx="12" cy="12" r="9" stroke="#FBBF24" stroke-width="2" opacity="0.9"/>
+								<circle cx="12" cy="12" r="6" stroke="#F59E0B" stroke-width="2" opacity="0.8"/>
+								<circle cx="12" cy="12" r="3" stroke="#EF4444" stroke-width="2" opacity="0.7"/>
+								<!-- Center dot -->
+								<circle cx="12" cy="12" r="1.5" fill="#DC2626"/>
+							</svg>
 						</div>
 						<h3 class="text-2xl font-bold text-[#003262] mb-4">
 							{% if lang == 'uz' %}Bizning maqsadimiz{% elif lang == 'ru' %}Наша миссия{% elif lang == 'tr' %}Misyonumuz{% else %}Our mission{% endif %}
@@ -355,12 +366,23 @@
 					</div>
 
 					<!-- Vision -->
-					<div class="bg-gradient-to-br from-orange-50 to-white p-8 rounded-[1.5rem] border border-orange-100 transition-all duration-500 hover:shadow-lg hover:scale-[1.02]" data-aos="fade-up" data-aos-delay="200">
-						<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6 ">
-							<i class="fas fa-eye text-white text-2xl"></i>
+					<div class="bg-gradient-to-br from-orange-50 to-white p-8 rounded-[1.5rem] border border-orange-100" data-aos="fade-up" data-aos-delay="200">
+						<div class="w-16 h-16 bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 rounded-2xl flex items-center justify-center mb-6 relative backdrop-blur-sm" style="box-shadow: 0 8px 32px rgba(255, 144, 21, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<!-- Liquid Glass Overlay -->
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-tl from-white/15 via-transparent to-white/5 opacity-60"></div>
+							<!-- 3D Colorful Vision Crystal Ball Icon -->
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<!-- Eye -->
+								<path d="M12 4.5C7.5 4.5 3.73 7.61 2 12c1.73 4.39 5.5 7.5 10 7.5s8.27-3.11 10-7.5c-1.73-4.39-5.5-7.5-10-7.5z" stroke="#1E40AF" stroke-width="2" fill="none"/>
+								<!-- Pupil -->
+								<circle cx="12" cy="12" r="3" stroke="#3B82F6" stroke-width="2" fill="none"/>
+								<!-- Inner circle -->
+								<circle cx="12" cy="12" r="1.5" fill="#60A5FA"/>
+							</svg>
 						</div>
 						<h3 class="text-2xl font-bold text-[#003262] mb-4">
-							{% if lang == 'uz' %}Bizning vizyonimiz{% elif lang == 'ru' %}Наше видение{% elif lang == 'tr' %}Vizyonumuz{% else %}Our vision{% endif %}
+							{% if lang == 'uz' %}Bizning missiyamiz{% elif lang == 'ru' %}Наше видение{% elif lang == 'tr' %}Vizyonumuz{% else %}Our vision{% endif %}
 						</h3>
 						<p class="text-gray-600 leading-relaxed">
 							{% if lang == 'uz' %}
@@ -398,8 +420,17 @@
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 					<!-- Professional Approach -->
 					<div class="text-center group" data-aos="fade-up" data-aos-delay="100">
-						<div class="w-20 h-20 bg-[#003262] rounded-full flex items-center justify-center mx-auto mb-6 ">
-							<i class="fas fa-user-tie text-white text-2xl"></i>
+						<div class="w-20 h-20 bg-gradient-to-br from-[#003262] via-blue-600 to-[#004AAD] rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(0, 50, 98, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<!-- Liquid Glass Overlay -->
+							<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<!-- 3D Professional Diamond Gem Icon -->
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<!-- User -->
+								<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								<!-- Head -->
+								<circle cx="12" cy="7" r="4" stroke="#FBBF24" stroke-width="2"/>
+							</svg>
 						</div>
 						<h4 class="text-xl font-bold text-[#003262] mb-4">
 							{% if lang == 'uz' %}Professional yondashuv{% elif lang == 'ru' %}Профессиональный подход{% elif lang == 'tr' %}Profesyonel yaklaşım{% else %}Professional approach{% endif %}
@@ -411,8 +442,19 @@
 
 					<!-- Experience -->
 					<div class="text-center group" data-aos="fade-up" data-aos-delay="200">
-						<div class="w-20 h-20 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 ">
-							<i class="fas fa-medal text-white text-2xl"></i>
+						<div class="w-20 h-20 bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(255, 144, 21, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<!-- Liquid Glass Overlay -->
+							<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<!-- Award Medal -->
+								<circle cx="12" cy="8" r="6" stroke="#FBBF24" stroke-width="2" fill="#FEF3C7"/>
+								<circle cx="12" cy="8" r="3" stroke="#F59E0B" stroke-width="2" fill="#FDE68A"/>
+								<!-- Star in center -->
+								<path d="M12 5 L13 7 L15 7 L13.5 8.5 L14 10.5 L12 9.5 L10 10.5 L10.5 8.5 L9 7 L11 7 Z" fill="#D97706"/>
+								<!-- Ribbon -->
+								<path d="M8 14 L8 22 L10 20 L12 22 L14 20 L16 22 L16 14" stroke="#EF4444" stroke-width="2" fill="#FEE2E2"/>
+							</svg>
 						</div>
 						<h4 class="text-xl font-bold text-[#003262] mb-4">
 							{% if lang == 'uz' %}Keng tajriba{% elif lang == 'ru' %}Обширный опыт{% elif lang == 'tr' %}Geniş deneyim{% else %}Extensive experience{% endif %}
@@ -424,8 +466,28 @@
 
 					<!-- Global Network -->
 					<div class="text-center group" data-aos="fade-up" data-aos-delay="300">
-						<div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 ">
-							<i class="fas fa-globe text-white text-2xl"></i>
+						<div class="w-20 h-20 bg-gradient-to-br from-blue-600 via-cyan-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<!-- Liquid Glass Overlay -->
+							<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<!-- Network Nodes -->
+								<circle cx="5" cy="5" r="2" fill="#10B981" stroke="#059669" stroke-width="1"/>
+								<circle cx="19" cy="5" r="2" fill="#10B981" stroke="#059669" stroke-width="1"/>
+								<circle cx="5" cy="19" r="2" fill="#10B981" stroke="#059669" stroke-width="1"/>
+								<circle cx="19" cy="19" r="2" fill="#10B981" stroke="#059669" stroke-width="1"/>
+								<circle cx="12" cy="12" r="3" fill="#34D399" stroke="#10B981" stroke-width="2"/>
+								<!-- Connection Lines -->
+								<path d="M7 5 L10 10" stroke="#059669" stroke-width="2" stroke-linecap="round"/>
+								<path d="M17 5 L14 10" stroke="#059669" stroke-width="2" stroke-linecap="round"/>
+								<path d="M7 19 L10 14" stroke="#059669" stroke-width="2" stroke-linecap="round"/>
+								<path d="M17 19 L14 14" stroke="#059669" stroke-width="2" stroke-linecap="round"/>
+								<!-- Center connections -->
+								<path d="M5 7 Q8 10 12 12" stroke="#047857" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+								<path d="M19 7 Q16 10 12 12" stroke="#047857" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+								<path d="M5 17 Q8 14 12 12" stroke="#047857" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+								<path d="M19 17 Q16 14 12 12" stroke="#047857" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+							</svg>
 						</div>
 						<h4 class="text-xl font-bold text-[#003262] mb-4">
 							{% if lang == 'uz' %}Global tarmoq{% elif lang == 'ru' %}Глобальная сеть{% elif lang == 'tr' %}Küresel ağ{% else %}Global network{% endif %}
@@ -501,8 +563,76 @@
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 					<!-- Service 1 -->
 					<div class="bg-white rounded-[1.5rem] p-8 shadow-lg border border-gray-100 service-card" data-aos="fade-up" data-aos-delay="100">
-						<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6 ">
-							<i class="fas fa-graduation-cap text-white text-2xl"></i>
+						<div class="w-16 h-16 bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 rounded-2xl flex items-center justify-center mb-6 relative backdrop-blur-sm" style="box-shadow: 0 8px 32px rgba(255, 144, 21, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<!-- Liquid Glass Overlay -->
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-tl from-white/15 via-transparent to-white/5 opacity-60"></div>
+							<!-- Minimalist Graduation Cap Icon -->
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<!-- Graduation Cap -->
+								<path d="M2 12l10-4 10 4-10 4-10-4z" stroke="#1E40AF" stroke-width="2" fill="#DBEAFE"/>
+								<path d="M6 14v4c0 1 2.5 2 6 2s6-1 6-2v-4" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+								<!-- Tassel -->
+								<path d="M18 10v2l-1 2" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+								<defs>
+									<radialGradient id="graduationGradient1" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#1E40AF"/>
+										<stop offset="30%" stop-color="#3B82F6"/>
+										<stop offset="70%" stop-color="#60A5FA"/>
+										<stop offset="100%" stop-color="#93C5FD"/>
+									</radialGradient>
+									<radialGradient id="graduationGradient2" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#1F2937"/>
+										<stop offset="50%" stop-color="#374151"/>
+										<stop offset="100%" stop-color="#4B5563"/>
+									</radialGradient>
+									<radialGradient id="tasselButton" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#FBBF24"/>
+										<stop offset="100%" stop-color="#D97706"/>
+									</radialGradient>
+									<radialGradient id="tasselGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#FACC15"/>
+										<stop offset="100%" stop-color="#EAB308"/>
+									</radialGradient>
+									<radialGradient id="diplomaGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#FEF3C7"/>
+										<stop offset="50%" stop-color="#FDE68A"/>
+										<stop offset="100%" stop-color="#F59E0B"/>
+									</radialGradient>
+									<radialGradient id="sealGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#DC2626"/>
+										<stop offset="100%" stop-color="#991B1B"/>
+									</radialGradient>
+									<radialGradient id="sparkleEducation" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#FFFFFF"/>
+										<stop offset="100%" stop-color="#FBBF24"/>
+									</radialGradient>
+									<linearGradient id="graduationStroke1" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(59, 130, 246, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(30, 64, 175, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="graduationStroke2" x1="0" y1="0" x2="0" y2="1">
+										<stop offset="0%" stop-color="rgba(75, 85, 99, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(31, 41, 55, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="tasselStroke" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(217, 119, 6, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(180, 83, 9, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="tasselStringStroke" x1="0" y1="0" x2="0" y2="1">
+										<stop offset="0%" stop-color="rgba(234, 179, 8, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(202, 138, 4, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="boardLineGrad" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(255, 255, 255, 0.6)"/>
+										<stop offset="100%" stop-color="rgba(209, 213, 219, 0.4)"/>
+									</linearGradient>
+									<linearGradient id="diplomaStroke" x1="0" y1="0" x2="0" y2="1">
+										<stop offset="0%" stop-color="rgba(245, 158, 11, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(217, 119, 6, 0.6)"/>
+									</linearGradient>
+								</defs>
+							</svg>
 						</div>
 						<h3 class="text-xl font-bold text-gray-900 mb-4">
 							{% if lang == 'uz' %}Ta'lim konsaltingi{% elif lang == 'ru' %}Образовательное консультирование{% elif lang == 'tr' %}Eğitim danışmanlığı{% else %}Educational consulting{% endif %}
@@ -524,8 +654,59 @@
 
 					<!-- Service 2 -->
 					<div class="bg-white rounded-[1.5rem] p-8 shadow-lg border border-gray-100 service-card" data-aos="fade-up" data-aos-delay="200">
-						<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6 ">
-							<i class="fas fa-file-alt text-white text-2xl"></i>
+						<div class="w-16 h-16 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(79, 70, 229, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<!-- Liquid Glass Overlay -->
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<!-- Document -->
+								<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="#3B82F6" stroke-width="2" fill="#DBEAFE"/>
+								<path d="M14 2v6h6" stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								<!-- Text lines -->
+								<path d="M8 13h8" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/>
+								<path d="M8 17h6" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/>
+								<defs>
+									<radialGradient id="docGradient1" cx="0.3" cy="0.2" r="1">
+										<stop offset="0%" stop-color="#FFFFFF"/>
+										<stop offset="30%" stop-color="#F8FAFC"/>
+										<stop offset="70%" stop-color="#E2E8F0"/>
+										<stop offset="100%" stop-color="#CBD5E1"/>
+									</radialGradient>
+									<radialGradient id="foldGradient" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#E2E8F0"/>
+										<stop offset="100%" stop-color="#94A3B8"/>
+									</radialGradient>
+									<radialGradient id="textGrad" cx="0" cy="0.5" r="1">
+										<stop offset="0%" stop-color="#1E40AF"/>
+										<stop offset="100%" stop-color="#3B82F6"/>
+									</radialGradient>
+									<radialGradient id="stampTextGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#10B981"/>
+										<stop offset="100%" stop-color="#059669"/>
+									</radialGradient>
+									<radialGradient id="shineGrad" cx="0" cy="0" r="1">
+										<stop offset="0%" stop-color="rgba(255, 255, 255, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(255, 255, 255, 0.1)"/>
+									</radialGradient>
+									<linearGradient id="docStroke1" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(203, 213, 225, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(148, 163, 184, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="foldStroke" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(148, 163, 184, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(100, 116, 139, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="signatureGrad" x1="0" y1="0" x2="1" y2="0">
+										<stop offset="0%" stop-color="#8B5CF6"/>
+										<stop offset="50%" stop-color="#6366F1"/>
+										<stop offset="100%" stop-color="#3B82F6"/>
+									</linearGradient>
+									<linearGradient id="stampGrad" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(16, 185, 129, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(5, 150, 105, 0.6)"/>
+									</linearGradient>
+								</defs>
+							</svg>
 						</div>
 						<h3 class="text-xl font-bold text-gray-900 mb-4">
 							{% if lang == 'uz' %}Hujjatlar tayyorlash{% elif lang == 'ru' %}Подготовка документов{% elif lang == 'tr' %}Belge hazırlama{% else %}Document preparation{% endif %}
@@ -547,8 +728,69 @@
 
 					<!-- Service 3 -->
 					<div class="bg-white rounded-[1.5rem] p-8 shadow-lg border border-gray-100 service-card" data-aos="fade-up" data-aos-delay="300">
-						<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6 ">
-							<i class="fas fa-home text-white text-2xl"></i>
+						<div class="w-16 h-16 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 rounded-2xl flex items-center justify-center mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(5, 150, 105, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<!-- Liquid Glass Overlay -->
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<!-- Home -->
+								<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m0-11l6 0m-6 11l6 0m0-11v11a1 1 0 001 1h3a1 1 0 001-1v-10" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#D1FAE5"/>
+								<!-- Door -->
+								<path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								<defs>
+									<radialGradient id="houseGradient1" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#FEF3C7"/>
+										<stop offset="30%" stop-color="#FDE68A"/>
+										<stop offset="70%" stop-color="#F59E0B"/>
+										<stop offset="100%" stop-color="#D97706"/>
+									</radialGradient>
+									<radialGradient id="roofFillGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#EF4444"/>
+										<stop offset="50%" stop-color="#DC2626"/>
+										<stop offset="100%" stop-color="#B91C1C"/>
+									</radialGradient>
+									<radialGradient id="doorGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#92400E"/>
+										<stop offset="100%" stop-color="#78350F"/>
+									</radialGradient>
+									<radialGradient id="windowGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#DBEAFE"/>
+										<stop offset="100%" stop-color="#93C5FD"/>
+									</radialGradient>
+									<radialGradient id="chimneyGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#6B7280"/>
+										<stop offset="100%" stop-color="#4B5563"/>
+									</radialGradient>
+									<radialGradient id="grassGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#34D399"/>
+										<stop offset="100%" stop-color="#10B981"/>
+									</radialGradient>
+									<linearGradient id="houseStroke1" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(217, 119, 6, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(180, 83, 9, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="roofGrad" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="#EF4444"/>
+										<stop offset="100%" stop-color="#B91C1C"/>
+									</linearGradient>
+									<linearGradient id="doorStroke" x1="0" y1="0" x2="0" y2="1">
+										<stop offset="0%" stop-color="rgba(120, 53, 15, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(92, 40, 14, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="windowStroke" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(147, 197, 253, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(59, 130, 246, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="chimneyStroke" x1="0" y1="0" x2="0" y2="1">
+										<stop offset="0%" stop-color="rgba(75, 85, 99, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(55, 65, 81, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="homeAuraGrad" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(16, 185, 129, 0.6)"/>
+										<stop offset="100%" stop-color="rgba(5, 150, 105, 0.3)"/>
+									</linearGradient>
+								</defs>
+							</svg>
 						</div>
 						<h3 class="text-xl font-bold text-gray-900 mb-4">
 							{% if lang == 'uz' %}Yashash joyi{% elif lang == 'ru' %}Жилье{% elif lang == 'tr' %}Konaklama{% else %}Accommodation{% endif %}
@@ -594,8 +836,43 @@
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 					<!-- Feature 1 -->
 					<div class="text-center" data-aos="fade-up" data-aos-delay="100">
-						<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center mx-auto mb-6 ">
-							<i class="fas fa-clock text-white text-2xl"></i>
+						<div class="w-20 h-20 bg-gradient-to-br from-[#ff9015] via-orange-500 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(255, 144, 21, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<!-- Liquid Glass Overlay -->
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<!-- Lightning -->
+								<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#F59E0B" stroke-width="2" fill="#FEF3C7" stroke-linejoin="round"/>
+								<defs>
+									<radialGradient id="lightningGradient1" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#FDE047"/>
+										<stop offset="30%" stop-color="#FACC15"/>
+										<stop offset="70%" stop-color="#EAB308"/>
+										<stop offset="100%" stop-color="#CA8A04"/>
+									</radialGradient>
+									<radialGradient id="lightningGradient2" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#FFFFFF"/>
+										<stop offset="50%" stop-color="#FEF3C7"/>
+										<stop offset="100%" stop-color="#FDE047"/>
+									</radialGradient>
+									<radialGradient id="sparkleSpeed" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#FFFFFF"/>
+										<stop offset="100%" stop-color="#FBBF24"/>
+									</radialGradient>
+									<linearGradient id="lightningStroke1" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(234, 179, 8, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(202, 138, 4, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="lightningStroke2" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(253, 224, 71, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(250, 204, 21, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="speedLineGrad" x1="0" y1="0" x2="1" y2="0">
+										<stop offset="0%" stop-color="#F59E0B"/>
+										<stop offset="100%" stop-color="#FBBF24"/>
+									</linearGradient>
+								</defs>
+							</svg>
 						</div>
 						<h3 class="text-xl font-bold text-gray-900 mb-4">
 							{% if lang == 'uz' %}Tez Natija{% elif lang == 'ru' %}Быстрый результат{% elif lang == 'tr' %}Hızlı Sonuç{% else %}Quick Results{% endif %}
@@ -607,8 +884,57 @@
 
 					<!-- Feature 2 -->
 					<div class="text-center" data-aos="fade-up" data-aos-delay="200">
-						<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center mx-auto mb-6 ">
-							<i class="fas fa-shield-alt text-white text-2xl"></i>
+						<div class="w-20 h-20 bg-gradient-to-br from-green-600 via-emerald-600 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(5, 150, 105, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<!-- Liquid Glass Overlay -->
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<!-- Shield -->
+								<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#10B981" stroke-width="2" fill="#D1FAE5"/>
+								<!-- Check mark -->
+								<path d="m9 12 2 2 4-4" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								<defs>
+									<radialGradient id="shieldGradient1" cx="0.3" cy="0.2" r="1">
+										<stop offset="0%" stop-color="#10B981"/>
+										<stop offset="30%" stop-color="#059669"/>
+										<stop offset="70%" stop-color="#047857"/>
+										<stop offset="100%" stop-color="#065F46"/>
+									</radialGradient>
+									<radialGradient id="shieldGradient2" cx="0.3" cy="0.2" r="1">
+										<stop offset="0%" stop-color="#34D399"/>
+										<stop offset="50%" stop-color="#10B981"/>
+										<stop offset="100%" stop-color="#059669"/>
+									</radialGradient>
+									<radialGradient id="lockGradient" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#FBBF24"/>
+										<stop offset="100%" stop-color="#D97706"/>
+									</radialGradient>
+									<radialGradient id="keyholeGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#1F2937"/>
+										<stop offset="100%" stop-color="#111827"/>
+									</radialGradient>
+									<radialGradient id="securityDot" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#FFFFFF"/>
+										<stop offset="100%" stop-color="#D1FAE5"/>
+									</radialGradient>
+									<linearGradient id="shieldStroke1" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(5, 150, 105, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(6, 95, 70, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="shieldStroke2" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(16, 185, 129, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(5, 150, 105, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="lockStroke" x1="0" y1="0" x2="0" y2="1">
+										<stop offset="0%" stop-color="rgba(217, 119, 6, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(180, 83, 9, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="auraGrad" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(52, 211, 153, 0.4)"/>
+										<stop offset="100%" stop-color="rgba(16, 185, 129, 0.2)"/>
+									</linearGradient>
+								</defs>
+							</svg>
 						</div>
 						<h3 class="text-xl font-bold text-gray-900 mb-4">
 							{% if lang == 'uz' %}Xavfsizlik{% elif lang == 'ru' %}Безопасность{% elif lang == 'tr' %}Güvenlik{% else %}Security{% endif %}
@@ -620,8 +946,69 @@
 
 					<!-- Feature 3 -->
 					<div class="text-center" data-aos="fade-up" data-aos-delay="300">
-						<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center mx-auto mb-6 ">
-							<i class="fas fa-headset text-white text-2xl"></i>
+						<div class="w-20 h-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(79, 70, 229, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<!-- Liquid Glass Overlay -->
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<!-- Headphones -->
+								<path d="M3 18v-6a9 9 0 0 1 18 0v6" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								<path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" stroke="#7C3AED" stroke-width="2" fill="#E9D5FF"/>
+								<path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" stroke="#7C3AED" stroke-width="2" fill="#E9D5FF"/>
+								<defs>
+									<radialGradient id="supportEarGrad1" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#8B5CF6"/>
+										<stop offset="50%" stop-color="#7C3AED"/>
+										<stop offset="100%" stop-color="#6D28D9"/>
+									</radialGradient>
+									<radialGradient id="supportEarGrad2" cx="0.7" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#3B82F6"/>
+										<stop offset="50%" stop-color="#2563EB"/>
+										<stop offset="100%" stop-color="#1D4ED8"/>
+									</radialGradient>
+									<radialGradient id="supportSpeakerGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#1F2937"/>
+										<stop offset="100%" stop-color="#111827"/>
+									</radialGradient>
+									<radialGradient id="supportMicTipGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#EF4444"/>
+										<stop offset="100%" stop-color="#DC2626"/>
+									</radialGradient>
+									<radialGradient id="supportBadgeGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#10B981"/>
+										<stop offset="100%" stop-color="#059669"/>
+									</radialGradient>
+									<linearGradient id="supportHeadbandGrad" x1="0" y1="0" x2="1" y2="0">
+										<stop offset="0%" stop-color="#8B5CF6"/>
+										<stop offset="50%" stop-color="#6366F1"/>
+										<stop offset="100%" stop-color="#3B82F6"/>
+									</linearGradient>
+									<linearGradient id="supportMicGrad" x1="0" y1="0" x2="0" y2="1">
+										<stop offset="0%" stop-color="#6B7280"/>
+										<stop offset="100%" stop-color="#374151"/>
+									</linearGradient>
+									<linearGradient id="supportWaveGrad" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(99, 102, 241, 0.6)"/>
+										<stop offset="100%" stop-color="rgba(59, 130, 246, 0.3)"/>
+									</linearGradient>
+									<linearGradient id="supportEarStroke1" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(124, 58, 237, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(109, 40, 217, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="supportEarStroke2" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(37, 99, 235, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(29, 78, 216, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="supportMicStroke" x1="0" y1="0" x2="0" y2="1">
+										<stop offset="0%" stop-color="rgba(220, 38, 38, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(185, 28, 28, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="supportBadgeStroke" x1="0" y1="0" x2="0" y2="1">
+										<stop offset="0%" stop-color="rgba(5, 150, 105, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(4, 120, 87, 0.6)"/>
+									</linearGradient>
+								</defs>
+							</svg>
 						</div>
 						<h3 class="text-xl font-bold text-gray-900 mb-4">
 							{% if lang == 'uz' %}24/7 Yordam{% elif lang == 'ru' %}Помощь 24/7{% elif lang == 'tr' %}7/24 Yardım{% else %}24/7 Support{% endif %}
@@ -633,8 +1020,56 @@
 
 					<!-- Feature 4 -->
 					<div class="text-center" data-aos="fade-up" data-aos-delay="400">
-						<div class="w-20 h-20 bg-[#ff9015] rounded-2xl flex items-center justify-center mx-auto mb-6 ">
-							<i class="fas fa-award text-white text-2xl"></i>
+						<div class="w-20 h-20 bg-gradient-to-br from-yellow-500 via-amber-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(245, 158, 11, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<!-- Liquid Glass Overlay -->
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<!-- Badge -->
+								<circle cx="12" cy="12" r="9" stroke="#F59E0B" stroke-width="2" fill="#FEF3C7"/>
+								<!-- Checkmark -->
+								<path d="m9 12 2 2 4-4" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								<!-- Ribbon -->
+								<path d="M12 2v4l2-1 2 1V2z" stroke="#EAB308" stroke-width="2" fill="#FDE047"/>
+								<defs>
+									<radialGradient id="guaranteeBadgeCircleGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#FDE047"/>
+										<stop offset="30%" stop-color="#FACC15"/>
+										<stop offset="70%" stop-color="#EAB308"/>
+										<stop offset="100%" stop-color="#CA8A04"/>
+									</radialGradient>
+									<radialGradient id="guaranteeInnerBadgeGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#F59E0B"/>
+										<stop offset="50%" stop-color="#D97706"/>
+										<stop offset="100%" stop-color="#B45309"/>
+									</radialGradient>
+									<radialGradient id="guaranteeRibbonGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#EF4444"/>
+										<stop offset="50%" stop-color="#DC2626"/>
+										<stop offset="100%" stop-color="#B91C1C"/>
+									</radialGradient>
+									<radialGradient id="guaranteeStarGrad" cx="0.3" cy="0.3" r="1">
+										<stop offset="0%" stop-color="#FFFFFF"/>
+										<stop offset="100%" stop-color="#FEF3C7"/>
+									</radialGradient>
+									<linearGradient id="guaranteeBadgeStroke" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(234, 179, 8, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(202, 138, 4, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="guaranteeInnerStroke" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(217, 119, 6, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(180, 83, 9, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="guaranteeRibbonStroke" x1="0" y1="0" x2="0" y2="1">
+										<stop offset="0%" stop-color="rgba(220, 38, 38, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(185, 28, 28, 0.6)"/>
+									</linearGradient>
+									<linearGradient id="guaranteeStarStroke" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0%" stop-color="rgba(254, 243, 199, 0.8)"/>
+										<stop offset="100%" stop-color="rgba(253, 230, 138, 0.6)"/>
+									</linearGradient>
+								</defs>
+							</svg>
 						</div>
 						<h3 class="text-xl font-bold text-gray-900 mb-4">
 							{% if lang == 'uz' %}Kafolat{% elif lang == 'ru' %}Гарантия{% elif lang == 'tr' %}Garanti{% else %}Guarantee{% endif %}
@@ -673,7 +1108,8 @@
 					</p>
 				</div>
 
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<!-- Desktop: Grid Layout -->
+				<div class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 					<!-- Story 1 -->
 					<div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 success-story-card border border-blue-100" data-aos="fade-up" data-aos-delay="100">
 						<div class="flex items-center mb-6">
@@ -810,6 +1246,166 @@
 							<i class="fas fa-star  animation-delay-600"></i>
 							<i class="fas fa-star  animation-delay-800"></i>
 						</div>
+					</div>
+				</div>
+
+				<!-- Mobile: Swiper Layout -->
+				<div class="md:hidden px-4">
+					<div class="swiper successStoriesSwiper">
+						<div class="swiper-wrapper">
+							<!-- Story 1 -->
+							<div class="swiper-slide">
+								<div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 success-story-card border border-blue-100">
+									<div class="flex items-center mb-4">
+										<div class="w-12 h-12 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mr-3">
+											<span class="text-white font-bold text-lg">A</span>
+										</div>
+										<div>
+											<h4 class="text-base font-bold text-gray-900">Aziza Karimova</h4>
+											<p class="text-gray-600 text-xs">Istanbul Universiteti</p>
+										</div>
+									</div>
+									<p class="text-gray-600 mb-4 italic text-sm">
+										{% if lang == 'uz' %}"StudyFans orqali Turkiyada o'qish orzuim amalga oshdi. Professional yordam bilan hamma jarayon oson bo'ldi."{% elif lang == 'ru' %}"С помощью StudyFans моя мечта об учебе в Турции осуществилась. С профессиональной помощью весь процесс прошел легко."{% elif lang == 'tr' %}"StudyFans sayesinde Türkiye'de okuma hayalim gerçekleşti. Profesyonel yardımla her şey kolay oldu."{% else %}"Through StudyFans, my dream of studying in Turkey came true. With professional help, everything was easy."{% endif %}
+									</p>
+									<div class="flex text-[#ff9015] text-base">
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+									</div>
+								</div>
+							</div>
+
+							<!-- Story 2 -->
+							<div class="swiper-slide">
+								<div class="bg-gradient-to-br from-orange-50 to-white rounded-2xl p-6 success-story-card border border-orange-100 ">
+									<div class="flex items-center mb-4">
+										<div class="w-12 h-12 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mr-3">
+											<span class="text-white font-bold text-lg">D</span>
+										</div>
+										<div>
+											<h4 class="text-base font-bold text-gray-900">Davron Abdullayev</h4>
+											<p class="text-gray-600 text-xs">Kipr Universiteti</p>
+										</div>
+									</div>
+									<p class="text-gray-600 mb-4 italic text-sm">
+										{% if lang == 'uz' %}"40% chegirma olishga yordam berishdi. Endi Kiprda o'qiyapman va juda baxtliman."{% elif lang == 'ru' %}"Помогли получить скидку 40%. Теперь учусь на Кипре и очень счастлив."{% elif lang == 'tr' %}"%40 indirim almama yardım ettiler. Şimdi Kıbrıs'ta okuyorum ve çok mutluyum."{% else %}"They helped me get a 40% discount. Now I'm studying in Cyprus and very happy."{% endif %}
+									</p>
+									<div class="flex text-[#ff9015] text-base">
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+									</div>
+								</div>
+							</div>
+
+							<!-- Story 3 -->
+							<div class="swiper-slide">
+								<div class="bg-gradient-to-br from-green-50 to-white rounded-2xl p-6 success-story-card border border-green-100 ">
+									<div class="flex items-center mb-4">
+										<div class="w-12 h-12 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mr-3">
+											<span class="text-white font-bold text-lg">N</span>
+										</div>
+										<div>
+											<h4 class="text-base font-bold text-gray-900">Nilufar Toshmatova</h4>
+											<p class="text-gray-600 text-xs">Gruziya Universiteti</p>
+										</div>
+									</div>
+									<p class="text-gray-600 mb-4 italic text-sm">
+										{% if lang == 'uz' %}"Viza olishdan tortib, yashash joyini topishgacha hamma narsada yordam berishdi."{% elif lang == 'ru' %}"Помогали во всем - от получения визы до поиска жилья."{% elif lang == 'tr' %}"Vize almaktan konaklama bulmaya kadar her şeyde yardım ettiler."{% else %}"They helped with everything from getting a visa to finding accommodation."{% endif %}
+									</p>
+									<div class="flex text-[#ff9015] text-base">
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+									</div>
+								</div>
+							</div>
+
+							<!-- Story 4 -->
+							<div class="swiper-slide">
+								<div class="bg-gradient-to-br from-purple-50 to-white rounded-2xl p-6 success-story-card border border-purple-100 ">
+									<div class="flex items-center mb-4">
+										<div class="w-12 h-12 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mr-3">
+											<span class="text-white font-bold text-lg">S</span>
+										</div>
+										<div>
+											<h4 class="text-base font-bold text-gray-900">Sardor Rahimov</h4>
+											<p class="text-gray-600 text-xs">Malayziya Universiteti</p>
+										</div>
+									</div>
+									<p class="text-gray-600 mb-4 italic text-sm">
+										{% if lang == 'uz' %}"IELTS imtihonini topshirishda yordam berishdi va 7.0 ball olishga erishdim. Malayziyada o'qish juda qiziq!"{% elif lang == 'ru' %}"Помогли сдать IELTS и получить 7.0 баллов. Учеба в Малайзии очень интересная!"{% elif lang == 'tr' %}"IELTS sınavında yardım ettiler ve 7.0 puan aldım. Malezya'da okumak çok ilginç!"{% else %}"They helped me take IELTS and get 7.0 points. Studying in Malaysia is very interesting!"{% endif %}
+									</p>
+									<div class="flex text-[#ff9015] text-base">
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+									</div>
+								</div>
+							</div>
+
+							<!-- Story 5 -->
+							<div class="swiper-slide">
+								<div class="bg-gradient-to-br from-indigo-50 to-white rounded-2xl p-6 success-story-card border border-indigo-100 ">
+									<div class="flex items-center mb-4">
+										<div class="w-12 h-12 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mr-3">
+											<span class="text-white font-bold text-lg">M</span>
+										</div>
+										<div>
+											<h4 class="text-base font-bold text-gray-900">Malika Yusupova</h4>
+											<p class="text-gray-600 text-xs">Harvard Universiteti</p>
+										</div>
+									</div>
+									<p class="text-gray-600 mb-4 italic text-sm">
+										{% if lang == 'uz' %}"Harvard universitetiga qabul bo'lish orzuim edi. StudyFans yordami bilan bu orzu amalga oshdi!"{% elif lang == 'ru' %}"Моя мечта была поступить в Гарвард. С помощью StudyFans эта мечта осуществилась!"{% elif lang == 'tr' %}"Harvard Üniversitesi'ne kabul olmak hayalimdi. StudyFans'ın yardımıyla bu hayal gerçekleşti!"{% else %}"My dream was to get into Harvard. With StudyFans' help, this dream came true!"{% endif %}
+									</p>
+									<div class="flex text-[#ff9015] text-base">
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+									</div>
+								</div>
+							</div>
+
+							<!-- Story 6 -->
+							<div class="swiper-slide">
+								<div class="bg-gradient-to-br from-pink-50 to-white rounded-2xl p-6 success-story-card border border-pink-100 ">
+									<div class="flex items-center mb-4">
+										<div class="w-12 h-12 bg-gradient-to-r from-[#ff9015] to-orange-500 rounded-full flex items-center justify-center mr-3">
+											<span class="text-white font-bold text-lg">J</span>
+										</div>
+										<div>
+											<h4 class="text-base font-bold text-gray-900">Javlon Toshmatov</h4>
+											<p class="text-gray-600 text-xs">Istanbul Texnik Universiteti</p>
+										</div>
+									</div>
+									<p class="text-gray-600 mb-4 italic text-sm">
+										{% if lang == 'uz' %}"Muhandislik yo'nalishida o'qishni xohlagan edim. StudyFans eng yaxshi variantni topishga yordam berdi."{% elif lang == 'ru' %}"Я хотел изучать инженерию. StudyFans помог найти лучший вариант."{% elif lang == 'tr' %}"Mühendislik alanında okumak istiyordum. StudyFans en iyi seçeneği bulmama yardım etti."{% else %}"I wanted to study engineering. StudyFans helped me find the best option."{% endif %}
+									</p>
+									<div class="flex text-[#ff9015] text-base">
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Pagination dots -->
+						<div class="swiper-pagination mt-8"></div>
 					</div>
 				</div>
 				
@@ -1486,5 +2082,63 @@
 	// Improve mobile touch performance
 	document.addEventListener('touchstart', function () { }, { passive: true });
 	document.addEventListener('touchmove', function () { }, { passive: true });
+
+	// Initialize Success Stories Swiper
+	document.addEventListener('DOMContentLoaded', function() {
+		if (typeof Swiper !== 'undefined') {
+			const successStoriesSwiper = new Swiper('.successStoriesSwiper', {
+				slidesPerView: 1.2,
+				spaceBetween: 16,
+				centeredSlides: true,
+				loop: false,
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: true,
+					dynamicBullets: false,
+					renderBullet: function (index, className) {
+						return '<span class="' + className + '" style="background-color: #ff9015; width: 10px; height: 10px; margin: 0 3px; opacity: 0.4; transition: all 0.3s; border-radius: 50%; display: inline-block;"></span>';
+					},
+				},
+				breakpoints: {
+					480: {
+						slidesPerView: 1.3,
+						spaceBetween: 16,
+					},
+					640: {
+						slidesPerView: 1.5,
+						spaceBetween: 20,
+					},
+				},
+				on: {
+					init: function() {
+						this.updatePagination();
+					},
+					slideChange: function() {
+						this.updatePagination();
+					}
+				}
+			});
+
+			// Custom pagination styling function
+			if (successStoriesSwiper && successStoriesSwiper.pagination) {
+				successStoriesSwiper.updatePagination = function() {
+					setTimeout(() => {
+						const bullets = document.querySelectorAll('.swiper-pagination-bullet');
+						bullets.forEach((bullet, index) => {
+							if (bullet.classList.contains('swiper-pagination-bullet-active')) {
+								bullet.style.opacity = '1';
+								bullet.style.transform = 'scale(1.3)';
+								bullet.style.backgroundColor = '#ff9015';
+							} else {
+								bullet.style.opacity = '0.4';
+								bullet.style.transform = 'scale(1)';
+								bullet.style.backgroundColor = '#ff9015';
+							}
+						});
+					}, 10);
+				};
+			}
+		}
+	});
 </script>
 {% endblock %}

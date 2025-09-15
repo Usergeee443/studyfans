@@ -4,10 +4,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-site-verification" content="EinBsymUm1s49XoVNlxurtFzc4doH46irPt_A0G8k9Y" />
+	<link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='static/images/IMG_8320.JPG') }}">
 	<title>{% block title %}Study Fans - Educational Consulting{% endblock %}</title>
 	<script src="https://cdn.tailwindcss.com"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
 	<style>
 		/* Custom Animations */
@@ -361,11 +364,6 @@
 		/* Success story animations */
 		.success-story-card {
 			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-		}
-
-		.success-story-card:hover {
-			transform: translateY(-10px) scale(1.02);
-			box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 		}
 
 		.animation-delay-200 {
@@ -1060,6 +1058,8 @@
 			}
 		}, 100);
 	</script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 	{% block extra_js %}{% endblock %}
 </body>
