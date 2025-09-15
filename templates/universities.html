@@ -299,13 +299,13 @@
 	</div>
 </section>
 
-<!-- CTA Section -->
-<section class="py-20 bg-white">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-		<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+<!-- Contact CTA Section -->
+<section class="relative py-24 px-4 bg-gradient-to-r from-orange-500 to-yellow-500 overflow-hidden">
+	<div class="max-w-6xl mx-auto text-center">
+		<h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
 			{% if lang == 'uz' %}Universitet Topdingizmi?{% elif lang == 'ru' %}Нашли Университет?{% else %}Found a University?{% endif %}
 		</h2>
-		<p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+		<p class="text-xl text-white/80 mb-8 max-w-3xl mx-auto">
 			{% if lang == 'uz' %}
 				O'zingizga mos universitetni topdingizmi? Biz bilan bog'laning va qabul jarayonini boshlang!
 			{% elif lang == 'ru' %}
@@ -314,13 +314,11 @@
 				Found a suitable university? Contact us and start the admission process!
 			{% endif %}
 		</p>
-		<div class="flex flex-col sm:flex-row gap-4 justify-center">
-			<a href="{{ url_for('contact') }}" class="bg-[#ff9015] hover:from-yellow-500 hover:to-orange-500 text-white font-bold py-4 px-8 rounded-[1.5rem] text-lg shadow-xl hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-				<i class="fas fa-phone mr-2"></i>
+		<div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
+			<a href="/contact" class="bg-blue-800 border-2 border-blue-800 text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-blue-800/80 hover:shadow-[0_0_30px_rgba(30,64,175,0.5)] hover:scale-105 hover:border-blue-800/80">
 				{% if lang == 'uz' %}Bepul maslahat{% elif lang == 'ru' %}Бесплатная Консультация{% else %}Free Consultation{% endif %}
 			</a>
-			<a href="{{ url_for('services') }}" class="bg-blue-600 text-white hover:from-blue-800 hover:to-indigo-900 font-bold py-4 px-8 rounded-[1.5rem] text-lg shadow-xl hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-				<i class="fas fa-cogs mr-2"></i>
+			<a href="/universities" class="bg-white text-[#004AAD] border-2 border-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-transparent hover:text-white hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
 				{% if lang == 'uz' %}xizmatlarimiz{% elif lang == 'ru' %}Наши Услуги{% else %}Our Services{% endif %}
 			</a>
 		</div>

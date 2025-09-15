@@ -435,12 +435,12 @@
 				Contact us to achieve success in your educational journey. Get a free consultation!
 			{% endif %}
 		</p>
-		<div class="flex flex-col sm:flex-row gap-4 justify-center">
-			<a href="tel:+998901234567" class="bg-[#ff9015] border-2 border-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-colors">
-				<i class="fas fa-phone mr-2"></i>
+
+		<div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
+			<a href="tel:+998901234567" class="bg-[#ff9015] border-2 border-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-[#ff9015]/80 hover:shadow-[0_0_30px_rgba(255,144,21,0.5)] hover:scale-105 hover:border-[#ff9015]/80">
 				{% if lang == 'uz' %}Hozir Qo'ng'iroq Qiling{% elif lang == 'ru' %}Позвонить Сейчас{% else %}Call Now{% endif %}
 			</a>
-			<a href="mailto:info@studyfans.uz" class="border-2 border-white text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-colors">
+			<a href="mailto:info@studyfans.uz" class="border-2 border-white text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[#004AAD] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
 				{% if lang == 'uz' %}Email Yuboring{% elif lang == 'ru' %}Отправить Email{% else %}Send Email{% endif %}
 			</a>
 		</div>

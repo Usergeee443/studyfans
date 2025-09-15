@@ -444,7 +444,7 @@
 	{% block extra_css %}{% endblock %}
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-white">
 	<!-- Navigation -->
 	<nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200/50 shadow-lg">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -983,6 +983,82 @@
 				closeErrorModal();
 			}
 		});
+
+		// Counter Animation Function
+		function animateCounter(element) {
+			const target = parseInt(element.getAttribute('data-target'));
+			const suffix = element.getAttribute('data-suffix') || '';
+			const duration = 2000;
+			const startTime = performance.now();
+
+			function updateCounter(currentTime) {
+				const elapsed = currentTime - startTime;
+				const progress = Math.min(elapsed / duration, 1);
+				
+				// Easing function for smooth animation
+				const easedProgress = 1 - Math.pow(1 - progress, 3);
+				const current = Math.floor(target * easedProgress);
+
+				// Format display value
+				let displayValue;
+				if (suffix === 'k+') {
+					displayValue = Math.floor(current / 1000);
+				} else {
+					displayValue = current;
+				}
+
+				element.textContent = displayValue + suffix;
+
+				if (progress < 1) {
+					requestAnimationFrame(updateCounter);
+				}
+			}
+
+			requestAnimationFrame(updateCounter);
+		}
+
+		// Start counter animation when stats section is visible
+		function startCounterAnimation() {
+			const counters = document.querySelectorAll('.counter');
+			counters.forEach(counter => {
+				if (!counter.classList.contains('animated')) {
+					counter.classList.add('animated');
+					// Small delay for each counter
+					setTimeout(() => {
+						animateCounter(counter);
+					}, 200);
+				}
+			});
+		}
+
+		// Intersection Observer for stats section
+		const statsObserver = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					startCounterAnimation();
+					statsObserver.unobserve(entry.target); // Only animate once
+				}
+			});
+		}, {
+			threshold: 0.5
+		});
+
+		// Test animation immediately (remove this later)
+		setTimeout(() => {
+			console.log('Testing counter animation...');
+			startCounterAnimation();
+		}, 1000);
+
+		// Also observe stats section
+		setTimeout(() => {
+			const statsSection = document.getElementById('stats-section');
+			if (statsSection) {
+				console.log('Stats section found, observing...');
+				statsObserver.observe(statsSection);
+			} else {
+				console.log('Stats section not found');
+			}
+		}, 100);
 	</script>
 
 	{% block extra_js %}{% endblock %}

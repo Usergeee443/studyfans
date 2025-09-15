@@ -7,58 +7,77 @@
 {% block content %}
 
 <!-- Hero Section -->
-<section class="relative py-20 bg-black text-white overflow-hidden">
+<section class="relative py-24 mt-[3.5rem] bg-gradient-to-r from-blue-800 via-blue-500 to-[#004AAD] text-white overflow-hidden">
 	<div class="absolute inset-0">
-		<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-900/50 to-black/50"></div>
-		<div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
-		<div class="absolute -bottom-40 -left-40 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl"></div>
+		<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-900/30 to-purple-900/30"></div>
+		<div class="absolute -top-40 -right-40 w-96 h-96 bg-cyan-400/20 rounded-full blur-3xl animate-pulse"></div>
+		<div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
+		<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-purple-400/15 rounded-full blur-3xl"></div>
 	</div>
 	
 	<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-		<h1 class="text-5xl md:text-7xl font-bold mb-6" data-aos="fade-up">
+		<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent" data-aos="fade-up">
 			{% if lang == 'uz' %}Dunyoning eng yaxshi talabalari tomonidan sevilgan{% elif lang == 'ru' %}Любимый лучшими студентами мира{% elif lang == 'tr' %}Dünyanın en iyi öğrencileri tarafından sevilen{% else %}Loved by world-class students{% endif %}
 		</h1>
-		<p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+		<p class="text-lg md:text-xl lg:text-2xl text-blue-100 mb-8 max-w-4xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
 			{% if lang == 'uz' %}
-				Butun dunyo talabalari o'z tanlovlari bilan StudyFans'ni tanlaydilar
+				Butun dunyo talabalari o'z tanlovlari bilan StudyFans'ni tanlaydilar va orzularini amalga oshiradilar
 			{% elif lang == 'ru' %}
-				Студенты по всему миру выбирают StudyFans по собственному желанию
+				Студенты по всему миру выбирают StudyFans по собственному желанию и осуществляют свои мечты
 			{% elif lang == 'tr' %}
-				Dünyanın her yerinden öğrenciler kendi seçimleriyle StudyFans'ı seçiyor
+				Dünyanın her yerinden öğrenciler kendi seçimleriyle StudyFans'ı seçiyor ve hayallerini gerçekleştiriyor
 			{% else %}
-				Students all around the world reach for StudyFans by choice
+				Students all around the world choose StudyFans and make their dreams come true
 			{% endif %}
 		</p>
-	</div>
 </section>
 
-<!-- Testimonials Grid Section -->
-<section class="py-32 bg-black text-white relative overflow-hidden">
-	<!-- Top fade gradient -->
-	<div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent z-10 pointer-events-none"></div>
-	<!-- Bottom fade gradient -->
-	<div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none"></div>
+<!-- Testimonials Section -->
+<section class="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+	<!-- Background Elements -->
+	<div class="absolute inset-0 -z-10">
+		<div class="absolute top-20 left-10 w-64 h-64 bg-blue-300/20 rounded-full blur-3xl"></div>
+		<div class="absolute bottom-20 right-10 w-80 h-80 bg-purple-300/20 rounded-full blur-3xl"></div>
+		<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-200/15 rounded-full blur-3xl"></div>
+	</div>
 	
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		
 		<!-- Mobile: Horizontal Scroll -->
-		<div class="block md:hidden">
-			<div class="overflow-hidden h-[400px]">
-				<div class="flex space-x-6 animate-scroll-horizontal" style="width: 200%;">
-					<!-- Mobile testimonials -->
-					<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300 flex-shrink-0 w-80">
+		<div class="block lg:hidden">
+			<div class="text-center mb-12">
+				<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-aos="fade-up">
+					{% if lang == 'uz' %}Talabalarimizning fikrlari{% elif lang == 'ru' %}Отзывы наших студентов{% elif lang == 'tr' %}Öğrencilerimizin görüşleri{% else %}Our students' testimonials{% endif %}
+				</h2>
+			</div>
+			
+			<div class="overflow-hidden h-[420px] relative">
+				<!-- Top fade - stronger -->
+				<div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-50 via-slate-50/80 to-transparent z-20 pointer-events-none"></div>
+				<div class="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-slate-50 to-slate-50/60 z-15 pointer-events-none"></div>
+				<!-- Bottom fade - stronger -->
+				<div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-50 via-slate-50/80 to-transparent z-20 pointer-events-none"></div>
+				<div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-50 to-slate-50/60 z-15 pointer-events-none"></div>
+				<!-- Additional blur effect -->
+				<div class="absolute top-0 left-0 right-0 h-12 backdrop-blur-sm z-25 pointer-events-none"></div>
+				<div class="absolute bottom-0 left-0 right-0 h-12 backdrop-blur-sm z-25 pointer-events-none"></div>
+				
+				<div class="flex space-x-4 animate-scroll-horizontal py-4" style="width: 300%;">
+					<!-- Testimonial 1 -->
+					<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-6 border border-blue-200/50 transition-all duration-500 flex-shrink-0 w-80">
 						<div class="flex items-start space-x-4 mb-4">
-							<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-								<span class="text-white font-bold text-lg">A</span>
+							<div class="w-14 h-14 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+								<span class="text-white font-bold text-xl">A</span>
 							</div>
 							<div>
-								<h4 class="text-white font-semibold text-lg">Aziza Karimova</h4>
-								<p class="text-gray-400 text-sm">Istanbul Universiteti</p>
+								<h4 class="text-gray-800 font-bold text-lg">Aziza Karimova</h4>
+								<p class="text-blue-600 text-sm font-medium">Istanbul Universiteti</p>
 							</div>
 						</div>
-						<p class="text-gray-300 text-base leading-relaxed italic">
-							"StudyFans orqali Turkiyada o'qish orzuim amalga oshdi!"
+						<p class="text-gray-700 text-base leading-relaxed italic mb-4">
+							"StudyFans orqali Turkiyada o'qish orzuim amalga oshdi! Professional jamoasi va sifatli xizmati ajoyib. Har bir bosqichda yonimda bo'lishdi."
 						</p>
-						<div class="flex text-orange-500 text-sm mt-4">
+						<div class="flex text-yellow-500 text-lg">
 							<i class="fas fa-star"></i>
 							<i class="fas fa-star"></i>
 							<i class="fas fa-star"></i>
@@ -67,20 +86,21 @@
 						</div>
 					</div>
 					
-					<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300 flex-shrink-0 w-80">
+					<!-- Testimonial 2 -->
+					<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-6 border border-purple-200/50 transition-all duration-500 flex-shrink-0 w-80">
 						<div class="flex items-start space-x-4 mb-4">
-							<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-								<span class="text-white font-bold text-lg">D</span>
+							<div class="w-14 h-14 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+								<span class="text-white font-bold text-xl">D</span>
 							</div>
 							<div>
-								<h4 class="text-white font-semibold text-lg">Davron Abdullayev</h4>
-								<p class="text-gray-400 text-sm">Kipr Universiteti</p>
+								<h4 class="text-gray-800 font-bold text-lg">Davron Abdullayev</h4>
+								<p class="text-purple-600 text-sm font-medium">Kipr Universiteti</p>
 							</div>
 						</div>
-						<p class="text-gray-300 text-base leading-relaxed italic">
-							"40% chegirma olishga yordam berishdi! Endi baxtliman."
+						<p class="text-gray-700 text-base leading-relaxed italic mb-4">
+							"40% chegirma olishga yordam berishdi! Endi Kiprda baxtli hayot kechiraman. StudyFans jamoasiga ming rahmat!"
 						</p>
-						<div class="flex text-orange-500 text-sm mt-4">
+						<div class="flex text-yellow-500 text-lg">
 							<i class="fas fa-star"></i>
 							<i class="fas fa-star"></i>
 							<i class="fas fa-star"></i>
@@ -89,20 +109,21 @@
 						</div>
 					</div>
 					
-					<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300 flex-shrink-0 w-80">
+					<!-- Testimonial 3 -->
+					<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-6 border border-indigo-200/50 transition-all duration-500 flex-shrink-0 w-80">
 						<div class="flex items-start space-x-4 mb-4">
-							<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-								<span class="text-white font-bold text-lg">S</span>
+							<div class="w-14 h-14 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+								<span class="text-white font-bold text-xl">S</span>
 							</div>
 							<div>
-								<h4 class="text-white font-semibold text-lg">Sardor Rahimov</h4>
-								<p class="text-gray-400 text-sm">Malayziya Universiteti</p>
+								<h4 class="text-gray-800 font-bold text-lg">Sardor Rahimov</h4>
+								<p class="text-indigo-600 text-sm font-medium">Malayziya Universiteti</p>
 							</div>
 						</div>
-						<p class="text-gray-300 text-base leading-relaxed italic">
-							"IELTS imtihonini topshirishda yordam berishdi!"
+						<p class="text-gray-700 text-base leading-relaxed italic mb-4">
+							"IELTS imtihonini topshirishda yordam berishdi va 7.5 ball olishga erishdim! Endi Malayziyada o'qiyapman."
 						</p>
-						<div class="flex text-orange-500 text-sm mt-4">
+						<div class="flex text-yellow-500 text-lg">
 							<i class="fas fa-star"></i>
 							<i class="fas fa-star"></i>
 							<i class="fas fa-star"></i>
@@ -111,20 +132,21 @@
 						</div>
 					</div>
 					
-					<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300 flex-shrink-0 w-80">
+					<!-- Testimonial 4 -->
+					<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-6 border border-cyan-200/50 transition-all duration-500 flex-shrink-0 w-80">
 						<div class="flex items-start space-x-4 mb-4">
-							<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-								<span class="text-white font-bold text-lg">M</span>
+							<div class="w-14 h-14 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+								<span class="text-white font-bold text-xl">M</span>
 							</div>
 							<div>
-								<h4 class="text-white font-semibold text-lg">Malika Yusupova</h4>
-								<p class="text-gray-400 text-sm">Harvard Universiteti</p>
+								<h4 class="text-gray-800 font-bold text-lg">Malika Yusupova</h4>
+								<p class="text-cyan-600 text-sm font-medium">Harvard Universiteti</p>
 							</div>
 						</div>
-						<p class="text-gray-300 text-base leading-relaxed italic">
-							"Harvard universitetiga qabul bo'lish orzuim edi!"
+						<p class="text-gray-700 text-base leading-relaxed italic mb-4">
+							"Harvard universitetiga qabul bo'lish orzuim edi. StudyFans yordami bilan bu orzu amalga oshdi! Ajoyib jamoa!"
 						</p>
-						<div class="flex text-orange-500 text-sm mt-4">
+						<div class="flex text-yellow-500 text-lg">
 							<i class="fas fa-star"></i>
 							<i class="fas fa-star"></i>
 							<i class="fas fa-star"></i>
@@ -133,21 +155,21 @@
 						</div>
 					</div>
 					
-					<!-- Duplicate set for seamless loop -->
-					<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300 flex-shrink-0 w-80">
+					<!-- Testimonial 5 -->
+					<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-6 border border-violet-200/50 transition-all duration-500 flex-shrink-0 w-80">
 						<div class="flex items-start space-x-4 mb-4">
-							<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-								<span class="text-white font-bold text-lg">A</span>
+							<div class="w-14 h-14 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+								<span class="text-white font-bold text-xl">N</span>
 							</div>
 							<div>
-								<h4 class="text-white font-semibold text-lg">Aziza Karimova</h4>
-								<p class="text-gray-400 text-sm">Istanbul Universiteti</p>
+								<h4 class="text-gray-800 font-bold text-lg">Nilufar Toshmatova</h4>
+								<p class="text-violet-600 text-sm font-medium">Oxford Universiteti</p>
 							</div>
 						</div>
-						<p class="text-gray-300 text-base leading-relaxed italic">
-							"StudyFans orqali Turkiyada o'qish orzuim amalga oshdi!"
+						<p class="text-gray-700 text-base leading-relaxed italic mb-4">
+							"Oxford universitetiga qabul bo'ldim! StudyFans jamoasining professional yondashuviga rahmat!"
 						</p>
-						<div class="flex text-orange-500 text-sm mt-4">
+						<div class="flex text-yellow-500 text-lg">
 							<i class="fas fa-star"></i>
 							<i class="fas fa-star"></i>
 							<i class="fas fa-star"></i>
@@ -156,20 +178,21 @@
 						</div>
 					</div>
 					
-					<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300 flex-shrink-0 w-80">
+					<!-- Testimonial 6 -->
+					<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-6 border border-emerald-200/50 transition-all duration-500 flex-shrink-0 w-80">
 						<div class="flex items-start space-x-4 mb-4">
-							<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-								<span class="text-white font-bold text-lg">D</span>
+							<div class="w-14 h-14 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+								<span class="text-white font-bold text-xl">B</span>
 							</div>
 							<div>
-								<h4 class="text-white font-semibold text-lg">Davron Abdullayev</h4>
-								<p class="text-gray-400 text-sm">Kipr Universiteti</p>
+								<h4 class="text-gray-800 font-bold text-lg">Bekzod Umarov</h4>
+								<p class="text-emerald-600 text-sm font-medium">MIT</p>
 							</div>
 						</div>
-						<p class="text-gray-300 text-base leading-relaxed italic">
-							"40% chegirma olishga yordam berishdi! Endi baxtliman."
+						<p class="text-gray-700 text-base leading-relaxed italic mb-4">
+							"MIT ga kirish orzuim amalga oshdi StudyFans yordamida! Dunyoning eng yaxshi universiteti!"
 						</p>
-						<div class="flex text-orange-500 text-sm mt-4">
+						<div class="flex text-yellow-500 text-lg">
 							<i class="fas fa-star"></i>
 							<i class="fas fa-star"></i>
 							<i class="fas fa-star"></i>
@@ -178,42 +201,21 @@
 						</div>
 					</div>
 					
-					<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300 flex-shrink-0 w-80">
+					<!-- Duplicate for seamless loop -->
+					<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-6 border border-blue-200/50 transition-all duration-500 flex-shrink-0 w-80">
 						<div class="flex items-start space-x-4 mb-4">
-							<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-								<span class="text-white font-bold text-lg">S</span>
+							<div class="w-14 h-14 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+								<span class="text-white font-bold text-xl">A</span>
 							</div>
 							<div>
-								<h4 class="text-white font-semibold text-lg">Sardor Rahimov</h4>
-								<p class="text-gray-400 text-sm">Malayziya Universiteti</p>
+								<h4 class="text-gray-800 font-bold text-lg">Aziza Karimova</h4>
+								<p class="text-blue-600 text-sm font-medium">Istanbul Universiteti</p>
 							</div>
 						</div>
-						<p class="text-gray-300 text-base leading-relaxed italic">
-							"IELTS imtihonini topshirishda yordam berishdi!"
+						<p class="text-gray-700 text-base leading-relaxed italic mb-4">
+							"StudyFans orqali Turkiyada o'qish orzuim amalga oshdi! Professional jamoasi va sifatli xizmati ajoyib. Har bir bosqichda yonimda bo'lishdi."
 						</p>
-						<div class="flex text-orange-500 text-sm mt-4">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-						</div>
-					</div>
-					
-					<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300 flex-shrink-0 w-80">
-						<div class="flex items-start space-x-4 mb-4">
-							<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-								<span class="text-white font-bold text-lg">M</span>
-							</div>
-							<div>
-								<h4 class="text-white font-semibold text-lg">Malika Yusupova</h4>
-								<p class="text-gray-400 text-sm">Harvard Universiteti</p>
-							</div>
-						</div>
-						<p class="text-gray-300 text-base leading-relaxed italic">
-							"Harvard universitetiga qabul bo'lish orzuim edi!"
-						</p>
-						<div class="flex text-orange-500 text-sm mt-4">
+						<div class="flex text-yellow-500 text-lg">
 							<i class="fas fa-star"></i>
 							<i class="fas fa-star"></i>
 							<i class="fas fa-star"></i>
@@ -225,471 +227,508 @@
 			</div>
 		</div>
 		
-		<!-- Desktop: Vertical Grid -->
-		<div class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-[900px]">
+		<!-- Desktop: 3 Column Vertical Scroll -->
+		<div class="hidden lg:block">
+			<div class="text-center mb-16">
+				<h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6" data-aos="fade-up">
+					{% if lang == 'uz' %}Talabalarimizning fikrlari{% elif lang == 'ru' %}Отзывы наших студентов{% elif lang == 'tr' %}Öğrencilerimizin görüşleri{% else %}Our students' testimonials{% endif %}
+				</h2>
+				<p class="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+					{% if lang == 'uz' %}Minglab talabalarga yordam berib, ularning orzularini amalga oshirishga ko'maklashdik{% elif lang == 'ru' %}Помогли тысячам студентов осуществить их мечты{% elif lang == 'tr' %}Binlerce öğrenciye yardım ederek hayallerini gerçekleştirmelerine yardımcı olduk{% else %}Helped thousands of students achieve their dreams{% endif %}
+				</p>
+			</div>
 			
-			<!-- Column 1: Bottom to Top -->
-			<div class="overflow-hidden relative">
-				<div class="animate-scroll-up">
-					<!-- First set -->
-					<div class="space-y-6 mb-6">
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">A</span>
+			<div class="grid grid-cols-3 gap-8 h-[900px]">
+				<!-- Column 1: Bottom to Top -->
+				<div class="overflow-hidden relative">
+					<!-- Top fade - stronger -->
+					<div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-slate-50 via-slate-50/90 to-transparent z-20 pointer-events-none"></div>
+					<div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-50 to-slate-50/70 z-15 pointer-events-none"></div>
+					<!-- Bottom fade - stronger -->
+					<div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 via-slate-50/90 to-transparent z-20 pointer-events-none"></div>
+					<div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-50 to-slate-50/70 z-15 pointer-events-none"></div>
+					<!-- Additional blur layers -->
+					<div class="absolute top-0 left-0 right-0 h-16 backdrop-blur-md z-25 pointer-events-none"></div>
+					<div class="absolute bottom-0 left-0 right-0 h-16 backdrop-blur-md z-25 pointer-events-none"></div>
+					
+					<div class="animate-scroll-up" style="height: 200%;">
+						<div class="space-y-8 mb-8">
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-blue-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">A</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Aziza Karimova</h4>
+										<p class="text-blue-600 text-sm font-medium">Istanbul Universiteti</p>
+									</div>
 								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Aziza Karimova</h4>
-									<p class="text-gray-400 text-sm">Istanbul Universiteti</p>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"StudyFans orqali Turkiyada o'qish orzuim amalga oshdi! Professional jamoasi va sifatli xizmati ajoyib. Har bir bosqichda yonimda bo'lishdi."
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
 								</div>
 							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"StudyFans orqali Turkiyada o'qish orzuim amalga oshdi! Professional yordam bilan hamma jarayon oson bo'ldi."
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
+							
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-purple-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">D</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Davron Abdullayev</h4>
+										<p class="text-purple-600 text-sm font-medium">Kipr Universiteti</p>
+									</div>
+								</div>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"40% chegirma olishga yordam berishdi! Endi Kiprda baxtli hayot kechiraman. StudyFans jamoasiga ming rahmat!"
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
+							</div>
+							
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-indigo-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">N</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Nilufar Toshmatova</h4>
+										<p class="text-indigo-600 text-sm font-medium">Gruziya Universiteti</p>
+									</div>
+								</div>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"Hamma narsada yordam berishdi! Viza olishdan tortib, yashash joyini topishgacha. Ajoyib xizmat!"
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
 							</div>
 						</div>
-
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">D</span>
+						
+						<!-- Duplicate for seamless loop -->
+						<div class="space-y-8">
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-blue-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">A</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Aziza Karimova</h4>
+										<p class="text-blue-600 text-sm font-medium">Istanbul Universiteti</p>
+									</div>
 								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Davron Abdullayev</h4>
-									<p class="text-gray-400 text-sm">Kipr Universiteti</p>
-								</div>
-							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"40% chegirma olishga yordam berishdi! Endi Kiprda o'qiyapman va juda baxtliman."
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-							</div>
-						</div>
-
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">N</span>
-								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Nilufar Toshmatova</h4>
-									<p class="text-gray-400 text-sm">Gruziya Universiteti</p>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"StudyFans orqali Turkiyada o'qish orzuim amalga oshdi! Professional jamoasi va sifatli xizmati ajoyib. Har bir bosqichda yonimda bo'lishdi."
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
 								</div>
 							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"Hamma narsada yordam berishdi! Viza olishdan tortib, yashash joyini topishgacha."
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
+							
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-purple-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">D</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Davron Abdullayev</h4>
+										<p class="text-purple-600 text-sm font-medium">Kipr Universiteti</p>
+									</div>
+								</div>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"40% chegirma olishga yordam berishdi! Endi Kiprda baxtli hayot kechiraman. StudyFans jamoasiga ming rahmat!"
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
+							</div>
+							
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-indigo-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">N</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Nilufar Toshmatova</h4>
+										<p class="text-indigo-600 text-sm font-medium">Gruziya Universiteti</p>
+									</div>
+								</div>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"Hamma narsada yordam berishdi! Viza olishdan tortib, yashash joyini topishgacha. Ajoyib xizmat!"
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
 							</div>
 						</div>
 					</div>
-
-					<!-- Duplicate set for seamless loop -->
-					<div class="space-y-6">
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">A</span>
+				</div>
+				
+				<!-- Column 2: Top to Bottom -->
+				<div class="overflow-hidden relative">
+					<!-- Top fade - stronger -->
+					<div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-slate-50 via-slate-50/90 to-transparent z-20 pointer-events-none"></div>
+					<div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-50 to-slate-50/70 z-15 pointer-events-none"></div>
+					<!-- Bottom fade - stronger -->
+					<div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 via-slate-50/90 to-transparent z-20 pointer-events-none"></div>
+					<div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-50 to-slate-50/70 z-15 pointer-events-none"></div>
+					<!-- Additional blur layers -->
+					<div class="absolute top-0 left-0 right-0 h-16 backdrop-blur-md z-25 pointer-events-none"></div>
+					<div class="absolute bottom-0 left-0 right-0 h-16 backdrop-blur-md z-25 pointer-events-none"></div>
+					
+					<div class="animate-scroll-down" style="height: 200%;">
+						<div class="space-y-8 mb-8">
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-cyan-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">S</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Sardor Rahimov</h4>
+										<p class="text-cyan-600 text-sm font-medium">Malayziya Universiteti</p>
+									</div>
 								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Aziza Karimova</h4>
-									<p class="text-gray-400 text-sm">Istanbul Universiteti</p>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"IELTS imtihonini topshirishda yordam berishdi va 7.5 ball olishga erishdim! Endi Malayziyada o'qiyapman."
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
 								</div>
 							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"StudyFans orqali Turkiyada o'qish orzuim amalga oshdi! Professional yordam bilan hamma jarayon oson bo'ldi."
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
+							
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-violet-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">M</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Malika Yusupova</h4>
+										<p class="text-violet-600 text-sm font-medium">Harvard Universiteti</p>
+									</div>
+								</div>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"Harvard universitetiga qabul bo'lish orzuim edi. StudyFans yordami bilan bu orzu amalga oshdi! Ajoyib jamoa!"
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
+							</div>
+							
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-emerald-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">J</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Jasur Usmonov</h4>
+										<p class="text-emerald-600 text-sm font-medium">Oxford Universiteti</p>
+									</div>
+								</div>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"Oxfordga kirish juda qiyin edi, lekin StudyFans yordami bilan muvaffaqiyatga erishdim! Eng yaxshi universitet!"
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
 							</div>
 						</div>
-
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">D</span>
+						
+						<!-- Duplicate for seamless loop -->
+						<div class="space-y-8">
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-cyan-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">S</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Sardor Rahimov</h4>
+										<p class="text-cyan-600 text-sm font-medium">Malayziya Universiteti</p>
+									</div>
 								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Davron Abdullayev</h4>
-									<p class="text-gray-400 text-sm">Kipr Universiteti</p>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"IELTS imtihonini topshirishda yordam berishdi va 7.5 ball olishga erishdim! Endi Malayziyada o'qiyapman."
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
 								</div>
 							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"40% chegirma olishga yordam berishdi! Endi Kiprda o'qiyapman va juda baxtliman."
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
+							
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-violet-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">M</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Malika Yusupova</h4>
+										<p class="text-violet-600 text-sm font-medium">Harvard Universiteti</p>
+									</div>
+								</div>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"Harvard universitetiga qabul bo'lish orzuim edi. StudyFans yordami bilan bu orzu amalga oshdi! Ajoyib jamoa!"
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
+							</div>
+							
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-emerald-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">J</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Jasur Usmonov</h4>
+										<p class="text-emerald-600 text-sm font-medium">Oxford Universiteti</p>
+									</div>
+								</div>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"Oxfordga kirish juda qiyin edi, lekin StudyFans yordami bilan muvaffaqiyatga erishdim! Eng yaxshi universitet!"
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
 							</div>
 						</div>
-
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">N</span>
+					</div>
+				</div>
+				
+				<!-- Column 3: Bottom to Top -->
+				<div class="overflow-hidden relative">
+					<!-- Top fade - stronger -->
+					<div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-slate-50 via-slate-50/90 to-transparent z-20 pointer-events-none"></div>
+					<div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-50 to-slate-50/70 z-15 pointer-events-none"></div>
+					<!-- Bottom fade - stronger -->
+					<div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 via-slate-50/90 to-transparent z-20 pointer-events-none"></div>
+					<div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-50 to-slate-50/70 z-15 pointer-events-none"></div>
+					<!-- Additional blur layers -->
+					<div class="absolute top-0 left-0 right-0 h-16 backdrop-blur-md z-25 pointer-events-none"></div>
+					<div class="absolute bottom-0 left-0 right-0 h-16 backdrop-blur-md z-25 pointer-events-none"></div>
+					
+					<div class="animate-scroll-up" style="height: 200%;">
+						<div class="space-y-8 mb-8">
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-rose-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-rose-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">L</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Laylo Abdullayeva</h4>
+										<p class="text-rose-600 text-sm font-medium">Sorbonne Universiteti</p>
+									</div>
 								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Nilufar Toshmatova</h4>
-									<p class="text-gray-400 text-sm">Gruziya Universiteti</p>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"Fransiyada o'qish orzuim edi. StudyFans yordami bilan Sorbonne universitetiga qabul bo'ldim! Ajoyib tajriba!"
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
 								</div>
 							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"Hamma narsada yordam berishdi! Viza olishdan tortib, yashash joyini topishgacha."
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
+							
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-amber-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">O</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Otabek Rahimov</h4>
+										<p class="text-amber-600 text-sm font-medium">Stanford Universiteti</p>
+									</div>
+								</div>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"Stanford universitetiga qabul bo'lish juda qiyin edi, lekin StudyFans yordami bilan muvaffaqiyatga erishdim!"
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
+							</div>
+							
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-sky-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-sky-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">Z</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Zarina Toshmatova</h4>
+										<p class="text-sky-600 text-sm font-medium">Cambridge Universiteti</p>
+									</div>
+								</div>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"Cambridge universitetiga qabul bo'lish orzuim edi. StudyFans yordami bilan bu orzu amalga oshdi!"
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Duplicate for seamless loop -->
+						<div class="space-y-8">
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-rose-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-rose-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">L</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Laylo Abdullayeva</h4>
+										<p class="text-rose-600 text-sm font-medium">Sorbonne Universiteti</p>
+									</div>
+								</div>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"Fransiyada o'qish orzuim edi. StudyFans yordami bilan Sorbonne universitetiga qabul bo'ldim! Ajoyib tajriba!"
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
+							</div>
+							
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-amber-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">O</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Otabek Rahimov</h4>
+										<p class="text-amber-600 text-sm font-medium">Stanford Universiteti</p>
+									</div>
+								</div>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"Stanford universitetiga qabul bo'lish juda qiyin edi, lekin StudyFans yordami bilan muvaffaqiyatga erishdim!"
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
+							</div>
+							
+							<div class="bg-white/90 backdrop-blur-lg rounded-[1.5rem] p-8 border border-sky-200/50 transition-all duration-500">
+								<div class="flex items-start space-x-4 mb-6">
+									<div class="w-16 h-16 bg-gradient-to-r from-sky-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+										<span class="text-white font-bold text-xl">Z</span>
+									</div>
+									<div>
+										<h4 class="text-gray-800 font-bold text-xl">Zarina Toshmatova</h4>
+										<p class="text-sky-600 text-sm font-medium">Cambridge Universiteti</p>
+									</div>
+								</div>
+								<p class="text-gray-700 text-lg leading-relaxed italic mb-4">
+									"Cambridge universitetiga qabul bo'lish orzuim edi. StudyFans yordami bilan bu orzu amalga oshdi!"
+								</p>
+								<div class="flex text-yellow-500 text-xl">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<!-- Column 2: Top to Bottom -->
-			<div class="overflow-hidden relative">
-				<div class="animate-scroll-down">
-					<!-- First set -->
-					<div class="space-y-6 mb-6">
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">S</span>
-								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Sardor Rahimov</h4>
-									<p class="text-gray-400 text-sm">Malayziya Universiteti</p>
-								</div>
-							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"IELTS imtihonini topshirishda yordam berishdi va 7.0 ball olishga erishdim!"
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-							</div>
-						</div>
-
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">M</span>
-								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Malika Yusupova</h4>
-									<p class="text-gray-400 text-sm">Harvard Universiteti</p>
-								</div>
-							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"Harvard universitetiga qabul bo'lish orzuim edi. StudyFans yordami bilan bu orzu amalga oshdi!"
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-							</div>
-						</div>
-
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">J</span>
-								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Jasur Usmonov</h4>
-									<p class="text-gray-400 text-sm">Oxford Universiteti</p>
-								</div>
-							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"Oxfordga kirish juda qiyin edi, lekin StudyFans yordami bilan muvaffaqiyatga erishdim!"
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-							</div>
-						</div>
-					</div>
-
-					<!-- Duplicate set for seamless loop -->
-					<div class="space-y-6">
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">S</span>
-								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Sardor Rahimov</h4>
-									<p class="text-gray-400 text-sm">Malayziya Universiteti</p>
-								</div>
-							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"IELTS imtihonini topshirishda yordam berishdi va 7.0 ball olishga erishdim!"
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-							</div>
-						</div>
-
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">M</span>
-								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Malika Yusupova</h4>
-									<p class="text-gray-400 text-sm">Harvard Universiteti</p>
-								</div>
-							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"Harvard universitetiga qabul bo'lish orzuim edi. StudyFans yordami bilan bu orzu amalga oshdi!"
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-							</div>
-						</div>
-
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">J</span>
-								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Jasur Usmonov</h4>
-									<p class="text-gray-400 text-sm">Oxford Universiteti</p>
-								</div>
-							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"Oxfordga kirish juda qiyin edi, lekin StudyFans yordami bilan muvaffaqiyatga erishdim!"
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Column 3: Bottom to Top -->
-			<div class="overflow-hidden relative">
-				<div class="animate-scroll-up">
-					<!-- First set -->
-					<div class="space-y-6 mb-6">
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">L</span>
-								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Laylo Abdullayeva</h4>
-									<p class="text-gray-400 text-sm">Sorbonne Universiteti</p>
-								</div>
-							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"Fransiyada o'qish orzuim edi. StudyFans yordami bilan Sorbonne universitetiga qabul bo'ldim!"
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-							</div>
-						</div>
-
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">O</span>
-								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Otabek Rahimov</h4>
-									<p class="text-gray-400 text-sm">Stanford Universiteti</p>
-								</div>
-							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"Stanford universitetiga qabul bo'lish juda qiyin edi, lekin StudyFans yordami bilan muvaffaqiyatga erishdim!"
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-							</div>
-						</div>
-
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">Z</span>
-								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Zarina Toshmatova</h4>
-									<p class="text-gray-400 text-sm">Cambridge Universiteti</p>
-								</div>
-							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"Cambridge universitetiga qabul bo'lish orzuim edi. StudyFans yordami bilan bu orzu amalga oshdi!"
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-							</div>
-						</div>
-					</div>
-
-					<!-- Duplicate set for seamless loop -->
-					<div class="space-y-6">
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">L</span>
-								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Laylo Abdullayeva</h4>
-									<p class="text-gray-400 text-sm">Sorbonne Universiteti</p>
-								</div>
-							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"Fransiyada o'qish orzuim edi. StudyFans yordami bilan Sorbonne universitetiga qabul bo'ldim!"
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-							</div>
-						</div>
-
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">O</span>
-								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Otabek Rahimov</h4>
-									<p class="text-gray-400 text-sm">Stanford Universiteti</p>
-								</div>
-							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"Stanford universitetiga qabul bo'lish juda qiyin edi, lekin StudyFans yordami bilan muvaffaqiyatga erishdim!"
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-							</div>
-						</div>
-
-						<div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300">
-							<div class="flex items-start space-x-4 mb-4">
-								<div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-									<span class="text-white font-bold text-lg">Z</span>
-								</div>
-								<div>
-									<h4 class="text-white font-semibold text-lg">Zarina Toshmatova</h4>
-									<p class="text-gray-400 text-sm">Cambridge Universiteti</p>
-								</div>
-							</div>
-							<p class="text-gray-300 text-base leading-relaxed italic">
-								"Cambridge universitetiga qabul bo'lish orzuim edi. StudyFans yordami bilan bu orzu amalga oshdi!"
-							</p>
-							<div class="flex text-orange-500 text-sm mt-4">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
 		</div>
 	</div>
 </section>
 
 <!-- CTA Section -->
-<section class="relative py-20 bg-[#004AAD] text-white overflow-hidden">
+<section class="relative py-24 bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-600 text-white overflow-hidden">
 	<div class="absolute inset-0">
-		<div class="absolute -top-40 -right-40 w-80 h-80 bg-white/50 rounded-full blur-3xl animate-bounce-slow"></div>
+		<div class="absolute -top-40 -right-40 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+		<div class="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-400/20 rounded-full blur-3xl animate-pulse"></div>
 	</div>
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-		<h2 class="text-4xl md:text-5xl font-bold mb-6" data-aos="fade-up">
+	
+	<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+		<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent" data-aos="fade-up">
 			{% if lang == 'uz' %}Siz ham muvaffaqiyatga erishing!{% elif lang == 'ru' %}Вы тоже можете добиться успеха!{% elif lang == 'tr' %}Siz de başarıya ulaşabilirsiniz!{% else %}You can also achieve success!{% endif %}
 		</h2>
-		<p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+		<p class="text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed text-blue-100" data-aos="fade-up" data-aos-delay="200">
 			{% if lang == 'uz' %}
-				StudyFans bilan orzularingizni amalga oshiring
+				StudyFans bilan orzularingizni amalga oshiring va dunyoning eng yaxshi universitetlariga qabul bo'ling
 			{% elif lang == 'ru' %}
-				Осуществите свои мечты с StudyFans
+				Осуществите свои мечты с StudyFans и поступите в лучшие университеты мира
 			{% elif lang == 'tr' %}
-				StudyFans ile hayallerinizi gerçekleştirin
+				StudyFans ile hayallerinizi gerçekleştirin ve dünyanın en iyi üniversitelerine kabul olun
 			{% else %}
-				Make your dreams come true with StudyFans
+				Make your dreams come true with StudyFans and get accepted to the world's best universities
 			{% endif %}
 		</p>
-		<div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="400">
-			<div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
-				<a href="/contact" class="bg-[#ff9015] border-2 border-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-[#ff9015]/80 hover:shadow-[0_0_30px_rgba(255,144,21,0.5)] hover:scale-105 hover:border-[#ff9015]/80">
-					{% if lang == 'uz' %}Bepul konsultatsiya{% elif lang == 'ru' %}Бесплатная консультация{% elif lang == 'tr' %}Ücretsiz danışmanlık{% else %}Free Consultation{% endif %}
-				</a>
-				<a href="/universities" class="border-2 border-white text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[#004AAD] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
-					{% if lang == 'uz' %}Universitetlarni ko'rish{% elif lang == 'ru' %}Посмотреть университеты{% elif lang == 'tr' %}Üniversiteleri gör{% else %}View Universities{% endif %}
-				</a>
-			</div>
+		
+		<div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
+			<a href="/contact" class="bg-[#ff9015] border-2 border-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-[#ff9015]/80 hover:shadow-[0_0_30px_rgba(255,144,21,0.5)] hover:scale-105 hover:border-[#ff9015]/80">
+				{% if lang == 'uz' %}Bepul konsultatsiya{% elif lang == 'ru' %}Бесплатная консультация{% elif lang == 'tr' %}Ücretsiz danışmanlık{% else %}Free Consultation{% endif %}
+			</a>
+			<a href="/universities" class="border-2 border-white text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[#004AAD] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
+				{% if lang == 'uz' %}Universitetlarni ko'rish{% elif lang == 'ru' %}Посмотреть университеты{% elif lang == 'tr' %}Üniversiteleri gör{% else %}View Universities{% endif %}
+			</a>
 		</div>
 	</div>
 </section>
