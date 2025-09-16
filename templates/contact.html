@@ -7,9 +7,10 @@
 {% block content %}
 
 <!-- Hero Section -->
-<section class="relative bg-[#004AAD] py-24 mt-[3rem] overflow-hidden">
+<section class="relative bg-gradient-to-r from-[#003262] to-blue-800 py-24 mt-[3rem] overflow-hidden">
 	<div class="absolute inset-0">
-		<div class="absolute -top-40 -right-40 w-80 h-80 bg-white/50 rounded-full blur-3xl animate-bounce-slow"></div>
+		<div class="absolute -top-40 -right-40 w-80 h-80 bg-white/30 rounded-full blur-3xl animate-bounce-slow"></div>
+		<div class="absolute -bottom-40 -left-40 w-96 h-96 bg-orange-400/20 rounded-full blur-3xl animate-pulse"></div>
 	</div>
 	
 	<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -47,9 +48,16 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
 			<!-- Contact Card 1 -->
-			<div class="bg-white p-8 rounded-[2rem] shadow-2xl transition-all duration-500 transform" data-aos="fade-up">
-				<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6">
-					<i class="fas fa-phone text-2xl text-white"></i>
+			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
+				<div class="w-16 h-16 bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 rounded-full flex items-center justify-center mb-6 relative backdrop-blur-sm" style="box-shadow: 0 20px 60px rgba(255, 144, 21, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+					<!-- Liquid Glass Overlay -->
+					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+					
+					<!-- Phone Icon -->
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+						<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="#FBBF24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
 				</div>
 				<h3 class="text-2xl font-bold text-gray-900 mb-4">
 					{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% else %}Phone{% endif %}
@@ -70,9 +78,17 @@
 			</div>
 
 			<!-- Contact Card 2 -->
-			<div class="bg-white p-8 rounded-[2rem] shadow-2xl transition-all duration-500 transform" data-aos="fade-up">
-				<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6">
-					<i class="fas fa-envelope text-2xl text-white"></i>
+			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
+				<div class="w-16 h-16 bg-gradient-to-br from-[#003262] via-blue-600 to-[#004AAD] rounded-full flex items-center justify-center mb-6 relative backdrop-blur-sm" style="box-shadow: 0 20px 60px rgba(0, 50, 98, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+					<!-- Liquid Glass Overlay -->
+					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+					
+					<!-- Email Icon -->
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+						<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#F59E0B" stroke-width="2"/>
+						<polyline points="22,6 12,13 2,6" stroke="#FBBF24" stroke-width="2"/>
+					</svg>
 				</div>
 				<h3 class="text-2xl font-bold text-gray-900 mb-4">
 					{% if lang == 'uz' %}Email{% elif lang == 'ru' %}Электронная почта{% else %}Email{% endif %}
@@ -93,9 +109,17 @@
 			</div>
 
 			<!-- Contact Card 3 -->
-			<div class="bg-white p-8 rounded-[2rem] shadow-2xl transition-all duration-500 transform" data-aos="fade-up">
-				<div class="w-16 h-16 bg-[#ff9015] rounded-2xl flex items-center justify-center mb-6">
-					<i class="fas fa-map-marker-alt text-2xl text-white"></i>
+			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
+				<div class="w-16 h-16 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 rounded-full flex items-center justify-center mb-6 relative backdrop-blur-sm" style="box-shadow: 0 20px 60px rgba(34, 197, 94, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+					<!-- Liquid Glass Overlay -->
+					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+					
+					<!-- Location Icon -->
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+						<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="#10B981" stroke-width="2"/>
+						<circle cx="12" cy="10" r="3" stroke="#059669" stroke-width="2"/>
+					</svg>
 				</div>
 				<h3 class="text-2xl font-bold text-gray-900 mb-4">
 					{% if lang == 'uz' %}Manzil{% elif lang == 'ru' %}Адрес{% else %}Address{% endif %}
@@ -133,7 +157,7 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
 			<!-- Contact Form -->
-			<div class="bg-white rounded-3xl p-8 shadow-xl">
+			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50">
 				<h2 class="text-3xl font-bold text-gray-900 mb-6">
 					{% if lang == 'uz' %}Xabar Yuborish{% elif lang == 'ru' %}Отправить Сообщение{% else %}Send Message{% endif %}
 				</h2>
@@ -153,13 +177,13 @@
 							<label class="block text-gray-700 text-sm font-medium mb-2">
 								{% if lang == 'uz' %}Ism{% elif lang == 'ru' %}Имя{% else %}Name{% endif %} *
 							</label>
-							<input type="text" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
+							<input type="text" name="name" required class="w-full px-4 py-3 bg-white/70 backdrop-blur-sm border border-gray-300 rounded-[1rem] focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300">
 						</div>
 						<div>
 							<label class="block text-gray-700 text-sm font-medium mb-2">
 								{% if lang == 'uz' %}Email{% elif lang == 'ru' %}Электронная почта{% else %}Email{% endif %} *
 							</label>
-							<input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
+							<input type="email" name="email" required class="w-full px-4 py-3 bg-white/70 backdrop-blur-sm border border-gray-300 rounded-[1rem] focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300">
 						</div>
 					</div>
 					
@@ -167,14 +191,14 @@
 						<label class="block text-gray-700 text-sm font-medium mb-2">
 							{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% else %}Phone{% endif %} *
 						</label>
-						<input type="tel" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
+						<input type="tel" name="phone" required class="w-full px-4 py-3 bg-white/70 backdrop-blur-sm border border-gray-300 rounded-[1rem] focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300">
 					</div>
 					
 					<div>
 						<label class="block text-gray-700 text-sm font-medium mb-2">
 							{% if lang == 'uz' %}Mavzu{% elif lang == 'ru' %}Тема{% else %}Subject{% endif %} *
 						</label>
-						<select name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300">
+						<select name="subject" required class="w-full px-4 py-3 bg-white/70 backdrop-blur-sm border border-gray-300 rounded-[1rem] focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300">
 							<option value="">
 								{% if lang == 'uz' %}Mavzuni tanlang{% elif lang == 'ru' %}Выберите тему{% else %}Select subject{% endif %}
 							</option>
@@ -200,10 +224,10 @@
 						<label class="block text-gray-700 text-sm font-medium mb-2">
 							{% if lang == 'uz' %}Xabar{% elif lang == 'ru' %}Сообщение{% else %}Message{% endif %} *
 						</label>
-						<textarea name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300" placeholder="{% if lang == 'uz' %}Xabaringizni yozing...{% elif lang == 'ru' %}Напишите ваше сообщение...{% else %}Write your message...{% endif %}"></textarea>
+						<textarea name="message" rows="5" required class="w-full px-4 py-3 bg-white/70 backdrop-blur-sm border border-gray-300 rounded-[1rem] focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300" placeholder="{% if lang == 'uz' %}Xabaringizni yozing...{% elif lang == 'ru' %}Напишите ваше сообщение...{% else %}Write your message...{% endif %}"></textarea>
 					</div>
 					
-					<button type="submit" class="w-full bg-[#ff9015] text-white font-bold py-4 px-6 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+					<button type="submit" class="w-full bg-[#ff9015] hover:bg-[#e8800f] text-white font-bold py-4 px-6 rounded-[1rem] text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 						<i class="fas fa-paper-plane mr-2"></i>
 						{% if lang == 'uz' %}Xabar Yuborish{% elif lang == 'ru' %}Отправить Сообщение{% else %}Send Message{% endif %}
 					</button>
@@ -213,7 +237,7 @@
 			<!-- Map and Additional Info -->
 			<div class="space-y-8">
 				<!-- Map -->
-				<div class="bg-white rounded-3xl p-8 shadow-xl">
+				<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50">
 					<h3 class="text-2xl font-bold text-gray-900 mb-6">
 						{% if lang == 'uz' %}Bizning manzilimiz{% elif lang == 'ru' %}Наш адрес{% else %}Our location{% endif %}
 					</h3>
@@ -234,7 +258,7 @@
 				</div>
 
 				<!-- Working Hours -->
-				<div class="bg-white rounded-3xl p-8 shadow-xl">
+				<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50">
 					<h3 class="text-2xl font-bold text-gray-900 mb-6">
 						{% if lang == 'uz' %}Ish Vaqtlari{% elif lang == 'ru' %}Часы Работы{% else %}Working Hours{% endif %}
 					</h3>
@@ -263,7 +287,7 @@
 				</div>
 
 				<!-- Social Media -->
-				<div class="bg-white rounded-3xl p-8 shadow-xl">
+				<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50">
 					<h3 class="text-2xl font-bold text-gray-900 mb-6">
 						{% if lang == 'uz' %}Ijtimoiy Tarmoqlar{% elif lang == 'ru' %}Социальные Сети{% else %}Social Media{% endif %}
 					</h3>
@@ -418,15 +442,16 @@
 </section>
 
 <!-- CTA Section -->
-<section class="relative py-24 mt-[3rem] px-4 bg-[#004AAD] overflow-hidden">
+<section class="relative py-24 mt-[3rem] px-4 bg-gradient-to-r from-[#ff9015] to-orange-600 overflow-hidden">
 	<div class="absolute inset-0">
-		<div class="absolute -top-40 -right-40 w-80 h-80 bg-white/50 rounded-full blur-3xl animate-bounce-slow"></div>
+		<div class="absolute -top-40 -right-40 w-80 h-80 bg-white/30 rounded-full blur-3xl animate-bounce-slow"></div>
+		<div class="absolute -bottom-40 -left-40 w-96 h-96 bg-yellow-300/20 rounded-full blur-3xl animate-pulse"></div>
 	</div>
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 		<h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
 			{% if lang == 'uz' %}Bugun Boshlang{% elif lang == 'ru' %}Начните Сегодня{% else %}Start Today{% endif %}
 		</h2>
-		<p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+		<p class="text-xl text-orange-100 mb-8 max-w-3xl mx-auto">
 			{% if lang == 'uz' %}
 				Ta'lim yo'lingizda muvaffaqiyatga erishish uchun biz bilan bog'laning. Bepul maslahat oling!
 			{% elif lang == 'ru' %}
@@ -437,10 +462,10 @@
 		</p>
 
 		<div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
-			<a href="tel:+998901234567" class="bg-[#ff9015] border-2 border-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-[#ff9015]/80 hover:shadow-[0_0_30px_rgba(255,144,21,0.5)] hover:scale-105 hover:border-[#ff9015]/80">
+			<a href="tel:+998901234567" class="bg-white text-[#ff9015] border-2 border-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-white/90 hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
 				{% if lang == 'uz' %}Hozir Qo'ng'iroq Qiling{% elif lang == 'ru' %}Позвонить Сейчас{% else %}Call Now{% endif %}
 			</a>
-			<a href="mailto:info@studyfans.uz" class="border-2 border-white text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[#004AAD] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
+			<a href="mailto:info@studyfans.uz" class="border-2 border-white text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[#ff9015] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
 				{% if lang == 'uz' %}Email Yuboring{% elif lang == 'ru' %}Отправить Email{% else %}Send Email{% endif %}
 			</a>
 		</div>
