@@ -5,27 +5,29 @@
 {% endblock %}
 
 {% block content %}
+
+
 <!-- Hero Section -->
-<section class="relative bg-gradient-to-br from-[#003262] via-blue-800 to-indigo-900 py-24 overflow-hidden">
+<section class="relative bg-gradient-to-r from-[#003262] to-blue-800 py-24 mt-[3rem] overflow-hidden">
 	<div class="absolute inset-0">
 		<div class="absolute -top-40 -right-40 w-80 h-80 bg-yellow-400/20 rounded-full blur-3xl animate-bounce-slow"></div>
 		<div class="absolute -bottom-40 -left-40 w-80 h-80 bg-orange-400/20 rounded-full blur-3xl animate-bounce-slow animation-delay-1000"></div>
 	</div>
 	
 	<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-		<h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
+		<h1 class="text-5xl md:text-7xl font-bold text-white mb-8" data-aos="fade-up">
 			{% if lang == 'uz' %}
 				<span class="block">Qidiruv</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Natijalari</span>
+				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">natijalari</span>
 			{% elif lang == 'ru' %}
 				<span class="block">Результаты</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Поиска</span>
+				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">поиска</span>
 			{% else %}
 				<span class="block">Search</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Results</span>
+				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">results</span>
 			{% endif %}
 		</h1>
-		<p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
+		<p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-2" data-aos="fade-up" data-aos-delay="200">
 			{% if lang == 'uz' %}
 				"{{ language }}" tilida o'qish imkoniyatlari
 			{% elif lang == 'ru' %}
@@ -158,7 +160,7 @@
 		{% else %}
 			<!-- No Results -->
 			<div class="text-center py-16">
-				<div class="bg-white rounded-3xl shadow-xl p-12 max-w-2xl mx-auto">
+				<div class="bg-white rounded-[3rem] p-12 max-w-2xl mx-auto">
 					<div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
 						<i class="fas fa-search text-gray-400 text-3xl"></i>
 					</div>
@@ -175,10 +177,10 @@
 						{% endif %}
 					</p>
 					<div class="flex flex-col sm:flex-row gap-4 justify-center">
-						<a href="{{ url_for('index') }}" class="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-gray-900 font-bold px-6 py-3 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg">
+						<a href="{{ url_for('index') }}" class="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-white font-bold px-6 py-3 rounded-[1rem] transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg">
 							{% if lang == 'uz' %}Bosh sahifaga qaytish{% elif lang == 'ru' %}Вернуться на главную{% else %}Back to Home{% endif %}
 						</a>
-						<a href="{{ url_for('universities') }}" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold px-6 py-3 rounded-lg transition-all duration-300">
+						<a href="{{ url_for('universities') }}" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold px-6 py-3 rounded-[1rem] transition-all duration-300">
 							{% if lang == 'uz' %}Barcha universitetlarni ko'rish{% elif lang == 'ru' %}Посмотреть все университеты{% else %}View All Universities{% endif %}
 						</a>
 					</div>
@@ -204,11 +206,11 @@
 			{% endif %}
 		</p>
 		<div class="flex flex-col sm:flex-row gap-4 justify-center">
-			<a href="{{ url_for('contact') }}" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+			<a href="{{ url_for('contact') }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-4 px-8 rounded-[1.5rem] text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 				<i class="fas fa-phone mr-2"></i>
-				{% if lang == 'uz' %}Bepul maslahat{% elif lang == 'ru' %}Бесплатная Консультация{% else %}Free Consultation{% endif %}
+				{% if lang == 'uz' %}Bepul maslahat{% elif lang == 'ru' %}Бесплатная консультация{% else %}Free consultation{% endif %}
 			</a>
-			<a href="{{ url_for('universities') }}" class="bg-white/10 backdrop-blur-lg border border-white/20 text-white hover:bg-white/20 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300">
+			<a href="{{ url_for('universities') }}" class="bg-white/10 backdrop-blur-lg border border-white/20 text-white hover:bg-white/20 font-bold py-4 px-8 rounded-[1.5rem] text-lg transition-all duration-300">
 				<i class="fas fa-university mr-2"></i>
 				{% if lang == 'uz' %}Barcha universitetlar{% elif lang == 'ru' %}Все Университеты{% else %}All Universities{% endif %}
 			</a>

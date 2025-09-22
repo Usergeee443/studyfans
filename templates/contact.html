@@ -72,8 +72,12 @@
 					{% endif %}
 				</p>
 				<div class="space-y-2">
-					<p class="text-lg font-semibold text-gray-900">+998 90 123 45 67</p>
-					<p class="text-lg font-semibold text-gray-900">+998 71 234 56 78</p>
+					<p class="text-lg font-semibold text-gray-900 flex items-center">
+						<span class="mr-3 text-xl">🇹🇷</span> +905011571111
+					</p>
+					<p class="text-lg font-semibold text-gray-900 flex items-center">
+						<span class="mr-3 text-xl">🇺🇿</span> +998785551040
+					</p>
 				</div>
 			</div>
 
@@ -157,19 +161,31 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
 			<!-- Contact Form -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50">
-				<h2 class="text-3xl font-bold text-gray-900 mb-6">
-					{% if lang == 'uz' %}Xabar Yuborish{% elif lang == 'ru' %}Отправить Сообщение{% else %}Send Message{% endif %}
-				</h2>
-				<p class="text-gray-600 mb-8">
-					{% if lang == 'uz' %}
-						Bizga xabar yuboring va biz sizga tez orada javob beramiz
-					{% elif lang == 'ru' %}
-						Отправьте нам сообщение, и мы быстро ответим вам
-					{% else %}
-						Send us a message and we'll get back to you soon
-					{% endif %}
-				</p>
+			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300">
+				<div class="flex items-center mb-6">
+					<div class="w-16 h-16 bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 rounded-full flex items-center justify-center mr-4 relative backdrop-blur-sm" style="box-shadow: 0 20px 60px rgba(255, 144, 21, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+						<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+						<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+							<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#FBBF24" stroke-width="2" fill="#F59E0B" opacity="0.9"/>
+							<polyline points="22,6 12,13 2,6" stroke="#FBBF24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</div>
+					<div>
+						<h2 class="text-3xl font-bold text-gray-900">
+							{% if lang == 'uz' %}Xabar Yuborish{% elif lang == 'ru' %}Отправить Сообщение{% else %}Send Message{% endif %}
+						</h2>
+						<p class="text-gray-600 mt-2">
+							{% if lang == 'uz' %}
+								Bizga xabar yuboring va biz sizga tez orada javob beramiz
+							{% elif lang == 'ru' %}
+								Отправьте нам сообщение, и мы быстро ответим вам
+							{% else %}
+								Send us a message and we'll get back to you soon
+							{% endif %}
+						</p>
+					</div>
+				</div>
 				
 				<form method="POST" action="/contact" class="space-y-6">
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -237,14 +253,34 @@
 			<!-- Map and Additional Info -->
 			<div class="space-y-8">
 				<!-- Map -->
-				<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50">
-					<h3 class="text-2xl font-bold text-gray-900 mb-6">
-						{% if lang == 'uz' %}Bizning manzilimiz{% elif lang == 'ru' %}Наш адрес{% else %}Our location{% endif %}
-					</h3>
-					<div class="bg-gray-200 rounded-xl h-64 flex items-center justify-center">
-						<div class="text-center">
-							<i class="fas fa-map-marked-alt text-4xl text-gray-400 mb-4"></i>
-							<p class="text-gray-600">
+				<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300">
+					<div class="flex items-center mb-6">
+						<div class="w-16 h-16 bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 rounded-full flex items-center justify-center mr-4 relative backdrop-blur-sm" style="box-shadow: 0 20px 60px rgba(255, 144, 21, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="#FBBF24" stroke-width="2" fill="#F59E0B" opacity="0.9"/>
+								<circle cx="12" cy="10" r="3" stroke="#FBBF24" stroke-width="2" fill="#FEE2E2" opacity="0.8"/>
+								<circle cx="12" cy="10" r="1" fill="#DC2626"/>
+							</svg>
+						</div>
+						<h3 class="text-2xl font-bold text-gray-900">
+							{% if lang == 'uz' %}Bizning manzilimiz{% elif lang == 'ru' %}Наш адрес{% else %}Our location{% endif %}
+						</h3>
+					</div>
+					<div class="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl h-64 flex items-center justify-center relative overflow-hidden">
+						<div class="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent"></div>
+						<div class="text-center relative z-10">
+							<div class="w-16 h-16 bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(255, 144, 21, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+								<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+								<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+									<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="#FBBF24" stroke-width="2" fill="#F59E0B" opacity="0.9"/>
+									<circle cx="12" cy="10" r="3" stroke="#FBBF24" stroke-width="2" fill="#FEE2E2" opacity="0.8"/>
+									<circle cx="12" cy="10" r="1" fill="#DC2626"/>
+								</svg>
+							</div>
+							<p class="text-gray-600 font-medium">
 								{% if lang == 'uz' %}
 									Xarita yuklanmoqda...
 								{% elif lang == 'ru' %}
@@ -258,28 +294,53 @@
 				</div>
 
 				<!-- Working Hours -->
-				<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50">
-					<h3 class="text-2xl font-bold text-gray-900 mb-6">
-						{% if lang == 'uz' %}Ish Vaqtlari{% elif lang == 'ru' %}Часы Работы{% else %}Working Hours{% endif %}
-					</h3>
+				<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300">
+					<div class="flex items-center mb-6">
+						<div class="w-16 h-16 bg-gradient-to-br from-[#10B981] via-green-500 to-emerald-500 rounded-full flex items-center justify-center mr-4 relative backdrop-blur-sm" style="box-shadow: 0 20px 60px rgba(16, 185, 129, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<circle cx="12" cy="12" r="10" stroke="#34D399" stroke-width="2" fill="#10B981" opacity="0.9"/>
+								<polyline points="12,6 12,12 16,14" stroke="#34D399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</div>
+						<h3 class="text-2xl font-bold text-gray-900">
+							{% if lang == 'uz' %}Ish vaqtlari{% elif lang == 'ru' %}Часы работы{% else %}Working hours{% endif %}
+						</h3>
+					</div>
 					<div class="space-y-4">
-						<div class="flex justify-between items-center">
-							<span class="text-gray-600">
-								{% if lang == 'uz' %}Dushanba - Juma{% elif lang == 'ru' %}Понедельник - Пятница{% else %}Monday - Friday{% endif %}
-							</span>
-							<span class="font-semibold text-gray-900">09:00 - 18:00</span>
+						<div class="flex justify-between items-center p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-100">
+							<div class="flex items-center">
+								<div class="w-8 h-8 bg-gradient-to-br from-[#10B981] via-green-500 to-emerald-500 rounded-full flex items-center justify-center mr-3 relative backdrop-blur-sm" style="box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+									<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+									<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+									<svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+										<circle cx="12" cy="12" r="10" stroke="#34D399" stroke-width="2" fill="#10B981" opacity="0.9"/>
+										<polyline points="12,6 12,12 16,14" stroke="#34D399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+									</svg>
+								</div>
+								<span class="text-gray-700 font-medium">
+									{% if lang == 'uz' %}Dushanba - Shanba{% elif lang == 'ru' %}Понедельник - Суббота{% else %}Monday - Saturday{% endif %}
+								</span>
+							</div>
+							<span class="font-bold text-gray-900 text-lg">10:00 - 19:00</span>
 						</div>
-						<div class="flex justify-between items-center">
-							<span class="text-gray-600">
-								{% if lang == 'uz' %}Shanba{% elif lang == 'ru' %}Суббота{% else %}Saturday{% endif %}
-							</span>
-							<span class="font-semibold text-gray-900">10:00 - 16:00</span>
-						</div>
-						<div class="flex justify-between items-center">
-							<span class="text-gray-600">
-								{% if lang == 'uz' %}Yakshanba{% elif lang == 'ru' %}Воскресенье{% else %}Sunday{% endif %}
-							</span>
-							<span class="font-semibold text-gray-900">
+						<div class="flex justify-between items-center p-4 bg-gradient-to-r from-red-50 to-pink-50 rounded-xl border border-red-100">
+							<div class="flex items-center">
+								<div class="w-8 h-8 bg-gradient-to-br from-[#EF4444] via-red-500 to-red-600 rounded-full flex items-center justify-center mr-3 relative backdrop-blur-sm" style="box-shadow: 0 8px 24px rgba(239, 68, 68, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+									<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+									<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+									<svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+										<circle cx="12" cy="12" r="10" stroke="#F87171" stroke-width="2" fill="#EF4444" opacity="0.9"/>
+										<line x1="15" y1="9" x2="9" y2="15" stroke="#F87171" stroke-width="2" stroke-linecap="round"/>
+										<line x1="9" y1="9" x2="15" y2="15" stroke="#F87171" stroke-width="2" stroke-linecap="round"/>
+									</svg>
+								</div>
+								<span class="text-gray-700 font-medium">
+									{% if lang == 'uz' %}Yakshanba{% elif lang == 'ru' %}Воскресенье{% else %}Sunday{% endif %}
+								</span>
+							</div>
+							<span class="font-bold text-red-600 text-lg">
 								{% if lang == 'uz' %}Yopiq{% elif lang == 'ru' %}Закрыто{% else %}Closed{% endif %}
 							</span>
 						</div>
@@ -287,22 +348,57 @@
 				</div>
 
 				<!-- Social Media -->
-				<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50">
-					<h3 class="text-2xl font-bold text-gray-900 mb-6">
-						{% if lang == 'uz' %}Ijtimoiy Tarmoqlar{% elif lang == 'ru' %}Социальные Сети{% else %}Social Media{% endif %}
-					</h3>
-					<div class="flex space-x-4">
-						<a href="https://www.instagram.com/studyfansuz" class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white hover:bg-pink-600 transition-colors">
-							<i class="fab fa-instagram"></i>
+				<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300">
+					<div class="flex items-center mb-6">
+						<div class="w-16 h-16 bg-gradient-to-br from-[#8B5CF6] via-purple-500 to-violet-500 rounded-full flex items-center justify-center mr-4 relative backdrop-blur-sm" style="box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="#A78BFA" stroke-width="2" fill="#8B5CF6" opacity="0.9"/>
+							</svg>
+						</div>
+						<h3 class="text-2xl font-bold text-gray-900">
+							{% if lang == 'uz' %}Ijtimoiy Tarmoqlar{% elif lang == 'ru' %}Социальные Сети{% else %}Social Media{% endif %}
+						</h3>
+					</div>
+					<div class="grid grid-cols-2 gap-4">
+						<!-- Instagram -->
+						<a href="https://www.instagram.com/studyfansuz" class="w-full bg-gradient-to-br from-[#E4405F] via-pink-500 to-[#C13584] rounded-2xl p-4 flex items-center justify-center relative backdrop-blur-sm hover:scale-105 transition-all duration-300" style="box-shadow: 0 12px 40px rgba(228, 64, 95, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="#FBBF24" stroke-width="2" fill="#E4405F" opacity="0.9"/>
+								<path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="#FBBF24" stroke-width="2" fill="none"/>
+								<line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#FBBF24" stroke-width="2" stroke-linecap="round"/>
+							</svg>
 						</a>
-						<a href="https://www.youtube.com/@studyfansuz" class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white hover:bg-red-700 transition-colors">
-							<i class="fab fa-youtube"></i>
+						
+						<!-- YouTube -->
+						<a href="https://www.youtube.com/@studyfansuz" class="w-full bg-gradient-to-br from-[#FF0000] via-red-600 to-[#CC0000] rounded-2xl p-4 flex items-center justify-center relative backdrop-blur-sm hover:scale-105 transition-all duration-300" style="box-shadow: 0 12px 40px rgba(255, 0, 0, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" stroke="#FBBF24" stroke-width="2" fill="#FF0000" opacity="0.9"/>
+								<polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="#FBBF24"/>
+							</svg>
 						</a>
-						<a href="https://t.me/studyfansuz" class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white hover:bg-blue-600 transition-colors">
-							<i class="fab fa-telegram"></i>
+						
+						<!-- Telegram -->
+						<a href="https://t.me/studyfansuz" class="w-full bg-gradient-to-br from-[#0088cc] via-blue-500 to-[#229ED9] rounded-2xl p-4 flex items-center justify-center relative backdrop-blur-sm hover:scale-105 transition-all duration-300" style="box-shadow: 0 12px 40px rgba(0, 136, 204, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" fill="#FBBF24"/>
+							</svg>
 						</a>
-						<a href="https://www.tiktok.com/@studyfansuz" class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
-							<i class="fab fa-tiktok"></i>
+						
+						<!-- TikTok -->
+						<a href="https://www.tiktok.com/@studyfansuz" class="w-full bg-gradient-to-br from-[#000000] via-gray-800 to-[#333333] rounded-2xl p-4 flex items-center justify-center relative backdrop-blur-sm hover:scale-105 transition-all duration-300" style="box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
+							<div class="absolute inset-0 rounded-2xl bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+								<path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" stroke="#FBBF24" stroke-width="2" fill="#000000" opacity="0.9"/>
+							</svg>
 						</a>
 					</div>
 				</div>
@@ -462,7 +558,7 @@
 		</p>
 
 		<div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
-			<a href="tel:+998901234567" class="bg-white text-[#ff9015] border-2 border-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-white/90 hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
+			<a href="tel:+905011571111" class="bg-white text-[#ff9015] border-2 border-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-white/90 hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
 				{% if lang == 'uz' %}Hozir Qo'ng'iroq Qiling{% elif lang == 'ru' %}Позвонить Сейчас{% else %}Call Now{% endif %}
 			</a>
 			<a href="mailto:info@studyfans.uz" class="border-2 border-white text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[#ff9015] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
