@@ -1,71 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yangi Universitet Qo'shish - Study Fans Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body class="bg-gray-100">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-4">
-                    <a href="{{ url_for('admin_dashboard') }}" class="flex items-center space-x-2">
-                        <span class="text-xl font-bold text-gray-900">Study Fans Admin</span>
-                    </a>
-                </div>
-                
-                <div class="flex items-center space-x-4">
-                    <a href="{{ url_for('admin_logout') }}" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors duration-200">
-                        <i class="fas fa-sign-out-alt mr-2"></i>Chiqish
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+{% extends "admin/base.html" %}
 
-    <!-- Main Content -->
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <!-- Flash Messages -->
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <div class="mb-6 space-y-2">
-                    {% for category, message in messages %}
-                        <div class="p-4 rounded-lg {% if category == 'success' %}bg-green-100 text-green-800 border border-green-200{% elif category == 'error' %}bg-red-100 text-red-800 border border-red-200{% else %}bg-blue-100 text-blue-800 border border-blue-200{% endif %}">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
+{% block title %}Yangi Universitet Qo'shish - Study Fans Admin{% endblock %}
 
+{% block content %}
+<div class="p-6 md:p-8">
         <!-- Header -->
         <div class="flex items-center justify-between mb-8">
             <div>
-                <h1 class="text-3xl font-bold text-gray-900 mb-2">Yangi Universitet Qo'shish</h1>
-                <p class="text-gray-600">Yangi universitet yaratish va barcha tillarda ma'lumot kiritish</p>
+                <h1 class="text-2xl font-normal text-gray-900 mb-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">Yangi Universitet</h1>
             </div>
-            <a href="{{ url_for('admin_universities') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors duration-200">
-                <i class="fas fa-arrow-left mr-2"></i>Orqaga
+            <a href="{{ url_for('admin_universities') }}" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+                ← Orqaga
             </a>
         </div>
 
         <!-- Form -->
-        <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8">
             <form method="POST" enctype="multipart/form-data" class="space-y-8">
                 <!-- University Name Section -->
-                <div class="border-b border-gray-200 pb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Universitet Nomi (4 tilda)</h2>
+                <div class="border-b border-gray-200 pb-6 mb-6">
+                    <h2 class="text-lg font-normal text-gray-900 mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">Universitet Nomi</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 <i class="fas fa-flag mr-2 text-red-500"></i>O'zbek tilida
                             </label>
                             <input type="text" name="name_uz" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Universitet nomini o'zbek tilida kiriting">
                         </div>
                         <div>
@@ -73,7 +34,7 @@
                                 <i class="fas fa-flag mr-2 text-blue-500"></i>Ingliz tilida
                             </label>
                             <input type="text" name="name_en" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Enter university name in English">
                         </div>
                         <div>
@@ -81,7 +42,7 @@
                                 <i class="fas fa-flag mr-2 text-green-500"></i>Rus tilida
                             </label>
                             <input type="text" name="name_ru" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Введите название университета на русском">
                         </div>
                         <div>
@@ -89,22 +50,22 @@
                                 <i class="fas fa-flag mr-2 text-orange-500"></i>Turk tilida
                             </label>
                             <input type="text" name="name_tr" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Üniversite adını Türkçe girin">
                         </div>
                     </div>
                 </div>
 
                 <!-- Country Section -->
-                <div class="border-b border-gray-200 pb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Mamlakat (4 tilda)</h2>
+                <div class="border-b border-gray-200 pb-6 mb-6">
+                    <h2 class="text-lg font-normal text-gray-900 mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">Mamlakat</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 <i class="fas fa-globe mr-2 text-red-500"></i>O'zbek tilida
                             </label>
                             <input type="text" name="country_uz" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Mamlakat nomini o'zbek tilida kiriting">
                         </div>
                         <div>
@@ -112,7 +73,7 @@
                                 <i class="fas fa-globe mr-2 text-blue-500"></i>Ingliz tilida
                             </label>
                             <input type="text" name="country_en" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Enter country name in English">
                         </div>
                         <div>
@@ -120,7 +81,7 @@
                                 <i class="fas fa-globe mr-2 text-green-500"></i>Rus tilida
                             </label>
                             <input type="text" name="country_ru" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Введите название страны на русском">
                         </div>
                         <div>
@@ -128,22 +89,22 @@
                                 <i class="fas fa-globe mr-2 text-orange-500"></i>Turk tilida
                             </label>
                             <input type="text" name="country_tr" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Ülke adını Türkçe girin">
                         </div>
                     </div>
                 </div>
 
                 <!-- Description Section -->
-                <div class="border-b border-gray-200 pb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Universitet Tavsifi (4 tilda)</h2>
+                <div class="border-b border-gray-200 pb-6 mb-6">
+                    <h2 class="text-lg font-normal text-gray-900 mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">Tavsif</h2>
                     <div class="space-y-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 <i class="fas fa-align-left mr-2 text-red-500"></i>O'zbek tilida
                             </label>
                             <textarea name="description_uz" rows="4" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Universitet haqida batafsil ma'lumot o'zbek tilida"></textarea>
                         </div>
                         <div>
@@ -151,7 +112,7 @@
                                 <i class="fas fa-align-left mr-2 text-blue-500"></i>Ingliz tilida
                             </label>
                             <textarea name="description_en" rows="4" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Detailed university information in English"></textarea>
                         </div>
                         <div>
@@ -159,7 +120,7 @@
                                 <i class="fas fa-align-left mr-2 text-green-500"></i>Rus tilida
                             </label>
                             <textarea name="description_ru" rows="4" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Подробная информация об университете на русском"></textarea>
                         </div>
                         <div>
@@ -167,22 +128,22 @@
                                 <i class="fas fa-align-left mr-2 text-orange-500"></i>Turk tilida
                             </label>
                             <textarea name="description_tr" rows="4" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Üniversite hakkında detaylı bilgi Türkçe"></textarea>
                         </div>
                     </div>
                 </div>
 
                 <!-- City Section -->
-                <div class="border-b border-gray-200 pb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Shahar (4 tilda)</h2>
+                <div class="border-b border-gray-200 pb-6 mb-6">
+                    <h2 class="text-lg font-normal text-gray-900 mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">Shahar</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 <i class="fas fa-city mr-2 text-red-500"></i>O'zbek tilida
                             </label>
                             <input type="text" name="city_uz" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Shahar nomini o'zbek tilida kiriting">
                         </div>
                         <div>
@@ -190,7 +151,7 @@
                                 <i class="fas fa-city mr-2 text-blue-500"></i>Ingliz tilida
                             </label>
                             <input type="text" name="city_en" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Enter city name in English">
                         </div>
                         <div>
@@ -198,7 +159,7 @@
                                 <i class="fas fa-city mr-2 text-green-500"></i>Rus tilida
                             </label>
                             <input type="text" name="city_ru" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Введите название города на русском">
                         </div>
                         <div>
@@ -206,22 +167,22 @@
                                 <i class="fas fa-city mr-2 text-orange-500"></i>Turk tilida
                             </label>
                             <input type="text" name="city_tr" required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Şehir adını Türkçe girin">
                         </div>
                     </div>
                 </div>
 
                 <!-- Basic Information Section -->
-                <div class="border-b border-gray-200 pb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Asosiy Ma'lumotlar</h2>
+                <div class="border-b border-gray-200 pb-6 mb-6">
+                    <h2 class="text-lg font-normal text-gray-900 mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">Asosiy Ma'lumotlar</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 <i class="fas fa-calendar mr-2 text-green-500"></i>Asos solingan yili
                             </label>
                             <input type="number" name="founded_year" min="1000" max="2024"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Masalan: 1636">
                         </div>
                         <div>
@@ -229,7 +190,7 @@
                                 <i class="fas fa-building mr-2 text-purple-500"></i>Universitet turi
                             </label>
                             <select name="university_type" required
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200">
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
                                 <option value="">Turi tanlang</option>
                                 <option value="Private">Xususiy</option>
                                 <option value="Public">Davlat</option>
@@ -242,22 +203,22 @@
                                 <i class="fas fa-users mr-2 text-orange-500"></i>Talabalar soni
                             </label>
                             <input type="number" name="student_count" min="1"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Masalan: 23000">
                         </div>
                     </div>
                 </div>
 
                 <!-- Quick Information Section -->
-                <div class="border-b border-gray-200 pb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Tezkor Ma'lumot</h2>
+                <div class="border-b border-gray-200 pb-6 mb-6">
+                    <h2 class="text-lg font-normal text-gray-900 mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">Qo'shimcha Ma'lumotlar</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 <i class="fas fa-star mr-2 text-yellow-500"></i>Reyting
                             </label>
                             <input type="number" name="ranking" min="1" 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Masalan: 1, 2, 3...">
                         </div>
                         <div>
@@ -265,7 +226,7 @@
                                 <i class="fas fa-globe mr-2 text-blue-500"></i>Veb-sayt
                             </label>
                             <input type="url" name="website" 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="https://example.com">
                         </div>
                         <div>
@@ -273,21 +234,21 @@
                                 <i class="fas fa-calendar-alt mr-2 text-red-500"></i>Ariza berish muddati
                             </label>
                             <input type="date" name="application_deadline"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200">
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
                         </div>
                     </div>
                 </div>
 
                 <!-- Tuition Fee Section -->
-                <div class="border-b border-gray-200 pb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">O'qish To'lovi</h2>
+                <div class="border-b border-gray-200 pb-6 mb-6">
+                    <h2 class="text-lg font-normal text-gray-900 mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">O'qish To'lovi</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 <i class="fas fa-dollar-sign mr-2 text-green-500"></i>Minimal to'lov (USD)
                             </label>
                             <input type="number" name="tuition_fee_min" min="0" step="1000"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Masalan: 50000">
                         </div>
                         <div>
@@ -295,22 +256,22 @@
                                 <i class="fas fa-dollar-sign mr-2 text-green-500"></i>Maksimal to'lov (USD)
                             </label>
                             <input type="number" name="tuition_fee_max" min="0" step="1000"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Masalan: 60000">
                         </div>
                     </div>
                 </div>
 
                 <!-- Requirements Section -->
-                <div class="border-b border-gray-200 pb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Talablar</h2>
+                <div class="border-b border-gray-200 pb-6 mb-6">
+                    <h2 class="text-lg font-normal text-gray-900 mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">Talablar</h2>
                     <div class="space-y-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 <i class="fas fa-language mr-2 text-blue-500"></i>Til talablari
                             </label>
                             <textarea name="language_requirements" rows="3"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Masalan: IELTS 7.0+ yoki TOEFL 100+"></textarea>
                         </div>
                         <div>
@@ -318,15 +279,15 @@
                                 <i class="fas fa-file-alt mr-2 text-purple-500"></i>Qabul talablari
                             </label>
                             <textarea name="admission_requirements" rows="4"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
                                 placeholder="Masalan: Diplom, transkript, til sertifikati, pasport, SAT/ACT"></textarea>
                         </div>
                     </div>
                 </div>
 
                 <!-- Opportunities Section -->
-                <div class="border-b border-gray-200 pb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Imkoniyatlar</h2>
+                <div class="border-b border-gray-200 pb-6 mb-6">
+                    <h2 class="text-lg font-normal text-gray-900 mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">Imkoniyatlar</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="flex items-center space-x-3">
                             <input type="checkbox" name="scholarship_available" id="scholarship" value="1"
@@ -346,15 +307,15 @@
                 </div>
 
                 <!-- Logo Upload Section -->
-                <div class="border-b border-gray-200 pb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Universitet Logosi</h2>
+                <div class="pb-6 mb-6">
+                    <h2 class="text-lg font-normal text-gray-900 mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">Logo</h2>
                     <div class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 <i class="fas fa-image mr-2 text-purple-500"></i>Logo faylini tanlang
                             </label>
                             <input type="file" name="logo" accept="image/*" id="logo-input"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200">
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
                             <p class="text-sm text-gray-500 mt-2">
                                 Ruxsat etilgan formatlar: PNG, JPG, JPEG, GIF, WEBP. Maksimal hajm: 16MB
                             </p>
@@ -371,17 +332,17 @@
                 </div>
 
                 <!-- Submit Buttons -->
-                <div class="flex items-center justify-end space-x-4">
-                    <a href="{{ url_for('admin_universities') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors duration-200">
+                <div class="flex items-center justify-end space-x-4 pt-6">
+                    <a href="{{ url_for('admin_universities') }}" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-normal px-6 py-2.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
                         Bekor qilish
                     </a>
-                    <button type="submit" class="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-gray-900 font-bold px-8 py-3 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg">
-                        <i class="fas fa-save mr-2"></i>Universitetni Saqlash
+                    <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white font-normal px-6 py-2.5 rounded-full transition-colors text-sm" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+                        Saqlash
                     </button>
                 </div>
             </form>
         </div>
-    </div>
+</div>
 
     <script>
         // Logo preview functionality
@@ -436,5 +397,4 @@
             }
         });
     </script>
-</body>
-</html>
+{% endblock %}

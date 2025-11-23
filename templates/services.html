@@ -4,521 +4,394 @@
 	{% if lang == 'uz' %}Xizmatlar - Study Fans{% elif lang == 'ru' %}Услуги - Study Fans{% elif lang == 'tr' %}Hizmetler - Study Fans{% else %}Services - Study Fans{% endif %}
 {% endblock %}
 
+{% block extra_css %}
+<style>
+.packages-section {
+	position: relative;
+	transition: all 0.3s ease;
+}
+
+</style>
+{% endblock %}
+
 {% block content %}
 
-
-<section class="relative mt-[4rem] bg-gradient-to-r from-[#003262] to-blue-800 py-24 overflow-hidden">
-	<div class="absolute inset-0">
-		<div class="absolute -top-40 -right-40 w-80 h-80 bg-yellow-400/20 rounded-full blur-3xl animate-bounce-slow"></div>
-		<div class="absolute -bottom-40 -left-40 w-80 h-80 bg-orange-400/20 rounded-full blur-3xl animate-bounce-slow animation-delay-1000"></div>
-	</div>
-	
-	<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-		<h1 class="text-5xl md:text-7xl font-bold text-white mb-8" data-aos="fade-up">
-			{% if lang == 'uz' %}
-				<span class="block">Professional</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">xizmatlarimiz</span>
-			{% elif lang == 'ru' %}
-				<span class="block">Наши</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Профессиональные Услуги</span>
-			{% elif lang == 'tr' %}
-				<span class="block">Profesyonel</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">hizmetlerimiz</span>
-			{% else %}
-				<span class="block">Our</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Professional Services</span>
-			{% endif %}
-		</h1>
-		<p class="text-xl md:text-2xl text-blue-100 mb-2 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-			{% if lang == 'uz' %}
-				Ta'lim yo'lingizda to'liq qo'llab-quvvatlash va professional yordam
-			{% elif lang == 'ru' %}
-				Полная поддержка и профессиональная помощь на вашем образовательном пути
-			{% elif lang == 'tr' %}
-				Eğitim yolculuğunuzda tam destek ve profesyonel yardım
-			{% else %}
-				Complete support and professional assistance on your educational journey
-			{% endif %}
-		</p>
-	</div>
-</section>
-
-<!-- Main Services Section -->
-<section class="py-20 bg-white">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
-			<!-- Service 1 -->
-			<div class="group bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
-				<div class="flex items-center mb-6">
-					<div class="w-20 h-20 bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 rounded-full flex items-center justify-center transition-all duration-300 service-icon shadow-lg hover:shadow-xl hover:scale-110 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(255, 144, 21, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-						<!-- Liquid Glass Overlay -->
-						<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-						<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-						
-						<!-- Graduation Cap Icon -->
-						<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-							<!-- Cap base -->
-							<path d="M12 3L2 8l10 5 10-5-10-5z" stroke="#FBBF24" stroke-width="2" fill="#F59E0B" opacity="0.9"/>
-							<!-- Cap top -->
-							<path d="M2 8v6c0 3 4.5 5 10 5s10-2 10-5V8" stroke="#FBBF24" stroke-width="2" fill="none" opacity="0.8"/>
-							<!-- Tassel -->
-							<circle cx="18" cy="10" r="1" fill="#FBBF24" opacity="0.8"/>
-							<path d="M18 11v3" stroke="#FBBF24" stroke-width="1.5" opacity="0.7"/>
-							<circle cx="18" cy="14.5" r="0.5" fill="#FBBF24" opacity="0.6"/>
-						</svg>
-					</div>
-					<div class="ml-6">
-						<h3 class="text-3xl font-bold text-gray-900 mb-2">
-							{% if lang == 'uz' %}Ta'lim Konsaltingi{% elif lang == 'ru' %}Образовательное консультирование{% elif lang == 'tr' %}Eğitim Danışmanlığı{% else %}Educational Consulting{% endif %}
-						</h3>
-						<div class="w-16 h-1 bg-[#ff9015] rounded-full"></div>
-					</div>
-				</div>
-				<p class="text-gray-600 mb-6 leading-relaxed text-lg">
-					{% if lang == 'uz' %}
-						Universitet tanlash, yo'nalish maslahati va qabul strategiyasi bo'yicha professional yordam. Har bir talaba uchun individual yondashuv.
-					{% elif lang == 'ru' %}
-						Профессиональная помощь в выборе университета, консультации по направлению и стратегии поступления. Индивидуальный подход к каждому студенту.
-					{% elif lang == 'tr' %}
-						Üniversite seçimi, bölüm danışmanlığı ve kabul stratejisi konusunda profesyonel yardım. Her öğrenci için bireysel yaklaşım.
-					{% else %}
-						Professional assistance in university selection, major guidance and admission strategy. Individual approach for each student.
-					{% endif %}
+<div class="page-container" style="margin-top: 0; padding-top: 0;">
+<!-- Top Section with Title and Search -->
+<section class="pt-6 pb-6 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<!-- Title and Search in One Row -->
+		<div class="flex items-start gap-4 mb-6">
+			<!-- Title Section -->
+			<div class="flex-1">
+				<h1 class="text-2xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+					{% if lang == 'uz' %}Xizmatlar{% elif lang == 'ru' %}Услуги{% elif lang == 'tr' %}Hizmetler{% else %}Services{% endif %}
+				</h1>
+				<p class="text-sm text-gray-500 font-normal mt-0.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Turkiyada o'qish, yashash ruxsatnomasi va kundalik hayot uchun barcha xizmatlar{% elif lang == 'ru' %}Все услуги для учебы в Турции, вида на жительство и повседневной жизни{% elif lang == 'tr' %}Türkiye'de eğitim, ikamet izni ve günlük yaşam için tüm hizmetler{% else %}All services for studying in Turkey, residence permits and daily life{% endif %}
 				</p>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Universitet tanlash{% elif lang == 'ru' %}Выбор университета{% elif lang == 'tr' %}Üniversite seçimi{% else %}University Selection{% endif %}
-						</span>
-					</div>
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Yo'nalish maslahati{% elif lang == 'ru' %}Консультация по направлению{% elif lang == 'tr' %}Bölüm danışmanlığı{% else %}Major Guidance{% endif %}
-						</span>
-					</div>
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Qabul strategiyasi{% elif lang == 'ru' %}Стратегия поступления{% elif lang == 'tr' %}Kabul stratejisi{% else %}Admission Strategy{% endif %}
-						</span>
-					</div>
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Shaxsiy yondashuv{% elif lang == 'ru' %}Личный подход{% elif lang == 'tr' %}Bireysel yaklaşım{% else %}Personal Approach{% endif %}
-						</span>
-					</div>
-				</div>
-				<!-- CTA Button -->
-				<div class="text-center">
-					<a href="tel:+905011571111" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#ff9015] to-orange-600 text-white font-semibold rounded-xl hover:from-[#e8800f] hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-3">
-							<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-						</svg>
-						{% if lang == 'uz' %}Qo'ng'iroq qilish{% elif lang == 'ru' %}Позвонить{% elif lang == 'tr' %}Ara{% else %}Call Now{% endif %}
-					</a>
+			</div>
+			
+			<!-- Search Bar -->
+			<div class="flex items-center gap-3">
+				<!-- Search Input - Full Border Radius -->
+				<div class="flex-1 relative">
+					<input type="text" id="searchInput" placeholder="{% if lang == 'uz' %}Qidirish...{% elif lang == 'ru' %}Поиск...{% elif lang == 'tr' %}Ara...{% else %}Search...{% endif %}" class="w-full px-4 py-2.5 pl-11 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-900 font-normal focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					<img src="/static/search-normal.svg" alt="Search" class="absolute left-3.5 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400">
 				</div>
 			</div>
-
-			<!-- Service 2 -->
-			<div class="group bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
-				<div class="flex items-center mb-6">
-					<div class="w-20 h-20 bg-gradient-to-br from-[#003262] via-blue-600 to-[#004AAD] rounded-full flex items-center justify-center transition-all duration-300 service-icon shadow-lg hover:shadow-xl hover:scale-110 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(0, 50, 98, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-						<!-- Liquid Glass Overlay -->
-						<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-						<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-						
-						<!-- Legal Document Icon -->
-						<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-							<!-- Document -->
-							<rect x="6" y="3" width="12" height="18" rx="2" stroke="#F59E0B" stroke-width="2" fill="#D97706" opacity="0.9"/>
-							<!-- Folded corner -->
-							<path d="M15 3v3h3" stroke="#F59E0B" stroke-width="2" fill="none" opacity="0.8"/>
-							<!-- Legal seal/stamp -->
-							<circle cx="12" cy="10" r="3" stroke="#FBBF24" stroke-width="1.5" fill="#F59E0B" opacity="0.8"/>
-							<path d="M10.5 10l1 1 2-2" stroke="#FBBF24" stroke-width="1.5" fill="none" opacity="0.9"/>
-							<!-- Text lines -->
-							<rect x="8" y="15" width="8" height="1" rx="0.5" fill="#FBBF24" opacity="0.8"/>
-							<rect x="8" y="17" width="6" height="1" rx="0.5" fill="#FBBF24" opacity="0.8"/>
-							<rect x="8" y="19" width="4" height="1" rx="0.5" fill="#FBBF24" opacity="0.8"/>
-							<!-- Legal ribbon -->
-							<rect x="4" y="8" width="2" height="8" rx="1" fill="#EF4444" opacity="0.8"/>
-						</svg>
-					</div>
-					<div class="ml-6">
-						<h3 class="text-3xl font-bold text-gray-900 mb-2">
-							{% if lang == 'uz' %}Huquqiy Yordam{% elif lang == 'ru' %}Правовая Помощь{% elif lang == 'tr' %}Hukuki Yardım{% else %}Legal Assistance{% endif %}
-						</h3>
-						<div class="w-16 h-1 bg-[#ff9015] rounded-full"></div>
-					</div>
-				</div>
-				<p class="text-gray-600 mb-6 leading-relaxed text-lg">
-					{% if lang == 'uz' %}
-						Viza, ruxsatnoma va boshqa huquqiy hujjatlarni rasmiylashtirishda to'liq yordam. Barcha jarayonlarni professional darajada boshqarish.
-					{% elif lang == 'ru' %}
-						Полная помощь в оформлении виз, разрешений и других правовых документов. Профессиональное управление всеми процессами.
-					{% elif lang == 'tr' %}
-						Vize, izin ve diğer yasal belgelerin düzenlenmesinde tam yardım. Tüm süreçleri profesyonel düzeyde yönetme.
-					{% else %}
-						Complete assistance in processing visas, permits and other legal documents. Professional management of all processes.
-					{% endif %}
-				</p>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Viza rasmiylashtirish{% elif lang == 'ru' %}Оформление визы{% elif lang == 'tr' %}Vize düzenleme{% else %}Visa Processing{% endif %}
-						</span>
-					</div>
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Ruxsatnoma olish{% elif lang == 'ru' %}Получение разрешения{% elif lang == 'tr' %}İzin alma{% else %}Permit Acquisition{% endif %}
-						</span>
-					</div>
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Hujjatlar tayyorlash{% elif lang == 'ru' %}Подготовка документов{% elif lang == 'tr' %}Belge hazırlama{% else %}Document Preparation{% endif %}
-						</span>
-					</div>
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Huquqiy maslahat{% elif lang == 'ru' %}Правовые консультации{% elif lang == 'tr' %}Hukuki danışmanlık{% else %}Legal Consultation{% endif %}
-						</span>
-					</div>
-				</div>
-				<!-- CTA Button -->
-				<div class="text-center">
-					<a href="tel:+905011571111" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#ff9015] to-orange-600 text-white font-semibold rounded-xl hover:from-[#e8800f] hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-3">
-							<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-						</svg>
-						{% if lang == 'uz' %}Qo'ng'iroq qilish{% elif lang == 'ru' %}Позвонить{% elif lang == 'tr' %}Ara{% else %}Call Now{% endif %}
-					</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-			<!-- Service 3 -->
-			<div class="group bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
-				<div class="flex items-center mb-6">
-					<div class="w-20 h-20 bg-gradient-to-br from-blue-600 via-cyan-500 to-teal-500 rounded-full flex items-center justify-center transition-all duration-300 service-icon shadow-lg hover:shadow-xl hover:scale-110 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-						<!-- Liquid Glass Overlay -->
-						<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-						<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-						
-						<!-- Award Medal Icon -->
-						<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-							<!-- Medal circle -->
-							<circle cx="12" cy="9" r="6" stroke="#10B981" stroke-width="2" fill="#059669" opacity="0.9"/>
-							<circle cx="12" cy="9" r="4" stroke="#10B981" stroke-width="1.5" fill="#047857" opacity="0.8"/>
-							<!-- Star in center -->
-							<path d="M12 6l1 2h2l-1.5 1.5L14 12l-2-1-2 1 .5-2.5L9 8h2l1-2z" fill="#10B981" opacity="0.8"/>
-							<!-- Ribbons -->
-							<path d="M8 13v6l2-1.5L12 19l2-1.5L16 19v-6" stroke="#EF4444" stroke-width="1.5" fill="#DC2626" opacity="0.8"/>
-							<path d="M10 15l2 1.5L14 15" stroke="#EF4444" stroke-width="1" opacity="0.7"/>
-						</svg>
-					</div>
-					<div class="ml-6">
-						<h3 class="text-3xl font-bold text-gray-900 mb-2">
-							{% if lang == 'uz' %}Grant Yordami{% elif lang == 'ru' %}Помощь с Грантами{% elif lang == 'tr' %}Burs Yardımı{% else %}Scholarship Assistance{% endif %}
-						</h3>
-						<div class="w-16 h-1 bg-[#ff9015] rounded-full"></div>
-					</div>
-				</div>
-				<p class="text-gray-600 mb-6 leading-relaxed text-lg">
-					{% if lang == 'uz' %}
-						Turli grant va stipendiya dasturlarida qatnashishda yordam va ariza yozish. Muvaffaqiyatli natijalar uchun professional yondashuv.
-					{% elif lang == 'ru' %}
-						Помощь в участии в различных программах грантов и стипендий, написание заявлений. Профессиональный подход для успешных результатов.
-					{% elif lang == 'tr' %}
-						Çeşitli burs ve stipend programlarına katılımda yardım ve başvuru yazma. Başarılı sonuçlar için profesyonel yaklaşım.
-					{% else %}
-						Assistance in participating in various grant and scholarship programs, application writing. Professional approach for successful results.
-					{% endif %}
-				</p>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Grant dasturlari{% elif lang == 'ru' %}Программы грантов{% elif lang == 'tr' %}Burs programları{% else %}Grant Programs{% endif %}
-						</span>
-					</div>
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Ariza yozish{% elif lang == 'ru' %}Написание заявлений{% elif lang == 'tr' %}Başvuru yazma{% else %}Application Writing{% endif %}
-						</span>
-					</div>
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Intervyu tayyorlash{% elif lang == 'ru' %}Подготовка к интервью{% elif lang == 'tr' %}Mülakat hazırlığı{% else %}Interview Preparation{% endif %}
-						</span>
-					</div>
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Natija kafolati{% elif lang == 'ru' %}Гарантия результата{% elif lang == 'tr' %}Sonuç garantisi{% else %}Result Guarantee{% endif %}
-						</span>
-					</div>
-				</div>
-				<!-- CTA Button -->
-				<div class="text-center">
-					<a href="tel:+905011571111" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#ff9015] to-orange-600 text-white font-semibold rounded-xl hover:from-[#e8800f] hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-3">
-							<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-						</svg>
-						{% if lang == 'uz' %}Qo'ng'iroq qilish{% elif lang == 'ru' %}Позвонить{% elif lang == 'tr' %}Ara{% else %}Call Now{% endif %}
-					</a>
-				</div>
-			</div>
-
-			<!-- Service 4 -->
-			<div class="group bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
-				<div class="flex items-center mb-6">
-					<div class="w-20 h-20 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 rounded-full flex items-center justify-center transition-all duration-300 service-icon shadow-lg hover:shadow-xl hover:scale-110 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(34, 197, 94, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-						<!-- Liquid Glass Overlay -->
-						<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-						<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-						
-						<!-- Home Icon -->
-						<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-							<!-- House roof -->
-							<path d="M3 12l9-9 9 9" stroke="#10B981" stroke-width="2" fill="none" opacity="0.9"/>
-							<!-- House body -->
-							<rect x="5" y="12" width="14" height="9" rx="1" stroke="#10B981" stroke-width="2" fill="#059669" opacity="0.8"/>
-							<!-- Door -->
-							<rect x="10" y="15" width="4" height="6" rx="0.5" stroke="#10B981" stroke-width="1.5" fill="#047857" opacity="0.8"/>
-							<!-- Door handle -->
-							<circle cx="13" cy="18" r="0.5" fill="#10B981" opacity="0.8"/>
-							<!-- Windows -->
-							<rect x="7" y="14" width="2" height="2" rx="0.3" stroke="#10B981" stroke-width="1" fill="#047857" opacity="0.8"/>
-							<rect x="15" y="14" width="2" height="2" rx="0.3" stroke="#10B981" stroke-width="1" fill="#047857" opacity="0.8"/>
-						</svg>
-					</div>
-					<div class="ml-6">
-						<h3 class="text-3xl font-bold text-gray-900 mb-2">
-							{% if lang == 'uz' %}Yashash Joyi{% elif lang == 'ru' %}Жилье{% elif lang == 'tr' %}Konaklama{% else %}Accommodation{% endif %}
-						</h3>
-						<div class="w-16 h-1 bg-[#ff9015] rounded-full"></div>
-					</div>
-				</div>
-				<p class="text-gray-600 mb-6 leading-relaxed text-lg">
-					{% if lang == 'uz' %}
-						Universitet yotoqxonalari va shaxsiy kvartiralarni topishda yordam. Xavfsiz va qulay yashash sharoitlarini ta'minlash.
-					{% elif lang == 'ru' %}
-						Помощь в поиске общежитий университетов и частных квартир. Обеспечение безопасных и комфортных условий проживания.
-					{% elif lang == 'tr' %}
-						Üniversite yurtları ve özel daireleri bulmada yardım. Güvenli ve rahat yaşam koşullarını sağlama.
-					{% else %}
-						Assistance in finding university dormitories and private apartments. Ensuring safe and comfortable living conditions.
-					{% endif %}
-				</p>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Yotoqxona topish{% elif lang == 'ru' %}Поиск общежития{% elif lang == 'tr' %}Yurt bulma{% else %}Dormitory Search{% endif %}
-						</span>
-					</div>
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Kvartira topish{% elif lang == 'ru' %}Поиск квартиры{% elif lang == 'tr' %}Daire bulma{% else %}Apartment Search{% endif %}
-						</span>
-					</div>
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Shartnoma tuzish{% elif lang == 'ru' %}Заключение договора{% elif lang == 'tr' %}Sözleşme imzalama{% else %}Contract Signing{% endif %}
-						</span>
-					</div>
-					<div class="flex items-center space-x-3">
-						<i class="fas fa-check-circle text-[#ff9015] text-xl"></i>
-						<span class="text-gray-700 font-medium">
-							{% if lang == 'uz' %}Xavfsizlik{% elif lang == 'ru' %}Безопасность{% elif lang == 'tr' %}Güvenlik{% else %}Safety{% endif %}
-						</span>
-					</div>
-				</div>
-				<!-- CTA Button -->
-				<div class="text-center">
-					<a href="tel:+905011571111" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#ff9015] to-orange-600 text-white font-semibold rounded-xl hover:from-[#e8800f] hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-3">
-							<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-						</svg>
-						{% if lang == 'uz' %}Qo'ng'iroq qilish{% elif lang == 'ru' %}Позвонить{% elif lang == 'tr' %}Ara{% else %}Call Now{% endif %}
-					</a>
-				</div>
-			</div>
-
 		</div>
 	</div>
 </section>
 
-<!-- Process Section -->
-<section class="py-20 bg-white">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-16">
-			<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-				{% if lang == 'uz' %}Ish jarayoni{% elif lang == 'ru' %}Процесс работы{% else %}Our process{% endif %}
-			</h2>
-			<p class="text-xl text-gray-600 max-w-3xl mx-auto">
-				{% if lang == 'uz' %}
-					Bizning professional yondashuvimiz va ish jarayonimiz
-				{% elif lang == 'ru' %}
-					Наш профессиональный подход и процесс работы
-				{% else %}
-					Our professional approach and work process
-				{% endif %}
+<!-- Services Cards Section -->
+<section class="py-8 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<div class="mb-6">
+			<p class="text-sm text-gray-600 font-normal" id="resultsCount" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				<span id="countNumber">12</span> {% if lang == 'uz' %}xizmat topildi{% elif lang == 'ru' %}услуг найдено{% elif lang == 'tr' %}hizmet bulundu{% else %}services found{% endif %}
 			</p>
 		</div>
-
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-			<!-- Step 1 -->
-			<div class="text-center group">
-				<div class="relative mb-6">
-					<div class="w-20 h-20 bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(255, 144, 21, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-						<!-- Liquid Glass Overlay -->
-						<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-						<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-						<span class="text-2xl font-bold text-gray-800 relative z-10">1</span>
-					</div>
-					<div class="absolute -right-4 top-1/2 transform -translate-y-1/2 hidden lg:block">
-						<i class="fas fa-arrow-right text-2xl text-gray-300"></i>
-					</div>
+		
+		<div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+			{% set services = [
+				('uz:Universitetga qabul', 'ru:Поступление в университет', 'tr:Üniversite kabulü', 'en:University Admission', 'admission', 'uz:Turkiyadagi universitetlarga qabul jarayonida to\'liq yordam. Hujjatlar tayyorlash, ariza topshirish va qabul natijalarini kuzatish.', 'ru:Полная помощь в процессе поступления в турецкие университеты. Подготовка документов, подача заявок и отслеживание результатов приема.', 'tr:Türkiye\'deki üniversitelere kabul sürecinde tam destek. Belge hazırlama, başvuru yapma ve kabul sonuçlarını takip etme.', 'en:Full support in the admission process to Turkish universities. Document preparation, application submission and tracking admission results.'),
+				('uz:Hujjatlar tayyorlash', 'ru:Подготовка документов', 'tr:Belge hazırlama', 'en:Documents Preparation', 'documents', 'uz:Barcha kerakli hujjatlarni to\'liq tayyorlash va notarial tasdiqlash xizmatlari. Pasport, diplom, transkript va boshqalar.', 'ru:Полная подготовка и нотариальное заверение всех необходимых документов. Паспорт, диплом, транскрипт и другие.', 'tr:Tüm gerekli belgelerin tam hazırlanması ve noter onayı hizmetleri. Pasaport, diploma, transkript ve diğerleri.', 'en:Full preparation and notarization of all required documents. Passport, diploma, transcript and others.'),
+				('uz:Yashash ruxsatnomasi (İkamet)', 'ru:Вид на жительство (İkamet)', 'tr:İkamet izni', 'en:Residence Permit (İkamet)', 'residence', 'uz:Turkiyada yashash ruxsatnomasi olish uchun to\'liq yordam. Hujjatlar to\'plash, ariza topshirish va ruxsatnoma olish.', 'ru:Полная помощь в получении вида на жительство в Турции. Сбор документов, подача заявки и получение разрешения.', 'tr:Türkiye\'de ikamet izni almak için tam destek. Belge toplama, başvuru yapma ve izin alma.', 'en:Full support for obtaining a residence permit in Turkey. Document collection, application submission and permit acquisition.'),
+				('uz:Yashash joyi', 'ru:Жилье', 'tr:Konaklama', 'en:Accommodation', 'accommodation', 'uz:Turkiyada qulay va xavfsiz yashash joyi topish. Talabalar uchun maxsus kvartiralar va yotoqxonalar.', 'ru:Поиск удобного и безопасного жилья в Турции. Специальные квартиры и общежития для студентов.', 'tr:Türkiye\'de rahat ve güvenli konaklama bulma. Öğrenciler için özel daireler ve yurtlar.', 'en:Finding comfortable and safe accommodation in Turkey. Special apartments and dormitories for students.'),
+				('uz:Aeroportdan olib ketish', 'ru:Встреча в аэропорту', 'tr:Havalimanı karşılama', 'en:Airport Pickup', 'airport', 'uz:Aeroportdan yashash joyingizgacha xavfsiz tashish xizmati. Professional haydovchilar va qulay transport.', 'ru:Безопасная транспортировка из аэропорта до места проживания. Профессиональные водители и удобный транспорт.', 'tr:Havalimanından konaklama yerinize güvenli ulaşım hizmeti. Profesyonel şoförler ve rahat ulaşım.', 'en:Safe transportation from airport to your accommodation. Professional drivers and comfortable transport.'),
+				('uz:Tarjima xizmatlari', 'ru:Услуги перевода', 'tr:Çeviri hizmetleri', 'en:Translation Services', 'translation', 'uz:Barcha hujjatlarni rasmiy tarjima qilish. Notarial tasdiqlangan tarjimalar va tezkor xizmat.', 'ru:Официальный перевод всех документов. Нотариально заверенные переводы и быстрый сервис.', 'tr:Tüm belgelerin resmi çevirisi. Noter onaylı çeviriler ve hızlı hizmet.', 'en:Official translation of all documents. Notarized translations and fast service.'),
+				('uz:Viza & Deport masalalari', 'ru:Визы и депортация', 'tr:Vize ve deport sorunları', 'en:Visa & Deport Issues', 'visa', 'uz:Viza masalalari va deport holatlarida yuridik yordam. Mutaxassislar bilan maslahat va yechim topish.', 'ru:Юридическая помощь в вопросах виз и депортации. Консультации со специалистами и поиск решений.', 'tr:Vize ve deport sorunlarında yasal destek. Uzmanlarla danışmanlık ve çözüm bulma.', 'en:Legal assistance in visa and deportation matters. Consultation with specialists and finding solutions.'),
+				('uz:Talaba sug\'urtasi', 'ru:Студенческая страховка', 'tr:Öğrenci sigortası', 'en:Student Insurance', 'insurance', 'uz:Turkiyada o\'qish uchun talaba sug\'urtasi rasmiylashtirish. Barcha sug\'urta kompaniyalari bilan hamkorlik.', 'ru:Оформление студенческой страховки для учебы в Турции. Сотрудничество со всеми страховыми компаниями.', 'tr:Türkiye\'de eğitim için öğrenci sigortası düzenleme. Tüm sigorta şirketleriyle işbirliği.', 'en:Registration of student insurance for studying in Turkey. Cooperation with all insurance companies.'),
+				('uz:Bank hisobi', 'ru:Банковский счет', 'tr:Banka hesabı', 'en:Bank Account', 'bank', 'uz:Turkiyada bank hisobi ochish. Barcha yirik banklar bilan ishlash va tezkor rasmiylashtirish.', 'ru:Открытие банковского счета в Турции. Работа со всеми крупными банками и быстрое оформление.', 'tr:Türkiye\'de banka hesabı açma. Tüm büyük bankalarla çalışma ve hızlı düzenleme.', 'en:Opening a bank account in Turkey. Working with all major banks and quick registration.'),
+				('uz:SIM karta', 'ru:SIM карта', 'tr:SIM kart', 'en:SIM Card', 'sim', 'uz:Turkiyada mobil aloqa uchun SIM karta olish. Barcha operatorlar bilan ishlash va eng yaxshi tariflar.', 'ru:Получение SIM-карты для мобильной связи в Турции. Работа со всеми операторами и лучшие тарифы.', 'tr:Türkiye\'de mobil iletişim için SIM kart alma. Tüm operatörlerle çalışma ve en iyi tarifeler.', 'en:Getting a SIM card for mobile communication in Turkey. Working with all operators and best rates.'),
+				('uz:Transport kartasi', 'ru:Транспортная карта', 'tr:Ulaşım kartı', 'en:Transport Card', 'transport', 'uz:Turkiyada transport kartasi olish va to\'ldirish. Metro, avtobus va boshqa transport turlari uchun.', 'ru:Получение и пополнение транспортной карты в Турции. Для метро, автобусов и других видов транспорта.', 'tr:Türkiye\'de ulaşım kartı alma ve yükleme. Metro, otobüs ve diğer ulaşım türleri için.', 'en:Getting and topping up a transport card in Turkey. For metro, buses and other types of transport.'),
+				('uz:Shaxsiy yordam', 'ru:Личная поддержка', 'tr:Kişisel destek', 'en:Personal Support', 'support', 'uz:Turkiyada yashash va o\'qish davomida shaxsiy mutaxassis yordami. 24/7 qo\'llab-quvvatlash.', 'ru:Личная помощь специалиста во время проживания и учебы в Турции. Поддержка 24/7.', 'tr:Türkiye\'de yaşam ve eğitim sırasında kişisel uzman desteği. 7/24 destek.', 'en:Personal specialist assistance during living and studying in Turkey. 24/7 support.')
+			] %}
+			
+			{% for service in services %}
+			<div class="service-card bg-white rounded-3xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-200" data-name="{% if lang == 'uz' %}{{ service[0].split(':')[1] }}{% elif lang == 'ru' %}{{ service[1].split(':')[1] }}{% elif lang == 'tr' %}{{ service[2].split(':')[1] }}{% else %}{{ service[3].split(':')[1] }}{% endif %}">
+				<div class="p-6">
+					<h3 class="text-lg font-medium text-gray-900 mb-3 leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}{{ service[0].split(':')[1] }}{% elif lang == 'ru' %}{{ service[1].split(':')[1] }}{% elif lang == 'tr' %}{{ service[2].split(':')[1] }}{% else %}{{ service[3].split(':')[1] }}{% endif %}
+					</h3>
+					<p class="text-sm text-gray-600 font-normal mb-4 leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}{{ service[5].split(':')[1] }}{% elif lang == 'ru' %}{{ service[6].split(':')[1] }}{% elif lang == 'tr' %}{{ service[7].split(':')[1] }}{% else %}{{ service[8].split(':')[1] }}{% endif %}
+					</p>
+					<a href="/service/{{ service[4] }}?lang={{ lang }}" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						<span>{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Learn more{% endif %}</span>
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<polyline points="9 18 15 12 9 6"/>
+						</svg>
+					</a>
 				</div>
-				<h3 class="text-xl font-bold text-gray-900 mb-3">
-					{% if lang == 'uz' %}Maslahat{% elif lang == 'ru' %}Консультация{% elif lang == 'tr' %}Danışmanlık{% else %}Consultation{% endif %}
-				</h3>
-				<p class="text-gray-600">
-					{% if lang == 'uz' %}
-						Birinchi maslahat va ehtiyojlarni aniqlash
-					{% elif lang == 'ru' %}
-						Первая консультация и определение потребностей
-					{% elif lang == 'tr' %}
-						İlk danışmanlık ve ihtiyaçları belirleme
-					{% else %}
-						Initial consultation and needs assessment
-					{% endif %}
-				</p>
 			</div>
+			{% endfor %}
+		</div>
+		
+		<div id="emptyState" class="hidden text-center py-16">
+			<svg class="mx-auto w-20 h-20 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+			</svg>
+			<p class="text-lg text-gray-600 font-normal mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Hech narsa topilmadi{% elif lang == 'ru' %}Ничего не найдено{% elif lang == 'tr' %}Hiçbir şey bulunamadı{% else %}Nothing found{% endif %}
+			</p>
+			<p class="text-sm text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Boshqa qidiruv so\'zlarini sinab ko\'ring{% elif lang == 'ru' %}Попробуйте другие поисковые запросы{% elif lang == 'tr' %}Başka arama terimleri deneyin{% else %}Try other search terms{% endif %}
+			</p>
+		</div>
+	</div>
+</section>
 
-			<!-- Step 2 -->
-			<div class="text-center group">
-				<div class="relative mb-6">
-					<div class="w-20 h-20 bg-gradient-to-br from-[#003262] via-blue-600 to-[#004AAD] rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(0, 50, 98, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-						<!-- Liquid Glass Overlay -->
-						<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-						<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-						<span class="text-2xl font-bold text-gray-800 relative z-10">2</span>
+<!-- Paketlar & Narxlar Section -->
+<section id="packagesSection" class="py-12 bg-gray-50 packages-section relative">
+	<div class="max-w-7xl mx-auto px-6 packages-container">
+		<div class="mb-8">
+			<h2 class="text-2xl md:text-3xl font-medium text-gray-900 mb-2" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+				{% if lang == 'uz' %}Paketlar va narxlar{% elif lang == 'ru' %}Пакеты и цены{% elif lang == 'tr' %}Paketler ve fiyatlar{% else %}Packages & Prices{% endif %}
+			</h2>
+			<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Har bir xizmatni alohida ham, to'liq paket ko'rinishida ham tanlashingiz mumkin. Quyida START, PRO va VIP paketlar o'rtasidagi farqni ko'ring.{% elif lang == 'ru' %}Вы можете выбрать каждую услугу отдельно или в виде полного пакета. Ниже посмотрите разницу между пакетами START, PRO и VIP.{% elif lang == 'tr' %}Her hizmeti ayrı ayrı veya tam paket halinde seçebilirsiniz. Aşağıda START, PRO ve VIP paketler arasındaki farkı görün.{% else %}You can choose each service separately or as a complete package. See the difference between START, PRO and VIP packages below.{% endif %}
+			</p>
+		</div>
+		
+		<!-- 3 ta paket kartochkasi -->
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+			<!-- START PACK -->
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-300">
+				<div class="mb-4">
+					<h3 class="text-xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						START PACK
+					</h3>
+					<div class="flex items-baseline gap-2 mb-2">
+						<span class="text-3xl font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">199.9$</span>
+						<span class="text-sm text-gray-500 line-through">299$</span>
 					</div>
-					<div class="absolute -right-4 top-1/2 transform -translate-y-1/2 hidden lg:block">
-						<i class="fas fa-arrow-right text-2xl text-gray-300"></i>
-					</div>
+					<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}7 kun ichida -100${% elif lang == 'ru' %}В течение 7 дней -100${% elif lang == 'tr' %}7 gün içinde -100${% else %}Within 7 days -100${% endif %}
+					</p>
+					<p class="text-xs text-gray-500 font-normal mt-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Boshlang'ich qabul paketi{% elif lang == 'ru' %}Начальный пакет приема{% elif lang == 'tr' %}Başlangıç kabul paketi{% else %}Basic admission package{% endif %}
+					</p>
 				</div>
-				<h3 class="text-xl font-bold text-gray-900 mb-3">
-					{% if lang == 'uz' %}Rejalashtirish{% elif lang == 'ru' %}Планирование{% else %}Planning{% endif %}
-				</h3>
-				<p class="text-gray-600">
-					{% if lang == 'uz' %}
-						Individual reja va strategiya ishlab chiqish
-					{% elif lang == 'ru' %}
-						Разработка индивидуального плана и стратегии
-					{% else %}
-						Developing individual plan and strategy
-					{% endif %}
-				</p>
+				<ul class="space-y-3 mb-6">
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Universitetga kirish (To'liq){% elif lang == 'ru' %}Поступление в университет (Полное){% elif lang == 'tr' %}Üniversite kabulü (Tam){% else %}University Admission (Full){% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Viza & Deport konsultatsiyasi (Bepul maslahat){% elif lang == 'ru' %}Консультация по визам и депортации (Бесплатная консультация){% elif lang == 'tr' %}Vize & Deport danışmanlığı (Ücretsiz danışmanlık){% else %}Visa & Deport Consultation (Free advice){% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-yellow-500 mt-0.5 flex-shrink-0">
+							<circle cx="12" cy="12" r="10"/>
+							<line x1="12" y1="8" x2="12" y2="12"/>
+							<line x1="12" y1="16" x2="12.01" y2="16"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Oddiy support (09-00){% elif lang == 'ru' %}Обычная поддержка (09-00){% elif lang == 'tr' %}Normal destek (09-00){% else %}Basic Support (09-00){% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400 mt-0.5 flex-shrink-0">
+							<line x1="18" y1="6" x2="6" y2="18"/>
+							<line x1="6" y1="6" x2="18" y2="18"/>
+						</svg>
+						<span class="text-sm text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}İkamet{% elif lang == 'ru' %}Вид на жительство{% elif lang == 'tr' %}İkamet{% else %}Residence Permit{% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400 mt-0.5 flex-shrink-0">
+							<line x1="18" y1="6" x2="6" y2="18"/>
+							<line x1="6" y1="6" x2="18" y2="18"/>
+						</svg>
+						<span class="text-sm text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Aeroportdan kutib olish{% elif lang == 'ru' %}Встреча в аэропорту{% elif lang == 'tr' %}Havalimanı karşılama{% else %}Airport Pickup{% endif %}
+						</span>
+					</li>
+				</ul>
+				<a href="{{ url_for('contact') }}" class="w-full inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}START paketini tanlash{% elif lang == 'ru' %}Выбрать пакет START{% elif lang == 'tr' %}START paketini seç{% else %}Choose START Pack{% endif %}
+				</a>
 			</div>
-
-			<!-- Step 3 -->
-			<div class="text-center group">
-				<div class="relative mb-6">
-					<div class="w-20 h-20 bg-gradient-to-br from-blue-600 via-cyan-500 to-teal-500 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-						<!-- Liquid Glass Overlay -->
-						<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-						<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-						<span class="text-2xl font-bold text-gray-800 relative z-10">3</span>
-					</div>
-					<div class="absolute -right-4 top-1/2 transform -translate-y-1/2 hidden lg:block">
-						<i class="fas fa-arrow-right text-2xl text-gray-300"></i>
-					</div>
+			
+			<!-- PRO PACK -->
+			<div class="bg-white border-2 border-gray-900 rounded-3xl p-6 hover:shadow-lg transition-all duration-300 relative">
+				<div class="absolute top-4 right-4">
+					<span class="px-3 py-1 bg-gray-900 text-white text-xs font-medium rounded-full" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Eng ko'p tanlangan{% elif lang == 'ru' %}Самый популярный{% elif lang == 'tr' %}En çok seçilen{% else %}Most Popular{% endif %}
+					</span>
 				</div>
-				<h3 class="text-xl font-bold text-gray-900 mb-3">
-					{% if lang == 'uz' %}Amalga Oshirish{% elif lang == 'ru' %}Реализация{% else %}Implementation{% endif %}
-				</h3>
-				<p class="text-gray-600">
-					{% if lang == 'uz' %}
-						Rejani amalga oshirish va monitoring
-					{% elif lang == 'ru' %}
-						Реализация плана и мониторинг
-					{% else %}
-						Plan implementation and monitoring
-					{% endif %}
-				</p>
+				<div class="mb-4">
+					<h3 class="text-xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						PRO PACK
+					</h3>
+					<div class="flex items-baseline gap-2 mb-2">
+						<span class="text-3xl font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">399.9$</span>
+						<span class="text-sm text-gray-500 line-through">499.9$</span>
+					</div>
+					<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}7 kun ichida -100${% elif lang == 'ru' %}В течение 7 дней -100${% elif lang == 'tr' %}7 gün içinde -100${% else %}Within 7 days -100${% endif %}
+					</p>
+					<p class="text-xs text-gray-500 font-normal mt-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Eng ko'p tanlangan paket{% elif lang == 'ru' %}Самый популярный пакет{% elif lang == 'tr' %}En çok seçilen paket{% else %}Most popular package{% endif %}
+					</p>
+				</div>
+				<ul class="space-y-3 mb-6">
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Universitetga kirish (To'liq){% elif lang == 'ru' %}Поступление в университет (Полное){% elif lang == 'tr' %}Üniversite kabulü (Tam){% else %}University Admission (Full){% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}İkamet (To'liq ko'mak){% elif lang == 'ru' %}Вид на жительство (Полная помощь){% elif lang == 'tr' %}İkamet (Tam destek){% else %}Residence Permit (Full Support){% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Aeroportdan kutib olish (1 marotaba){% elif lang == 'ru' %}Встреча в аэропорту (1 раз){% elif lang == 'tr' %}Havalimanı karşılama (1 kez){% else %}Airport Pickup (1 time){% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Hujjatlar (Kengaytirilgan){% elif lang == 'ru' %}Документы (Расширенные){% elif lang == 'tr' %}Belgeler (Genişletilmiş){% else %}Documents (Extended){% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Talaba sug'urtasi{% elif lang == 'ru' %}Студенческая страховка{% elif lang == 'tr' %}Öğrenci sigortası{% else %}Student Insurance{% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-yellow-500 mt-0.5 flex-shrink-0">
+							<circle cx="12" cy="12" r="10"/>
+							<line x1="12" y1="8" x2="12" y2="12"/>
+							<line x1="12" y1="16" x2="12.01" y2="16"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Turar-joy (Yuzaki yo'l-yo'riq){% elif lang == 'ru' %}Жилье (Поверхностное руководство){% elif lang == 'tr' %}Konaklama (Yüzeysel rehberlik){% else %}Accommodation (Basic guidance){% endif %}
+						</span>
+					</li>
+				</ul>
+				<a href="{{ url_for('contact') }}" class="w-full inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}PRO paketini bron qilish{% elif lang == 'ru' %}Забронировать пакет PRO{% elif lang == 'tr' %}PRO paketini rezerve et{% else %}Book PRO Pack{% endif %}
+				</a>
 			</div>
-
-			<!-- Step 4 -->
-			<div class="text-center group">
-				<div class="relative mb-6">
-					<div class="w-20 h-20 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(34, 197, 94, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-						<!-- Liquid Glass Overlay -->
-						<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-						<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-						<span class="text-2xl font-bold text-gray-800 relative z-10">4</span>
-					</div>
+			
+			<!-- VIP PACK -->
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-300 relative">
+				<div class="absolute top-4 right-4">
+					<span class="px-3 py-1 bg-yellow-500 text-white text-xs font-medium rounded-full" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Premium{% elif lang == 'ru' %}Премиум{% elif lang == 'tr' %}Premium{% else %}Premium{% endif %}
+					</span>
 				</div>
-				<h3 class="text-xl font-bold text-gray-900 mb-3">
-					{% if lang == 'uz' %}Natija{% elif lang == 'ru' %}Результат{% else %}Result{% endif %}
-				</h3>
-				<p class="text-gray-600">
-					{% if lang == 'uz' %}
-						Muvaffaqiyatli natija va doimiy qo'llab-quvvatlash
-					{% elif lang == 'ru' %}
-						Успешный результат и постоянная поддержка
-					{% else %}
-						Successful result and ongoing support
-					{% endif %}
-				</p>
+				<div class="mb-4">
+					<h3 class="text-xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						VIP ALL-INCLUSIVE
+					</h3>
+					<div class="flex items-baseline gap-2 mb-2">
+						<span class="text-3xl font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">899.9$</span>
+						<span class="text-sm text-gray-500 line-through">999.9$</span>
+					</div>
+					<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}7 kun ichida -100${% elif lang == 'ru' %}В течение 7 дней -100${% elif lang == 'tr' %}7 gün içinde -100${% else %}Within 7 days -100${% endif %}
+					</p>
+					<p class="text-xs text-gray-500 font-normal mt-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Ota-onalar uchun eng sokin variant{% elif lang == 'ru' %}Самый спокойный вариант для родителей{% elif lang == 'tr' %}Ebeveynler için en sakin seçenek{% else %}Most peaceful option for parents{% endif %}
+					</p>
+				</div>
+				<ul class="space-y-3 mb-6">
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Universitetga kirish (Tezlashtirilgan + ustuvor){% elif lang == 'ru' %}Поступление в университет (Ускоренное + приоритет){% elif lang == 'tr' %}Üniversite kabulü (Hızlandırılmış + öncelik){% else %}University Admission (Accelerated + Priority){% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}İkamet (To'liq + oila va farzandlar){% elif lang == 'ru' %}Вид на жительство (Полное + семья и дети){% elif lang == 'tr' %}İkamet (Tam + aile ve çocuklar){% else %}Residence Permit (Full + Family & Children){% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}VIP kutib olish + oila{% elif lang == 'ru' %}VIP встреча + семья{% elif lang == 'tr' %}VIP karşılama + aile{% else %}VIP Pickup + Family{% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Hujjatlar (Kengaytirilgan oila seti){% elif lang == 'ru' %}Документы (Расширенный семейный набор){% elif lang == 'tr' %}Belgeler (Genişletilmiş aile seti){% else %}Documents (Extended Family Set){% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Turar-joy (Shaxsiy yordam + variantlar){% elif lang == 'ru' %}Жилье (Личная помощь + варианты){% elif lang == 'tr' %}Konaklama (Kişisel destek + seçenekler){% else %}Accommodation (Personal Help + Options){% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Bank hisobi + Sim karta + İstanbulkart{% elif lang == 'ru' %}Банковский счет + SIM карта + İstanbulkart{% elif lang == 'tr' %}Banka hesabı + SIM kart + İstanbulkart{% else %}Bank Account + SIM Card + İstanbulkart{% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}7/24 shaxsiy mas'ul + reminder{% elif lang == 'ru' %}7/24 личный ответственный + напоминания{% elif lang == 'tr' %}7/24 kişisel sorumlu + hatırlatma{% else %}7/24 Personal Manager + Reminders{% endif %}
+						</span>
+					</li>
+				</ul>
+				<a href="{{ url_for('contact') }}" class="w-full inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}VIP bo'yicha mutaxassis bilan gaplashish{% elif lang == 'ru' %}Поговорить со специалистом по VIP{% elif lang == 'tr' %}VIP için uzmanla konuş{% else %}Talk to Specialist about VIP{% endif %}
+				</a>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- Contact CTA Section -->
-<section class="relative py-24 mt-[3rem] px-4 bg-[#004AAD] overflow-hidden">
-	<div class="absolute inset-0">
-		<div class="absolute -top-40 -right-40 w-80 h-80 bg-white/50 rounded-full blur-3xl animate-bounce-slow"></div>
-	</div>
-	<div class="max-w-6xl mx-auto text-center">
-		<h2 class="text-4xl md:text-5xl font-bold text-white mb-6" data-aos="fade-up" data-aos-delay="100">
-			{% if lang == 'uz' %}Bugun Boshlang{% elif lang == 'ru' %}Начните сегодня{% elif lang == 'tr' %}Bugün Başlayın{% else %}Start Today{% endif %}
-		</h2>
-		<p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-			{% if lang == 'uz' %}
-				O'z ta'lim yo'lingizni bugun boshlang va kelajagingizni o'zgartiring.
-			{% elif lang == 'ru' %}
-				Начните свой образовательный путь сегодня и измените свое будущее.
-			{% elif lang == 'tr' %}
-				Eğitim yolculuğunuza bugün başlayın ve geleceğinizi değiştirin.
-			{% else %}
-				Start your educational journey today and change your future.
-			{% endif %}
-		</p>
-		<div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
-			<a href="/contact" class="bg-[#ff9015] border-2 border-[#ff9015] text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-[#ff9015]/80 hover:shadow-[0_0_30px_rgba(255,144,21,0.5)] hover:scale-105 hover:border-[#ff9015]/80">
-				{% if lang == 'uz' %}Bepul konsultatsiya{% elif lang == 'ru' %}Бесплатная консультация{% elif lang == 'tr' %}Ücretsiz danışmanlık{% else %}Free Consultation{% endif %}
-			</a>
-			<a href="/universities" class="border-2 border-white text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-[#004AAD] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
-				{% if lang == 'uz' %}Universitetlarni ko'rish{% elif lang == 'ru' %}Посмотреть университеты{% elif lang == 'tr' %}Üniversiteleri gör{% else %}View Universities{% endif %}
-			</a>
-		</div>
-	</div>
-</section>
+</div>
+
+<script>
+// Search Function
+function performSearch() {
+	const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+	const cards = document.querySelectorAll('.service-card');
+	let visibleCount = 0;
+	
+	cards.forEach(card => {
+		const name = card.getAttribute('data-name').toLowerCase();
+		const description = card.querySelector('p').textContent.toLowerCase();
+		let matches = true;
+		
+		if (searchTerm && !name.includes(searchTerm) && !description.includes(searchTerm)) {
+			matches = false;
+		}
+		
+		if (matches) {
+			card.style.display = 'block';
+			visibleCount++;
+		} else {
+			card.style.display = 'none';
+		}
+	});
+	
+	document.getElementById('countNumber').textContent = visibleCount;
+	
+	const emptyState = document.getElementById('emptyState');
+	if (visibleCount === 0) {
+		emptyState.classList.remove('hidden');
+	} else {
+		emptyState.classList.add('hidden');
+	}
+}
+
+document.getElementById('searchInput').addEventListener('input', performSearch);
+
+// Simple minimalistic design - no animations
+
+</script>
 
 {% endblock %}

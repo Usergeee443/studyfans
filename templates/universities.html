@@ -4,459 +4,399 @@
 	{% if lang == 'uz' %}Universitetlar - Study Fans{% elif lang == 'ru' %}Университеты - Study Fans{% elif lang == 'tr' %}Üniversiteler - Study Fans{% else %}Universities - Study Fans{% endif %}
 {% endblock %}
 
+{% block extra_css %}
+<style>
+	.small-swiper {
+		width: 100%;
+		height: auto;
+	}
+	
+	.small-swiper .swiper-slide {
+		width: auto;
+	}
+	
+	.image-swiper {
+		width: 100%;
+		height: 300px;
+		padding: 0 1.5rem;
+	}
+	
+	.image-swiper .swiper-wrapper {
+		border-radius: 1.5rem;
+		overflow: hidden;
+	}
+	
+	.image-swiper .swiper-slide {
+		width: 100%;
+		height: 100%;
+		border-radius: 1.5rem;
+		overflow: hidden;
+	}
+	
+	.image-swiper .swiper-slide img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 1.5rem;
+	}
+	
+	.sticky-categories {
+		position: sticky;
+		top: 0;
+		z-index: 30;
+		background: white;
+		backdrop-filter: blur(10px);
+		border-bottom: 1px solid #e5e7eb;
+	}
+
+	/* Mobile University Cards - Smaller */
+	@media (max-width: 768px) {
+		.university-card {
+			padding: 0.75rem !important;
+		}
+
+		.university-card .relative {
+			height: 120px !important;
+		}
+
+		.university-card h3 {
+			font-size: 0.875rem !important;
+			line-height: 1.3 !important;
+			margin-bottom: 0.5rem !important;
+		}
+
+		.university-card .text-xs {
+			font-size: 0.625rem !important;
+		}
+
+		.university-card .text-xl {
+			font-size: 1rem !important;
+		}
+
+		.university-card a {
+			padding: 0.5rem 1rem !important;
+			font-size: 0.75rem !important;
+		}
+
+		.university-card .p-5 {
+			padding: 0.75rem !important;
+		}
+	}
+</style>
+{% endblock %}
+
 {% block content %}
 
-<!-- Hero Section -->
-<section class="relative mt-[4rem] bg-gradient-to-r from-[#003262] to-blue-800 py-24 overflow-hidden">
-	<div class="absolute inset-0">
-		<div class="absolute -top-40 -right-40 w-80 h-80 bg-yellow-400/20 rounded-full blur-3xl animate-bounce-slow"></div>
-		<div class="absolute -bottom-40 -left-40 w-80 h-80 bg-orange-400/20 rounded-full blur-3xl animate-bounce-slow animation-delay-1000"></div>
-	</div>
-	
-	<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-		<h1 class="text-5xl md:text-7xl font-bold text-white mb-8" data-aos="fade-up">
-			{% if lang == 'uz' %}
-				<span class="block">Hamkor</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Universitetlar</span>
-			{% elif lang == 'ru' %}
-				<span class="block">Партнерские</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Университеты</span>
-			{% elif lang == 'tr' %}
-				<span class="block">Ortak</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Üniversiteler</span>
-			{% else %}
-				<span class="block">Partner</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Universities</span>
-			{% endif %}
-		</h1>
-		<p class="text-xl md:text-2xl text-blue-100 mb-2 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-			{% if lang == 'uz' %}
-				Dunyoning eng yaxshi universitetlari bilan hamkorlik qilamiz va sizga eng yaxshi ta'lim imkoniyatlarini taklif etamiz
-			{% elif lang == 'ru' %}
-				Мы сотрудничаем с лучшими университетами мира и предлагаем вам лучшие образовательные возможности
-			{% elif lang == 'tr' %}
-				Türkiye'nin en iyi üniversiteleri ile ortaklık yapıyor ve size en iyi eğitim fırsatlarını sunuyoruz
-			{% else %}
-				We partner with the world's best universities and offer you the finest educational opportunities
-			{% endif %}
-		</p>
-	</div>
-</section>
-
-<!-- Search and Filter Section -->
-<section class="py-8 md:py-16 bg-white">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-4 md:p-8 shadow-lg border border-gray-200/50">
-			<div class="text-center mb-4 md:mb-8">
-				<div class="w-16 h-16 bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 20px 60px rgba(255, 144, 21, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Search Icon -->
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<circle cx="11" cy="11" r="8" stroke="#FBBF24" stroke-width="2"/>
-						<path d="m21 21-4.35-4.35" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-					</svg>
-				</div>
-				<h2 class="text-xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-4" data-aos="fade-up">
-					{% if lang == 'uz' %}Universitet qidirish{% elif lang == 'ru' %}Поиск университета{% elif lang == 'tr' %}Üniversite arama{% else %}Find university{% endif %}
-				</h2>
-				<p class="text-sm md:text-base text-gray-600">
-					{% if lang == 'uz' %}
-						O'zingizga mos universitetni toping
-					{% elif lang == 'ru' %}
-						Найдите подходящий вам университет
-					{% elif lang == 'tr' %}
-						Size uygun üniversiteyi bulun
-					{% else %}
-						Find the university that suits you
-					{% endif %}
+<div class="page-container" style="margin-top: 0; padding-top: 0;">
+<!-- Top Section with Title, Search and Filter -->
+<section class="pt-6 pb-6 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<!-- Mobile Layout: Title on top, Search/Filter below -->
+		<!-- Desktop Layout: Title and Search/Filter side by side -->
+		<div class="flex flex-col md:flex-row md:items-start md:justify-between md:gap-4 mb-4 md:mb-6">
+			<!-- Title Section -->
+			<div class="flex-1 mb-4 md:mb-0">
+				<h1 class="text-2xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+					{% if lang == 'uz' %}Universitetlar{% elif lang == 'ru' %}Университеты{% elif lang == 'tr' %}Üniversiteler{% else %}Universities{% endif %}
+				</h1>
+				<!-- Description - Hidden on Mobile -->
+				<p class="hidden md:block text-sm text-gray-500 font-normal mt-0.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}60+ universitet Turkiya, Kipr, Gruziya va Malayziyadan{% elif lang == 'ru' %}60+ университетов из Турции, Кипра, Грузии и Малайзии{% elif lang == 'tr' %}Türkiye, Kıbrıs, Gürcistan ve Malezya'dan 60+ üniversite{% else %}60+ universities from Turkey, Cyprus, Georgia and Malaysia{% endif %}
 				</p>
 			</div>
 			
-			<form class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6" onsubmit="performSearch(event)">
-				<div>
-					<label class="block text-gray-700 text-xs md:text-sm font-medium mb-1 md:mb-2">
-						{% if lang == 'uz' %}Mamlakat{% elif lang == 'ru' %}Страна{% else %}Country{% endif %}
-					</label>
-					<select id="country" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base bg-white/70 backdrop-blur-sm border border-gray-300 rounded-[1rem] focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300">
-						<option value="">
-							{% if lang == 'uz' %}Mamlakatni tanlang{% elif lang == 'ru' %}Выберите страну{% else %}Select country{% endif %}
-						</option>
-						<option value="Turkey">{% if lang == 'uz' %}Turkiya{% elif lang == 'ru' %}Турция{% else %}Turkey{% endif %}</option>
-						<option value="USA">{% if lang == 'uz' %}AQSH{% elif lang == 'ru' %}США{% else %}USA{% endif %}</option>
-						<option value="UK">{% if lang == 'uz' %}Buyuk Britaniya{% elif lang == 'ru' %}Великобритания{% else %}UK{% endif %}</option>
-						<option value="Canada">{% if lang == 'uz' %}Kanada{% elif lang == 'ru' %}Канада{% else %}Canada{% endif %}</option>
-						<option value="Germany">{% if lang == 'uz' %}Germaniya{% elif lang == 'ru' %}Германия{% else %}Germany{% endif %}</option>
-					</select>
+			<!-- Search and Filter Bar - Mobile: Below Title, Desktop: Side by side with Title -->
+			<div class="flex items-center gap-3 md:flex-shrink-0 md:w-auto">
+				<!-- Search Input - Full Border Radius -->
+				<div class="flex-1 md:flex-shrink-0 md:w-64 relative">
+					<input type="text" id="searchInput" placeholder="{% if lang == 'uz' %}Qidirish...{% elif lang == 'ru' %}Поиск...{% elif lang == 'tr' %}Ara...{% else %}Search...{% endif %}" class="w-full px-4 py-2.5 pl-11 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-900 font-normal focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					<img src="/static/search-normal.svg" alt="Search" class="absolute left-3.5 top-1/2 transform -translate-y-1/2 w-4 h-4">
 				</div>
 				
-				<div>
-					<label class="block text-gray-700 text-xs md:text-sm font-medium mb-1 md:mb-2">
-						{% if lang == 'uz' %}Daraja{% elif lang == 'ru' %}Степень{% else %}Degree{% endif %}
-					</label>
-					<select id="degree" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base bg-white/70 backdrop-blur-sm border border-gray-300 rounded-[1rem] focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300">
-						<option value="">
-							{% if lang == 'uz' %}Darajani tanlang{% elif lang == 'ru' %}Выберите степень{% else %}Select degree{% endif %}
-						</option>
-						<option value="Bachelor">
-							{% if lang == 'uz' %}Bakalavr{% elif lang == 'ru' %}Бакалавр{% else %}Bachelor{% endif %}
-						</option>
-						<option value="Master">
-							{% if lang == 'uz' %}Magistr{% elif lang == 'ru' %}Магистр{% else %}Master{% endif %}
-						</option>
-						<option value="PhD">
-							{% if lang == 'uz' %}Doktorantura{% elif lang == 'ru' %}Докторантура{% else %}PhD{% endif %}
-						</option>
-					</select>
-				</div>
+				<!-- Filter Button -->
+				<button id="filterBtn" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-900 font-normal hover:bg-gray-100 transition-all flex items-center gap-2 flex-shrink-0" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					<img src="/static/filter-search.svg" alt="Filter" class="w-4 h-4">
+					<span class="hidden md:inline">{% if lang == 'uz' %}Filter{% elif lang == 'ru' %}Фильтр{% elif lang == 'tr' %}Filtre{% else %}Filter{% endif %}</span>
+				</button>
+			</div>
+		</div>
+		
+		<!-- Filter Panel (Hidden by default) -->
+		<div id="filterPanel" class="hidden mt-4 p-4 bg-gray-50 rounded-2xl border border-gray-200">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+				<select id="country" class="px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm text-gray-900 font-normal focus:outline-none focus:ring-2 focus:ring-blue-500">
+					<option value="">{% if lang == 'uz' %}Davlat{% elif lang == 'ru' %}Страна{% elif lang == 'tr' %}Ülke{% else %}Country{% endif %}</option>
+					<option value="Turkey">{% if lang == 'uz' %}Turkiya{% elif lang == 'ru' %}Турция{% elif lang == 'tr' %}Türkiye{% else %}Turkey{% endif %}</option>
+					<option value="Cyprus">{% if lang == 'uz' %}Kipr{% elif lang == 'ru' %}Кипр{% elif lang == 'tr' %}Kıbrıs{% else %}Cyprus{% endif %}</option>
+					<option value="Georgia">{% if lang == 'uz' %}Gruziya{% elif lang == 'ru' %}Грузия{% elif lang == 'tr' %}Gürcistan{% else %}Georgia{% endif %}</option>
+					<option value="Malaysia">{% if lang == 'uz' %}Malayziya{% elif lang == 'ru' %}Малайзия{% elif lang == 'tr' %}Malezya{% else %}Malaysia{% endif %}</option>
+				</select>
 				
-				<div>
-					<label class="block text-gray-700 text-xs md:text-sm font-medium mb-1 md:mb-2">
-						{% if lang == 'uz' %}Til{% elif lang == 'ru' %}Язык{% else %}Language{% endif %}
-					</label>
-					<select id="language" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base bg-white/70 backdrop-blur-sm border border-gray-300 rounded-[1rem] focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300">
-						<option value="">
-							{% if lang == 'uz' %}Tilni tanlang{% elif lang == 'ru' %}Выберите язык{% else %}Select language{% endif %}
-						</option>
-						<option value="English">English</option>
-						<option value="Turkish">Türkçe</option>
-						<option value="Russian">Русский</option>
-						<option value="Uzbek">O'zbek</option>
-					</select>
-				</div>
+				<select id="language" class="px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm text-gray-900 font-normal focus:outline-none focus:ring-2 focus:ring-blue-500">
+					<option value="">{% if lang == 'uz' %}Til{% elif lang == 'ru' %}Язык{% elif lang == 'tr' %}Dil{% else %}Language{% endif %}</option>
+					<option value="English">{% if lang == 'uz' %}Ingliz{% elif lang == 'ru' %}Английский{% elif lang == 'tr' %}İngilizce{% else %}English{% endif %}</option>
+					<option value="Turkish">{% if lang == 'uz' %}Turk{% elif lang == 'ru' %}Турецкий{% elif lang == 'tr' %}Türkçe{% else %}Turkish{% endif %}</option>
+				</select>
 				
-				<div class="flex items-end">
-					<button type="submit" class="w-full bg-[#ff9015] text-white font-bold py-2 md:py-3 px-4 md:px-6 text-sm md:text-base rounded-[1rem] transform hover:scale-105 transition-all duration-300">
-						<i class="fas fa-search mr-1 md:mr-2"></i>
-						{% if lang == 'uz' %}Qidirish{% elif lang == 'ru' %}Поиск{% else %}Search{% endif %}
-					</button>
-				</div>
-			</form>
+				<select id="price" class="px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm text-gray-900 font-normal focus:outline-none focus:ring-2 focus:ring-blue-500">
+					<option value="">{% if lang == 'uz' %}Narx{% elif lang == 'ru' %}Цена{% elif lang == 'tr' %}Fiyat{% else %}Price{% endif %}</option>
+					<option value="1500-3000">1500$ - 3000$</option>
+					<option value="3000-5000">3000$ - 5000$</option>
+					<option value="5000+">5000$+</option>
+				</select>
+			</div>
 		</div>
 	</div>
 </section>
 
-<!-- Universities Grid Section -->
-<section class="py-20 bg-gray-50">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-16">
-			<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-				{% if lang == 'uz' %}Barcha universitetlar{% elif lang == 'ru' %}Все Университеты{% else %}All Universities{% endif %}
-			</h2>
-			<p class="text-xl text-gray-600 max-w-3xl mx-auto">
-				{% if lang == 'uz' %}
-					Bizning hamkor universitetlarimiz ro'yxati
-				{% elif lang == 'ru' %}
-					Список наших партнерских университетов
-				{% else %}
-					List of our partner universities
-				{% endif %}
+<!-- Image Swiper Section -->
+<section class="bg-white pt-2 pb-4">
+	<div class="swiper image-swiper">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<img src="/static/images/turkey-1.jpg" alt="Turkey" onerror="this.src='https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&h=300&fit=crop';">
+			</div>
+			<div class="swiper-slide">
+				<img src="/static/images/turkey-2.jpg" alt="Turkey" onerror="this.src='https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&h=300&fit=crop';">
+			</div>
+			<div class="swiper-slide">
+				<img src="/static/images/turkey-3.jpg" alt="Turkey" onerror="this.src='https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&h=300&fit=crop';">
+			</div>
+			<div class="swiper-slide">
+				<img src="/static/images/turkey-4.jpg" alt="Turkey" onerror="this.src='https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&h=300&fit=crop';">
+			</div>
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+</section>
+
+<!-- Sticky Categories Section -->
+<section class="sticky-categories py-4 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<div class="swiper small-swiper">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<button class="category-btn px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-xs font-normal text-center transition-all hover:bg-blue-100 active" data-country="" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Barcha{% elif lang == 'ru' %}Все{% elif lang == 'tr' %}Tümü{% else %}All{% endif %}
+					</button>
+				</div>
+				<div class="swiper-slide">
+					<button class="category-btn px-4 py-2 bg-gray-50 text-gray-600 rounded-full text-xs font-normal text-center transition-all hover:bg-gray-100" data-country="Turkey" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Turkiya{% elif lang == 'ru' %}Турция{% elif lang == 'tr' %}Türkiye{% else %}Turkey{% endif %}
+					</button>
+				</div>
+				<div class="swiper-slide">
+					<button class="category-btn px-4 py-2 bg-gray-50 text-gray-600 rounded-full text-xs font-normal text-center transition-all hover:bg-gray-100" data-country="Cyprus" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Kipr{% elif lang == 'ru' %}Кипр{% elif lang == 'tr' %}Kıbrıs{% else %}Cyprus{% endif %}
+					</button>
+				</div>
+				<div class="swiper-slide">
+					<button class="category-btn px-4 py-2 bg-gray-50 text-gray-600 rounded-full text-xs font-normal text-center transition-all hover:bg-gray-100" data-country="Georgia" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Gruziya{% elif lang == 'ru' %}Грузия{% elif lang == 'tr' %}Gürcistan{% else %}Georgia{% endif %}
+					</button>
+				</div>
+				<div class="swiper-slide">
+					<button class="category-btn px-4 py-2 bg-gray-50 text-gray-600 rounded-full text-xs font-normal text-center transition-all hover:bg-gray-100" data-country="Malaysia" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Malayziya{% elif lang == 'ru' %}Малайзия{% elif lang == 'tr' %}Malezya{% else %}Malaysia{% endif %}
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- University Cards Section -->
+<section class="py-8 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<div class="mb-6">
+			<p class="text-sm text-gray-600 font-normal" id="resultsCount" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				<span id="countNumber">{{ universities|length }}</span> {% if lang == 'uz' %}universitet topildi{% elif lang == 'ru' %}университетов найдено{% elif lang == 'tr' %}üniversite bulundu{% else %}universities found{% endif %}
 			</p>
 		</div>
-
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+		
+		<div id="universitiesGrid" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
 			{% for university in universities %}
-			<div class="group bg-white/90 backdrop-blur-lg rounded-[2.5rem] shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
-				<!-- University Image -->
-				<div class="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden flex items-center justify-center">
-					{% if university.logo_url and university.logo_url != '' %}
-					<img src="{{ url_for('static', filename=university.logo_url) }}" alt="{{ university.name_uz if lang == 'uz' else university.name_ru if lang == 'ru' else university.name_tr if lang == 'tr' else university.name_en }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-					<div class="w-full h-full flex items-center justify-center" style="display: none;">
-						<i class="fas fa-university text-6xl text-gray-400"></i>
-					</div>
+			<div class="university-card bg-white rounded-3xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-200 group" data-country="{% if lang == 'uz' %}{{ university.country_uz }}{% elif lang == 'ru' %}{{ university.country_ru }}{% elif lang == 'tr' %}{{ university.country_tr }}{% else %}{{ university.country_en }}{% endif %}">
+				<div class="relative h-52 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+					{% if university.logo_url %}
+					<img src="/static/{{ university.logo_url }}" alt="{{ university.name_uz }}" class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300">
 					{% else %}
 					<div class="w-full h-full flex items-center justify-center">
-						<i class="fas fa-university text-6xl text-gray-400"></i>
+						<span class="text-6xl text-gray-300 font-light">{{ university.name_uz[0] if university.name_uz else 'U' }}</span>
 					</div>
 					{% endif %}
-					<div class="absolute top-4 right-4">
-						{% if university.ranking %}
-						<span class="bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-sm font-bold">
-							#{{ university.ranking }}
+					<div class="absolute top-3 right-3">
+						<span class="px-3 py-1.5 bg-white/95 backdrop-blur-sm text-gray-900 rounded-full text-xs font-medium shadow-sm">
+							{% if lang == 'uz' %}{{ university.country_uz }}{% elif lang == 'ru' %}{{ university.country_ru }}{% elif lang == 'tr' %}{{ university.country_tr }}{% else %}{{ university.country_en }}{% endif %}
 						</span>
-						{% endif %}
 					</div>
 				</div>
 				
-				<!-- University Info -->
-				<div class="p-6">
-					<div class="flex items-center justify-between mb-4">
-						<h3 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-							{{ university.name_uz if lang == 'uz' else university.name_ru if lang == 'ru' else university.name_tr if lang == 'tr' else university.name_en }}
-						</h3>
-						{% if university.university_type %}
-						<span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">
-							{{ university.university_type }}
+				<div class="p-5">
+					<h3 class="text-lg font-medium text-gray-900 mb-2.5 leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}
+					</h3>
+					<div class="flex items-center gap-2 text-gray-600 mb-3">
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400">
+							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+							<circle cx="12" cy="10" r="3"/>
+						</svg>
+						<p class="text-xs font-normal text-gray-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}{{ university.city_uz }}{% elif lang == 'ru' %}{{ university.city_ru }}{% elif lang == 'tr' %}{{ university.city_tr }}{% else %}{{ university.city_en }}{% endif %}
+						</p>
+					</div>
+					
+					<div class="flex flex-wrap gap-2 mb-4">
+						{% if university.language %}
+						<span class="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{{ university.language }}
+						</span>
+						{% endif %}
+						{% if university.grant_available %}
+						<span class="px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-lg text-xs font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Grant{% elif lang == 'ru' %}Грант{% elif lang == 'tr' %}Burs{% else %}Grant{% endif %}
 						</span>
 						{% endif %}
 					</div>
 					
-					<div class="space-y-3 mb-6">
-						<div class="flex items-center text-gray-600">
-							<div class="w-8 h-8 bg-gradient-to-br from-[#003262] via-blue-600 to-[#004AAD] rounded-full flex items-center justify-center mr-3 relative backdrop-blur-sm" style="box-shadow: 0 8px 24px rgba(0, 50, 98, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-								<!-- Liquid Glass Overlay -->
-								<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-								<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-								
-								<!-- Location Icon -->
-								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-									<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="#F59E0B" stroke-width="2"/>
-									<circle cx="12" cy="10" r="3" stroke="#FBBF24" stroke-width="2"/>
-								</svg>
-							</div>
-							<span>{{ university.country_uz if lang == 'uz' else university.country_ru if lang == 'ru' else university.country_tr if lang == 'tr' else university.country_en }}, {{ university.city_uz if lang == 'uz' else university.city_ru if lang == 'ru' else university.city_tr if lang == 'tr' else university.city_en }}</span>
-						</div>
-						
-						{% if university.founded_year %}
-						<div class="flex items-center text-gray-600">
-							<div class="w-8 h-8 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 rounded-full flex items-center justify-center mr-3 relative backdrop-blur-sm" style="box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-								<!-- Liquid Glass Overlay -->
-								<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-								<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-								
-								<!-- Calendar Icon -->
-								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-									<rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="#10B981" stroke-width="2"/>
-									<line x1="16" y1="2" x2="16" y2="6" stroke="#059669" stroke-width="2"/>
-									<line x1="8" y1="2" x2="8" y2="6" stroke="#059669" stroke-width="2"/>
-									<line x1="3" y1="10" x2="21" y2="10" stroke="#10B981" stroke-width="2"/>
-								</svg>
-							</div>
-							<span>
-								{% if lang == 'uz' %}Asos solingan:{% elif lang == 'ru' %}Основан:{% elif lang == 'tr' %}Kuruluş:{% else %}Founded:{% endif %} {{ university.founded_year }}
-							</span>
-						</div>
-						{% endif %}
-						
-						{% if university.student_count %}
-						<div class="flex items-center text-gray-600">
-							<div class="w-8 h-8 bg-gradient-to-br from-purple-600 via-pink-600 to-rose-600 rounded-full flex items-center justify-center mr-3 relative backdrop-blur-sm" style="box-shadow: 0 8px 24px rgba(147, 51, 234, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-								<!-- Liquid Glass Overlay -->
-								<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-								<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-								
-								<!-- Users Icon -->
-								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-									<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#A855F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-									<circle cx="12" cy="7" r="4" stroke="#C084FC" stroke-width="2"/>
-								</svg>
-							</div>
-							<span>{{ university.student_count }}</span>
-						</div>
-						{% endif %}
+					{% if university.tuition_fee_min and university.tuition_fee_max %}
+					<div class="mb-4 pb-4 border-b border-gray-100">
+						<p class="text-xl font-semibold text-gray-900 mb-0.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{{ university.tuition_fee_min }}$ - {{ university.tuition_fee_max }}$
+						</p>
+						<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}yillik{% elif lang == 'ru' %}в год{% elif lang == 'tr' %}yıllık{% else %}per year{% endif %}
+						</p>
 					</div>
+					{% endif %}
 					
-					<p class="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-3">
-						{% set desc = university.description_uz if lang == 'uz' else university.description_ru if lang == 'ru' else university.description_tr if lang == 'tr' else university.description_en %}
-						{{ desc[:150] }}{% if desc|length > 150 %}...{% endif %}
-					</p>
-					
-					<div class="flex items-center justify-between">
-						<div class="flex space-x-2">
-							{% if university.scholarship_available %}
-							<span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">
-								{% if lang == 'uz' %}Grant{% elif lang == 'ru' %}Грант{% else %}Scholarship{% endif %}
-							</span>
-							{% endif %}
-							{% if university.accommodation_available %}
-							<span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-semibold">
-								{% if lang == 'uz' %}Yotoqxona{% elif lang == 'ru' %}Общежитие{% else %}Dormitory{% endif %}
-							</span>
-							{% endif %}
-						</div>
-						
-						<a href="{{ url_for('university_detail', university_id=university.id) }}" class="bg-[#ff9015] hover:bg-[#e8800f] text-white font-bold py-2 px-4 rounded-[1rem] text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-							{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Details{% endif %}
-						</a>
-					</div>
+					<a href="/university/{{ university.id }}?lang={{ lang }}" class="block w-full px-5 py-2.5 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-center text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Details{% endif %}
+					</a>
 				</div>
 			</div>
 			{% endfor %}
 		</div>
 		
-		{% if not universities %}
-		<div class="text-center py-16">
-			<i class="fas fa-university text-6xl text-gray-300 mb-6"></i>
-			<h3 class="text-2xl font-bold text-gray-900 mb-4">
-				{% if lang == 'uz' %}Universitetlar topilmadi{% elif lang == 'ru' %}Университеты не найдены{% else %}No universities found{% endif %}
-			</h3>
-			<p class="text-gray-600 mb-8">
-				{% if lang == 'uz' %}
-					Qidiruv natijalariga mos universitetlar yo'q. Boshqa mezonlar bilan qidiring.
-				{% elif lang == 'ru' %}
-					Нет университетов, соответствующих результатам поиска. Попробуйте другие критерии.
-				{% else %}
-					No universities match your search criteria. Try different filters.
-				{% endif %}
+		<div id="emptyState" class="hidden text-center py-16">
+			<svg class="mx-auto w-20 h-20 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+			</svg>
+			<p class="text-lg text-gray-600 font-normal mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Hech narsa topilmadi{% elif lang == 'ru' %}Ничего не найдено{% elif lang == 'tr' %}Hiçbir şey bulunamadı{% else %}Nothing found{% endif %}
 			</p>
-			<button onclick="clearFilters()" class="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-gray-900 font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-				{% if lang == 'uz' %}Filtrlarni Tozalash{% elif lang == 'ru' %}Очистить Фильтры{% else %}Clear Filters{% endif %}
-			</button>
-		</div>
-		{% endif %}
-	</div>
-</section>
-
-<!-- Statistics Section -->
-<section class="py-20 bg-gradient-to-r from-[#003262] to-blue-800">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-16">
-			<h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-				{% if lang == 'uz' %}Bizning Natijalarimiz{% elif lang == 'ru' %}Наши Результаты{% else %}Our Results{% endif %}
-			</h2>
-			<p class="text-xl text-blue-100 max-w-3xl mx-auto">
-				{% if lang == 'uz' %}
-					Yillar davomida erishgan muvaffaqiyatlarimiz va raqamlar
-				{% elif lang == 'ru' %}
-					Наши достижения и цифры за годы работы
-				{% else %}
-					Our achievements and numbers over the years
-				{% endif %}
+			<p class="text-sm text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Boshqa filterlarni sinab ko'ring{% elif lang == 'ru' %}Попробуйте другие фильтры{% elif lang == 'tr' %}Başka filtreler deneyin{% else %}Try other filters{% endif %}
 			</p>
 		</div>
-
-		<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-			<div class="text-center group" data-aos="fade-up" data-aos-delay="100">
-				<div class="w-20 h-20 bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(255, 144, 21, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- University Icon -->
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<path d="M12 3L2 8l10 5 10-5-10-5z" stroke="#FBBF24" stroke-width="2" fill="#F59E0B" opacity="0.9"/>
-						<path d="M2 8v6c0 3 4.5 5 10 5s10-2 10-5V8" stroke="#FBBF24" stroke-width="2" fill="none" opacity="0.8"/>
-					</svg>
-				</div>
-				<div class="text-5xl md:text-6xl font-bold text-white mb-2">{{ universities|length }}+</div>
-				<div class="text-blue-200 text-lg">
-					{% if lang == 'uz' %}Hamkor Universitetlar{% elif lang == 'ru' %}Партнерских Университетов{% elif lang == 'tr' %}Ortak Üniversiteler{% else %}Partner Universities{% endif %}
-				</div>
-			</div>
-			<div class="text-center group" data-aos="fade-up" data-aos-delay="200">
-				<div class="w-20 h-20 bg-gradient-to-br from-[#003262] via-blue-600 to-[#004AAD] rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(0, 50, 98, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Students Icon -->
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-						<circle cx="12" cy="7" r="4" stroke="#FBBF24" stroke-width="2"/>
-						<path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-						<path d="M21 21v-2a4 4 0 0 0-3-3.85" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-					</svg>
-				</div>
-				<div class="text-5xl md:text-6xl font-bold text-white mb-2">10,000+</div>
-				<div class="text-blue-200 text-lg">
-					{% if lang == 'uz' %}Muvaffaqiyatli Talabalar{% elif lang == 'ru' %}Успешных Студентов{% elif lang == 'tr' %}Başarılı Öğrenciler{% else %}Successful Students{% endif %}
-				</div>
-			</div>
-			<div class="text-center group" data-aos="fade-up" data-aos-delay="300">
-				<div class="w-20 h-20 bg-gradient-to-br from-blue-600 via-cyan-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Countries Icon -->
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<circle cx="12" cy="12" r="10" stroke="#10B981" stroke-width="2"/>
-						<path d="M2 12h20" stroke="#10B981" stroke-width="2"/>
-						<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="#10B981" stroke-width="2"/>
-					</svg>
-				</div>
-				<div class="text-5xl md:text-6xl font-bold text-white mb-2">60+</div>
-				<div class="text-blue-200 text-lg">
-					{% if lang == 'uz' %}Mamlakatlar{% elif lang == 'ru' %}Стран{% elif lang == 'tr' %}Ülkeler{% else %}Countries{% endif %}
-				</div>
-			</div>
-			<div class="text-center group" data-aos="fade-up" data-aos-delay="400">
-				<div class="w-20 h-20 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(34, 197, 94, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Satisfaction Icon -->
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<circle cx="12" cy="12" r="10" stroke="#10B981" stroke-width="2"/>
-						<path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-						<line x1="9" y1="9" x2="9.01" y2="9" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-						<line x1="15" y1="9" x2="15.01" y2="9" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-					</svg>
-				</div>
-				<div class="text-5xl md:text-6xl font-bold text-white mb-2">99%</div>
-				<div class="text-blue-200 text-lg">
-					{% if lang == 'uz' %}Mijozlar Qoniqishi{% elif lang == 'ru' %}Удовлетворенность Клиентов{% elif lang == 'tr' %}Müşteri Memnuniyeti{% else %}Client Satisfaction{% endif %}
-				</div>
-			</div>
-		</div>
 	</div>
 </section>
 
-<!-- Contact CTA Section -->
-<section class="relative py-24 px-4 bg-gradient-to-r from-orange-500 to-yellow-500 overflow-hidden">
-	<div class="max-w-6xl mx-auto text-center">
-		<h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-			{% if lang == 'uz' %}Universitet Topdingizmi?{% elif lang == 'ru' %}Нашли Университет?{% else %}Found a University?{% endif %}
-		</h2>
-		<p class="text-xl text-white/80 mb-8 max-w-3xl mx-auto">
-			{% if lang == 'uz' %}
-				O'zingizga mos universitetni topdingizmi? Biz bilan bog'laning va qabul jarayonini boshlang!
-			{% elif lang == 'ru' %}
-				Нашли подходящий университет? Свяжитесь с нами и начните процесс поступления!
-			{% else %}
-				Found a suitable university? Contact us and start the admission process!
-			{% endif %}
-		</p>
-		<div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
-			<a href="/contact" class="bg-blue-800 border-2 border-blue-800 text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-blue-800/80 hover:shadow-[0_0_30px_rgba(30,64,175,0.5)] hover:scale-105 hover:border-blue-800/80">
-				{% if lang == 'uz' %}Bepul maslahat{% elif lang == 'ru' %}Бесплатная Консультация{% else %}Free Consultation{% endif %}
-			</a>
-			<a href="/universities" class="bg-white text-[#004AAD] border-2 border-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-transparent hover:text-white hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
-				{% if lang == 'uz' %}xizmatlarimiz{% elif lang == 'ru' %}Наши Услуги{% else %}Our Services{% endif %}
-			</a>
-		</div>
-	</div>
-</section>
+</div>
 
-{% endblock %}
-
-{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-	function performSearch(event) {
-		event.preventDefault();
-		
-		const country = document.getElementById('country').value;
-		const degree = document.getElementById('degree').value;
-		const language = document.getElementById('language').value;
-		
-		// Build search URL
-		let searchUrl = '{{ url_for("search") }}?';
-		const params = new URLSearchParams();
-		
-		if (country) params.append('country', country);
-		if (degree) params.append('degree', degree);
-		if (language) params.append('language', language);
-		
-		// Add current language
-		const currentLang = new URLSearchParams(window.location.search).get('lang') || 'uz';
-		params.append('lang', currentLang);
-		
-		searchUrl += params.toString();
-		window.location.href = searchUrl;
-	}
+// Initialize Image Swiper
+const imageSwiper = new Swiper('.image-swiper', {
+	slidesPerView: 1,
+	spaceBetween: 0,
+	loop: true,
+	autoplay: {
+		delay: 3000,
+		disableOnInteraction: false,
+	},
+	pagination: {
+		el: '.swiper-pagination',
+		clickable: true,
+	},
+});
+
+// Initialize Small Swiper for Categories
+const smallSwiper = new Swiper('.small-swiper', {
+	slidesPerView: 'auto',
+	spaceBetween: 8,
+	freeMode: true,
+});
+
+// Filter Panel Toggle
+document.getElementById('filterBtn').addEventListener('click', function() {
+	const panel = document.getElementById('filterPanel');
+	panel.classList.toggle('hidden');
+});
+
+// Search and Filter Function
+function performSearch() {
+	const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+	const country = document.getElementById('country').value;
+	const language = document.getElementById('language').value;
+	const price = document.getElementById('price').value;
 	
-	function clearFilters() {
-		document.getElementById('country').value = '';
-		document.getElementById('degree').value = '';
-		document.getElementById('language').value = '';
+	// Get active category button country
+	const activeCategory = document.querySelector('.category-btn.active');
+	const categoryCountry = activeCategory ? activeCategory.getAttribute('data-country') : '';
+	
+	// Use category country if no filter country selected
+	const filterCountry = country || categoryCountry;
+	
+	const cards = document.querySelectorAll('.university-card');
+	let visibleCount = 0;
+	
+	cards.forEach(card => {
+		const name = card.querySelector('h3').textContent.toLowerCase();
+		const cardCountry = card.getAttribute('data-country');
+		let matches = true;
 		
-		// Reload page to show all universities
-		const currentUrl = new URL(window.location);
-		currentUrl.search = '';
-		window.location.href = currentUrl.toString();
+		if (searchTerm && !name.includes(searchTerm)) {
+			matches = false;
+		}
+		
+		if (filterCountry && cardCountry !== filterCountry) {
+			matches = false;
+		}
+		
+		if (matches) {
+			card.style.display = 'block';
+			visibleCount++;
+		} else {
+			card.style.display = 'none';
+		}
+	});
+	
+	document.getElementById('countNumber').textContent = visibleCount;
+	
+	const emptyState = document.getElementById('emptyState');
+	if (visibleCount === 0) {
+		emptyState.classList.remove('hidden');
+	} else {
+		emptyState.classList.add('hidden');
 	}
+}
+
+document.getElementById('searchInput').addEventListener('input', performSearch);
+document.getElementById('country').addEventListener('change', performSearch);
+document.getElementById('language').addEventListener('change', performSearch);
+document.getElementById('price').addEventListener('change', performSearch);
+
+// Category Buttons Functionality
+document.querySelectorAll('.category-btn').forEach(btn => {
+	btn.addEventListener('click', function() {
+		// Remove active class from all buttons
+		document.querySelectorAll('.category-btn').forEach(b => {
+			b.classList.remove('active', 'bg-blue-50', 'text-blue-600');
+			b.classList.add('bg-gray-50', 'text-gray-600');
+		});
+		
+		// Add active class to clicked button
+		this.classList.add('active', 'bg-blue-50', 'text-blue-600');
+		this.classList.remove('bg-gray-50', 'text-gray-600');
+		
+		// Reset filter dropdown
+		document.getElementById('country').value = '';
+		
+		// Perform search with category filter
+		performSearch();
+	});
+});
 </script>
+
 {% endblock %}

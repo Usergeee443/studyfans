@@ -1,0 +1,294 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{% if lang == 'uz' %}Study Fans AI - Study Fans{% elif lang == 'ru' %}Study Fans AI - Study Fans{% elif lang == 'tr' %}Study Fans AI - Study Fans{% else %}Study Fans AI - Study Fans{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="page-container" style="margin-top: 0; padding-top: 0; height: calc(100vh - 0px); display: flex; flex-direction: column;">
+<!-- Top Section with Title - Minimalistic -->
+<section class="pt-6 pb-6 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<div class="flex items-start gap-4 mb-6">
+			<!-- Title Section -->
+			<div class="flex-1">
+				<h1 class="text-2xl font-medium text-gray-900 mb-1 ai-title" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+					{% if lang == 'uz' %}Study Fans AI{% elif lang == 'ru' %}Study Fans AI{% elif lang == 'tr' %}Study Fans AI{% else %}Study Fans AI{% endif %}
+				</h1>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+.ai-title {
+	background: linear-gradient(135deg, #3b82f6 0%, #6366f1 25%, #8b5cf6 50%, #a855f7 75%, #ec4899 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.4));
+	position: relative;
+	display: inline-block;
+}
+
+.ai-title::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -1px;
+	right: -1px;
+	bottom: 0;
+	background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	filter: blur(4px);
+	opacity: 0.4;
+	z-index: -1;
+}
+
+/* Hide scrollbar for textarea */
+#messageInput {
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* IE and Edge */
+}
+
+#messageInput::-webkit-scrollbar {
+	display: none; /* Chrome, Safari, Opera */
+}
+</style>
+
+<!-- Chat Messages Container -->
+<div id="chatMessages" class="flex-1 overflow-y-auto bg-white" style="scroll-behavior: smooth;">
+	<div class="max-w-4xl mx-auto px-6 py-6 space-y-6">
+		<!-- Messages will be loaded here -->
+	</div>
+</div>
+
+<!-- Chat Input -->
+<div class="bg-white py-4">
+	<div class="max-w-4xl mx-auto px-6">
+		<form id="chatForm" class="flex gap-3 items-start">
+			<div class="flex-1 relative">
+				<textarea 
+					id="messageInput" 
+					rows="1"
+					placeholder="{% if lang == 'uz' %}Savolingizni yozing...{% elif lang == 'ru' %}Напишите ваш вопрос...{% elif lang == 'tr' %}Sorunuzu yazın...{% else %}Type your question...{% endif %}" 
+					class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-normal text-sm focus:outline-none resize-none transition-all" 
+					style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; min-height: 44px; max-height: 200px; overflow-y: hidden;"
+					required
+					autocomplete="off"
+				></textarea>
+			</div>
+			<button 
+				type="submit" 
+				id="sendButton"
+				class="w-10 h-10 bg-gray-200 rounded-full transition-all duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
+				style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"
+				disabled
+			>
+				<img id="sendIcon" src="/static/arrow-up.svg" alt="Send" class="w-4 h-4 opacity-40">
+				<svg id="loadingIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hidden animate-spin text-gray-600">
+					<circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
+					<path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
+				</svg>
+			</button>
+		</form>
+	</div>
+</div>
+</div>
+
+<script>
+const STORAGE_KEY = 'studyfans_chat_history';
+let conversationHistory = [];
+
+function saveChatHistory() {
+	try {
+		localStorage.setItem(STORAGE_KEY, JSON.stringify(conversationHistory));
+	} catch (e) {
+		console.error('Error saving chat history:', e);
+	}
+}
+
+function loadChatHistory() {
+	try {
+		const saved = localStorage.getItem(STORAGE_KEY);
+		if (saved) {
+			conversationHistory = JSON.parse(saved);
+			return true;
+		}
+	} catch (e) {
+		console.error('Error loading chat history:', e);
+	}
+	return false;
+}
+
+function renderMessage(content, isUser = false) {
+	const messagesContainer = document.querySelector('#chatMessages .max-w-4xl');
+	const messageDiv = document.createElement('div');
+	messageDiv.className = `flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`;
+	
+	const messageContent = document.createElement('div');
+	if (isUser) {
+		// User message - minimalistic light gray background
+		messageContent.className = 'max-w-[85%] rounded-2xl px-4 py-3 bg-gray-100 text-gray-900';
+		messageContent.style.fontSize = '0.9375rem';
+		messageContent.style.lineHeight = '1.5';
+		messageContent.style.fontWeight = '400';
+	} else {
+		// AI message - without background (ChatGPT style)
+		messageContent.className = 'max-w-[85%] rounded-2xl px-4 py-3 text-gray-900';
+		messageContent.style.fontSize = '0.9375rem';
+		messageContent.style.lineHeight = '1.5';
+		messageContent.style.fontWeight = '400';
+	}
+	messageContent.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif';
+	messageContent.textContent = content;
+	
+	messageDiv.appendChild(messageContent);
+	messagesContainer.appendChild(messageDiv);
+	
+	// Scroll to bottom
+	const chatContainer = document.getElementById('chatMessages');
+	chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+function addMessage(content, isUser = false) {
+	renderMessage(content, isUser);
+	conversationHistory.push({
+		role: isUser ? 'user' : 'assistant',
+		content: content
+	});
+	saveChatHistory();
+}
+
+function loadSavedMessages() {
+	const hasHistory = loadChatHistory();
+	if (hasHistory && conversationHistory.length > 0) {
+		conversationHistory.forEach(msg => {
+			renderMessage(msg.content, msg.role === 'user');
+		});
+	} else {
+		const welcomeMessage = '{% if lang == "uz" %}Salom! Men Study Fans AI yordamchisiman. Turkiya, Kipr, Gruziya va Malayziyadagi universitetlar haqida savollaringizga javob berishga tayyorman.{% elif lang == "ru" %}Здравствуйте! Я AI-помощник Study Fans. Готов ответить на ваши вопросы об университетах в Турции, на Кипре, в Грузии и Малайзии.{% elif lang == "tr" %}Merhaba! Ben Study Fans AI asistanıyım. Türkiye, Kıbrıs, Gürcistan ve Malezya\'daki üniversiteler hakkındaki sorularınızı yanıtlamaya hazırım.{% else %}Hello! I\'m the Study Fans AI assistant. I\'m ready to answer your questions about universities in Turkey, Cyprus, Georgia and Malaysia.{% endif %}';
+		renderMessage(welcomeMessage, false);
+	}
+}
+
+// Auto-resize textarea
+function autoResizeTextarea(textarea) {
+	textarea.style.height = 'auto';
+	textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';
+}
+
+// Update send button state based on input
+function updateSendButton() {
+	const input = document.getElementById('messageInput');
+	const sendButton = document.getElementById('sendButton');
+	const sendIcon = document.getElementById('sendIcon');
+	const hasText = input.value.trim().length > 0;
+	
+	if (hasText) {
+		sendButton.disabled = false;
+		sendButton.classList.remove('bg-gray-200');
+		sendButton.classList.add('bg-gray-900', 'hover:bg-gray-800');
+		sendIcon.classList.remove('opacity-40');
+		sendIcon.classList.add('opacity-100');
+		sendIcon.style.filter = 'brightness(0) invert(1)';
+	} else {
+		sendButton.disabled = true;
+		sendButton.classList.remove('bg-gray-900', 'hover:bg-gray-800');
+		sendButton.classList.add('bg-gray-200');
+		sendIcon.classList.add('opacity-40');
+		sendIcon.classList.remove('opacity-100');
+		sendIcon.style.filter = 'none';
+	}
+}
+
+async function sendMessage(message) {
+	if (!message.trim()) return;
+	
+	const input = document.getElementById('messageInput');
+	const sendButton = document.getElementById('sendButton');
+	const sendIcon = document.getElementById('sendIcon');
+	const loadingIcon = document.getElementById('loadingIcon');
+	
+	input.disabled = true;
+	sendButton.disabled = true;
+	sendIcon.classList.add('hidden');
+	loadingIcon.classList.remove('hidden');
+	
+	addMessage(message, true);
+	input.value = '';
+	autoResizeTextarea(input);
+	
+	try {
+		const response = await fetch('/api/chat', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				message: message,
+				lang: '{{ lang }}',
+				history: conversationHistory
+			})
+		});
+		
+		const data = await response.json();
+		
+		if (data.success) {
+			addMessage(data.response, false);
+		} else {
+			addMessage('{% if lang == "uz" %}Xatolik yuz berdi. Iltimos, qayta urinib ko\'ring.{% elif lang == "ru" %}Произошла ошибка. Пожалуйста, попробуйте снова.{% elif lang == "tr" %}Hata oluştu. Lütfen tekrar deneyin.{% else %}An error occurred. Please try again.{% endif %}', false);
+		}
+	} catch (error) {
+		console.error('Error:', error);
+		addMessage('{% if lang == "uz" %}Xatolik yuz berdi. Iltimos, qayta urinib ko\'ring.{% elif lang == "ru" %}Произошла ошибка. Пожалуйста, попробуйте снова.{% elif lang == "tr" %}Hata oluştu. Lütfen tekrar deneyin.{% else %}An error occurred. Please try again.{% endif %}', false);
+	} finally {
+		input.disabled = false;
+		sendButton.disabled = false;
+		sendIcon.classList.remove('hidden');
+		loadingIcon.classList.add('hidden');
+		updateSendButton();
+		input.focus();
+	}
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+	loadSavedMessages();
+	const input = document.getElementById('messageInput');
+	
+	// Auto-resize on input
+	input.addEventListener('input', function() {
+		autoResizeTextarea(this);
+		updateSendButton();
+	});
+	
+	// Enter to send, Shift+Enter for new line
+	input.addEventListener('keydown', function(e) {
+		if (e.key === 'Enter' && !e.shiftKey) {
+			e.preventDefault();
+			const message = this.value.trim();
+			if (message) {
+				sendMessage(message);
+			}
+		}
+	});
+	
+	document.getElementById('chatForm').addEventListener('submit', (e) => {
+		e.preventDefault();
+		const message = input.value.trim();
+		if (message) {
+			sendMessage(message);
+		}
+	});
+	
+	// Initial state
+	updateSendButton();
+});
+
+window.addEventListener('beforeunload', () => {
+	saveChatHistory();
+});
+</script>
+
+{% endblock %}

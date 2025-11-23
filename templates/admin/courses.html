@@ -1,34 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurslar Boshqaruvi - Study Fans Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body class="bg-gray-100">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-4">
-                    <a href="{{ url_for('admin_dashboard') }}" class="flex items-center space-x-2">
-                        <span class="text-xl font-bold text-gray-900">Study Fans Admin</span>
-                    </a>
-                </div>
-                
-                <div class="flex items-center space-x-4">
-                    <a href="{{ url_for('admin_logout') }}" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors duration-200">
-                        <i class="fas fa-sign-out-alt mr-2"></i>Chiqish
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+{% extends "admin/base.html" %}
 
-    <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+{% block title %}Kurslar Boshqaruvi - Study Fans Admin{% endblock %}
+
+{% block content %}
+<div class="p-6 md:p-8">
         <!-- Flash Messages -->
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -195,9 +170,9 @@
             </div>
         </div>
         {% endif %}
-    </div>
+</div>
 
-    <script>
+<script>
         // Search functionality
         document.getElementById('search-input').addEventListener('input', function() {
             filterCourses();
@@ -238,6 +213,5 @@
             // This would typically show a modal with course details
             alert('Kurs tafsilotlari ko\'rsatilmoqda... (ID: ' + courseId + ')');
         }
-    </script>
-</body>
-</html>
+</script>
+{% endblock %}

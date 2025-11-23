@@ -1,522 +1,376 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% if lang == 'uz' %}{{ university.name_uz }} - Study Fans{% elif lang == 'ru' %}{{ university.name_ru }} - Study Fans{% elif lang == 'tr' %}{{ university.name_tr }} - Study Fans{% else %}{{ university.name_en }} - Study Fans{% endif %}</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+		}
+	</style>
+</head>
+<body class="bg-white">
 
-{% block title %}
-	{% if lang == 'uz' %}{{ university.name_uz }} - Study Fans{% elif lang == 'ru' %}{{ university.name_ru }} - Study Fans{% else %}{{ university.name_en }} - Study Fans{% endif %}
-{% endblock %}
-
-{% block content %}
-
-<!-- Hero Section -->
-<section class="relative bg-gradient-to-br from-[#003262] via-blue-800 to-indigo-900 py-24 overflow-hidden">
-	<div class="absolute inset-0">
-		<div class="absolute -top-40 -right-40 w-80 h-80 bg-yellow-400/20 rounded-full blur-3xl animate-bounce-slow"></div>
-		<div class="absolute -bottom-40 -left-40 w-80 h-80 bg-orange-400/20 rounded-full blur-3xl animate-bounce-slow animation-delay-1000"></div>
-	</div>
-	
-	<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-			<!-- University Info -->
-			<div class="order-2 lg:order-1">
-				<!-- University Logo (centered for all devices) -->
-				<div class="flex justify-center mb-8">
-					{% if university.logo_url %}
-					<div class="w-32 h-32 bg-white rounded-2xl shadow-xl flex items-center justify-center overflow-hidden">
-						<img src="{{ url_for('static', filename=university.logo_url) }}" alt="{{ university.name_uz if lang == 'uz' else university.name_ru if lang == 'ru' else university.name_en }}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-						<div class="w-full h-full bg-gradient-to-r from-yellow-400 to-orange-400 flex items-center justify-center" style="display: none;">
-							<i class="fas fa-university text-white text-4xl"></i>
-						</div>
-					</div>
-					{% else %}
-					<div class="w-32 h-32 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-2xl flex items-center justify-center shadow-xl">
-						<i class="fas fa-university text-white text-5xl"></i>
-					</div>
-					{% endif %}
-				</div>
-
-				<!-- University Name (centered for all devices) -->
-				<div class="text-center mb-8">
-					<h1 class="text-3xl sm:text-4xl font-bold text-white mb-2">
-						{{ university.name_uz if lang == 'uz' else university.name_ru if lang == 'ru' else university.name_tr if lang == 'tr' else university.name_en }}
-					</h1>
-					<p class="text-lg text-blue-100">
-						{{ university.country_uz if lang == 'uz' else university.country_ru if lang == 'ru' else university.country_tr if lang == 'tr' else university.country_en }}, {{ university.city_uz if lang == 'uz' else university.city_ru if lang == 'ru' else university.city_tr if lang == 'tr' else university.city_en }}
-					</p>
-				</div>
-				
-				<div class="flex flex-wrap gap-4 mb-8">
-					{% if university.ranking %}
-					<div class="bg-[#ff9015] text-white px-4 py-2 rounded-[0.8rem] text-sm font-bold flex items-center">
-						<i class="fas fa-trophy mr-2"></i>
-						#{{ university.ranking }} 
-						{% if lang == 'uz' %}Reyting{% elif lang == 'ru' %}Рейтинг{% else %}Ranking{% endif %}
-					</div>
-					{% endif %}
-					
-					{% if university.university_type %}
-					<div class="bg-white/20 backdrop-blur-lg text-white px-4 py-2 rounded-[0.8rem] text-sm font-semibold">
-						{{ university.university_type }}
-					</div>
-					{% endif %}
-					
-					{% if university.founded_year %}
-					<div class="bg-white/20 backdrop-blur-lg text-white px-4 py-2 rounded-[0.8rem] text-sm font-semibold">
-						{% if lang == 'uz' %}Asos solingan:{% elif lang == 'ru' %}Основан:{% else %}Founded:{% endif %} {{ university.founded_year }}
-					</div>
-					{% endif %}
-				</div>
-				
-				<p class="text-lg text-blue-100 leading-relaxed mb-8">
-					{{ university.description_uz if lang == 'uz' else university.description_ru if lang == 'ru' else university.description_tr if lang == 'tr' else university.description_en }}
-				</p>
-				
-				<div class="flex flex-col sm:flex-row gap-4">
-					<button onclick="openApplicationModal()" class="bg-[#ff9015] text-white font-bold py-4 px-8 rounded-[1.5rem] text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-						<i class="fas fa-graduation-cap mr-2"></i>
-						{% if lang == 'uz' %}Universitetga Ariza Berish{% elif lang == 'ru' %}Подать Заявление в Университет{% else %}Apply to University{% endif %}
-					</button>
-					{% if university.website %}
-					<a href="{{ university.website }}" target="_blank" class="bg-white/10 backdrop-blur-lg border border-white/20 text-white hover:bg-white/20 font-bold py-4 px-8 rounded-[1.5rem] text-lg transition-all duration-300">
-						<i class="fas fa-external-link-alt mr-2"></i>
-						{% if lang == 'uz' %}Rasmiy Sayt{% elif lang == 'ru' %}Официальный Сайт{% else %}Official Website{% endif %}
-					</a>
-					{% endif %}
-				</div>
-			</div>
-			
-			
+<!-- Minimalistic Header -->
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+	<div class="w-full px-6">
+		<div class="flex items-center gap-4 py-3">
+			<a href="/universities?lang={{ lang }}" class="flex items-center justify-center w-8 h-8 bg-gray-100 hover:bg-gray-200  rounded-full transition-colors">
+				<img src="/static/arrow-left.svg" alt="Back" class="w-5 h-5">
+			</a>
+			<h1 class="text-base font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+				{{ university.name_uz if lang == 'uz' else university.name_ru if lang == 'ru' else university.name_tr if lang == 'tr' else university.name_en }}
+			</h1>
 		</div>
 	</div>
-</section>
+</header>
 
-<!-- University Details Section -->
-<section class="py-20 bg-white">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-			<!-- Main Info -->
-			<div class="lg:col-span-2">
-				<h2 class="text-3xl font-bold text-gray-900 mb-8">
-					{% if lang == 'uz' %}Universitet Haqida{% elif lang == 'ru' %}О Университете{% else %}About University{% endif %}
-				</h2>
-				
-				<div class="space-y-8">
-					<!-- Basic Information -->
-					<div class="bg-gray-50 rounded-2xl p-6">
-						<h3 class="text-xl font-bold text-gray-900 mb-4">
-							{% if lang == 'uz' %}Asosiy Ma'lumotlar{% elif lang == 'ru' %}Основная Информация{% else %}Basic Information{% endif %}
-						</h3>
-						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-							<div class="flex items-center space-x-3">
-								<i class="fas fa-map-marker-alt text-blue-500 text-xl"></i>
-								<div>
-									<p class="text-sm text-gray-600">
-										{% if lang == 'uz' %}Manzil{% elif lang == 'ru' %}Адрес{% else %}Location{% endif %}
-									</p>
-									<p class="font-semibold text-gray-900">
-										{{ university.city_uz if lang == 'uz' else university.city_ru if lang == 'ru' else university.city_tr if lang == 'tr' else university.city_en }}, {{ university.country_uz if lang == 'uz' else university.country_ru if lang == 'ru' else university.country_tr if lang == 'tr' else university.country_en }}
-									</p>
-								</div>
-							</div>
-							
-							{% if university.founded_year %}
-							<div class="flex items-center space-x-3">
-								<i class="fas fa-calendar text-green-500 text-xl"></i>
-								<div>
-									<p class="text-sm text-gray-600">
-										{% if lang == 'uz' %}Asos solingan{% elif lang == 'ru' %}Основан{% else %}Founded{% endif %}
-									</p>
-									<p class="font-semibold text-gray-900">{{ university.founded_year }}</p>
-								</div>
-							</div>
-							{% endif %}
-							
-							{% if university.university_type %}
-							<div class="flex items-center space-x-3">
-								<i class="fas fa-building text-purple-500 text-xl"></i>
-								<div>
-									<p class="text-sm text-gray-600">
-										{% if lang == 'uz' %}Turi{% elif lang == 'ru' %}Тип{% else %}Type{% endif %}
-									</p>
-									<p class="font-semibold text-gray-900">{{ university.university_type }}</p>
-								</div>
-							</div>
-							{% endif %}
-							
-							{% if university.student_count %}
-							<div class="flex items-center space-x-3">
-								<i class="fas fa-users text-orange-500 text-xl"></i>
-								<div>
-									<p class="text-sm text-gray-600">
-										{% if lang == 'uz' %}Talabalar soni{% elif lang == 'ru' %}Количество студентов{% else %}Student Count{% endif %}
-									</p>
-									<p class="font-semibold text-gray-900">{{ university.student_count }}</p>
-								</div>
-							</div>
-							{% endif %}
-						</div>
-					</div>
-					
-					<!-- Tuition Fees -->
-					{% if university.tuition_fee_min or university.tuition_fee_max %}
-					<div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl p-6 border border-yellow-100" data-aos="fade-up">
-						<h3 class="text-xl font-bold text-gray-900 mb-4">
-							{% if lang == 'uz' %}O'qish To'lovi{% elif lang == 'ru' %}Стоимость Обучения{% else %}Tuition Fees{% endif %}
-						</h3>
-						<div class="flex items-center space-x-4">
-							<i class="fas fa-dollar-sign text-yellow-500 text-2xl"></i>
-							<div>
-								<p class="text-2xl font-bold text-gray-900">
-									{% if university.tuition_fee_min and university.tuition_fee_max %}
-										{{ university.tuition_fee_min }} - {{ university.tuition_fee_max }}
-									{% elif university.tuition_fee_min %}
-										{{ university.tuition_fee_min }}+
-									{% elif university.tuition_fee_max %}
-										{{ university.tuition_fee_max }}
-									{% endif %}
-								</p>
-								<p class="text-gray-600">
-									{% if lang == 'uz' %}yiliga (USD){% elif lang == 'ru' %}в год (USD){% else %}per year (USD){% endif %}
-								</p>
-							</div>
-						</div>
-					</div>
-					{% endif %}
-					
-					<!-- Requirements -->
-					{% if university.language_requirements or university.admission_requirements %}
-					<div class="bg-blue-50 rounded-2xl p-6 border border-blue-100">
-						<h3 class="text-xl font-bold text-gray-900 mb-4">
-							{% if lang == 'uz' %}Talablar{% elif lang == 'ru' %}Требования{% else %}Requirements{% endif %}
-						</h3>
-						
-						{% if university.language_requirements %}
-						<div class="mb-4">
-							<h4 class="font-semibold text-gray-900 mb-2">
-								{% if lang == 'uz' %}Til Talablari{% elif lang == 'ru' %}Языковые Требования{% else %}Language Requirements{% endif %}
-							</h4>
-							<p class="text-gray-700">{{ university.language_requirements }}</p>
-						</div>
-						{% endif %}
-						
-						{% if university.admission_requirements %}
-						<div>
-							<h4 class="font-semibold text-gray-900 mb-2">
-								{% if lang == 'uz' %}Qabul Talablari{% elif lang == 'ru' %}Требования к Поступлению{% else %}Admission Requirements{% endif %}
-							</h4>
-							<p class="text-gray-700">{{ university.admission_requirements }}</p>
-						</div>
-						{% endif %}
-					</div>
-					{% endif %}
-					
-					<!-- Application Deadline -->
-					{% if university.application_deadline %}
-					<div class="bg-red-50 rounded-2xl p-6 border border-red-100">
-						<h3 class="text-xl font-bold text-gray-900 mb-4">
-							{% if lang == 'uz' %}Ariza Berish Muddati{% elif lang == 'ru' %}Срок Подачи Заявлений{% else %}Application Deadline{% endif %}
-						</h3>
-						<div class="flex items-center space-x-3">
-							<i class="fas fa-clock text-red-500 text-xl"></i>
-							<p class="text-lg font-semibold text-gray-900">{{ university.application_deadline }}</p>
-						</div>
-					</div>
-					{% endif %}
-				</div>
-			</div>
-			
-			<!-- Sidebar -->
-			<div class="space-y-6">
-				<!-- Quick Info Card -->
-				<div class="bg-gradient-to-br from-[#003262] to-blue-800 rounded-2xl p-6 text-white" data-aos="fade-up">
-					<h3 class="text-xl font-bold mb-4">
-						{% if lang == 'uz' %}Tezkor Ma'lumot{% elif lang == 'ru' %}Быстрая Информация{% else %}Quick Info{% endif %}
-					</h3>
-					<div class="space-y-3">
-						{% if university.ranking %}
-						<div class="flex justify-between">
-							<span>{% if lang == 'uz' %}Reyting{% elif lang == 'ru' %}Рейтинг{% else %}Ranking{% endif %}</span>
-							<span class="font-bold">#{{ university.ranking }}</span>
-						</div>
-						{% endif %}
-						
-						{% if university.university_type %}
-						<div class="flex justify-between">
-							<span>{% if lang == 'uz' %}Turi{% elif lang == 'ru' %}Тип{% else %}Type{% endif %}</span>
-							<span class="font-bold">{{ university.university_type }}</span>
-						</div>
-						{% endif %}
-						
-						{% if university.founded_year %}
-						<div class="flex justify-between">
-							<span>{% if lang == 'uz' %}Asos solingan{% elif lang == 'ru' %}Основан{% else %}Founded{% endif %}</span>
-							<span class="font-bold">{{ university.founded_year }}</span>
-						</div>
-						{% endif %}
-					</div>
-				</div>
-				
-				<!-- Features Card -->
-				<div class="bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
-					<h3 class="text-xl font-bold text-gray-900 mb-4">
-						{% if lang == 'uz' %}Imkoniyatlar{% elif lang == 'ru' %}Возможности{% else %}Features{% endif %}
-					</h3>
-					<div class="space-y-3">
-						{% if university.scholarship_available %}
-						<div class="flex items-center space-x-3">
-							<i class="fas fa-check-circle text-green-500"></i>
-							<span class="text-gray-700">
-								{% if lang == 'uz' %}Grant imkoniyati{% elif lang == 'ru' %}Возможность получения гранта{% else %}Scholarship available{% endif %}
-							</span>
-						</div>
-						{% endif %}
-						
-						{% if university.accommodation_available %}
-						<div class="flex items-center space-x-3">
-							<i class="fas fa-check-circle text-green-500"></i>
-							<span class="text-gray-700">
-								{% if lang == 'uz' %}Yotoqxona{% elif lang == 'ru' %}Общежитие{% else %}Accommodation{% endif %}
-							</span>
-						</div>
-						{% endif %}
-						
-						{% if university.website %}
-						<div class="flex items-center space-x-3">
-							<i class="fas fa-check-circle text-green-500"></i>
-							<span class="text-gray-700">
-								{% if lang == 'uz' %}Rasmiy sayt{% elif lang == 'ru' %}Официальный сайт{% else %}Official website{% endif %}
-							</span>
-						</div>
-						{% endif %}
-					</div>
-				</div>
-				
-				<!-- Contact Card -->
-				<div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl p-6 border border-yellow-100">
-					<h3 class="text-xl font-bold text-gray-900 mb-4">
-						{% if lang == 'uz' %}Maslahat kerakmi?{% elif lang == 'ru' %}Нужна Консультация?{% else %}Need Consultation?{% endif %}
-					</h3>
-					<p class="text-gray-600 mb-4">
-						{% if lang == 'uz' %}
-							Bu universitet haqida batafsil ma'lumot olish uchun biz bilan bog'laning
-						{% elif lang == 'ru' %}
-							Свяжитесь с нами для получения подробной информации об этом университете
-						{% else %}
-							Contact us for detailed information about this university
-						{% endif %}
-					</p>
-					<a href="{{ url_for('contact') }}" class="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-gray-900 font-bold py-3 px-6 rounded-xl text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-block">
-						{% if lang == 'uz' %}Bog'lanish{% elif lang == 'ru' %}Связаться{% else %}Contact{% endif %}
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Application Modal -->
-<div id="applicationModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-	<div class="bg-white rounded-3xl p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
-		<div class="flex justify-between items-center mb-6">
-			<h3 class="text-2xl font-bold text-gray-900">
-				{% if lang == 'uz' %}Universitetga Ariza Berish{% elif lang == 'ru' %}Подача Заявления в Университет{% else %}Apply to University{% endif %}
-			</h3>
-			<button onclick="closeApplicationModal()" class="text-gray-400 hover:text-gray-600">
-				<i class="fas fa-times text-xl"></i>
-			</button>
-		</div>
-		
-		<form id="applicationForm" method="POST" action="/university/{{ university.id }}/apply" class="space-y-6">
-			<input type="hidden" name="university_id" value="{{ university.id }}">
-			<input type="hidden" name="lang" value="{{ lang }}">
-			
-			<div>
-				<label class="block text-gray-700 text-sm font-medium mb-2">
-					{% if lang == 'uz' %}To'liq Ism{% elif lang == 'ru' %}Полное Имя{% else %}Full Name{% endif %} *
-				</label>
-				<input type="text" name="full_name" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
-			</div>
-			
-			<div>
-				<label class="block text-gray-700 text-sm font-medium mb-2">
-					{% if lang == 'uz' %}Jinsi{% elif lang == 'ru' %}Пол{% else %}Gender{% endif %} *
-				</label>
-				<select name="gender" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
-					<option value="">
-						{% if lang == 'uz' %}Jinsini tanlang{% elif lang == 'ru' %}Выберите пол{% else %}Select gender{% endif %}
-					</option>
-					<option value="Male">
-						{% if lang == 'uz' %}Erkak{% elif lang == 'ru' %}Мужской{% else %}Male{% endif %}
-					</option>
-					<option value="Female">
-						{% if lang == 'uz' %}Ayol{% elif lang == 'ru' %}Женский{% else %}Female{% endif %}
-					</option>
-				</select>
-			</div>
-			
-			<div>
-				<label class="block text-gray-700 text-sm font-medium mb-2">
-					{% if lang == 'uz' %}Davlat{% elif lang == 'ru' %}Страна{% else %}Country{% endif %} *
-				</label>
-				<input type="text" name="country" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
-			</div>
-			
-			<div>
-				<label class="block text-gray-700 text-sm font-medium mb-2">
-					{% if lang == 'uz' %}Viloyat/Shahar{% elif lang == 'ru' %}Область/Город{% else %}Region/City{% endif %} *
-				</label>
-				<input type="text" name="region" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
-			</div>
-			
-			<div>
-				<label class="block text-gray-700 text-sm font-medium mb-2">
-					{% if lang == 'uz' %}Telefon Raqami{% elif lang == 'ru' %}Номер Телефона{% else %}Phone Number{% endif %} *
-				</label>
-				<input type="tel" name="phone_number" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
-			</div>
-			
-			<button type="submit" class="w-full bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-gray-900 font-bold py-4 px-6 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-				<i class="fas fa-paper-plane mr-2"></i>
-				{% if lang == 'uz' %}Arizani Yuborish{% elif lang == 'ru' %}Отправить Заявление{% else %}Submit Application{% endif %}
-			</button>
-		</form>
-	</div>
-</div>
-
-<!-- CTA Section -->
-<section class="py-20 bg-gradient-to-r from-[#003262] to-blue-800">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-		<h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-			{% if lang == 'uz' %}Tayyorlanganmisiz?{% elif lang == 'ru' %}Готовы?{% else %}Ready?{% endif %}
-		</h2>
-		<p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-			{% if lang == 'uz' %}
-				Bu universitet sizga mos keladimi? Ariza berish jarayonini boshlang!
-			{% elif lang == 'ru' %}
-				Подходит ли вам этот университет? Начните процесс подачи заявления!
-			{% else %}
-				Does this university suit you? Start the application process!
+<!-- Header - Minimalistic -->
+<section class="pt-12 pb-20 bg-white">
+	<div class="max-w-6xl mx-auto px-6">
+		<div class="text-center mb-12">
+			{% if university.logo_url %}
+			<img src="{{ url_for('static', filename=university.logo_url) }}" alt="{{ university.name_uz }}" class="w-32 h-32 mx-auto mb-8 rounded-lg object-cover" onerror="this.style.display='none';">
 			{% endif %}
-		</p>
-		<div class="flex flex-col sm:flex-row gap-4 justify-center">
-			<button onclick="openApplicationModal()" class="bg-[#ff9015] text-white font-bold py-4 px-8 rounded-[1.5rem] text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-				<i class="fas fa-graduation-cap mr-2"></i>
-				{% if lang == 'uz' %}Ariza Berish{% elif lang == 'ru' %}Подать Заявление{% else %}Apply Now{% endif %}
-			</button>
-			<a href="{{ url_for('universities') }}" class="bg-white/10 backdrop-blur-lg border border-white/20 text-white hover:bg-white/20 font-bold py-4 px-8 rounded-[1.5rem] text-lg transition-all duration-300">
-				<i class="fas fa-arrow-left mr-2"></i>
-				{% if lang == 'uz' %}Boshqa Universitetlar{% elif lang == 'ru' %}Другие Университеты{% else %}Other Universities{% endif %}
+			<h2 class="text-4xl md:text-6xl font-light text-gray-900 mb-4">
+				{{ university.name_uz if lang == 'uz' else university.name_ru if lang == 'ru' else university.name_tr if lang == 'tr' else university.name_en }}
+			</h2>
+			<p class="text-xl text-gray-600 font-light mb-6">
+				{{ university.city_uz if lang == 'uz' else university.city_ru if lang == 'ru' else university.city_tr if lang == 'tr' else university.city_en }}, {{ university.country_uz if lang == 'uz' else university.country_ru if lang == 'ru' else university.country_tr if lang == 'tr' else university.country_en }}
+			</p>
+			{% if university.ranking %}
+			<p class="text-gray-500 font-light mb-8">
+				{% if lang == 'uz' %}Reyting: #{{ university.ranking }}{% elif lang == 'ru' %}Рейтинг: #{{ university.ranking }}{% elif lang == 'tr' %}Sıralama: #{{ university.ranking }}{% else %}Ranking: #{{ university.ranking }}{% endif %}
+			</p>
+			{% endif %}
+			<a href="tel:+905011571111" class="inline-block px-8 py-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors font-light">
+				{% if lang == 'uz' %}Maslahat olish{% elif lang == 'ru' %}Получить консультацию{% elif lang == 'tr' %}Danışmanlık al{% else %}Get Consultation{% endif %}
 			</a>
 		</div>
 	</div>
 </section>
 
-{% endblock %}
+<!-- Short General Description - Minimalistic -->
+<section class="py-20 bg-gray-50">
+	<div class="max-w-4xl mx-auto px-6">
+		<h2 class="text-3xl font-light text-gray-900 mb-8 text-center">
+			{% if lang == 'uz' %}Umumiy ma'lumot{% elif lang == 'ru' %}Общая информация{% elif lang == 'tr' %}Genel bilgi{% else %}General Information{% endif %}
+		</h2>
+		<div class="bg-white p-12 rounded-2xl">
+			<p class="text-lg text-gray-600 font-light leading-relaxed mb-8">
+				{{ university.description_uz if lang == 'uz' else university.description_ru if lang == 'ru' else university.description_tr if lang == 'tr' else university.description_en }}
+			</p>
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+				{% if university.founded_year %}
+				<div>
+					<p class="text-3xl font-light text-gray-900 mb-2">{{ university.founded_year }}</p>
+					<p class="text-sm text-gray-600 font-light">
+						{% if lang == 'uz' %}Asos solingan{% elif lang == 'ru' %}Основан{% elif lang == 'tr' %}Kuruluş{% else %}Founded{% endif %}
+					</p>
+				</div>
+				{% endif %}
+				{% if university.student_count %}
+				<div>
+					<p class="text-3xl font-light text-gray-900 mb-2">{{ university.student_count }}</p>
+					<p class="text-sm text-gray-600 font-light">
+						{% if lang == 'uz' %}Talabalar{% elif lang == 'ru' %}Студенты{% elif lang == 'tr' %}Öğrenci{% else %}Students{% endif %}
+					</p>
+				</div>
+				{% endif %}
+				{% if university.university_type %}
+				<div>
+					<p class="text-lg font-light text-gray-900 mb-2">{{ university.university_type }}</p>
+					<p class="text-sm text-gray-600 font-light">
+						{% if lang == 'uz' %}Turi{% elif lang == 'ru' %}Тип{% elif lang == 'tr' %}Tür{% else %}Type{% endif %}
+					</p>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</section>
 
-{% block extra_js %}
-<script>
-	function openApplicationModal() {
-		document.getElementById('applicationModal').classList.remove('hidden');
-		document.body.style.overflow = 'hidden';
-	}
-	
-	function closeApplicationModal() {
-		document.getElementById('applicationModal').classList.add('hidden');
-		document.body.style.overflow = 'auto';
-	}
-
-	// Modal functions for success/error
-	function showSuccessModal() {
-		const modal = document.getElementById('successModal');
-		const content = document.getElementById('successModalContent');
-		modal.classList.remove('hidden');
-		setTimeout(() => {
-			content.classList.remove('scale-95', 'opacity-0');
-			content.classList.add('scale-100', 'opacity-100');
-		}, 10);
-	}
-
-	function closeSuccessModal() {
-		const modal = document.getElementById('successModal');
-		const content = document.getElementById('successModalContent');
-		content.classList.remove('scale-100', 'opacity-100');
-		content.classList.add('scale-95', 'opacity-0');
-		setTimeout(() => {
-			modal.classList.add('hidden');
-		}, 300);
-	}
-
-	function showErrorModal() {
-		const modal = document.getElementById('errorModal');
-		const content = document.getElementById('errorModalContent');
-		modal.classList.remove('hidden');
-		setTimeout(() => {
-			content.classList.remove('scale-95', 'opacity-0');
-			content.classList.add('scale-100', 'opacity-100');
-		}, 10);
-	}
-
-	function closeErrorModal() {
-		const modal = document.getElementById('errorModal');
-		const content = document.getElementById('errorModalContent');
-		content.classList.remove('scale-100', 'opacity-100');
-		content.classList.add('scale-95', 'opacity-0');
-		setTimeout(() => {
-			modal.classList.add('hidden');
-		}, 300);
-	}
-	
-	// Close modal when clicking outside
-	document.getElementById('applicationModal').addEventListener('click', function(e) {
-		if (e.target === this) {
-			closeApplicationModal();
-		}
-	});
-
-	// Close success/error modals when clicking outside
-	if (document.getElementById('successModal')) {
-		document.getElementById('successModal').addEventListener('click', function(e) {
-			if (e.target === this) {
-				closeSuccessModal();
-			}
-		});
-	}
-
-	if (document.getElementById('errorModal')) {
-		document.getElementById('errorModal').addEventListener('click', function(e) {
-			if (e.target === this) {
-				closeErrorModal();
-			}
-		});
-	}
-
-	// Check for success/error parameters in URL and show modals
-	document.addEventListener('DOMContentLoaded', function() {
-		const urlParams = new URLSearchParams(window.location.search);
-		const success = urlParams.get('success');
-		const error = urlParams.get('error');
+<!-- Tuition Fees - Minimalistic -->
+{% if university.tuition_fee_min or university.tuition_fee_max %}
+<section class="py-20 bg-white">
+	<div class="max-w-6xl mx-auto px-6">
+		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-16 text-center">
+			{% if lang == 'uz' %}O'qish to'lovi{% elif lang == 'ru' %}Стоимость обучения{% elif lang == 'tr' %}Öğrenim ücreti{% else %}Tuition Fees{% endif %}
+		</h2>
 		
-		if (success === 'true') {
-			showSuccessModal();
-			// Remove success parameter from URL
-			urlParams.delete('success');
-			window.history.replaceState({}, '', window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : ''));
-		} else if (error === 'true') {
-			showErrorModal();
-			// Remove error parameter from URL
-			urlParams.delete('error');
-			window.history.replaceState({}, '', window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : ''));
-		}
-	});
-	
-	// Handle form submission
-	document.getElementById('applicationForm').addEventListener('submit', function(e) {
-		// Show loading state
-		const submitBtn = this.querySelector('button[type="submit"]');
-		const originalText = submitBtn.innerHTML;
-		submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Yuborilmoqda...';
-		submitBtn.disabled = true;
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+			<div class="bg-gray-50 p-8 rounded-2xl">
+				<h3 class="text-xl font-light text-gray-900 mb-4">
+					{% if lang == 'uz' %}Bakalavr{% elif lang == 'ru' %}Бакалавр{% elif lang == 'tr' %}Lisans{% else %}Bachelor{% endif %}
+				</h3>
+				<p class="text-3xl font-light text-gray-900 mb-2">
+					{% if university.tuition_fee_min and university.tuition_fee_max %}
+						{{ university.tuition_fee_min }}$ - {{ university.tuition_fee_max }}$
+					{% elif university.tuition_fee_min %}
+						{{ university.tuition_fee_min }}$+
+					{% else %}
+						{{ university.tuition_fee_max }}$
+					{% endif %}
+				</p>
+				<p class="text-sm text-gray-600 font-light">
+					{% if lang == 'uz' %}yiliga{% elif lang == 'ru' %}в год{% elif lang == 'tr' %}yıllık{% else %}per year{% endif %}
+				</p>
+			</div>
+			<div class="bg-gray-50 p-8 rounded-2xl">
+				<h3 class="text-xl font-light text-gray-900 mb-4">
+					{% if lang == 'uz' %}Magistr{% elif lang == 'ru' %}Магистр{% elif lang == 'tr' %}Yüksek Lisans{% else %}Master{% endif %}
+				</h3>
+				<p class="text-3xl font-light text-gray-900 mb-2">
+					{% if university.tuition_fee_min and university.tuition_fee_max %}
+						{{ university.tuition_fee_min }}$ - {{ university.tuition_fee_max }}$
+					{% elif university.tuition_fee_min %}
+						{{ university.tuition_fee_min }}$+
+					{% else %}
+						{{ university.tuition_fee_max }}$
+					{% endif %}
+				</p>
+				<p class="text-sm text-gray-600 font-light">
+					{% if lang == 'uz' %}yiliga{% elif lang == 'ru' %}в год{% elif lang == 'tr' %}yıllık{% else %}per year{% endif %}
+				</p>
+			</div>
+			<div class="bg-gray-50 p-8 rounded-2xl">
+				<h3 class="text-xl font-light text-gray-900 mb-4">
+					{% if lang == 'uz' %}Ingliz tili dasturi{% elif lang == 'ru' %}Программа на английском{% elif lang == 'tr' %}İngilizce program{% else %}English Program{% endif %}
+				</h3>
+				<p class="text-3xl font-light text-gray-900 mb-2">
+					{% if university.tuition_fee_min and university.tuition_fee_max %}
+						{{ university.tuition_fee_min }}$ - {{ university.tuition_fee_max }}$
+					{% elif university.tuition_fee_min %}
+						{{ university.tuition_fee_min }}$+
+					{% else %}
+						{{ university.tuition_fee_max }}$
+					{% endif %}
+				</p>
+				<p class="text-sm text-gray-600 font-light">
+					{% if lang == 'uz' %}yiliga{% elif lang == 'ru' %}в год{% elif lang == 'tr' %}yıllık{% else %}per year{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+{% endif %}
+
+<!-- Programs / Majors List - Minimalistic -->
+{% if courses %}
+<section class="py-20 bg-gray-50">
+	<div class="max-w-6xl mx-auto px-6">
+		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-16 text-center">
+			{% if lang == 'uz' %}Yo'nalishlar va dasturlar{% elif lang == 'ru' %}Направления и программы{% elif lang == 'tr' %}Bölümler ve programlar{% else %}Majors & Programs{% endif %}
+		</h2>
 		
-		// Let the form submit naturally - server will redirect with URL parameters
-		// The modals will be shown based on URL parameters when page loads
-	});
-</script>
-{% endblock %}
+		<div class="bg-white rounded-2xl overflow-hidden">
+			<table class="w-full">
+				<thead class="bg-gray-50 border-b border-gray-200">
+					<tr>
+						<th class="text-left py-4 px-6 font-light text-gray-900">
+							{% if lang == 'uz' %}Yo'nalish{% elif lang == 'ru' %}Направление{% elif lang == 'tr' %}Bölüm{% else %}Major{% endif %}
+						</th>
+						<th class="text-left py-4 px-6 font-light text-gray-900">
+							{% if lang == 'uz' %}Til{% elif lang == 'ru' %}Язык{% elif lang == 'tr' %}Dil{% else %}Language{% endif %}
+						</th>
+						<th class="text-left py-4 px-6 font-light text-gray-900">
+							{% if lang == 'uz' %}Yillik narx{% elif lang == 'ru' %}Годовая цена{% elif lang == 'tr' %}Yıllık fiyat{% else %}Annual Price{% endif %}
+						</th>
+						<th class="text-left py-4 px-6 font-light text-gray-900">
+							{% if lang == 'uz' %}Chegirma{% elif lang == 'ru' %}Скидка{% elif lang == 'tr' %}İndirim{% else %}Discount{% endif %}
+						</th>
+						<th class="text-left py-4 px-6 font-light text-gray-900">
+							{% if lang == 'uz' %}Boshlanish sanasi{% elif lang == 'ru' %}Дата начала{% elif lang == 'tr' %}Başlangıç tarihi{% else %}Start Date{% endif %}
+						</th>
+					</tr>
+				</thead>
+				<tbody class="divide-y divide-gray-200">
+					{% for course in courses %}
+					<tr>
+						<td class="py-4 px-6 font-light text-gray-900">
+							{% if lang == 'uz' %}{{ course.title_uz }}{% elif lang == 'ru' %}{{ course.title_ru }}{% elif lang == 'tr' %}{{ course.title_en }}{% else %}{{ course.title_en }}{% endif %}
+						</td>
+						<td class="py-4 px-6 font-light text-gray-600">{{ course.language }}</td>
+						<td class="py-4 px-6 font-light text-gray-900">{{ course.tuition_fee }}</td>
+						<td class="py-4 px-6 font-light text-gray-600">
+							{% if university.scholarship_available %}
+								{% if lang == 'uz' %}Mavjud{% elif lang == 'ru' %}Доступно{% elif lang == 'tr' %}Mevcut{% else %}Available{% endif %}
+							{% else %}
+								-
+							{% endif %}
+						</td>
+						<td class="py-4 px-6 font-light text-gray-600">
+							{% if university.application_deadline %}{{ university.application_deadline }}{% else %}-{% endif %}
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
+{% endif %}
+
+<!-- Admission Requirements - Minimalistic -->
+<section class="py-20 bg-white">
+	<div class="max-w-4xl mx-auto px-6">
+		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-16 text-center">
+			{% if lang == 'uz' %}Qabul talablari{% elif lang == 'ru' %}Требования к поступлению{% elif lang == 'tr' %}Kabul gereksinimleri{% else %}Admission Requirements{% endif %}
+		</h2>
+		
+		<div class="bg-gray-50 p-12 rounded-2xl space-y-8">
+			<div>
+				<h3 class="text-xl font-light text-gray-900 mb-4">
+					{% if lang == 'uz' %}Kerakli hujjatlar{% elif lang == 'ru' %}Необходимые документы{% elif lang == 'tr' %}Gerekli belgeler{% else %}Required Documents{% endif %}
+				</h3>
+				<ul class="space-y-3 text-gray-600 font-light">
+					<li class="flex items-center">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mr-3 text-gray-900">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						{% if lang == 'uz' %}Passport{% elif lang == 'ru' %}Паспорт{% elif lang == 'tr' %}Pasaport{% else %}Passport{% endif %}
+					</li>
+					<li class="flex items-center">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mr-3 text-gray-900">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						{% if lang == 'uz' %}Diplom / Attestat{% elif lang == 'ru' %}Диплом / Аттестат{% elif lang == 'tr' %}Diploma / Lise diploması{% else %}Diploma / Certificate{% endif %}
+					</li>
+					<li class="flex items-center">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mr-3 text-gray-900">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						{% if lang == 'uz' %}IELTS / Til sertifikati{% elif lang == 'ru' %}IELTS / Языковой сертификат{% elif lang == 'tr' %}IELTS / Dil sertifikası{% else %}IELTS / Language Certificate{% endif %}
+					</li>
+				</ul>
+			</div>
+			
+			{% if university.admission_requirements %}
+			<div>
+				<h3 class="text-xl font-light text-gray-900 mb-4">
+					{% if lang == 'uz' %}Qabul jarayoni{% elif lang == 'ru' %}Процесс поступления{% elif lang == 'tr' %}Kabul süreci{% else %}Admission Process{% endif %}
+				</h3>
+				<p class="text-gray-600 font-light leading-relaxed">
+					{{ university.admission_requirements }}
+				</p>
+			</div>
+			{% endif %}
+			
+			{% if university.application_deadline %}
+			<div>
+				<h3 class="text-xl font-light text-gray-900 mb-4">
+					{% if lang == 'uz' %}Ariza berish muddati{% elif lang == 'ru' %}Срок подачи заявлений{% elif lang == 'tr' %}Başvuru tarihi{% else %}Application Deadline{% endif %}
+				</h3>
+				<p class="text-gray-600 font-light">
+					{{ university.application_deadline }}
+				</p>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</section>
+
+<!-- University Geography - Minimalistic -->
+<section class="py-20 bg-gray-50">
+	<div class="max-w-6xl mx-auto px-6">
+		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-16 text-center">
+			{% if lang == 'uz' %}Universitet geografiyasi{% elif lang == 'ru' %}География университета{% elif lang == 'tr' %}Üniversite coğrafyası{% else %}University Geography{% endif %}
+		</h2>
+		
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+			<div class="bg-white p-8 rounded-2xl">
+				<h3 class="text-2xl font-light text-gray-900 mb-4">
+					{% if lang == 'uz' %}Kampus manzili{% elif lang == 'ru' %}Адрес кампуса{% elif lang == 'tr' %}Kampüs adresi{% else %}Campus Location{% endif %}
+				</h3>
+				<p class="text-gray-600 font-light mb-4">
+					{{ university.city_uz if lang == 'uz' else university.city_ru if lang == 'ru' else university.city_tr if lang == 'tr' else university.city_en }}, {{ university.country_uz if lang == 'uz' else university.country_ru if lang == 'ru' else university.country_tr if lang == 'tr' else university.country_en }}
+				</p>
+				<a href="https://maps.google.com/?q={{ university.city_en }},{{ university.country_en }}" target="_blank" class="text-gray-900 font-light hover:underline text-sm inline-flex items-center">
+					{% if lang == 'uz' %}Xaritada ko'rish →{% elif lang == 'ru' %}Посмотреть на карте →{% elif lang == 'tr' %}Haritada görüntüle →{% else %}View on map →{% endif %}
+				</a>
+			</div>
+			<div class="bg-white p-8 rounded-2xl">
+				<h3 class="text-2xl font-light text-gray-900 mb-4">
+					{% if lang == 'uz' %}Shahar haqida{% elif lang == 'ru' %}О городе{% elif lang == 'tr' %}Şehir hakkında{% else %}About City{% endif %}
+				</h3>
+				<p class="text-gray-600 font-light">
+					{% if lang == 'uz' %}{{ university.city_uz }} - bu shaharda o'qish va yashash uchun qulay sharoitlar mavjud.{% elif lang == 'ru' %}{{ university.city_ru }} - в этом городе есть удобные условия для учебы и жизни.{% elif lang == 'tr' %}{{ university.city_tr }} - bu şehirde eğitim ve yaşam için uygun koşullar mevcuttur.{% else %}{{ university.city_en }} - this city has convenient conditions for studying and living.{% endif %}
+				</p>
+			</div>
+		</div>
+		
+		<div class="mt-8 bg-white rounded-2xl overflow-hidden">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d385395.5590093129!2d28.68253429999999!3d41.0053702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2sIstanbul!5e0!3m2!1sen!2sus!4v1234567890" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+		</div>
+	</div>
+</section>
+
+<!-- Advantages - Minimalistic -->
+<section class="py-20 bg-white">
+	<div class="max-w-6xl mx-auto px-6">
+		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-16 text-center">
+			{% if lang == 'uz' %}Afzalliklar{% elif lang == 'ru' %}Преимущества{% elif lang == 'tr' %}Avantajlar{% else %}Advantages{% endif %}
+		</h2>
+		
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			{% if university.scholarship_available %}
+			<div class="bg-gray-50 p-8 rounded-2xl">
+				<h3 class="text-xl font-light text-gray-900 mb-4">
+					{% if lang == 'uz' %}Grant imkoniyati{% elif lang == 'ru' %}Возможность получения гранта{% elif lang == 'tr' %}Burs imkanı{% else %}Scholarship Available{% endif %}
+				</h3>
+				<p class="text-gray-600 font-light text-sm">
+					{% if lang == 'uz' %}Talabalar uchun grant va stipendiya dasturlari{% elif lang == 'ru' %}Программы грантов и стипендий для студентов{% elif lang == 'tr' %}Öğrenciler için burs ve stipend programları{% else %}Grant and scholarship programs for students{% endif %}
+				</p>
+			</div>
+			{% endif %}
+			{% if university.accommodation_available %}
+			<div class="bg-gray-50 p-8 rounded-2xl">
+				<h3 class="text-xl font-light text-gray-900 mb-4">
+					{% if lang == 'uz' %}Yotoqxona{% elif lang == 'ru' %}Общежитие{% elif lang == 'tr' %}Yurt{% else %}Accommodation{% endif %}
+				</h3>
+				<p class="text-gray-600 font-light text-sm">
+					{% if lang == 'uz' %}Talabalar uchun qulay yashash sharoitlari{% elif lang == 'ru' %}Удобные условия проживания для студентов{% elif lang == 'tr' %}Öğrenciler için rahat konaklama koşulları{% else %}Comfortable living conditions for students{% endif %}
+				</p>
+			</div>
+			{% endif %}
+			<div class="bg-gray-50 p-8 rounded-2xl">
+				<h3 class="text-xl font-light text-gray-900 mb-4">
+					{% if lang == 'uz' %}Nega tavsiya qilamiz?{% elif lang == 'ru' %}Почему мы рекомендуем?{% elif lang == 'tr' %}Neden öneriyoruz?{% else %}Why we recommend?{% endif %}
+				</h3>
+				<p class="text-gray-600 font-light text-sm">
+					{% if lang == 'uz' %}Yuqori sifatli ta'lim, zamonaviy infratuzilma va xalqaro tan olinish{% elif lang == 'ru' %}Высококачественное образование, современная инфраструктура и международное признание{% elif lang == 'tr' %}Yüksek kaliteli eğitim, modern altyapı ve uluslararası tanınma{% else %}High-quality education, modern infrastructure and international recognition{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- CTA - Minimalistic -->
+<section class="py-32 bg-gray-50">
+	<div class="max-w-4xl mx-auto px-6 text-center">
+		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-8">
+			{% if lang == 'uz' %}Ushbu universitetga qabul bo'yicha mutaxassis bilan bog'laning.{% elif lang == 'ru' %}Свяжитесь со специалистом по поступлению в этот университет.{% elif lang == 'tr' %}Bu üniversiteye kabul konusunda uzmanla iletişime geçin.{% else %}Contact a specialist about admission to this university.{% endif %}
+		</h2>
+		<div class="flex flex-col sm:flex-row gap-4 justify-center">
+			<a href="https://wa.me/905011571111" target="_blank" class="px-8 py-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors font-light">
+				WhatsApp
+			</a>
+			<a href="https://t.me/istanbullik_m" target="_blank" class="px-8 py-4 bg-white text-gray-900 border border-gray-300 rounded-full hover:bg-gray-50 transition-colors font-light">
+				Telegram
+			</a>
+			<a href="/contact?lang={{ lang }}" class="px-8 py-4 bg-white text-gray-900 border border-gray-300 rounded-full hover:bg-gray-50 transition-colors font-light">
+				{% if lang == 'uz' %}Ariza formasi{% elif lang == 'ru' %}Форма заявки{% elif lang == 'tr' %}Başvuru formu{% else %}Application Form{% endif %}
+			</a>
+		</div>
+	</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,474 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{% if lang == 'uz' %}FAQ - Study Fans{% elif lang == 'ru' %}FAQ - Study Fans{% elif lang == 'tr' %}SSS - Study Fans{% else %}FAQ - Study Fans{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="page-container" style="margin-top: 0; padding-top: 0;">
+<!-- Top Section with Title -->
+<section class="pt-6 pb-6 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<div class="flex items-start gap-4 mb-6">
+			<!-- Title Section -->
+			<div class="flex-1">
+				<h1 class="text-2xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+					{% if lang == 'uz' %}FAQ{% elif lang == 'ru' %}FAQ{% elif lang == 'tr' %}SSS{% else %}FAQ{% endif %}
+				</h1>
+				<p class="text-sm text-gray-500 font-normal mt-0.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Tez-tez so'raladigan savollar{% elif lang == 'ru' %}Часто задаваемые вопросы{% elif lang == 'tr' %}Sık Sorulan Sorular{% else %}Frequently Asked Questions{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- FAQ Items - Minimalistic with Categories -->
+<section class="py-8 bg-white relative">
+	<div class="max-w-7xl mx-auto px-6 relative z-10">
+		<!-- Qabul bo'limi -->
+		<div class="mb-8">
+			<h2 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Qabul{% elif lang == 'ru' %}Поступление{% elif lang == 'tr' %}Kabul{% else %}Admission{% endif %}
+			</h2>
+			<div class="space-y-3">
+				{% set admission_faqs = [
+					('uz:Qabul jarayoni qancha vaqt davom etadi?', 'ru:Сколько времени занимает процесс поступления?', 'tr:Başvuru süreci ne kadar sürer?', 'en:How long does the admission process take?', 'uz:Bu tanlangan universitet va yo\'nalishga bog\'liq. Odatda 2 haftadan 6 haftagacha davom etadi. Biz sizga barcha bosqichlarda yordam ko\'rsatamiz.', 'ru:Это зависит от выбранного университета и направления. Обычно занимает от 2 до 6 недель. Мы помогаем вам на всех этапах.', 'tr:Seçilen üniversite ve bölüme bağlıdır. Genellikle 2 haftadan 6 haftaya kadar sürer. Size tüm aşamalarda yardımcı oluyoruz.', 'en:This depends on the selected university and major. Usually takes 2 to 6 weeks. We help you at all stages.'),
+					('uz:Qanday hujjatlar kerak?', 'ru:Какие документы нужны?', 'tr:Hangi belgeler gerekli?', 'en:What documents are needed?', 'uz:Passport, diplom yoki attestat, IELTS yoki til sertifikati, transkript va boshqalar. Biz sizga barcha hujjatlarni tayyorlashda yordam beramiz.', 'ru:Паспорт, диплом или аттестат, IELTS или языковой сертификат, транскрипт и другие. Мы помогаем вам подготовить все документы.', 'tr:Pasaport, diploma veya lise diploması, IELTS veya dil sertifikası, transkript ve diğerleri. Tüm belgeleri hazırlamanızda size yardımcı oluyoruz.', 'en:Passport, diploma or certificate, IELTS or language certificate, transcript and others. We help you prepare all documents.'),
+					('uz:Qabul imtihoni bormi?', 'ru:Есть ли вступительный экзамен?', 'tr:Giriş sınavı var mı?', 'en:Is there an entrance exam?', 'uz:Ba\'zi universitetlar imtihon talab qiladi, ba\'zilari esa faqat hujjatlar asosida qabul qiladi. Biz sizga har bir universitet talablarini tushuntiramiz.', 'ru:Некоторые университеты требуют экзамен, другие принимают только на основе документов. Мы объясним вам требования каждого университета.', 'tr:Bazı üniversiteler sınav talep eder, bazıları ise sadece belgelere dayalı olarak kabul eder. Her üniversitenin gereksinimlerini size açıklıyoruz.', 'en:Some universities require an exam, others accept based on documents only. We explain the requirements of each university to you.'),
+					('uz:Qabul qilish kafolati bormi?', 'ru:Есть ли гарантия поступления?', 'tr:Kabul garantisi var mı?', 'en:Is there an admission guarantee?', 'uz:Biz sizga qabul ehtimolini oshirish uchun barcha yordamni ko\'rsatamiz. Agar barcha talablar bajarilsa, qabul ehtimoli yuqori.', 'ru:Мы предоставляем всю помощь для увеличения ваших шансов на поступление. Если все требования выполнены, вероятность поступления высока.', 'tr:Kabul şansınızı artırmak için size tüm desteği sağlıyoruz. Tüm gereksinimler karşılanırsa, kabul olasılığı yüksektir.', 'en:We provide all assistance to increase your chances of admission. If all requirements are met, the probability of admission is high.')
+				] %}
+				{% for item in admission_faqs %}
+				<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-gray-300 transition-all duration-200">
+					<button onclick="toggleFAQ('admission-{{ loop.index }}')" class="w-full flex items-center justify-between text-left p-5 hover:bg-gray-50 transition-colors">
+						<h3 class="text-base font-normal text-gray-900 pr-4 flex-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}{{ item[0].split(':')[1] }}{% elif lang == 'ru' %}{{ item[1].split(':')[1] }}{% elif lang == 'tr' %}{{ item[2].split(':')[1] }}{% else %}{{ item[3].split(':')[1] }}{% endif %}
+						</h3>
+						<svg id="faq-icon-admission-{{ loop.index }}" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 transform transition-transform duration-300 flex-shrink-0">
+							<polyline points="6,9 12,15 18,9"/>
+						</svg>
+					</button>
+					<div id="faq-content-admission-{{ loop.index }}" class="faq-content">
+						<div class="px-5 pb-5 pt-0">
+							<div class="pt-4 border-t border-gray-100">
+								<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{% if lang == 'uz' %}{{ item[4].split(':')[1] }}{% elif lang == 'ru' %}{{ item[5].split(':')[1] }}{% elif lang == 'tr' %}{{ item[6].split(':')[1] }}{% else %}{{ item[7].split(':')[1] }}{% endif %}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<!-- Ikamet bo'limi -->
+		<div class="mb-8">
+			<h2 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Ikamet (Yashash ruxsatnomasi){% elif lang == 'ru' %}Вид на жительство (İkamet){% elif lang == 'tr' %}İkamet (İkamet izni){% else %}Residence Permit (İkamet){% endif %}
+			</h2>
+			<div class="space-y-3">
+				{% set ikamet_faqs = [
+					('uz:Ikamet olish jarayoni qancha vaqt davom etadi?', 'ru:Сколько времени занимает процесс получения вида на жительство?', 'tr:İkamet izni alma süreci ne kadar sürer?', 'en:How long does the residence permit process take?', 'uz:Odatda 1-2 oy davom etadi. Hujjatlar to\'liq bo\'lsa, jarayon tezroq ketadi. Biz sizga barcha bosqichlarda yordam ko\'rsatamiz.', 'ru:Обычно занимает 1-2 месяца. Если документы полные, процесс идет быстрее. Мы помогаем вам на всех этапах.', 'tr:Genellikle 1-2 ay sürer. Belgeler tam ise, süreç daha hızlı ilerler. Size tüm aşamalarda yardımcı oluyoruz.', 'en:Usually takes 1-2 months. If documents are complete, the process goes faster. We help you at all stages.'),
+					('uz:Ikamet uchun qanday hujjatlar kerak?', 'ru:Какие документы нужны для вида на жительство?', 'tr:İkamet izni için hangi belgeler gerekli?', 'en:What documents are needed for residence permit?', 'uz:Passport, universitetdan qabul xati, sug\'urta, bank hisobi, yashash joyi hujjati va boshqalar. Biz sizga barcha hujjatlarni tayyorlashda yordam beramiz.', 'ru:Паспорт, письмо о зачислении из университета, страховка, банковский счет, документ о жилье и другие. Мы помогаем вам подготовить все документы.', 'tr:Pasaport, üniversiteden kabul mektubu, sigorta, banka hesabı, konaklama belgesi ve diğerleri. Tüm belgeleri hazırlamanızda size yardımcı oluyoruz.', 'en:Passport, acceptance letter from university, insurance, bank account, accommodation document and others. We help you prepare all documents.'),
+					('uz:Ikamet narxi qancha?', 'ru:Сколько стоит вид на жительство?', 'tr:İkamet izni ne kadar?', 'en:How much does residence permit cost?', 'uz:Narx yiliga o\'zgaradi va turga bog\'liq. Batafsil ma\'lumot uchun biz bilan bog\'laning.', 'ru:Цена меняется каждый год и зависит от типа. Свяжитесь с нами для подробной информации.', 'tr:Fiyat yıllık olarak değişir ve türe bağlıdır. Detaylı bilgi için bizimle iletişime geçin.', 'en:The price changes annually and depends on the type. Contact us for detailed information.')
+				] %}
+				{% for item in ikamet_faqs %}
+				<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-gray-300 transition-all duration-200">
+					<button onclick="toggleFAQ('ikamet-{{ loop.index }}')" class="w-full flex items-center justify-between text-left p-5 hover:bg-gray-50 transition-colors">
+						<h3 class="text-base font-normal text-gray-900 pr-4 flex-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}{{ item[0].split(':')[1] }}{% elif lang == 'ru' %}{{ item[1].split(':')[1] }}{% elif lang == 'tr' %}{{ item[2].split(':')[1] }}{% else %}{{ item[3].split(':')[1] }}{% endif %}
+						</h3>
+						<svg id="faq-icon-ikamet-{{ loop.index }}" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 transform transition-transform duration-300 flex-shrink-0">
+							<polyline points="6,9 12,15 18,9"/>
+						</svg>
+					</button>
+					<div id="faq-content-ikamet-{{ loop.index }}" class="faq-content">
+						<div class="px-5 pb-5 pt-0">
+							<div class="pt-4 border-t border-gray-100">
+								<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{% if lang == 'uz' %}{{ item[4].split(':')[1] }}{% elif lang == 'ru' %}{{ item[5].split(':')[1] }}{% elif lang == 'tr' %}{{ item[6].split(':')[1] }}{% else %}{{ item[7].split(':')[1] }}{% endif %}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<!-- Agentlar bo'limi -->
+		<div class="mb-8">
+			<h2 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Agentlar{% elif lang == 'ru' %}Агенты{% elif lang == 'tr' %}Ajanlar{% else %}Agents{% endif %}
+			</h2>
+			<div class="space-y-3">
+				{% set agent_faqs = [
+					('uz:Komissiya qanday?', 'ru:Какова комиссия?', 'tr:Komisyon nasıl?', 'en:What is the commission?', 'uz:Komissiyalar yo\'nalishga qarab 300$ — 3000$ gacha. Ba\'zi premium yo\'nalishlar va universitetlarda bundan ham yuqori komissiya bo\'ladi.', 'ru:Комиссии варьируются от 300$ до 3000$ в зависимости от направления. В некоторых премиум направлениях и университетах комиссия может быть еще выше.', 'tr:Komisyonlar bölüme göre 300$ — 3000$ arasında değişir. Bazı premium bölümler ve üniversitelerde daha yüksek komisyon olabilir.', 'en:Commissions range from $300 to $3000 depending on the major. In some premium majors and universities, the commission can be even higher.'),
+					('uz:Qanday hamkorlik qilamiz?', 'ru:Как мы сотрудничаем?', 'tr:Nasıl ortaklık kuruyoruz?', 'en:How do we partner?', 'uz:Siz talabalarni bizga yo\'naltirasiz, biz qabul jarayonini amalga oshiramiz va sizga komissiya to\'laymiz. Barcha jarayon shaffof va tezkor.', 'ru:Вы направляете студентов к нам, мы проводим процесс поступления и выплачиваем вам комиссию. Весь процесс прозрачен и быстр.', 'tr:Öğrencileri bize yönlendiriyorsunuz, biz kabul sürecini yürütüyoruz ve size komisyon ödüyoruz. Tüm süreç şeffaf ve hızlı.', 'en:You refer students to us, we conduct the admission process and pay you commission. The entire process is transparent and fast.'),
+					('uz:Qanday to\'lov usullari mavjud?', 'ru:Какие способы оплаты доступны?', 'tr:Hangi ödeme yöntemleri mevcut?', 'en:What payment methods are available?', 'uz:Bank orqali, PayPal, Western Union va boshqa usullar. Biz sizga eng qulay usulni tanlashda yordam beramiz.', 'ru:Через банк, PayPal, Western Union и другие способы. Мы поможем вам выбрать наиболее удобный способ.', 'tr:Banka, PayPal, Western Union ve diğer yöntemler. Size en uygun yöntemi seçmenizde yardımcı oluyoruz.', 'en:Through bank, PayPal, Western Union and other methods. We help you choose the most convenient method.')
+				] %}
+				{% for item in agent_faqs %}
+				<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-gray-300 transition-all duration-200">
+					<button onclick="toggleFAQ('agent-{{ loop.index }}')" class="w-full flex items-center justify-between text-left p-5 hover:bg-gray-50 transition-colors">
+						<h3 class="text-base font-normal text-gray-900 pr-4 flex-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}{{ item[0].split(':')[1] }}{% elif lang == 'ru' %}{{ item[1].split(':')[1] }}{% elif lang == 'tr' %}{{ item[2].split(':')[1] }}{% else %}{{ item[3].split(':')[1] }}{% endif %}
+						</h3>
+						<svg id="faq-icon-agent-{{ loop.index }}" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 transform transition-transform duration-300 flex-shrink-0">
+							<polyline points="6,9 12,15 18,9"/>
+						</svg>
+					</button>
+					<div id="faq-content-agent-{{ loop.index }}" class="faq-content">
+						<div class="px-5 pb-5 pt-0">
+							<div class="pt-4 border-t border-gray-100">
+								<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{% if lang == 'uz' %}{{ item[4].split(':')[1] }}{% elif lang == 'ru' %}{{ item[5].split(':')[1] }}{% elif lang == 'tr' %}{{ item[6].split(':')[1] }}{% else %}{{ item[7].split(':')[1] }}{% endif %}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<!-- Viza & Deport bo'limi -->
+		<div class="mb-8">
+			<h2 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Viza & Deport masalalari{% elif lang == 'ru' %}Визы и депортация{% elif lang == 'tr' %}Vize ve deport sorunları{% else %}Visa & Deport Issues{% endif %}
+			</h2>
+			<div class="space-y-3">
+				{% set documents_faqs = [
+					('uz:Hujjatlarni qayerda tasdiqlash kerak?', 'ru:Где нужно заверить документы?', 'tr:Belgeler nerede onaylanmalı?', 'en:Where should documents be certified?', 'uz:Hujjatlarni notariatda yoki konsullikda tasdiqlash kerak. Biz sizga eng qulay joyni topishda yordam beramiz.', 'ru:Документы должны быть заверены у нотариуса или в консульстве. Мы поможем вам найти наиболее удобное место.', 'tr:Belgeler noterde veya konsoloslukta onaylanmalıdır. Size en uygun yeri bulmanızda yardımcı oluyoruz.', 'en:Documents must be certified at a notary or consulate. We help you find the most convenient place.'),
+					('uz:Tarjima kerakmi?', 'ru:Нужен ли перевод?', 'tr:Çeviri gerekli mi?', 'en:Is translation needed?', 'uz:Ha, barcha hujjatlarni rasmiy tarjima qilish kerak. Biz sizga professional tarjima xizmatini ko\'rsatamiz.', 'ru:Да, все документы должны быть официально переведены. Мы предоставляем профессиональные услуги перевода.', 'tr:Evet, tüm belgelerin resmi olarak çevrilmesi gerekir. Size profesyonel çeviri hizmeti sağlıyoruz.', 'en:Yes, all documents must be officially translated. We provide professional translation services.'),
+					('uz:Hujjatlar tayyorlash qancha turadi?', 'ru:Сколько стоит подготовка документов?', 'tr:Belge hazırlama ne kadar tutar?', 'en:How much does document preparation cost?', 'uz:Narx hujjatlar soniga va xizmatlar turiga bog\'liq. Batafsil ma\'lumot uchun biz bilan bog\'laning.', 'ru:Цена зависит от количества документов и типа услуг. Свяжитесь с нами для подробной информации.', 'tr:Fiyat belge sayısına ve hizmet türüne bağlıdır. Detaylı bilgi için bizimle iletişime geçin.', 'en:The price depends on the number of documents and type of services. Contact us for detailed information.')
+				] %}
+				{% for item in documents_faqs %}
+				<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-gray-300 transition-all duration-200">
+					<button onclick="toggleFAQ('documents-{{ loop.index }}')" class="w-full flex items-center justify-between text-left p-5 hover:bg-gray-50 transition-colors">
+						<h3 class="text-base font-normal text-gray-900 pr-4 flex-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}{{ item[0].split(':')[1] }}{% elif lang == 'ru' %}{{ item[1].split(':')[1] }}{% elif lang == 'tr' %}{{ item[2].split(':')[1] }}{% else %}{{ item[3].split(':')[1] }}{% endif %}
+						</h3>
+						<svg id="faq-icon-documents-{{ loop.index }}" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 transform transition-transform duration-300 flex-shrink-0">
+							<polyline points="6,9 12,15 18,9"/>
+						</svg>
+					</button>
+					<div id="faq-content-documents-{{ loop.index }}" class="faq-content">
+						<div class="px-5 pb-5 pt-0">
+							<div class="pt-4 border-t border-gray-100">
+								<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{% if lang == 'uz' %}{{ item[4].split(':')[1] }}{% elif lang == 'ru' %}{{ item[5].split(':')[1] }}{% elif lang == 'tr' %}{{ item[6].split(':')[1] }}{% else %}{{ item[7].split(':')[1] }}{% endif %}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<!-- Yashash ruxsatnomasi bo'limi -->
+		<div class="mb-8">
+			<h2 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Yashash ruxsatnomasi{% elif lang == 'ru' %}Вид на жительство{% elif lang == 'tr' %}İkamet izni{% else %}Residence Permit{% endif %}
+			</h2>
+			<div class="space-y-3">
+				{% set residence_faqs = [
+					('uz:İkamet jarayonini ham qilasizlarmi?', 'ru:Вы также занимаетесь процессом получения вида на жительство?', 'tr:İkamet sürecini de yapıyor musunuz?', 'en:Do you also handle the residence permit process?', 'uz:Ha, albatta. Biz ikamet online ariza, randevu, sug\'urta va hujjat tayyorlash — hammasini qilamiz.', 'ru:Да, конечно. Мы занимаемся онлайн-заявкой на вид на жительство, записью на прием, страховкой и подготовкой документов.', 'tr:Evet, kesinlikle. İkamet online başvurusu, randevu, sigorta ve belge hazırlama — hepsini yapıyoruz.', 'en:Yes, of course. We handle online residence permit application, appointment, insurance and document preparation.'),
+					('uz:İkamet uchun qancha vaqt kerak?', 'ru:Сколько времени нужно для вида на жительство?', 'tr:İkamet için ne kadar süre gerekir?', 'en:How long does it take for a residence permit?', 'uz:Odatda 1-2 oy davom etadi. Biz sizga barcha bosqichlarda yordam ko\'rsatamiz va jarayonni tezlashtiramiz.', 'ru:Обычно занимает 1-2 месяца. Мы помогаем вам на всех этапах и ускоряем процесс.', 'tr:Genellikle 1-2 ay sürer. Size tüm aşamalarda yardımcı oluyoruz ve süreci hızlandırıyoruz.', 'en:Usually takes 1-2 months. We help you at all stages and speed up the process.'),
+					('uz:İkamet uchun sug\'urta kerakmi?', 'ru:Нужна ли страховка для вида на жительство?', 'tr:İkamet için sigorta gerekli mi?', 'en:Is insurance needed for residence permit?', 'uz:Ha, sug\'urta majburiy. Biz sizga eng qulay sug\'urta paketini topishda yordam beramiz.', 'ru:Да, страховка обязательна. Мы поможем вам найти наиболее удобный страховой пакет.', 'tr:Evet, sigorta zorunludur. Size en uygun sigorta paketini bulmanızda yardımcı oluyoruz.', 'en:Yes, insurance is mandatory. We help you find the most convenient insurance package.')
+				] %}
+				{% for item in residence_faqs %}
+				<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-gray-300 transition-all duration-200">
+					<button onclick="toggleFAQ('residence-{{ loop.index }}')" class="w-full flex items-center justify-between text-left p-5 hover:bg-gray-50 transition-colors">
+						<h3 class="text-base font-normal text-gray-900 pr-4 flex-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}{{ item[0].split(':')[1] }}{% elif lang == 'ru' %}{{ item[1].split(':')[1] }}{% elif lang == 'tr' %}{{ item[2].split(':')[1] }}{% else %}{{ item[3].split(':')[1] }}{% endif %}
+						</h3>
+						<svg id="faq-icon-residence-{{ loop.index }}" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 transform transition-transform duration-300 flex-shrink-0">
+							<polyline points="6,9 12,15 18,9"/>
+						</svg>
+					</button>
+					<div id="faq-content-residence-{{ loop.index }}" class="faq-content">
+						<div class="px-5 pb-5 pt-0">
+							<div class="pt-4 border-t border-gray-100">
+								<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{% if lang == 'uz' %}{{ item[4].split(':')[1] }}{% elif lang == 'ru' %}{{ item[5].split(':')[1] }}{% elif lang == 'tr' %}{{ item[6].split(':')[1] }}{% else %}{{ item[7].split(':')[1] }}{% endif %}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<!-- Grant va to'lovlar bo'limi -->
+		<div class="mb-8">
+			<h2 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Grant va to'lovlar{% elif lang == 'ru' %}Гранты и оплата{% elif lang == 'tr' %}Burs ve ödemeler{% else %}Grants and Payments{% endif %}
+			</h2>
+			<div class="space-y-3">
+				{% set payment_faqs = [
+					('uz:Grant yoki chegirma olish imkoniyati bormi?', 'ru:Есть ли возможность получить грант или скидку?', 'tr:Burs veya indirim alma imkanı var mı?', 'en:Is there an opportunity to get a grant or discount?', 'uz:Bor. Turkiyada xususiy universitetlarning ko\'pi 30–60% chegirma beradi. Biz sizga eng yaxshi imkoniyatlarni topishda yordam beramiz.', 'ru:Да. Большинство частных университетов в Турции предоставляют скидки 30–60%. Мы поможем вам найти лучшие возможности.', 'tr:Evet. Türkiye\'deki özel üniversitelerin çoğu %30-60 indirim sağlar. Size en iyi fırsatları bulmanızda yardımcı oluyoruz.', 'en:Yes. Most private universities in Türkiye offer 30–60% discounts. We help you find the best opportunities.'),
+					('uz:To\'lovni qanday amalga oshirish mumkin?', 'ru:Как можно произвести оплату?', 'tr:Ödeme nasıl yapılabilir?', 'en:How can payment be made?', 'uz:To\'lovni bank orqali, karta yoki naqd pul bilan amalga oshirish mumkin. Biz sizga barcha variantlarni tushuntiramiz.', 'ru:Оплату можно произвести через банк, картой или наличными. Мы объясним вам все варианты.', 'tr:Ödeme banka, kartla veya nakit olarak yapılabilir. Size tüm seçenekleri açıklıyoruz.', 'en:Payment can be made through bank, card or cash. We explain all options to you.'),
+					('uz:To\'lovni bo\'lib-bo\'lib to\'lash mumkinmi?', 'ru:Можно ли оплачивать частями?', 'tr:Ödeme taksitlerle yapılabilir mi?', 'en:Can payment be made in installments?', 'uz:Ha, ko\'p universitetlar to\'lovni bo\'lib-bo\'lib to\'lash imkoniyatini beradi. Batafsil ma\'lumot uchun biz bilan bog\'laning.', 'ru:Да, многие университеты предоставляют возможность оплаты частями. Свяжитесь с нами для подробной информации.', 'tr:Evet, birçok üniversite ödeme taksitlerle yapılmasına izin verir. Detaylı bilgi için bizimle iletişime geçin.', 'en:Yes, many universities allow payment in installments. Contact us for detailed information.')
+				] %}
+				{% for item in payment_faqs %}
+				<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-gray-300 transition-all duration-200">
+					<button onclick="toggleFAQ('payment-{{ loop.index }}')" class="w-full flex items-center justify-between text-left p-5 hover:bg-gray-50 transition-colors">
+						<h3 class="text-base font-normal text-gray-900 pr-4 flex-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}{{ item[0].split(':')[1] }}{% elif lang == 'ru' %}{{ item[1].split(':')[1] }}{% elif lang == 'tr' %}{{ item[2].split(':')[1] }}{% else %}{{ item[3].split(':')[1] }}{% endif %}
+						</h3>
+						<svg id="faq-icon-payment-{{ loop.index }}" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 transform transition-transform duration-300 flex-shrink-0">
+							<polyline points="6,9 12,15 18,9"/>
+						</svg>
+					</button>
+					<div id="faq-content-payment-{{ loop.index }}" class="faq-content">
+						<div class="px-5 pb-5 pt-0">
+							<div class="pt-4 border-t border-gray-100">
+								<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{% if lang == 'uz' %}{{ item[4].split(':')[1] }}{% elif lang == 'ru' %}{{ item[5].split(':')[1] }}{% elif lang == 'tr' %}{{ item[6].split(':')[1] }}{% else %}{{ item[7].split(':')[1] }}{% endif %}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<!-- Yashash joyi bo'limi -->
+		<div class="mb-8">
+			<h2 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Yashash joyi{% elif lang == 'ru' %}Жилье{% elif lang == 'tr' %}Konaklama{% else %}Accommodation{% endif %}
+			</h2>
+			<div class="space-y-3">
+				{% set accommodation_faqs = [
+					('uz:Yashash joyini topishda yordam berasizlarmi?', 'ru:Помогаете ли вы найти жилье?', 'tr:Konaklama bulmada yardımcı oluyor musunuz?', 'en:Do you help find accommodation?', 'uz:Ha, albatta. Biz sizga qulay va xavfsiz yashash joyini topishda yordam beramiz. Yotoqxona yoki kvartira — ikkalasini ham topish mumkin.', 'ru:Да, конечно. Мы помогаем вам найти удобное и безопасное жилье. Можно найти как общежитие, так и квартиру.', 'tr:Evet, kesinlikle. Size rahat ve güvenli konaklama bulmanızda yardımcı oluyoruz. Yurt veya daire — ikisini de bulabiliriz.', 'en:Yes, of course. We help you find comfortable and safe accommodation. Both dormitory and apartment can be found.'),
+					('uz:Yotoqxona narxi qancha?', 'ru:Сколько стоит общежитие?', 'tr:Yurt fiyatı ne kadar?', 'en:How much does a dormitory cost?', 'uz:Yotoqxona narxi universitet va joylashuviga bog\'liq. Odatda oyiga 200-500 dollar. Biz sizga eng qulay variantni topishda yordam beramiz.', 'ru:Стоимость общежития зависит от университета и местоположения. Обычно 200-500 долларов в месяц. Мы поможем вам найти наиболее удобный вариант.', 'tr:Yurt fiyatı üniversiteye ve konuma bağlıdır. Genellikle ayda 200-500 dolar. Size en uygun seçeneği bulmanızda yardımcı oluyoruz.', 'en:Dormitory cost depends on university and location. Usually 200-500 dollars per month. We help you find the most convenient option.')
+				] %}
+				{% for item in accommodation_faqs %}
+				<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-gray-300 transition-all duration-200">
+					<button onclick="toggleFAQ('accommodation-{{ loop.index }}')" class="w-full flex items-center justify-between text-left p-5 hover:bg-gray-50 transition-colors">
+						<h3 class="text-base font-normal text-gray-900 pr-4 flex-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}{{ item[0].split(':')[1] }}{% elif lang == 'ru' %}{{ item[1].split(':')[1] }}{% elif lang == 'tr' %}{{ item[2].split(':')[1] }}{% else %}{{ item[3].split(':')[1] }}{% endif %}
+						</h3>
+						<svg id="faq-icon-accommodation-{{ loop.index }}" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 transform transition-transform duration-300 flex-shrink-0">
+							<polyline points="6,9 12,15 18,9"/>
+						</svg>
+					</button>
+					<div id="faq-content-accommodation-{{ loop.index }}" class="faq-content">
+						<div class="px-5 pb-5 pt-0">
+							<div class="pt-4 border-t border-gray-100">
+								<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{% if lang == 'uz' %}{{ item[4].split(':')[1] }}{% elif lang == 'ru' %}{{ item[5].split(':')[1] }}{% elif lang == 'tr' %}{{ item[6].split(':')[1] }}{% else %}{{ item[7].split(':')[1] }}{% endif %}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<!-- Umumiy savollar bo'limi -->
+		<div class="mb-8 faq-gradient-start relative">
+			<h2 class="text-lg font-medium text-gray-900 mb-4 relative z-10" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Umumiy savollar{% elif lang == 'ru' %}Общие вопросы{% elif lang == 'tr' %}Genel sorular{% else %}General Questions{% endif %}
+			</h2>
+			<div class="space-y-3 relative z-10">
+				{% set general_faqs = [
+					('uz:Xizmatlar narxi qancha?', 'ru:Сколько стоят услуги?', 'tr:Hizmetlerin fiyatı ne kadar?', 'en:How much do services cost?', 'uz:Xizmatlar turiga va murakkabligiga bog\'liq. Batafsil ma\'lumot va narxlar uchun biz bilan bog\'laning.', 'ru:Зависит от типа и сложности услуг. Свяжитесь с нами для подробной информации и цен.', 'tr:Hizmet türüne ve karmaşıklığına bağlıdır. Detaylı bilgi ve fiyatlar için bizimle iletişime geçin.', 'en:Depends on the type and complexity of services. Contact us for detailed information and prices.'),
+					('uz:Qanday tillarda yordam berasiz?', 'ru:На каких языках вы помогаете?', 'tr:Hangi dillerde yardım ediyorsunuz?', 'en:In what languages do you help?', 'uz:Biz o\'zbek, rus, turk va ingliz tillarida yordam beramiz. Sizga qulay tilda javob beramiz.', 'ru:Мы помогаем на узбекском, русском, турецком и английском языках. Отвечаем на удобном для вас языке.', 'tr:Özbekçe, Rusça, Türkçe ve İngilizce dillerinde yardımcı oluyoruz. Size uygun dilde cevap veriyoruz.', 'en:We help in Uzbek, Russian, Turkish and English. We answer in the language convenient for you.'),
+					('uz:24/7 yordam bormi?', 'ru:Есть ли помощь 24/7?', 'tr:7/24 yardım var mı?', 'en:Is there 24/7 support?', 'uz:Ha, biz sizga 24/7 yordam ko\'rsatamiz. Har qanday vaqtda biz bilan bog\'laning.', 'ru:Да, мы предоставляем помощь 24/7. Свяжитесь с нами в любое время.', 'tr:Evet, size 7/24 yardım sağlıyoruz. Herhangi bir zamanda bizimle iletişime geçin.', 'en:Yes, we provide 24/7 support. Contact us at any time.')
+				] %}
+				{% for item in general_faqs %}
+				<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-gray-300 transition-all duration-200">
+					<button onclick="toggleFAQ('general-{{ loop.index }}')" class="w-full flex items-center justify-between text-left p-5 hover:bg-gray-50 transition-colors">
+						<h3 class="text-base font-normal text-gray-900 pr-4 flex-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}{{ item[0].split(':')[1] }}{% elif lang == 'ru' %}{{ item[1].split(':')[1] }}{% elif lang == 'tr' %}{{ item[2].split(':')[1] }}{% else %}{{ item[3].split(':')[1] }}{% endif %}
+						</h3>
+						<svg id="faq-icon-general-{{ loop.index }}" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 transform transition-transform duration-300 flex-shrink-0">
+							<polyline points="6,9 12,15 18,9"/>
+						</svg>
+					</button>
+					<div id="faq-content-general-{{ loop.index }}" class="faq-content">
+						<div class="px-5 pb-5 pt-0">
+							<div class="pt-4 border-t border-gray-100">
+								<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{% if lang == 'uz' %}{{ item[4].split(':')[1] }}{% elif lang == 'ru' %}{{ item[5].split(':')[1] }}{% elif lang == 'tr' %}{{ item[6].split(':')[1] }}{% else %}{{ item[7].split(':')[1] }}{% endif %}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>
+
+</div>
+
+<script>
+function toggleFAQ(id) {
+	const content = document.getElementById('faq-content-' + id);
+	const icon = document.getElementById('faq-icon-' + id);
+	
+	if (content.classList.contains('faq-open')) {
+		content.classList.remove('faq-open');
+		icon.style.transform = 'rotate(0deg)';
+	} else {
+		content.classList.add('faq-open');
+		icon.style.transform = 'rotate(180deg)';
+	}
+}
+
+</script>
+
+<style>
+.faq-content {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.6s ease-out, opacity 0.6s ease-out, padding 0.6s ease-out;
+	opacity: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.faq-content.faq-open {
+	max-height: 500px;
+	opacity: 1;
+	padding-top: 0;
+	padding-bottom: 1.25rem;
+	}
+</style>
+
+<!-- CTA Section -->
+<section class="py-20 cta-section relative overflow-hidden gradient-wrapper-cta">
+	<div class="cta-wave-container">
+		<svg class="cta-wave" viewBox="0 0 1200 120" preserveAspectRatio="none">
+			<path d="M0,60 Q300,20 600,60 T1200,60 L1200,120 L0,120 Z" fill="url(#waveGradient)"/>
+			<defs>
+				<linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" style="stop-color:rgba(59, 130, 246, 0.12);stop-opacity:1" />
+					<stop offset="50%" style="stop-color:rgba(59, 130, 246, 0.18);stop-opacity:1" />
+					<stop offset="100%" style="stop-color:rgba(59, 130, 246, 0.12);stop-opacity:1" />
+				</linearGradient>
+			</defs>
+		</svg>
+		<svg class="cta-wave cta-wave-delayed" viewBox="0 0 1200 120" preserveAspectRatio="none">
+			<path d="M0,60 Q300,40 600,60 T1200,60 L1200,120 L0,120 Z" fill="url(#waveGradient2)"/>
+			<defs>
+				<linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" style="stop-color:rgba(96, 165, 250, 0.08);stop-opacity:1" />
+					<stop offset="50%" style="stop-color:rgba(96, 165, 250, 0.12);stop-opacity:1" />
+					<stop offset="100%" style="stop-color:rgba(96, 165, 250, 0.08);stop-opacity:1" />
+				</linearGradient>
+			</defs>
+		</svg>
+	</div>
+	<div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-20">
+		<h2 class="text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900 mb-3 sm:mb-4 leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; position: relative; z-index: 10;">
+			{% if lang == 'uz' %}Savolingizga javob topmadingizmi?{% elif lang == 'ru' %}Не нашли ответ на свой вопрос?{% elif lang == 'tr' %}Sorunuzun cevabını bulamadınız mı?{% else %}Didn't find the answer to your question?{% endif %}
+		</h2>
+		<p class="text-sm sm:text-base text-gray-600 font-normal mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto px-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; position: relative; z-index: 10;">
+			{% if lang == 'uz' %}Bizning AI yordamchimiz yoki mutaxassislarimiz sizga yordam berishga tayyor{% elif lang == 'ru' %}Наш AI-помощник или наши специалисты готовы помочь вам{% elif lang == 'tr' %}AI asistanımız veya uzmanlarımız size yardımcı olmaya hazır{% else %}Our AI assistant or our specialists are ready to help you{% endif %}
+		</p>
+		<div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full px-2" style="position: relative; z-index: 10;">
+			<a href="{{ url_for('chat', lang=lang) }}" class="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors text-sm sm:text-base font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Study Fans AI{% elif lang == 'ru' %}Study Fans AI{% elif lang == 'tr' %}Study Fans AI{% else %}Study Fans AI{% endif %}
+			</a>
+			<a href="{{ url_for('contact', lang=lang) }}" class="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 bg-white text-gray-900 border border-gray-200 rounded-full hover:bg-gray-50 transition-colors text-sm sm:text-base font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Aloqa{% elif lang == 'ru' %}Связаться{% elif lang == 'tr' %}İletişim{% else %}Contact{% endif %}
+			</a>
+		</div>
+	</div>
+</section>
+
+<style>
+
+/* Gradient overlay - "Umumiy savollar" bo'limidan boshlanadi */
+.faq-gradient-start {
+	position: relative;
+	overflow: visible;
+}
+
+.gradient-wrapper-cta {
+	position: relative;
+}
+
+.cta-section {
+	background: transparent;
+	position: relative;
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+	.cta-section {
+		padding-top: 40px;
+		padding-bottom: 40px;
+		overflow: visible;
+		margin-left: 0;
+		margin-right: 0;
+		width: 100%;
+	}
+	
+	.cta-section .max-w-5xl {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+}
+
+.cta-wave-container {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 120px;
+	overflow: hidden;
+	z-index: 1;
+}
+
+@media (max-width: 768px) {
+	.cta-wave-container {
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 100px;
+	}
+	
+	.cta-wave {
+		width: 200%;
+		height: 100px;
+	}
+}
+
+.cta-wave {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 200%;
+	height: 120px;
+	transform: translateX(-50%);
+	transform-origin: center bottom;
+}
+
+.cta-wave-delayed {
+	opacity: 0.7;
+}
+
+
+
+
+@media (max-width: 768px) {
+	.cta-wave {
+		height: 80px;
+	}
+}
+</style>
+
+{% endblock %}

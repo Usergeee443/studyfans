@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yangi Blog Post Qo'shish - Study Fans Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <a href="{{ url_for('admin_dashboard') }}" class="flex items-center space-x-2">
+                        <span class="text-xl font-bold text-gray-900">Study Fans Admin</span>
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="{{ url_for('admin_logout') }}" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors duration-200">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Chiqish
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="mb-6 space-y-2">
+                    {% for category, message in messages %}
+                        <div class="p-4 rounded-lg {% if category == 'success' %}bg-green-100 text-green-800 border border-green-200{% elif category == 'error' %}bg-red-100 text-red-800 border border-red-200{% else %}bg-blue-100 text-blue-800 border border-blue-200{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Yangi Blog Post Qo'shish</h1>
+                <p class="text-gray-600">Yangi blog post yaratish va barcha tillarda ma'lumot kiritish</p>
+            </div>
+            <a href="{{ url_for('admin_blog') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors duration-200">
+                <i class="fas fa-arrow-left mr-2"></i>Orqaga
+            </a>
+        </div>
+
+        <!-- Form -->
+        <div class="bg-white rounded-xl shadow-lg p-8">
+            <form method="POST" enctype="multipart/form-data" class="space-y-8">
+                <!-- Title Section -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Sarlavha (4 tilda)</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">O'zbek tilida</label>
+                            <input type="text" name="title_uz" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                                placeholder="Sarlavha o'zbek tilida">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Ingliz tilida</label>
+                            <input type="text" name="title_en" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                                placeholder="Title in English">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Rus tilida</label>
+                            <input type="text" name="title_ru" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                                placeholder="Заголовок на русском">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Turk tilida</label>
+                            <input type="text" name="title_tr" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                                placeholder="Başlık Türkçe">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slug -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Slug (URL uchun)</label>
+                    <input type="text" name="slug" 
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                        placeholder="blog-post-slug (avtomatik yaratiladi)">
+                    <p class="text-xs text-gray-500 mt-1">Bo'sh qoldirilsa, ingliz tilidagi sarlavha asosida avtomatik yaratiladi</p>
+                </div>
+
+                <!-- Excerpt Section -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Qisqa tavsif (4 tilda)</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">O'zbek tilida</label>
+                            <textarea name="excerpt_uz" rows="3"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                                placeholder="Qisqa tavsif"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Ingliz tilida</label>
+                            <textarea name="excerpt_en" rows="3"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                                placeholder="Short excerpt"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Rus tilida</label>
+                            <textarea name="excerpt_ru" rows="3"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                                placeholder="Краткое описание"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Turk tilida</label>
+                            <textarea name="excerpt_tr" rows="3"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                                placeholder="Kısa açıklama"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Section -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">To'liq matn (4 tilda)</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">O'zbek tilida</label>
+                            <textarea name="content_uz" rows="10" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                                placeholder="To'liq matn o'zbek tilida"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Ingliz tilida</label>
+                            <textarea name="content_en" rows="10" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                                placeholder="Full content in English"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Rus tilida</label>
+                            <textarea name="content_ru" rows="10" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                                placeholder="Полный текст на русском"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Turk tilida</label>
+                            <textarea name="content_tr" rows="10" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                                placeholder="Tam içerik Türkçe"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Upload -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Rasm</label>
+                    <input type="file" name="image" accept="image/*"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                    <p class="text-xs text-gray-500 mt-1">PNG, JPG, JPEG yoki WEBP formatida</p>
+                </div>
+
+                <!-- Author and Published -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Muallif</label>
+                        <input type="text" name="author" value="Study Fans"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Holat</label>
+                        <div class="flex items-center space-x-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="published" value="1" class="mr-2">
+                                <span class="text-sm text-gray-700">Nashr qilish</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex justify-end space-x-4">
+                    <a href="{{ url_for('admin_blog') }}" class="px-6 py-3 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors duration-200">
+                        Bekor qilish
+                    </a>
+                    <button type="submit" class="px-6 py-3 bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-gray-900 font-bold rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg">
+                        <i class="fas fa-save mr-2"></i>Saqlash
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

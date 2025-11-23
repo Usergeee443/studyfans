@@ -7,9 +7,44 @@ import os
 import requests
 from urllib.parse import urlencode
 from dotenv import load_dotenv
+from openai import OpenAI
+from sqlalchemy import or_
 
 # Load environment variables
 load_dotenv('config.env')
+
+# OpenAI Configuration
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+openai_client = None
+if OPENAI_API_KEY and OPENAI_API_KEY != 'your-openai-api-key-here' and len(OPENAI_API_KEY) > 20:
+    env_backup = {}
+    try:
+        # Remove any proxy-related environment variables that might interfere
+        import os as os_module
+        proxy_vars = ['HTTP_PROXY', 'HTTPS_PROXY', 'http_proxy', 'https_proxy', 'ALL_PROXY', 'all_proxy']
+        for var in proxy_vars:
+            if var in os_module.environ:
+                env_backup[var] = os_module.environ.pop(var)
+        
+        # Create OpenAI client with minimal configuration
+        openai_client = OpenAI(api_key=OPENAI_API_KEY)
+        print("✅ OpenAI client initialized")
+        
+        # Restore environment variables
+        for var, value in env_backup.items():
+            os_module.environ[var] = value
+    except Exception as e:
+        print(f"⚠️ OpenAI client initialization failed: {e}")
+        openai_client = None
+        # Restore environment variables even on error
+        import os as os_module
+        for var, value in env_backup.items():
+            os_module.environ[var] = value
+else:
+    if not OPENAI_API_KEY or OPENAI_API_KEY == 'your-openai-api-key-here':
+        print("⚠️ OpenAI API key not configured in config.env")
+    else:
+        print("⚠️ OpenAI API key appears to be invalid (too short)")
 
 # Telegram Bot Configuration
 TELEGRAM_BOT_TOKEN = "7900459082:AAHKlcfwfRPSmCJwZk5dJ3hr1NHXQ5xOJew"
@@ -55,10 +90,24 @@ def save_uploaded_file(file, folder='universities'):
         # Add timestamp to make filename unique
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S_')
         filename = timestamp + filename
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], folder, filename)
+        folder_path = os.path.join(app.config['UPLOAD_FOLDER'], folder)
+        # Create folder if it doesn't exist
+        os.makedirs(folder_path, exist_ok=True)
+        file_path = os.path.join(folder_path, filename)
         file.save(file_path)
         return f"uploads/{folder}/{filename}"
     return None
+
+def create_slug(text):
+    """Create URL-friendly slug from text"""
+    import re
+    # Convert to lowercase and replace spaces with hyphens
+    slug = text.lower().strip()
+    # Remove special characters except hyphens
+    slug = re.sub(r'[^\w\s-]', '', slug)
+    # Replace spaces and multiple hyphens with single hyphen
+    slug = re.sub(r'[-\s]+', '-', slug)
+    return slug
 
 # Database Models
 class Course(db.Model):
@@ -160,6 +209,41 @@ class UniversityApplication(db.Model):
     
     university = db.relationship('University', backref=db.backref('applications', lazy=True))
 
+class BlogPost(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title_uz = db.Column(db.String(200), nullable=False)
+    title_en = db.Column(db.String(200), nullable=False)
+    title_ru = db.Column(db.String(200), nullable=False)
+    title_tr = db.Column(db.String(200), nullable=False)
+    slug = db.Column(db.String(200), unique=True, nullable=False)
+    content_uz = db.Column(db.Text, nullable=False)
+    content_en = db.Column(db.Text, nullable=False)
+    content_ru = db.Column(db.Text, nullable=False)
+    content_tr = db.Column(db.Text, nullable=False)
+    excerpt_uz = db.Column(db.Text)
+    excerpt_en = db.Column(db.Text)
+    excerpt_ru = db.Column(db.Text)
+    excerpt_tr = db.Column(db.Text)
+    image_url = db.Column(db.String(200))
+    author = db.Column(db.String(100), default='Study Fans')
+    published = db.Column(db.Boolean, default=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    
+    def to_dict(self, lang='en'):
+        return {
+            'id': self.id,
+            'title': getattr(self, f'title_{lang}'),
+            'content': getattr(self, f'content_{lang}'),
+            'excerpt': getattr(self, f'excerpt_{lang}') or '',
+            'slug': self.slug,
+            'image_url': self.image_url,
+            'author': self.author,
+            'published': self.published,
+            'created_at': self.created_at.isoformat() if self.created_at else None,
+            'updated_at': self.updated_at.isoformat() if self.updated_at else None
+        }
+
 class Admin(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -237,6 +321,11 @@ def services():
     lang = request.args.get('lang', 'uz')
     return render_template('services.html', lang=lang)
 
+@app.route('/service/<service_id>')
+def service_detail(service_id):
+    lang = request.args.get('lang', 'uz')
+    return render_template('service_detail.html', service_id=service_id, lang=lang)
+
 @app.route('/about')
 def about():
     lang = request.args.get('lang', 'uz')
@@ -279,6 +368,64 @@ def contact():
 def success_stories():
     lang = request.args.get('lang', 'uz')
     return render_template('success_stories.html', lang=lang)
+
+@app.route('/faq')
+def faq():
+    lang = request.args.get('lang', 'uz')
+    return render_template('faq.html', lang=lang)
+
+@app.route('/partner')
+def partner():
+    lang = request.args.get('lang', 'uz')
+    return render_template('partner.html', lang=lang)
+
+@app.route('/chat')
+def chat():
+    lang = request.args.get('lang', 'uz')
+    return render_template('chat.html', lang=lang)
+
+@app.route('/blog')
+def blog():
+    lang = request.args.get('lang', 'uz')
+    page = request.args.get('page', 1, type=int)
+    per_page = 12
+    
+    # Show only published posts for regular users
+    posts = BlogPost.query.filter_by(published=True).order_by(BlogPost.created_at.desc()).paginate(
+        page=page, per_page=per_page, error_out=False
+    )
+    
+    return render_template('blog.html', posts=posts, lang=lang)
+
+@app.route('/blog/<slug>')
+def blog_detail(slug):
+    lang = request.args.get('lang', 'uz')
+    post = BlogPost.query.filter_by(slug=slug, published=True).first_or_404()
+    
+    # Get related posts (same category or recent)
+    related_posts = BlogPost.query.filter(
+        BlogPost.id != post.id,
+        BlogPost.published == True
+    ).order_by(BlogPost.created_at.desc()).limit(3).all()
+    
+    return render_template('blog_detail.html', post=post, related_posts=related_posts, lang=lang)
+
+@app.route('/calculator')
+def calculator():
+    lang = request.args.get('lang', 'uz')
+    return render_template('calculator.html', lang=lang)
+
+@app.route('/video-gallery')
+def video_gallery():
+    lang = request.args.get('lang', 'uz')
+    return render_template('video_gallery.html', lang=lang)
+
+@app.route('/certificates')
+def certificates():
+    lang = request.args.get('lang', 'uz')
+    return render_template('certificates.html', lang=lang)
+    
+    return render_template('blog_detail.html', post=post, related_posts=related_posts, lang=lang)
 
 @app.route('/university/<int:university_id>/apply', methods=['POST'])
 def apply_university(university_id):
@@ -355,9 +502,9 @@ def admin_dashboard():
     if not session.get('admin_logged_in'):
         return redirect(url_for('admin_login'))
     
-    courses = Course.query.all()
-    universities = University.query.all()
-    return render_template('admin/dashboard.html', courses=courses, universities=universities)
+    universities = University.query.order_by(University.id.desc()).all()
+    blogs = BlogPost.query.all()
+    return render_template('admin/dashboard.html', universities=universities, blogs=blogs)
 
 @app.route('/admin/universities')
 def admin_universities():
@@ -481,6 +628,133 @@ def admin_delete_university(university_id):
     flash('Universitet muvaffaqiyatli o\'chirildi!', 'success')
     return redirect(url_for('admin_universities'))
 
+# Admin Blog Routes
+@app.route('/admin/blog')
+def admin_blog():
+    if not session.get('admin_logged_in'):
+        return redirect(url_for('admin_login'))
+    
+    posts = BlogPost.query.order_by(BlogPost.created_at.desc()).all()
+    return render_template('admin/blog.html', posts=posts)
+
+@app.route('/admin/blog/add', methods=['GET', 'POST'])
+def admin_add_blog():
+    if not session.get('admin_logged_in'):
+        return redirect(url_for('admin_login'))
+    
+    if request.method == 'POST':
+        title_uz = request.form.get('title_uz')
+        title_en = request.form.get('title_en')
+        title_ru = request.form.get('title_ru')
+        title_tr = request.form.get('title_tr')
+        slug = request.form.get('slug') or title_en.lower().replace(' ', '-')
+        content_uz = request.form.get('content_uz')
+        content_en = request.form.get('content_en')
+        content_ru = request.form.get('content_ru')
+        content_tr = request.form.get('content_tr')
+        excerpt_uz = request.form.get('excerpt_uz')
+        excerpt_en = request.form.get('excerpt_en')
+        excerpt_ru = request.form.get('excerpt_ru')
+        excerpt_tr = request.form.get('excerpt_tr')
+        author = request.form.get('author', 'Study Fans')
+        published = bool(request.form.get('published'))
+        
+        # Handle image upload
+        image_url = None
+        if 'image' in request.files:
+            image_file = request.files['image']
+            if image_file and image_file.filename:
+                image_url = save_uploaded_file(image_file, 'blog')
+        
+        # Create slug if not provided
+        if not slug:
+            slug = create_slug(title_en)
+        
+        # Ensure slug is unique
+        existing_post = BlogPost.query.filter_by(slug=slug).first()
+        if existing_post:
+            slug = f"{slug}-{datetime.now().strftime('%Y%m%d%H%M%S')}"
+        
+        post = BlogPost(
+            title_uz=title_uz,
+            title_en=title_en,
+            title_ru=title_ru,
+            title_tr=title_tr,
+            slug=slug,
+            content_uz=content_uz,
+            content_en=content_en,
+            content_ru=content_ru,
+            content_tr=content_tr,
+            excerpt_uz=excerpt_uz,
+            excerpt_en=excerpt_en,
+            excerpt_ru=excerpt_ru,
+            excerpt_tr=excerpt_tr,
+            image_url=image_url,
+            author=author,
+            published=published
+        )
+        
+        db.session.add(post)
+        db.session.commit()
+        flash('Blog post muvaffaqiyatli qo\'shildi!', 'success')
+        return redirect(url_for('admin_blog'))
+    
+    return render_template('admin/add_blog.html')
+
+@app.route('/admin/blog/edit/<int:post_id>', methods=['GET', 'POST'])
+def admin_edit_blog(post_id):
+    if not session.get('admin_logged_in'):
+        return redirect(url_for('admin_login'))
+    
+    post = BlogPost.query.get_or_404(post_id)
+    
+    if request.method == 'POST':
+        post.title_uz = request.form.get('title_uz')
+        post.title_en = request.form.get('title_en')
+        post.title_ru = request.form.get('title_ru')
+        post.title_tr = request.form.get('title_tr')
+        new_slug = request.form.get('slug')
+        if new_slug and new_slug != post.slug:
+            existing_post = BlogPost.query.filter_by(slug=new_slug).first()
+            if not existing_post or existing_post.id == post.id:
+                post.slug = new_slug
+        post.content_uz = request.form.get('content_uz')
+        post.content_en = request.form.get('content_en')
+        post.content_ru = request.form.get('content_ru')
+        post.content_tr = request.form.get('content_tr')
+        post.excerpt_uz = request.form.get('excerpt_uz')
+        post.excerpt_en = request.form.get('excerpt_en')
+        post.excerpt_ru = request.form.get('excerpt_ru')
+        post.excerpt_tr = request.form.get('excerpt_tr')
+        post.author = request.form.get('author', 'Study Fans')
+        post.published = bool(request.form.get('published'))
+        post.updated_at = datetime.utcnow()
+        
+        # Handle image upload
+        if 'image' in request.files:
+            image_file = request.files['image']
+            if image_file and image_file.filename:
+                image_url = save_uploaded_file(image_file, 'blog')
+                if image_url:
+                    post.image_url = image_url
+        
+        db.session.commit()
+        flash('Blog post muvaffaqiyatli yangilandi!', 'success')
+        return redirect(url_for('admin_blog'))
+    
+    return render_template('admin/edit_blog.html', post=post)
+
+@app.route('/admin/blog/delete/<int:post_id>')
+def admin_delete_blog(post_id):
+    if not session.get('admin_logged_in'):
+        return redirect(url_for('admin_login'))
+    
+    post = BlogPost.query.get_or_404(post_id)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Blog post muvaffaqiyatli o\'chirildi!', 'success')
+    return redirect(url_for('admin_blog'))
+
 
 @app.route('/admin/logout')
 def admin_logout():
@@ -514,6 +788,387 @@ def api_universities():
     lang = request.args.get('lang', 'en')
     universities = University.query.all()
     return jsonify([university.to_dict(lang) for university in universities])
+
+@app.route('/api/ai-recommendation', methods=['POST'])
+def ai_recommendation():
+    """AI orqali universitet tavsiya qilish"""
+    try:
+        data = request.get_json()
+        lang = data.get('lang', 'uz')
+        degree = data.get('degree', '')
+        major = data.get('major', '')
+        budget = data.get('budget', '')
+        language = data.get('language', '')
+        country = data.get('country', '')
+        city = data.get('city', '')
+        
+        # Universitetlar bazasidan qidirish
+        query = University.query
+        
+        # Country filter
+        if country:
+            country_filters = []
+            if country == 'Turkey':
+                country_filters.append(University.country_en == 'Turkey')
+                country_filters.append(University.country_uz == 'Turkiya')
+            elif country == 'Cyprus':
+                country_filters.append(University.country_en == 'Cyprus')
+                country_filters.append(University.country_uz == 'Kipr')
+            elif country == 'Georgia':
+                country_filters.append(University.country_en == 'Georgia')
+                country_filters.append(University.country_uz == 'Gruziya')
+            elif country == 'Malaysia':
+                country_filters.append(University.country_en == 'Malaysia')
+                country_filters.append(University.country_uz == 'Malayziya')
+            
+            if country_filters:
+                query = query.filter(or_(*country_filters))
+        
+        # City filter
+        if city:
+            city_filters = []
+            if lang == 'uz':
+                city_filters.append(University.city_uz.contains(city))
+            elif lang == 'ru':
+                city_filters.append(University.city_ru.contains(city))
+            elif lang == 'tr':
+                city_filters.append(University.city_tr.contains(city))
+            else:
+                city_filters.append(University.city_en.contains(city))
+            
+            if city_filters:
+                query = query.filter(or_(*city_filters))
+        
+        # Language filter
+        if language:
+            if language == 'English':
+                query = query.filter(
+                    or_(
+                        University.language_requirements.contains('IELTS'),
+                        University.language_requirements.contains('TOEFL'),
+                        University.language_requirements.contains('English')
+                    )
+                )
+            elif language == 'Turkish':
+                query = query.filter(
+                    or_(
+                        University.language_requirements.contains('TÖMER'),
+                        University.language_requirements.contains('Turkish')
+                    )
+                )
+        
+        # Budget filter - bu filterni keyinroq qo'llaymiz, chunki u juda qattiq
+        budget_filter_applied = False
+        if budget:
+            try:
+                # Extract numbers from budget string
+                if '1500' in budget and '3000' in budget:
+                    # 1500-3000 range
+                    min_budget = 1500
+                    max_budget = 3000
+                elif '3000' in budget and '5000' in budget:
+                    # 3000-5000 range
+                    min_budget = 3000
+                    max_budget = 5000
+                elif '5000' in budget:
+                    # 5000+ range
+                    min_budget = 5000
+                    max_budget = 999999
+                else:
+                    min_budget = None
+                    max_budget = None
+                
+                if min_budget is not None:
+                    # Budget filterni keyinroq qo'llaymiz - avval boshqa filterlar bilan qidiramiz
+                    budget_filter_applied = True
+            except Exception as e:
+                print(f"Budget filter error: {e}")
+                budget_filter_applied = False
+        
+        # Bazadan topilgan universitetlar
+        matched_universities = query.limit(10).all()
+        
+        # Agar hech narsa topilmasa, filterlarni bosqichma-bosqich kamaytiramiz
+        if not matched_universities:
+            print("⚠️ No universities found with strict filters, trying with relaxed filters...")
+            # City filterni olib tashlaymiz
+            if city:
+                query = University.query
+                if country:
+                    country_filters = []
+                    if country == 'Turkey':
+                        country_filters.append(University.country_en == 'Turkey')
+                        country_filters.append(University.country_uz == 'Turkiya')
+                    elif country == 'Cyprus':
+                        country_filters.append(University.country_en == 'Cyprus')
+                        country_filters.append(University.country_uz == 'Kipr')
+                    elif country == 'Georgia':
+                        country_filters.append(University.country_en == 'Georgia')
+                        country_filters.append(University.country_uz == 'Gruziya')
+                    elif country == 'Malaysia':
+                        country_filters.append(University.country_en == 'Malaysia')
+                        country_filters.append(University.country_uz == 'Malayziya')
+                    
+                    if country_filters:
+                        query = query.filter(or_(*country_filters))
+                
+                # Language filter
+                if language:
+                    if language == 'English':
+                        query = query.filter(
+                            or_(
+                                University.language_requirements.contains('IELTS'),
+                                University.language_requirements.contains('TOEFL'),
+                                University.language_requirements.contains('English')
+                            )
+                        )
+                    elif language == 'Turkish':
+                        query = query.filter(
+                            or_(
+                                University.language_requirements.contains('TÖMER'),
+                                University.language_requirements.contains('Turkish')
+                            )
+                        )
+                
+                matched_universities = query.limit(10).all()
+        
+        # Agar hali ham bo'sh bo'lsa, faqat country filter bilan qidiramiz
+        if not matched_universities and country:
+            print("⚠️ Still no results, trying with country filter only...")
+            query = University.query
+            country_filters = []
+            if country == 'Turkey':
+                country_filters.append(University.country_en == 'Turkey')
+                country_filters.append(University.country_uz == 'Turkiya')
+            elif country == 'Cyprus':
+                country_filters.append(University.country_en == 'Cyprus')
+                country_filters.append(University.country_uz == 'Kipr')
+            elif country == 'Georgia':
+                country_filters.append(University.country_en == 'Georgia')
+                country_filters.append(University.country_uz == 'Gruziya')
+            elif country == 'Malaysia':
+                country_filters.append(University.country_en == 'Malaysia')
+                country_filters.append(University.country_uz == 'Malayziya')
+            
+            if country_filters:
+                query = query.filter(or_(*country_filters))
+                matched_universities = query.limit(10).all()
+        
+        # Agar hali ham bo'sh bo'lsa, barcha universitetlarni ko'rsatamiz
+        if not matched_universities:
+            print("⚠️ No universities found with any filters, showing all universities...")
+            matched_universities = University.query.limit(10).all()
+        
+        print(f"📊 Found {len(matched_universities)} universities")
+        
+        # OpenAI API orqali tavsiya
+        recommendations = []
+        ai_analysis = ""
+        
+        if openai_client and matched_universities:
+            try:
+                # Universitetlar ma'lumotlarini tayyorlash
+                universities_info = []
+                for uni in matched_universities:
+                    uni_dict = uni.to_dict(lang)
+                    fee_min = uni_dict.get('tuition_fee_min', 'N/A')
+                    fee_max = uni_dict.get('tuition_fee_max', 'N/A')
+                    universities_info.append({
+                        'name': uni_dict['name'],
+                        'city': uni_dict['city'],
+                        'country': uni_dict['country'],
+                        'tuition_fee_min': fee_min,
+                        'tuition_fee_max': fee_max,
+                        'description': (uni_dict.get('description', '') or '')[:200]
+                    })
+                
+                # Language-specific prompt
+                if lang == 'uz':
+                    system_prompt = "Siz professional ta'lim maslahatchisisiz. Universitetlarni tavsiya qilasiz."
+                    user_prompt = f"""Quyidagi talablarga mos universitetlarni tavsiya qiling:
+
+Talabalar:
+- Ta'lim darajasi: {degree}
+- Yo'nalish: {major}
+- Byudjet: {budget}
+- Til: {language}
+- Davlat: {country}
+- Shahar: {city if city else 'Har qanday'}
+
+Mavjud universitetlar:
+{chr(10).join([f"- {u['name']} ({u['city']}, {u['country']}) - {u['tuition_fee_min']}-{u['tuition_fee_max']}$" for u in universities_info[:5]])}
+
+Eng mos 3 ta universitetni tavsiya qiling va har birini qisqacha tushuntiring. Javobni o'zbek tilida bering."""
+                elif lang == 'ru':
+                    system_prompt = "Вы профессиональный консультант по образованию. Вы рекомендуете университеты."
+                    user_prompt = f"""Рекомендуйте университеты, соответствующие следующим требованиям:
+
+Требования:
+- Уровень образования: {degree}
+- Направление: {major}
+- Бюджет: {budget}
+- Язык: {language}
+- Страна: {country}
+- Город: {city if city else 'Любой'}
+
+Доступные университеты:
+{chr(10).join([f"- {u['name']} ({u['city']}, {u['country']}) - {u['tuition_fee_min']}-{u['tuition_fee_max']}$" for u in universities_info[:5]])}
+
+Рекомендуйте 3 наиболее подходящих университета и кратко объясните каждый. Ответьте на русском языке."""
+                elif lang == 'tr':
+                    system_prompt = "Profesyonel bir eğitim danışmanısınız. Üniversiteleri öneriyorsunuz."
+                    user_prompt = f"""Aşağıdaki gereksinimlere uygun üniversiteleri önerin:
+
+Gereksinimler:
+- Eğitim seviyesi: {degree}
+- Bölüm: {major}
+- Bütçe: {budget}
+- Dil: {language}
+- Ülke: {country}
+- Şehir: {city if city else 'Herhangi bir'}
+
+Mevcut üniversiteler:
+{chr(10).join([f"- {u['name']} ({u['city']}, {u['country']}) - {u['tuition_fee_min']}-{u['tuition_fee_max']}$" for u in universities_info[:5]])}
+
+En uygun 3 üniversiteyi önerin ve her birini kısaca açıklayın. Türkçe cevap verin."""
+                else:
+                    system_prompt = "You are a professional education consultant. You recommend universities."
+                    user_prompt = f"""Recommend universities that match the following requirements:
+
+Requirements:
+- Education level: {degree}
+- Major: {major}
+- Budget: {budget}
+- Language: {language}
+- Country: {country}
+- City: {city if city else 'Any'}
+
+Available universities:
+{chr(10).join([f"- {u['name']} ({u['city']}, {u['country']}) - {u['tuition_fee_min']}-{u['tuition_fee_max']}$" for u in universities_info[:5]])}
+
+Recommend the top 3 most suitable universities and briefly explain each. Answer in English."""
+                
+                print(f"🔍 Sending request to OpenAI API...")
+                print(f"📊 Universities found: {len(universities_info)}")
+                
+                response = openai_client.chat.completions.create(
+                    model="gpt-3.5-turbo",
+                    messages=[
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": user_prompt}
+                    ],
+                    temperature=0.7,
+                    max_tokens=800
+                )
+                
+                if response and response.choices and len(response.choices) > 0:
+                    ai_analysis = response.choices[0].message.content
+                    print(f"✅ OpenAI API response received: {len(ai_analysis)} characters")
+                else:
+                    raise Exception("Empty response from OpenAI API")
+                
+            except Exception as e:
+                import traceback
+                error_details = traceback.format_exc()
+                print(f"❌ OpenAI API error: {e}")
+                print(f"📋 Error details: {error_details}")
+                
+                # Language-specific error messages
+                if lang == 'uz':
+                    ai_analysis = "AI tahlil qilishda xatolik yuz berdi, lekin bazadan topilgan universitetlar ko'rsatilmoqda."
+                elif lang == 'ru':
+                    ai_analysis = "Произошла ошибка при анализе ИИ, но найденные университеты из базы данных отображаются."
+                elif lang == 'tr':
+                    ai_analysis = "AI analizinde hata oluştu, ancak veritabanından bulunan üniversiteler gösteriliyor."
+                else:
+                    ai_analysis = "Error in AI analysis, but universities found in database are shown."
+        
+        # Natijalarni tayyorlash
+        result = {
+            'success': True,
+            'universities': [uni.to_dict(lang) for uni in matched_universities],
+            'ai_analysis': ai_analysis,
+            'count': len(matched_universities)
+        }
+        
+        return jsonify(result)
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/chat', methods=['POST'])
+def api_chat():
+    """AI Chat API endpoint"""
+    try:
+        if not openai_client:
+            return jsonify({
+                'success': False,
+                'error': 'OpenAI API is not configured'
+            }), 500
+        
+        data = request.get_json()
+        message = data.get('message', '')
+        lang = data.get('lang', 'uz')
+        conversation_history = data.get('history', [])
+        
+        if not message:
+            return jsonify({
+                'success': False,
+                'error': 'Message is required'
+            }), 400
+        
+        # System prompt based on language
+        system_prompts = {
+            'uz': """Siz Study Fans kompaniyasining yordamchi AI asistentisiz. Siz Turkiya, Kipr, Gruziya va Malayziyadagi universitetlar haqida ma'lumot berasiz, talabalarga yordam berasiz va maslahat berasiz. 
+Javoblar qisqa, aniq va foydali bo'lishi kerak. Agar savol universitetlar yoki ta'lim bilan bog'liq bo'lmasa, buni tushuntirib, ta'lim masalalariga qaytishingizni so'rang.""",
+            'ru': """Вы AI-ассистент компании Study Fans. Вы предоставляете информацию об университетах в Турции, на Кипре, в Грузии и Малайзии, помогаете студентам и даете советы.
+Ответы должны быть краткими, точными и полезными. Если вопрос не связан с университетами или образованием, объясните это и попросите вернуться к вопросам образования.""",
+            'tr': """Study Fans şirketinin yardımcı AI asistanısınız. Türkiye, Kıbrıs, Gürcistan ve Malezya'daki üniversiteler hakkında bilgi veriyorsunuz, öğrencilere yardımcı oluyorsunuz ve tavsiyelerde bulunuyorsunuz.
+Yanıtlar kısa, net ve yararlı olmalıdır. Soru üniversiteler veya eğitimle ilgili değilse, bunu açıklayın ve eğitim konularına dönmelerini isteyin.""",
+            'en': """You are an AI assistant for Study Fans company. You provide information about universities in Turkey, Cyprus, Georgia, and Malaysia, help students, and give advice.
+Responses should be brief, accurate, and helpful. If the question is not related to universities or education, explain this and ask to return to education topics."""
+        }
+        
+        system_prompt = system_prompts.get(lang, system_prompts['en'])
+        
+        # Build messages array
+        messages = [{"role": "system", "content": system_prompt}]
+        
+        # Add conversation history
+        for msg in conversation_history[-10:]:  # Keep last 10 messages for context
+            if msg.get('role') and msg.get('content'):
+                messages.append({
+                    "role": msg['role'],
+                    "content": msg['content']
+                })
+        
+        # Add current message
+        messages.append({"role": "user", "content": message})
+        
+        # Call OpenAI API
+        response = openai_client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=messages,
+            temperature=0.7,
+            max_tokens=500
+        )
+        
+        ai_response = response.choices[0].message.content
+        
+        return jsonify({
+            'success': True,
+            'response': ai_response
+        })
+        
+    except Exception as e:
+        print(f"Error in chat API: {e}")
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
 
 @app.route('/static/uploads/<path:filename>')
 def uploaded_file(filename):

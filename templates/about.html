@@ -6,1112 +6,123 @@
 
 {% block content %}
 
-<!-- Hero Section -->
-<section class="relative bg-gradient-to-r from-[#003262] to-blue-800 py-24 mt-[3rem] overflow-hidden">
-	<div class="absolute inset-0">
-		<div class="absolute -top-40 -right-40 w-80 h-80 bg-yellow-400/20 rounded-full blur-3xl animate-bounce-slow"></div>
-		<div class="absolute -bottom-40 -left-40 w-80 h-80 bg-orange-400/20 rounded-full blur-3xl animate-bounce-slow animation-delay-1000"></div>
-	</div>
-	
-	<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-		<h1 class="text-5xl md:text-7xl font-bold text-white mb-8" data-aos="fade-up">
-			{% if lang == 'uz' %}
-				<span class="block">Biz</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">haqimizda</span>
-			{% elif lang == 'ru' %}
-				<span class="block">О</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Нас</span>
-			{% elif lang == 'tr' %}
-				<span class="block">Hakkı-</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">mızda</span>
-			{% else %}
-				<span class="block">About</span>
-				<span class="block text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">Us</span>
-			{% endif %}
+<div class="page-container">
+<!-- Hero Section - Apple Style -->
+<section class="pt-32 pb-20 bg-white">
+	<div class="max-w-6xl mx-auto px-6 text-center">
+		<h1 class="text-5xl md:text-6xl lg:text-7xl font-light text-gray-900 mb-6 tracking-tight leading-none">
+			{% if lang == 'uz' %}Biz haqimizda{% elif lang == 'ru' %}О нас{% elif lang == 'tr' %}Hakkımızda{% else %}About Us{% endif %}
 		</h1>
-		<p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-2" data-aos="fade-up" data-aos-delay="200">
-			{% if lang == 'uz' %}
-				Turkiya markazidagi xalqaro ta'lim konsalting agentligi - minglab yoshlarning orzularini amalga oshirishga yordam beradi
-			{% elif lang == 'ru' %}
-				Международное образовательное консалтинговое агентство с центром в Турции - помогает осуществить мечты тысяч молодых людей
-			{% elif lang == 'tr' %}
-				Türkiye merkezli uluslararası eğitim danışmanlık ajansı - binlerce gencin hayallerini gerçekleştirmesine yardımcı oluyor
-			{% else %}
-				International educational consulting agency based in Turkey - helping thousands of young people realize their dreams
-			{% endif %}
+		<p class="text-xl md:text-2xl text-gray-600 font-light max-w-3xl mx-auto leading-relaxed">
+			{% if lang == 'uz' %}12 yillik tajriba, 10,000+ muvaffaqiyatli talaba, 60+ universitet hamkori{% elif lang == 'ru' %}12 лет опыта, 10,000+ успешных студентов, 60+ партнеров-университетов{% elif lang == 'tr' %}12 yıllık deneyim, 10,000+ başarılı öğrenci, 60+ üniversite ortağı{% else %}12 years of experience, 10,000+ successful students, 60+ university partners{% endif %}
 		</p>
 	</div>
 </section>
 
-<!-- Stats Section -->
-<section class="py-20 bg-white">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-			<!-- Stat 1 -->
-			<div class="text-center group" data-aos="fade-up" data-aos-delay="100">
-				<div class="w-20 h-20 bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(255, 144, 21, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Students Icon -->
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<path d="M12 3L2 8l10 5 10-5-10-5z" stroke="#FBBF24" stroke-width="2" fill="#F59E0B" opacity="0.9"/>
-						<path d="M2 8v6c0 3 4.5 5 10 5s10-2 10-5V8" stroke="#FBBF24" stroke-width="2" fill="none" opacity="0.8"/>
-					</svg>
-				</div>
-				<h3 class="text-4xl font-bold text-[#003262] mb-2">10,000+</h3>
-				<p class="text-gray-600 font-medium">
-					{% if lang == 'uz' %}Muvaffaqiyatli talabalar{% elif lang == 'ru' %}Успешные студенты{% elif lang == 'tr' %}Başarılı öğrenciler{% else %}Successful Students{% endif %}
-				</p>
-			</div>
-
-			<!-- Stat 2 -->
-			<div class="text-center group" data-aos="fade-up" data-aos-delay="200">
-				<div class="w-20 h-20 bg-gradient-to-br from-[#003262] via-blue-600 to-[#004AAD] rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(0, 50, 98, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Experience Icon -->
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<circle cx="12" cy="12" r="10" stroke="#F59E0B" stroke-width="2"/>
-						<polyline points="12,6 12,12 16,14" stroke="#FBBF24" stroke-width="2" stroke-linecap="round"/>
-					</svg>
-				</div>
-				<h3 class="text-4xl font-bold text-[#003262] mb-2">7+</h3>
-				<p class="text-gray-600 font-medium">
-					{% if lang == 'uz' %}Yillik tajriba{% elif lang == 'ru' %}Лет опыта{% elif lang == 'tr' %}Yıllık deneyim{% else %}Years Experience{% endif %}
-				</p>
-			</div>
-
-			<!-- Stat 3 -->
-			<div class="text-center group" data-aos="fade-up" data-aos-delay="300">
-				<div class="w-20 h-20 bg-gradient-to-br from-blue-600 via-cyan-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Countries Icon -->
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<circle cx="12" cy="12" r="10" stroke="#10B981" stroke-width="2"/>
-						<path d="M2 12h20" stroke="#10B981" stroke-width="2"/>
-						<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="#10B981" stroke-width="2"/>
-					</svg>
-				</div>
-				<h3 class="text-4xl font-bold text-[#003262] mb-2">60+</h3>
-				<p class="text-gray-600 font-medium">
-					{% if lang == 'uz' %}Davlatlar{% elif lang == 'ru' %}Стран{% elif lang == 'tr' %}Ülkeler{% else %}Countries{% endif %}
-				</p>
-			</div>
-
-			<!-- Stat 4 -->
-			<div class="text-center group" data-aos="fade-up" data-aos-delay="400">
-				<div class="w-20 h-20 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(34, 197, 94, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Universities Icon -->
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<rect x="3" y="4" width="18" height="16" rx="2" stroke="#10B981" stroke-width="2" fill="none"/>
-						<path d="M7 8h10" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
-						<path d="M7 12h10" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
-						<path d="M7 16h6" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
-					</svg>
-				</div>
-				<h3 class="text-4xl font-bold text-[#003262] mb-2">100+</h3>
-				<p class="text-gray-600 font-medium">
-					{% if lang == 'uz' %}Universitetlar{% elif lang == 'ru' %}Университеты{% elif lang == 'tr' %}Üniversiteler{% else %}Universities{% endif %}
-				</p>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Mission & Vision Section -->
-<section class="py-20 bg-gray-50">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-			<div data-aos="fade-right">
-				<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-					{% if lang == 'uz' %}Bizning missiyamiz{% elif lang == 'ru' %}Наша миссия{% elif lang == 'tr' %}Misyonumuz{% else %}Our mission{% endif %}
-				</h2>
-				<p class="text-xl text-gray-600 mb-8 leading-relaxed">
-					{% if lang == 'uz' %}
-						O'zbekiston, Qozog'iston, Qirg'iziston, Tojikiston, Rossiya, Ukraina va boshqa davlatlardan kelgan talabalarni eng nufuzli xususiy universitetlarga o'qishga qabul qilishda yordam berish. Ta'lim turizmi sohasida ishonchli hamkor sifatida minglab yoshlarning orzularini amalga oshirishga ko'maklashmoqda.
-					{% elif lang == 'ru' %}
-						Помощь студентам из Узбекистана, Казахстана, Кыргызстана, Таджикистана, России, Украины и других стран в поступлении в самые престижные частные университеты. Как надежный партнер в сфере образовательного туризма, помогает тысячам молодых людей осуществить свои мечты.
-					{% elif lang == 'tr' %}
-						Özbekistan, Kazakistan, Kırgızistan, Tacikistan, Rusya, Ukrayna ve diğer ülkelerden gelen öğrencilerin en prestijli özel üniversitelere kabul edilmelerinde yardım etmek. Eğitim turizmi alanında güvenilir bir ortak olarak binlerce gencin hayallerini gerçekleştirmelerine yardımcı olmaktadır.
-					{% else %}
-						Helping students from Uzbekistan, Kazakhstan, Kyrgyzstan, Tajikistan, Russia, Ukraine and other countries get admitted to the most prestigious private universities. As a trusted partner in educational tourism, helping thousands of young people realize their dreams.
-					{% endif %}
-				</p>
-				<div class="space-y-4">
-					<div class="flex items-center space-x-4">
-						<div class="w-12 h-12 bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 rounded-full flex items-center justify-center relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(255, 144, 21, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-							<!-- Liquid Glass Overlay -->
-							<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-							<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-							
-							<!-- Target Icon -->
-							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-								<!-- Target Circles -->
-								<circle cx="12" cy="12" r="9" stroke="#FBBF24" stroke-width="2" opacity="0.9"/>
-								<circle cx="12" cy="12" r="6" stroke="#F59E0B" stroke-width="2" opacity="0.8"/>
-								<circle cx="12" cy="12" r="3" stroke="#EF4444" stroke-width="2" opacity="0.7"/>
-								<!-- Center dot -->
-								<circle cx="12" cy="12" r="1.5" fill="#DC2626"/>
-							</svg>
-						</div>
-						<div>
-							<h3 class="text-xl font-semibold text-gray-900">
-								{% if lang == 'uz' %}Maqsad{% elif lang == 'ru' %}Цель{% elif lang == 'tr' %}Hedef{% else %}Goal{% endif %}
-							</h3>
-							<p class="text-gray-600">
-								{% if lang == 'uz' %}Har bir talabaning muvaffaqiyatini ta'minlash{% elif lang == 'ru' %}Обеспечение успеха каждого студента{% elif lang == 'tr' %}Her öğrencinin başarısını sağlamak{% else %}Ensuring every student's success{% endif %}
-							</p>
-						</div>
-					</div>
-					<div class="flex items-center space-x-4">
-						<div class="w-12 h-12 bg-gradient-to-br from-[#003262] via-blue-600 to-[#004AAD] rounded-full flex items-center justify-center relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(0, 50, 98, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-							<!-- Liquid Glass Overlay -->
-							<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-							<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-							
-							<!-- Heart Icon -->
-							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-								<!-- Heart shape -->
-								<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" 
-									  stroke="#F59E0B" stroke-width="2" fill="#FBBF24" opacity="0.8"/>
-								<!-- Heart highlight -->
-								<path d="M12 8c-1-2 1-4 3-3s3 2 2 4c-1 2-3 3-5 6-2-3-4-4-5-6-1-2 0-5 2-4s4 1 3 3z" 
-									  fill="#FDE68A" opacity="0.6"/>
-							</svg>
-						</div>
-						<div>
-							<h3 class="text-xl font-semibold text-gray-900">
-								{% if lang == 'uz' %}Qadriyat{% elif lang == 'ru' %}Ценность{% else %}Value{% endif %}
-							</h3>
-							<p class="text-gray-600">
-								{% if lang == 'uz' %}Professional yondashuv va shaxsiy e'tibor{% elif lang == 'ru' %}Профессиональный подход и личное внимание{% else %}Professional approach and personal attention{% endif %}
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="relative" data-aos="fade-left">
-				<div class="bg-gradient-to-br from-[#003262] to-blue-800 rounded-[2.5rem] p-8 text-white shadow-lg">
-					<div class="text-center">
-						<div class="w-24 h-24 bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 20px 60px rgba(251, 191, 36, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-							<!-- Liquid Glass Overlay -->
-							<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-							<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-							
-							<!-- Lightbulb Icon -->
-							<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-								<!-- Bulb body -->
-								<path d="M9 21h6" stroke="#FEF3C7" stroke-width="2" stroke-linecap="round"/>
-								<path d="M10 21v-1a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v1" stroke="#FEF3C7" stroke-width="2"/>
-								<!-- Bulb -->
-								<path d="M12 3a6 6 0 0 0-6 6c0 2 1 3.5 2 4.5L10 16h4l2-2.5c1-1 2-2.5 2-4.5a6 6 0 0 0-6-6z" 
-									  stroke="#FBBF24" stroke-width="2" fill="#FDE68A" opacity="0.8"/>
-								<!-- Light rays -->
-								<path d="M12 1v2" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
-								<path d="M4.22 4.22l1.42 1.42" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
-								<path d="M1 12h2" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
-								<path d="M21 12h2" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
-								<path d="M18.36 5.64l1.42-1.42" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
-							</svg>
-						</div>
-						<h3 class="text-2xl font-bold mb-4">
-							{% if lang == 'uz' %}Bizning vizyonimiz{% elif lang == 'ru' %}Наше видение{% else %}Our vision{% endif %}
-						</h3>
-						<p class="text-lg leading-relaxed">
-							{% if lang == 'uz' %}
-								Jahon miqyosida ta'lim sohasida yetakchi kompaniya bo'lish va har bir talabaning orzularini amalga oshirishda yordam berish.
-							{% elif lang == 'ru' %}
-								Стать ведущей компанией в сфере образования в мировом масштабе и помочь каждому студенту реализовать свои мечты.
-							{% else %}
-								To become a leading company in education worldwide and help every student realize their dreams.
-							{% endif %}
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Values Section -->
-<section class="py-20 bg-white">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-16">
-			<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-				{% if lang == 'uz' %}Bizning qadriyatlarimiz{% elif lang == 'ru' %}Наши ценности{% else %}Our values{% endif %}
-			</h2>
-			<p class="text-xl text-gray-600 max-w-3xl mx-auto">
-				{% if lang == 'uz' %}
-					Bizning ish uslubimiz va mijozlarimizga yondashuvimizni shakllantiruvchi asosiy qadriyatlar
-				{% elif lang == 'ru' %}
-					Основные ценности, формирующие наш стиль работы и подход к клиентам
-				{% else %}
-					Core values that shape our work style and approach to clients
-				{% endif %}
-			</p>
-		</div>
-
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-			<!-- Value 1 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
-				<div class="w-16 h-16 bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 rounded-full flex items-center justify-center mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(255, 144, 21, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Handshake Icon -->
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<!-- Hand 1 -->
-						<path d="M11 12h2l2-2 1-1c1-1 3-1 4 0s1 3 0 4l-3 3-2 2" stroke="#FBBF24" stroke-width="2" fill="none" opacity="0.9"/>
-						<!-- Hand 2 -->
-						<path d="M13 12h-2l-2-2-1-1c-1-1-3-1-4 0s-1 3 0 4l3 3 2 2" stroke="#F59E0B" stroke-width="2" fill="none" opacity="0.9"/>
-						<!-- Connection -->
-						<circle cx="12" cy="12" r="2" stroke="#EF4444" stroke-width="2" fill="#FDE68A" opacity="0.7"/>
-					</svg>
-				</div>
-				<h3 class="text-2xl font-bold text-gray-900 mb-4">
-					{% if lang == 'uz' %}Ishonchlilik{% elif lang == 'ru' %}Надежность{% else %}Reliability{% endif %}
-				</h3>
-				<p class="text-gray-600 leading-relaxed">
-					{% if lang == 'uz' %}
-						Har bir mijozimizga ishonchli va professional xizmat ko'rsatish. Vaatlarimizni bajarish va natijalarni kafolatlash.
-					{% elif lang == 'ru' %}
-						Предоставление надежных и профессиональных услуг каждому клиенту. Выполнение обещаний и гарантия результатов.
-					{% else %}
-						Providing reliable and professional service to each client. Fulfilling promises and guaranteeing results.
-					{% endif %}
-				</p>
-			</div>
-
-			<!-- Value 2 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
-				<div class="w-16 h-16 bg-gradient-to-br from-[#003262] via-blue-600 to-[#004AAD] rounded-full flex items-center justify-center mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(0, 50, 98, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Users Icon -->
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<!-- User 1 -->
-						<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-						<circle cx="12" cy="7" r="4" stroke="#FBBF24" stroke-width="2"/>
-						<!-- User 2 -->
-						<path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-						<path d="M21 21v-2a4 4 0 0 0-3-3.85" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-					</svg>
-				</div>
-				<h3 class="text-2xl font-bold text-gray-900 mb-4">
-					{% if lang == 'uz' %}Shaxsiy Yondashuv{% elif lang == 'ru' %}Личный Подход{% else %}Personal Approach{% endif %}
-				</h3>
-				<p class="text-gray-600 leading-relaxed">
-					{% if lang == 'uz' %}
-						Har bir mijozning individual ehtiyojlarini hisobga olgan holda maxsus yechimlar ishlab chiqish va shaxsiy e'tibor berish.
-					{% elif lang == 'ru' %}
-						Разработка специальных решений с учетом индивидуальных потребностей каждого клиента и оказание личного внимания.
-					{% else %}
-						Developing special solutions considering each client's individual needs and providing personal attention.
-					{% endif %}
-				</p>
-			</div>
-
-			<!-- Value 3 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
-				<div class="w-16 h-16 bg-gradient-to-br from-blue-600 via-cyan-500 to-teal-500 rounded-full flex items-center justify-center mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Star Icon -->
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" 
-							  stroke="#10B981" stroke-width="2" fill="#34D399" opacity="0.8"/>
-					</svg>
-				</div>
-				<h3 class="text-2xl font-bold text-gray-900 mb-4">
-					{% if lang == 'uz' %}Sifat{% elif lang == 'ru' %}Качество{% else %}Quality{% endif %}
-				</h3>
-				<p class="text-gray-600 leading-relaxed">
-					{% if lang == 'uz' %}
-						Eng yuqori sifat standartlarini qo'llab-quvvatlash va doimiy ravishda xizmatlarimizni yaxshilash.
-					{% elif lang == 'ru' %}
-						Поддержание высочайших стандартов качества и постоянное улучшение наших услуг.
-					{% else %}
-						Maintaining the highest quality standards and continuously improving our services.
-					{% endif %}
-				</p>
-			</div>
-
-			<!-- Value 4 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
-				<div class="w-16 h-16 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 rounded-full flex items-center justify-center mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(34, 197, 94, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Innovation Icon -->
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<path d="M12 3a6 6 0 0 0-6 6c0 2 1 3.5 2 4.5L10 16h4l2-2.5c1-1 2-2.5 2-4.5a6 6 0 0 0-6-6z" 
-							  stroke="#10B981" stroke-width="2" fill="#34D399" opacity="0.8"/>
-						<path d="M9 21h6" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
-					</svg>
-				</div>
-				<h3 class="text-2xl font-bold text-gray-900 mb-4">
-					{% if lang == 'uz' %}Innovatsiya{% elif lang == 'ru' %}Инновации{% else %}Innovation{% endif %}
-				</h3>
-				<p class="text-gray-600 leading-relaxed">
-					{% if lang == 'uz' %}
-						Zamonaviy texnologiyalar va innovatsion yondashuvlar orqali xizmatlarimizni takomillashtirish.
-					{% elif lang == 'ru' %}
-						Совершенствование наших услуг через современные технологии и инновационные подходы.
-					{% else %}
-						Improving our services through modern technologies and innovative approaches.
-					{% endif %}
-				</p>
-			</div>
-
-			<!-- Value 5 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
-				<div class="w-16 h-16 bg-gradient-to-br from-purple-600 via-pink-600 to-rose-600 rounded-full flex items-center justify-center mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(147, 51, 234, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Heart Icon -->
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" 
-							  stroke="#A855F7" stroke-width="2" fill="#C084FC" opacity="0.8"/>
-					</svg>
-				</div>
-				<h3 class="text-2xl font-bold text-gray-900 mb-4">
-					{% if lang == 'uz' %}Muhabbat{% elif lang == 'ru' %}Страсть{% else %}Passion{% endif %}
-				</h3>
-				<p class="text-gray-600 leading-relaxed">
-					{% if lang == 'uz' %}
-						Ta'lim sohasiga qiziqish va har bir mijozning muvaffaqiyatiga ishonch. Bizning ishimizni sevamiz.
-					{% elif lang == 'ru' %}
-						Интерес к сфере образования и вера в успех каждого клиента. Мы любим свою работу.
-					{% else %}
-						Interest in education and belief in each client's success. We love our work.
-					{% endif %}
-				</p>
-			</div>
-
-			<!-- Value 6 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
-				<div class="w-16 h-16 bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-600 rounded-full flex items-center justify-center mb-6 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(79, 70, 229, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Global Icon -->
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<circle cx="12" cy="12" r="10" stroke="#6366F1" stroke-width="2"/>
-						<path d="M2 12h20" stroke="#6366F1" stroke-width="2"/>
-						<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="#6366F1" stroke-width="2"/>
-					</svg>
-				</div>
-				<h3 class="text-2xl font-bold text-gray-900 mb-4">
-					{% if lang == 'uz' %}Global Yondashuv{% elif lang == 'ru' %}Глобальный Подход{% else %}Global Approach{% endif %}
-				</h3>
-				<p class="text-gray-600 leading-relaxed">
-					{% if lang == 'uz' %}
-						Jahon miqyosidagi ta'lim imkoniyatlarini taqdim etish va xalqaro standartlarda xizmat ko'rsatish.
-					{% elif lang == 'ru' %}
-						Предоставление образовательных возможностей мирового уровня и оказание услуг по международным стандартам.
-					{% else %}
-						Providing world-class educational opportunities and delivering services to international standards.
-					{% endif %}
-				</p>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Team Section -->
-<section class="py-20 bg-gray-50">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-16">
-			<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6" data-aos="fade-up">
-				{% if lang == 'uz' %}Bizning jamoa{% elif lang == 'ru' %}Наша команда{% elif lang == 'tr' %}Ekibimiz{% else %}Our Team{% endif %}
-			</h2>
-			<p class="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-				{% if lang == 'uz' %}
-					Professional va tajribali mutaxassislar jamoasi, har biri o'z sohasida ekspert
-				{% elif lang == 'ru' %}
-					Команда профессиональных и опытных специалистов, каждый из которых является экспертом в своей области
-				{% elif lang == 'tr' %}
-					Her biri kendi alanında uzman olan profesyonel ve deneyimli uzmanlardan oluşan ekip
-				{% else %}
-					Team of professional and experienced specialists, each an expert in their field
-				{% endif %}
-			</p>
-		</div>
-
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-			<!-- Team Member 1 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
-				<div class="text-center">
-					<div class="w-24 h-24 rounded-full mx-auto mb-6 relative overflow-hidden" style="box-shadow: 0 20px 60px rgba(255, 144, 21, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 3px rgba(255, 255, 255, 0.8);">
-						<!-- Photo placeholder with gradient background -->
-						<div class="w-full h-full bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 flex items-center justify-center">
-							<img src="/static/images/team/IMG_20250920_153304_162.jpg" alt="Dilshod Karimov" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-							<div class="w-full h-full bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 flex items-center justify-center text-white text-2xl font-bold" style="display: none;">
-								ISH
-							</div>
-						</div>
-						<!-- Liquid Glass Overlay -->
-						<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/15 via-white/5 to-transparent opacity-60"></div>
-					</div>
-					<h3 class="text-2xl font-bold text-gray-900 mb-2">Islam Shaakiriy</h3>
-					<p class="text-[#ff9015] font-semibold mb-4 text-lg">
-						{% if lang == 'uz' %}Asoschi{% elif lang == 'ru' %}Основатель{% elif lang == 'tr' %}Kurucu{% else %}Founder{% endif %}
-					</p>
-					<div class="flex justify-center space-x-4">
-						<a href="https://t.me/islaamshaakiriy" class="w-12 h-12 bg-gradient-to-br from-[#0088cc] via-blue-500 to-[#229ED9] rounded-full flex items-center justify-center relative backdrop-blur-sm hover:scale-110 transition-all duration-300" style="box-shadow: 0 12px 40px rgba(0, 136, 204, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-							<!-- Liquid Glass Overlay -->
-							<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-							<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-							
-							<!-- Telegram Icon -->
-							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-								<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" fill="#1e3a8a"/>
-							</svg>
-						</a>
-						<a href="https://www.instagram.com/islaamshaakiriy" class="w-12 h-12 bg-gradient-to-br from-[#E4405F] via-[#F56040] to-[#FCAF45] rounded-full flex items-center justify-center relative backdrop-blur-sm hover:scale-110 transition-all duration-300" style="box-shadow: 0 12px 40px rgba(228, 64, 95, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-							<!-- Liquid Glass Overlay -->
-							<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-							<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-							
-							<!-- Instagram Icon -->
-							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-								<rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="#1e3a8a" stroke-width="2"/>
-								<path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="#1e3a8a" stroke-width="2"/>
-								<line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
-							</svg>
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<!-- Team Member 2 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
-				<div class="text-center">
-					<div class="w-24 h-24 rounded-full mx-auto mb-6 relative overflow-hidden" style="box-shadow: 0 20px 60px rgba(0, 50, 98, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 3px rgba(255, 255, 255, 0.8);">
-						<!-- Photo placeholder with gradient background -->
-						<div class="w-full h-full bg-gradient-to-br from-[#003262] via-blue-600 to-[#004AAD] flex items-center justify-center">
-							<img src="/static/images/team/IMG_7247.jpg" alt="Aziza Rakhimova" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-							<div class="w-full h-full bg-gradient-to-br from-[#003262] via-blue-600 to-[#004AAD] flex items-center justify-center text-white text-2xl font-bold" style="display: none;">
-								RM
-							</div>
-						</div>
-						<!-- Liquid Glass Overlay -->
-						<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/15 via-white/5 to-transparent opacity-60"></div>
-					</div>
-					<h3 class="text-2xl font-bold text-gray-900 mb-2">Rasulov Mustafa</h3>
-					<p class="text-[#003262] font-semibold mb-4 text-lg">
-						{% if lang == 'uz' %}Savdo Bo'limi Rahbari{% elif lang == 'ru' %}Руководитель Отдела Продаж{% elif lang == 'tr' %}Satış Müdürü{% else %}Head of Sales{% endif %}
-					</p>
-					<div class="flex justify-center space-x-4">
-						<a href="https://t.me/istanbullik_m" class="w-12 h-12 bg-gradient-to-br from-[#0088cc] via-blue-500 to-[#229ED9] rounded-full flex items-center justify-center relative backdrop-blur-sm hover:scale-110 transition-all duration-300" style="box-shadow: 0 12px 40px rgba(0, 136, 204, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-							<!-- Liquid Glass Overlay -->
-							<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-							<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-							
-							<!-- Telegram Icon -->
-							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-								<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" fill="#1e3a8a"/>
-							</svg>
-						</a>
-						<a href="#" class="w-12 h-12 bg-gradient-to-br from-[#25D366] via-green-500 to-[#128C7E] rounded-full flex items-center justify-center relative backdrop-blur-sm hover:scale-110 transition-all duration-300" style="box-shadow: 0 12px 40px rgba(37, 211, 102, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-							<!-- Liquid Glass Overlay -->
-							<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-							<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-							
-							<!-- WhatsApp Icon -->
-							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-								<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488" fill="#1e3a8a"/>
-							</svg>
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<!-- Team Member 3 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
-				<div class="text-center">
-					<div class="w-24 h-24 rounded-full mx-auto mb-6 relative overflow-hidden" style="box-shadow: 0 20px 60px rgba(34, 197, 94, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 3px rgba(255, 255, 255, 0.8);">
-						<!-- Photo placeholder with gradient background -->
-						<div class="w-full h-full bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 flex items-center justify-center">
-							<img src="/static/images/team/IMG_8823 (2).jpg" alt="Bobur Mirzaev" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-							<div class="w-full h-full bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 flex items-center justify-center text-white text-2xl font-bold" style="display: none;">
-								FSh
-							</div>
-						</div>
-						<!-- Liquid Glass Overlay -->
-						<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/15 via-white/5 to-transparent opacity-60"></div>
-					</div>
-					<h3 class="text-2xl font-bold text-gray-900 mb-2">Firdavs Shakirov</h3>
-					<p class="text-green-600 font-semibold mb-4 text-lg">
-						{% if lang == 'uz' %}Konsultat{% elif lang == 'ru' %}Консультант{% elif lang == 'tr' %}Danışman{% else %}Consultant{% endif %}
-					</p>
-					<div class="flex justify-center space-x-4">
-						<a href="#" class="w-12 h-12 bg-gradient-to-br from-[#0077B5] via-blue-600 to-[#004182] rounded-full flex items-center justify-center relative backdrop-blur-sm hover:scale-110 transition-all duration-300" style="box-shadow: 0 12px 40px rgba(0, 119, 181, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-							<!-- Liquid Glass Overlay -->
-							<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-							<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-							
-							<!-- LinkedIn Icon -->
-							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-								<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="#1e3a8a"/>
-							</svg>
-						</a>
-						<a href="#" class="w-12 h-12 bg-gradient-to-br from-[#EA4335] via-red-500 to-[#FBBC04] rounded-full flex items-center justify-center relative backdrop-blur-sm hover:scale-110 transition-all duration-300" style="box-shadow: 0 12px 40px rgba(234, 67, 53, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-							<!-- Liquid Glass Overlay -->
-							<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-							<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-							
-							<!-- Email Icon -->
-							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-								<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#1e3a8a" stroke-width="2"/>
-								<polyline points="22,6 12,13 2,6" stroke="#1e3a8a" stroke-width="2"/>
-							</svg>
-						</a>
-					</div>
-				</div>
-			</div>
-
-			
-		</div>
-	</div>
-</section>
-
-<!-- Company History Timeline -->
-<section class="py-20 bg-white">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-16">
-			<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6" data-aos="fade-up">
-				{% if lang == 'uz' %}Bizning tariximiz{% elif lang == 'ru' %}Наша история{% elif lang == 'tr' %}Tarihimiz{% else %}Our History{% endif %}
-			</h2>
-			<p class="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-				{% if lang == 'uz' %}
-					13 yillik yo'lda erishgan yutuqlarimiz va muhim voqealar
-				{% elif lang == 'ru' %}
-					Достижения и важные события за 13 лет работы
-				{% elif lang == 'tr' %}
-					13 yıllık yolculukta elde ettiğimiz başarılar ve önemli olaylar
-				{% else %}
-					Achievements and milestones in our 13-year journey
-				{% endif %}
-			</p>
-		</div>
-
-		<div class="relative">
-			<!-- Timeline Line - Hidden on mobile -->
-			<div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#ff9015] via-[#003262] to-green-500 rounded-full"></div>
-
-			<!-- Timeline Items -->
-			<div class="space-y-8 lg:space-y-16">
-				<!-- 2011 -->
-				<div class="relative flex flex-col lg:flex-row lg:items-center" data-aos="fade-up">
-					<!-- Mobile: Full width card -->
-					<div class="w-full lg:w-1/2 lg:pr-8 lg:text-right">
-						<div class="bg-white/90 backdrop-blur-lg rounded-[2rem] p-6 shadow-lg border border-gray-200/50">
-							<div class="text-[#ff9015] font-bold text-xl mb-2">2011</div>
-							<h3 class="text-xl lg:text-2xl font-bold text-gray-900 mb-3">
-								{% if lang == 'uz' %}Kompaniya tashkil etildi{% elif lang == 'ru' %}Основание компании{% elif lang == 'tr' %}Şirket kuruldu{% else %}Company Founded{% endif %}
-							</h3>
-							<p class="text-gray-600 text-sm lg:text-base">
-								{% if lang == 'uz' %}
-									Istanbul shahrida Study Fans kompaniyasi tashkil etildi. Dastlabki maqsad - O'zbekiston talabalariga yordam berish.
-								{% elif lang == 'ru' %}
-									В Стамбуле была основана компания Study Fans. Первоначальная цель - помощь студентам из Узбекистана.
-								{% elif lang == 'tr' %}
-									İstanbul'da Study Fans şirketi kuruldu. İlk hedef - Özbekistan öğrencilerine yardım etmek.
-								{% else %}
-									Study Fans was founded in Istanbul. Initial goal - helping students from Uzbekistan.
-								{% endif %}
-							</p>
-						</div>
-					</div>
-					<!-- Desktop: Center dot -->
-					<div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#ff9015] rounded-full border-4 border-white shadow-lg"></div>
-					<!-- Desktop: Empty space -->
-					<div class="hidden lg:block w-1/2 pl-8"></div>
-				</div>
-
-				<!-- 2013 -->
-				<div class="relative flex flex-col lg:flex-row lg:items-center" data-aos="fade-up">
-					<!-- Desktop: Empty space -->
-					<div class="hidden lg:block w-1/2 pr-8"></div>
-					<!-- Desktop: Center dot -->
-					<div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#003262] rounded-full border-4 border-white shadow-lg"></div>
-					<!-- Mobile: Full width card -->
-					<div class="w-full lg:w-1/2 lg:pl-8">
-						<div class="bg-white/90 backdrop-blur-lg rounded-[2rem] p-6 shadow-lg border border-gray-200/50">
-							<div class="text-[#003262] font-bold text-xl mb-2">2013</div>
-							<h3 class="text-xl lg:text-2xl font-bold text-gray-900 mb-3">
-								{% if lang == 'uz' %}Birinchi 100 talaba{% elif lang == 'ru' %}Первые 100 студентов{% elif lang == 'tr' %}İlk 100 öğrenci{% else %}First 100 Students{% endif %}
-							</h3>
-							<p class="text-gray-600 text-sm lg:text-base">
-								{% if lang == 'uz' %}
-									Birinchi 100 ta talabani muvaffaqiyatli universitetlarga joylashtirishga muvaffaq bo'ldik.
-								{% elif lang == 'ru' %}
-									Успешно разместили первых 100 студентов в университетах.
-								{% elif lang == 'tr' %}
-									İlk 100 öğrenciyi üniversitelere başarıyla yerleştirdik.
-								{% else %}
-									Successfully placed our first 100 students in universities.
-								{% endif %}
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<!-- 2015 -->
-				<div class="relative flex flex-col lg:flex-row lg:items-center" data-aos="fade-up">
-					<!-- Mobile: Full width card -->
-					<div class="w-full lg:w-1/2 lg:pr-8 lg:text-right">
-						<div class="bg-white/90 backdrop-blur-lg rounded-[2rem] p-6 shadow-lg border border-gray-200/50">
-							<div class="text-green-600 font-bold text-xl mb-2">2015</div>
-							<h3 class="text-xl lg:text-2xl font-bold text-gray-900 mb-3">
-								{% if lang == 'uz' %}Xalqaro kengayish{% elif lang == 'ru' %}Международное расширение{% elif lang == 'tr' %}Uluslararası genişleme{% else %}International Expansion{% endif %}
-							</h3>
-							<p class="text-gray-600 text-sm lg:text-base">
-								{% if lang == 'uz' %}
-									Qozog'iston, Qirg'iziston va Tojikiston bozoriga kirishga muvaffaq bo'ldik.
-								{% elif lang == 'ru' %}
-									Успешно вышли на рынки Казахстана, Кыргызстана и Таджикистана.
-								{% elif lang == 'tr' %}
-									Kazakistan, Kırgızistan ve Tacikistan pazarlarına başarıyla girdik.
-								{% else %}
-									Successfully expanded to Kazakhstan, Kyrgyzstan and Tajikistan markets.
-								{% endif %}
-							</p>
-						</div>
-					</div>
-					<!-- Desktop: Center dot -->
-					<div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-600 rounded-full border-4 border-white shadow-lg"></div>
-					<!-- Desktop: Empty space -->
-					<div class="hidden lg:block w-1/2 pl-8"></div>
-				</div>
-
-				<!-- 2018 -->
-				<div class="relative flex flex-col lg:flex-row lg:items-center" data-aos="fade-up">
-					<!-- Desktop: Empty space -->
-					<div class="hidden lg:block w-1/2 pr-8"></div>
-					<!-- Desktop: Center dot -->
-					<div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div>
-					<!-- Mobile: Full width card -->
-					<div class="w-full lg:w-1/2 lg:pl-8">
-						<div class="bg-white/90 backdrop-blur-lg rounded-[2rem] p-6 shadow-lg border border-gray-200/50">
-							<div class="text-purple-600 font-bold text-xl mb-2">2018</div>
-							<h3 class="text-xl lg:text-2xl font-bold text-gray-900 mb-3">
-								{% if lang == 'uz' %}Raqamli platforma{% elif lang == 'ru' %}Цифровая платформа{% elif lang == 'tr' %}Dijital platform{% else %}Digital Platform{% endif %}
-							</h3>
-							<p class="text-gray-600 text-sm lg:text-base">
-								{% if lang == 'uz' %}
-									Onlayn ariza berish va kuzatuv tizimini ishga tushirdik. 1000+ talaba xizmatdan foydalandi.
-								{% elif lang == 'ru' %}
-									Запустили онлайн-систему подачи заявок и отслеживания. 1000+ студентов воспользовались сервисом.
-								{% elif lang == 'tr' %}
-									Online başvuru ve takip sistemini başlattık. 1000+ öğrenci hizmetten yararlandı.
-								{% else %}
-									Launched online application and tracking system. 1000+ students used the service.
-								{% endif %}
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<!-- 2020 -->
-				<div class="relative flex flex-col lg:flex-row lg:items-center" data-aos="fade-up">
-					<!-- Mobile: Full width card -->
-					<div class="w-full lg:w-1/2 lg:pr-8 lg:text-right">
-						<div class="bg-white/90 backdrop-blur-lg rounded-[2rem] p-6 shadow-lg border border-gray-200/50">
-							<div class="text-red-600 font-bold text-xl mb-2">2020</div>
-							<h3 class="text-xl lg:text-2xl font-bold text-gray-900 mb-3">
-								{% if lang == 'uz' %}COVID-19 ga moslashuv{% elif lang == 'ru' %}Адаптация к COVID-19{% elif lang == 'tr' %}COVID-19'a uyum{% else %}COVID-19 Adaptation{% endif %}
-							</h3>
-							<p class="text-gray-600 text-sm lg:text-base">
-								{% if lang == 'uz' %}
-									Pandemiya davrida virtual konsultatsiya va onlayn xizmatlarni to'liq rivojlantirdik.
-								{% elif lang == 'ru' %}
-									Во время пандемии полностью развили виртуальные консультации и онлайн-сервисы.
-								{% elif lang == 'tr' %}
-									Pandemi döneminde sanal danışmanlık ve online hizmetleri tam geliştirdik.
-								{% else %}
-									During pandemic, fully developed virtual consultations and online services.
-								{% endif %}
-							</p>
-						</div>
-					</div>
-					<!-- Desktop: Center dot -->
-					<div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-600 rounded-full border-4 border-white shadow-lg"></div>
-					<!-- Desktop: Empty space -->
-					<div class="hidden lg:block w-1/2 pl-8"></div>
-				</div>
-
-				<!-- 2022 -->
-				<div class="relative flex flex-col lg:flex-row lg:items-center" data-aos="fade-up">
-					<!-- Desktop: Empty space -->
-					<div class="hidden lg:block w-1/2 pr-8"></div>
-					<!-- Desktop: Center dot -->
-					<div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div>
-					<!-- Mobile: Full width card -->
-					<div class="w-full lg:w-1/2 lg:pl-8">
-						<div class="bg-white/90 backdrop-blur-lg rounded-[2rem] p-6 shadow-lg border border-gray-200/50">
-							<div class="text-blue-600 font-bold text-xl mb-2">2022</div>
-							<h3 class="text-xl lg:text-2xl font-bold text-gray-900 mb-3">
-								{% if lang == 'uz' %}5000+ talaba{% elif lang == 'ru' %}5000+ студентов{% elif lang == 'tr' %}5000+ öğrenci{% else %}5000+ Students{% endif %}
-							</h3>
-							<p class="text-gray-600 text-sm lg:text-base">
-								{% if lang == 'uz' %}
-									Jami 5000 dan ortiq talabani muvaffaqiyatli joylashtirishga erishdik. Yangi rekord!
-								{% elif lang == 'ru' %}
-									Достигли успешного размещения более 5000 студентов. Новый рекорд!
-								{% elif lang == 'tr' %}
-									5000'den fazla öğrenciyi başarıyla yerleştirmeyi başardık. Yeni rekor!
-								{% else %}
-									Achieved successful placement of over 5000 students. New record!
-								{% endif %}
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<!-- 2024 -->
-				<div class="relative flex flex-col lg:flex-row lg:items-center" data-aos="fade-up">
-					<!-- Mobile: Full width card -->
-					<div class="w-full lg:w-1/2 lg:pr-8 lg:text-right">
-						<div class="bg-white/90 backdrop-blur-lg rounded-[2rem] p-6 shadow-lg border border-gray-200/50">
-							<div class="text-[#ff9015] font-bold text-xl mb-2">2024</div>
-							<h3 class="text-xl lg:text-2xl font-bold text-gray-900 mb-3">
-								{% if lang == 'uz' %}10,000+ muvaffaqiyat{% elif lang == 'ru' %}10,000+ успехов{% elif lang == 'tr' %}10,000+ başarı{% else %}10,000+ Success Stories{% endif %}
-							</h3>
-							<p class="text-gray-600 text-sm lg:text-base">
-								{% if lang == 'uz' %}
-									10,000 dan ortiq talabaning orzularini amalga oshirishga yordam berdik. Yangi bosqich!
-								{% elif lang == 'ru' %}
-									Помогли осуществить мечты более 10,000 студентов. Новый этап!
-								{% elif lang == 'tr' %}
-									10,000'den fazla öğrencinin hayallerini gerçekleştirmesine yardımcı olduk. Yeni aşama!
-								{% else %}
-									Helped realize dreams of over 10,000 students. New milestone!
-								{% endif %}
-							</p>
-						</div>
-					</div>
-					<!-- Desktop: Center dot -->
-					<div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#ff9015] rounded-full border-4 border-white shadow-lg"></div>
-					<!-- Desktop: Empty space -->
-					<div class="hidden lg:block w-1/2 pl-8"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Achievements & Certifications -->
-<section class="py-20 bg-gray-50">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-16">
-			<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6" data-aos="fade-up">
-				{% if lang == 'uz' %}Yutuqlarimiz va sertifikatlar{% elif lang == 'ru' %}Достижения и сертификаты{% elif lang == 'tr' %}Başarılarımız ve sertifikalar{% else %}Achievements & Certifications{% endif %}
-			</h2>
-			<p class="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-				{% if lang == 'uz' %}
-					Xalqaro tan olingan sertifikatlar va mukofotlarimiz
-				{% elif lang == 'ru' %}
-					Международно признанные сертификаты и награды
-				{% elif lang == 'tr' %}
-					Uluslararası kabul görmüş sertifikalar ve ödüllerimiz
-				{% else %}
-					Internationally recognized certifications and awards
-				{% endif %}
-			</p>
-		</div>
-
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-			<!-- Achievement 1 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="100">
-				<div class="w-20 h-20 bg-gradient-to-br from-yellow-500 via-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 20px 60px rgba(251, 191, 36, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- ISO Certificate Icon -->
-					<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<rect x="3" y="4" width="18" height="16" rx="2" stroke="#FBBF24" stroke-width="2"/>
-						<path d="M8 8h8" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
-						<path d="M8 12h8" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
-						<path d="M8 16h4" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
-						<!-- Seal -->
-						<circle cx="18" cy="6" r="3" stroke="#EF4444" stroke-width="2" fill="#FEF3C7" opacity="0.8"/>
-						<path d="M16.5 6l1 1 2-2" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/>
-					</svg>
-				</div>
-				<h3 class="text-xl font-bold text-gray-900 mb-3">ISO 9001:2015</h3>
-				<p class="text-gray-600 text-sm">
-					{% if lang == 'uz' %}Sifat menejmenti tizimi sertifikati{% elif lang == 'ru' %}Сертификат системы менеджмента качества{% elif lang == 'tr' %}Kalite yönetim sistemi sertifikası{% else %}Quality Management System Certificate{% endif %}
-				</p>
-			</div>
-
-			<!-- Achievement 2 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="200">
-				<div class="w-20 h-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 20px 60px rgba(59, 130, 246, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Award Icon -->
-					<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<circle cx="12" cy="8" r="6" stroke="#3B82F6" stroke-width="2"/>
-						<path d="M12 14l-4 6h8l-4-6z" stroke="#6366F1" stroke-width="2" fill="#C7D2FE" opacity="0.7"/>
-						<!-- Star -->
-						<path d="M12 5l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" stroke="#EF4444" stroke-width="1.5" fill="#FEF3C7"/>
-					</svg>
-				</div>
-				<h3 class="text-xl font-bold text-gray-900 mb-3">
-					{% if lang == 'uz' %}Eng yaxshi agentlik{% elif lang == 'ru' %}Лучшее агентство{% elif lang == 'tr' %}En iyi ajans{% else %}Best Agency Award{% endif %}
-				</h3>
-				<p class="text-gray-600 text-sm">
-					{% if lang == 'uz' %}2023 yil Turkiya ta'lim turizmi mukofoti{% elif lang == 'ru' %}Награда за образовательный туризм Турции 2023{% elif lang == 'tr' %}2023 Türkiye eğitim turizmi ödülü{% else %}Turkey Educational Tourism Award 2023{% endif %}
-				</p>
-			</div>
-
-			<!-- Achievement 3 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="300">
-				<div class="w-20 h-20 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 20px 60px rgba(34, 197, 94, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Partnership Icon -->
-					<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="#10B981" stroke-width="2"/>
-						<circle cx="9" cy="7" r="4" stroke="#059669" stroke-width="2"/>
-						<path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="#10B981" stroke-width="2"/>
-						<path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#059669" stroke-width="2"/>
-						<!-- Handshake -->
-						<path d="M12 14l2 2 4-4" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/>
-					</svg>
-				</div>
-				<h3 class="text-xl font-bold text-gray-900 mb-3">100+ Hamkorlik</h3>
-				<p class="text-gray-600 text-sm">
-					{% if lang == 'uz' %}Turkiya universitetlari bilan rasmiy hamkorlik{% elif lang == 'ru' %}Официальное партнерство с университетами Турции{% elif lang == 'tr' %}Türkiye üniversiteleri ile resmi ortaklık{% else %}Official partnership with Turkish universities{% endif %}
-				</p>
-			</div>
-
-			<!-- Achievement 4 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="400">
-				<div class="w-20 h-20 bg-gradient-to-br from-purple-600 via-pink-600 to-rose-600 rounded-full flex items-center justify-center mx-auto mb-6 relative backdrop-blur-sm" style="box-shadow: 0 20px 60px rgba(147, 51, 234, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-					<!-- Liquid Glass Overlay -->
-					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-					<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-					
-					<!-- Excellence Icon -->
-					<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" 
-							  stroke="#A855F7" stroke-width="2" fill="#C084FC" opacity="0.8"/>
-						<!-- Inner star -->
-						<path d="M12 6l1.5 3L17 9.5l-2.5 2.4.6 3.4L12 13.8l-3.1 1.5.6-3.4L7 9.5l3.5-.5L12 6z" 
-							  stroke="#EF4444" stroke-width="1.5" fill="#FEF3C7" opacity="0.9"/>
-					</svg>
-				</div>
-				<h3 class="text-xl font-bold text-gray-900 mb-3">99% Muvaffaqiyat</h3>
-				<p class="text-gray-600 text-sm">
-					{% if lang == 'uz' %}Talabalarning universitetga qabul bo'lish darajasi{% elif lang == 'ru' %}Уровень поступления студентов в университеты{% elif lang == 'tr' %}Öğrencilerin üniversiteye kabul oranı{% else %}Student university acceptance rate{% endif %}
-				</p>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Client Testimonials -->
-<section class="py-20 bg-white">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-16">
-			<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6" data-aos="fade-up">
-				{% if lang == 'uz' %}Mijozlarimiz fikri{% elif lang == 'ru' %}Отзывы клиентов{% elif lang == 'tr' %}Müşteri görüşleri{% else %}Client Testimonials{% endif %}
-			</h2>
-			<p class="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-				{% if lang == 'uz' %}
-					Bizning xizmatlarimizdan foydalangan mijozlarimizning fikrlari
-				{% elif lang == 'ru' %}
-					Отзывы клиентов, которые воспользовались нашими услугами
-				{% elif lang == 'tr' %}
-					Hizmetlerimizden yararlanan müşterilerimizin görüşleri
-				{% else %}
-					Testimonials from clients who have used our services
-				{% endif %}
-			</p>
-		</div>
-
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-			<!-- Testimonial 1 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
-				<div class="flex items-center mb-6">
-					<div class="w-16 h-16 bg-gradient-to-br from-[#ff9015] via-orange-500 to-yellow-500 rounded-full flex items-center justify-center mr-4 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(255, 144, 21, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-						<!-- Liquid Glass Overlay -->
-						<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-						<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-						
-						<!-- Student Icon -->
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-							<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#FBBF24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-							<circle cx="12" cy="7" r="4" stroke="#F59E0B" stroke-width="2"/>
-						</svg>
-					</div>
-					<div>
-						<h3 class="text-xl font-bold text-gray-900">Aziz Karimov</h3>
-						<p class="text-gray-600">Istanbul Technical University</p>
-					</div>
-				</div>
-				<div class="mb-4">
-					<div class="flex text-yellow-400 mb-2">
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-					</div>
-					<p class="text-gray-600 italic">
-						{% if lang == 'uz' %}
-							"Study Fans jamoasi mening orzuimdagi universitetga kirishimda katta yordam berdi. Professional yondashuv va doimiy qo'llab-quvvatlash uchun rahmat!"
-						{% elif lang == 'ru' %}
-							"Команда Study Fans очень помогла мне поступить в университет моей мечты. Спасибо за профессиональный подход и постоянную поддержку!"
-						{% elif lang == 'tr' %}
-							"Study Fans ekibi hayalimdeки üniversiteye girmemde büyük yardımcı oldu. Profesyonel yaklaşım ve sürekli destek için teşekkürler!"
-						{% else %}
-							"Study Fans team helped me greatly in getting into my dream university. Thank you for the professional approach and constant support!"
-						{% endif %}
-					</p>
-				</div>
-			</div>
-
-			<!-- Testimonial 2 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
-				<div class="flex items-center mb-6">
-					<div class="w-16 h-16 bg-gradient-to-br from-[#003262] via-blue-600 to-[#004AAD] rounded-full flex items-center justify-center mr-4 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(0, 50, 98, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-						<!-- Liquid Glass Overlay -->
-						<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-						<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-						
-						<!-- Student Icon -->
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-							<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-							<circle cx="12" cy="7" r="4" stroke="#FBBF24" stroke-width="2"/>
-						</svg>
-					</div>
-					<div>
-						<h3 class="text-xl font-bold text-gray-900">Madina Sultanova</h3>
-						<p class="text-gray-600">Bogazici University</p>
-					</div>
-				</div>
-				<div class="mb-4">
-					<div class="flex text-yellow-400 mb-2">
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-					</div>
-					<p class="text-gray-600 italic">
-						{% if lang == 'uz' %}
-							"Barcha hujjatlarni tayyorlash va visa olish jarayonida Study Fans mutaxassislari har qadamda yonimda bo'ldi. Juda minnatdorman!"
-						{% elif lang == 'ru' %}
-							"В процессе подготовки всех документов и получения визы специалисты Study Fans были рядом на каждом этапе. Очень благодарна!"
-						{% elif lang == 'tr' %}
-							"Tüm belgelerin hazırlanması ve vize alma sürecinde Study Fans uzmanları her adımda yanımdaydı. Çok minnettarım!"
-						{% else %}
-							"During the process of preparing all documents and obtaining a visa, Study Fans specialists were with me every step of the way. Very grateful!"
-						{% endif %}
-					</p>
-				</div>
-			</div>
-
-			<!-- Testimonial 3 -->
-			<div class="bg-white/90 backdrop-blur-lg rounded-[2.5rem] p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
-				<div class="flex items-center mb-6">
-					<div class="w-16 h-16 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 rounded-full flex items-center justify-center mr-4 relative backdrop-blur-sm" style="box-shadow: 0 12px 40px rgba(34, 197, 94, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);">
-						<!-- Liquid Glass Overlay -->
-						<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-80"></div>
-						<div class="absolute inset-0 rounded-full bg-gradient-to-tl from-white/20 via-transparent to-white/8 opacity-60"></div>
-						
-						<!-- Student Icon -->
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
-							<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-							<circle cx="12" cy="7" r="4" stroke="#059669" stroke-width="2"/>
-						</svg>
-					</div>
-					<div>
-						<h3 class="text-xl font-bold text-gray-900">Rustam Nazarov</h3>
-						<p class="text-gray-600">Middle East Technical University</p>
-					</div>
-				</div>
-				<div class="mb-4">
-					<div class="flex text-yellow-400 mb-2">
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-					</div>
-					<p class="text-gray-600 italic">
-						{% if lang == 'uz' %}
-							"Eng yaxshi qarori Study Fans bilan ishlash edi. Tezkor, ishonchli va professional xizmat. Hammaga tavsiya qilaman!"
-						{% elif lang == 'ru' %}
-							"Лучшее решение было работать с Study Fans. Быстрое, надежное и профессиональное обслуживание. Рекомендую всем!"
-						{% elif lang == 'tr' %}
-							"En iyi karar Study Fans ile çalışmaktı. Hızlı, güvenilir ve profesyonel hizmet. Herkese tavsiye ederim!"
-						{% else %}
-							"The best decision was to work with Study Fans. Fast, reliable and professional service. I recommend to everyone!"
-						{% endif %}
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- CTA Section -->
-<section class="relative py-24 px-4 bg-gradient-to-r from-orange-500 to-yellow-500 overflow-hidden">
-	<div class="max-w-6xl mx-auto text-center">
-		<h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-			{% if lang == 'uz' %}Orzuingizdagi universitetga qabul bo'ling!{% elif lang == 'ru' %}Поступите в университет своей мечты!{% elif lang == 'tr' %}Hayalinizdeki üniversiteye kabul olun!{% else %}Get admitted to your dream university!{% endif %}
+<!-- Mission - Apple Style -->
+<section class="py-32 bg-gray-50">
+	<div class="max-w-4xl mx-auto px-6">
+		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-8 text-center tracking-tight">
+			{% if lang == 'uz' %}Bizning vazifamiz{% elif lang == 'ru' %}Наша миссия{% elif lang == 'tr' %}Misyonumuz{% else %}Our Mission{% endif %}
 		</h2>
-		<p class="text-xl text-white/80 mb-8 max-w-3xl mx-auto">
-			{% if lang == 'uz' %}
-				Professional jamoamiz sizning ta'lim yo'lingizda har qadamda yonida bo'ladi
-			{% elif lang == 'ru' %}
-				Наша профессиональная команда будет рядом с вами на каждом шагу вашего образовательного пути
-			{% elif lang == 'tr' %}
-				Profesyonel ekibimiz eğitim yolculuğunuzun her adımında yanınızda olacak
-			{% else %}
-				Our professional team will be with you every step of your educational journey
-			{% endif %}
+		<p class="text-xl text-gray-600 font-light leading-relaxed text-center">
+			{% if lang == 'uz' %}Har bir talaba bizning oilamizning bir qismi. Biz ularning orzularini amalga oshirishga yordam beramiz va har qadamda yonida bo'lamiz.{% elif lang == 'ru' %}Каждый студент — часть нашей семьи. Мы помогаем им осуществить мечты и поддерживаем на каждом шагу.{% elif lang == 'tr' %}Her öğrenci ailemizin bir parçası. Hayallerini gerçekleştirmelerine yardımcı oluyoruz ve her adımda yanlarında oluyoruz.{% else %}Every student is part of our family. We help them realize their dreams and stand by them every step of the way.{% endif %}
 		</p>
-		<div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
-			<a href="/contact" class="bg-blue-800 border-2 border-blue-800 text-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-blue-800/80 hover:shadow-[0_0_30px_rgba(30,64,175,0.5)] hover:scale-105 hover:border-blue-800/80">
-				{% if lang == 'uz' %}Bepul maslahat{% elif lang == 'ru' %}Бесплатная Консультация{% else %}Free Consultation{% endif %}
+	</div>
+</section>
+
+<!-- Story - Apple Style -->
+<section class="py-32 bg-white">
+	<div class="max-w-4xl mx-auto px-6">
+		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-12 text-center tracking-tight">
+			{% if lang == 'uz' %}Bizning hikoyamiz{% elif lang == 'ru' %}Наша история{% elif lang == 'tr' %}Hikayemiz{% else %}Our Story{% endif %}
+		</h2>
+		<div class="space-y-8 text-lg text-gray-600 font-light leading-relaxed">
+			<p>
+				{% if lang == 'uz' %}
+					2011 yilda Istanbul shahrida kichik agentlik sifatida boshlangan yo'limiz, bugungi kunda xalqaro ta'lim sohasidagi yetakchi kompaniyalardan biriga aylandi. Har bir yil bizga yangi tajribalar, yangi muvaffaqiyatlar va minglab baxtli talabalar keltirdi.
+				{% elif lang == 'ru' %}
+					Наш путь, начавшийся в 2011 году в Стамбуле как небольшое агентство, сегодня превратился в одну из ведущих компаний в сфере международного образования. Каждый год приносил нам новый опыт, новые успехи и тысячи счастливых студентов.
+				{% elif lang == 'tr' %}
+					2011 yılında İstanbul'da küçük bir ajans olarak başlayan yolculuğumuz, bugün uluslararası eğitim alanında önde gelen şirketlerden biri haline geldi. Her yıl bize yeni deneyimler, yeni başarılar ve binlerce mutlu öğrenci getirdi.
+				{% else %}
+					Our journey, which began in 2011 in Istanbul as a small agency, has today become one of the leading companies in international education. Each year brought us new experiences, new successes, and thousands of happy students.
+				{% endif %}
+			</p>
+		</div>
+	</div>
+</section>
+
+<!-- Statistics - Apple Style -->
+<section class="py-32 bg-gray-50">
+	<div class="max-w-6xl mx-auto px-6">
+		<div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+			<div class="text-center">
+				<div class="text-5xl md:text-6xl font-light text-gray-900 mb-4">12</div>
+				<p class="text-gray-600 font-light">{% if lang == 'uz' %}Yillik tajriba{% elif lang == 'ru' %}Лет опыта{% elif lang == 'tr' %}Yıllık deneyim{% else %}Years experience{% endif %}</p>
+			</div>
+			<div class="text-center">
+				<div class="text-5xl md:text-6xl font-light text-gray-900 mb-4">10K+</div>
+				<p class="text-gray-600 font-light">{% if lang == 'uz' %}Talaba{% elif lang == 'ru' %}Студентов{% elif lang == 'tr' %}Öğrenci{% else %}Students{% endif %}</p>
+			</div>
+			<div class="text-center">
+				<div class="text-5xl md:text-6xl font-light text-gray-900 mb-4">60+</div>
+				<p class="text-gray-600 font-light">{% if lang == 'uz' %}Universitet{% elif lang == 'ru' %}Университетов{% elif lang == 'tr' %}Üniversite{% else %}Universities{% endif %}</p>
+			</div>
+			<div class="text-center">
+				<div class="text-5xl md:text-6xl font-light text-gray-900 mb-4">50+</div>
+				<p class="text-gray-600 font-light">{% if lang == 'uz' %}Hamkor{% elif lang == 'ru' %}Партнеров{% elif lang == 'tr' %}Ortak{% else %}Partners{% endif %}</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Team - Apple Style -->
+<section class="py-32 bg-white">
+	<div class="max-w-6xl mx-auto px-6">
+		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-16 text-center tracking-tight">
+			{% if lang == 'uz' %}Jamoamiz{% elif lang == 'ru' %}Наша команда{% elif lang == 'tr' %}Ekibimiz{% else %}Our Team{% endif %}
+		</h2>
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+			<div class="text-center">
+				<div class="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-6"></div>
+				<h3 class="text-2xl font-light text-gray-900 mb-2">Dilshod Karimov</h3>
+				<p class="text-gray-600 font-light">{% if lang == 'uz' %}Direktor{% elif lang == 'ru' %}Директор{% elif lang == 'tr' %}Direktör{% else %}Director{% endif %}</p>
+			</div>
+			<div class="text-center">
+				<div class="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-6"></div>
+				<h3 class="text-2xl font-light text-gray-900 mb-2">Rasulov Mustafa</h3>
+				<p class="text-gray-600 font-light">{% if lang == 'uz' %}Senior Konsultat{% elif lang == 'ru' %}Старший консультант{% elif lang == 'tr' %}Kıdemli Danışman{% else %}Senior Consultant{% endif %}</p>
+			</div>
+			<div class="text-center">
+				<div class="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-6"></div>
+				<h3 class="text-2xl font-light text-gray-900 mb-2">Bobur Mirzaev</h3>
+				<p class="text-gray-600 font-light">{% if lang == 'uz' %}Hujjatlar Mutaxassisi{% elif lang == 'ru' %}Специалист по документам{% elif lang == 'tr' %}Belge Uzmanı{% else %}Documents Specialist{% endif %}</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- CTA - Apple Style -->
+<section class="py-32 bg-gray-50">
+	<div class="max-w-4xl mx-auto px-6 text-center">
+		<h2 class="text-5xl md:text-6xl font-light text-gray-900 mb-8 tracking-tight">
+			{% if lang == 'uz' %}Biz bilan bog'laning{% elif lang == 'ru' %}Свяжитесь с нами{% elif lang == 'tr' %}Bizimle iletişime geçin{% else %}Contact Us{% endif %}
+		</h2>
+		<p class="text-xl text-gray-600 mb-12 font-light">
+			{% if lang == 'uz' %}Savollaringiz bormi? Bizga yozing{% elif lang == 'ru' %}Есть вопросы? Напишите нам{% elif lang == 'tr' %}Sorularınız mı var? Bize yazın{% else %}Have questions? Write to us{% endif %}
+		</p>
+		<div class="flex flex-col sm:flex-row gap-4 justify-center">
+			<a href="https://wa.me/905011571111" target="_blank" class="px-8 py-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-lg font-light">
+				WhatsApp
 			</a>
-			<a href="/universities" class="bg-white text-[#004AAD] border-2 border-white px-8 py-4 rounded-[1.5rem] font-semibold text-lg transition-all duration-300 hover:bg-transparent hover:text-white hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105">
-				{% if lang == 'uz' %}xizmatlarimiz{% elif lang == 'ru' %}Наши Услуги{% else %}Our Services{% endif %}
+			<a href="tel:+905011571111" class="px-8 py-4 bg-white text-gray-900 border border-gray-300 rounded-full hover:bg-gray-50 transition-all duration-300 text-lg font-light">
+				{% if lang == 'uz' %}Qo'ng'iroq{% elif lang == 'ru' %}Звонок{% elif lang == 'tr' %}Arama{% else %}Call{% endif %}
 			</a>
 		</div>
 	</div>
 </section>
+
+</div>
 
 {% endblock %}

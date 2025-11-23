@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{% if lang == 'uz' %}Blog - Study Fans{% elif lang == 'ru' %}Блог - Study Fans{% elif lang == 'tr' %}Blog - Study Fans{% else %}Blog - Study Fans{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="page-container" style="margin-top: 0; padding-top: 0;">
+<!-- Top Section with Title -->
+<section class="pt-6 pb-6 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<div class="flex items-start gap-4 mb-6">
+			<div class="flex-1">
+				<h1 class="text-2xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+					{% if lang == 'uz' %}Blog{% elif lang == 'ru' %}Блог{% elif lang == 'tr' %}Blog{% else %}Blog{% endif %}
+				</h1>
+				<p class="text-sm text-gray-500 font-normal mt-0.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Ta'lim, universitetlar va hayot haqida foydali maqolalar{% elif lang == 'ru' %}Полезные статьи об образовании, университетах и жизни{% elif lang == 'tr' %}Eğitim, üniversiteler ve yaşam hakkında faydalı makaleler{% else %}Useful articles about education, universities and life{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Blog Posts Grid -->
+<section class="py-8 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		{% if posts.items %}
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+			{% for post in posts.items %}
+			<a href="{{ url_for('blog_detail', slug=post.slug, lang=lang) }}" class="group bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-200">
+				{% if post.image_url %}
+				<div class="w-full h-48 overflow-hidden bg-gray-100">
+					<img src="{{ url_for('static', filename=post.image_url) }}" alt="{{ post.title_uz if lang == 'uz' else post.title_ru if lang == 'ru' else post.title_tr if lang == 'tr' else post.title_en }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.innerHTML='<div class=\'w-full h-48 bg-gradient-to-br from-blue-50 to-yellow-50 flex items-center justify-center\'><svg class=\'w-16 h-16 text-gray-300\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z\'/></svg></div>';">
+				</div>
+				{% else %}
+				<div class="w-full h-48 bg-gradient-to-br from-blue-50 to-yellow-50 flex items-center justify-center">
+					<svg class="w-16 h-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+					</svg>
+				</div>
+				{% endif %}
+				<div class="p-6">
+					<div class="flex items-center gap-2 mb-3">
+						<span class="text-xs font-normal text-gray-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{{ post.created_at.strftime('%d.%m.%Y') if post.created_at else '' }}
+						</span>
+						<span class="text-xs text-gray-400">•</span>
+						<span class="text-xs font-normal text-gray-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{{ post.author }}
+						</span>
+					</div>
+					<h3 class="text-lg font-medium text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.01em;">
+						{{ post.title_uz if lang == 'uz' else post.title_ru if lang == 'ru' else post.title_tr if lang == 'tr' else post.title_en }}
+					</h3>
+					{% if post.excerpt_uz or post.excerpt_en %}
+					<p class="text-sm text-gray-600 font-normal line-clamp-3 leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{{ (post.excerpt_uz if lang == 'uz' else post.excerpt_ru if lang == 'ru' else post.excerpt_tr if lang == 'tr' else post.excerpt_en) or '' }}
+					</p>
+					{% endif %}
+				</div>
+			</a>
+			{% endfor %}
+		</div>
+		
+		<!-- Pagination -->
+		{% if posts.pages > 1 %}
+		<div class="flex items-center justify-center gap-2 mt-8">
+			{% if posts.has_prev %}
+			<a href="{{ url_for('blog', lang=lang, page=posts.prev_num) }}" class="px-4 py-2 text-sm font-normal text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+				{% if lang == 'uz' %}Oldingi{% elif lang == 'ru' %}Предыдущая{% elif lang == 'tr' %}Önceki{% else %}Previous{% endif %}
+			</a>
+			{% endif %}
+			
+			{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+				{% if page_num %}
+					{% if page_num == posts.page %}
+					<span class="px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg">{{ page_num }}</span>
+					{% else %}
+					<a href="{{ url_for('blog', lang=lang, page=page_num) }}" class="px-4 py-2 text-sm font-normal text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">{{ page_num }}</a>
+					{% endif %}
+				{% else %}
+					<span class="px-4 py-2 text-sm text-gray-400">...</span>
+				{% endif %}
+			{% endfor %}
+			
+			{% if posts.has_next %}
+			<a href="{{ url_for('blog', lang=lang, page=posts.next_num) }}" class="px-4 py-2 text-sm font-normal text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+				{% if lang == 'uz' %}Keyingi{% elif lang == 'ru' %}Следующая{% elif lang == 'tr' %}Sonraki{% else %}Next{% endif %}
+			</a>
+			{% endif %}
+		</div>
+		{% endif %}
+		{% else %}
+		<div class="text-center py-16">
+			<svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+			</svg>
+			<p class="text-gray-500 font-normal text-base" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Hozircha maqolalar mavjud emas{% elif lang == 'ru' %}Пока нет статей{% elif lang == 'tr' %}Henüz makale yok{% else %}No articles yet{% endif %}
+			</p>
+		</div>
+		{% endif %}
+	</div>
+</section>
+</div>
+
+{% endblock %}
+

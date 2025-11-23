@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{% if lang == 'uz' %}Sertifikatlar - Study Fans{% elif lang == 'ru' %}Сертификаты - Study Fans{% elif lang == 'tr' %}Sertifikalar - Study Fans{% else %}Certificates - Study Fans{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="page-container" style="margin-top: 0; padding-top: 0;">
+<!-- Top Section with Title -->
+<section class="pt-6 pb-6 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<div class="flex items-start gap-4 mb-6">
+			<!-- Title Section -->
+			<div class="flex-1">
+				<h1 class="text-2xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+					{% if lang == 'uz' %}Sertifikatlar{% elif lang == 'ru' %}Сертификаты{% elif lang == 'tr' %}Sertifikalar{% else %}Certificates{% endif %}
+				</h1>
+				<p class="text-sm text-gray-500 font-normal mt-0.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Bizning sertifikatlar, mukofotlar va e'tiroflar{% elif lang == 'ru' %}Наши сертификаты, награды и признания{% elif lang == 'tr' %}Sertifikalarımız, ödüllerimiz ve tanınmalarımız{% else %}Our certificates, awards and recognitions{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Certificates Grid -->
+<section class="py-8 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" style="grid-auto-rows: auto;">
+			<!-- Certificate Card 1 -->
+			<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-200 flex flex-col" style="min-width: 0;">
+				<div class="relative w-full h-64 bg-gradient-to-br from-blue-50 to-yellow-50 flex items-center justify-center p-8 flex-shrink-0">
+					<div class="text-center">
+						<div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+							<img src="/static/verify.svg" alt="Certificate" class="w-10 h-10">
+						</div>
+						<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}ISO 9001:2015{% elif lang == 'ru' %}ISO 9001:2015{% elif lang == 'tr' %}ISO 9001:2015{% else %}ISO 9001:2015{% endif %}
+						</h3>
+						<p class="text-sm text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Sifat boshqaruvi{% elif lang == 'ru' %}Управление качеством{% elif lang == 'tr' %}Kalite yönetimi{% else %}Quality Management{% endif %}
+						</p>
+					</div>
+				</div>
+				<div class="p-5">
+					<p class="text-sm text-gray-600 font-normal mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Xalqaro standartlarga mos keladigan sifat boshqaruvi tizimi{% elif lang == 'ru' %}Система управления качеством, соответствующая международным стандартам{% elif lang == 'tr' %}Uluslararası standartlara uygun kalite yönetim sistemi{% else %}Quality management system compliant with international standards{% endif %}
+					</p>
+					<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						2023
+					</p>
+				</div>
+			</div>
+
+			<!-- Certificate Card 2 -->
+			<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-200 flex flex-col" style="min-width: 0;">
+				<div class="relative w-full h-64 bg-gradient-to-br from-yellow-50 to-blue-50 flex items-center justify-center p-8 flex-shrink-0">
+					<div class="text-center">
+						<div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+							<img src="/static/verify.svg" alt="Certificate" class="w-10 h-10">
+						</div>
+						<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Turkiya Ta'lim Agentligi{% elif lang == 'ru' %}Турецкое агентство образования{% elif lang == 'tr' %}Türkiye Eğitim Ajansı{% else %}Turkey Education Agency{% endif %}
+						</h3>
+						<p class="text-sm text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Rasmiy litsenziya{% elif lang == 'ru' %}Официальная лицензия{% elif lang == 'tr' %}Resmi lisans{% else %}Official License{% endif %}
+						</p>
+					</div>
+				</div>
+				<div class="p-5">
+					<p class="text-sm text-gray-600 font-normal mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Turkiyada ta'lim xizmatlarini ko'rsatish uchun rasmiy litsenziya{% elif lang == 'ru' %}Официальная лицензия на предоставление образовательных услуг в Турции{% elif lang == 'tr' %}Türkiye'de eğitim hizmetleri sunmak için resmi lisans{% else %}Official license to provide educational services in Turkey{% endif %}
+					</p>
+					<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						2022
+					</p>
+				</div>
+			</div>
+
+			<!-- Certificate Card 3 -->
+			<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-200 flex flex-col" style="min-width: 0;">
+				<div class="relative w-full h-64 bg-gradient-to-br from-blue-50 to-yellow-50 flex items-center justify-center p-8 flex-shrink-0">
+					<div class="text-center">
+						<div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+							<img src="/static/verify.svg" alt="Certificate" class="w-10 h-10">
+						</div>
+						<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Eng yaxshi agentlik{% elif lang == 'ru' %}Лучшее агентство{% elif lang == 'tr' %}En iyi ajans{% else %}Best Agency{% endif %}
+						</h3>
+						<p class="text-sm text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}2023 yil mukofoti{% elif lang == 'ru' %}Награда 2023 года{% elif lang == 'tr' %}2023 yılı ödülü{% else %}2023 Award{% endif %}
+						</p>
+					</div>
+				</div>
+				<div class="p-5">
+					<p class="text-sm text-gray-600 font-normal mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Turkiyada ta'lim sohasidagi eng yaxshi xizmat ko'rsatgan agentlik{% elif lang == 'ru' %}Лучшее агентство по предоставлению образовательных услуг в Турции{% elif lang == 'tr' %}Türkiye'de eğitim alanında en iyi hizmet veren ajans{% else %}Best agency providing educational services in Turkey{% endif %}
+					</p>
+					<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						2023
+					</p>
+				</div>
+			</div>
+
+			<!-- Certificate Card 4 -->
+			<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-200 flex flex-col" style="min-width: 0;">
+				<div class="relative w-full h-64 bg-gradient-to-br from-yellow-50 to-blue-50 flex items-center justify-center p-8 flex-shrink-0">
+					<div class="text-center">
+						<div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+							<img src="/static/verify.svg" alt="Certificate" class="w-10 h-10">
+						</div>
+						<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Mijozlar mamnuniyati{% elif lang == 'ru' %}Удовлетворенность клиентов{% elif lang == 'tr' %}Müşteri memnuniyeti{% else %}Client Satisfaction{% endif %}
+						</h3>
+						<p class="text-sm text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}98% reyting{% elif lang == 'ru' %}98% рейтинг{% elif lang == 'tr' %}%98 derecelendirme{% else %}98% Rating{% endif %}
+						</p>
+					</div>
+				</div>
+				<div class="p-5">
+					<p class="text-sm text-gray-600 font-normal mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Mijozlarimizning 98% bizning xizmatlarimizdan mamnun{% elif lang == 'ru' %}98% наших клиентов довольны нашими услугами{% elif lang == 'tr' %}Müşterilerimizin %98'i hizmetlerimizden memnun{% else %}98% of our clients are satisfied with our services{% endif %}
+					</p>
+					<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						2024
+					</p>
+				</div>
+			</div>
+
+			<!-- Certificate Card 5 -->
+			<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-200 flex flex-col" style="min-width: 0;">
+				<div class="relative w-full h-64 bg-gradient-to-br from-blue-50 to-yellow-50 flex items-center justify-center p-8 flex-shrink-0">
+					<div class="text-center">
+						<div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+							<img src="/static/verify.svg" alt="Certificate" class="w-10 h-10">
+						</div>
+						<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Xalqaro hamkorlik{% elif lang == 'ru' %}Международное сотрудничество{% elif lang == 'tr' %}Uluslararası işbirliği{% else %}International Cooperation{% endif %}
+						</h3>
+						<p class="text-sm text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}50+ universitet{% elif lang == 'ru' %}50+ университетов{% elif lang == 'tr' %}50+ üniversite{% else %}50+ Universities{% endif %}
+						</p>
+					</div>
+				</div>
+				<div class="p-5">
+					<p class="text-sm text-gray-600 font-normal mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}50 dan ortiq universitet bilan rasmiy hamkorlik shartnomalari{% elif lang == 'ru' %}Официальные партнерские соглашения с более чем 50 университетами{% elif lang == 'tr' %}50'den fazla üniversite ile resmi ortaklık anlaşmaları{% else %}Official partnership agreements with more than 50 universities{% endif %}
+					</p>
+					<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						2023-2024
+					</p>
+				</div>
+			</div>
+
+			<!-- Certificate Card 6 -->
+			<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-200 flex flex-col" style="min-width: 0;">
+				<div class="relative w-full h-64 bg-gradient-to-br from-yellow-50 to-blue-50 flex items-center justify-center p-8 flex-shrink-0">
+					<div class="text-center">
+						<div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+							<img src="/static/verify.svg" alt="Certificate" class="w-10 h-10">
+						</div>
+						<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Professional xizmat{% elif lang == 'ru' %}Профессиональный сервис{% elif lang == 'tr' %}Profesyonel hizmet{% else %}Professional Service{% endif %}
+						</h3>
+						<p class="text-sm text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Sertifikatlangan mutaxassislar{% elif lang == 'ru' %}Сертифицированные специалисты{% elif lang == 'tr' %}Sertifikalı uzmanlar{% else %}Certified Specialists{% endif %}
+						</p>
+					</div>
+				</div>
+				<div class="p-5">
+					<p class="text-sm text-gray-600 font-normal mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Barcha mutaxassislarimiz xalqaro sertifikatlarga ega{% elif lang == 'ru' %}Все наши специалисты имеют международные сертификаты{% elif lang == 'tr' %}Tüm uzmanlarımız uluslararası sertifikalara sahip{% else %}All our specialists have international certificates{% endif %}
+					</p>
+					<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						2024
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</div>
+
+{% endblock %}
+

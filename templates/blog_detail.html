@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% if lang == 'uz' %}{{ post.title_uz }} - Study Fans{% elif lang == 'ru' %}{{ post.title_ru }} - Study Fans{% elif lang == 'tr' %}{{ post.title_tr }} - Study Fans{% else %}{{ post.title_en }} - Study Fans{% endif %}</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+		}
+		.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4, .blog-content h5, .blog-content h6 {
+			font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+			margin-top: 1.5em;
+			margin-bottom: 0.8em;
+			font-weight: 600;
+			line-height: 1.3;
+			color: #1f2937;
+		}
+		.blog-content h1 { font-size: 2.25rem; }
+		.blog-content h2 { font-size: 1.875rem; }
+		.blog-content h3 { font-size: 1.5rem; }
+		.blog-content h4 { font-size: 1.25rem; }
+		.blog-content p {
+			margin-bottom: 1em;
+			line-height: 1.75;
+			color: #374151;
+		}
+		.blog-content ul, .blog-content ol {
+			margin-bottom: 1em;
+			padding-left: 1.5em;
+		}
+		.blog-content ul li {
+			list-style-type: disc;
+			margin-bottom: 0.5em;
+			color: #374151;
+		}
+		.blog-content ol li {
+			list-style-type: decimal;
+			margin-bottom: 0.5em;
+			color: #374151;
+		}
+		.blog-content a {
+			color: #2563eb;
+			text-decoration: underline;
+		}
+		.blog-content strong {
+			font-weight: 600;
+			color: #1f2937;
+		}
+		.blog-content img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 0.75rem;
+			margin-top: 1.5em;
+			margin-bottom: 1.5em;
+		}
+		.blog-content blockquote {
+			border-left: 4px solid #e5e7eb;
+			padding-left: 1em;
+			margin: 1.5em 0;
+			color: #6b7280;
+			font-style: italic;
+		}
+	</style>
+</head>
+<body class="bg-white">
+
+<!-- Minimalistic Header -->
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+	<div class="w-full px-6">
+		<div class="flex items-center gap-4 py-3">
+			<a href="{{ url_for('blog', lang=lang) }}" class="flex items-center justify-center w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
+				<img src="/static/arrow-left.svg" alt="Back" class="w-5 h-5">
+			</a>
+			<h1 class="text-base font-medium text-gray-900 line-clamp-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+				{{ post.title_uz if lang == 'uz' else post.title_ru if lang == 'ru' else post.title_tr if lang == 'tr' else post.title_en }}
+			</h1>
+		</div>
+	</div>
+</header>
+
+<!-- Blog Post Content -->
+<main class="max-w-4xl mx-auto px-6 py-12">
+	<!-- Post Meta -->
+	<div class="flex items-center gap-2 mb-6">
+		<span class="text-xs font-normal text-gray-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+			{{ post.created_at.strftime('%d.%m.%Y') if post.created_at else '' }}
+		</span>
+		<span class="text-xs text-gray-400">•</span>
+		<span class="text-xs font-normal text-gray-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+			{{ post.author }}
+		</span>
+	</div>
+	
+	<!-- Post Title -->
+	<h1 class="text-3xl md:text-4xl font-medium text-gray-900 mb-8 leading-tight" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+		{{ post.title_uz if lang == 'uz' else post.title_ru if lang == 'ru' else post.title_tr if lang == 'tr' else post.title_en }}
+	</h1>
+	
+	<!-- Post Image -->
+	{% if post.image_url %}
+	<div class="w-full h-96 overflow-hidden bg-gray-100 rounded-3xl mb-8">
+		<img src="{{ url_for('static', filename=post.image_url) }}" alt="{{ post.title_uz if lang == 'uz' else post.title_ru if lang == 'ru' else post.title_tr if lang == 'tr' else post.title_en }}" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'w-full h-96 bg-gradient-to-br from-blue-50 to-yellow-50 flex items-center justify-center rounded-3xl\'><svg class=\'w-24 h-24 text-gray-300\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z\'/></svg></div>';">
+	</div>
+	{% endif %}
+	
+	<!-- Post Content -->
+	<div class="blog-content text-gray-700 font-normal leading-relaxed" style="font-size: 1.125rem; line-height: 1.75;">
+		{% if lang == 'uz' %}{{ post.content_uz | safe }}{% elif lang == 'ru' %}{{ post.content_ru | safe }}{% elif lang == 'tr' %}{{ post.content_tr | safe }}{% else %}{{ post.content_en | safe }}{% endif %}
+	</div>
+</main>
+
+<!-- Related Posts -->
+{% if related_posts %}
+<section class="py-12 bg-gray-50">
+	<div class="max-w-7xl mx-auto px-6">
+		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+			{% if lang == 'uz' %}Tavsiya etilgan maqolalar{% elif lang == 'ru' %}Рекомендуемые статьи{% elif lang == 'tr' %}Önerilen makaleler{% else %}Recommended articles{% endif %}
+		</h2>
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+			{% for related_post in related_posts %}
+			<a href="{{ url_for('blog_detail', slug=related_post.slug, lang=lang) }}" class="group bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-200">
+				{% if related_post.image_url %}
+				<div class="w-full h-40 overflow-hidden bg-gray-100">
+					<img src="{{ url_for('static', filename=related_post.image_url) }}" alt="{{ related_post.title_uz if lang == 'uz' else related_post.title_ru if lang == 'ru' else related_post.title_tr if lang == 'tr' else related_post.title_en }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+				</div>
+				{% endif %}
+				<div class="p-4">
+					<h3 class="text-base font-medium text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{{ related_post.title_uz if lang == 'uz' else related_post.title_ru if lang == 'ru' else related_post.title_tr if lang == 'tr' else related_post.title_en }}
+					</h3>
+					{% if related_post.excerpt_uz or related_post.excerpt_en %}
+					<p class="text-sm text-gray-600 font-normal line-clamp-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{{ (related_post.excerpt_uz if lang == 'uz' else related_post.excerpt_ru if lang == 'ru' else related_post.excerpt_tr if lang == 'tr' else related_post.excerpt_en) or '' }}
+					</p>
+					{% endif %}
+				</div>
+			</a>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+{% endif %}
+
+</body>
+</html>

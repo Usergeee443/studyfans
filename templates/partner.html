@@ -1,0 +1,322 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{% if lang == 'uz' %}Hamkor - Study Fans{% elif lang == 'ru' %}Партнер - Study Fans{% elif lang == 'tr' %}Ortak - Study Fans{% else %}Partner - Study Fans{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="page-container" style="margin-top: 0; padding-top: 0;">
+<!-- Top Section with Title -->
+<section class="pt-6 pb-6 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<div class="flex items-start gap-4 mb-6">
+			<div class="flex-1">
+				<h1 class="text-2xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+					{% if lang == 'uz' %}Hamkor{% elif lang == 'ru' %}Партнер{% elif lang == 'tr' %}Ortak{% else %}Partner{% endif %}
+				</h1>
+				<p class="text-sm text-gray-500 font-normal mt-0.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Biz bilan hamkorlik qiling va barqaror daromad oling{% elif lang == 'ru' %}Сотрудничайте с нами и получайте стабильный доход{% elif lang == 'tr' %}Bizimle işbirliği yapın ve istikrarlı gelir elde edin{% else %}Partner with us and earn stable income{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Why Partner With Us -->
+<section class="py-8 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<div class="mb-8">
+			<h2 class="text-2xl font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+				{% if lang == 'uz' %}Nima uchun biz bilan ishlash kerak?{% elif lang == 'ru' %}Почему работать с нами?{% elif lang == 'tr' %}Neden bizimle çalışmalısınız?{% else %}Why work with us?{% endif %}
+			</h2>
+			<p class="text-gray-600 font-normal leading-relaxed max-w-3xl" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Study Fans - Turkiyada ta'lim sohasida 12 yillik tajribaga ega etakchi kompaniya. Biz bilan hamkorlik qilgan 50+ agent har oy barqaror daromad oladi va professional yordam ko'radi.{% elif lang == 'ru' %}Study Fans - ведущая компания в сфере образования в Турции с 12-летним опытом. Более 50 агентов, сотрудничающих с нами, получают стабильный доход каждый месяц и получают профессиональную поддержку.{% elif lang == 'tr' %}Study Fans - Türkiye'de eğitim sektöründe 12 yıllık deneyime sahip önde gelen şirket. Bizimle işbirliği yapan 50+ ajan her ay istikrarlı gelir elde ediyor ve profesyonel destek alıyor.{% else %}Study Fans is a leading company in the education sector in Turkey with 12 years of experience. 50+ agents working with us earn stable income every month and receive professional support.{% endif %}
+			</p>
+		</div>
+	</div>
+</section>
+
+<!-- Benefits Grid -->
+<section class="py-8 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+			{% if lang == 'uz' %}Afzalliklar{% elif lang == 'ru' %}Преимущества{% elif lang == 'tr' %}Avantajlar{% else %}Benefits{% endif %}
+		</h2>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Yuqori komissiyalar{% elif lang == 'ru' %}Высокие комиссии{% elif lang == 'tr' %}Yüksek komisyonlar{% else %}High Commissions{% endif %}
+				</h3>
+				<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}15-25% komissiya har bir muvaffaqiyatli qabul uchun. To'lovlar oylik asosida amalga oshiriladi.{% elif lang == 'ru' %}15-25% комиссия за каждое успешное поступление. Выплаты производятся ежемесячно.{% elif lang == 'tr' %}Her başarılı kabul için %15-25 komisyon. Ödemeler aylık olarak yapılır.{% else %}15-25% commission for each successful admission. Payments are made monthly.{% endif %}
+				</p>
+			</div>
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}24/7 yordam{% elif lang == 'ru' %}Поддержка 24/7{% elif lang == 'tr' %}7/24 destek{% else %}24/7 Support{% endif %}
+				</h3>
+				<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Professional jamoamiz har doim yonida. Har qanday savol yoki muammo bo'lganda darhol yechim topamiz.{% elif lang == 'ru' %}Наша профессиональная команда всегда рядом. Мы сразу находим решение при любом вопросе или проблеме.{% elif lang == 'tr' %}Profesyonel ekibimiz her zaman yanınızda. Herhangi bir soru veya sorun olduğunda hemen çözüm buluyoruz.{% else %}Our professional team is always by your side. We immediately find a solution for any question or problem.{% endif %}
+				</p>
+			</div>
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Reklama materiallari{% elif lang == 'ru' %}Рекламные материалы{% elif lang == 'tr' %}Reklam materyalleri{% else %}Marketing Materials{% endif %}
+				</h3>
+				<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Tayyor reklama materiallari, bannerlar, postlar va marketing qo'llab-quvvatlash. Sizga faqat mijozlarni topish kerak.{% elif lang == 'ru' %}Готовые рекламные материалы, баннеры, посты и маркетинговая поддержка. Вам нужно только найти клиентов.{% elif lang == 'tr' %}Hazır reklam materyalleri, bannerlar, gönderiler ve pazarlama desteği. Sadece müşteri bulmanız gerekiyor.{% else %}Ready-made marketing materials, banners, posts and marketing support. You just need to find clients.{% endif %}
+				</p>
+			</div>
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}CRM tizimi{% elif lang == 'ru' %}CRM система{% elif lang == 'tr' %}CRM sistemi{% else %}CRM System{% endif %}
+				</h3>
+				<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Barcha mijozlarni boshqarish uchun maxsus CRM tizimi. Mijozlar holati, to'lovlar va statistika bitta joyda.{% elif lang == 'ru' %}Специальная CRM система для управления всеми клиентами. Статус клиентов, платежи и статистика в одном месте.{% elif lang == 'tr' %}Tüm müşterileri yönetmek için özel CRM sistemi. Müşteri durumu, ödemeler ve istatistikler tek bir yerde.{% else %}Special CRM system to manage all clients. Client status, payments and statistics in one place.{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- How We Work -->
+<section class="py-8 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+			{% if lang == 'uz' %}Qanday ishlaymiz?{% elif lang == 'ru' %}Как мы работаем?{% elif lang == 'tr' %}Nasıl çalışıyoruz?{% else %}How we work?{% endif %}
+		</h2>
+		<div class="space-y-4">
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<div class="flex items-start gap-4">
+					<div class="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-medium text-sm" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">1</div>
+					<div class="flex-1">
+						<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Ariza topshirish{% elif lang == 'ru' %}Подача заявки{% elif lang == 'tr' %}Başvuru yapma{% else %}Application{% endif %}
+						</h3>
+						<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Quyidagi formani to'ldiring va biz sizga 24 soat ichida javob beramiz.{% elif lang == 'ru' %}Заполните форму ниже, и мы ответим вам в течение 24 часов.{% elif lang == 'tr' %}Aşağıdaki formu doldurun, 24 saat içinde size cevap vereceğiz.{% else %}Fill out the form below and we will respond within 24 hours.{% endif %}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<div class="flex items-start gap-4">
+					<div class="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-medium text-sm" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">2</div>
+					<div class="flex-1">
+						<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Maslahat va shartnoma{% elif lang == 'ru' %}Консультация и договор{% elif lang == 'tr' %}Danışmanlık ve sözleşme{% else %}Consultation and Contract{% endif %}
+						</h3>
+						<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Biz siz bilan bog'lanamiz, barcha shartlarni tushuntiramiz va shartnoma tuzamiz.{% elif lang == 'ru' %}Мы свяжемся с вами, объясним все условия и заключим договор.{% elif lang == 'tr' %}Sizinle iletişime geçeceğiz, tüm koşulları açıklayacağız ve sözleşme yapacağız.{% else %}We will contact you, explain all conditions and sign a contract.{% endif %}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<div class="flex items-start gap-4">
+					<div class="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-medium text-sm" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">3</div>
+					<div class="flex-1">
+						<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Materiallar va kirish{% elif lang == 'ru' %}Материалы и доступ{% elif lang == 'tr' %}Materyaller ve erişim{% else %}Materials and Access{% endif %}
+						</h3>
+						<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Sizga reklama materiallari, CRM tizimiga kirish va barcha kerakli ma'lumotlar beriladi.{% elif lang == 'ru' %}Вам будут предоставлены рекламные материалы, доступ к CRM системе и вся необходимая информация.{% elif lang == 'tr' %}Size reklam materyalleri, CRM sistemine erişim ve tüm gerekli bilgiler verilecektir.{% else %}You will receive marketing materials, CRM access and all necessary information.{% endif %}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<div class="flex items-start gap-4">
+					<div class="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-medium text-sm" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">4</div>
+					<div class="flex-1">
+						<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Mijozlarni topish va ishlash{% elif lang == 'ru' %}Поиск клиентов и работа{% elif lang == 'tr' %}Müşteri bulma ve çalışma{% else %}Finding Clients and Working{% endif %}
+						</h3>
+						<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Siz mijozlarni topasiz va ularni bizga yo'naltirasiz. Biz barcha qabul jarayonlarini amalga oshiramiz.{% elif lang == 'ru' %}Вы находите клиентов и направляете их к нам. Мы проводим все процессы поступления.{% elif lang == 'tr' %}Müşterileri buluyorsunuz ve bize yönlendiriyorsunuz. Tüm kabul süreçlerini biz yürütüyoruz.{% else %}You find clients and refer them to us. We handle all admission processes.{% endif %}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<div class="flex items-start gap-4">
+					<div class="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-medium text-sm" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">5</div>
+					<div class="flex-1">
+						<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Komissiya olish{% elif lang == 'ru' %}Получение комиссии{% elif lang == 'tr' %}Komisyon alma{% else %}Receiving Commission{% endif %}
+						</h3>
+						<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Har bir muvaffaqiyatli qabul uchun sizga komissiya to'lanadi. To'lovlar oylik asosida amalga oshiriladi.{% elif lang == 'ru' %}За каждое успешное поступление вам выплачивается комиссия. Выплаты производятся ежемесячно.{% elif lang == 'tr' %}Her başarılı kabul için size komisyon ödenir. Ödemeler aylık olarak yapılır.{% else %}You receive commission for each successful admission. Payments are made monthly.{% endif %}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- What Agent Gets -->
+<section class="py-8 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+			{% if lang == 'uz' %}Agent nima oladi?{% elif lang == 'ru' %}Что получает агент?{% elif lang == 'tr' %}Ajan ne alır?{% else %}What does an agent get?{% endif %}
+		</h2>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Barqaror daromad{% elif lang == 'ru' %}Стабильный доход{% elif lang == 'tr' %}İstikrarlı gelir{% else %}Stable Income{% endif %}
+				</h3>
+				<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Har bir muvaffaqiyatli qabul uchun 15-25% komissiya. Oylik to'lovlar va aniq shartlar.{% elif lang == 'ru' %}15-25% комиссия за каждое успешное поступление. Ежемесячные выплаты и четкие условия.{% elif lang == 'tr' %}Her başarılı kabul için %15-25 komisyon. Aylık ödemeler ve net koşullar.{% else %}15-25% commission for each successful admission. Monthly payments and clear terms.{% endif %}
+				</p>
+			</div>
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Professional yordam{% elif lang == 'ru' %}Профессиональная поддержка{% elif lang == 'tr' %}Profesyonel destek{% else %}Professional Support{% endif %}
+				</h3>
+				<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}24/7 yordam, maslahatlar va barcha savollarga javoblar. Biz sizning muvaffaqiyatingiz uchun ishlaymiz.{% elif lang == 'ru' %}Поддержка 24/7, консультации и ответы на все вопросы. Мы работаем для вашего успеха.{% elif lang == 'tr' %}7/24 destek, danışmanlık ve tüm sorulara cevaplar. Başarınız için çalışıyoruz.{% else %}24/7 support, consultations and answers to all questions. We work for your success.{% endif %}
+				</p>
+			</div>
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Marketing materiallari{% elif lang == 'ru' %}Маркетинговые материалы{% elif lang == 'tr' %}Pazarlama materyalleri{% else %}Marketing Materials{% endif %}
+				</h3>
+				<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Tayyor bannerlar, postlar, reklama materiallari va marketing strategiyalari.{% elif lang == 'ru' %}Готовые баннеры, посты, рекламные материалы и маркетинговые стратегии.{% elif lang == 'tr' %}Hazır bannerlar, gönderiler, reklam materyalleri ve pazarlama stratejileri.{% else %}Ready banners, posts, marketing materials and marketing strategies.{% endif %}
+				</p>
+			</div>
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}CRM tizimi{% elif lang == 'ru' %}CRM система{% elif lang == 'tr' %}CRM sistemi{% else %}CRM System{% endif %}
+				</h3>
+				<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Barcha mijozlarni boshqarish, statistika ko'rish va to'lovlarni kuzatish uchun maxsus CRM tizimi.{% elif lang == 'ru' %}Специальная CRM система для управления всеми клиентами, просмотра статистики и отслеживания платежей.{% elif lang == 'tr' %}Tüm müşterileri yönetmek, istatistikleri görüntülemek ve ödemeleri takip etmek için özel CRM sistemi.{% else %}Special CRM system to manage all clients, view statistics and track payments.{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Partner Form -->
+<section class="py-8 bg-white">
+	<div class="max-w-2xl mx-auto px-6">
+		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+			{% if lang == 'uz' %}Hamkor bo'lish formasi{% elif lang == 'ru' %}Форма партнерства{% elif lang == 'tr' %}Ortaklık formu{% else %}Partnership Form{% endif %}
+		</h2>
+		<div class="bg-white border border-gray-200 rounded-3xl p-8">
+			<form class="space-y-5">
+				<div>
+					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Ism{% elif lang == 'ru' %}Имя{% elif lang == 'tr' %}İsim{% else %}Name{% endif %} *
+					</label>
+					<input type="text" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				</div>
+				<div>
+					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Kompaniya nomi{% elif lang == 'ru' %}Название компании{% elif lang == 'tr' %}Şirket adı{% else %}Company Name{% endif %}
+					</label>
+					<input type="text" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				</div>
+				<div>
+					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% elif lang == 'tr' %}Telefon{% else %}Phone{% endif %} *
+					</label>
+					<input type="tel" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				</div>
+				<div>
+					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Email{% elif lang == 'ru' %}Электронная почта{% elif lang == 'tr' %}E-posta{% else %}Email{% endif %} *
+					</label>
+					<input type="email" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				</div>
+				<div>
+					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Xabar{% elif lang == 'ru' %}Сообщение{% elif lang == 'tr' %}Mesaj{% else %}Message{% endif %}
+					</label>
+					<textarea rows="4" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></textarea>
+				</div>
+				<button type="button" onclick="alert('{% if lang == "uz" %}Ariza yuborildi! Tez orada siz bilan bog\'lanamiz.{% elif lang == "ru" %}Заявка отправлена! Мы скоро свяжемся с вами.{% elif lang == "tr" %}Başvuru gönderildi! Yakında sizinle iletişime geçeceğiz.{% else %}Application sent! We will contact you soon.{% endif %}')" class="w-full px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Hamkor bo'lish{% elif lang == 'ru' %}Стать партнером{% elif lang == 'tr' %}Ortak ol{% else %}Become Partner{% endif %}
+				</button>
+			</form>
+		</div>
+	</div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-8 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+			{% if lang == 'uz' %}Tez-tez so'raladigan savollar{% elif lang == 'ru' %}Часто задаваемые вопросы{% elif lang == 'tr' %}Sık Sorulan Sorular{% else %}Frequently Asked Questions{% endif %}
+		</h2>
+		<div class="space-y-3">
+			{% set partner_faqs = [
+				('uz:Komissiya qancha?', 'ru:Сколько комиссия?', 'tr:Komisyon ne kadar?', 'en:How much is the commission?', 'uz:Komissiya har bir muvaffaqiyatli qabul uchun 15-25% ni tashkil etadi. To\'lovlar oylik asosida amalga oshiriladi.', 'ru:Комиссия составляет 15-25% за каждое успешное поступление. Выплаты производятся ежемесячно.', 'tr:Komisyon her başarılı kabul için %15-25\'tir. Ödemeler aylık olarak yapılır.', 'en:The commission is 15-25% for each successful admission. Payments are made monthly.'),
+				('uz:Qanday to\'lanadi?', 'ru:Как выплачивается?', 'tr:Nasıl ödenir?', 'en:How is it paid?', 'uz:To\'lovlar bank orqali yoki elektron to\'lov tizimlari orqali amalga oshiriladi. Har oyning 1-5 kunlari orasida to\'lanadi.', 'ru:Выплаты производятся через банк или электронные платежные системы. Оплата производится с 1 по 5 число каждого месяца.', 'tr:Ödemeler banka veya elektronik ödeme sistemleri aracılığıyla yapılır. Her ayın 1-5 günleri arasında ödenir.', 'en:Payments are made through bank or electronic payment systems. Payment is made between the 1st and 5th of each month.'),
+				('uz:Qanday materiallar beriladi?', 'ru:Какие материалы предоставляются?', 'tr:Hangi materyaller verilir?', 'en:What materials are provided?', 'uz:Sizga reklama bannerlari, postlar, logotiplar, marketing strategiyalari va barcha kerakli materiallar beriladi.', 'ru:Вам предоставляются рекламные баннеры, посты, логотипы, маркетинговые стратегии и все необходимые материалы.', 'tr:Size reklam bannerları, gönderiler, logolar, pazarlama stratejileri ve tüm gerekli materyaller verilir.', 'en:You receive advertising banners, posts, logos, marketing strategies and all necessary materials.'),
+				('uz:CRM tizimi qanday ishlaydi?', 'ru:Как работает CRM система?', 'tr:CRM sistemi nasıl çalışır?', 'en:How does the CRM system work?', 'uz:CRM tizimida siz barcha mijozlarni ko\'rishingiz, ularning holatini kuzatishingiz, statistika ko\'rishingiz va to\'lovlarni boshqarishingiz mumkin.', 'ru:В CRM системе вы можете видеть всех клиентов, отслеживать их статус, просматривать статистику и управлять платежами.', 'tr:CRM sisteminde tüm müşterileri görebilir, durumlarını takip edebilir, istatistikleri görüntüleyebilir ve ödemeleri yönetebilirsiniz.', 'en:In the CRM system, you can see all clients, track their status, view statistics and manage payments.'),
+				('uz:Qancha vaqt ketadi?', 'ru:Сколько времени занимает?', 'tr:Ne kadar sürer?', 'en:How long does it take?', 'uz:Ariza topshirgandan keyin biz sizga 24 soat ichida javob beramiz. Shartnoma tuzish va materiallarni olish 2-3 kun davom etadi.', 'ru:После подачи заявки мы ответим вам в течение 24 часов. Заключение договора и получение материалов занимает 2-3 дня.', 'tr:Başvurudan sonra 24 saat içinde size cevap vereceğiz. Sözleşme yapma ve materyalleri alma 2-3 gün sürer.', 'en:After submitting the application, we will respond within 24 hours. Signing the contract and receiving materials takes 2-3 days.')
+			] %}
+			{% for item in partner_faqs %}
+			<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-gray-300 transition-all duration-200">
+				<button onclick="togglePartnerFAQ('partner-{{ loop.index }}')" class="w-full flex items-center justify-between text-left p-5 hover:bg-gray-50 transition-colors">
+					<h3 class="text-base font-normal text-gray-900 pr-4 flex-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}{{ item[0].split(':')[1] }}{% elif lang == 'ru' %}{{ item[1].split(':')[1] }}{% elif lang == 'tr' %}{{ item[2].split(':')[1] }}{% else %}{{ item[3].split(':')[1] }}{% endif %}
+					</h3>
+					<svg id="faq-icon-partner-{{ loop.index }}" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 transform transition-transform duration-300 flex-shrink-0">
+						<polyline points="6,9 12,15 18,9"/>
+					</svg>
+				</button>
+				<div id="faq-content-partner-{{ loop.index }}" class="faq-content">
+					<div class="px-5 pb-5 pt-0">
+						<div class="pt-4 border-t border-gray-100">
+							<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+								{% if lang == 'uz' %}{{ item[4].split(':')[1] }}{% elif lang == 'ru' %}{{ item[5].split(':')[1] }}{% elif lang == 'tr' %}{{ item[6].split(':')[1] }}{% else %}{{ item[7].split(':')[1] }}{% endif %}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+</div>
+
+<script>
+function togglePartnerFAQ(id) {
+	const content = document.getElementById('faq-content-' + id);
+	const icon = document.getElementById('faq-icon-' + id);
+	
+	if (content.classList.contains('faq-open')) {
+		content.classList.remove('faq-open');
+		icon.style.transform = 'rotate(0deg)';
+	} else {
+		content.classList.add('faq-open');
+		icon.style.transform = 'rotate(180deg)';
+	}
+}
+</script>
+
+<style>
+.faq-content {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.6s ease-out, opacity 0.6s ease-out, padding 0.6s ease-out;
+	opacity: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.faq-content.faq-open {
+	max-height: 500px;
+	opacity: 1;
+	padding-top: 0;
+	padding-bottom: 1.25rem;
+}
+</style>
+
+{% endblock %}
