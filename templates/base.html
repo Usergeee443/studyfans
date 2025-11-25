@@ -765,18 +765,16 @@
 				<span class="sidebar-text transition-all duration-300">{% if lang == 'uz' %}Xizmatlar{% elif lang == 'ru' %}Услуги{% elif lang == 'tr' %}Hizmetler{% else %}Services{% endif %}</span>
 			</a>
 
-			<a href="#" onclick="showComingSoon(event)"
-				class="sidebar-link flex items-center py-2 text-sm font-normal text-gray-400 relative opacity-50 cursor-not-allowed"
-				data-lang="{{ lang }}">
+			<a href="{{ url_for('success_stories') }}"
+				class="sidebar-link flex items-center py-2 text-sm font-normal text-gray-900 relative {% if request.endpoint == 'success_stories' %}active{% endif %}">
 				<div class="sidebar-icon-wrapper">
 					<img src="/static/award.svg" alt="Success Stories" class="w-5 h-5 sidebar-icon">
 				</div>
 				<span class="sidebar-text transition-all duration-300">{% if lang == 'uz' %}Muvaffaqiyat hikoyalari{% elif lang == 'ru' %}Истории успеха{% elif lang == 'tr' %}Başarı hikayeleri{% else %}Success Stories{% endif %}</span>
 			</a>
 
-			<a href="#" onclick="showComingSoon(event)"
-				class="sidebar-link flex items-center py-2 text-sm font-normal text-gray-400 relative opacity-50 cursor-not-allowed"
-				data-lang="{{ lang }}">
+			<a href="{{ url_for('about') }}"
+				class="sidebar-link flex items-center py-2 text-sm font-normal text-gray-900 relative {% if request.endpoint == 'about' %}active{% endif %}">
 				<div class="sidebar-icon-wrapper">
 					<img src="/static/bookmark.svg" alt="About" class="w-5 h-5 sidebar-icon">
 				</div>
@@ -961,12 +959,12 @@
 
 						<div class="border-t border-gray-200 my-1"></div>
 
-						<a href="#" onclick="showComingSoon(event); return false;" class="flex items-center space-x-3 px-4 py-2.5 text-sm font-normal text-gray-400 opacity-50 cursor-not-allowed" data-lang="{{ lang }}">
+						<a href="{{ url_for('success_stories') }}" class="flex items-center space-x-3 px-4 py-2.5 text-sm font-normal text-gray-900 hover:bg-gray-50 transition-colors">
 							<img src="/static/award.svg" alt="Success Stories" class="w-4 h-4 flex-shrink-0">
 							<span>{% if lang == 'uz' %}Muvaffaqiyat hikoyalari{% elif lang == 'ru' %}Истории успеха{% elif lang == 'tr' %}Başarı hikayeleri{% else %}Success Stories{% endif %}</span>
 						</a>
 
-						<a href="#" onclick="showComingSoon(event); return false;" class="flex items-center space-x-3 px-4 py-2.5 text-sm font-normal text-gray-400 opacity-50 cursor-not-allowed" data-lang="{{ lang }}">
+						<a href="{{ url_for('about') }}" class="flex items-center space-x-3 px-4 py-2.5 text-sm font-normal text-gray-900 hover:bg-gray-50 transition-colors">
 							<img src="/static/bookmark.svg" alt="About" class="w-4 h-4 flex-shrink-0">
 							<span>{% if lang == 'uz' %}Biz haqimizda{% elif lang == 'ru' %}О нас{% elif lang == 'tr' %}Hakkımızda{% else %}About{% endif %}</span>
 						</a>

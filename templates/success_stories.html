@@ -6,214 +6,378 @@
 
 {% block extra_css %}
 <style>
-	.comments-container {
+	* {
+		box-sizing: border-box;
+	}
+	
+	.stories-page {
+		min-height: 100vh;
+		background: #fafafa;
 		overflow: hidden;
+		position: relative;
+	}
+	
+	.stories-wrapper {
+		display: flex;
+		gap: 1rem;
+		padding: 1.5rem 1rem;
 		height: 100vh;
+		justify-content: center;
+	}
+	
+	.stories-column {
 		display: flex;
 		flex-direction: column;
-		justify-content: space-around;
-		padding: 2rem 0;
+		gap: 1rem;
+		flex: 1;
+		max-width: 400px;
 	}
 	
-	.comments-row {
+	.column-inner {
 		display: flex;
-		gap: 1.5rem;
-		width: fit-content;
-		white-space: nowrap;
+		flex-direction: column;
+		gap: 1rem;
 	}
 	
-	.comments-row-1 {
-		animation: scroll-down 40s linear infinite;
+	/* Tepadan pastga animatsiya */
+	.column-down .column-inner {
+		animation: scroll-down 35s linear infinite;
 	}
 	
-	.comments-row-2 {
-		/* O'rtadagi qator - static */
-		justify-content: center;
-		flex-wrap: nowrap;
+	/* Pastdan tepaga animatsiya */
+	.column-up .column-inner {
+		animation: scroll-up 40s linear infinite;
 	}
 	
-	.comments-row-3 {
-		animation: scroll-up 45s linear infinite;
+	/* Uchinchi ustun - tepadan pastga (boshqa tezlik) */
+	.column-down-2 .column-inner {
+		animation: scroll-down 32s linear infinite;
 	}
 	
 	@keyframes scroll-down {
-		from {
+		0% {
 			transform: translateY(0);
 		}
-		to {
+		100% {
 			transform: translateY(-50%);
 		}
 	}
 	
 	@keyframes scroll-up {
-		from {
+		0% {
 			transform: translateY(-50%);
 		}
-		to {
+		100% {
 			transform: translateY(0);
 		}
 	}
 	
-	.comment-card {
-		min-width: 320px;
-		max-width: 320px;
-		background: white;
-		border-radius: 1.5rem;
-		padding: 1.5rem;
-		border: 1px solid #e5e7eb;
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	.story-card {
+		background: #fff;
+		border-radius: 24px;
+		padding: 26px;
+		border: 1px solid rgba(0, 0, 0, 0.05);
+		transition: all 0.3s ease;
 	}
 	
-	.comment-text {
-		font-size: 0.9375rem;
-		line-height: 1.6;
-		color: #374151;
+	.story-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+	}
+	
+	.story-text {
+		font-size: 15px;
+		line-height: 1.7;
+		color: #333;
+		margin-bottom: 22px;
 		font-weight: 400;
-		margin-bottom: 1rem;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+		letter-spacing: -0.01em;
 	}
 	
-	.comment-author {
+	.story-author {
 		display: flex;
 		align-items: center;
-		gap: 0.75rem;
+		gap: 12px;
 	}
 	
-	.comment-avatar {
-		width: 2.5rem;
-		height: 2.5rem;
-		border-radius: 50%;
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	.story-avatar {
+		width: 42px;
+		height: 42px;
+		border-radius: 12px;
+		background: #111;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		font-weight: 500;
+		font-size: 14px;
+		letter-spacing: 0.02em;
 	}
 	
-	.comment-info {
+	.story-info {
 		flex: 1;
 	}
 	
-	.comment-name {
-		font-size: 0.875rem;
-		font-weight: 500;
-		color: #111827;
-		margin-bottom: 0.125rem;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+	.story-name {
+		font-size: 14px;
+		font-weight: 600;
+		color: #111;
+		margin-bottom: 2px;
+		letter-spacing: -0.01em;
 	}
 	
-	.comment-role {
-		font-size: 0.75rem;
-		color: #6b7280;
+	.story-role {
+		font-size: 12px;
+		color: #999;
 		font-weight: 400;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+	}
+	
+	/* Gradient overlay top va bottom */
+	.gradient-top {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 120px;
+		background: linear-gradient(to bottom, #fafafa 0%, transparent 100%);
+		pointer-events: none;
+		z-index: 10;
+	}
+	
+	.gradient-bottom {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 120px;
+		background: linear-gradient(to top, #fafafa 0%, transparent 100%);
+		pointer-events: none;
+		z-index: 10;
+	}
+	
+	/* Hover paused animation */
+	.stories-column:hover .column-inner {
+		animation-play-state: paused;
+	}
+	
+	/* Responsive */
+	@media (max-width: 1024px) {
+		.stories-wrapper {
+			gap: 0.75rem;
+			padding: 1rem 0.75rem;
+		}
+	}
+	
+	@media (max-width: 768px) {
+		.stories-wrapper {
+			gap: 0.6rem;
+			padding: 0.75rem 0.6rem;
+		}
+		
+		.story-card {
+			padding: 18px;
+			border-radius: 18px;
+		}
+		
+		.story-text {
+			font-size: 13px;
+			line-height: 1.6;
+			margin-bottom: 16px;
+		}
+		
+		.story-avatar {
+			width: 34px;
+			height: 34px;
+			font-size: 12px;
+			border-radius: 10px;
+		}
+		
+		.story-name {
+			font-size: 12px;
+		}
+		
+		.story-role {
+			font-size: 10px;
+		}
+		
+		.gradient-top,
+		.gradient-bottom {
+			height: 80px;
+		}
+	}
+	
+	@media (max-width: 480px) {
+		.stories-wrapper {
+			gap: 0.4rem;
+			padding: 0.5rem 0.4rem;
+		}
+		
+		.story-card {
+			padding: 14px;
+			border-radius: 14px;
+		}
+		
+		.story-text {
+			font-size: 11px;
+			line-height: 1.5;
+			margin-bottom: 12px;
+		}
+		
+		.story-avatar {
+			width: 26px;
+			height: 26px;
+			font-size: 10px;
+			border-radius: 8px;
+		}
+		
+		.story-name {
+			font-size: 10px;
+		}
+		
+		.story-role {
+			font-size: 8px;
+		}
+		
+		.story-author {
+			gap: 8px;
+		}
+		
+		.gradient-top,
+		.gradient-bottom {
+			height: 60px;
+		}
 	}
 </style>
 {% endblock %}
 
 {% block content %}
-
-<div class="page-container" style="margin-top: 0; padding-top: 0; height: 100vh; overflow: hidden;">
-	<div class="comments-container">
-		<!-- 1-qator - Pastga harakatlanadi -->
-		<div class="comments-row comments-row-1">
-			{% set comments_row1 = [
-				{'text': 'uz:"StudyFans jamoasi menga juda ko\'p yordam berdi. 5 kunda qabul xatini oldim. Tavsiya qilaman!"', 'name': 'Muhammadali Mamatov', 'role': 'IT, Istanbul Kent'},
-				{'text': 'uz:"Jarayon juda yengil bo\'ldi. Hammasi o\'z vaqtida. Rahmat StudyFans!"', 'name': 'Aziza Karimova', 'role': 'Tibbiyot, IGU'},
-				{'text': 'uz:"Professional yondashuv va tezkor javoblar. Men juda mamnunman."', 'name': 'Bobur Mirzaev', 'role': 'Biznes, Atlas'},
-				{'text': 'uz:"Yaxshi xizmat va qo\'llab-quvvatlash. Barcha savollarga tez javob berishdi."', 'name': 'Dilshoda Toshmatova', 'role': 'Dizayn, MEF'},
-				{'text': 'uz:"Hujjatlar tayyorlashda katta yordam ko\'rsatdilar. Tashakkur!"', 'name': 'Javohir Karimov', 'role': 'Muhandislik, Okan'},
-			] %}
-			{% for comment in comments_row1 %}
-			<div class="comment-card">
-				<p class="comment-text">
-					{% if lang == 'uz' %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% elif lang == 'ru' %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% elif lang == 'tr' %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% else %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% endif %}
-				</p>
-				<div class="comment-author">
-					<div class="comment-avatar"></div>
-					<div class="comment-info">
-						<p class="comment-name">{{ comment.name }}</p>
-						<p class="comment-role">{{ comment.role }}</p>
+<div class="stories-page">
+	<div class="gradient-top"></div>
+	<div class="gradient-bottom"></div>
+	
+	<div class="stories-wrapper">
+		<!-- Birinchi ustun - tepadan pastga -->
+		<div class="stories-column column-down">
+			<div class="column-inner">
+				{% set column1 = [
+					{'text': 'StudyFans jamoasi menga juda ko\'p yordam berdi. 5 kunda qabul xatini oldim. Tavsiya qilaman!', 'name': 'Muhammadali Mamatov', 'role': 'IT, Istanbul Kent'},
+					{'text': 'Jarayon juda yengil bo\'ldi. Hammasi o\'z vaqtida. Rahmat StudyFans!', 'name': 'Aziza Karimova', 'role': 'Tibbiyot, IGU'},
+					{'text': 'Professional yondashuv va tezkor javoblar. Men juda mamnunman.', 'name': 'Bobur Mirzaev', 'role': 'Biznes, Atlas'},
+					{'text': 'Yaxshi xizmat va qo\'llab-quvvatlash. Barcha savollarga tez javob berishdi.', 'name': 'Dilshoda Toshmatova', 'role': 'Dizayn, MEF'},
+					{'text': 'Hujjatlar tayyorlashda katta yordam ko\'rsatdilar. Tashakkur!', 'name': 'Javohir Karimov', 'role': 'Muhandislik, Okan'},
+					{'text': 'Ajoyib xizmat! Barcha savollarga batafsil javob berishdi.', 'name': 'Farhod Rustamov', 'role': 'Huquq, Bahcesehir'},
+					{'text': 'Qabul jarayonida barcha qiyinchiliklar hal qilindi.', 'name': 'Gulnoza Karimova', 'role': 'Fizika, METU'},
+					{'text': 'StudyFans orqali o\'qishga kirishim juda oson bo\'ldi.', 'name': 'Shahzod Toshmatov', 'role': 'Muhandislik, Sabanci'},
+				] %}
+				{% for story in column1 %}
+				<div class="story-card">
+					<p class="story-text">"{{ story.text }}"</p>
+					<div class="story-author">
+						<div class="story-avatar">{{ story.name[0] }}</div>
+						<div class="story-info">
+							<p class="story-name">{{ story.name }}</p>
+							<p class="story-role">{{ story.role }}</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			{% endfor %}
-			<!-- Duplicate for seamless loop -->
-			{% for comment in comments_row1 %}
-			<div class="comment-card">
-				<p class="comment-text">
-					{% if lang == 'uz' %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% elif lang == 'ru' %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% elif lang == 'tr' %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% else %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% endif %}
-				</p>
-				<div class="comment-author">
-					<div class="comment-avatar"></div>
-					<div class="comment-info">
-						<p class="comment-name">{{ comment.name }}</p>
-						<p class="comment-role">{{ comment.role }}</p>
+				{% endfor %}
+				<!-- Seamless loop uchun takrorlash -->
+				{% for story in column1 %}
+				<div class="story-card">
+					<p class="story-text">"{{ story.text }}"</p>
+					<div class="story-author">
+						<div class="story-avatar">{{ story.name[0] }}</div>
+						<div class="story-info">
+							<p class="story-name">{{ story.name }}</p>
+							<p class="story-role">{{ story.role }}</p>
+						</div>
 					</div>
 				</div>
+				{% endfor %}
 			</div>
-			{% endfor %}
 		</div>
 		
-		<!-- 2-qator - O'rtada, static -->
-		<div class="comments-row comments-row-2">
-			{% set comments_row2 = [
-				{'text': 'uz:"Ajoyib xizmat! Barcha savollarga batafsil javob berishdi."', 'name': 'Farhod Rustamov', 'role': 'Huquq, Bahcesehir'},
-				{'text': 'uz:"Qabul jarayoni juda tez va qulay bo\'ldi. Katta rahmat!"', 'name': 'Nilufar Usmonova', 'role': 'Psixologiya, Yeditepe'},
-				{'text': 'uz:"StudyFans bilan ishlash juda qulay. Tavsiya qilaman!"', 'name': 'Shohruh Bekmurodov', 'role': 'Arxitektura, ITU'},
-			] %}
-			{% for comment in comments_row2 %}
-			<div class="comment-card">
-				<p class="comment-text">
-					{% if lang == 'uz' %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% elif lang == 'ru' %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% elif lang == 'tr' %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% else %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% endif %}
-				</p>
-				<div class="comment-author">
-					<div class="comment-avatar"></div>
-					<div class="comment-info">
-						<p class="comment-name">{{ comment.name }}</p>
-						<p class="comment-role">{{ comment.role }}</p>
+		<!-- Ikkinchi ustun - pastdan tepaga -->
+		<div class="stories-column column-up">
+			<div class="column-inner">
+				{% set column2 = [
+					{'text': 'Qabul jarayoni juda tez va qulay bo\'ldi. Katta rahmat!', 'name': 'Nilufar Usmonova', 'role': 'Psixologiya, Yeditepe'},
+					{'text': 'StudyFans bilan ishlash juda qulay. Tavsiya qilaman!', 'name': 'Shohruh Bekmurodov', 'role': 'Arxitektura, ITU'},
+					{'text': 'Yashash ruxsatnomasi olishda katta yordam ko\'rsatdilar.', 'name': 'Otabek Ismoilov', 'role': 'Iqtisod, Bilgi'},
+					{'text': '24/7 qo\'llab-quvvatlash juda qulay. Rahmat!', 'name': 'Madina Yusupova', 'role': 'Tilshunoslik, Bogazici'},
+					{'text': 'Professional jamoaga ega. Hammasi o\'z vaqtida.', 'name': 'Sardor Toshmatov', 'role': 'Jurnalistika, Galatasaray'},
+					{'text': 'Ajoyib xizmat va tezkor yordam. Tashakkur!', 'name': 'Rustam Aliyev', 'role': 'Kimyo, Koc'},
+					{'text': 'Hujjatlar tayyorlashda professional yondashuv.', 'name': 'Dilshod Karimov', 'role': 'Tibbiyot, Acibadem'},
+					{'text': 'Katta rahmat! Barcha savollarga tez javob berishdi.', 'name': 'Zarina Usmonova', 'role': 'Dizayn, Bilgi'},
+				] %}
+				{% for story in column2 %}
+				<div class="story-card">
+					<p class="story-text">"{{ story.text }}"</p>
+					<div class="story-author">
+						<div class="story-avatar">{{ story.name[0] }}</div>
+						<div class="story-info">
+							<p class="story-name">{{ story.name }}</p>
+							<p class="story-role">{{ story.role }}</p>
+						</div>
 					</div>
 				</div>
+				{% endfor %}
+				<!-- Seamless loop uchun takrorlash -->
+				{% for story in column2 %}
+				<div class="story-card">
+					<p class="story-text">"{{ story.text }}"</p>
+					<div class="story-author">
+						<div class="story-avatar">{{ story.name[0] }}</div>
+						<div class="story-info">
+							<p class="story-name">{{ story.name }}</p>
+							<p class="story-role">{{ story.role }}</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
 			</div>
-			{% endfor %}
 		</div>
 		
-		<!-- 3-qator - Pastga harakatlanadi (reverse) -->
-		<div class="comments-row comments-row-3">
-			{% set comments_row3 = [
-				{'text': 'uz:"Yashash ruxsatnomasi olishda katta yordam ko\'rsatdilar."', 'name': 'Otabek Ismoilov', 'role': 'Iqtisod, Bilgi'},
-				{'text': 'uz:"24/7 qo\'llab-quvvatlash juda qulay. Rahmat!"', 'name': 'Madina Yusupova', 'role': 'Tilshunoslik, Bogazici'},
-				{'text': 'uz:"Professional jamoaga ega. Hammasi o\'z vaqtida."', 'name': 'Sardor Toshmatov', 'role': 'Jurnalistika, Galatasaray'},
-				{'text': 'uz:"Qabul jarayonida barcha qiyinchiliklar hal qilindi."', 'name': 'Gulnoza Karimova', 'role': 'Fizika, METU'},
-				{'text': 'uz:"Ajoyib xizmat va tezkor yordam. Tashakkur!"', 'name': 'Rustam Aliyev', 'role': 'Kimyo, Koc'},
-			] %}
-			{% for comment in comments_row3 %}
-			<div class="comment-card">
-				<p class="comment-text">
-					{% if lang == 'uz' %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% elif lang == 'ru' %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% elif lang == 'tr' %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% else %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% endif %}
-				</p>
-				<div class="comment-author">
-					<div class="comment-avatar"></div>
-					<div class="comment-info">
-						<p class="comment-name">{{ comment.name }}</p>
-						<p class="comment-role">{{ comment.role }}</p>
+		<!-- Uchinchi ustun - tepadan pastga -->
+		<div class="stories-column column-down-2">
+			<div class="column-inner">
+				{% set column3 = [
+					{'text': 'Universitetga qabul qilinishim juda tez bo\'ldi. Rahmat StudyFans!', 'name': 'Kamola Rahimova', 'role': 'Marketing, Altinbas'},
+					{'text': 'Vizani olishda katta yordam berishdi. Ajoyib jamoa!', 'name': 'Akmal Tursunov', 'role': 'Kompyuter, Beykent'},
+					{'text': 'Stipendiya olishda yordam berishdi. Juda minnatdorman!', 'name': 'Sevinch Alimova', 'role': 'Moliya, Medipol'},
+					{'text': 'Turkiyada o\'qish orzuim amalga oshdi. Rahmat!', 'name': 'Jasur Kamolov', 'role': 'Sport, Marmara'},
+					{'text': 'Juda tez va professional xizmat. Tavsiya qilaman!', 'name': 'Nodira Yuldasheva', 'role': 'San\'at, Kultur'},
+					{'text': 'Barcha jarayonlarni o\'zlari hal qilishdi. Zo\'r!', 'name': 'Bekzod Normatov', 'role': 'Aviatsiya, Eskisehir'},
+					{'text': 'Eng yaxshi tanlov qildim. StudyFans - ishonchli!', 'name': 'Mohira Saidova', 'role': 'Pedagogika, Ankara'},
+					{'text': 'Hujjatlarim to\'g\'ri tayyorlandi. Muammosiz o\'tdim!', 'name': 'Ulugbek Rashidov', 'role': 'Energetika, Gazi'},
+				] %}
+				{% for story in column3 %}
+				<div class="story-card">
+					<p class="story-text">"{{ story.text }}"</p>
+					<div class="story-author">
+						<div class="story-avatar">{{ story.name[0] }}</div>
+						<div class="story-info">
+							<p class="story-name">{{ story.name }}</p>
+							<p class="story-role">{{ story.role }}</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			{% endfor %}
-			<!-- Duplicate for seamless loop -->
-			{% for comment in comments_row3 %}
-			<div class="comment-card">
-				<p class="comment-text">
-					{% if lang == 'uz' %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% elif lang == 'ru' %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% elif lang == 'tr' %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% else %}{{ comment.text.split(':')[1].replace('"', '').replace('"', '') }}{% endif %}
-				</p>
-				<div class="comment-author">
-					<div class="comment-avatar"></div>
-					<div class="comment-info">
-						<p class="comment-name">{{ comment.name }}</p>
-						<p class="comment-role">{{ comment.role }}</p>
+				{% endfor %}
+				<!-- Seamless loop uchun takrorlash -->
+				{% for story in column3 %}
+				<div class="story-card">
+					<p class="story-text">"{{ story.text }}"</p>
+					<div class="story-author">
+						<div class="story-avatar">{{ story.name[0] }}</div>
+						<div class="story-info">
+							<p class="story-name">{{ story.name }}</p>
+							<p class="story-role">{{ story.role }}</p>
+						</div>
 					</div>
 				</div>
+				{% endfor %}
 			</div>
-			{% endfor %}
 		</div>
 	</div>
 </div>
-
 {% endblock %}

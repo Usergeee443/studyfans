@@ -1,116 +1,146 @@
-<!DOCTYPE html>
-<html lang="{{ lang }}">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{% if lang == 'uz' %}{{ university.name_uz }} - Study Fans{% elif lang == 'ru' %}{{ university.name_ru }} - Study Fans{% elif lang == 'tr' %}{{ university.name_tr }} - Study Fans{% else %}{{ university.name_en }} - Study Fans{% endif %}</title>
-	<script src="https://cdn.tailwindcss.com"></script>
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-		body {
-			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-		}
-	</style>
-</head>
-<body class="bg-white">
+{% extends "base.html" %}
 
+{% block title %}
+	{% if lang == 'uz' %}{{ university.name_uz }} - Study Fans{% elif lang == 'ru' %}{{ university.name_ru }} - Study Fans{% elif lang == 'tr' %}{{ university.name_tr }} - Study Fans{% else %}{{ university.name_en }} - Study Fans{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="page-container" style="margin-top: 0; padding-top: 0;">
 <!-- Minimalistic Header -->
 <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
 	<div class="w-full px-6">
 		<div class="flex items-center gap-4 py-3">
-			<a href="/universities?lang={{ lang }}" class="flex items-center justify-center w-8 h-8 bg-gray-100 hover:bg-gray-200  rounded-full transition-colors">
+			<a href="{{ url_for('universities', lang=lang) }}" class="flex items-center justify-center w-8 h-8 hover:bg-gray-100 rounded-full transition-colors">
 				<img src="/static/arrow-left.svg" alt="Back" class="w-5 h-5">
 			</a>
-			<h1 class="text-base font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+			<h1 class="text-base font-medium text-gray-900 line-clamp-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
 				{{ university.name_uz if lang == 'uz' else university.name_ru if lang == 'ru' else university.name_tr if lang == 'tr' else university.name_en }}
 			</h1>
 		</div>
 	</div>
 </header>
 
-<!-- Header - Minimalistic -->
-<section class="pt-12 pb-20 bg-white">
-	<div class="max-w-6xl mx-auto px-6">
-		<div class="text-center mb-12">
+<!-- Hero Section -->
+<section class="pt-12 pb-8 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<div class="flex flex-col md:flex-row items-start md:items-center gap-6 mb-8">
 			{% if university.logo_url %}
-			<img src="{{ url_for('static', filename=university.logo_url) }}" alt="{{ university.name_uz }}" class="w-32 h-32 mx-auto mb-8 rounded-lg object-cover" onerror="this.style.display='none';">
+			<div class="w-24 h-24 md:w-32 md:h-32 bg-gray-50 rounded-3xl flex items-center justify-center p-4 flex-shrink-0">
+				<img src="{{ url_for('static', filename=university.logo_url) }}" alt="{{ university.name_uz }}" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-blue-50 to-yellow-50 rounded-3xl flex items-center justify-center\'><svg class=\'w-12 h-12 text-gray-300\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253\'/></svg></div>';">
+			</div>
 			{% endif %}
-			<h2 class="text-4xl md:text-6xl font-light text-gray-900 mb-4">
-				{{ university.name_uz if lang == 'uz' else university.name_ru if lang == 'ru' else university.name_tr if lang == 'tr' else university.name_en }}
-			</h2>
-			<p class="text-xl text-gray-600 font-light mb-6">
-				{{ university.city_uz if lang == 'uz' else university.city_ru if lang == 'ru' else university.city_tr if lang == 'tr' else university.city_en }}, {{ university.country_uz if lang == 'uz' else university.country_ru if lang == 'ru' else university.country_tr if lang == 'tr' else university.country_en }}
-			</p>
-			{% if university.ranking %}
-			<p class="text-gray-500 font-light mb-8">
-				{% if lang == 'uz' %}Reyting: #{{ university.ranking }}{% elif lang == 'ru' %}Рейтинг: #{{ university.ranking }}{% elif lang == 'tr' %}Sıralama: #{{ university.ranking }}{% else %}Ranking: #{{ university.ranking }}{% endif %}
-			</p>
-			{% endif %}
-			<a href="tel:+905011571111" class="inline-block px-8 py-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors font-light">
-				{% if lang == 'uz' %}Maslahat olish{% elif lang == 'ru' %}Получить консультацию{% elif lang == 'tr' %}Danışmanlık al{% else %}Get Consultation{% endif %}
-			</a>
+			<div class="flex-1">
+				<h1 class="text-3xl md:text-4xl font-medium text-gray-900 mb-2 leading-tight" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+					{{ university.name_uz if lang == 'uz' else university.name_ru if lang == 'ru' else university.name_tr if lang == 'tr' else university.name_en }}
+				</h1>
+				<div class="flex flex-wrap items-center gap-3 mb-4">
+					<p class="text-sm text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{{ university.city_uz if lang == 'uz' else university.city_ru if lang == 'ru' else university.city_tr if lang == 'tr' else university.city_en }}, {{ university.country_uz if lang == 'uz' else university.country_ru if lang == 'ru' else university.country_tr if lang == 'tr' else university.country_en }}
+					</p>
+					{% if university.ranking %}
+					<span class="text-xs px-3 py-1 bg-blue-50 text-blue-700 rounded-full font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						#{{ university.ranking }}
+					</span>
+					{% endif %}
+					{% if university.university_type %}
+					<span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{{ university.university_type }}
+					</span>
+					{% endif %}
+				</div>
+				<div class="flex flex-wrap items-center gap-4">
+					<a href="tel:+905011571111" class="px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-normal hover:bg-gray-800 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Maslahat olish{% elif lang == 'ru' %}Получить консультацию{% elif lang == 'tr' %}Danışmanlık al{% else %}Get Consultation{% endif %}
+					</a>
+					{% if university.website %}
+					<a href="{{ university.website }}" target="_blank" class="px-6 py-2.5 bg-gray-100 text-gray-900 rounded-full text-sm font-normal hover:bg-gray-200 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Rasmiy sayt{% elif lang == 'ru' %}Официальный сайт{% elif lang == 'tr' %}Resmi site{% else %}Official Website{% endif %}
+					</a>
+					{% endif %}
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
 
-<!-- Short General Description - Minimalistic -->
-<section class="py-20 bg-gray-50">
+<!-- Statistics -->
+{% if university.founded_year or university.student_count %}
+<section class="py-6 bg-gray-50 border-y border-gray-100">
+	<div class="max-w-7xl mx-auto px-6">
+		<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+			{% if university.founded_year %}
+			<div class="text-center">
+				<p class="text-2xl md:text-3xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{{ university.founded_year }}
+				</p>
+				<p class="text-xs text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Asos solingan{% elif lang == 'ru' %}Основан{% elif lang == 'tr' %}Kuruluş{% else %}Founded{% endif %}
+				</p>
+			</div>
+			{% endif %}
+			{% if university.student_count %}
+			<div class="text-center">
+				<p class="text-2xl md:text-3xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{{ university.student_count }}
+				</p>
+				<p class="text-xs text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Talabalar{% elif lang == 'ru' %}Студенты{% elif lang == 'tr' %}Öğrenci{% else %}Students{% endif %}
+				</p>
+			</div>
+			{% endif %}
+			{% if university.scholarship_available %}
+			<div class="text-center">
+				<p class="text-2xl md:text-3xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					✓
+				</p>
+				<p class="text-xs text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Grant mavjud{% elif lang == 'ru' %}Грант доступен{% elif lang == 'tr' %}Burs mevcut{% else %}Scholarship Available{% endif %}
+				</p>
+			</div>
+			{% endif %}
+			{% if university.accommodation_available %}
+			<div class="text-center">
+				<p class="text-2xl md:text-3xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					✓
+				</p>
+				<p class="text-xs text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Yotoqxona{% elif lang == 'ru' %}Общежитие{% elif lang == 'tr' %}Yurt{% else %}Accommodation{% endif %}
+				</p>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</section>
+{% endif %}
+
+<!-- Description -->
+<section class="py-12 bg-white">
 	<div class="max-w-4xl mx-auto px-6">
-		<h2 class="text-3xl font-light text-gray-900 mb-8 text-center">
+		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
 			{% if lang == 'uz' %}Umumiy ma'lumot{% elif lang == 'ru' %}Общая информация{% elif lang == 'tr' %}Genel bilgi{% else %}General Information{% endif %}
 		</h2>
-		<div class="bg-white p-12 rounded-2xl">
-			<p class="text-lg text-gray-600 font-light leading-relaxed mb-8">
+		<div class="prose prose-lg max-w-none">
+			<p class="text-base text-gray-700 font-normal leading-relaxed whitespace-pre-line" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 				{{ university.description_uz if lang == 'uz' else university.description_ru if lang == 'ru' else university.description_tr if lang == 'tr' else university.description_en }}
 			</p>
-			<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-				{% if university.founded_year %}
-				<div>
-					<p class="text-3xl font-light text-gray-900 mb-2">{{ university.founded_year }}</p>
-					<p class="text-sm text-gray-600 font-light">
-						{% if lang == 'uz' %}Asos solingan{% elif lang == 'ru' %}Основан{% elif lang == 'tr' %}Kuruluş{% else %}Founded{% endif %}
-					</p>
-				</div>
-				{% endif %}
-				{% if university.student_count %}
-				<div>
-					<p class="text-3xl font-light text-gray-900 mb-2">{{ university.student_count }}</p>
-					<p class="text-sm text-gray-600 font-light">
-						{% if lang == 'uz' %}Talabalar{% elif lang == 'ru' %}Студенты{% elif lang == 'tr' %}Öğrenci{% else %}Students{% endif %}
-					</p>
-				</div>
-				{% endif %}
-				{% if university.university_type %}
-				<div>
-					<p class="text-lg font-light text-gray-900 mb-2">{{ university.university_type }}</p>
-					<p class="text-sm text-gray-600 font-light">
-						{% if lang == 'uz' %}Turi{% elif lang == 'ru' %}Тип{% elif lang == 'tr' %}Tür{% else %}Type{% endif %}
-					</p>
-				</div>
-				{% endif %}
-			</div>
 		</div>
 	</div>
 </section>
 
-<!-- Tuition Fees - Minimalistic -->
+<!-- Tuition Fees -->
 {% if university.tuition_fee_min or university.tuition_fee_max %}
-<section class="py-20 bg-white">
-	<div class="max-w-6xl mx-auto px-6">
-		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-16 text-center">
+<section class="py-12 bg-gray-50">
+	<div class="max-w-7xl mx-auto px-6">
+		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
 			{% if lang == 'uz' %}O'qish to'lovi{% elif lang == 'ru' %}Стоимость обучения{% elif lang == 'tr' %}Öğrenim ücreti{% else %}Tuition Fees{% endif %}
 		</h2>
-		
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-			<div class="bg-gray-50 p-8 rounded-2xl">
-				<h3 class="text-xl font-light text-gray-900 mb-4">
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}Bakalavr{% elif lang == 'ru' %}Бакалавр{% elif lang == 'tr' %}Lisans{% else %}Bachelor{% endif %}
 				</h3>
-				<p class="text-3xl font-light text-gray-900 mb-2">
+				<p class="text-2xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if university.tuition_fee_min and university.tuition_fee_max %}
 						{{ university.tuition_fee_min }}$ - {{ university.tuition_fee_max }}$
 					{% elif university.tuition_fee_min %}
@@ -119,15 +149,15 @@
 						{{ university.tuition_fee_max }}$
 					{% endif %}
 				</p>
-				<p class="text-sm text-gray-600 font-light">
+				<p class="text-sm text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}yiliga{% elif lang == 'ru' %}в год{% elif lang == 'tr' %}yıllık{% else %}per year{% endif %}
 				</p>
 			</div>
-			<div class="bg-gray-50 p-8 rounded-2xl">
-				<h3 class="text-xl font-light text-gray-900 mb-4">
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}Magistr{% elif lang == 'ru' %}Магистр{% elif lang == 'tr' %}Yüksek Lisans{% else %}Master{% endif %}
 				</h3>
-				<p class="text-3xl font-light text-gray-900 mb-2">
+				<p class="text-2xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if university.tuition_fee_min and university.tuition_fee_max %}
 						{{ university.tuition_fee_min }}$ - {{ university.tuition_fee_max }}$
 					{% elif university.tuition_fee_min %}
@@ -136,15 +166,15 @@
 						{{ university.tuition_fee_max }}$
 					{% endif %}
 				</p>
-				<p class="text-sm text-gray-600 font-light">
+				<p class="text-sm text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}yiliga{% elif lang == 'ru' %}в год{% elif lang == 'tr' %}yıllık{% else %}per year{% endif %}
 				</p>
 			</div>
-			<div class="bg-gray-50 p-8 rounded-2xl">
-				<h3 class="text-xl font-light text-gray-900 mb-4">
-					{% if lang == 'uz' %}Ingliz tili dasturi{% elif lang == 'ru' %}Программа на английском{% elif lang == 'tr' %}İngilizce program{% else %}English Program{% endif %}
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Doktorantura{% elif lang == 'ru' %}Докторантура{% elif lang == 'tr' %}Doktora{% else %}PhD{% endif %}
 				</h3>
-				<p class="text-3xl font-light text-gray-900 mb-2">
+				<p class="text-2xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if university.tuition_fee_min and university.tuition_fee_max %}
 						{{ university.tuition_fee_min }}$ - {{ university.tuition_fee_max }}$
 					{% elif university.tuition_fee_min %}
@@ -153,7 +183,7 @@
 						{{ university.tuition_fee_max }}$
 					{% endif %}
 				</p>
-				<p class="text-sm text-gray-600 font-light">
+				<p class="text-sm text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}yiliga{% elif lang == 'ru' %}в год{% elif lang == 'tr' %}yıllık{% else %}per year{% endif %}
 				</p>
 			</div>
@@ -162,102 +192,123 @@
 </section>
 {% endif %}
 
-<!-- Programs / Majors List - Minimalistic -->
+<!-- Programs / Majors -->
 {% if courses %}
-<section class="py-20 bg-gray-50">
-	<div class="max-w-6xl mx-auto px-6">
-		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-16 text-center">
+<section class="py-12 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
 			{% if lang == 'uz' %}Yo'nalishlar va dasturlar{% elif lang == 'ru' %}Направления и программы{% elif lang == 'tr' %}Bölümler ve programlar{% else %}Majors & Programs{% endif %}
 		</h2>
-		
-		<div class="bg-white rounded-2xl overflow-hidden">
-			<table class="w-full">
-				<thead class="bg-gray-50 border-b border-gray-200">
-					<tr>
-						<th class="text-left py-4 px-6 font-light text-gray-900">
-							{% if lang == 'uz' %}Yo'nalish{% elif lang == 'ru' %}Направление{% elif lang == 'tr' %}Bölüm{% else %}Major{% endif %}
-						</th>
-						<th class="text-left py-4 px-6 font-light text-gray-900">
-							{% if lang == 'uz' %}Til{% elif lang == 'ru' %}Язык{% elif lang == 'tr' %}Dil{% else %}Language{% endif %}
-						</th>
-						<th class="text-left py-4 px-6 font-light text-gray-900">
-							{% if lang == 'uz' %}Yillik narx{% elif lang == 'ru' %}Годовая цена{% elif lang == 'tr' %}Yıllık fiyat{% else %}Annual Price{% endif %}
-						</th>
-						<th class="text-left py-4 px-6 font-light text-gray-900">
-							{% if lang == 'uz' %}Chegirma{% elif lang == 'ru' %}Скидка{% elif lang == 'tr' %}İndirim{% else %}Discount{% endif %}
-						</th>
-						<th class="text-left py-4 px-6 font-light text-gray-900">
-							{% if lang == 'uz' %}Boshlanish sanasi{% elif lang == 'ru' %}Дата начала{% elif lang == 'tr' %}Başlangıç tarihi{% else %}Start Date{% endif %}
-						</th>
-					</tr>
-				</thead>
-				<tbody class="divide-y divide-gray-200">
-					{% for course in courses %}
-					<tr>
-						<td class="py-4 px-6 font-light text-gray-900">
-							{% if lang == 'uz' %}{{ course.title_uz }}{% elif lang == 'ru' %}{{ course.title_ru }}{% elif lang == 'tr' %}{{ course.title_en }}{% else %}{{ course.title_en }}{% endif %}
-						</td>
-						<td class="py-4 px-6 font-light text-gray-600">{{ course.language }}</td>
-						<td class="py-4 px-6 font-light text-gray-900">{{ course.tuition_fee }}</td>
-						<td class="py-4 px-6 font-light text-gray-600">
-							{% if university.scholarship_available %}
-								{% if lang == 'uz' %}Mavjud{% elif lang == 'ru' %}Доступно{% elif lang == 'tr' %}Mevcut{% else %}Available{% endif %}
-							{% else %}
-								-
-							{% endif %}
-						</td>
-						<td class="py-4 px-6 font-light text-gray-600">
-							{% if university.application_deadline %}{{ university.application_deadline }}{% else %}-{% endif %}
-						</td>
-					</tr>
-					{% endfor %}
-				</tbody>
-			</table>
+		<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden">
+			<div class="overflow-x-auto">
+				<table class="w-full">
+					<thead class="bg-gray-50 border-b border-gray-200">
+						<tr>
+							<th class="text-left py-4 px-6 text-sm font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+								{% if lang == 'uz' %}Yo'nalish{% elif lang == 'ru' %}Направление{% elif lang == 'tr' %}Bölüm{% else %}Major{% endif %}
+							</th>
+							<th class="text-left py-4 px-6 text-sm font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+								{% if lang == 'uz' %}Til{% elif lang == 'ru' %}Язык{% elif lang == 'tr' %}Dil{% else %}Language{% endif %}
+							</th>
+							<th class="text-left py-4 px-6 text-sm font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+								{% if lang == 'uz' %}Narx{% elif lang == 'ru' %}Цена{% elif lang == 'tr' %}Fiyat{% else %}Price{% endif %}
+							</th>
+						</tr>
+					</thead>
+					<tbody class="divide-y divide-gray-100">
+						{% for course in courses %}
+						<tr class="hover:bg-gray-50 transition-colors">
+							<td class="py-4 px-6 text-sm font-normal text-gray-900" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+								{% if lang == 'uz' %}{{ course.title_uz }}{% elif lang == 'ru' %}{{ course.title_ru }}{% elif lang == 'tr' %}{{ course.title_tr }}{% else %}{{ course.title_en }}{% endif %}
+							</td>
+							<td class="py-4 px-6 text-sm font-normal text-gray-600" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+								{{ course.language }}
+							</td>
+							<td class="py-4 px-6 text-sm font-normal text-gray-900" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+								{{ course.tuition_fee }}
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </section>
 {% endif %}
 
-<!-- Admission Requirements - Minimalistic -->
-<section class="py-20 bg-white">
+<!-- Admission Requirements -->
+<section class="py-12 bg-gray-50">
 	<div class="max-w-4xl mx-auto px-6">
-		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-16 text-center">
+		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
 			{% if lang == 'uz' %}Qabul talablari{% elif lang == 'ru' %}Требования к поступлению{% elif lang == 'tr' %}Kabul gereksinimleri{% else %}Admission Requirements{% endif %}
 		</h2>
-		
-		<div class="bg-gray-50 p-12 rounded-2xl space-y-8">
+		<div class="bg-white border border-gray-200 rounded-3xl p-8 space-y-6">
 			<div>
-				<h3 class="text-xl font-light text-gray-900 mb-4">
+				<h3 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}Kerakli hujjatlar{% elif lang == 'ru' %}Необходимые документы{% elif lang == 'tr' %}Gerekli belgeler{% else %}Required Documents{% endif %}
 				</h3>
-				<ul class="space-y-3 text-gray-600 font-light">
-					<li class="flex items-center">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mr-3 text-gray-900">
+				<ul class="space-y-3">
+					<li class="flex items-start gap-3">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400 mt-0.5 flex-shrink-0">
 							<polyline points="20 6 9 17 4 12"/>
 						</svg>
-						{% if lang == 'uz' %}Passport{% elif lang == 'ru' %}Паспорт{% elif lang == 'tr' %}Pasaport{% else %}Passport{% endif %}
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Passport nusxasi{% elif lang == 'ru' %}Копия паспорта{% elif lang == 'tr' %}Pasaport kopyası{% else %}Passport Copy{% endif %}
+						</span>
 					</li>
-					<li class="flex items-center">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mr-3 text-gray-900">
+					<li class="flex items-start gap-3">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400 mt-0.5 flex-shrink-0">
 							<polyline points="20 6 9 17 4 12"/>
 						</svg>
-						{% if lang == 'uz' %}Diplom / Attestat{% elif lang == 'ru' %}Диплом / Аттестат{% elif lang == 'tr' %}Diploma / Lise diploması{% else %}Diploma / Certificate{% endif %}
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Diplom yoki attestat nusxasi{% elif lang == 'ru' %}Копия диплома или аттестата{% elif lang == 'tr' %}Diploma veya lise diploması kopyası{% else %}Diploma or Certificate Copy{% endif %}
+						</span>
 					</li>
-					<li class="flex items-center">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mr-3 text-gray-900">
+					<li class="flex items-start gap-3">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400 mt-0.5 flex-shrink-0">
 							<polyline points="20 6 9 17 4 12"/>
 						</svg>
-						{% if lang == 'uz' %}IELTS / Til sertifikati{% elif lang == 'ru' %}IELTS / Языковой сертификат{% elif lang == 'tr' %}IELTS / Dil sertifikası{% else %}IELTS / Language Certificate{% endif %}
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Transkript{% elif lang == 'ru' %}Транскрипт{% elif lang == 'tr' %}Transkript{% else %}Transcript{% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-3">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}IELTS yoki boshqa til sertifikati{% elif lang == 'ru' %}IELTS или другой языковой сертификат{% elif lang == 'tr' %}IELTS veya diğer dil sertifikası{% else %}IELTS or other language certificate{% endif %}
+						</span>
+					</li>
+					<li class="flex items-start gap-3">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400 mt-0.5 flex-shrink-0">
+							<polyline points="20 6 9 17 4 12"/>
+						</svg>
+						<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Fotosuratlar{% elif lang == 'ru' %}Фотографии{% elif lang == 'tr' %}Fotoğraflar{% else %}Photos{% endif %}
+						</span>
 					</li>
 				</ul>
 			</div>
 			
+			{% if university.language_requirements %}
+			<div>
+				<h3 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Til talablari{% elif lang == 'ru' %}Языковые требования{% elif lang == 'tr' %}Dil gereksinimleri{% else %}Language Requirements{% endif %}
+				</h3>
+				<p class="text-sm text-gray-700 font-normal leading-relaxed whitespace-pre-line" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{{ university.language_requirements }}
+				</p>
+			</div>
+			{% endif %}
+			
 			{% if university.admission_requirements %}
 			<div>
-				<h3 class="text-xl font-light text-gray-900 mb-4">
+				<h3 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}Qabul jarayoni{% elif lang == 'ru' %}Процесс поступления{% elif lang == 'tr' %}Kabul süreci{% else %}Admission Process{% endif %}
 				</h3>
-				<p class="text-gray-600 font-light leading-relaxed">
+				<p class="text-sm text-gray-700 font-normal leading-relaxed whitespace-pre-line" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{{ university.admission_requirements }}
 				</p>
 			</div>
@@ -265,10 +316,10 @@
 			
 			{% if university.application_deadline %}
 			<div>
-				<h3 class="text-xl font-light text-gray-900 mb-4">
+				<h3 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}Ariza berish muddati{% elif lang == 'ru' %}Срок подачи заявлений{% elif lang == 'tr' %}Başvuru tarihi{% else %}Application Deadline{% endif %}
 				</h3>
-				<p class="text-gray-600 font-light">
+				<p class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{{ university.application_deadline }}
 				</p>
 			</div>
@@ -277,100 +328,121 @@
 	</div>
 </section>
 
-<!-- University Geography - Minimalistic -->
-<section class="py-20 bg-gray-50">
-	<div class="max-w-6xl mx-auto px-6">
-		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-16 text-center">
-			{% if lang == 'uz' %}Universitet geografiyasi{% elif lang == 'ru' %}География университета{% elif lang == 'tr' %}Üniversite coğrafyası{% else %}University Geography{% endif %}
+<!-- Location & Map -->
+<section class="py-12 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+			{% if lang == 'uz' %}Manzil{% elif lang == 'ru' %}Адрес{% elif lang == 'tr' %}Adres{% else %}Location{% endif %}
 		</h2>
-		
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-			<div class="bg-white p-8 rounded-2xl">
-				<h3 class="text-2xl font-light text-gray-900 mb-4">
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+			<div class="bg-gray-50 border border-gray-200 rounded-3xl p-6">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}Kampus manzili{% elif lang == 'ru' %}Адрес кампуса{% elif lang == 'tr' %}Kampüs adresi{% else %}Campus Location{% endif %}
 				</h3>
-				<p class="text-gray-600 font-light mb-4">
+				<p class="text-sm text-gray-700 font-normal mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{{ university.city_uz if lang == 'uz' else university.city_ru if lang == 'ru' else university.city_tr if lang == 'tr' else university.city_en }}, {{ university.country_uz if lang == 'uz' else university.country_ru if lang == 'ru' else university.country_tr if lang == 'tr' else university.country_en }}
 				</p>
-				<a href="https://maps.google.com/?q={{ university.city_en }},{{ university.country_en }}" target="_blank" class="text-gray-900 font-light hover:underline text-sm inline-flex items-center">
-					{% if lang == 'uz' %}Xaritada ko'rish →{% elif lang == 'ru' %}Посмотреть на карте →{% elif lang == 'tr' %}Haritada görüntüle →{% else %}View on map →{% endif %}
+				<a href="https://maps.google.com/?q={{ university.city_en }},{{ university.country_en }}" target="_blank" class="text-sm text-gray-900 font-normal hover:underline inline-flex items-center gap-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Xaritada ko'rish{% elif lang == 'ru' %}Посмотреть на карте{% elif lang == 'tr' %}Haritada görüntüle{% else %}View on map{% endif %}
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<path d="M5 12h14M12 5l7 7-7 7"/>
+					</svg>
 				</a>
 			</div>
-			<div class="bg-white p-8 rounded-2xl">
-				<h3 class="text-2xl font-light text-gray-900 mb-4">
+			<div class="bg-gray-50 border border-gray-200 rounded-3xl p-6">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}Shahar haqida{% elif lang == 'ru' %}О городе{% elif lang == 'tr' %}Şehir hakkında{% else %}About City{% endif %}
 				</h3>
-				<p class="text-gray-600 font-light">
+				<p class="text-sm text-gray-700 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}{{ university.city_uz }} - bu shaharda o'qish va yashash uchun qulay sharoitlar mavjud.{% elif lang == 'ru' %}{{ university.city_ru }} - в этом городе есть удобные условия для учебы и жизни.{% elif lang == 'tr' %}{{ university.city_tr }} - bu şehirde eğitim ve yaşam için uygun koşullar mevcuttur.{% else %}{{ university.city_en }} - this city has convenient conditions for studying and living.{% endif %}
 				</p>
 			</div>
 		</div>
-		
-		<div class="mt-8 bg-white rounded-2xl overflow-hidden">
+		<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden">
 			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d385395.5590093129!2d28.68253429999999!3d41.0053702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2sIstanbul!5e0!3m2!1sen!2sus!4v1234567890" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 		</div>
 	</div>
 </section>
 
-<!-- Advantages - Minimalistic -->
-<section class="py-20 bg-white">
-	<div class="max-w-6xl mx-auto px-6">
-		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-16 text-center">
+<!-- Advantages -->
+<section class="py-12 bg-gray-50">
+	<div class="max-w-7xl mx-auto px-6">
+		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
 			{% if lang == 'uz' %}Afzalliklar{% elif lang == 'ru' %}Преимущества{% elif lang == 'tr' %}Avantajlar{% else %}Advantages{% endif %}
 		</h2>
-		
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 			{% if university.scholarship_available %}
-			<div class="bg-gray-50 p-8 rounded-2xl">
-				<h3 class="text-xl font-light text-gray-900 mb-4">
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-4">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-600">
+						<path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+					</svg>
+				</div>
+				<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}Grant imkoniyati{% elif lang == 'ru' %}Возможность получения гранта{% elif lang == 'tr' %}Burs imkanı{% else %}Scholarship Available{% endif %}
 				</h3>
-				<p class="text-gray-600 font-light text-sm">
+				<p class="text-sm text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}Talabalar uchun grant va stipendiya dasturlari{% elif lang == 'ru' %}Программы грантов и стипендий для студентов{% elif lang == 'tr' %}Öğrenciler için burs ve stipend programları{% else %}Grant and scholarship programs for students{% endif %}
 				</p>
 			</div>
 			{% endif %}
 			{% if university.accommodation_available %}
-			<div class="bg-gray-50 p-8 rounded-2xl">
-				<h3 class="text-xl font-light text-gray-900 mb-4">
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<div class="w-12 h-12 bg-yellow-50 rounded-2xl flex items-center justify-center mb-4">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-yellow-600">
+						<path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"/>
+						<path d="M9 22V12H15V22"/>
+					</svg>
+				</div>
+				<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}Yotoqxona{% elif lang == 'ru' %}Общежитие{% elif lang == 'tr' %}Yurt{% else %}Accommodation{% endif %}
 				</h3>
-				<p class="text-gray-600 font-light text-sm">
+				<p class="text-sm text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}Talabalar uchun qulay yashash sharoitlari{% elif lang == 'ru' %}Удобные условия проживания для студентов{% elif lang == 'tr' %}Öğrenciler için rahat konaklama koşulları{% else %}Comfortable living conditions for students{% endif %}
 				</p>
 			</div>
 			{% endif %}
-			<div class="bg-gray-50 p-8 rounded-2xl">
-				<h3 class="text-xl font-light text-gray-900 mb-4">
-					{% if lang == 'uz' %}Nega tavsiya qilamiz?{% elif lang == 'ru' %}Почему мы рекомендуем?{% elif lang == 'tr' %}Neden öneriyoruz?{% else %}Why we recommend?{% endif %}
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
+				<div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-4">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-600">
+						<path d="M12 2L2 7L12 12L22 7L12 2Z"/>
+						<path d="M2 17L12 22L22 17"/>
+						<path d="M2 12L12 17L22 12"/>
+					</svg>
+				</div>
+				<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Yuqori sifat{% elif lang == 'ru' %}Высокое качество{% elif lang == 'tr' %}Yüksek kalite{% else %}High Quality{% endif %}
 				</h3>
-				<p class="text-gray-600 font-light text-sm">
-					{% if lang == 'uz' %}Yuqori sifatli ta'lim, zamonaviy infratuzilma va xalqaro tan olinish{% elif lang == 'ru' %}Высококачественное образование, современная инфраструктура и международное признание{% elif lang == 'tr' %}Yüksek kaliteli eğitim, modern altyapı ve uluslararası tanınma{% else %}High-quality education, modern infrastructure and international recognition{% endif %}
+				<p class="text-sm text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Yuqori sifatli ta'lim va xalqaro tan olinish{% elif lang == 'ru' %}Высококачественное образование и международное признание{% elif lang == 'tr' %}Yüksek kaliteli eğitim ve uluslararası tanınma{% else %}High-quality education and international recognition{% endif %}
 				</p>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- CTA - Minimalistic -->
-<section class="py-32 bg-gray-50">
+<!-- CTA Section -->
+<section class="py-16 bg-white">
 	<div class="max-w-4xl mx-auto px-6 text-center">
-		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-8">
-			{% if lang == 'uz' %}Ushbu universitetga qabul bo'yicha mutaxassis bilan bog'laning.{% elif lang == 'ru' %}Свяжитесь со специалистом по поступлению в этот университет.{% elif lang == 'tr' %}Bu üniversiteye kabul konusunda uzmanla iletişime geçin.{% else %}Contact a specialist about admission to this university.{% endif %}
+		<h2 class="text-2xl md:text-3xl font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+			{% if lang == 'uz' %}Ushbu universitetga qabul bo'yicha mutaxassis bilan bog'laning{% elif lang == 'ru' %}Свяжитесь со специалистом по поступлению в этот университет{% elif lang == 'tr' %}Bu üniversiteye kabul konusunda uzmanla iletişime geçin{% else %}Contact a specialist about admission to this university{% endif %}
 		</h2>
+		<p class="text-base text-gray-600 font-normal mb-8" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+			{% if lang == 'uz' %}Biz sizga barcha bosqichlarda yordam ko'rsatamiz{% elif lang == 'ru' %}Мы поможем вам на всех этапах{% elif lang == 'tr' %}Size tüm aşamalarda yardımcı oluyoruz{% else %}We help you at all stages{% endif %}
+		</p>
 		<div class="flex flex-col sm:flex-row gap-4 justify-center">
-			<a href="https://wa.me/905011571111" target="_blank" class="px-8 py-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors font-light">
+			<a href="tel:+905011571111" class="px-6 py-3 bg-gray-900 text-white rounded-full text-sm font-normal hover:bg-gray-800 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Qo'ng'iroq qilish{% elif lang == 'ru' %}Позвонить{% elif lang == 'tr' %}Aramak{% else %}Call{% endif %}
+			</a>
+			<a href="https://wa.me/905011571111" target="_blank" class="px-6 py-3 bg-white text-gray-900 border border-gray-300 rounded-full text-sm font-normal hover:bg-gray-50 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 				WhatsApp
 			</a>
-			<a href="https://t.me/istanbullik_m" target="_blank" class="px-8 py-4 bg-white text-gray-900 border border-gray-300 rounded-full hover:bg-gray-50 transition-colors font-light">
-				Telegram
-			</a>
-			<a href="/contact?lang={{ lang }}" class="px-8 py-4 bg-white text-gray-900 border border-gray-300 rounded-full hover:bg-gray-50 transition-colors font-light">
+			<a href="{{ url_for('contact', lang=lang) }}" class="px-6 py-3 bg-white text-gray-900 border border-gray-300 rounded-full text-sm font-normal hover:bg-gray-50 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 				{% if lang == 'uz' %}Ariza formasi{% elif lang == 'ru' %}Форма заявки{% elif lang == 'tr' %}Başvuru formu{% else %}Application Form{% endif %}
 			</a>
 		</div>
 	</div>
 </section>
+</div>
 
-</body>
-</html>
+{% endblock %}

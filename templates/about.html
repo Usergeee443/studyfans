@@ -4,125 +4,830 @@
 	{% if lang == 'uz' %}Biz haqimizda - Study Fans{% elif lang == 'ru' %}О Нас - Study Fans{% elif lang == 'tr' %}Hakkımızda - Study Fans{% else %}About Us - Study Fans{% endif %}
 {% endblock %}
 
+{% block extra_css %}
+<style>
+	.about-hero {
+		position: relative;
+		height: 70vh;
+		min-height: 500px;
+		overflow: hidden;
+	}
+	
+	.about-hero video,
+	.about-hero img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	
+	.about-hero-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+	}
+	
+	.about-hero-content {
+		position: relative;
+		z-index: 10;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		color: white;
+		padding: 2rem;
+	}
+	
+	.stats-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 2rem;
+	}
+	
+	@media (max-width: 768px) {
+		.stats-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	
+	.stat-card {
+		text-align: center;
+		padding: 2rem;
+		background: white;
+		border-radius: 32px;
+		transition: transform 0.3s ease;
+		border: 1px solid rgba(59, 130, 246, 0.2);
+	}
+	
+	.stat-card:hover {
+		border-color:rgba(59, 131, 246, 0.32);
+	}
+	
+	.stat-number {
+		font-size: 3rem;
+		font-weight: 700;
+		color: #111;
+		line-height: 1;
+		margin-bottom: 0.5rem;
+	}
+	
+	.timeline {
+		position: relative;
+		padding-left: 2rem;
+	}
+	
+	.timeline::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 2px;
+		background: #e5e7eb;
+	}
+	
+	.timeline-item {
+		position: relative;
+		padding-bottom: 2.5rem;
+	}
+	
+	.timeline-item:last-child {
+		padding-bottom: 0;
+	}
+	
+	.timeline-item::before {
+		content: '';
+		position: absolute;
+		left: -2rem;
+		top: 0.25rem;
+		width: 12px;
+		height: 12px;
+		background: #111;
+		border-radius: 50%;
+		transform: translateX(-5px);
+	}
+	
+	.timeline-year {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #111;
+		margin-bottom: 0.5rem;
+	}
+	
+	.feature-card {
+		background: white;
+		border-radius: 32px;
+		padding: 2rem;
+		height: 100%;
+		transition: all 0.3s ease;
+		border: 1px solid rgba(59, 130, 246, 0.2);
+	}
+	
+	.feature-card:hover {
+		border-color:rgba(59, 131, 246, 0.32);
+	}
+	
+	.feature-icon {
+		width: 56px;
+		height: 56px;
+		background: #f3f4f6;
+		border-radius: 16px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 1.25rem;
+	}
+	
+	.gallery-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+	}
+	
+	@media (max-width: 768px) {
+		.gallery-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	
+	.gallery-item {
+		aspect-ratio: 4/3;
+		border-radius: 16px;
+		overflow: hidden;
+		position: relative;
+	}
+	
+	.gallery-item img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.5s ease;
+	}
+	
+	.gallery-item:hover img {
+		transform: scale(1.05);
+	}
+	
+	.video-card {
+		position: relative;
+		aspect-ratio: 16/9;
+		border-radius: 20px;
+		overflow: hidden;
+		background: #000;
+	}
+	
+	.video-card video {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	
+	.team-card {
+		text-align: center;
+		padding: 2rem;
+		background: white;
+		border-radius: 24px;
+		box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+		transition: all 0.3s ease;
+	}
+	
+	.team-card:hover {
+		transform: translateY(-6px);
+		box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+	}
+	
+	.team-avatar {
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+		overflow: hidden;
+		margin: 0 auto 1.5rem;
+		border: 4px solid #f3f4f6;
+	}
+	
+	.team-avatar img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	
+	.achievement-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem 1.25rem;
+		background: #f8f9fa;
+		border-radius: 100px;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: #333;
+	}
+	
+	.process-step {
+		display: flex;
+		align-items: flex-start;
+		gap: 1.5rem;
+		padding: 1.5rem;
+		background: white;
+		border-radius: 20px;
+		box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+	}
+	
+	.step-number {
+		width: 48px;
+		height: 48px;
+		background: #111;
+		color: white;
+		border-radius: 14px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 600;
+		font-size: 1.125rem;
+		flex-shrink: 0;
+	}
+</style>
+{% endblock %}
+
 {% block content %}
 
-<div class="page-container">
-<!-- Hero Section - Apple Style -->
-<section class="pt-32 pb-20 bg-white">
-	<div class="max-w-6xl mx-auto px-6 text-center">
-		<h1 class="text-5xl md:text-6xl lg:text-7xl font-light text-gray-900 mb-6 tracking-tight leading-none">
-			{% if lang == 'uz' %}Biz haqimizda{% elif lang == 'ru' %}О нас{% elif lang == 'tr' %}Hakkımızda{% else %}About Us{% endif %}
+<!-- Hero Section with Video -->
+<section class="about-hero">
+	<video autoplay muted loop playsinline>
+		<source src="{{ url_for('static', filename='video/heroVideo.mp4') }}" type="video/mp4">
+	</video>
+	<div class="about-hero-overlay"></div>
+	<div class="about-hero-content">
+		<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4" style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">
+			{% if lang == 'uz' %}Study Fans{% elif lang == 'ru' %}Study Fans{% elif lang == 'tr' %}Study Fans{% else %}Study Fans{% endif %}
 		</h1>
-		<p class="text-xl md:text-2xl text-gray-600 font-light max-w-3xl mx-auto leading-relaxed">
-			{% if lang == 'uz' %}12 yillik tajriba, 10,000+ muvaffaqiyatli talaba, 60+ universitet hamkori{% elif lang == 'ru' %}12 лет опыта, 10,000+ успешных студентов, 60+ партнеров-университетов{% elif lang == 'tr' %}12 yıllık deneyim, 10,000+ başarılı öğrenci, 60+ üniversite ortağı{% else %}12 years of experience, 10,000+ successful students, 60+ university partners{% endif %}
+		<p class="text-xl md:text-2xl font-normal opacity-90 max-w-2xl" style="font-family: 'Inter', sans-serif;">
+			{% if lang == 'uz' %}2011 yildan beri minglab talabalar orzularini amalga oshirishga yordam bermoqdamiz{% elif lang == 'ru' %}С 2011 года помогаем тысячам студентов осуществить свои мечты{% elif lang == 'tr' %}2011'den beri binlerce öğrencinin hayallerini gerçekleştirmesine yardımcı oluyoruz{% else %}Helping thousands of students achieve their dreams since 2011{% endif %}
 		</p>
 	</div>
 </section>
 
-<!-- Mission - Apple Style -->
-<section class="py-32 bg-gray-50">
-	<div class="max-w-4xl mx-auto px-6">
-		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-8 text-center tracking-tight">
-			{% if lang == 'uz' %}Bizning vazifamiz{% elif lang == 'ru' %}Наша миссия{% elif lang == 'tr' %}Misyonumuz{% else %}Our Mission{% endif %}
-		</h2>
-		<p class="text-xl text-gray-600 font-light leading-relaxed text-center">
-			{% if lang == 'uz' %}Har bir talaba bizning oilamizning bir qismi. Biz ularning orzularini amalga oshirishga yordam beramiz va har qadamda yonida bo'lamiz.{% elif lang == 'ru' %}Каждый студент — часть нашей семьи. Мы помогаем им осуществить мечты и поддерживаем на каждом шагу.{% elif lang == 'tr' %}Her öğrenci ailemizin bir parçası. Hayallerini gerçekleştirmelerine yardımcı oluyoruz ve her adımda yanlarında oluyoruz.{% else %}Every student is part of our family. We help them realize their dreams and stand by them every step of the way.{% endif %}
-		</p>
+<!-- Statistics Section -->
+<section class="py-16 bg-gray-50">
+	<div class="max-w-6xl mx-auto px-6">
+		<div class="stats-grid">
+			<div class="stat-card">
+				<div class="stat-number">12+</div>
+				<p class="text-gray-600 font-medium">
+					{% if lang == 'uz' %}Yillik tajriba{% elif lang == 'ru' %}Лет опыта{% elif lang == 'tr' %}Yıllık deneyim{% else %}Years Experience{% endif %}
+				</p>
+			</div>
+			<div class="stat-card">
+				<div class="stat-number">10K+</div>
+				<p class="text-gray-600 font-medium">
+					{% if lang == 'uz' %}Muvaffaqiyatli talabalar{% elif lang == 'ru' %}Успешных студентов{% elif lang == 'tr' %}Başarılı öğrenci{% else %}Successful Students{% endif %}
+				</p>
+			</div>
+			<div class="stat-card">
+				<div class="stat-number">60+</div>
+				<p class="text-gray-600 font-medium">
+					{% if lang == 'uz' %}Hamkor universitetlar{% elif lang == 'ru' %}Университетов-партнеров{% elif lang == 'tr' %}Ortak üniversite{% else %}Partner Universities{% endif %}
+				</p>
+			</div>
+			<div class="stat-card">
+				<div class="stat-number">98%</div>
+				<p class="text-gray-600 font-medium">
+					{% if lang == 'uz' %}Mijozlar mamnuniyati{% elif lang == 'ru' %}Удовлетворенность{% elif lang == 'tr' %}Müşteri memnuniyeti{% else %}Client Satisfaction{% endif %}
+				</p>
+			</div>
+		</div>
 	</div>
 </section>
 
-<!-- Story - Apple Style -->
-<section class="py-32 bg-white">
+<!-- Mission & Vision -->
+<section class="py-20 bg-white">
+	<div class="max-w-6xl mx-auto px-6">
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+			<div>
+				<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
+					{% if lang == 'uz' %}Bizning vazifamiz{% elif lang == 'ru' %}Наша миссия{% elif lang == 'tr' %}Misyonumuz{% else %}Our Mission{% endif %}
+				</h2>
+				<p class="text-lg text-gray-700 leading-relaxed mb-6">
+					{% if lang == 'uz' %}Har bir talaba bizning oilamizning bir qismi. Biz ularning orzularini amalga oshirishga yordam beramiz va har qadamda yonida bo'lamiz. Bizning maqsadimiz - har bir talabaga sifatli ta'lim olish imkoniyatini yaratish.{% elif lang == 'ru' %}Каждый студент — часть нашей семьи. Мы помогаем им осуществить мечты и поддерживаем на каждом шагу. Наша цель — создать возможность для каждого студента получить качественное образование.{% elif lang == 'tr' %}Her öğrenci ailemizin bir parçası. Hayallerini gerçekleştirmelerine yardımcı oluyoruz ve her adımda yanlarında oluyoruz. Amacımız, her öğrenciye kaliteli eğitim alma fırsatı yaratmaktır.{% else %}Every student is part of our family. We help them realize their dreams and stand by them every step of the way. Our goal is to create an opportunity for every student to receive quality education.{% endif %}
+				</p>
+				<div class="flex flex-wrap gap-3">
+					<span class="achievement-badge">
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+						{% if lang == 'uz' %}Ishonchli{% elif lang == 'ru' %}Надежно{% elif lang == 'tr' %}Güvenilir{% else %}Trustworthy{% endif %}
+					</span>
+					<span class="achievement-badge">
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+						{% if lang == 'uz' %}Professional{% elif lang == 'ru' %}Профессионально{% elif lang == 'tr' %}Profesyonel{% else %}Professional{% endif %}
+					</span>
+					<span class="achievement-badge">
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+						{% if lang == 'uz' %}Tezkor{% elif lang == 'ru' %}Быстро{% elif lang == 'tr' %}Hızlı{% else %}Fast{% endif %}
+					</span>
+				</div>
+			</div>
+			<div class="video-card">
+				<video autoplay muted loop playsinline>
+					<source src="{{ url_for('static', filename='video/heroVideo.mp4') }}" type="video/mp4">
+				</video>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Our Story Timeline -->
+<section class="py-20 bg-gray-50">
 	<div class="max-w-4xl mx-auto px-6">
-		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-12 text-center tracking-tight">
+		<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
 			{% if lang == 'uz' %}Bizning hikoyamiz{% elif lang == 'ru' %}Наша история{% elif lang == 'tr' %}Hikayemiz{% else %}Our Story{% endif %}
 		</h2>
-		<div class="space-y-8 text-lg text-gray-600 font-light leading-relaxed">
-			<p>
-				{% if lang == 'uz' %}
-					2011 yilda Istanbul shahrida kichik agentlik sifatida boshlangan yo'limiz, bugungi kunda xalqaro ta'lim sohasidagi yetakchi kompaniyalardan biriga aylandi. Har bir yil bizga yangi tajribalar, yangi muvaffaqiyatlar va minglab baxtli talabalar keltirdi.
-				{% elif lang == 'ru' %}
-					Наш путь, начавшийся в 2011 году в Стамбуле как небольшое агентство, сегодня превратился в одну из ведущих компаний в сфере международного образования. Каждый год приносил нам новый опыт, новые успехи и тысячи счастливых студентов.
-				{% elif lang == 'tr' %}
-					2011 yılında İstanbul'da küçük bir ajans olarak başlayan yolculuğumuz, bugün uluslararası eğitim alanında önde gelen şirketlerden biri haline geldi. Her yıl bize yeni deneyimler, yeni başarılar ve binlerce mutlu öğrenci getirdi.
-				{% else %}
-					Our journey, which began in 2011 in Istanbul as a small agency, has today become one of the leading companies in international education. Each year brought us new experiences, new successes, and thousands of happy students.
-				{% endif %}
-			</p>
-		</div>
-	</div>
-</section>
-
-<!-- Statistics - Apple Style -->
-<section class="py-32 bg-gray-50">
-	<div class="max-w-6xl mx-auto px-6">
-		<div class="grid grid-cols-2 md:grid-cols-4 gap-12">
-			<div class="text-center">
-				<div class="text-5xl md:text-6xl font-light text-gray-900 mb-4">12</div>
-				<p class="text-gray-600 font-light">{% if lang == 'uz' %}Yillik tajriba{% elif lang == 'ru' %}Лет опыта{% elif lang == 'tr' %}Yıllık deneyim{% else %}Years experience{% endif %}</p>
-			</div>
-			<div class="text-center">
-				<div class="text-5xl md:text-6xl font-light text-gray-900 mb-4">10K+</div>
-				<p class="text-gray-600 font-light">{% if lang == 'uz' %}Talaba{% elif lang == 'ru' %}Студентов{% elif lang == 'tr' %}Öğrenci{% else %}Students{% endif %}</p>
-			</div>
-			<div class="text-center">
-				<div class="text-5xl md:text-6xl font-light text-gray-900 mb-4">60+</div>
-				<p class="text-gray-600 font-light">{% if lang == 'uz' %}Universitet{% elif lang == 'ru' %}Университетов{% elif lang == 'tr' %}Üniversite{% else %}Universities{% endif %}</p>
-			</div>
-			<div class="text-center">
-				<div class="text-5xl md:text-6xl font-light text-gray-900 mb-4">50+</div>
-				<p class="text-gray-600 font-light">{% if lang == 'uz' %}Hamkor{% elif lang == 'ru' %}Партнеров{% elif lang == 'tr' %}Ortak{% else %}Partners{% endif %}</p>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Team - Apple Style -->
-<section class="py-32 bg-white">
-	<div class="max-w-6xl mx-auto px-6">
-		<h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-16 text-center tracking-tight">
-			{% if lang == 'uz' %}Jamoamiz{% elif lang == 'ru' %}Наша команда{% elif lang == 'tr' %}Ekibimiz{% else %}Our Team{% endif %}
-		</h2>
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-			<div class="text-center">
-				<div class="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-6"></div>
-				<h3 class="text-2xl font-light text-gray-900 mb-2">Dilshod Karimov</h3>
-				<p class="text-gray-600 font-light">{% if lang == 'uz' %}Direktor{% elif lang == 'ru' %}Директор{% elif lang == 'tr' %}Direktör{% else %}Director{% endif %}</p>
-			</div>
-			<div class="text-center">
-				<div class="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-6"></div>
-				<h3 class="text-2xl font-light text-gray-900 mb-2">Rasulov Mustafa</h3>
-				<p class="text-gray-600 font-light">{% if lang == 'uz' %}Senior Konsultat{% elif lang == 'ru' %}Старший консультант{% elif lang == 'tr' %}Kıdemli Danışman{% else %}Senior Consultant{% endif %}</p>
-			</div>
-			<div class="text-center">
-				<div class="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-6"></div>
-				<h3 class="text-2xl font-light text-gray-900 mb-2">Bobur Mirzaev</h3>
-				<p class="text-gray-600 font-light">{% if lang == 'uz' %}Hujjatlar Mutaxassisi{% elif lang == 'ru' %}Специалист по документам{% elif lang == 'tr' %}Belge Uzmanı{% else %}Documents Specialist{% endif %}</p>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- CTA - Apple Style -->
-<section class="py-32 bg-gray-50">
-	<div class="max-w-4xl mx-auto px-6 text-center">
-		<h2 class="text-5xl md:text-6xl font-light text-gray-900 mb-8 tracking-tight">
-			{% if lang == 'uz' %}Biz bilan bog'laning{% elif lang == 'ru' %}Свяжитесь с нами{% elif lang == 'tr' %}Bizimle iletişime geçin{% else %}Contact Us{% endif %}
-		</h2>
-		<p class="text-xl text-gray-600 mb-12 font-light">
-			{% if lang == 'uz' %}Savollaringiz bormi? Bizga yozing{% elif lang == 'ru' %}Есть вопросы? Напишите нам{% elif lang == 'tr' %}Sorularınız mı var? Bize yazın{% else %}Have questions? Write to us{% endif %}
+		<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+			{% if lang == 'uz' %}12 yillik sayohatimizda erishgan muvaffaqiyatlarimiz{% elif lang == 'ru' %}Наши достижения за 12 лет пути{% elif lang == 'tr' %}12 yıllık yolculuğumuzdaki başarılarımız{% else %}Our achievements during our 12-year journey{% endif %}
 		</p>
-		<div class="flex flex-col sm:flex-row gap-4 justify-center">
-			<a href="https://wa.me/905011571111" target="_blank" class="px-8 py-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-lg font-light">
+		
+		<div class="timeline">
+			<div class="timeline-item">
+				<div class="timeline-year">2011</div>
+				<h3 class="text-lg font-semibold text-gray-900 mb-2">
+					{% if lang == 'uz' %}Kompaniya tashkil etildi{% elif lang == 'ru' %}Основание компании{% elif lang == 'tr' %}Şirketin kuruluşu{% else %}Company Founded{% endif %}
+				</h3>
+				<p class="text-gray-600">
+					{% if lang == 'uz' %}Istanbul shahrida kichik agentlik sifatida yo'limizni boshladik. Birinchi yilda 50 dan ortiq talabaga yordam ko'rsatdik.{% elif lang == 'ru' %}Начали свой путь в Стамбуле как небольшое агентство. В первый год помогли более 50 студентам.{% elif lang == 'tr' %}İstanbul'da küçük bir ajans olarak yola çıktık. İlk yılda 50'den fazla öğrenciye yardımcı olduk.{% else %}Started our journey in Istanbul as a small agency. In the first year, we helped more than 50 students.{% endif %}
+				</p>
+			</div>
+			<div class="timeline-item">
+				<div class="timeline-year">2014</div>
+				<h3 class="text-lg font-semibold text-gray-900 mb-2">
+					{% if lang == 'uz' %}Xalqaro hamkorliklar{% elif lang == 'ru' %}Международное партнерство{% elif lang == 'tr' %}Uluslararası ortaklıklar{% else %}International Partnerships{% endif %}
+				</h3>
+				<p class="text-gray-600">
+					{% if lang == 'uz' %}20 dan ortiq universitet bilan rasmiy hamkorlik shartnomalari imzoladik. Jamoamiz 10 kishiga yetdi.{% elif lang == 'ru' %}Подписали официальные партнерские соглашения с более чем 20 университетами. Наша команда выросла до 10 человек.{% elif lang == 'tr' %}20'den fazla üniversite ile resmi ortaklık anlaşmaları imzaladık. Ekibimiz 10 kişiye ulaştı.{% else %}Signed official partnership agreements with more than 20 universities. Our team grew to 10 people.{% endif %}
+				</p>
+			</div>
+			<div class="timeline-item">
+				<div class="timeline-year">2017</div>
+				<h3 class="text-lg font-semibold text-gray-900 mb-2">
+					{% if lang == 'uz' %}5000+ talaba{% elif lang == 'ru' %}5000+ студентов{% elif lang == 'tr' %}5000+ öğrenci{% else %}5000+ Students{% endif %}
+				</h3>
+				<p class="text-gray-600">
+					{% if lang == 'uz' %}5000 dan ortiq talabaga yordam ko'rsatish muvaffaqiyatiga erishdik. Yangi ofislar ochdik.{% elif lang == 'ru' %}Достигли успеха в помощи более 5000 студентам. Открыли новые офисы.{% elif lang == 'tr' %}5000'den fazla öğrenciye yardımcı olma başarısına ulaştık. Yeni ofisler açtık.{% else %}Achieved success in helping more than 5000 students. Opened new offices.{% endif %}
+				</p>
+			</div>
+			<div class="timeline-item">
+				<div class="timeline-year">2020</div>
+				<h3 class="text-lg font-semibold text-gray-900 mb-2">
+					{% if lang == 'uz' %}Onlayn xizmatlar{% elif lang == 'ru' %}Онлайн сервисы{% elif lang == 'tr' %}Online hizmetler{% else %}Online Services{% endif %}
+				</h3>
+				<p class="text-gray-600">
+					{% if lang == 'uz' %}Pandemiya davrida to'liq onlayn xizmatlarni yo'lga qo'ydik. 24/7 qo'llab-quvvatlash tizimini ishga tushirdik.{% elif lang == 'ru' %}В период пандемии запустили полностью онлайн услуги. Внедрили систему поддержки 24/7.{% elif lang == 'tr' %}Pandemi döneminde tamamen online hizmetler başlattık. 7/24 destek sistemini devreye aldık.{% else %}Launched fully online services during the pandemic. Implemented 24/7 support system.{% endif %}
+				</p>
+			</div>
+			<div class="timeline-item">
+				<div class="timeline-year">2023</div>
+				<h3 class="text-lg font-semibold text-gray-900 mb-2">
+					{% if lang == 'uz' %}10,000+ talaba{% elif lang == 'ru' %}10,000+ студентов{% elif lang == 'tr' %}10,000+ öğrenci{% else %}10,000+ Students{% endif %}
+				</h3>
+				<p class="text-gray-600">
+					{% if lang == 'uz' %}10,000 dan ortiq talabaga yordam ko'rsatdik. 60+ universitet bilan hamkorlik. Turkiya va Yevropaning eng yaxshi universitetlari bilan ishlaymiz.{% elif lang == 'ru' %}Помогли более 10,000 студентам. Партнерство с 60+ университетами. Работаем с лучшими университетами Турции и Европы.{% elif lang == 'tr' %}10.000'den fazla öğrenciye yardımcı olduk. 60+ üniversite ile ortaklık. Türkiye ve Avrupa'nın en iyi üniversiteleriyle çalışıyoruz.{% else %}Helped more than 10,000 students. Partnership with 60+ universities. We work with the best universities in Turkey and Europe.{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="py-20 bg-white">
+	<div class="max-w-6xl mx-auto px-6">
+		<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
+			{% if lang == 'uz' %}Nega aynan biz?{% elif lang == 'ru' %}Почему именно мы?{% elif lang == 'tr' %}Neden biz?{% else %}Why Choose Us?{% endif %}
+		</h2>
+		<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+			{% if lang == 'uz' %}Bizni boshqalardan ajratib turadigan xususiyatlar{% elif lang == 'ru' %}Что отличает нас от других{% elif lang == 'tr' %}Bizi diğerlerinden ayıran özellikler{% else %}What sets us apart from others{% endif %}
+		</p>
+		
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+			<div class="feature-card">
+				<div class="feature-icon">
+					<svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+				</div>
+				<h3 class="text-lg font-semibold text-gray-900 mb-2">
+					{% if lang == 'uz' %}100% Ishonchli{% elif lang == 'ru' %}100% Надежно{% elif lang == 'tr' %}%100 Güvenilir{% else %}100% Reliable{% endif %}
+				</h3>
+				<p class="text-gray-600">
+					{% if lang == 'uz' %}Barcha jarayonlar shaffof va qonuniy. Rasmiy shartnomalar bilan ishlaymiz.{% elif lang == 'ru' %}Все процессы прозрачны и легальны. Работаем по официальным договорам.{% elif lang == 'tr' %}Tüm süreçler şeffaf ve yasal. Resmi sözleşmelerle çalışıyoruz.{% else %}All processes are transparent and legal. We work with official contracts.{% endif %}
+				</p>
+			</div>
+			
+			<div class="feature-card">
+				<div class="feature-icon">
+					<svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+				</div>
+				<h3 class="text-lg font-semibold text-gray-900 mb-2">
+					{% if lang == 'uz' %}24/7 Qo'llab-quvvatlash{% elif lang == 'ru' %}Поддержка 24/7{% elif lang == 'tr' %}7/24 Destek{% else %}24/7 Support{% endif %}
+				</h3>
+				<p class="text-gray-600">
+					{% if lang == 'uz' %}Har qanday vaqtda sizga yordam berishga tayyormiz. WhatsApp, telefon yoki email orqali.{% elif lang == 'ru' %}Готовы помочь вам в любое время. Через WhatsApp, телефон или email.{% elif lang == 'tr' %}Her zaman size yardımcı olmaya hazırız. WhatsApp, telefon veya e-posta yoluyla.{% else %}Ready to help you anytime. Via WhatsApp, phone or email.{% endif %}
+				</p>
+			</div>
+			
+			<div class="feature-card">
+				<div class="feature-icon">
+					<svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+				</div>
+				<h3 class="text-lg font-semibold text-gray-900 mb-2">
+					{% if lang == 'uz' %}60+ Universitet{% elif lang == 'ru' %}60+ Университетов{% elif lang == 'tr' %}60+ Üniversite{% else %}60+ Universities{% endif %}
+				</h3>
+				<p class="text-gray-600">
+					{% if lang == 'uz' %}Turkiya va Yevropaning eng yaxshi universitetlari bilan rasmiy hamkorlik.{% elif lang == 'ru' %}Официальное партнерство с лучшими университетами Турции и Европы.{% elif lang == 'tr' %}Türkiye ve Avrupa'nın en iyi üniversiteleriyle resmi ortaklık.{% else %}Official partnership with the best universities in Turkey and Europe.{% endif %}
+				</p>
+			</div>
+			
+			<div class="feature-card">
+				<div class="feature-icon">
+					<svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+				</div>
+				<h3 class="text-lg font-semibold text-gray-900 mb-2">
+					{% if lang == 'uz' %}To'liq xizmat{% elif lang == 'ru' %}Полный сервис{% elif lang == 'tr' %}Tam hizmet{% else %}Full Service{% endif %}
+				</h3>
+				<p class="text-gray-600">
+					{% if lang == 'uz' %}Hujjatlardan tortib yashash joyigacha - barcha masalalarni hal qilamiz.{% elif lang == 'ru' %}От документов до жилья — решаем все вопросы.{% elif lang == 'tr' %}Belgelerden konaklamaya kadar tüm sorunları çözüyoruz.{% else %}From documents to accommodation - we solve all issues.{% endif %}
+				</p>
+			</div>
+			
+			<div class="feature-card">
+				<div class="feature-icon">
+					<svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+				</div>
+				<h3 class="text-lg font-semibold text-gray-900 mb-2">
+					{% if lang == 'uz' %}Tajribali jamoa{% elif lang == 'ru' %}Опытная команда{% elif lang == 'tr' %}Deneyimli ekip{% else %}Experienced Team{% endif %}
+				</h3>
+				<p class="text-gray-600">
+					{% if lang == 'uz' %}12 yillik tajribaga ega professional mutaxassislar jamoasi.{% elif lang == 'ru' %}Команда профессионалов с 12-летним опытом.{% elif lang == 'tr' %}12 yıllık deneyime sahip profesyonel uzmanlar ekibi.{% else %}A team of professional experts with 12 years of experience.{% endif %}
+				</p>
+			</div>
+			
+			<div class="feature-card">
+				<div class="feature-icon">
+					<svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+				</div>
+				<h3 class="text-lg font-semibold text-gray-900 mb-2">
+					{% if lang == 'uz' %}Arzon narxlar{% elif lang == 'ru' %}Доступные цены{% elif lang == 'tr' %}Uygun fiyatlar{% else %}Affordable Prices{% endif %}
+				</h3>
+				<p class="text-gray-600">
+					{% if lang == 'uz' %}Stipendiyalar va chegirmalar haqida bepul maslahat. Yashirin to'lovlar yo'q.{% elif lang == 'ru' %}Бесплатная консультация о стипендиях и скидках. Никаких скрытых платежей.{% elif lang == 'tr' %}Burslar ve indirimler hakkında ücretsiz danışmanlık. Gizli ücret yok.{% else %}Free consultation on scholarships and discounts. No hidden fees.{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Photo Gallery -->
+<section class="py-20 bg-gray-50">
+	<div class="max-w-6xl mx-auto px-6">
+		<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
+			{% if lang == 'uz' %}Fotogalereya{% elif lang == 'ru' %}Фотогалерея{% elif lang == 'tr' %}Fotoğraf galerisi{% else %}Photo Gallery{% endif %}
+		</h2>
+		<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+			{% if lang == 'uz' %}Bizning ofisimiz, tadbirlarimiz va talabalarimiz{% elif lang == 'ru' %}Наш офис, мероприятия и студенты{% elif lang == 'tr' %}Ofisimiz, etkinliklerimiz ve öğrencilerimiz{% else %}Our office, events and students{% endif %}
+		</p>
+		
+		<div class="gallery-grid">
+			<div class="gallery-item">
+				<img src="{{ url_for('static', filename='images/01.png') }}" alt="StudyFans office" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop'">
+			</div>
+			<div class="gallery-item">
+				<img src="{{ url_for('static', filename='images/IMG_8320.JPG') }}" alt="StudyFans team" onerror="this.src='https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=400&fit=crop'">
+			</div>
+			<div class="gallery-item">
+				<img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&h=400&fit=crop" alt="University">
+			</div>
+			<div class="gallery-item">
+				<img src="https://images.unsplash.com/photo-1562774053-701939374585?w=600&h=400&fit=crop" alt="Campus">
+			</div>
+			<div class="gallery-item">
+				<img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop" alt="Students">
+			</div>
+			<div class="gallery-item">
+				<img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&h=400&fit=crop" alt="Graduation">
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- How We Work -->
+<section class="py-20 bg-white">
+	<div class="max-w-4xl mx-auto px-6">
+		<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
+			{% if lang == 'uz' %}Qanday ishlaymiz?{% elif lang == 'ru' %}Как мы работаем?{% elif lang == 'tr' %}Nasıl çalışıyoruz?{% else %}How We Work?{% endif %}
+		</h2>
+		<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+			{% if lang == 'uz' %}Oddiy va tushunarli jarayon{% elif lang == 'ru' %}Простой и понятный процесс{% elif lang == 'tr' %}Basit ve anlaşılır süreç{% else %}Simple and clear process{% endif %}
+		</p>
+		
+		<div class="space-y-4">
+			<div class="process-step">
+				<div class="step-number">1</div>
+				<div>
+					<h3 class="text-lg font-semibold text-gray-900 mb-1">
+						{% if lang == 'uz' %}Bepul konsultatsiya{% elif lang == 'ru' %}Бесплатная консультация{% elif lang == 'tr' %}Ücretsiz danışmanlık{% else %}Free Consultation{% endif %}
+					</h3>
+					<p class="text-gray-600">
+						{% if lang == 'uz' %}Biz bilan bog'laning va mutaxassislarimiz sizga eng mos universitetlarni tanlashda yordam beradi.{% elif lang == 'ru' %}Свяжитесь с нами, и наши специалисты помогут подобрать подходящие университеты.{% elif lang == 'tr' %}Bizimle iletişime geçin ve uzmanlarımız size en uygun üniversiteleri seçmenize yardımcı olsun.{% else %}Contact us and our experts will help you choose the most suitable universities.{% endif %}
+					</p>
+				</div>
+			</div>
+			
+			<div class="process-step">
+				<div class="step-number">2</div>
+				<div>
+					<h3 class="text-lg font-semibold text-gray-900 mb-1">
+						{% if lang == 'uz' %}Hujjatlarni tayyorlash{% elif lang == 'ru' %}Подготовка документов{% elif lang == 'tr' %}Belge hazırlığı{% else %}Document Preparation{% endif %}
+					</h3>
+					<p class="text-gray-600">
+						{% if lang == 'uz' %}Barcha kerakli hujjatlarni to'g'ri tayyorlashda yordam beramiz va tekshiramiz.{% elif lang == 'ru' %}Помогаем правильно подготовить все необходимые документы и проверяем их.{% elif lang == 'tr' %}Gerekli tüm belgeleri doğru şekilde hazırlamanıza yardımcı oluyoruz ve kontrol ediyoruz.{% else %}We help prepare all necessary documents correctly and check them.{% endif %}
+					</p>
+				</div>
+			</div>
+			
+			<div class="process-step">
+				<div class="step-number">3</div>
+				<div>
+					<h3 class="text-lg font-semibold text-gray-900 mb-1">
+						{% if lang == 'uz' %}Ariza topshirish{% elif lang == 'ru' %}Подача заявки{% elif lang == 'tr' %}Başvuru{% else %}Application{% endif %}
+					</h3>
+					<p class="text-gray-600">
+						{% if lang == 'uz' %}Tanlangan universitetlarga arizangizni topshiramiz va jarayonni kuzatib boramiz.{% elif lang == 'ru' %}Подаем заявку в выбранные университеты и отслеживаем процесс.{% elif lang == 'tr' %}Seçilen üniversitelere başvurunuzu yapıyoruz ve süreci takip ediyoruz.{% else %}We submit your application to selected universities and track the process.{% endif %}
+					</p>
+				</div>
+			</div>
+			
+			<div class="process-step">
+				<div class="step-number">4</div>
+				<div>
+					<h3 class="text-lg font-semibold text-gray-900 mb-1">
+						{% if lang == 'uz' %}Qabul xati{% elif lang == 'ru' %}Письмо о зачислении{% elif lang == 'tr' %}Kabul mektubu{% else %}Acceptance Letter{% endif %}
+					</h3>
+					<p class="text-gray-600">
+						{% if lang == 'uz' %}Qabul xatini olganingizdan so'ng, viza jarayonida yordam beramiz.{% elif lang == 'ru' %}После получения письма о зачислении помогаем с визовым процессом.{% elif lang == 'tr' %}Kabul mektubunu aldıktan sonra vize sürecinde yardımcı oluyoruz.{% else %}After receiving the acceptance letter, we help with the visa process.{% endif %}
+					</p>
+				</div>
+			</div>
+			
+			<div class="process-step">
+				<div class="step-number">5</div>
+				<div>
+					<h3 class="text-lg font-semibold text-gray-900 mb-1">
+						{% if lang == 'uz' %}Turkiyaga kelish{% elif lang == 'ru' %}Прибытие в Турцию{% elif lang == 'tr' %}Türkiye'ye varış{% else %}Arrival in Turkey{% endif %}
+					</h3>
+					<p class="text-gray-600">
+						{% if lang == 'uz' %}Aeroportda kutib olish, yashash joyi va ikamet olishda to'liq yordam.{% elif lang == 'ru' %}Встреча в аэропорту, помощь с жильем и получением икамета.{% elif lang == 'tr' %}Havalimanında karşılama, konaklama ve ikamet alımında tam destek.{% else %}Airport pickup, accommodation and full support with residence permit.{% endif %}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Team Section -->
+<section class="py-20 bg-gray-50">
+	<div class="max-w-6xl mx-auto px-6">
+		<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
+			{% if lang == 'uz' %}Bizning jamoamiz{% elif lang == 'ru' %}Наша команда{% elif lang == 'tr' %}Ekibimiz{% else %}Our Team{% endif %}
+		</h2>
+		<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+			{% if lang == 'uz' %}Professional va tajribali mutaxassislar{% elif lang == 'ru' %}Профессиональные и опытные специалисты{% elif lang == 'tr' %}Profesyonel ve deneyimli uzmanlar{% else %}Professional and experienced specialists{% endif %}
+		</p>
+		
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+			<div class="team-card">
+				<div class="team-avatar">
+					<img src="{{ url_for('static', filename='images/team/IMG_20250920_153304_162.jpg') }}" alt="Dilshod Karimov" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gray-100 flex items-center justify-center\'><span class=\'text-3xl font-semibold text-gray-400\'>DK</span></div>'">
+				</div>
+				<h3 class="text-xl font-semibold text-gray-900 mb-1">Dilshod Karimov</h3>
+				<p class="text-gray-500 mb-4">
+					{% if lang == 'uz' %}Asoschisi va Direktor{% elif lang == 'ru' %}Основатель и Директор{% elif lang == 'tr' %}Kurucu ve Direktör{% else %}Founder & Director{% endif %}
+				</p>
+				<p class="text-gray-600 text-sm">
+					{% if lang == 'uz' %}12 yillik tajriba. Xalqaro ta'lim sohasida mutaxassis.{% elif lang == 'ru' %}12 лет опыта. Эксперт в сфере международного образования.{% elif lang == 'tr' %}12 yıllık deneyim. Uluslararası eğitim alanında uzman.{% else %}12 years of experience. Expert in international education.{% endif %}
+				</p>
+			</div>
+			
+			<div class="team-card">
+				<div class="team-avatar">
+					<img src="{{ url_for('static', filename='images/team/IMG_7247.jpg') }}" alt="Rasulov Mustafa" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gray-100 flex items-center justify-center\'><span class=\'text-3xl font-semibold text-gray-400\'>RM</span></div>'">
+				</div>
+				<h3 class="text-xl font-semibold text-gray-900 mb-1">Rasulov Mustafa</h3>
+				<p class="text-gray-500 mb-4">
+					{% if lang == 'uz' %}Senior Konsultant{% elif lang == 'ru' %}Старший консультант{% elif lang == 'tr' %}Kıdemli Danışman{% else %}Senior Consultant{% endif %}
+				</p>
+				<p class="text-gray-600 text-sm">
+					{% if lang == 'uz' %}8 yillik tajriba. Universitetlar bilan aloqalar bo'yicha mutaxassis.{% elif lang == 'ru' %}8 лет опыта. Специалист по связям с университетами.{% elif lang == 'tr' %}8 yıllık deneyim. Üniversite ilişkileri uzmanı.{% else %}8 years of experience. University relations specialist.{% endif %}
+				</p>
+			</div>
+			
+			<div class="team-card">
+				<div class="team-avatar">
+					<img src="{{ url_for('static', filename='images/team/IMG_8823 (2).jpg') }}" alt="Bobur Mirzaev" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gray-100 flex items-center justify-center\'><span class=\'text-3xl font-semibold text-gray-400\'>BM</span></div>'">
+				</div>
+				<h3 class="text-xl font-semibold text-gray-900 mb-1">Bobur Mirzaev</h3>
+				<p class="text-gray-500 mb-4">
+					{% if lang == 'uz' %}Hujjatlar bo'yicha mutaxassis{% elif lang == 'ru' %}Специалист по документам{% elif lang == 'tr' %}Belge Uzmanı{% else %}Documents Specialist{% endif %}
+				</p>
+				<p class="text-gray-600 text-sm">
+					{% if lang == 'uz' %}5 yillik tajriba. Viza va hujjatlar bo'yicha ekspert.{% elif lang == 'ru' %}5 лет опыта. Эксперт по визам и документам.{% elif lang == 'tr' %}5 yıllık deneyim. Vize ve belge uzmanı.{% else %}5 years of experience. Visa and documents expert.{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Values Section -->
+<section class="py-20 bg-white">
+	<div class="max-w-6xl mx-auto px-6">
+		<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
+			{% if lang == 'uz' %}Bizning qadriyatlarimiz{% elif lang == 'ru' %}Наши ценности{% elif lang == 'tr' %}Değerlerimiz{% else %}Our Values{% endif %}
+		</h2>
+		<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+			{% if lang == 'uz' %}Bizni yetakchi qiladigan tamoyillar{% elif lang == 'ru' %}Принципы, которые делают нас лидерами{% elif lang == 'tr' %}Bizi lider yapan ilkeler{% else %}Principles that make us leaders{% endif %}
+		</p>
+		
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+			<div class="text-center p-6">
+				<div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+					<svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+				</div>
+				<h3 class="text-lg font-semibold text-gray-900 mb-2">
+					{% if lang == 'uz' %}Ishonch{% elif lang == 'ru' %}Доверие{% elif lang == 'tr' %}Güven{% else %}Trust{% endif %}
+				</h3>
+				<p class="text-gray-600 text-sm">
+					{% if lang == 'uz' %}Har bir talaba bizga ishonadi va biz ularning ishonchini saqlaymiz{% elif lang == 'ru' %}Каждый студент доверяет нам, и мы храним их доверие{% elif lang == 'tr' %}Her öğrenci bize güvenir ve güvenlerini koruruz{% else %}Every student trusts us and we keep their trust{% endif %}
+				</p>
+			</div>
+			
+			<div class="text-center p-6">
+				<div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+					<svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+				</div>
+				<h3 class="text-lg font-semibold text-gray-900 mb-2">
+					{% if lang == 'uz' %}Sifat{% elif lang == 'ru' %}Качество{% elif lang == 'tr' %}Kalite{% else %}Quality{% endif %}
+				</h3>
+				<p class="text-gray-600 text-sm">
+					{% if lang == 'uz' %}Biz har doim eng yuqori sifatli xizmatlarni taqdim etamiz{% elif lang == 'ru' %}Мы всегда предоставляем услуги высочайшего качества{% elif lang == 'tr' %}Her zaman en yüksek kaliteli hizmetleri sunuyoruz{% else %}We always provide the highest quality services{% endif %}
+				</p>
+			</div>
+			
+			<div class="text-center p-6">
+				<div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+					<svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m0 0V19a2 2 0 01-2 2H5a2 2 0 01-2-2v-1"/></svg>
+				</div>
+				<h3 class="text-lg font-semibold text-gray-900 mb-2">
+					{% if lang == 'uz' %}Hamkorlik{% elif lang == 'ru' %}Партнерство{% elif lang == 'tr' %}Ortaklık{% else %}Partnership{% endif %}
+				</h3>
+				<p class="text-gray-600 text-sm">
+					{% if lang == 'uz' %}Universitetlar va talabalar bilan mustahkam aloqalarni quramiz{% elif lang == 'ru' %}Строим прочные отношения с университетами и студентами{% elif lang == 'tr' %}Üniversiteler ve öğrencilerle güçlü ilişkiler kuruyoruz{% else %}We build strong relationships with universities and students{% endif %}
+				</p>
+			</div>
+			
+			<div class="text-center p-6">
+				<div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+					<svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+				</div>
+				<h3 class="text-lg font-semibold text-gray-900 mb-2">
+					{% if lang == 'uz' %}Muvaffaqiyat{% elif lang == 'ru' %}Успех{% elif lang == 'tr' %}Başarı{% else %}Success{% endif %}
+				</h3>
+				<p class="text-gray-600 text-sm">
+					{% if lang == 'uz' %}Bizning muvaffaqiyatimiz - talabalarimizning muvaffaqiyati{% elif lang == 'ru' %}Наш успех — это успех наших студентов{% elif lang == 'tr' %}Başarımız, öğrencilerimizin başarısıdır{% else %}Our success is the success of our students{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 cta-section-about relative overflow-hidden gradient-wrapper-cta-about">
+	<div class="cta-wave-container-about">
+		<svg class="cta-wave-about" viewBox="0 0 1200 120" preserveAspectRatio="none">
+			<path d="M0,60 Q300,20 600,60 T1200,60 L1200,120 L0,120 Z" fill="url(#waveGradientAbout)"/>
+			<defs>
+				<linearGradient id="waveGradientAbout" x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" style="stop-color:rgba(17, 17, 17, 0.08);stop-opacity:1" />
+					<stop offset="50%" style="stop-color:rgba(17, 17, 17, 0.12);stop-opacity:1" />
+					<stop offset="100%" style="stop-color:rgba(17, 17, 17, 0.08);stop-opacity:1" />
+				</linearGradient>
+			</defs>
+		</svg>
+		<svg class="cta-wave-about cta-wave-delayed-about" viewBox="0 0 1200 120" preserveAspectRatio="none">
+			<path d="M0,60 Q300,40 600,60 T1200,60 L1200,120 L0,120 Z" fill="url(#waveGradient2About)"/>
+			<defs>
+				<linearGradient id="waveGradient2About" x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" style="stop-color:rgba(50, 50, 50, 0.06);stop-opacity:1" />
+					<stop offset="50%" style="stop-color:rgba(50, 50, 50, 0.10);stop-opacity:1" />
+					<stop offset="100%" style="stop-color:rgba(50, 50, 50, 0.06);stop-opacity:1" />
+				</linearGradient>
+			</defs>
+		</svg>
+	</div>
+	<div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-20">
+		<h2 class="text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900 mb-3 sm:mb-4 leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; position: relative; z-index: 10;">
+			{% if lang == 'uz' %}Biz bilan orzularingizni amalga oshiring{% elif lang == 'ru' %}Осуществите свои мечты с нами{% elif lang == 'tr' %}Hayallerinizi bizimle gerçekleştirin{% else %}Realize your dreams with us{% endif %}
+		</h2>
+		<p class="text-sm sm:text-base text-gray-600 font-normal mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto px-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; position: relative; z-index: 10;">
+			{% if lang == 'uz' %}Bepul konsultatsiya olish uchun biz bilan bog'laning. Jamoamiz sizga yordam berishga tayyor.{% elif lang == 'ru' %}Свяжитесь с нами для бесплатной консультации. Наша команда готова вам помочь.{% elif lang == 'tr' %}Ücretsiz danışmanlık için bizimle iletişime geçin. Ekibimiz size yardımcı olmaya hazır.{% else %}Contact us for a free consultation. Our team is ready to help you.{% endif %}
+		</p>
+		<div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full px-2" style="position: relative; z-index: 10;">
+			<a href="tel:+905011571111" class="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors text-sm sm:text-base font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+				{% if lang == 'uz' %}Qo'ng'iroq qilish{% elif lang == 'ru' %}Позвонить{% elif lang == 'tr' %}Ara{% else %}Call Now{% endif %}
+			</a>
+			<a href="https://wa.me/905011571111" target="_blank" class="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 bg-white text-gray-900 border border-gray-200 rounded-full hover:bg-gray-50 transition-colors text-sm sm:text-base font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				<svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 				WhatsApp
 			</a>
-			<a href="tel:+905011571111" class="px-8 py-4 bg-white text-gray-900 border border-gray-300 rounded-full hover:bg-gray-50 transition-all duration-300 text-lg font-light">
-				{% if lang == 'uz' %}Qo'ng'iroq{% elif lang == 'ru' %}Звонок{% elif lang == 'tr' %}Arama{% else %}Call{% endif %}
+			<a href="{{ url_for('contact', lang=lang) }}" class="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 bg-white text-gray-900 border border-gray-200 rounded-full hover:bg-gray-50 transition-colors text-sm sm:text-base font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Onlayn forma{% elif lang == 'ru' %}Онлайн форма{% elif lang == 'tr' %}Online form{% else %}Online Form{% endif %}
 			</a>
 		</div>
 	</div>
 </section>
 
-</div>
+<style>
+.gradient-wrapper-cta-about {
+	position: relative;
+}
+
+.cta-section-about {
+	background: transparent;
+	position: relative;
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+	.cta-section-about {
+		padding-top: 40px;
+		padding-bottom: 40px;
+		overflow: visible;
+		margin-left: 0;
+		margin-right: 0;
+		width: 100%;
+	}
+	
+	.cta-section-about .max-w-5xl {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+}
+
+.cta-wave-container-about {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 120px;
+	overflow: hidden;
+	z-index: 1;
+}
+
+@media (max-width: 768px) {
+	.cta-wave-container-about {
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 100px;
+	}
+	
+	.cta-wave-about {
+		width: 200%;
+		height: 100px;
+	}
+}
+
+.cta-wave-about {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 200%;
+	height: 120px;
+	transform: translateX(-50%);
+	transform-origin: center bottom;
+}
+
+.cta-wave-delayed-about {
+	opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+	.cta-wave-about {
+		height: 80px;
+	}
+}
+</style>
 
 {% endblock %}
