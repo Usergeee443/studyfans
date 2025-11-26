@@ -717,12 +717,44 @@
 </head>
 
 <body class="bg-white">
-	<!-- Mobile Logo - Top Left (Only on Mobile) -->
-	<div class="md:hidden fixed top-0 left-0 z-30 py-2 px-4">
-		<a href="{{ url_for('index') }}" class="flex items-center">
-			<img src="/static/images/01.png" alt="Study Fans" class="w-10 h-10 rounded-xl object-contain" onerror="this.style.display='none';">
+	<!-- Mobile Logo - Center with Blur Effect (Only on Mobile) -->
+	<div class="md:hidden fixed top-0 left-0 right-0 z-30 py-2 flex justify-center pointer-events-none">
+		<a href="{{ url_for('index') }}" class="mobile-logo-container pointer-events-auto">
+			<div class="mobile-logo-blur"></div>
+			<img src="/static/images/01.png" alt="Study Fans" class="mobile-logo-img" onerror="this.style.display='none';">
 		</a>
 	</div>
+	
+	<style>
+		.mobile-logo-container {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.mobile-logo-blur {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 70px;
+			height: 70px;
+			background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 30%, rgba(255,255,255,0.4) 60%, rgba(255,255,255,0) 100%);
+			filter: blur(8px);
+			border-radius: 50%;
+			z-index: 0;
+		}
+		
+		.mobile-logo-img {
+			position: relative;
+			z-index: 1;
+			width: 40px;
+			height: 40px;
+			border-radius: 12px;
+			object-fit: contain;
+		}
+	</style>
 
 	<!-- Desktop Sidebar - Left Side -->
 	<aside id="sidebar" class="hidden md:flex fixed left-0 top-0 bottom-0 w-56 bg-white border-r border-gray-200 z-50 flex-col transition-all duration-300">
@@ -952,21 +984,19 @@
 							<span>{% if lang == 'uz' %}Hamkor{% elif lang == 'ru' %}Партнер{% elif lang == 'tr' %}Ortak{% else %}Partner{% endif %}</span>
 						</a>
 
-						<a href="{{ url_for('contact') }}" class="flex items-center space-x-3 px-4 py-2.5 text-sm font-normal text-gray-900 hover:bg-gray-50 transition-colors {% if request.endpoint == 'contact' %}bg-gray-50{% endif %}">
-							<img src="/static/call-calling.svg" alt="Contact" class="w-4 h-4 flex-shrink-0">
-							<span>{% if lang == 'uz' %}Aloqa{% elif lang == 'ru' %}Контакты{% elif lang == 'tr' %}İletişim{% else %}Contact{% endif %}</span>
-						</a>
-
-						<div class="border-t border-gray-200 my-1"></div>
-
-						<a href="{{ url_for('success_stories') }}" class="flex items-center space-x-3 px-4 py-2.5 text-sm font-normal text-gray-900 hover:bg-gray-50 transition-colors">
+						<a href="{{ url_for('success_stories') }}" class="flex items-center space-x-3 px-4 py-2.5 text-sm font-normal text-gray-900 hover:bg-gray-50 transition-colors {% if request.endpoint == 'success_stories' %}bg-gray-50{% endif %}">
 							<img src="/static/award.svg" alt="Success Stories" class="w-4 h-4 flex-shrink-0">
 							<span>{% if lang == 'uz' %}Muvaffaqiyat hikoyalari{% elif lang == 'ru' %}Истории успеха{% elif lang == 'tr' %}Başarı hikayeleri{% else %}Success Stories{% endif %}</span>
 						</a>
 
-						<a href="{{ url_for('about') }}" class="flex items-center space-x-3 px-4 py-2.5 text-sm font-normal text-gray-900 hover:bg-gray-50 transition-colors">
+						<a href="{{ url_for('about') }}" class="flex items-center space-x-3 px-4 py-2.5 text-sm font-normal text-gray-900 hover:bg-gray-50 transition-colors {% if request.endpoint == 'about' %}bg-gray-50{% endif %}">
 							<img src="/static/bookmark.svg" alt="About" class="w-4 h-4 flex-shrink-0">
 							<span>{% if lang == 'uz' %}Biz haqimizda{% elif lang == 'ru' %}О нас{% elif lang == 'tr' %}Hakkımızda{% else %}About{% endif %}</span>
+						</a>
+
+						<a href="{{ url_for('contact') }}" class="flex items-center space-x-3 px-4 py-2.5 text-sm font-normal text-gray-900 hover:bg-gray-50 transition-colors {% if request.endpoint == 'contact' %}bg-gray-50{% endif %}">
+							<img src="/static/call-calling.svg" alt="Contact" class="w-4 h-4 flex-shrink-0">
+							<span>{% if lang == 'uz' %}Aloqa{% elif lang == 'ru' %}Контакты{% elif lang == 'tr' %}İletişim{% else %}Contact{% endif %}</span>
 						</a>
 
 						<div class="border-t border-gray-200 my-1"></div>
