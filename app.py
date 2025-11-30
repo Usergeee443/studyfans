@@ -256,9 +256,11 @@ def index():
     lang = request.args.get('lang', 'en')
     # Get top universities for slider
     top_universities = University.query.limit(6).all()
-    # Get latest blog posts
-    blog_posts = BlogPost.query.order_by(BlogPost.created_at.desc()).limit(3).all()
-    return render_template('index.html', lang=lang, top_universities=top_universities, blog_posts=blog_posts)
+    # Get latest blog posts for preview section
+    blog_posts = BlogPost.query.filter_by(published=True).order_by(BlogPost.created_at.desc()).limit(3).all()
+    # Get latest blog posts for news ticker (more posts needed for scrolling)
+    news_blog_posts = BlogPost.query.filter_by(published=True).order_by(BlogPost.created_at.desc()).limit(15).all()
+    return render_template('index.html', lang=lang, top_universities=top_universities, blog_posts=blog_posts, news_blog_posts=news_blog_posts)
 
 @app.route('/universities')
 def universities():

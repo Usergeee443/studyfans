@@ -8,7 +8,7 @@
 <style>
 	/* News Ticker */
 	.news-ticker {
-		background: #111;
+		background: transparent;
 		padding: 0.75rem 0;
 		overflow: hidden;
 		position: relative;
@@ -16,11 +16,14 @@
 	
 	.news-ticker-content {
 		display: flex;
-		animation: ticker 30s linear infinite;
 		white-space: nowrap;
 	}
 	
-	.news-ticker-content:hover {
+	.news-ticker-content.animate {
+		animation: ticker 30s linear infinite;
+	}
+	
+	.news-ticker-content.animate:hover {
 		animation-play-state: paused;
 	}
 	
@@ -29,20 +32,20 @@
 		align-items: center;
 		gap: 0.5rem;
 		padding: 0 2rem;
-		color: rgba(255,255,255,0.9);
+		color: #2563eb;
 		font-size: 0.875rem;
 		text-decoration: none;
 		transition: color 0.2s;
 	}
 	
 	.news-item:hover {
-		color: #fbbf24;
+		color: #1d4ed8;
 	}
 	
 	.news-dot {
 		width: 6px;
 		height: 6px;
-		background: #fbbf24;
+		background: #2563eb;
 		border-radius: 50%;
 	}
 	
@@ -59,15 +62,36 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
 	}
 	
-	.home-hero-bg {
+	.home-hero::before {
+		content: '';
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
+		background-image: url('https://media.istockphoto.com/id/1399490449/photo/empty-classroom-university-or-collage-back-to-school-3d-illustration.jpg?s=612x612&w=0&k=20&c=9IRaPzKoke574ru-D4x-qqmXtONY7F1F3dLT8Hx6AM8=');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		opacity: 0.32;
+		z-index: 0;
+	}
+	
+	.home-hero-bg {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 50%;
+		height: 100%;
 		z-index: 1;
+		opacity: 0.15;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		filter: blur(20px);
 	}
 	
 	.home-hero-overlay {
@@ -76,7 +100,7 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: rgba(0,0,0,0.45);
+		background: linear-gradient(to right, rgba(37, 99, 235, 0.95) 0%, rgba(37, 99, 235, 0.85) 60%, rgba(37, 99, 235, 0.7) 100%);
 		z-index: 2;
 	}
 	
@@ -98,14 +122,19 @@
 		margin-bottom: 1.5rem;
 		font-family: 'Inter', sans-serif;
 		letter-spacing: -0.02em;
+		color: white;
+		text-shadow: 0 2px 10px rgba(0,0,0,0.2);
 	}
 	
 	.hero-subtitle {
 		font-size: clamp(1rem, 2vw, 1.25rem);
-		font-weight: 400;
-		opacity: 0.9;
+		font-weight: 300;
+		opacity: 0.95;
 		margin-bottom: 3rem;
 		font-family: 'Inter', sans-serif;
+		color: white;
+		text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+		letter-spacing: 0.01em;
 	}
 	
 	.hero-services-grid {
@@ -113,7 +142,7 @@
 		grid-template-columns: repeat(3, 1fr);
 		gap: 1.5rem;
 		margin-bottom: 3rem;
-		max-width: 1100px;
+		max-width: 1050px;
 		margin-left: auto;
 		margin-right: auto;
 	}
@@ -126,35 +155,51 @@
 	}
 	
 	.hero-service-card {
-		background: rgba(255,255,255,0.95);
-		backdrop-filter: blur(10px);
-		border-radius: 24px;
+		background: white;
+		border-radius: 32px;
 		padding: 2rem;
-		text-align: center;
+		text-align: left;
 		transition: all 0.3s ease;
-		border: 1px solid rgba(255,255,255,0.2);
+		box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 	}
 	
 	.hero-service-card:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+		box-shadow: 0 12px 24px rgba(255, 255, 255, 0.63);
 	}
 	
-	.hero-card-blue {
-		border-top: 4px solid #3b82f6;
+	.service-icon-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 80px;
+		height: 80px;
+		border-radius: 20px;
+		margin-bottom: 1.5rem;
+		margin-right: auto;
+		border: 2px solid white;
 	}
 	
-	.hero-card-green {
-		border-top: 4px solid #22c55e;
+	.hero-card-blue .service-icon-container {
+		background: #3b82f6;
 	}
 	
-	.hero-card-red {
-		border-top: 4px solid #ef4444;
+	.hero-card-green .service-icon-container {
+		background: #22c55e;
+	}
+	
+	.hero-card-red .service-icon-container {
+		background: #ef4444;
 	}
 	
 	.service-icon-large {
-		font-size: 3rem;
-		margin-bottom: 1rem;
+		width: 40px;
+		height: 40px;
+		color: white;
+	}
+	
+	.service-icon-large svg {
+		width: 100%;
+		height: 100%;
 	}
 	
 	.service-title {
@@ -163,6 +208,7 @@
 		color: #111;
 		margin-bottom: 0.75rem;
 		font-family: 'Inter', sans-serif;
+		text-align: left;
 	}
 	
 	.service-description {
@@ -171,24 +217,53 @@
 		margin-bottom: 1.5rem;
 		line-height: 1.6;
 		font-family: 'Inter', sans-serif;
+		text-align: left;
 	}
 	
 	.service-btn {
-		display: inline-block;
+		display: block;
+		margin: 0 auto;
 		padding: 0.75rem 1.5rem;
-		background: #111;
 		color: white;
-		border-radius: 12px;
+		border-radius: 20rem;
 		font-weight: 600;
 		font-size: 0.9375rem;
 		transition: all 0.3s ease;
 		text-decoration: none;
 		font-family: 'Inter', sans-serif;
+		border: none;
+		cursor: pointer;
+		text-align: center;
 	}
 	
-	.service-btn:hover {
-		background: #333;
+	.hero-card-blue .service-btn {
+		background: #3b82f6;
+	}
+	
+	.hero-card-blue .service-btn:hover {
+		background: #2563eb;
 		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+	}
+	
+	.hero-card-green .service-btn {
+		background: #22c55e;
+	}
+	
+	.hero-card-green .service-btn:hover {
+		background: #16a34a;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+	}
+	
+	.hero-card-red .service-btn {
+		background: #ef4444;
+	}
+	
+	.hero-card-red .service-btn:hover {
+		background: #dc2626;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
 	}
 	
 	.quick-selection-bar {
@@ -528,7 +603,7 @@
 	.ai-form-container {
 		background: white;
 		border-radius: 32px;
-		padding: 2.5rem;
+		padding: 3rem;
 		border: 1px solid rgba(59, 130, 246, 0.15);
 	}
 	
@@ -536,17 +611,23 @@
 		width: 100%;
 		padding: 0.875rem 1rem;
 		background: #f9fafb;
-		border: 2px solid #e5e7eb;
-		border-radius: 14px;
+		border: 0.1px solid #e5e7eb;
+		border-radius: 32px;
 		font-size: 0.95rem;
 		color: #111;
 		transition: all 0.2s ease;
+		font-family: 'Inter', sans-serif;
 	}
 	
 	.ai-select:focus {
 		outline: none;
 		border-color: #3b82f6;
 		background: white;
+	}
+	
+	textarea.ai-select {
+		resize: vertical;
+		min-height: 100px;
 	}
 	
 	/* FAQ */
@@ -673,194 +754,354 @@
 {% block content %}
 
 <!-- News Ticker from Blog -->
+{% if news_blog_posts %}
 <div class="news-ticker">
-	<div class="news-ticker-content">
-		{% for i in range(2) %}
-		<a href="{{ url_for('blog') }}" class="news-item">
-			<span class="news-dot"></span>
-			{% if lang == 'uz' %}🎓 2025 yil uchun qabul boshlandi! Tez orada ariza toping{% elif lang == 'ru' %}🎓 Набор на 2025 год открыт! Подайте заявку сейчас{% elif lang == 'tr' %}🎓 2025 kayıtları başladı! Hemen başvurun{% else %}🎓 2025 admissions open! Apply now{% endif %}
-		</a>
-		<a href="{{ url_for('blog') }}" class="news-item">
-			<span class="news-dot"></span>
-			{% if lang == 'uz' %}📚 Istanbul universitetlarida 50% chegirma!{% elif lang == 'ru' %}📚 Скидка 50% в университетах Стамбула!{% elif lang == 'tr' %}📚 İstanbul üniversitelerinde %50 indirim!{% else %}📚 50% discount at Istanbul universities!{% endif %}
-		</a>
-		<a href="{{ url_for('blog') }}" class="news-item">
-			<span class="news-dot"></span>
-			{% if lang == 'uz' %}🏆 StudyFans 10,000+ talabaga yordam berdi{% elif lang == 'ru' %}🏆 StudyFans помог 10,000+ студентам{% elif lang == 'tr' %}🏆 StudyFans 10.000+ öğrenciye yardımcı oldu{% else %}🏆 StudyFans helped 10,000+ students{% endif %}
-		</a>
-		<a href="{{ url_for('calculator') }}" class="news-item">
-			<span class="news-dot"></span>
-			{% if lang == 'uz' %}🧮 Yangi! O'qish narxini hisoblang{% elif lang == 'ru' %}🧮 Новинка! Рассчитайте стоимость обучения{% elif lang == 'tr' %}🧮 Yeni! Eğitim maliyetini hesaplayın{% else %}🧮 New! Calculate tuition costs{% endif %}
-		</a>
-		<a href="{{ url_for('chat') }}" class="news-item">
-			<span class="news-dot"></span>
-			{% if lang == 'uz' %}🤖 AI yordamida universitet tanlang{% elif lang == 'ru' %}🤖 Выберите университет с помощью ИИ{% elif lang == 'tr' %}🤖 AI ile üniversite seçin{% else %}🤖 Choose university with AI{% endif %}
-		</a>
-		{% endfor %}
+	<div class="news-ticker-content {% if news_blog_posts|length > 1 %}animate{% endif %}">
+		{% if news_blog_posts|length > 1 %}
+			{% for i in range(2) %}
+			{% for post in news_blog_posts %}
+			<a href="{{ url_for('blog_detail', slug=post.slug) }}?lang={{ lang }}" class="news-item">
+				<span class="news-dot"></span>
+				{% if lang == 'uz' %}{{ post.title_uz }}{% elif lang == 'ru' %}{{ post.title_ru }}{% elif lang == 'tr' %}{{ post.title_tr }}{% else %}{{ post.title_en }}{% endif %}
+			</a>
+			{% endfor %}
+			{% endfor %}
+		{% else %}
+			{% for post in news_blog_posts %}
+			<a href="{{ url_for('blog_detail', slug=post.slug) }}?lang={{ lang }}" class="news-item">
+				<span class="news-dot"></span>
+				{% if lang == 'uz' %}{{ post.title_uz }}{% elif lang == 'ru' %}{{ post.title_ru }}{% elif lang == 'tr' %}{{ post.title_tr }}{% else %}{{ post.title_en }}{% endif %}
+			</a>
+			{% endfor %}
+		{% endif %}
 				</div>
-			</div>
+</div>
+{% endif %}
 			
-<!-- Hero Section with Video Background -->
+<!-- Hero Section with Blue Background and Image -->
 <section class="home-hero">
-	<div class="home-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&h=1080&fit=crop'); background-size: cover; background-position: center;">
-		<div class="home-hero-overlay"></div>
-								</div>
+	<div class="home-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1200&fit=crop&facepad=2');"></div>
+	<div class="home-hero-overlay"></div>
 	<div class="home-hero-content">
 		<!-- H1: Asosiy sarlavha -->
 		<h1 class="hero-main-title">
-			{% if lang == 'uz' %}Turkiyada o'qish va yashash bo'yicha eng ishonchli yo'lboshchingiz{% elif lang == 'ru' %}Ваш самый надежный гид по обучению и жизни в Турции{% elif lang == 'tr' %}Türkiye'de eğitim ve yaşam için en güvenilir rehberiniz{% else %}Your most trusted guide for studying and living in Turkey{% endif %}
+			{% if lang == 'uz' %}Turkiyada o'qish orzuingizni amalga oshiring{% elif lang == 'ru' %}Осуществите свою мечту об учебе в Турции{% elif lang == 'tr' %}Türkiye’de okuma hayalinizi gerçekleştirin{% else %}Make your dream of studying in Turkey come true{% endif %}
 		</h1>
 		
 		<!-- Subheadline -->
 		<p class="hero-subtitle">
-			{% if lang == 'uz' %}60+ universitet • 12 yillik tajriba • 10 000+ muvaffaqiyatli talabalar{% elif lang == 'ru' %}60+ университетов • 12 лет опыта • 10 000+ успешных студентов{% elif lang == 'tr' %}60+ üniversite • 12 yıllık deneyim • 10.000+ başarılı öğrenci{% else %}60+ universities • 12 years experience • 10,000+ successful students{% endif %}
+			{% if lang == 'uz' %}Sun'iy intellekt yordamida sizga eng mos 5 ta universitetni bir necha soniyada aniqlang{% elif lang == 'ru' %}С помощью искусственного интеллекта определите 5 наиболее подходящих университетов за несколько секунд{% elif lang == 'tr' %}Yapay zeka yardımıyla birkaç saniye içinde size en uygun 5 üniversiteyi belirleyin{% else %}With the help of artificial intelligence, identify the 5 most suitable universities for you in a few seconds{% endif %}
 		</p>
 		
 		<!-- 3 TA ASOSIY XIZMAT BLOKI -->
 		<div class="hero-services-grid">
 			<!-- A. Universitetga kirish -->
 			<div class="hero-service-card hero-card-blue">
-				<div class="service-icon-large">🎓</div>
+				<div class="service-icon-container">
+					<div class="service-icon-large">
+						<img src="{{ url_for('static', filename='teacher.svg') }}" alt="Teacher" style="width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1);">
+					</div>
+				</div>
 				<h3 class="service-title">{% if lang == 'uz' %}Universitetga kirish{% elif lang == 'ru' %}Поступление в университет{% elif lang == 'tr' %}Üniversite kabulü{% else %}University Admission{% endif %}</h3>
 				<p class="service-description">{% if lang == 'uz' %}60+ universitetga rasmiy qabul va hujjatlar yordami{% elif lang == 'ru' %}Официальное поступление в 60+ университетов и помощь с документами{% elif lang == 'tr' %}60+ üniversiteye resmi kabul ve belge desteği{% else %}Official admission to 60+ universities and document assistance{% endif %}</p>
 				<a href="{{ url_for('universities') }}" class="service-btn">
-					{% if lang == 'uz' %}Universitet topish{% elif lang == 'ru' %}Найти университет{% elif lang == 'tr' %}Üniversite bul{% else %}Find University{% endif %}
-				</a>
-			</div>
-			
+						{% if lang == 'uz' %}Universitet topish{% elif lang == 'ru' %}Найти университет{% elif lang == 'tr' %}Üniversite bul{% else %}Find University{% endif %}
+					</a>
+				</div>
+				
 			<!-- B. Yashash ruxsatnomasi (İkamet) -->
 			<div class="hero-service-card hero-card-green">
-				<div class="service-icon-large">🛂🏠</div>
-				<h3 class="service-title">{% if lang == 'uz' %}Yashash ruxsatnomasi{% elif lang == 'ru' %}Вид на жительство{% elif lang == 'tr' %}İkamet izni{% else %}Residence Permit{% endif %}</h3>
+				<div class="service-icon-container">
+					<div class="service-icon-large">
+						<img src="{{ url_for('static', filename='house.svg') }}" alt="House" style="width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1);">
+					</div>
+					</div>
+				<h3 class="service-title">{% if lang == 'uz' %}İkamet ruxsatnomasi{% elif lang == 'ru' %}Вид на жительство{% elif lang == 'tr' %}İkamet izni{% else %}Residence Permit{% endif %}</h3>
 				<p class="service-description">{% if lang == 'uz' %}Talabalar uchun ikamet olishda to'liq hujjat yordami{% elif lang == 'ru' %}Полная помощь с документами для получения вида на жительство для студентов{% elif lang == 'tr' %}Öğrenciler için ikamet alımında tam belge desteği{% else %}Full document assistance for students obtaining residence permit{% endif %}</p>
 				<a href="/service/residence?lang={{ lang }}" class="service-btn">
 					{% if lang == 'uz' %}İkamet bo'yicha yordam{% elif lang == 'ru' %}Помощь с видом на жительство{% elif lang == 'tr' %}İkamet desteği{% else %}Residence Permit Help{% endif %}
-				</a>
-			</div>
-			
+					</a>
+				</div>
+				
 			<!-- C. Viza & Deport masalalari -->
 			<div class="hero-service-card hero-card-red">
-				<div class="service-icon-large">⚠️🛃✈️</div>
-				<h3 class="service-title">{% if lang == 'uz' %}Viza & Deport{% elif lang == 'ru' %}Визы и депортация{% elif lang == 'tr' %}Vize ve deport{% else %}Visa & Deport{% endif %}</h3>
-				<p class="service-description">{% if lang == 'uz' %}Turkiya viza, uzaytirish, deport oldini olish va huquqiy maslahatlar{% elif lang == 'ru' %}Турецкие визы, продление, предотвращение депортации и юридические консультации{% elif lang == 'tr' %}Türkiye vizesi, uzatma, deport önleme ve yasal danışmanlık{% else %}Turkey visas, extension, deport prevention and legal consultations{% endif %}</p>
+				<div class="service-icon-container">
+					<div class="service-icon-large">
+						<img src="{{ url_for('static', filename='danger.svg') }}" alt="Danger" style="width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1);">
+					</div>
+					</div>
+				<h3 class="service-title">{% if lang == 'uz' %}Viza & Deport masalalari{% elif lang == 'ru' %}Визы и депортация{% elif lang == 'tr' %}Vize ve deport sorunları{% else %}Visa & Deport Issues{% endif %}</h3>
+				<p class="service-description">{% if lang == 'uz' %}Viza, deport bo'yicha huquqiy maslahatlar{% elif lang == 'ru' %}Юридические консультации по визам и депортации{% elif lang == 'tr' %}Vize ve deport konusunda yasal danışmanlık{% else %}Legal advice on visa and deportation{% endif %}</p>
 				<a href="/service/visa?lang={{ lang }}" class="service-btn">
 					{% if lang == 'uz' %}Maslahatlashing{% elif lang == 'ru' %}Консультация{% elif lang == 'tr' %}Danışmanlık{% else %}Get Consultation{% endif %}
 				</a>
+					</div>
+				</div>
 			</div>
-		</div>
-		
-		<!-- Quick Selection Bar -->
-		<div class="quick-selection-bar">
-			<form action="{{ url_for('search') }}" method="GET" class="quick-search-form">
-				<input type="hidden" name="lang" value="{{ lang }}">
-				<select name="major" class="quick-select">
-					<option value="">{% if lang == 'uz' %}Yo'nalish{% elif lang == 'ru' %}Направление{% elif lang == 'tr' %}Bölüm{% else %}Major{% endif %}</option>
-					<option value="Medicine">{% if lang == 'uz' %}Tibbiyot{% elif lang == 'ru' %}Медицина{% elif lang == 'tr' %}Tıp{% else %}Medicine{% endif %}</option>
-					<option value="IT">IT</option>
-					<option value="Business">{% if lang == 'uz' %}Biznes{% elif lang == 'ru' %}Бизнес{% elif lang == 'tr' %}İşletme{% else %}Business{% endif %}</option>
-				</select>
-				<select name="language" class="quick-select">
-					<option value="">{% if lang == 'uz' %}Til{% elif lang == 'ru' %}Язык{% elif lang == 'tr' %}Dil{% else %}Language{% endif %}</option>
-					<option value="English">{% if lang == 'uz' %}Ingliz{% elif lang == 'ru' %}Английский{% elif lang == 'tr' %}İngilizce{% else %}English{% endif %}</option>
-					<option value="Turkish">{% if lang == 'uz' %}Turk{% elif lang == 'ru' %}Турецкий{% elif lang == 'tr' %}Türkçe{% else %}Turkish{% endif %}</option>
-				</select>
-				<select name="country" class="quick-select">
-					<option value="">{% if lang == 'uz' %}Davlat{% elif lang == 'ru' %}Страна{% elif lang == 'tr' %}Ülke{% else %}Country{% endif %}</option>
-					<option value="Turkey">{% if lang == 'uz' %}Turkiya{% elif lang == 'ru' %}Турция{% elif lang == 'tr' %}Türkiye{% else %}Turkey{% endif %}</option>
-					<option value="Cyprus">{% if lang == 'uz' %}Kipr{% elif lang == 'ru' %}Кипр{% elif lang == 'tr' %}Kıbrıs{% else %}Cyprus{% endif %}</option>
-				</select>
-				<button type="submit" class="quick-search-btn">
-					{% if lang == 'uz' %}Topish{% elif lang == 'ru' %}Найти{% elif lang == 'tr' %}Bul{% else %}Find{% endif %}
+</section>
+
+<!-- StudyFans AI - Universitet Tavsiya Qidiruv -->
+<section class="py-20 bg-white">
+	<div class="max-w-6xl mx-auto px-6">
+		<div class="text-center mb-12">
+			<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 inline-flex items-center gap-3" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
+				<span>{% if lang == 'uz' %}StudyFans AI{% elif lang == 'ru' %}StudyFans AI{% elif lang == 'tr' %}StudyFans AI{% else %}StudyFans AI{% endif %}</span>
+				<img src="{{ url_for('static', filename='microscope.svg') }}" alt="AI" class="w-8 h-8 text-blue-600" style="filter: brightness(0) saturate(100%) invert(27%) sepia(95%) saturate(2878%) hue-rotate(212deg) brightness(98%) contrast(96%);">
+			</h2>
+								</div>
+			
+		<div class="ai-form-container">
+			<form id="aiRecommendationForm" class="space-y-4">
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+					<!-- Chap tomonda: Daraja, Byudjet, Shahar -->
+								<div>
+						<label class="block text-sm font-semibold text-gray-700 mb-2">
+							{% if lang == 'uz' %}Daraja{% elif lang == 'ru' %}Степень{% elif lang == 'tr' %}Derece{% else %}Degree{% endif %}
+						</label>
+						<select name="degree" class="ai-select" required>
+							<option value="">{% if lang == 'uz' %}Tanlang{% elif lang == 'ru' %}Выберите{% elif lang == 'tr' %}Seçin{% else %}Select{% endif %}</option>
+							<option value="Bachelor">{% if lang == 'uz' %}Bakalavr{% elif lang == 'ru' %}Бакалавр{% elif lang == 'tr' %}Lisans{% else %}Bachelor{% endif %}</option>
+							<option value="Master">{% if lang == 'uz' %}Magistr{% elif lang == 'ru' %}Магистр{% elif lang == 'tr' %}Yüksek Lisans{% else %}Master{% endif %}</option>
+							<option value="PhD">{% if lang == 'uz' %}Doktorantura{% elif lang == 'ru' %}Докторантура{% elif lang == 'tr' %}Doktora{% else %}PhD{% endif %}</option>
+						</select>
+								</div>
+					
+					<!-- O'ng tomonda: Yo'nalish, Ta'lim tili -->
+					<div>
+						<label class="block text-sm font-semibold text-gray-700 mb-2">
+							{% if lang == 'uz' %}Yo'nalish{% elif lang == 'ru' %}Направление{% elif lang == 'tr' %}Bölüm{% else %}Major{% endif %}
+						</label>
+						<select name="major" class="ai-select" required>
+							<option value="">{% if lang == 'uz' %}Tanlang{% elif lang == 'ru' %}Выберите{% elif lang == 'tr' %}Seçin{% else %}Select{% endif %}</option>
+							<option value="Medicine">{% if lang == 'uz' %}Tibbiyot{% elif lang == 'ru' %}Медицина{% elif lang == 'tr' %}Tıp{% else %}Medicine{% endif %}</option>
+							<option value="IT">IT</option>
+							<option value="Business">{% if lang == 'uz' %}Biznes{% elif lang == 'ru' %}Бизнес{% elif lang == 'tr' %}İşletme{% else %}Business{% endif %}</option>
+						</select>
+							</div>
+					
+					<div>
+						<label class="block text-sm font-semibold text-gray-700 mb-2">
+							{% if lang == 'uz' %}Byudjet (yillik){% elif lang == 'ru' %}Бюджет (годовой){% elif lang == 'tr' %}Bütçe (yıllık){% else %}Budget (annual){% endif %}
+						</label>
+						<select name="budget" class="ai-select" required>
+							<option value="">{% if lang == 'uz' %}Tanlang{% elif lang == 'ru' %}Выберите{% elif lang == 'tr' %}Seçin{% else %}Select{% endif %}</option>
+							<option value="low">{% if lang == 'uz' %}$1,000 - $3,000/yil{% elif lang == 'ru' %}$1,000 - $3,000/год{% elif lang == 'tr' %}$1,000 - $3,000/yıl{% else %}$1,000 - $3,000/year{% endif %}</option>
+							<option value="medium">{% if lang == 'uz' %}$3,000 - $7,000/yil{% elif lang == 'ru' %}$3,000 - $7,000/год{% elif lang == 'tr' %}$3,000 - $7,000/yıl{% else %}$3,000 - $7,000/year{% endif %}</option>
+							<option value="high">{% if lang == 'uz' %}$7,000+/yil{% elif lang == 'ru' %}$7,000+/год{% elif lang == 'tr' %}$7,000+/yıl{% else %}$7,000+/year{% endif %}</option>
+						</select>
+								</div>
+					
+								<div>
+						<label class="block text-sm font-semibold text-gray-700 mb-2">
+							{% if lang == 'uz' %}Ta'lim tili{% elif lang == 'ru' %}Язык обучения{% elif lang == 'tr' %}Eğitim dili{% else %}Language of Education{% endif %}
+						</label>
+						<select name="language" class="ai-select" required>
+							<option value="">{% if lang == 'uz' %}Tanlang{% elif lang == 'ru' %}Выберите{% elif lang == 'tr' %}Seçin{% else %}Select{% endif %}</option>
+							<option value="English">{% if lang == 'uz' %}Ingliz{% elif lang == 'ru' %}Английский{% elif lang == 'tr' %}İngilizce{% else %}English{% endif %}</option>
+							<option value="Turkish">{% if lang == 'uz' %}Turk{% elif lang == 'ru' %}Турецкий{% elif lang == 'tr' %}Türkçe{% else %}Turkish{% endif %}</option>
+						</select>
+								</div>
+					
+					<div>
+						<label class="block text-sm font-semibold text-gray-700 mb-2">
+							{% if lang == 'uz' %}Shahar (ixtiyoriy){% elif lang == 'ru' %}Город (необязательно){% elif lang == 'tr' %}Şehir (isteğe bağlı){% else %}City (optional){% endif %}
+						</label>
+						<input type="text" name="city" class="ai-select" placeholder="{% if lang == 'uz' %}Istanbul, Ankara...{% elif lang == 'ru' %}Стамбул, Анкара...{% elif lang == 'tr' %}İstanbul, Ankara...{% else %}Istanbul, Ankara...{% endif %}">
+							</div>
+								</div>
+				
+								<div>
+					<label class="block text-sm font-semibold text-gray-700 mb-2">
+						{% if lang == 'uz' %}Qisqacha izoh (ixtiyoriy){% elif lang == 'ru' %}Краткое описание (необязательно){% elif lang == 'tr' %}Kısa açıklama (isteğe bağlı){% else %}Short description (optional){% endif %}
+					</label>
+					<textarea name="description" class="ai-select" rows="4" placeholder="{% if lang == 'uz' %}Qo'shimcha talablar yoki savollar...{% elif lang == 'ru' %}Дополнительные требования или вопросы...{% elif lang == 'tr' %}Ek gereksinimler veya sorular...{% else %}Additional requirements or questions...{% endif %}"></textarea>
+								</div>
+				
+				<button type="submit" class="w-full py-4 bg-blue-500 text-white rounded-[20rem] font-semibold text-lg hover:bg-blue-600 transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+					</svg>
+					<span>{% if lang == 'uz' %}AI Tavsiya Ber{% elif lang == 'ru' %}Получить рекомендацию AI{% elif lang == 'tr' %}AI Önerisi Al{% else %}Get AI Recommendation{% endif %}</span>
 				</button>
 			</form>
-		</div>
-		
-		<!-- 3 ta CTA Carousel -->
-		<div class="cta-carousel">
-			<div class="cta-carousel-item active">
-				<a href="{{ url_for('universities') }}" class="cta-carousel-link">
-					{% if lang == 'uz' %}Universitet topish{% elif lang == 'ru' %}Найти университет{% elif lang == 'tr' %}Üniversite bul{% else %}Find University{% endif %}
-				</a>
+			<div id="aiResult" class="mt-6 hidden">
+				<div class="bg-green-50 border border-green-200 rounded-16 p-6">
+					<h3 class="text-xl font-bold text-gray-900 mb-2">{% if lang == 'uz' %}Sizga mos:{% elif lang == 'ru' %}Вам подходит:{% elif lang == 'tr' %}Size uygun:{% else %}Recommended for you:{% endif %}</h3>
+					<p id="aiResultText" class="text-gray-700"></p>
+					<div class="flex gap-3 mt-4">
+						<a href="#" id="aiViewDetails" class="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all">
+							{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}View Details{% endif %}
+						</a>
+						<a href="{{ url_for('contact') }}" class="px-6 py-2 bg-gray-100 text-gray-900 rounded-full hover:bg-gray-200 transition-all">
+							{% if lang == 'uz' %}Bepul konsultatsiya{% elif lang == 'ru' %}Бесплатная консультация{% elif lang == 'tr' %}Ücretsiz danışmanlık{% else %}Free Consultation{% endif %}
+						</a>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="cta-carousel-item">
-				<a href="{{ url_for('calculator') }}" class="cta-carousel-link">
-					{% if lang == 'uz' %}Imkoniyatni tekshirish{% elif lang == 'ru' %}Проверить возможность{% elif lang == 'tr' %}Uygunluğu kontrol et{% else %}Check Eligibility{% endif %}
-				</a>
-			</div>
-			<div class="cta-carousel-item">
-				<a href="{{ url_for('contact') }}" class="cta-carousel-link">
-					{% if lang == 'uz' %}Bepul konsultatsiya{% elif lang == 'ru' %}Бесплатная консультация{% elif lang == 'tr' %}Ücretsiz danışmanlık{% else %}Free Consultation{% endif %}
-				</a>
-			</div>
-		</div>
-	</div>
 </section>
 
 <!-- 3. Nega aynan StudyFans? -->
 <section class="py-20 bg-white">
 	<div class="max-w-6xl mx-auto px-6">
 		<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
-				{% if lang == 'uz' %}Nega aynan StudyFans?{% elif lang == 'ru' %}Почему именно StudyFans?{% elif lang == 'tr' %}Neden StudyFans?{% else %}Why StudyFans?{% endif %}
-			</h2>
+			{% if lang == 'uz' %}Nega aynan StudyFans?{% elif lang == 'ru' %}Почему именно StudyFans?{% elif lang == 'tr' %}Neden StudyFans?{% else %}Why StudyFans?{% endif %}
+		</h2>
 		<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-			{% if lang == 'uz' %}Bizni boshqalardan ajratib turadigan afzalliklar{% elif lang == 'ru' %}Преимущества, которые отличают нас{% elif lang == 'tr' %}Bizi diğerlerinden ayıran avantajlar{% else %}Advantages that set us apart{% endif %}
+			{% if lang == 'uz' %}Biz sizga Turkiyada o'qish va yashash bo'yicha to'liq yo'lboshchilik va qo'llab-quvvatlash taqdim etamiz{% elif lang == 'ru' %}Мы предоставляем вам полное руководство и поддержку для учебы и жизни в Турции{% elif lang == 'tr' %}Türkiye'de eğitim ve yaşam için size tam rehberlik ve destek sağlıyoruz{% else %}We provide you with full guidance and support for studying and living in Turkey{% endif %}
 		</p>
 		
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-			<div class="advantage-card">
-				<div class="advantage-icon">✔</div>
-				<div class="advantage-number">12</div>
-				<div class="advantage-label">{% if lang == 'uz' %}yil tajriba{% elif lang == 'ru' %}лет опыта{% elif lang == 'tr' %}yıllık deneyim{% else %}years experience{% endif %}</div>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+			<div class="why-card why-card-blue">
+				<div class="why-icon-container">
+					<img src="{{ url_for('static', filename='ranking.svg') }}" alt="Experience" class="why-icon">
+				</div>
+				<h3 class="why-title">{% if lang == 'uz' %}12 yil tajriba{% elif lang == 'ru' %}12 лет опыта{% elif lang == 'tr' %}12 yıllık deneyim{% else %}12 years experience{% endif %}</h3>
+				<p class="why-description">{% if lang == 'uz' %}Turkiya ta'lim sohasida uzoq yillik tajriba va ekspertiza{% elif lang == 'ru' %}Многолетний опыт и экспертиза в сфере образования Турции{% elif lang == 'tr' %}Türkiye eğitim sektöründe uzun yılların deneyimi ve uzmanlığı{% else %}Long-term experience and expertise in Turkey's education sector{% endif %}</p>
 		</div>
-			<div class="advantage-card">
-				<div class="advantage-icon">✔</div>
-				<div class="advantage-number">10 000+</div>
-				<div class="advantage-label">{% if lang == 'uz' %}talaba{% elif lang == 'ru' %}студентов{% elif lang == 'tr' %}öğrenci{% else %}students{% endif %}</div>
+		
+			<div class="why-card why-card-green">
+				<div class="why-icon-container">
+					<img src="{{ url_for('static', filename='user-octagon.svg') }}" alt="Students" class="why-icon">
+				</div>
+				<h3 class="why-title">{% if lang == 'uz' %}10 000+ talaba{% elif lang == 'ru' %}10 000+ студентов{% elif lang == 'tr' %}10.000+ öğrenci{% else %}10,000+ students{% endif %}</h3>
+				<p class="why-description">{% if lang == 'uz' %}Muvaffaqiyatli o'qishni boshlagan va davom ettirgan talabalar{% elif lang == 'ru' %}Студенты, успешно начавшие и продолжающие учебу{% elif lang == 'tr' %}Başarıyla eğitime başlayan ve devam eden öğrenciler{% else %}Students who have successfully started and continued their studies{% endif %}</p>
 			</div>
-			<div class="advantage-card">
-				<div class="advantage-icon">✔</div>
-				<div class="advantage-number">60+</div>
-				<div class="advantage-label">{% if lang == 'uz' %}universitet{% elif lang == 'ru' %}университетов{% elif lang == 'tr' %}üniversite{% else %}universities{% endif %}</div>
+			
+			<div class="why-card why-card-light-blue">
+				<div class="why-icon-container">
+					<img src="{{ url_for('static', filename='bank.svg') }}" alt="Universities" class="why-icon">
+				</div>
+				<h3 class="why-title">{% if lang == 'uz' %}60+ universitet{% elif lang == 'ru' %}60+ университетов{% elif lang == 'tr' %}60+ üniversite{% else %}60+ universities{% endif %}</h3>
+				<p class="why-description">{% if lang == 'uz' %}Turkiyaning eng yaxshi davlat va xususiy universitetlari{% elif lang == 'ru' %}Лучшие государственные и частные университеты Турции{% elif lang == 'tr' %}Türkiye'nin en iyi devlet ve özel üniversiteleri{% else %}The best public and private universities in Turkey{% endif %}</p>
 			</div>
-			<div class="advantage-card">
-				<div class="advantage-icon">✔</div>
-				<div class="advantage-number">100%</div>
-				<div class="advantage-label">{% if lang == 'uz' %}shaffoflik{% elif lang == 'ru' %}прозрачность{% elif lang == 'tr' %}şeffaflık{% else %}transparency{% endif %}</div>
+			
+			<div class="why-card why-card-orange">
+				<div class="why-icon-container">
+					<img src="{{ url_for('static', filename='shield-tick.svg') }}" alt="Transparency" class="why-icon">
+				</div>
+				<h3 class="why-title">{% if lang == 'uz' %}100% shaffoflik{% elif lang == 'ru' %}100% прозрачность{% elif lang == 'tr' %}100% şeffaflık{% else %}100% transparency{% endif %}</h3>
+				<p class="why-description">{% if lang == 'uz' %}To'liq shaffof jarayon va professional qo'llab-quvvatlash{% elif lang == 'ru' %}Полностью прозрачный процесс и профессиональная поддержка{% elif lang == 'tr' %}Tamamen şeffaf süreç ve profesyonel destek{% else %}Fully transparent process and professional support{% endif %}</p>
+			</div>
+		</div>
+		
+		<!-- Blue Banner with Statistics -->
+		<div class="why-banner">
+			<div class="why-banner-content">
+				<div class="why-banner-item">
+					<div class="why-banner-number">60+</div>
+					<div class="why-banner-text">{% if lang == 'uz' %}Rasmiy hamkor universitetlar{% elif lang == 'ru' %}Официальные партнерские университеты{% elif lang == 'tr' %}Resmi ortak üniversiteler{% else %}Official partner universities{% endif %}</div>
+				</div>
+				<div class="why-banner-item">
+					<div class="why-banner-number">100%</div>
+					<div class="why-banner-text">{% if lang == 'uz' %}Qabul kafolati{% elif lang == 'ru' %}Гарантия поступления{% elif lang == 'tr' %}Kabul garantisi{% else %}Admission guarantee{% endif %}</div>
+				</div>
+				<div class="why-banner-item">
+					<div class="why-banner-number">24/7</div>
+					<div class="why-banner-text">{% if lang == 'uz' %}Qo'llab-quvvatlash xizmati{% elif lang == 'ru' %}Служба поддержки{% elif lang == 'tr' %}Destek hizmeti{% else %}Support service{% endif %}</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
 <style>
-.advantage-card {
+.why-card {
 	background: white;
-	border-radius: 24px;
+	border-radius: 32px;
 	padding: 2rem;
-	text-align: center;
-	border: 1px solid rgba(0,0,0,0.08);
+	text-align: left;
+	border: 0.1px solid rgba(0, 0, 0, 0.15);
 	transition: all 0.3s ease;
 }
-.advantage-card:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-	border-color: rgba(0,0,0,0.15);
+
+.why-card:hover {
+	box-shadow: 0 12px 24px rgba(0,0,0,0.1);
 }
-.advantage-icon {
-	font-size: 2rem;
-	color: #22c55e;
-	margin-bottom: 0.5rem;
+
+.why-icon-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 64px;
+	height: 64px;
+	border-radius: 18px;
+	margin-bottom: 1.5rem;
 }
-.advantage-number {
-	font-size: 2.5rem;
+
+.why-card-blue .why-icon-container {
+	background: #3b82f6;
+}
+
+.why-card-green .why-icon-container {
+	background: #22c55e;
+}
+
+.why-card-light-blue .why-icon-container {
+	background: #06b6d4;
+}
+
+.why-card-orange .why-icon-container {
+	background: #f97316;
+}
+
+.why-icon {
+	width: 32px;
+	height: 32px;
+	filter: brightness(0) invert(1);
+}
+
+.why-title {
+	font-size: 1.25rem;
 	font-weight: 700;
 	color: #111;
+	margin-bottom: 0.75rem;
+	font-family: 'Inter', sans-serif;
+}
+
+.why-description {
+	font-size: 0.9375rem;
+	color: #666;
+	line-height: 1.6;
+	font-family: 'Inter', sans-serif;
+}
+
+.why-banner {
+	background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+	border-radius: 32px;
+	padding: 3rem 2rem;
+	margin-top: 2rem;
+}
+
+.why-banner-content {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 2rem;
+	text-align: center;
+}
+
+@media (max-width: 768px) {
+	.why-banner-content {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+}
+
+.why-banner-item {
+	color: white;
+}
+
+.why-banner-number {
+	font-size: 2.5rem;
+	font-weight: 700;
 	margin-bottom: 0.5rem;
 	font-family: 'Inter', sans-serif;
 }
-.advantage-label {
+
+.why-banner-text {
 	font-size: 1rem;
-	color: #666;
-	font-weight: 500;
+	opacity: 0.95;
 	font-family: 'Inter', sans-serif;
 }
 </style>
@@ -874,7 +1115,7 @@
 				<div class="text-white">
 					<h3 class="text-2xl md:text-3xl font-bold mb-2" style="font-family: 'Inter', sans-serif;">
 						{% if lang == 'uz' %}🧮 O'qish narxini hisoblang{% elif lang == 'ru' %}🧮 Рассчитайте стоимость{% elif lang == 'tr' %}🧮 Maliyeti hesaplayın{% else %}🧮 Calculate Tuition Cost{% endif %}
-					</h3>
+				</h3>
 					<p class="opacity-90" style="font-family: 'Inter', sans-serif;">
 						{% if lang == 'uz' %}Kalkulyator yordamida Turkiyadagi o'qish narxini bilib oling{% elif lang == 'ru' %}Узнайте стоимость обучения в Турции с помощью калькулятора{% elif lang == 'tr' %}Hesap makinesiyle Türkiye'deki eğitim maliyetini öğrenin{% else %}Learn tuition costs in Turkey with our calculator{% endif %}
 				</p>
@@ -883,7 +1124,7 @@
 					{% if lang == 'uz' %}Kalkulyator{% elif lang == 'ru' %}Калькулятор{% elif lang == 'tr' %}Hesap makinesi{% else %}Calculator{% endif %}
 					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
 				</a>
-								</div>
+			</div>
 							</div>
 						</div>
 </section>
@@ -902,7 +1143,7 @@
 			<div class="feature-card">
 				<div class="feature-icon" style="background: #dbeafe;">
 					<svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-			</div>
+				</div>
 				<h3 class="text-xl font-bold text-gray-900 mb-3" style="font-family: 'Inter', sans-serif;">
 					{% if lang == 'uz' %}Universitetga qabul{% elif lang == 'ru' %}Поступление{% elif lang == 'tr' %}Üniversite kabulü{% else %}University Admission{% endif %}
 				</h3>
@@ -918,7 +1159,7 @@
 			<div class="feature-card">
 				<div class="feature-icon" style="background: #dcfce7;">
 					<svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z M9 22V12h6v10"/></svg>
-			</div>
+				</div>
 				<h3 class="text-xl font-bold text-gray-900 mb-3" style="font-family: 'Inter', sans-serif;">
 					{% if lang == 'uz' %}İkamet (Yashash ruxsati){% elif lang == 'ru' %}İkamet (ВНЖ){% elif lang == 'tr' %}İkamet{% else %}Residence Permit{% endif %}
 				</h3>
@@ -929,7 +1170,7 @@
 					{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Learn more{% endif %}
 					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
 				</a>
-			</div>
+		</div>
 		
 			<div class="feature-card">
 				<div class="feature-icon" style="background: #fee2e2;">
@@ -937,7 +1178,7 @@
 		</div>
 				<h3 class="text-xl font-bold text-gray-900 mb-3" style="font-family: 'Inter', sans-serif;">
 					{% if lang == 'uz' %}Viza & Deport{% elif lang == 'ru' %}Виза и Депорт{% elif lang == 'tr' %}Vize ve Deport{% else %}Visa & Deport{% endif %}
-				</h3>
+			</h3>
 				<p class="text-gray-600 mb-4">
 					{% if lang == 'uz' %}Viza masalalari, uzaytirish, deport oldini olish va huquqiy maslahatlar{% elif lang == 'ru' %}Визовые вопросы, продление, предотвращение депортации{% elif lang == 'tr' %}Vize sorunları, uzatma, deport önleme{% else %}Visa issues, extension, deportation prevention{% endif %}
 				</p>
@@ -945,8 +1186,8 @@
 					{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Learn more{% endif %}
 					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
 				</a>
-	</div>
-			
+			</div>
+		
 			<div class="feature-card">
 				<div class="feature-icon" style="background: #fef3c7;">
 					<svg class="w-7 h-7 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -977,7 +1218,7 @@
 					{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Learn more{% endif %}
 					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
 				</a>
-		</div>
+			</div>
 		
 			<div class="feature-card">
 				<div class="feature-icon" style="background: #cffafe;">
@@ -992,10 +1233,10 @@
 				<a href="{{ url_for('contact') }}" class="inline-flex items-center gap-2 text-cyan-600 font-semibold hover:gap-3 transition-all" style="font-family: 'Inter', sans-serif;">
 					{% if lang == 'uz' %}Bog'lanish{% elif lang == 'ru' %}Связаться{% elif lang == 'tr' %}İletişim{% else %}Contact{% endif %}
 					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-					</a>
-				</div>
+				</a>
 			</div>
 		</div>
+	</div>
 </section>
 
 <!-- 5. Top Universities Slider -->
@@ -1003,7 +1244,7 @@
 	<div class="max-w-6xl mx-auto px-6">
 		<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
 			{% if lang == 'uz' %}Top Universitetlar{% elif lang == 'ru' %}Топ университеты{% elif lang == 'tr' %}En İyi Üniversiteler{% else %}Top Universities{% endif %}
-		</h2>
+			</h2>
 		<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
 			{% if lang == 'uz' %}Eng mashhur va ishonchli universitetlar{% elif lang == 'ru' %}Самые популярные и надежные университеты{% elif lang == 'tr' %}En popüler ve güvenilir üniversiteler{% else %}Most popular and trusted universities{% endif %}
 		</p>
@@ -1021,17 +1262,17 @@
 									{% else %}
 									<div class="university-slide-placeholder">
 										{% if lang == 'uz' %}{{ university.name_uz[0] if university.name_uz else 'U' }}{% elif lang == 'ru' %}{{ university.name_ru[0] if university.name_ru else 'U' }}{% elif lang == 'tr' %}{{ university.name_tr[0] if university.name_tr else 'U' }}{% else %}{{ university.name_en[0] if university.name_en else 'U' }}{% endif %}
-									</div>
+			</div>
 									{% endif %}
-								</div>
+			</div>
 								<h3 class="university-slide-name">
 									{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}
 								</h3>
 								<p class="university-slide-location">
 									{% if lang == 'uz' %}{{ university.city_uz }}, {{ university.country_uz }}{% elif lang == 'ru' %}{{ university.city_ru }}, {{ university.country_ru }}{% elif lang == 'tr' %}{{ university.city_tr }}, {{ university.country_tr }}{% else %}{{ university.city_en }}, {{ university.country_en }}{% endif %}
 								</p>
-							</a>
-						</div>
+				</a>
+			</div>
 						{% endfor %}
 					{% else %}
 						<div class="swiper-slide">
@@ -1228,85 +1469,6 @@
 }
 </style>
 
-<!-- 7. StudyFans AI - Universitet Tavsiya Generatori -->
-<section class="py-20 bg-white">
-	<div class="max-w-6xl mx-auto px-6">
-		<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
-			{% if lang == 'uz' %}AI orqali sizga mos universitetni toping{% elif lang == 'ru' %}Найдите подходящий университет с AI{% elif lang == 'tr' %}AI ile size uygun üniversiteyi bulun{% else %}Find your perfect university with AI{% endif %}
-		</h2>
-		<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-			{% if lang == 'uz' %}Sun'iy intellekt sizning ehtiyojlaringizga mos universitetni tavsiya qiladi{% elif lang == 'ru' %}Искусственный интеллект порекомендует университет, подходящий вашим потребностям{% elif lang == 'tr' %}Yapay zeka ihtiyaçlarınıza uygun üniversiteyi önerir{% else %}AI recommends the university that matches your needs{% endif %}
-		</p>
-		
-		<div class="ai-form-container">
-			<form id="aiRecommendationForm" class="space-y-4">
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-					<div>
-						<label class="block text-sm font-semibold text-gray-700 mb-2">
-							{% if lang == 'uz' %}Ta'lim darajasi{% elif lang == 'ru' %}Уровень образования{% elif lang == 'tr' %}Eğitim seviyesi{% else %}Education Level{% endif %}
-						</label>
-						<select name="degree" class="ai-select" required>
-							<option value="">{% if lang == 'uz' %}Tanlang...{% elif lang == 'ru' %}Выберите...{% elif lang == 'tr' %}Seçin...{% else %}Select...{% endif %}</option>
-							<option value="Bachelor">{% if lang == 'uz' %}Bakalavr{% elif lang == 'ru' %}Бакалавр{% elif lang == 'tr' %}Lisans{% else %}Bachelor{% endif %}</option>
-							<option value="Master">{% if lang == 'uz' %}Magistr{% elif lang == 'ru' %}Магистр{% elif lang == 'tr' %}Yüksek Lisans{% else %}Master{% endif %}</option>
-							<option value="PhD">{% if lang == 'uz' %}Doktorantura{% elif lang == 'ru' %}Докторантура{% elif lang == 'tr' %}Doktora{% else %}PhD{% endif %}</option>
-						</select>
-					</div>
-					<div>
-						<label class="block text-sm font-semibold text-gray-700 mb-2">
-							{% if lang == 'uz' %}Yo'nalish{% elif lang == 'ru' %}Направление{% elif lang == 'tr' %}Bölüm{% else %}Major{% endif %}
-						</label>
-						<select name="major" class="ai-select" required>
-							<option value="">{% if lang == 'uz' %}Tanlang...{% elif lang == 'ru' %}Выберите...{% elif lang == 'tr' %}Seçin...{% else %}Select...{% endif %}</option>
-							<option value="Medicine">{% if lang == 'uz' %}Tibbiyot{% elif lang == 'ru' %}Медицина{% elif lang == 'tr' %}Tıp{% else %}Medicine{% endif %}</option>
-							<option value="IT">IT</option>
-							<option value="Business">{% if lang == 'uz' %}Biznes{% elif lang == 'ru' %}Бизнес{% elif lang == 'tr' %}İşletme{% else %}Business{% endif %}</option>
-						</select>
-					</div>
-					<div>
-						<label class="block text-sm font-semibold text-gray-700 mb-2">
-							{% if lang == 'uz' %}Byudjet{% elif lang == 'ru' %}Бюджет{% elif lang == 'tr' %}Bütçe{% else %}Budget{% endif %}
-						</label>
-						<select name="budget" class="ai-select" required>
-							<option value="">{% if lang == 'uz' %}Tanlang...{% elif lang == 'ru' %}Выберите...{% elif lang == 'tr' %}Seçin...{% else %}Select...{% endif %}</option>
-							<option value="low">{% if lang == 'uz' %}$1,000 - $3,000/yil{% elif lang == 'ru' %}$1,000 - $3,000/год{% elif lang == 'tr' %}$1,000 - $3,000/yıl{% else %}$1,000 - $3,000/year{% endif %}</option>
-							<option value="medium">{% if lang == 'uz' %}$3,000 - $7,000/yil{% elif lang == 'ru' %}$3,000 - $7,000/год{% elif lang == 'tr' %}$3,000 - $7,000/yıl{% else %}$3,000 - $7,000/year{% endif %}</option>
-							<option value="high">{% if lang == 'uz' %}$7,000+/yil{% elif lang == 'ru' %}$7,000+/год{% elif lang == 'tr' %}$7,000+/yıl{% else %}$7,000+/year{% endif %}</option>
-						</select>
-					</div>
-					<div>
-						<label class="block text-sm font-semibold text-gray-700 mb-2">
-							{% if lang == 'uz' %}Til{% elif lang == 'ru' %}Язык{% elif lang == 'tr' %}Dil{% else %}Language{% endif %}
-						</label>
-						<select name="language" class="ai-select" required>
-							<option value="">{% if lang == 'uz' %}Tanlang...{% elif lang == 'ru' %}Выберите...{% elif lang == 'tr' %}Seçin...{% else %}Select...{% endif %}</option>
-							<option value="English">{% if lang == 'uz' %}Ingliz{% elif lang == 'ru' %}Английский{% elif lang == 'tr' %}İngilizce{% else %}English{% endif %}</option>
-							<option value="Turkish">{% if lang == 'uz' %}Turk{% elif lang == 'ru' %}Турецкий{% elif lang == 'tr' %}Türkçe{% else %}Turkish{% endif %}</option>
-						</select>
-					</div>
-					</div>
-				<button type="submit" class="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-16 font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-[1.02]">
-					{% if lang == 'uz' %}AI Tavsiya Ber{% elif lang == 'ru' %}Получить рекомендацию AI{% elif lang == 'tr' %}AI Önerisi Al{% else %}Get AI Recommendation{% endif %}
-				</button>
-			</form>
-			<div id="aiResult" class="mt-6 hidden">
-				<div class="bg-green-50 border border-green-200 rounded-16 p-6">
-					<h3 class="text-xl font-bold text-gray-900 mb-2">{% if lang == 'uz' %}Sizga mos:{% elif lang == 'ru' %}Вам подходит:{% elif lang == 'tr' %}Size uygun:{% else %}Recommended for you:{% endif %}</h3>
-					<p id="aiResultText" class="text-gray-700"></p>
-					<div class="flex gap-3 mt-4">
-						<a href="#" id="aiViewDetails" class="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all">
-							{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}View Details{% endif %}
-						</a>
-						<a href="{{ url_for('contact') }}" class="px-6 py-2 bg-gray-100 text-gray-900 rounded-full hover:bg-gray-200 transition-all">
-							{% if lang == 'uz' %}Bepul konsultatsiya{% elif lang == 'ru' %}Бесплатная консультация{% elif lang == 'tr' %}Ücretsiz danışmanlık{% else %}Free Consultation{% endif %}
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
 <!-- How It Works -->
 <section class="py-20 bg-gray-50">
 	<div class="max-w-6xl mx-auto px-6">
@@ -1320,7 +1482,7 @@
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 			<div class="process-step">
 				<div class="step-number">1</div>
-				<div>
+					<div>
 					<h3 class="text-lg font-bold text-gray-900 mb-2" style="font-family: 'Inter', sans-serif;">
 					{% if lang == 'uz' %}Konsultatsiya{% elif lang == 'ru' %}Консультация{% elif lang == 'tr' %}Danışmanlık{% else %}Consultation{% endif %}
 				</h3>
@@ -1332,15 +1494,15 @@
 		
 			<div class="process-step">
 				<div class="step-number">2</div>
-				<div>
+					<div>
 					<h3 class="text-lg font-bold text-gray-900 mb-2" style="font-family: 'Inter', sans-serif;">
 					{% if lang == 'uz' %}Hujjatlar{% elif lang == 'ru' %}Документы{% elif lang == 'tr' %}Belgeler{% else %}Documents{% endif %}
 				</h3>
 					<p class="text-gray-600">
 						{% if lang == 'uz' %}Barcha hujjatlarni tayyorlash va to'g'ri rasmiylashtirishda yordam{% elif lang == 'ru' %}Помощь в подготовке и правильном оформлении документов{% elif lang == 'tr' %}Belgelerin hazırlanması ve düzenlenmesinde yardım{% else %}Help with preparing and formatting documents{% endif %}
 				</p>
-		</div>
 			</div>
+				</div>
 			
 			<div class="process-step">
 				<div class="step-number">3</div>
@@ -1350,8 +1512,8 @@
 					</h3>
 					<p class="text-gray-600">
 						{% if lang == 'uz' %}Universitetga ariza topshirish va natijani kutish{% elif lang == 'ru' %}Подача заявки в университет и ожидание результата{% elif lang == 'tr' %}Üniversiteye başvuru ve sonucu bekleme{% else %}Submitting application and waiting for result{% endif %}
-					</p>
-				</div>
+				</p>
+			</div>
 		</div>
 		
 			<div class="process-step">
@@ -1363,10 +1525,10 @@
 					<p class="text-gray-600">
 						{% if lang == 'uz' %}Qabul xatini olish, viza va jo'nashga tayyorgarlik{% elif lang == 'ru' %}Получение письма о зачислении, виза и подготовка{% elif lang == 'tr' %}Kabul mektubunu alma, vize ve hazırlık{% else %}Getting acceptance letter, visa and preparation{% endif %}
 				</p>
+					</div>
 			</div>
 		</div>
 	</div>
-					</div>
 </section>
 
 <!-- 10. Statistics -->
@@ -1376,11 +1538,11 @@
 			<div class="stat-card">
 				<div class="stat-number">10 000+</div>
 				<p class="stat-label">{% if lang == 'uz' %}Talabalar{% elif lang == 'ru' %}Студентов{% elif lang == 'tr' %}Öğrenci{% else %}Students{% endif %}</p>
-			</div>
+					</div>
 			<div class="stat-card">
 				<div class="stat-number">60+</div>
 				<p class="stat-label">{% if lang == 'uz' %}Universitetlar{% elif lang == 'ru' %}Университетов{% elif lang == 'tr' %}Üniversite{% else %}Universities{% endif %}</p>
-			</div>
+				</div>
 			<div class="stat-card">
 				<div class="stat-number">12</div>
 				<p class="stat-label">{% if lang == 'uz' %}Yil{% elif lang == 'ru' %}Лет{% elif lang == 'tr' %}Yıl{% else %}Years{% endif %}</p>
@@ -1398,16 +1560,16 @@
 	<div class="max-w-6xl mx-auto px-6">
 		<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
 			{% if lang == 'uz' %}Bizning jamoa{% elif lang == 'ru' %}Наша команда{% elif lang == 'tr' %}Ekibimiz{% else %}Our Team{% endif %}
-		</h2>
+			</h2>
 		<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
 			{% if lang == 'uz' %}Sizning muvaffaqiyatingiz uchun ishlaydigan professional mutaxassislar{% elif lang == 'ru' %}Профессиональные специалисты, работающие для вашего успеха{% elif lang == 'tr' %}Başarınız için çalışan profesyonel uzmanlar{% else %}Professional experts working for your success{% endif %}
-		</p>
+			</p>
 		
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 			<div class="team-card">
 				<div class="team-avatar">
 					<img src="/static/images/team/IMG_20250920_153304_162.jpg" alt="Director">
-				</div>
+		</div>
 				<h3 class="text-xl font-bold text-gray-900 mb-2">{% if lang == 'uz' %}Direktor{% elif lang == 'ru' %}Директор{% elif lang == 'tr' %}Müdür{% else %}Director{% endif %}</h3>
 				<p class="text-gray-600">{% if lang == 'uz' %}12 yillik tajriba{% elif lang == 'ru' %}12 лет опыта{% elif lang == 'tr' %}12 yıllık deneyim{% else %}12 years experience{% endif %}</p>
 			</div>
@@ -1449,7 +1611,7 @@
 				<div class="blog-card-content">
 					<h3 class="blog-card-title">
 						{% if lang == 'uz' %}{{ post.title_uz }}{% elif lang == 'ru' %}{{ post.title_ru }}{% elif lang == 'tr' %}{{ post.title_tr }}{% else %}{{ post.title_en }}{% endif %}
-					</h3>
+				</h3>
 					<p class="blog-card-date">{{ post.created_at.strftime('%d.%m.%Y') }}</p>
 				</div>
 			</a>
@@ -1507,7 +1669,7 @@
 	<div class="max-w-6xl mx-auto px-6">
 		<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
 			{% if lang == 'uz' %}Biz bilan ishlang — StudyFans rasmiy hamkori bo'ling{% elif lang == 'ru' %}Работайте с нами — станьте официальным партнером StudyFans{% elif lang == 'tr' %}Bizimle çalışın — StudyFans resmi ortağı olun{% else %}Work with us — become an official StudyFans partner{% endif %}
-		</h2>
+			</h2>
 		<p class="text-gray-600 text-center mb-4 max-w-2xl mx-auto">
 			{% if lang == 'uz' %}Turkiyadagi 60+ universitet bilan ishlovchi yirik ta'lim konsalting tarmog'ining bir qismiga aylaning.{% elif lang == 'ru' %}Станьте частью крупной сети образовательного консалтинга, работающей с 60+ университетами Турции.{% elif lang == 'tr' %}Türkiye'deki 60+ üniversite ile çalışan büyük eğitim danışmanlık ağının bir parçası olun.{% else %}Become part of a major educational consulting network working with 60+ universities in Turkey.{% endif %}
 		</p>
@@ -1537,9 +1699,9 @@
 						<span class="text-gray-700">{% if lang == 'uz' %}Universitetlardan rasmiy sertifikatlar{% elif lang == 'ru' %}Официальные сертификаты от университетов{% elif lang == 'tr' %}Üniversitelerden resmi sertifikalar{% else %}Official certificates from universities{% endif %}</span>
 					</li>
 				</ul>
-			</div>
-			
-			<div>
+		</div>
+		
+					<div>
 				<h3 class="text-2xl font-bold text-gray-900 mb-6">{% if lang == 'uz' %}Partner bo'lish formasi{% elif lang == 'ru' %}Форма партнерства{% elif lang == 'tr' %}Ortaklık formu{% else %}Partner Application{% endif %}</h3>
 				<form action="{{ url_for('partner') }}" method="GET" class="space-y-4">
 					<input type="hidden" name="lang" value="{{ lang }}">
@@ -1569,11 +1731,11 @@
 					</div>
 					<button type="submit" class="w-full py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all">
 						{% if lang == 'uz' %}Hamkor bo'lish{% elif lang == 'ru' %}Стать партнером{% elif lang == 'tr' %}Ortak ol{% else %}Become Partner{% endif %}
-					</button>
-				</form>
+				</button>
+			</form>
 			</div>
-		</div>
-		
+					</div>
+					
 		<div class="mt-12 text-center">
 			<h3 class="text-xl font-bold text-gray-900 mb-6">{% if lang == 'uz' %}Partnerlarimiz qanday ishlaydi?{% elif lang == 'ru' %}Как работают наши партнеры?{% elif lang == 'tr' %}Ortaklarımız nasıl çalışır?{% else %}How do our partners work?{% endif %}</h3>
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -1589,18 +1751,18 @@
 					<div>
 						<h4 class="font-bold text-gray-900 mb-2">{% if lang == 'uz' %}Talabalarni jalb qilish{% elif lang == 'ru' %}Привлечение студентов{% elif lang == 'tr' %}Öğrenci çekme{% else %}Attract students{% endif %}</h4>
 						<p class="text-gray-600 text-sm">{% if lang == 'uz' %}Reklama materiallari bilan{% elif lang == 'ru' %}С помощью рекламных материалов{% elif lang == 'tr' %}Reklam materyalleri ile{% else %}With advertising materials{% endif %}</p>
-					</div>
-				</div>
+			</div>
+		</div>
 				<div class="process-step">
 					<div class="step-number">3</div>
 					<div>
 						<h4 class="font-bold text-gray-900 mb-2">{% if lang == 'uz' %}Komissiya olish{% elif lang == 'ru' %}Получение комиссии{% elif lang == 'tr' %}Komisyon alma{% else %}Get commission{% endif %}</h4>
 						<p class="text-gray-600 text-sm">{% if lang == 'uz' %}Har bir qabul qilingan talaba uchun{% elif lang == 'ru' %}За каждого принятого студента{% elif lang == 'tr' %}Her kabul edilen öğrenci için{% else %}For each accepted student{% endif %}</p>
-					</div>
+	</div>
+		</div>
 				</div>
 			</div>
-		</div>
-	</div>
+				</div>
 </section>
 
 <!-- Promo: Partner -->
@@ -1612,10 +1774,10 @@
 				<div class="text-white">
 					<h3 class="text-2xl md:text-3xl font-bold mb-2" style="font-family: 'Inter', sans-serif;">
 						{% if lang == 'uz' %}🤝 StudyFans rasmiy hamkori bo'ling{% elif lang == 'ru' %}🤝 Станьте партнером StudyFans{% elif lang == 'tr' %}🤝 StudyFans resmi ortağı olun{% else %}🤝 Become an official StudyFans partner{% endif %}
-					</h3>
+				</h3>
 					<p class="opacity-90" style="font-family: 'Inter', sans-serif;">
 						{% if lang == 'uz' %}60+ universitet bilan ishlang va har bir talaba uchun komissiya oling{% elif lang == 'ru' %}Работайте с 60+ университетами и получайте комиссию{% elif lang == 'tr' %}60+ üniversite ile çalışın ve komisyon kazanın{% else %}Work with 60+ universities and earn commission{% endif %}
-			</p>
+				</p>
 		</div>
 				<a href="{{ url_for('partner') }}" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition-all font-semibold whitespace-nowrap" style="font-family: 'Inter', sans-serif;">
 					{% if lang == 'uz' %}Hamkor bo'lish{% elif lang == 'ru' %}Стать партнером{% elif lang == 'tr' %}Ortak ol{% else %}Become Partner{% endif %}
@@ -2005,12 +2167,12 @@
 						document.getElementById('aiResultText').textContent = result.recommendation;
 						document.getElementById('aiViewDetails').href = result.details_url || '#';
 						document.getElementById('aiResult').classList.remove('hidden');
-					}
-				} catch (error) {
-					console.error('Error:', error);
-				}
-			});
+			}
+		} catch (error) {
+			console.error('Error:', error);
 		}
+			});
+	}
 	});
 </script>
 
