@@ -15,29 +15,216 @@
 		width: auto;
 	}
 	
-	.image-swiper {
-		width: 100%;
-		height: 300px;
-		padding: 0 1rem;
+	/* Top Universities Swiper - New Premium Design */
+	.top-universities-swiper-new {
+		padding-bottom: 3rem;
+		position: relative;
 	}
-	
-	.image-swiper .swiper-wrapper {
-		border-radius: 1.5rem;
+
+	.universities-slider {
+		position: relative;
+	}
+
+	.swiper-button-next,
+	.swiper-button-prev {
+		color: #2563eb;
+		background: white;
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+		transition: all 0.3s ease;
+	}
+
+	.swiper-button-next:hover,
+	.swiper-button-prev:hover {
+		background: #2563eb;
+		color: white;
+		transform: scale(1.1);
+	}
+
+	.swiper-button-next::after,
+	.swiper-button-prev::after {
+		font-size: 18px;
+		font-weight: 700;
+	}
+
+	.swiper-pagination-bullet {
+		background: #cbd5e1;
+		opacity: 1;
+		width: 10px;
+		height: 10px;
+	}
+
+	.swiper-pagination-bullet-active {
+		background: #2563eb;
+		width: 24px;
+		border-radius: 5px;
+	}
+
+	/* Top University Card - New Premium Design */
+	.top-university-card-new {
+		display: block;
+		text-decoration: none;
+		color: inherit;
+		background: white;
+		border-radius: 24px;
 		overflow: hidden;
-	}
-	
-	.image-swiper .swiper-slide {
-		width: 100%;
+		transition: all 0.3s ease;
 		height: 100%;
-		border-radius: 1.5rem;
+		position: relative;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+		border: 1px solid rgba(0,0,0,0.06);
+	}
+
+	.top-university-card-new:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+	}
+
+	.top-university-card-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 180px;
+		background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
 		overflow: hidden;
 	}
-	
-	.image-swiper .swiper-slide img {
+
+	.top-university-bg-image {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		border-radius: 1.5rem;
+		opacity: 0.3;
+	}
+
+	.top-university-card-content {
+		position: relative;
+		padding: 1.5rem;
+		padding-top: 2.5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		background: white;
+		margin-top: 100px;
+		border-radius: 24px 24px 0 0;
+	}
+
+	.top-university-logo-new {
+		width: 64px;
+		height: 64px;
+		margin-bottom: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		z-index: 2;
+	}
+
+	.university-logo-placeholder-new {
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+		border-radius: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: white;
+		font-family: 'Inter', sans-serif;
+		box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+	}
+
+	.top-university-name-new {
+		font-size: 1.125rem;
+		font-weight: 700;
+		color: #111;
+		margin-bottom: 1rem;
+		font-family: 'Inter', sans-serif;
+		line-height: 1.3;
+		letter-spacing: -0.01em;
+	}
+
+	.top-university-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		width: 100%;
+		margin-bottom: 1.5rem;
+	}
+
+	.top-university-info-item {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 0.5rem;
+		font-size: 0.8125rem;
+		color: #6b7280;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+	}
+
+	.top-university-info-item svg {
+		flex-shrink: 0;
+	}
+
+	.top-university-btn-new {
+		width: 100%;
+		padding: 0.75rem 1.5rem;
+		background: #2563eb;
+		color: white;
+		border: none;
+		border-radius: 100px;
+		font-weight: 600;
+		font-size: 0.875rem;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		font-family: 'Inter', sans-serif;
+	}
+
+	.top-university-btn-new:hover {
+		background: #1d4ed8;
+		transform: translateY(-1px);
+		box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+	}
+
+	@media (max-width: 768px) {
+		.top-university-card-bg {
+			height: 160px;
+		}
+		
+		.top-university-card-content {
+			padding: 1.25rem;
+			padding-top: 2rem;
+			margin-top: 80px;
+		}
+		
+		.top-university-logo-new {
+			width: 56px;
+			height: 56px;
+			margin-bottom: 0.75rem;
+		}
+		
+		.university-logo-placeholder-new {
+			font-size: 1.25rem;
+			border-radius: 10px;
+		}
+		
+		.top-university-name-new {
+			font-size: 1rem;
+			margin-bottom: 0.75rem;
+		}
+		
+		.top-university-info-item {
+			font-size: 0.75rem;
+		}
+		
+		.top-university-btn-new {
+			padding: 0.625rem 1.25rem;
+			font-size: 0.8125rem;
+		}
 	}
 	
 	.sticky-categories {
@@ -48,7 +235,7 @@
 		backdrop-filter: blur(10px);
 		border-bottom: 1px solid #e5e7eb;
 	}
-	
+
 	/* Universities Grid - Optimized spacing */
 	.universities-container {
 		padding-left: 0.75rem;
@@ -96,83 +283,232 @@
 		}
 	}
 
-	/* University Card - Compact design */
-	.university-card {
-		border-radius: 1rem;
-	}
-	
-	.university-card .card-image {
+	/* University Card - Updated design */
+		.university-card {
+		border-radius: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		}
+
+	.university-card > div:first-child {
 		height: 140px;
-	}
-	
-	.university-card .card-content {
-		padding: 0.75rem;
-	}
-	
-	.university-card h3 {
+		}
+
+		.university-card h3 {
 		font-size: 0.875rem;
 		line-height: 1.3;
-		margin-bottom: 0.375rem;
-	}
-	
-	.university-card .location-text {
+		margin-bottom: 0.5rem;
+		}
+
+		.university-card .text-xs {
 		font-size: 0.6875rem;
 	}
 	
-	.university-card .price-text {
-		font-size: 0.9375rem;
-	}
-	
-	.university-card .tag {
-		padding: 0.25rem 0.5rem;
-		font-size: 0.625rem;
-	}
-	
-	.university-card .btn-details {
-		padding: 0.5rem 0.75rem;
+	.university-card .text-sm {
 		font-size: 0.75rem;
 	}
 	
-	.university-card .country-badge {
-		padding: 0.25rem 0.5rem;
-		font-size: 0.625rem;
+	.university-card .text-base {
+		font-size: 0.8125rem;
+		}
+
+		.university-card .text-xl {
+		font-size: 1rem;
+	}
+	
+	.university-card .p-5 {
+		padding: 0.75rem;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.university-card .flex.flex-col.gap-2 {
+		margin-top: auto;
 	}
 	
 	@media (min-width: 768px) {
-		.university-card .card-image {
-			height: 160px;
+		.university-card > div:first-child {
+			height: 180px;
 		}
-		
-		.university-card .card-content {
-			padding: 1rem;
+
+		.university-card .p-5 {
+			padding: 1.25rem;
 		}
-		
+
 		.university-card h3 {
-			font-size: 0.9375rem;
-			margin-bottom: 0.5rem;
+			font-size: 1.125rem;
+			margin-bottom: 0.75rem;
 		}
-		
-		.university-card .location-text {
+
+		.university-card .text-xs {
 			font-size: 0.75rem;
 		}
 		
-		.university-card .price-text {
-			font-size: 1rem;
+		.university-card .text-sm {
+			font-size: 0.875rem;
 		}
 		
-		.university-card .tag {
-			padding: 0.375rem 0.625rem;
-			font-size: 0.6875rem;
+		.university-card .text-base {
+			font-size: 0.9375rem;
 		}
-		
-		.university-card .btn-details {
-			padding: 0.625rem 1rem;
-			font-size: 0.8125rem;
+
+		.university-card .text-xl {
+			font-size: 1.25rem;
 		}
-		
-		.university-card .country-badge {
-			padding: 0.375rem 0.625rem;
-			font-size: 0.6875rem;
+	}
+
+/* Filter Panel Styles */
+.filter-group {
+	margin-bottom: 1.5rem;
+}
+
+.filter-group:last-child {
+	margin-bottom: 0;
+}
+
+.filter-label {
+	display: block;
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: #111;
+	margin-bottom: 0.75rem;
+	font-family: 'Inter', sans-serif;
+}
+
+.filter-options {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.filter-chip {
+	padding: 0.5rem 1rem;
+	background: #f3f4f6;
+	border: 1px solid #e5e7eb;
+	border-radius: 100px;
+	font-size: 0.8125rem;
+	font-weight: 500;
+	color: #374151;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	font-family: 'Inter', sans-serif;
+	white-space: nowrap;
+}
+
+.filter-chip:hover {
+	background: #e5e7eb;
+	border-color: #d1d5db;
+}
+
+.filter-chip.active {
+	background: #2563eb;
+	border-color: #2563eb;
+	color: white;
+}
+
+.filter-chip.active:hover {
+	background: #1d4ed8;
+	border-color: #1d4ed8;
+}
+
+@media (max-width: 768px) {
+	#filterPanel {
+		max-height: calc(100vh - 200px);
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+	
+	.filter-options {
+		gap: 0.375rem;
+	}
+	
+	.filter-chip {
+		padding: 0.4375rem 0.875rem;
+		font-size: 0.75rem;
+	}
+	
+	.filter-group {
+		margin-bottom: 1.25rem;
+	}
+	
+	.filter-label {
+		font-size: 0.8125rem;
+		margin-bottom: 0.625rem;
+	}
+}
+
+/* CTA Section Styles */
+.gradient-wrapper-cta {
+	position: relative;
+}
+
+.cta-section {
+	background: transparent;
+	position: relative;
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+	.cta-section {
+		padding-top: 40px;
+		padding-bottom: 40px;
+		overflow: visible;
+		margin-left: 0;
+		margin-right: 0;
+		width: 100%;
+	}
+	
+	.cta-section .max-w-5xl {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+}
+
+.cta-wave-container {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 120px;
+	overflow: hidden;
+	z-index: 1;
+}
+
+@media (max-width: 768px) {
+	.cta-wave-container {
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 100px;
+	}
+	
+	.cta-wave {
+		width: 200%;
+		height: 100px;
+	}
+}
+
+.cta-wave {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 200%;
+	height: 120px;
+	transform: translateX(-50%);
+	transform-origin: center bottom;
+}
+
+.cta-wave-delayed {
+	opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+	.cta-wave {
+		height: 80px;
 		}
 	}
 </style>
@@ -215,51 +551,235 @@
 		</div>
 		
 		<!-- Filter Panel (Hidden by default) -->
-		<div id="filterPanel" class="hidden mt-4 p-4 bg-gray-50 rounded-2xl border border-gray-200">
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-				<select id="country" class="px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm text-gray-900 font-normal focus:outline-none focus:ring-2 focus:ring-blue-500">
-					<option value="">{% if lang == 'uz' %}Davlat{% elif lang == 'ru' %}Страна{% elif lang == 'tr' %}Ülke{% else %}Country{% endif %}</option>
-					<option value="Turkey">{% if lang == 'uz' %}Turkiya{% elif lang == 'ru' %}Турция{% elif lang == 'tr' %}Türkiye{% else %}Turkey{% endif %}</option>
-					<option value="Cyprus">{% if lang == 'uz' %}Kipr{% elif lang == 'ru' %}Кипр{% elif lang == 'tr' %}Kıbrıs{% else %}Cyprus{% endif %}</option>
-					<option value="Georgia">{% if lang == 'uz' %}Gruziya{% elif lang == 'ru' %}Грузия{% elif lang == 'tr' %}Gürcistan{% else %}Georgia{% endif %}</option>
-					<option value="Malaysia">{% if lang == 'uz' %}Malayziya{% elif lang == 'ru' %}Малайзия{% elif lang == 'tr' %}Malezya{% else %}Malaysia{% endif %}</option>
-				</select>
+		<div id="filterPanel" class="hidden mt-4 bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+			<div class="p-4 md:p-6">
+				<!-- Filter Header -->
+				<div class="flex items-center justify-between mb-4">
+					<h3 class="text-lg font-semibold text-gray-900" style="font-family: 'Inter', sans-serif;">
+						{% if lang == 'uz' %}Filterlar{% elif lang == 'ru' %}Фильтры{% elif lang == 'tr' %}Filtreler{% else %}Filters{% endif %}
+					</h3>
+					<button id="clearFilters" class="text-sm text-blue-600 hover:text-blue-700 font-medium" style="font-family: 'Inter', sans-serif;">
+						{% if lang == 'uz' %}Tozalash{% elif lang == 'ru' %}Очистить{% elif lang == 'tr' %}Temizle{% else %}Clear{% endif %}
+					</button>
+				</div>
 				
-				<select id="language" class="px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm text-gray-900 font-normal focus:outline-none focus:ring-2 focus:ring-blue-500">
-					<option value="">{% if lang == 'uz' %}Til{% elif lang == 'ru' %}Язык{% elif lang == 'tr' %}Dil{% else %}Language{% endif %}</option>
-					<option value="English">{% if lang == 'uz' %}Ingliz{% elif lang == 'ru' %}Английский{% elif lang == 'tr' %}İngilizce{% else %}English{% endif %}</option>
-					<option value="Turkish">{% if lang == 'uz' %}Turk{% elif lang == 'ru' %}Турецкий{% elif lang == 'tr' %}Türkçe{% else %}Turkish{% endif %}</option>
-				</select>
-				
-				<select id="price" class="px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm text-gray-900 font-normal focus:outline-none focus:ring-2 focus:ring-blue-500">
-					<option value="">{% if lang == 'uz' %}Narx{% elif lang == 'ru' %}Цена{% elif lang == 'tr' %}Fiyat{% else %}Price{% endif %}</option>
-					<option value="1500-3000">1500$ - 3000$</option>
-					<option value="3000-5000">3000$ - 5000$</option>
-					<option value="5000+">5000$+</option>
-				</select>
+				<!-- Filter Grid -->
+				<div class="space-y-4">
+					<!-- A. Davlat bo'yicha filtr -->
+					<div class="filter-group">
+						<label class="filter-label">{% if lang == 'uz' %}Davlat{% elif lang == 'ru' %}Страна{% elif lang == 'tr' %}Ülke{% else %}Country{% endif %}</label>
+						<div class="filter-options">
+							<button class="filter-chip active" data-filter="country" data-value="">{% if lang == 'uz' %}Barcha{% elif lang == 'ru' %}Все{% elif lang == 'tr' %}Tümü{% else %}All{% endif %}</button>
+							<button class="filter-chip" data-filter="country" data-value="Turkey">{% if lang == 'uz' %}Turkiya{% elif lang == 'ru' %}Турция{% elif lang == 'tr' %}Türkiye{% else %}Turkey{% endif %}</button>
+							<button class="filter-chip" data-filter="country" data-value="Cyprus">{% if lang == 'uz' %}Kipr{% elif lang == 'ru' %}Кипр{% elif lang == 'tr' %}Kıbrıs{% else %}Cyprus{% endif %}</button>
+							<button class="filter-chip" data-filter="country" data-value="Georgia">{% if lang == 'uz' %}Gruziya{% elif lang == 'ru' %}Грузия{% elif lang == 'tr' %}Gürcistan{% else %}Georgia{% endif %}</button>
+							<button class="filter-chip" data-filter="country" data-value="Malaysia">{% if lang == 'uz' %}Malayziya{% elif lang == 'ru' %}Малайзия{% elif lang == 'tr' %}Malezya{% else %}Malaysia{% endif %}</button>
+							<button class="filter-chip" data-filter="country" data-value="Hungary">{% if lang == 'uz' %}Vengriya{% elif lang == 'ru' %}Венгрия{% elif lang == 'tr' %}Macaristan{% else %}Hungary{% endif %}</button>
+						</div>
+					</div>
+					
+					<!-- B. Til bo'yicha filtr -->
+					<div class="filter-group">
+						<label class="filter-label">{% if lang == 'uz' %}Til{% elif lang == 'ru' %}Язык{% elif lang == 'tr' %}Dil{% else %}Language{% endif %}</label>
+						<div class="filter-options">
+							<button class="filter-chip active" data-filter="language" data-value="">{% if lang == 'uz' %}Barcha{% elif lang == 'ru' %}Все{% elif lang == 'tr' %}Tümü{% else %}All{% endif %}</button>
+							<button class="filter-chip" data-filter="language" data-value="English">{% if lang == 'uz' %}Ingliz tili{% elif lang == 'ru' %}Английский{% elif lang == 'tr' %}İngilizce{% else %}English{% endif %}</button>
+							<button class="filter-chip" data-filter="language" data-value="Turkish">{% if lang == 'uz' %}Turk tili{% elif lang == 'ru' %}Турецкий{% elif lang == 'tr' %}Türkçe{% else %}Turkish{% endif %}</button>
+							<button class="filter-chip" data-filter="language" data-value="Russian">{% if lang == 'uz' %}Rus tili{% elif lang == 'ru' %}Русский{% elif lang == 'tr' %}Rusça{% else %}Russian{% endif %}</button>
+						</div>
+					</div>
+					
+					<!-- C. Yo'nalish bo'yicha filtr -->
+					<div class="filter-group">
+						<label class="filter-label">{% if lang == 'uz' %}Yo'nalish{% elif lang == 'ru' %}Направление{% elif lang == 'tr' %}Bölüm{% else %}Major{% endif %}</label>
+						<div class="filter-options">
+							<button class="filter-chip active" data-filter="major" data-value="">{% if lang == 'uz' %}Barcha{% elif lang == 'ru' %}Все{% elif lang == 'tr' %}Tümü{% else %}All{% endif %}</button>
+							<button class="filter-chip" data-filter="major" data-value="Medicine">{% if lang == 'uz' %}Tibbiyot{% elif lang == 'ru' %}Медицина{% elif lang == 'tr' %}Tıp{% else %}Medicine{% endif %}</button>
+							<button class="filter-chip" data-filter="major" data-value="Dentistry">{% if lang == 'uz' %}Stomatologiya{% elif lang == 'ru' %}Стоматология{% elif lang == 'tr' %}Diş Hekimliği{% else %}Dentistry{% endif %}</button>
+							<button class="filter-chip" data-filter="major" data-value="Computer Engineering">{% if lang == 'uz' %}Kompyuter injiniringi{% elif lang == 'ru' %}Компьютерная инженерия{% elif lang == 'tr' %}Bilgisayar Mühendisliği{% else %}Computer Engineering{% endif %}</button>
+							<button class="filter-chip" data-filter="major" data-value="Business">{% if lang == 'uz' %}Biznes boshqaruvi{% elif lang == 'ru' %}Бизнес-менеджмент{% elif lang == 'tr' %}İşletme Yönetimi{% else %}Business Management{% endif %}</button>
+							<button class="filter-chip" data-filter="major" data-value="Psychology">{% if lang == 'uz' %}Psixologiya{% elif lang == 'ru' %}Психология{% elif lang == 'tr' %}Psikoloji{% else %}Psychology{% endif %}</button>
+							<button class="filter-chip" data-filter="major" data-value="International Relations">{% if lang == 'uz' %}Xalqaro munosabatlar{% elif lang == 'ru' %}Международные отношения{% elif lang == 'tr' %}Uluslararası İlişkiler{% else %}International Relations{% endif %}</button>
+							<button class="filter-chip" data-filter="major" data-value="Finance">{% if lang == 'uz' %}Moliya{% elif lang == 'ru' %}Финансы{% elif lang == 'tr' %}Finans{% else %}Finance{% endif %}</button>
+							<button class="filter-chip" data-filter="major" data-value="Design">{% if lang == 'uz' %}Dizayn{% elif lang == 'ru' %}Дизайн{% elif lang == 'tr' %}Tasarım{% else %}Design{% endif %}</button>
+							<button class="filter-chip" data-filter="major" data-value="Architecture">{% if lang == 'uz' %}Arxitektura{% elif lang == 'ru' %}Архитектура{% elif lang == 'tr' %}Mimarlık{% else %}Architecture{% endif %}</button>
+						</div>
+					</div>
+					
+					<!-- D. Narx diapazoni bo'yicha filtr -->
+					<div class="filter-group">
+						<label class="filter-label">{% if lang == 'uz' %}Narx diapazoni{% elif lang == 'ru' %}Ценовой диапазон{% elif lang == 'tr' %}Fiyat aralığı{% else %}Price Range{% endif %}</label>
+						<div class="filter-options">
+							<button class="filter-chip active" data-filter="price" data-value="">{% if lang == 'uz' %}Barcha{% elif lang == 'ru' %}Все{% elif lang == 'tr' %}Tümü{% else %}All{% endif %}</button>
+							<button class="filter-chip" data-filter="price" data-value="1500-3000">1500$ - 3000$</button>
+							<button class="filter-chip" data-filter="price" data-value="3000-5000">3000$ - 5000$</button>
+							<button class="filter-chip" data-filter="price" data-value="5000+">5000$+</button>
+						</div>
+					</div>
+					
+					<!-- E. Grant / Chegirma filtr -->
+					<div class="filter-group">
+						<label class="filter-label">{% if lang == 'uz' %}Grant / Chegirma{% elif lang == 'ru' %}Грант / Скидка{% elif lang == 'tr' %}Burs / İndirim{% else %}Grant / Discount{% endif %}</label>
+						<div class="filter-options">
+							<button class="filter-chip active" data-filter="grant" data-value="">{% if lang == 'uz' %}Barcha{% elif lang == 'ru' %}Все{% elif lang == 'tr' %}Tümü{% else %}All{% endif %}</button>
+							<button class="filter-chip" data-filter="grant" data-value="discount">{% if lang == 'uz' %}Chegirma mavjud{% elif lang == 'ru' %}Есть скидка{% elif lang == 'tr' %}İndirim var{% else %}Discount available{% endif %}</button>
+							<button class="filter-chip" data-filter="grant" data-value="guarantee">{% if lang == 'uz' %}Qabul kafolati bor{% elif lang == 'ru' %}Есть гарантия приема{% elif lang == 'tr' %}Kabul garantisi var{% else %}Admission guarantee{% endif %}</button>
+							<button class="filter-chip" data-filter="grant" data-value="all-inclusive">{% if lang == 'uz' %}All-inclusive paket{% elif lang == 'ru' %}All-inclusive пакет{% elif lang == 'tr' %}All-inclusive paket{% else %}All-inclusive package{% endif %}</button>
+						</div>
+					</div>
+					
+					<!-- F. Shahar bo'yicha filtr -->
+					<div class="filter-group">
+						<label class="filter-label">{% if lang == 'uz' %}Shahar (ixtiyoriy){% elif lang == 'ru' %}Город (опционально){% elif lang == 'tr' %}Şehir (opsiyonel){% else %}City (optional){% endif %}</label>
+						<div class="filter-options">
+							<button class="filter-chip active" data-filter="city" data-value="">{% if lang == 'uz' %}Barcha{% elif lang == 'ru' %}Все{% elif lang == 'tr' %}Tümü{% else %}All{% endif %}</button>
+							<button class="filter-chip" data-filter="city" data-value="Istanbul">Istanbul</button>
+							<button class="filter-chip" data-filter="city" data-value="Ankara">Ankara</button>
+							<button class="filter-chip" data-filter="city" data-value="Izmir">Izmir</button>
+							<button class="filter-chip" data-filter="city" data-value="Antalya">Antalya</button>
+							<button class="filter-chip" data-filter="city" data-value="Nicosia">Nicosia</button>
+							<button class="filter-chip" data-filter="city" data-value="Tbilisi">Tbilisi</button>
+							<button class="filter-chip" data-filter="city" data-value="Kuala Lumpur">Kuala Lumpur</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- Image Swiper Section -->
-<section class="bg-white pt-2 pb-4">
-	<div class="swiper image-swiper">
-		<div class="swiper-wrapper">
-			<div class="swiper-slide">
-				<img src="/static/images/turkey-1.jpg" alt="Turkey" onerror="this.src='https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg';">
+<!-- Top Universities Slider - New Premium Design -->
+<section class="py-20 bg-white">
+	<div class="max-w-7xl mx-auto px-6">
+		<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2 text-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
+			{% if lang == 'uz' %}Top <span class="text-blue-600">Universitetlar</span>{% elif lang == 'ru' %}Топ <span class="text-blue-600">университеты</span>{% elif lang == 'tr' %}En İyi <span class="text-blue-600">Üniversiteler</span>{% else %}Top <span class="text-blue-600">Universities</span>{% endif %}
+		</h2>
+		<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+			{% if lang == 'uz' %}Turkiyaning eng yaxshi universitetlarida o'qish imkoniyati{% elif lang == 'ru' %}Возможность учиться в лучших университетах Турции{% elif lang == 'tr' %}Türkiye'nin en iyi üniversitelerinde eğitim fırsatı{% else %}Opportunity to study at Turkey's best universities{% endif %}
+		</p>
+		
+		<div class="universities-slider relative">
+			<div class="swiper top-universities-swiper-new">
+				<div class="swiper-wrapper">
+					{% if top_universities %}
+						{% for university in top_universities %}
+						<div class="swiper-slide">
+							<a href="/university/{{ university.id }}?lang={{ lang }}" class="top-university-card-new">
+								<div class="top-university-card-bg">
+									{% if university.logo_url %}
+										<img src="/static/{{ university.logo_url }}" alt="{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}" class="top-university-bg-image">
+									{% endif %}
+								</div>
+								<div class="top-university-card-content">
+									<div class="top-university-logo-new">
+										<div class="university-logo-placeholder-new">
+											{% if lang == 'uz' %}
+												{% set name = university.name_uz %}
+											{% elif lang == 'ru' %}
+												{% set name = university.name_ru %}
+											{% elif lang == 'tr' %}
+												{% set name = university.name_tr %}
+											{% else %}
+												{% set name = university.name_en %}
+											{% endif %}
+											{% set words = name.split() %}
+											{% if words|length >= 2 %}
+												{{ words[0][0] }}{{ words[1][0] }}
+											{% else %}
+												{{ name[:2]|upper }}
+											{% endif %}
+										</div>
+									</div>
+									<h3 class="top-university-name-new">
+										{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}
+									</h3>
+									<div class="top-university-info">
+										<div class="top-university-info-item">
+											<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-500">
+												<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+												<circle cx="12" cy="10" r="3"></circle>
+											</svg>
+											<span>{% if lang == 'uz' %}{{ university.city_uz }}{% elif lang == 'ru' %}{{ university.city_ru }}{% elif lang == 'tr' %}{{ university.city_tr }}{% else %}{{ university.city_en }}{% endif %}</span>
+										</div>
+										<div class="top-university-info-item">
+											<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-500">
+												<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+												<circle cx="9" cy="7" r="4"></circle>
+												<path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+												<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+											</svg>
+											<span>{% if university.student_count %}{{ university.student_count }}{% else %}16,000+{% endif %} {% if lang == 'uz' %}talaba{% elif lang == 'ru' %}студентов{% elif lang == 'tr' %}öğrenci{% else %}students{% endif %}</span>
+										</div>
+										<div class="top-university-info-item">
+											<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-500">
+												<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+												<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+											</svg>
+											<span>130+ {% if lang == 'uz' %}dastur{% elif lang == 'ru' %}программ{% elif lang == 'tr' %}program{% else %}programs{% endif %}</span>
+										</div>
+									</div>
+									<button class="top-university-btn-new">
+										{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Details{% endif %}
+									</button>
+								</div>
+							</a>
+						</div>
+						{% endfor %}
+					{% else %}
+						{% set sample_universities = [
+							('Nişantaşı University', 'NŞ', 'Istanbul', '16,000+', '130+'),
+							('Altınbaş University', 'AL', 'Istanbul', '14,000+', '110+'),
+							('Beykent University', 'BK', 'Istanbul', '20,000+', '160+'),
+							('Istanbul Gelişim', 'IG', 'Istanbul', '18,000+', '140+')
+						] %}
+						{% for uni in sample_universities %}
+						<div class="swiper-slide">
+							<a href="{{ url_for('universities') }}?lang={{ lang }}" class="top-university-card-new">
+								<div class="top-university-card-bg"></div>
+								<div class="top-university-card-content">
+									<div class="top-university-logo-new">
+										<div class="university-logo-placeholder-new">{{ uni[1] }}</div>
+									</div>
+									<h3 class="top-university-name-new">{{ uni[0] }}</h3>
+									<div class="top-university-info">
+										<div class="top-university-info-item">
+											<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-500">
+												<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+												<circle cx="12" cy="10" r="3"></circle>
+											</svg>
+											<span>{{ uni[2] }}</span>
+										</div>
+										<div class="top-university-info-item">
+											<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-500">
+												<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+												<circle cx="9" cy="7" r="4"></circle>
+												<path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+												<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+											</svg>
+											<span>{{ uni[3] }} {% if lang == 'uz' %}talaba{% elif lang == 'ru' %}студентов{% elif lang == 'tr' %}öğrenci{% else %}students{% endif %}</span>
+										</div>
+										<div class="top-university-info-item">
+											<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-500">
+												<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+												<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+											</svg>
+											<span>{{ uni[4] }} {% if lang == 'uz' %}dastur{% elif lang == 'ru' %}программ{% elif lang == 'tr' %}program{% else %}programs{% endif %}</span>
+										</div>
+									</div>
+									<button class="top-university-btn-new">
+										{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Details{% endif %}
+									</button>
+								</div>
+							</a>
+						</div>
+						{% endfor %}
+					{% endif %}
+				</div>
+				<div class="swiper-pagination"></div>
 			</div>
-			<div class="swiper-slide">
-				<img src="/static/images/turkey-2.jpg" alt="Turkey" onerror="this.src='https://images.pexels.com/photos/159514/yale-university-landscape-universities-schools-159514.jpeg';">
-			</div>
-			<div class="swiper-slide">
-				<img src="/static/images/turkey-3.jpg" alt="Turkey" onerror="this.src='https://images.pexels.com/photos/185764/pexels-photo-185764.jpeg';">
-			</div>
-			<div class="swiper-slide">
-				<img src="/static/images/turkey-4.jpg" alt="Turkey" onerror="this.src='https://images.pexels.com/photos/3769697/pexels-photo-3769697.jpeg';">
-			</div>
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
 		</div>
-		<div class="swiper-pagination"></div>
 	</div>
 </section>
 
@@ -310,7 +830,8 @@
 		<div id="universitiesGrid" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
 			{% for university in universities %}
 			<div class="university-card bg-white rounded-3xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-200 group" data-country="{% if lang == 'uz' %}{{ university.country_uz }}{% elif lang == 'ru' %}{{ university.country_ru }}{% elif lang == 'tr' %}{{ university.country_tr }}{% else %}{{ university.country_en }}{% endif %}">
-				<div class="relative h-52 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+				<!-- 1. Universitet rasmi -->
+				<div class="relative h-48 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
 					{% if university.logo_url %}
 					<img src="/static/{{ university.logo_url }}" alt="{{ university.name_uz }}" class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300">
 					{% else %}
@@ -318,54 +839,104 @@
 						<span class="text-6xl text-gray-300 font-light">{{ university.name_uz[0] if university.name_uz else 'U' }}</span>
 					</div>
 					{% endif %}
-					<div class="absolute top-3 right-3">
-						<span class="px-3 py-1.5 bg-white/95 backdrop-blur-sm text-gray-900 rounded-full text-xs font-medium shadow-sm">
-							{% if lang == 'uz' %}{{ university.country_uz }}{% elif lang == 'ru' %}{{ university.country_ru }}{% elif lang == 'tr' %}{{ university.country_tr }}{% else %}{{ university.country_en }}{% endif %}
-						</span>
-					</div>
 				</div>
 				
 				<div class="p-5">
-					<h3 class="text-lg font-medium text-gray-900 mb-2.5 leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					<!-- 2. Universitet nomi -->
+					<h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 						{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}
 					</h3>
-					<div class="flex items-center gap-2 text-gray-600 mb-3">
-						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400">
+					
+					<!-- 3. Shahar + davlat -->
+					<div class="flex items-center gap-1.5 text-gray-600 mb-3">
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 flex-shrink-0">
 							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
 							<circle cx="12" cy="10" r="3"/>
 						</svg>
 						<p class="text-xs font-normal text-gray-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{% if lang == 'uz' %}{{ university.city_uz }}{% elif lang == 'ru' %}{{ university.city_ru }}{% elif lang == 'tr' %}{{ university.city_tr }}{% else %}{{ university.city_en }}{% endif %}
+							{% if lang == 'uz' %}{{ university.city_uz }}, {{ university.country_uz }}{% elif lang == 'ru' %}{{ university.city_ru }}, {{ university.country_ru }}{% elif lang == 'tr' %}{{ university.city_tr }}, {{ university.country_tr }}{% else %}{{ university.city_en }}, {{ university.country_en }}{% endif %}
 						</p>
 					</div>
 					
-					<div class="flex flex-wrap gap-2 mb-4">
-						{% if university.language %}
-						<span class="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{{ university.language }}
+					<!-- 4. O'qish tili -->
+					<div class="mb-3">
+						{% set lang_text = university.language_requirements or 'English, Turkish' %}
+						{% if 'English' in lang_text or 'Ingliz' in lang_text or 'Английский' in lang_text %}
+							<span class="inline-flex items-center gap-1 px-2.5 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+								<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+									<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+									<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+									<line x1="12" y1="19" x2="12" y2="23"></line>
+									<line x1="8" y1="23" x2="16" y2="23"></line>
+								</svg>
+								{% if lang == 'uz' %}Ingliz, Turk{% elif lang == 'ru' %}Английский, Турецкий{% elif lang == 'tr' %}İngilizce, Türkçe{% else %}English, Turkish{% endif %}
 						</span>
-						{% endif %}
-						{% if university.grant_available %}
-						<span class="px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-lg text-xs font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{% if lang == 'uz' %}Grant{% elif lang == 'ru' %}Грант{% elif lang == 'tr' %}Burs{% else %}Grant{% endif %}
+						{% else %}
+							<span class="inline-flex items-center gap-1 px-2.5 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+								<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+									<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+									<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+									<line x1="12" y1="19" x2="12" y2="23"></line>
+									<line x1="8" y1="23" x2="16" y2="23"></line>
+								</svg>
+								{% if lang == 'uz' %}Ingliz, Turk{% elif lang == 'ru' %}Английский, Турецкий{% elif lang == 'tr' %}İngilizce, Türkçe{% else %}English, Turkish{% endif %}
 						</span>
 						{% endif %}
 					</div>
 					
-					{% if university.tuition_fee_min and university.tuition_fee_max %}
+					<!-- 5. Eng mashhur yo'nalishlar -->
+					<div class="mb-4">
+						<p class="text-xs font-medium text-gray-700 mb-1.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Mashhur yo'nalishlar:{% elif lang == 'ru' %}Популярные направления:{% elif lang == 'tr' %}Popüler bölümler:{% else %}Popular majors:{% endif %}
+						</p>
+						<div class="flex flex-wrap gap-1.5">
+							<span class="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-md text-xs font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+								{% if lang == 'uz' %}Tibbiyot{% elif lang == 'ru' %}Медицина{% elif lang == 'tr' %}Tıp{% else %}Medicine{% endif %}
+							</span>
+							<span class="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-md text-xs font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+								{% if lang == 'uz' %}IT{% elif lang == 'ru' %}ИТ{% elif lang == 'tr' %}BT{% else %}IT{% endif %}
+							</span>
+							<span class="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-md text-xs font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+								{% if lang == 'uz' %}Biznes{% elif lang == 'ru' %}Бизнес{% elif lang == 'tr' %}İşletme{% else %}Business{% endif %}
+							</span>
+						</div>
+					</div>
+					
+					<!-- 6. Narx yoki "Chegirma mavjud" -->
 					<div class="mb-4 pb-4 border-b border-gray-100">
+						{% if university.scholarship_available %}
+							<div class="flex items-center gap-2">
+								<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-yellow-600">
+									<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+								</svg>
+								<p class="text-base font-semibold text-yellow-700" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{% if lang == 'uz' %}Chegirma mavjud{% elif lang == 'ru' %}Есть скидка{% elif lang == 'tr' %}İndirim var{% else %}Discount available{% endif %}
+								</p>
+							</div>
+						{% elif university.tuition_fee_min and university.tuition_fee_max %}
 						<p class="text-xl font-semibold text-gray-900 mb-0.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 							{{ university.tuition_fee_min }}$ - {{ university.tuition_fee_max }}$
 						</p>
 						<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 							{% if lang == 'uz' %}yillik{% elif lang == 'ru' %}в год{% elif lang == 'tr' %}yıllık{% else %}per year{% endif %}
 						</p>
-					</div>
+						{% else %}
+							<p class="text-sm text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+								{% if lang == 'uz' %}Narxni so'rang{% elif lang == 'ru' %}Уточнить цену{% elif lang == 'tr' %}Fiyat sor{% else %}Ask for price{% endif %}
+							</p>
 					{% endif %}
+					</div>
 					
-					<a href="/university/{{ university.id }}?lang={{ lang }}" class="block w-full px-5 py-2.5 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-center text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					<!-- 7. "Batafsil" tugmasi -->
+					<!-- 8. "Maslahat olish" tugmasi -->
+					<div class="flex flex-col gap-2">
+						<a href="/university/{{ university.id }}?lang={{ lang }}" class="block w-full px-4 py-2.5 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-center text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 						{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Details{% endif %}
 					</a>
+						<a href="/contact?lang={{ lang }}&university={{ university.id }}" class="block w-full px-4 py-2 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 transition-all duration-300 text-center text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Maslahat olish{% elif lang == 'ru' %}Получить консультацию{% elif lang == 'tr' %}Danışmanlık al{% else %}Get consultation{% endif %}
+					</a>
+					</div>
 				</div>
 			</div>
 			{% endfor %}
@@ -385,24 +956,92 @@
 	</div>
 </section>
 
+<!-- CTA Section -->
+<section class="py-20 cta-section relative overflow-hidden gradient-wrapper-cta">
+	<div class="cta-wave-container">
+		<svg class="cta-wave" viewBox="0 0 1200 120" preserveAspectRatio="none">
+			<path d="M0,60 Q300,20 600,60 T1200,60 L1200,120 L0,120 Z" fill="url(#waveGradient)"/>
+			<defs>
+				<linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" style="stop-color:rgba(59, 130, 246, 0.12);stop-opacity:1" />
+					<stop offset="50%" style="stop-color:rgba(59, 130, 246, 0.18);stop-opacity:1" />
+					<stop offset="100%" style="stop-color:rgba(59, 130, 246, 0.12);stop-opacity:1" />
+				</linearGradient>
+			</defs>
+		</svg>
+		<svg class="cta-wave cta-wave-delayed" viewBox="0 0 1200 120" preserveAspectRatio="none">
+			<path d="M0,60 Q300,40 600,60 T1200,60 L1200,120 L0,120 Z" fill="url(#waveGradient2)"/>
+			<defs>
+				<linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" style="stop-color:rgba(96, 165, 250, 0.08);stop-opacity:1" />
+					<stop offset="50%" style="stop-color:rgba(96, 165, 250, 0.12);stop-opacity:1" />
+					<stop offset="100%" style="stop-color:rgba(96, 165, 250, 0.08);stop-opacity:1" />
+				</linearGradient>
+			</defs>
+		</svg>
+	</div>
+	<div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-20">
+		<h2 class="text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900 mb-3 sm:mb-4 leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; position: relative; z-index: 10;">
+			{% if lang == 'uz' %}Qaysi universitet sizga mos? Mutaxassis bilan bepul maslahat oling.{% elif lang == 'ru' %}Какой университет вам подходит? Получите бесплатную консультацию со специалистом.{% elif lang == 'tr' %}Hangi üniversite size uygun? Uzmanla ücretsiz danışmanlık alın.{% else %}Which university suits you? Get free consultation with a specialist.{% endif %}
+		</h2>
+		<div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full px-2" style="position: relative; z-index: 10;">
+			<a href="https://wa.me/905011571111" target="_blank" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors text-sm sm:text-base font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+				</svg>
+				{% if lang == 'uz' %}WhatsApp{% elif lang == 'ru' %}WhatsApp{% elif lang == 'tr' %}WhatsApp{% else %}WhatsApp{% endif %}
+			</a>
+			<a href="https://t.me/studyfans" target="_blank" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors text-sm sm:text-base font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.559z"/>
+				</svg>
+				{% if lang == 'uz' %}Telegram{% elif lang == 'ru' %}Telegram{% elif lang == 'tr' %}Telegram{% else %}Telegram{% endif %}
+			</a>
+			<a href="tel:+905011571111" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors text-sm sm:text-base font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+				</svg>
+				{% if lang == 'uz' %}Qo'ng'iroq qilish{% elif lang == 'ru' %}Позвонить{% elif lang == 'tr' %}Aramak{% else %}Call{% endif %}
+			</a>
+		</div>
+	</div>
+</section>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-// Initialize Image Swiper
-const imageSwiper = new Swiper('.image-swiper', {
-	slidesPerView: 1,
-	spaceBetween: 0,
-	loop: true,
-	autoplay: {
-		delay: 3000,
-		disableOnInteraction: false,
-	},
-	pagination: {
-		el: '.swiper-pagination',
-		clickable: true,
-	},
-});
+// Initialize Top Universities Swiper - New Premium Design
+if (document.querySelector('.top-universities-swiper-new')) {
+	new Swiper('.top-universities-swiper-new', {
+		slidesPerView: 2,
+		spaceBetween: 16,
+		loop: {% if top_universities|length > 1 %}true{% else %}false{% endif %},
+		autoplay: {% if top_universities|length > 1 %}{
+			delay: 3000,
+			disableOnInteraction: false,
+		}{% else %}false{% endif %},
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+			dynamicBullets: true,
+		},
+		breakpoints: {
+			640: {
+				slidesPerView: 3,
+				spaceBetween: 20,
+			},
+			1024: {
+				slidesPerView: 4,
+				spaceBetween: 24,
+			},
+		},
+	});
+}
 
 // Initialize Small Swiper for Categories
 const smallSwiper = new Swiper('.small-swiper', {
@@ -417,19 +1056,26 @@ document.getElementById('filterBtn').addEventListener('click', function() {
 	panel.classList.toggle('hidden');
 });
 
+// Filter State
+const filterState = {
+	country: '',
+	language: '',
+	major: '',
+	price: '',
+	grant: '',
+	city: ''
+};
+
 // Search and Filter Function
 function performSearch() {
 	const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-	const country = document.getElementById('country').value;
-	const language = document.getElementById('language').value;
-	const price = document.getElementById('price').value;
 	
 	// Get active category button country
 	const activeCategory = document.querySelector('.category-btn.active');
 	const categoryCountry = activeCategory ? activeCategory.getAttribute('data-country') : '';
 	
 	// Use category country if no filter country selected
-	const filterCountry = country || categoryCountry;
+	const filterCountry = filterState.country || categoryCountry;
 	
 	const cards = document.querySelectorAll('.university-card');
 	let visibleCount = 0;
@@ -437,14 +1083,65 @@ function performSearch() {
 	cards.forEach(card => {
 		const name = card.querySelector('h3').textContent.toLowerCase();
 		const cardCountry = card.getAttribute('data-country');
+		const cardCity = card.querySelector('.location-text')?.textContent.trim() || '';
+		const cardLanguage = card.querySelector('.px-2.5')?.textContent.trim() || '';
+		const priceText = card.querySelector('.text-xl')?.textContent || '';
+		
 		let matches = true;
 		
+		// Search term
 		if (searchTerm && !name.includes(searchTerm)) {
 			matches = false;
 		}
 		
+		// Country filter
 		if (filterCountry && cardCountry !== filterCountry) {
 			matches = false;
+		}
+		
+		// Language filter
+		if (filterState.language) {
+			const langMap = {
+				'English': ['English', 'Ingliz', 'Английский', 'İngilizce'],
+				'Turkish': ['Turkish', 'Turk', 'Турецкий', 'Türkçe'],
+				'Russian': ['Russian', 'Rus', 'Русский', 'Rusça']
+			};
+			const langOptions = langMap[filterState.language] || [];
+			if (!langOptions.some(lang => cardLanguage.includes(lang))) {
+				matches = false;
+			}
+		}
+		
+		// City filter
+		if (filterState.city && !cardCity.toLowerCase().includes(filterState.city.toLowerCase())) {
+			matches = false;
+		}
+		
+		// Price filter
+		if (filterState.price) {
+			const priceMatch = priceText.match(/(\d+)/g);
+			if (priceMatch && priceMatch.length >= 2) {
+				const minPrice = parseInt(priceMatch[0]);
+				const maxPrice = parseInt(priceMatch[1]);
+				
+				if (filterState.price === '1500-3000') {
+					if (minPrice < 1500 || maxPrice > 3000) matches = false;
+				} else if (filterState.price === '3000-5000') {
+					if (minPrice < 3000 || maxPrice > 5000) matches = false;
+				} else if (filterState.price === '5000+') {
+					if (minPrice < 5000) matches = false;
+				}
+			} else {
+				matches = false;
+			}
+		}
+		
+		// Grant filter
+		if (filterState.grant) {
+			const hasGrant = card.querySelector('.bg-yellow-50') !== null;
+			if (filterState.grant === 'discount' && !hasGrant) {
+				matches = false;
+			}
 		}
 		
 		if (matches) {
@@ -465,10 +1162,77 @@ function performSearch() {
 	}
 }
 
+// Filter Chip Click Handler
+document.querySelectorAll('.filter-chip').forEach(chip => {
+	chip.addEventListener('click', function() {
+		const filterType = this.getAttribute('data-filter');
+		const filterValue = this.getAttribute('data-value');
+		
+		// Toggle active state
+		const siblings = document.querySelectorAll(`[data-filter="${filterType}"]`);
+		siblings.forEach(s => s.classList.remove('active'));
+		
+		if (filterValue) {
+			this.classList.add('active');
+			filterState[filterType] = filterValue;
+		} else {
+			filterState[filterType] = '';
+		}
+		
+		// If country filter changed, update category buttons
+		if (filterType === 'country') {
+			document.querySelectorAll('.category-btn').forEach(btn => {
+				btn.classList.remove('active', 'bg-blue-50', 'text-blue-600');
+				btn.classList.add('bg-gray-50', 'text-gray-600');
+				
+				if (btn.getAttribute('data-country') === filterValue) {
+					btn.classList.add('active', 'bg-blue-50', 'text-blue-600');
+					btn.classList.remove('bg-gray-50', 'text-gray-600');
+				} else if (!filterValue && btn.getAttribute('data-country') === '') {
+					btn.classList.add('active', 'bg-blue-50', 'text-blue-600');
+					btn.classList.remove('bg-gray-50', 'text-gray-600');
+				}
+			});
+		}
+		
+		performSearch();
+	});
+});
+
+// Clear Filters
+document.getElementById('clearFilters').addEventListener('click', function() {
+	filterState.country = '';
+	filterState.language = '';
+	filterState.major = '';
+	filterState.price = '';
+	filterState.grant = '';
+	filterState.city = '';
+	
+	document.querySelectorAll('.filter-chip').forEach(chip => {
+		chip.classList.remove('active');
+		if (chip.getAttribute('data-value') === '') {
+			chip.classList.add('active');
+		}
+	});
+	
+	// Reset category buttons
+	document.querySelectorAll('.category-btn').forEach(btn => {
+		btn.classList.remove('active', 'bg-blue-50', 'text-blue-600');
+		btn.classList.add('bg-gray-50', 'text-gray-600');
+		
+		if (btn.getAttribute('data-country') === '') {
+			btn.classList.add('active', 'bg-blue-50', 'text-blue-600');
+			btn.classList.remove('bg-gray-50', 'text-gray-600');
+		}
+	});
+	
+	// Clear search input
+	document.getElementById('searchInput').value = '';
+	
+	performSearch();
+});
+
 document.getElementById('searchInput').addEventListener('input', performSearch);
-document.getElementById('country').addEventListener('change', performSearch);
-document.getElementById('language').addEventListener('change', performSearch);
-document.getElementById('price').addEventListener('change', performSearch);
 
 // Category Buttons Functionality
 document.querySelectorAll('.category-btn').forEach(btn => {
@@ -483,8 +1247,29 @@ document.querySelectorAll('.category-btn').forEach(btn => {
 		this.classList.add('active', 'bg-blue-50', 'text-blue-600');
 		this.classList.remove('bg-gray-50', 'text-gray-600');
 		
-		// Reset filter dropdown
-		document.getElementById('country').value = '';
+		// Update country filter chip if category has country
+		const categoryCountry = this.getAttribute('data-country');
+		if (categoryCountry) {
+			// Update filter state
+			filterState.country = categoryCountry;
+			
+			// Update filter chips
+			document.querySelectorAll('[data-filter="country"]').forEach(chip => {
+				chip.classList.remove('active');
+				if (chip.getAttribute('data-value') === categoryCountry) {
+					chip.classList.add('active');
+				}
+			});
+		} else {
+			// Reset country filter
+			filterState.country = '';
+			document.querySelectorAll('[data-filter="country"]').forEach(chip => {
+				chip.classList.remove('active');
+				if (chip.getAttribute('data-value') === '') {
+					chip.classList.add('active');
+				}
+			});
+		}
 		
 		// Perform search with category filter
 		performSearch();

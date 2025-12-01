@@ -266,7 +266,9 @@ def index():
 def universities():
     lang = request.args.get('lang', 'en')
     universities = University.query.all()
-    return render_template('universities.html', universities=universities, lang=lang)
+    # Get top universities for slider (1-2 universities)
+    top_universities = University.query.limit(2).all()
+    return render_template('universities.html', universities=universities, lang=lang, top_universities=top_universities)
 
 @app.route('/university/<int:university_id>')
 def university_detail(university_id):

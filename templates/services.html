@@ -27,6 +27,211 @@
 	filter: brightness(0) saturate(100%) invert(20%) sepia(10%) saturate(500%) hue-rotate(180deg) brightness(95%) contrast(90%);
 }
 
+/* Service Modal Styles */
+.service-modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+	overflow-y: auto;
+	padding: 2rem;
+}
+
+.service-modal.active {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.service-modal-content {
+	background: white;
+	border-radius: 24px;
+	max-width: 800px;
+	width: 100%;
+	margin: 2rem auto;
+	position: relative;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.service-modal-header {
+	padding: 2rem;
+	border-bottom: 1px solid #e5e7eb;
+	position: relative;
+}
+
+.service-modal-close {
+	position: absolute;
+	top: 1.5rem;
+	right: 1.5rem;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: #f3f4f6;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s ease;
+}
+
+.service-modal-close:hover {
+	background: #e5e7eb;
+}
+
+.service-modal-body {
+	padding: 2rem;
+	max-height: calc(100vh - 200px);
+	overflow-y: auto;
+}
+
+.service-modal-section {
+	margin-bottom: 2rem;
+}
+
+.service-modal-section h3 {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: #111;
+	margin-bottom: 1rem;
+	font-family: 'Inter', sans-serif;
+}
+
+.service-modal-section p,
+.service-modal-section ul {
+	font-size: 0.9375rem;
+	color: #6b7280;
+	line-height: 1.6;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.service-modal-section ul {
+	list-style: none;
+	padding: 0;
+}
+
+.service-modal-section ul li {
+	padding: 0.5rem 0;
+	padding-left: 1.5rem;
+	position: relative;
+}
+
+.service-modal-section ul li::before {
+	content: "•";
+	position: absolute;
+	left: 0;
+	color: #2563eb;
+	font-weight: bold;
+}
+
+.service-modal-cta {
+	padding: 2rem;
+	border-top: 1px solid #e5e7eb;
+	text-align: center;
+}
+
+.service-modal-cta button {
+	padding: 0.875rem 2rem;
+	background: #2563eb;
+	color: white;
+	border: none;
+	border-radius: 100px;
+	font-weight: 600;
+	font-size: 0.9375rem;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	font-family: 'Inter', sans-serif;
+}
+
+.service-modal-cta button:hover {
+	background: #1d4ed8;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Packages Comparison Table */
+.packages-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 2rem;
+}
+
+.packages-table th,
+.packages-table td {
+	padding: 1rem;
+	text-align: left;
+	border-bottom: 1px solid #e5e7eb;
+}
+
+.packages-table th {
+	background: #f9fafb;
+	font-weight: 600;
+	color: #111;
+	font-family: 'Inter', sans-serif;
+	font-size: 0.875rem;
+}
+
+.packages-table td {
+	font-size: 0.875rem;
+	color: #6b7280;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.packages-table .service-name {
+	cursor: pointer;
+	color: #2563eb;
+	text-decoration: underline;
+	font-weight: 500;
+}
+
+.packages-table .service-name:hover {
+	color: #1d4ed8;
+}
+
+.packages-table .check {
+	color: #10b981;
+	font-weight: 600;
+}
+
+.packages-table .cross {
+	color: #ef4444;
+	font-weight: 600;
+}
+
+.packages-table .partial {
+	color: #f59e0b;
+	font-weight: 600;
+}
+
+@media (max-width: 768px) {
+	.service-modal {
+		padding: 1rem;
+	}
+	
+	.service-modal-content {
+		margin: 1rem auto;
+	}
+	
+	.service-modal-header,
+	.service-modal-body,
+	.service-modal-cta {
+		padding: 1.5rem;
+	}
+	
+	.packages-table {
+		font-size: 0.75rem;
+	}
+	
+	.packages-table th,
+	.packages-table td {
+		padding: 0.75rem 0.5rem;
+	}
+}
+
 </style>
 {% endblock %}
 
@@ -43,8 +248,8 @@
 				<h1 class="text-2xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
 					{% if lang == 'uz' %}Xizmatlar{% elif lang == 'ru' %}Услуги{% elif lang == 'tr' %}Hizmetler{% else %}Services{% endif %}
 				</h1>
-				<p class="hidden md:block text-sm text-gray-500 font-normal mt-0.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Turkiyada o'qish, yashash ruxsatnomasi va kundalik hayot uchun barcha xizmatlar{% elif lang == 'ru' %}Все услуги для учебы в Турции, вида на жительство и повседневной жизни{% elif lang == 'tr' %}Türkiye'de eğitim, ikamet izni ve günlük yaşam için tüm hizmetler{% else %}All services for studying in Turkey, residence permits and daily life{% endif %}
+				<p class="hidden md:block text-sm text-gray-500 font-normal mt-0.5 leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Turkiyada o'qish, yashash ruxsatnomasi, hujjatlar va kundalik hayot uchun barcha xizmatlarni bir joyga jamladik. Har bir xizmatni bosib, batafsil tanishib chiqishingiz mumkin.{% elif lang == 'ru' %}Мы собрали все услуги для учебы в Турции, вида на жительство, документов и повседневной жизни в одном месте. Вы можете нажать на любую услугу и подробно ознакомиться с ней.{% elif lang == 'tr' %}Türkiye'de eğitim, ikamet izni, belgeler ve günlük yaşam için tüm hizmetleri tek bir yerde topladık. Her hizmete tıklayarak detaylı bilgi edinebilirsiniz.{% else %}We have gathered all services for studying in Turkey, residence permits, documents and daily life in one place. You can click on any service and learn more about it.{% endif %}
 				</p>
 			</div>
 			
@@ -99,12 +304,12 @@
 					<p class="text-sm text-gray-600 font-normal mb-4 leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 						{% if lang == 'uz' %}{{ service[7].split(':')[1] }}{% elif lang == 'ru' %}{{ service[8].split(':')[1] }}{% elif lang == 'tr' %}{{ service[9].split(':')[1] }}{% else %}{{ service[10].split(':')[1] }}{% endif %}
 					</p>
-					<a href="/service/{{ service[4] }}?lang={{ lang }}" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					<button onclick="openServiceModal('{{ service[4] }}')" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 						<span>{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Learn more{% endif %}</span>
 						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							<polyline points="9 18 15 12 9 6"/>
 						</svg>
-					</a>
+					</button>
 				</div>
 			</div>
 			{% endfor %}
@@ -124,6 +329,28 @@
 	</div>
 </section>
 
+<!-- Service Modal -->
+<div id="serviceModal" class="service-modal">
+	<div class="service-modal-content">
+		<div class="service-modal-header">
+			<h2 id="modalTitle" class="text-2xl font-bold text-gray-900 mb-2" style="font-family: 'Inter', sans-serif;"></h2>
+			<p id="modalIntro" class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
+			<button class="service-modal-close" onclick="closeServiceModal()">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<line x1="18" y1="6" x2="6" y2="18"></line>
+					<line x1="6" y1="6" x2="18" y2="18"></line>
+				</svg>
+			</button>
+		</div>
+		<div class="service-modal-body">
+			<div id="modalContent"></div>
+		</div>
+		<div class="service-modal-cta">
+			<button id="modalCTA" onclick="closeServiceModal()"></button>
+		</div>
+	</div>
+</div>
+
 <!-- Paketlar & Narxlar Section -->
 <section id="packagesSection" class="py-12 bg-gray-50 packages-section relative">
 	<div class="max-w-7xl mx-auto px-6 packages-container">
@@ -136,8 +363,197 @@
 			</p>
 		</div>
 		
-		<!-- 3 ta paket kartochkasi -->
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+		<!-- Packages Comparison Table -->
+		<div class="bg-white rounded-3xl border border-gray-200 overflow-hidden mb-8">
+			<div class="overflow-x-auto">
+				<table class="packages-table w-full">
+					<thead>
+						<tr>
+							<th class="text-left">{% if lang == 'uz' %}Xizmatlar{% elif lang == 'ru' %}Услуги{% elif lang == 'tr' %}Hizmetler{% else %}Services{% endif %}</th>
+							<th class="text-center">
+								<div class="flex flex-col items-center">
+									<span class="font-bold text-gray-900">START PACK</span>
+									<span class="text-xs text-gray-500 line-through">299$</span>
+									<span class="text-xs text-gray-500">{% if lang == 'uz' %}7 kun ichida -100${% elif lang == 'ru' %}В течение 7 дней -100${% elif lang == 'tr' %}7 gün içinde -100${% else %}Within 7 days -100${% endif %}</span>
+									<span class="text-2xl font-bold text-gray-900 mt-1">199.9$</span>
+								</div>
+							</th>
+							<th class="text-center">
+								<div class="flex flex-col items-center">
+									<span class="font-bold text-gray-900">PRO PACK</span>
+									<span class="text-xs text-gray-500 line-through">499.9$</span>
+									<span class="text-xs text-gray-500">{% if lang == 'uz' %}7 kun ichida -100${% elif lang == 'ru' %}В течение 7 дней -100${% elif lang == 'tr' %}7 gün içinde -100${% else %}Within 7 days -100${% endif %}</span>
+									<span class="text-2xl font-bold text-gray-900 mt-1">399.9$</span>
+								</div>
+							</th>
+							<th class="text-center">
+								<div class="flex flex-col items-center">
+									<span class="font-bold text-gray-900">VIP ALL-INCLUSIVE</span>
+									<span class="text-xs text-gray-500 line-through">999.9$</span>
+									<span class="text-xs text-gray-500">{% if lang == 'uz' %}7 kun ichida -100${% elif lang == 'ru' %}В течение 7 дней -100${% elif lang == 'tr' %}7 gün içinde -100${% else %}Within 7 days -100${% endif %}</span>
+									<span class="text-2xl font-bold text-gray-900 mt-1">899.9$</span>
+								</div>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Universitetga kirish -->
+						<tr>
+							<td>
+								<span class="service-name" onclick="openServiceModal('admission')">
+									{% if lang == 'uz' %}Universitetga kirish (3 ta universitetga hujjat, qabul maktubi){% elif lang == 'ru' %}Поступление в университет (3 университета, документы, письмо о приеме){% elif lang == 'tr' %}Üniversite kabulü (3 üniversite, belgeler, kabul mektubu){% else %}University Admission (3 universities, documents, acceptance letter){% endif %}
+								</span>
+							</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}To'liq{% elif lang == 'ru' %}Полное{% elif lang == 'tr' %}Tam{% else %}Full{% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}To'liq{% elif lang == 'ru' %}Полное{% elif lang == 'tr' %}Tam{% else %}Full{% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}Tezlashtirilgan + ustuvor navbat{% elif lang == 'ru' %}Ускоренное + приоритетная очередь{% elif lang == 'tr' %}Hızlandırılmış + öncelikli sıra{% else %}Accelerated + Priority Queue{% endif %}</td>
+						</tr>
+						<!-- Yashash ruxsatnomasi -->
+						<tr>
+							<td>
+								<span class="service-name" onclick="openServiceModal('residence')">
+									{% if lang == 'uz' %}Yashash ruxsatnomasi (İkamet){% elif lang == 'ru' %}Вид на жительство (İkamet){% elif lang == 'tr' %}İkamet izni{% else %}Residence Permit (İkamet){% endif %}
+								</span>
+							</td>
+							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}To'liq ko'mak{% elif lang == 'ru' %}Полная помощь{% elif lang == 'tr' %}Tam destek{% else %}Full Support{% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}To'liq + oila va farzandlar uchun{% elif lang == 'ru' %}Полное + для семьи и детей{% elif lang == 'tr' %}Tam + aile ve çocuklar için{% else %}Full + Family & Children{% endif %}</td>
+						</tr>
+						<!-- Aeroportdan kutib olish -->
+						<tr>
+							<td>
+								<span class="service-name" onclick="openServiceModal('airport')">
+									{% if lang == 'uz' %}Aeroportdan kutib olish (Airport pick-up){% elif lang == 'ru' %}Встреча в аэропорту{% elif lang == 'tr' %}Havalimanı karşılama{% else %}Airport Pickup{% endif %}
+								</span>
+							</td>
+							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}1 marotaba{% elif lang == 'ru' %}1 раз{% elif lang == 'tr' %}1 kez{% else %}1 time{% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}VIP kutib olish + moslashtirilgan vaqt + oila{% elif lang == 'ru' %}VIP встреча + адаптированное время + семья{% elif lang == 'tr' %}VIP karşılama + uyarlanmış zaman + aile{% else %}VIP Pickup + Customized Time + Family{% endif %}</td>
+						</tr>
+						<!-- Viza & Deport -->
+						<tr>
+							<td>
+								<span class="service-name" onclick="openServiceModal('visa')">
+									{% if lang == 'uz' %}Viza & Deport konsultatsiyasi{% elif lang == 'ru' %}Консультация по визам и депортации{% elif lang == 'tr' %}Vize & Deport danışmanlığı{% else %}Visa & Deport Consultation{% endif %}
+								</span>
+							</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}Bepul maslahat (asosiy){% elif lang == 'ru' %}Бесплатная консультация (базовая){% elif lang == 'tr' %}Ücretsiz danışmanlık (temel){% else %}Free Consultation (Basic){% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}Bepul maslahat (chuqurroq){% elif lang == 'ru' %}Бесплатная консультация (глубже){% elif lang == 'tr' %}Ücretsiz danışmanlık (daha derin){% else %}Free Consultation (Deeper){% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}Bepul tahlil + yuristga ulashish (agar kerak){% elif lang == 'ru' %}Бесплатный анализ + связь с юристом (при необходимости){% elif lang == 'tr' %}Ücretsiz analiz + avukat bağlantısı (gerekirse){% else %}Free Analysis + Lawyer Connection (if needed){% endif %}</td>
+						</tr>
+						<!-- Hujjatlar -->
+						<tr>
+							<td>
+								<span class="service-name" onclick="openServiceModal('documents')">
+									{% if lang == 'uz' %}Hujjatlar (Tarjima + Noter){% elif lang == 'ru' %}Документы (Перевод + Нотариус){% elif lang == 'tr' %}Belgeler (Çeviri + Noter){% else %}Documents (Translation + Notary){% endif %}
+								</span>
+							</td>
+							<td class="text-center" style="color: #6b7280;">{% if lang == 'uz' %}(alohida buyurtma){% elif lang == 'ru' %}(отдельный заказ){% elif lang == 'tr' %}(ayrı sipariş){% else %}(separate order){% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}Asosiy hujjatlar{% elif lang == 'ru' %}Основные документы{% elif lang == 'tr' %}Temel belgeler{% else %}Basic Documents{% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}Kengaytirilgan hujjatlar seti{% elif lang == 'ru' %}Расширенный набор документов{% elif lang == 'tr' %}Genişletilmiş belge seti{% else %}Extended Documents Set{% endif %}</td>
+						</tr>
+						<!-- Turar-joy -->
+						<tr>
+							<td>
+								<span class="service-name" onclick="openServiceModal('accommodation')">
+									{% if lang == 'uz' %}Turar-joy topish (yotoqxona/uy){% elif lang == 'ru' %}Поиск жилья (общежитие/квартира){% elif lang == 'tr' %}Konaklama bulma (yurt/ev){% else %}Accommodation Finding (dorm/apartment){% endif %}
+								</span>
+							</td>
+							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
+							<td class="text-center partial">🟡 {% if lang == 'uz' %}Yuzaki yo'l-yo'riq{% elif lang == 'ru' %}Поверхностное руководство{% elif lang == 'tr' %}Yüzeysel rehberlik{% else %}Basic Guidance{% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}Shaxsiy yordam + variantlar ro'yxati{% elif lang == 'ru' %}Личная помощь + список вариантов{% elif lang == 'tr' %}Kişisel destek + seçenekler listesi{% else %}Personal Help + Options List{% endif %}</td>
+						</tr>
+						<!-- Ish bo'yicha yordam -->
+						<tr>
+							<td>
+								<span class="service-name" onclick="openServiceModal('job')">
+									{% if lang == 'uz' %}Ish bo'yicha yordam{% elif lang == 'ru' %}Помощь в трудоустройстве{% elif lang == 'tr' %}İş yardımı{% else %}Job Assistance{% endif %}
+								</span>
+							</td>
+							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
+							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}Shaxsiy yordam + variantlar ro'yxati{% elif lang == 'ru' %}Личная помощь + список вариантов{% elif lang == 'tr' %}Kişisel destek + seçenekler listesi{% else %}Personal Help + Options List{% endif %}</td>
+						</tr>
+						<!-- Talaba sug'urtasi -->
+						<tr>
+							<td>
+								<span class="service-name" onclick="openServiceModal('insurance')">
+									{% if lang == 'uz' %}Talaba sug'urtasi (Health insurance){% elif lang == 'ru' %}Студенческая страховка{% elif lang == 'tr' %}Öğrenci sigortası{% else %}Student Insurance{% endif %}
+								</span>
+							</td>
+							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}Ikametga mos polis{% elif lang == 'ru' %}Полис для вида на жительство{% elif lang == 'tr' %}İkamet için uygun poliçe{% else %}Residence Permit Compatible Policy{% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}To'liq konsultatsiya + polisni yuritish{% elif lang == 'ru' %}Полная консультация + оформление полиса{% elif lang == 'tr' %}Tam danışmanlık + poliçe işleme{% else %}Full Consultation + Policy Processing{% endif %}</td>
+						</tr>
+						<!-- Bank hisobi -->
+						<tr>
+							<td>
+								<span class="service-name" onclick="openServiceModal('bank')">
+									{% if lang == 'uz' %}Bank hisobi (Student account){% elif lang == 'ru' %}Банковский счет (Студенческий){% elif lang == 'tr' %}Banka hesabı (Öğrenci){% else %}Bank Account (Student){% endif %}
+								</span>
+							</td>
+							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
+							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}To'liq yordam berish{% elif lang == 'ru' %}Полная помощь{% elif lang == 'tr' %}Tam destek{% else %}Full Assistance{% endif %}</td>
+						</tr>
+						<!-- Sim karta -->
+						<tr>
+							<td>
+								<span class="service-name" onclick="openServiceModal('sim')">
+									{% if lang == 'uz' %}Sim karta (Turkcell va b.){% elif lang == 'ru' %}SIM карта (Turkcell и др.){% elif lang == 'tr' %}SIM kart (Turkcell vb.){% else %}SIM Card (Turkcell etc.){% endif %}
+								</span>
+							</td>
+							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
+							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}Operator tanlash + rasmiy ro'yxatdan o'tkazish{% elif lang == 'ru' %}Выбор оператора + официальная регистрация{% elif lang == 'tr' %}Operatör seçimi + resmi kayıt{% else %}Operator Selection + Official Registration{% endif %}</td>
+						</tr>
+						<!-- Transport kartasi -->
+						<tr>
+							<td>
+								<span class="service-name" onclick="openServiceModal('transport')">
+									{% if lang == 'uz' %}Transport kartasi (İstanbulkart){% elif lang == 'ru' %}Транспортная карта (İstanbulkart){% elif lang == 'tr' %}Ulaşım kartı (İstanbulkart){% else %}Transport Card (İstanbulkart){% endif %}
+								</span>
+							</td>
+							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
+							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}Kartani olib berish + talaba tarifiga o'tkazish{% elif lang == 'ru' %}Получение карты + перевод на студенческий тариф{% elif lang == 'tr' %}Kartı alma + öğrenci tarifesine geçirme{% else %}Card Delivery + Student Tariff Transfer{% endif %}</td>
+						</tr>
+						<!-- Shaxsiy support -->
+						<tr>
+							<td>
+								<span class="service-name" onclick="openServiceModal('support')">
+									{% if lang == 'uz' %}Shaxsiy support (Premium care){% elif lang == 'ru' %}Личная поддержка (Премиум уход){% elif lang == 'tr' %}Kişisel destek (Premium bakım){% else %}Personal Support (Premium Care){% endif %}
+								</span>
+							</td>
+							<td class="text-center partial">🟡 {% if lang == 'uz' %}Oddiy support (09–00){% elif lang == 'ru' %}Обычная поддержка (09–00){% elif lang == 'tr' %}Normal destek (09–00){% else %}Basic Support (09–00){% endif %}</td>
+							<td class="text-center partial">🟡 {% if lang == 'uz' %}Pro support (kengroq yordam){% elif lang == 'ru' %}Pro поддержка (более широкая помощь){% elif lang == 'tr' %}Pro destek (daha geniş yardım){% else %}Pro Support (Wider Help){% endif %}</td>
+							<td class="text-center check">✅ {% if lang == 'uz' %}7/24 shaxsiy mas'ul + reminder va kuzatuv{% elif lang == 'ru' %}7/24 личный ответственный + напоминания и мониторинг{% elif lang == 'tr' %}7/24 kişisel sorumlu + hatırlatma ve izleme{% else %}7/24 Personal Manager + Reminders & Monitoring{% endif %}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<!-- CTA Buttons for Packages -->
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+			<!-- START PACK CTA -->
+			<a href="{{ url_for('contact') }}?package=start&lang={{ lang }}" class="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}START paketini tanlash{% elif lang == 'ru' %}Выбрать пакет START{% elif lang == 'tr' %}START paketini seç{% else %}Choose START Pack{% endif %}
+			</a>
+			
+			<!-- PRO PACK CTA -->
+			<a href="{{ url_for('contact') }}?package=pro&lang={{ lang }}" class="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}PRO paketini bron qilish{% elif lang == 'ru' %}Забронировать пакет PRO{% elif lang == 'tr' %}PRO paketini rezerve et{% else %}Book PRO Pack{% endif %}
+			</a>
+			
+			<!-- VIP PACK CTA -->
+			<a href="{{ url_for('contact') }}?package=vip&lang={{ lang }}" class="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}VIP bo'yicha mutaxassis bilan gaplashish{% elif lang == 'ru' %}Поговорить со специалистом по VIP{% elif lang == 'tr' %}VIP için uzmanla konuş{% else %}Talk to Specialist about VIP{% endif %}
+			</a>
+		</div>
+		
+		<!-- Old Package Cards (Hidden, keeping for reference) -->
+		<div style="display: none;">
 			<!-- START PACK -->
 			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-300">
 				<div class="mb-4">
@@ -370,6 +786,7 @@
 				</a>
 			</div>
 		</div>
+		<!-- End of Hidden Package Cards -->
 	</div>
 </section>
 

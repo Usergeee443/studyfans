@@ -6,378 +6,963 @@
 
 {% block extra_css %}
 <style>
-	* {
-		box-sizing: border-box;
+	/* Hero Section */
+	.stories-hero {
+		background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+		padding: 4rem 0;
+		text-align: center;
 	}
-	
-	.stories-page {
-		min-height: 100vh;
-		background: #fafafa;
-		overflow: hidden;
-		position: relative;
+
+	.stories-hero h1 {
+		font-size: 3rem;
+		font-weight: 700;
+		color: #111;
+		margin-bottom: 1rem;
+		font-family: 'Inter', sans-serif;
+		letter-spacing: -0.03em;
+		line-height: 1.1;
 	}
-	
-	.stories-wrapper {
-		display: flex;
-		gap: 1rem;
-		padding: 1.5rem 1rem;
-		height: 100vh;
-		justify-content: center;
+
+	.stories-hero .subtext {
+		font-size: 1.125rem;
+		color: #6b7280;
+		margin-bottom: 0.75rem;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+		line-height: 1.6;
+		max-width: 800px;
+		margin-left: auto;
+		margin-right: auto;
 	}
-	
-	.stories-column {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		flex: 1;
-		max-width: 400px;
+
+	.stories-hero .small-text {
+		font-size: 0.9375rem;
+		color: #9ca3af;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 	}
-	
-	.column-inner {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
+
+	/* Filter Panel */
+	.filter-panel {
+		background: white;
+		border-radius: 20px;
+		padding: 1.5rem;
+		margin-bottom: 3rem;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+		border: 1px solid rgba(0,0,0,0.06);
 	}
-	
-	/* Tepadan pastga animatsiya */
-	.column-down .column-inner {
-		animation: scroll-down 35s linear infinite;
-	}
-	
-	/* Pastdan tepaga animatsiya */
-	.column-up .column-inner {
-		animation: scroll-up 40s linear infinite;
-	}
-	
-	/* Uchinchi ustun - tepadan pastga (boshqa tezlik) */
-	.column-down-2 .column-inner {
-		animation: scroll-down 32s linear infinite;
-	}
-	
-	@keyframes scroll-down {
-		0% {
-			transform: translateY(0);
-		}
-		100% {
-			transform: translateY(-50%);
-		}
-	}
-	
-	@keyframes scroll-up {
-		0% {
-			transform: translateY(-50%);
-		}
-		100% {
-			transform: translateY(0);
-		}
-	}
-	
-	.story-card {
-		background: #fff;
-		border-radius: 24px;
-		padding: 26px;
-		border: 1px solid rgba(0, 0, 0, 0.05);
-		transition: all 0.3s ease;
-	}
-	
-	.story-card:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
-	}
-	
-	.story-text {
-		font-size: 15px;
-		line-height: 1.7;
-		color: #333;
-		margin-bottom: 22px;
-		font-weight: 400;
-		letter-spacing: -0.01em;
-	}
-	
-	.story-author {
-		display: flex;
-		align-items: center;
-		gap: 12px;
-	}
-	
-	.story-avatar {
-		width: 42px;
-		height: 42px;
-		border-radius: 12px;
-		background: #111;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: #fff;
-		font-weight: 500;
-		font-size: 14px;
-		letter-spacing: 0.02em;
-	}
-	
-	.story-info {
-		flex: 1;
-	}
-	
-	.story-name {
-		font-size: 14px;
+
+	.filter-panel-title {
+		font-size: 1.125rem;
 		font-weight: 600;
 		color: #111;
-		margin-bottom: 2px;
+		margin-bottom: 1rem;
+		font-family: 'Inter', sans-serif;
+	}
+
+	.filter-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1rem;
+	}
+
+	.filter-group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.filter-label {
+		font-size: 0.8125rem;
+		font-weight: 500;
+		color: #6b7280;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+	}
+
+	.filter-select {
+		padding: 0.625rem 1rem;
+		border: 1px solid #e5e7eb;
+		border-radius: 12px;
+		font-size: 0.875rem;
+		color: #111;
+		background: white;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	.filter-select:focus {
+		outline: none;
+		border-color: #2563eb;
+		box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+	}
+
+	/* Case Grid */
+	.cases-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+		gap: 1.5rem;
+		margin-bottom: 4rem;
+	}
+
+	.case-card {
+		background: white;
+		border-radius: 24px;
+		overflow: hidden;
+		border: 1px solid rgba(0,0,0,0.06);
+		transition: all 0.3s ease;
+		cursor: pointer;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+	}
+
+	.case-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+		border-color: rgba(37, 99, 235, 0.2);
+	}
+
+	.case-video-preview {
+		width: 100%;
+		height: 200px;
+		background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.case-video-preview video {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.case-video-placeholder {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+		color: white;
+		font-size: 3rem;
+		font-weight: 700;
+		font-family: 'Inter', sans-serif;
+	}
+
+	.case-content {
+		padding: 1.5rem;
+	}
+
+	.case-number {
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: #6b7280;
+		margin-bottom: 0.5rem;
+		font-family: 'Inter', sans-serif;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.case-name {
+		font-size: 1.25rem;
+		font-weight: 700;
+		color: #111;
+		margin-bottom: 0.75rem;
+		font-family: 'Inter', sans-serif;
 		letter-spacing: -0.01em;
 	}
-	
-	.story-role {
-		font-size: 12px;
-		color: #999;
-		font-weight: 400;
+
+	.case-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.case-info-item {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.875rem;
+		color: #6b7280;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 	}
 	
-	/* Gradient overlay top va bottom */
-	.gradient-top {
+	.case-result {
+		background: #f0fdf4;
+		border: 1px solid #bbf7d0;
+		border-radius: 12px;
+		padding: 0.75rem;
+		margin-bottom: 1rem;
+	}
+
+	.case-result-text {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #166534;
+		font-family: 'Inter', sans-serif;
+	}
+
+	.case-format {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.8125rem;
+		color: #6b7280;
+		margin-bottom: 1rem;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+	}
+
+	.case-view-btn {
+		width: 100%;
+		padding: 0.75rem 1.5rem;
+		background: #2563eb;
+		color: white;
+		border: none;
+		border-radius: 100px;
+		font-weight: 600;
+		font-size: 0.875rem;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		font-family: 'Inter', sans-serif;
+	}
+
+	.case-view-btn:hover {
+		background: #1d4ed8;
+		transform: translateY(-1px);
+		box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+	}
+
+	/* Case Detail Modal */
+	.case-detail-modal {
+		display: none;
 		position: fixed;
 		top: 0;
 		left: 0;
 		right: 0;
-		height: 120px;
-		background: linear-gradient(to bottom, #fafafa 0%, transparent 100%);
-		pointer-events: none;
-		z-index: 10;
-	}
-	
-	.gradient-bottom {
-		position: fixed;
 		bottom: 0;
-		left: 0;
-		right: 0;
-		height: 120px;
-		background: linear-gradient(to top, #fafafa 0%, transparent 100%);
-		pointer-events: none;
+		background: rgba(0, 0, 0, 0.5);
+		z-index: 1000;
+		overflow-y: auto;
+		padding: 2rem;
+	}
+
+	.case-detail-modal.active {
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+	}
+
+	.case-detail-content {
+		background: white;
+		border-radius: 24px;
+		max-width: 900px;
+		width: 100%;
+		margin: 2rem auto;
+		position: relative;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+	}
+
+	.case-detail-close {
+		position: absolute;
+		top: 1.5rem;
+		right: 1.5rem;
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		background: #f3f4f6;
+		border: none;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.2s ease;
 		z-index: 10;
 	}
-	
-	/* Hover paused animation */
-	.stories-column:hover .column-inner {
-		animation-play-state: paused;
+
+	.case-detail-close:hover {
+		background: #e5e7eb;
+	}
+
+	.case-detail-section {
+		padding: 2rem;
+		border-bottom: 1px solid #e5e7eb;
+	}
+
+	.case-detail-section:last-child {
+		border-bottom: none;
+	}
+
+	.specialist-video {
+		width: 100%;
+		border-radius: 16px;
+		overflow: hidden;
+		margin-bottom: 1rem;
+	}
+
+	.specialist-video video {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	.client-profile-card {
+		background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+		border-radius: 20px;
+		padding: 2rem;
+		border: 1px solid #e2e8f0;
+	}
+
+	.client-profile-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1rem;
+	}
+
+	.client-profile-item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.client-profile-label {
+		font-size: 0.75rem;
+		font-weight: 500;
+		color: #6b7280;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		font-family: 'Inter', sans-serif;
+	}
+
+	.client-profile-value {
+		font-size: 1rem;
+		font-weight: 600;
+		color: #111;
+		font-family: 'Inter', sans-serif;
+	}
+
+	.screenshots-slider {
+		margin-top: 1rem;
+	}
+
+	.screenshot-item {
+		background: #f9fafb;
+		border-radius: 12px;
+		padding: 1rem;
+		border: 1px solid #e5e7eb;
+	}
+
+	.screenshot-item img {
+		width: 100%;
+		border-radius: 8px;
+		margin-bottom: 0.5rem;
+	}
+
+	.screenshot-caption {
+		font-size: 0.75rem;
+		color: #6b7280;
+		font-style: italic;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+	}
+
+	.client-testimonial {
+		background: #fef3c7;
+		border-radius: 16px;
+		padding: 1.5rem;
+		border: 1px solid #fde68a;
+	}
+
+	.client-testimonial video {
+		width: 100%;
+		border-radius: 12px;
+		margin-bottom: 1rem;
+	}
+
+	.client-testimonial-text {
+		font-size: 0.9375rem;
+		color: #92400e;
+		line-height: 1.6;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+	}
+
+	.specialist-conclusion {
+		background: #eff6ff;
+		border-radius: 16px;
+		padding: 1.5rem;
+		border: 1px solid #bfdbfe;
+	}
+
+	.specialist-conclusion-text {
+		font-size: 0.9375rem;
+		color: #1e40af;
+		line-height: 1.6;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 	}
 	
-	/* Responsive */
-	@media (max-width: 1024px) {
-		.stories-wrapper {
-			gap: 0.75rem;
-			padding: 1rem 0.75rem;
-		}
+	.cta-section {
+		background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+		border-radius: 20px;
+		padding: 2rem;
+		text-align: center;
+		color: white;
 	}
-	
+
+	.cta-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin-top: 1.5rem;
+	}
+
+	.cta-btn {
+		padding: 0.875rem 2rem;
+		background: white;
+		color: #2563eb;
+		border: none;
+		border-radius: 100px;
+		font-weight: 600;
+		font-size: 0.9375rem;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		font-family: 'Inter', sans-serif;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.cta-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+	}
+
+	/* Social Proof Block */
+	.social-proof-block {
+		background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+		border-radius: 24px;
+		padding: 3rem 2rem;
+		text-align: center;
+		margin-top: 4rem;
+	}
+
+	.social-proof-stats {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+
+	.social-proof-stat {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.social-proof-number {
+		font-size: 2.5rem;
+		font-weight: 700;
+		color: #2563eb;
+		font-family: 'Inter', sans-serif;
+	}
+
+	.social-proof-label {
+		font-size: 0.9375rem;
+		color: #6b7280;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+	}
+
 	@media (max-width: 768px) {
-		.stories-wrapper {
-			gap: 0.6rem;
-			padding: 0.75rem 0.6rem;
+		.stories-hero h1 {
+			font-size: 2rem;
 		}
-		
-		.story-card {
-			padding: 18px;
-			border-radius: 18px;
+
+		.stories-hero .subtext {
+			font-size: 1rem;
 		}
-		
-		.story-text {
-			font-size: 13px;
-			line-height: 1.6;
-			margin-bottom: 16px;
+
+		.cases-grid {
+			grid-template-columns: 1fr;
+			gap: 1rem;
 		}
-		
-		.story-avatar {
-			width: 34px;
-			height: 34px;
-			font-size: 12px;
-			border-radius: 10px;
+
+		.filter-grid {
+			grid-template-columns: 1fr;
 		}
-		
-		.story-name {
-			font-size: 12px;
+
+		.case-detail-modal {
+			padding: 1rem;
 		}
-		
-		.story-role {
-			font-size: 10px;
+
+		.case-detail-content {
+			margin: 1rem auto;
 		}
-		
-		.gradient-top,
-		.gradient-bottom {
-			height: 80px;
+
+		.case-detail-section {
+			padding: 1.5rem;
 		}
-	}
-	
-	@media (max-width: 480px) {
-		.stories-wrapper {
-			gap: 0.4rem;
-			padding: 0.5rem 0.4rem;
+
+		.client-profile-grid {
+			grid-template-columns: 1fr;
 		}
-		
-		.story-card {
-			padding: 14px;
-			border-radius: 14px;
+
+		.cta-buttons {
+			flex-direction: column;
 		}
-		
-		.story-text {
-			font-size: 11px;
-			line-height: 1.5;
-			margin-bottom: 12px;
-		}
-		
-		.story-avatar {
-			width: 26px;
-			height: 26px;
-			font-size: 10px;
-			border-radius: 8px;
-		}
-		
-		.story-name {
-			font-size: 10px;
-		}
-		
-		.story-role {
-			font-size: 8px;
-		}
-		
-		.story-author {
-			gap: 8px;
-		}
-		
-		.gradient-top,
-		.gradient-bottom {
-			height: 60px;
+
+		.cta-btn {
+			width: 100%;
 		}
 	}
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="stories-page">
-	<div class="gradient-top"></div>
-	<div class="gradient-bottom"></div>
+
+<div class="page-container" style="margin-top: 0; padding-top: 0;">
+	<!-- Hero Section -->
+	<section class="stories-hero">
+		<div class="max-w-7xl mx-auto px-6">
+			<h1>
+				{% if lang == 'uz' %}Haqiqiy mijozlar. Haqiqiy natijalar. Mutaxassis izohi bilan.{% elif lang == 'ru' %}Настоящие клиенты. Настоящие результаты. С комментариями специалиста.{% elif lang == 'tr' %}Gerçek müşteriler. Gerçek sonuçlar. Uzman yorumu ile.{% else %}Real Clients. Real Results. With Expert Commentary.{% endif %}
+			</h1>
+			<p class="subtext">
+				{% if lang == 'uz' %}Biz har bir CASE'da – StudyFans mutaxassisi, mijoz ismi, natija skrinsheti va mijozning o'zi bilan natijani to'liq ko'rsatamiz. Bu bo'limda siz turli xizmatlar bo'yicha 100% real holatlar, real natijalarni ko'rasiz.{% elif lang == 'ru' %}В каждом CASE мы полностью показываем результат с комментарием специалиста StudyFans, именем клиента, скриншотами результатов и самим клиентом. В этом разделе вы увидите 100% реальные случаи и реальные результаты по различным услугам.{% elif lang == 'tr' %}Her CASE'de – StudyFans uzmanı, müşteri adı, sonuç ekran görüntüleri ve müşterinin kendisi ile sonucu tam olarak gösteriyoruz. Bu bölümde çeşitli hizmetler için %100 gerçek durumlar, gerçek sonuçlar göreceksiniz.{% else %}In each CASE, we fully show the result with a StudyFans specialist, client name, result screenshots and the client themselves. In this section you will see 100% real cases and real results for various services.{% endif %}
+			</p>
+			<p class="small-text">
+				{% if lang == 'uz' %}Talabalik qabulidan boshlab ikamet, turar-joy va hatto viza-deport masalalarigacha – bizning mutaxassislar qanday yordam berganini video orqali tushuntiradi.{% elif lang == 'ru' %}От приема студентов до вида на жительство, жилья и даже вопросов визы-депортации – наши специалисты объясняют в видео, как они помогали.{% elif lang == 'tr' %}Öğrenci kabulünden ikamet, konaklama ve hatta vize-deport sorunlarına kadar – uzmanlarımız videoda nasıl yardım ettiklerini açıklıyor.{% else %}From student admission to residence permits, accommodation and even visa-deportation issues – our specialists explain in video how they helped.{% endif %}
+			</p>
+		</div>
+	</section>
+
+	<!-- Filter Panel -->
+	<section class="py-8 bg-white">
+		<div class="max-w-7xl mx-auto px-6">
+			<div class="filter-panel">
+				<h3 class="filter-panel-title">
+					{% if lang == 'uz' %}Qaysi xizmat bo'yicha case ko'rmoqchisiz?{% elif lang == 'ru' %}По какой услуге вы хотите посмотреть кейс?{% elif lang == 'tr' %}Hangi hizmet için vaka görmek istiyorsunuz?{% else %}Which service case would you like to see?{% endif %}
+				</h3>
+				<div class="filter-grid">
+					<div class="filter-group">
+						<label class="filter-label">{% if lang == 'uz' %}Xizmat turi{% elif lang == 'ru' %}Тип услуги{% elif lang == 'tr' %}Hizmet türü{% else %}Service Type{% endif %}</label>
+						<select class="filter-select" id="filterService">
+							<option value="">{% if lang == 'uz' %}Barcha{% elif lang == 'ru' %}Все{% elif lang == 'tr' %}Tümü{% else %}All{% endif %}</option>
+							<option value="admission">{% if lang == 'uz' %}Qabul{% elif lang == 'ru' %}Прием{% elif lang == 'tr' %}Kabul{% else %}Admission{% endif %}</option>
+							<option value="residence">{% if lang == 'uz' %}İkamet{% elif lang == 'ru' %}Вид на жительство{% elif lang == 'tr' %}İkamet{% else %}Residence Permit{% endif %}</option>
+							<option value="visa">{% if lang == 'uz' %}Viza{% elif lang == 'ru' %}Визы{% elif lang == 'tr' %}Vize{% else %}Visa{% endif %}</option>
+							<option value="accommodation">{% if lang == 'uz' %}Turar-joy{% elif lang == 'ru' %}Жилье{% elif lang == 'tr' %}Konaklama{% else %}Accommodation{% endif %}</option>
+						</select>
+					</div>
+					<div class="filter-group">
+						<label class="filter-label">{% if lang == 'uz' %}Yo'nalish{% elif lang == 'ru' %}Направление{% elif lang == 'tr' %}Bölüm{% else %}Major{% endif %}</label>
+						<select class="filter-select" id="filterMajor">
+							<option value="">{% if lang == 'uz' %}Barcha{% elif lang == 'ru' %}Все{% elif lang == 'tr' %}Tümü{% else %}All{% endif %}</option>
+							<option value="medicine">{% if lang == 'uz' %}Tibbiyot{% elif lang == 'ru' %}Медицина{% elif lang == 'tr' %}Tıp{% else %}Medicine{% endif %}</option>
+							<option value="it">{% if lang == 'uz' %}IT{% elif lang == 'ru' %}ИТ{% elif lang == 'tr' %}BT{% else %}IT{% endif %}</option>
+							<option value="business">{% if lang == 'uz' %}Biznes{% elif lang == 'ru' %}Бизнес{% elif lang == 'tr' %}İşletme{% else %}Business{% endif %}</option>
+							<option value="psychology">{% if lang == 'uz' %}Psixologiya{% elif lang == 'ru' %}Психология{% elif lang == 'tr' %}Psikoloji{% else %}Psychology{% endif %}</option>
+						</select>
+					</div>
+					<div class="filter-group">
+						<label class="filter-label">{% if lang == 'uz' %}Universitet{% elif lang == 'ru' %}Университет{% elif lang == 'tr' %}Üniversite{% else %}University{% endif %}</label>
+						<select class="filter-select" id="filterUniversity">
+							<option value="">{% if lang == 'uz' %}Barcha{% elif lang == 'ru' %}Все{% elif lang == 'tr' %}Tümü{% else %}All{% endif %}</option>
+							<option value="igu">IGU</option>
+							<option value="kent">Kent</option>
+							<option value="atlas">Atlas</option>
+							<option value="okan">Okan</option>
+						</select>
+					</div>
+					<div class="filter-group">
+						<label class="filter-label">{% if lang == 'uz' %}Format{% elif lang == 'ru' %}Формат{% elif lang == 'tr' %}Format{% else %}Format{% endif %}</label>
+						<select class="filter-select" id="filterFormat">
+							<option value="">{% if lang == 'uz' %}Barcha{% elif lang == 'ru' %}Все{% elif lang == 'tr' %}Tümü{% else %}All{% endif %}</option>
+							<option value="video">{% if lang == 'uz' %}Video otziv{% elif lang == 'ru' %}Видео отзыв{% elif lang == 'tr' %}Video yorum{% else %}Video Review{% endif %}</option>
+							<option value="image">{% if lang == 'uz' %}Rasm otziv{% elif lang == 'ru' %}Фото отзыв{% elif lang == 'tr' %}Fotoğraf yorum{% else %}Image Review{% endif %}</option>
+							<option value="expert">{% if lang == 'uz' %}Mutaxassis izohi bilan{% elif lang == 'ru' %}С комментарием специалиста{% elif lang == 'tr' %}Uzman yorumu ile{% else %}With Expert Commentary{% endif %}</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<!-- Cases Grid -->
+			<div class="cases-grid" id="casesGrid">
+				{% set cases = [
+					{
+						'id': 1,
+						'number': 'CASE #12',
+						'name': 'Muhammadali Mamatov',
+						'major': 'IT',
+						'university': 'Istanbul Kent',
+						'service': 'admission',
+						'result': '5 kunda qabul • 30% chegirma',
+						'format': 'expert',
+						'video_preview': True
+					},
+					{
+						'id': 2,
+						'number': 'CASE #15',
+						'name': 'Aziza Karimova',
+						'major': 'Tibbiyot',
+						'university': 'IGU',
+						'service': 'admission',
+						'result': '7 kunda qabul • 25% chegirma',
+						'format': 'video',
+						'video_preview': True
+					},
+					{
+						'id': 3,
+						'number': 'CASE #18',
+						'name': 'Bobur Mirzaev',
+						'major': 'Biznes',
+						'university': 'Atlas',
+						'service': 'residence',
+						'result': 'İkamet 2 haftada tayyor',
+						'format': 'expert',
+						'video_preview': True
+					},
+					{
+						'id': 4,
+						'number': 'CASE #22',
+						'name': 'Dilshoda Toshmatova',
+						'major': 'Dizayn',
+						'university': 'MEF',
+						'service': 'admission',
+						'result': '10 kunda qabul • 20% chegirma',
+						'format': 'image',
+						'video_preview': False
+					},
+					{
+						'id': 5,
+						'number': 'CASE #25',
+						'name': 'Javohir Karimov',
+						'major': 'Muhandislik',
+						'university': 'Okan',
+						'service': 'visa',
+						'result': 'Viza masalasi hal qilindi',
+						'format': 'expert',
+						'video_preview': True
+					},
+					{
+						'id': 6,
+						'number': 'CASE #28',
+						'name': 'Farhod Rustamov',
+						'major': 'Huquq',
+						'university': 'Bahcesehir',
+						'service': 'accommodation',
+						'result': 'Turar-joy topildi • 1 haftada',
+						'format': 'video',
+						'video_preview': True
+					}
+				] %}
+				
+				{% for case in cases %}
+				<div class="case-card" onclick="openCaseDetail({{ case.id }})" data-service="{{ case.service }}" data-major="{{ case.major|lower }}" data-university="{{ case.university|lower }}" data-format="{{ case.format }}">
+					<div class="case-video-preview">
+						{% if case.video_preview %}
+						<video autoplay muted loop playsinline>
+							<source src="/static/video/heroVideo.mp4" type="video/mp4">
+						</video>
+						{% else %}
+						<div class="case-video-placeholder">{{ case.name[0] }}</div>
+						{% endif %}
+					</div>
+					<div class="case-content">
+						<div class="case-number">{{ case.number }}</div>
+						<h3 class="case-name">{{ case.name }}</h3>
+						<div class="case-info">
+							<div class="case-info-item">
+								<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400">
+									<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+								</svg>
+								<span>🎓 {{ case.major }}, {{ case.university }}</span>
+							</div>
+						</div>
+						<div class="case-result">
+							<div class="case-result-text">📌 {% if lang == 'uz' %}Natija:{% elif lang == 'ru' %}Результат:{% elif lang == 'tr' %}Sonuç:{% else %}Result:{% endif %} {{ case.result }}</div>
+						</div>
+						<div class="case-format">
+							{% if case.format == 'video' %}
+							🎥 {% if lang == 'uz' %}Video otziv{% elif lang == 'ru' %}Видео отзыв{% elif lang == 'tr' %}Video yorum{% else %}Video Review{% endif %}
+							{% elif case.format == 'image' %}
+							🖼 {% if lang == 'uz' %}Rasm otziv{% elif lang == 'ru' %}Фото отзыв{% elif lang == 'tr' %}Fotoğraf yorum{% else %}Image Review{% endif %}
+							{% else %}
+							🎥 {% if lang == 'uz' %}Mutaxassis izohi + mijoz otzivi{% elif lang == 'ru' %}Комментарий специалиста + отзыв клиента{% elif lang == 'tr' %}Uzman yorumu + müşteri yorumu{% else %}Expert Commentary + Client Review{% endif %}
+							{% endif %}
+						</div>
+						<button class="case-view-btn">
+							{% if lang == 'uz' %}Natija'ni ko'rish →{% elif lang == 'ru' %}Посмотреть результат →{% elif lang == 'tr' %}Sonucu gör →{% else %}View Result →{% endif %}
+						</button>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	<!-- Case Detail Modal -->
+	<div id="caseDetailModal" class="case-detail-modal">
+		<div class="case-detail-content">
+			<button class="case-detail-close" onclick="closeCaseDetail()">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<line x1="18" y1="6" x2="6" y2="18"></line>
+					<line x1="6" y1="6" x2="18" y2="18"></line>
+				</svg>
+			</button>
+			
+			<div id="caseDetailContent">
+				<!-- Content will be loaded dynamically -->
+			</div>
+		</div>
+		</div>
+		
+	<!-- Social Proof Block -->
+	<section class="py-12 bg-white">
+		<div class="max-w-7xl mx-auto px-6">
+			<div class="social-proof-block">
+				<h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2" style="font-family: 'Inter', sans-serif;">
+					{% if lang == 'uz' %}Bizda 10 000+ shu kabi haqiqiy NATIJA mavjud{% elif lang == 'ru' %}У нас есть 10 000+ таких реальных РЕЗУЛЬТАТОВ{% elif lang == 'tr' %}10 000+ böyle gerçek SONUÇ var{% else %}We have 10,000+ such real RESULTS{% endif %}
+				</h2>
+				<p class="text-gray-600 mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}"Bizning keyingi hikoyamiz — balki sizniki bo'lar?" Linkni ustiga bosing va 1 daqiqada bog'lanamiz. (Ish vaqtlarida){% elif lang == 'ru' %}"Наша следующая история — может быть, ваша?" Нажмите на ссылку и мы свяжемся с вами за 1 минуту. (В рабочее время){% elif lang == 'tr' %}"Bir sonraki hikayemiz — belki sizinki olur?" Bağlantıya tıklayın ve 1 dakika içinde bağlanırız. (Çalışma saatlerinde){% else %}"Our next story — maybe yours?" Click the link and we'll connect in 1 minute. (During business hours){% endif %}
+				</p>
+				<div class="social-proof-stats">
+					<div class="social-proof-stat">
+						<div class="social-proof-number">60+</div>
+						<div class="social-proof-label">{% if lang == 'uz' %}Universitet{% elif lang == 'ru' %}Университетов{% elif lang == 'tr' %}Üniversite{% else %}Universities{% endif %}</div>
+					</div>
+					<div class="social-proof-stat">
+						<div class="social-proof-number">1000+</div>
+						<div class="social-proof-label">{% if lang == 'uz' %}İkamet jarayonlari{% elif lang == 'ru' %}Процессов вида на жительство{% elif lang == 'tr' %}İkamet süreçleri{% else %}Residence Permit Processes{% endif %}</div>
+					</div>
+					<div class="social-proof-stat">
+						<div class="social-proof-number">100+</div>
+						<div class="social-proof-label">{% if lang == 'uz' %}Viza-deport masalalari yechilgan{% elif lang == 'ru' %}Решенных вопросов визы-депортации{% elif lang == 'tr' %}Çözülen vize-deport sorunları{% else %}Visa-Deport Issues Resolved{% endif %}</div>
+					</div>
+					<div class="social-proof-stat">
+						<div class="social-proof-number">5000+</div>
+						<div class="social-proof-label">{% if lang == 'uz' %}Chat orqali olingan otzivlar{% elif lang == 'ru' %}Отзывов через чат{% elif lang == 'tr' %}Chat üzerinden alınan yorumlar{% else %}Reviews via Chat{% endif %}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<script>
+// Filter functionality
+const filterService = document.getElementById('filterService');
+const filterMajor = document.getElementById('filterMajor');
+const filterUniversity = document.getElementById('filterUniversity');
+const filterFormat = document.getElementById('filterFormat');
+const casesGrid = document.getElementById('casesGrid');
+
+function filterCases() {
+	const service = filterService.value;
+	const major = filterMajor.value;
+	const university = filterUniversity.value;
+	const format = filterFormat.value;
 	
-	<div class="stories-wrapper">
-		<!-- Birinchi ustun - tepadan pastga -->
-		<div class="stories-column column-down">
-			<div class="column-inner">
-				{% set column1 = [
-					{'text': 'StudyFans jamoasi menga juda ko\'p yordam berdi. 5 kunda qabul xatini oldim. Tavsiya qilaman!', 'name': 'Muhammadali Mamatov', 'role': 'IT, Istanbul Kent'},
-					{'text': 'Jarayon juda yengil bo\'ldi. Hammasi o\'z vaqtida. Rahmat StudyFans!', 'name': 'Aziza Karimova', 'role': 'Tibbiyot, IGU'},
-					{'text': 'Professional yondashuv va tezkor javoblar. Men juda mamnunman.', 'name': 'Bobur Mirzaev', 'role': 'Biznes, Atlas'},
-					{'text': 'Yaxshi xizmat va qo\'llab-quvvatlash. Barcha savollarga tez javob berishdi.', 'name': 'Dilshoda Toshmatova', 'role': 'Dizayn, MEF'},
-					{'text': 'Hujjatlar tayyorlashda katta yordam ko\'rsatdilar. Tashakkur!', 'name': 'Javohir Karimov', 'role': 'Muhandislik, Okan'},
-					{'text': 'Ajoyib xizmat! Barcha savollarga batafsil javob berishdi.', 'name': 'Farhod Rustamov', 'role': 'Huquq, Bahcesehir'},
-					{'text': 'Qabul jarayonida barcha qiyinchiliklar hal qilindi.', 'name': 'Gulnoza Karimova', 'role': 'Fizika, METU'},
-					{'text': 'StudyFans orqali o\'qishga kirishim juda oson bo\'ldi.', 'name': 'Shahzod Toshmatov', 'role': 'Muhandislik, Sabanci'},
-				] %}
-				{% for story in column1 %}
-				<div class="story-card">
-					<p class="story-text">"{{ story.text }}"</p>
-					<div class="story-author">
-						<div class="story-avatar">{{ story.name[0] }}</div>
-						<div class="story-info">
-							<p class="story-name">{{ story.name }}</p>
-							<p class="story-role">{{ story.role }}</p>
-						</div>
+	const cards = casesGrid.querySelectorAll('.case-card');
+	
+	cards.forEach(card => {
+		const cardService = card.getAttribute('data-service');
+		const cardMajor = card.getAttribute('data-major');
+		const cardUniversity = card.getAttribute('data-university');
+		const cardFormat = card.getAttribute('data-format');
+		
+		let matches = true;
+		
+		if (service && cardService !== service) matches = false;
+		if (major && cardMajor !== major) matches = false;
+		if (university && cardUniversity !== university) matches = false;
+		if (format && cardFormat !== format) matches = false;
+		
+		if (matches) {
+			card.style.display = 'block';
+		} else {
+			card.style.display = 'none';
+		}
+	});
+}
+
+filterService.addEventListener('change', filterCases);
+filterMajor.addEventListener('change', filterCases);
+filterUniversity.addEventListener('change', filterCases);
+filterFormat.addEventListener('change', filterCases);
+
+// Case Detail Modal
+function openCaseDetail(caseId) {
+	const modal = document.getElementById('caseDetailModal');
+	const content = document.getElementById('caseDetailContent');
+	
+	// Generate case detail content based on caseId
+	const caseData = {
+		1: {
+			name: 'Muhammadali Mamatov',
+			major: 'Computer Engineering',
+			university: 'Istanbul Kent University',
+			city: 'Istanbul',
+			service: 'Qabul + Hujjatlar',
+			age: 18,
+			specialist: 'Akmal Toshmatov',
+			specialistRole: 'Senior Admission Consultant',
+			result: '5 kunda qabul • 30% chegirma',
+			testimonial: 'StudyFans jamoasi menga yo\'nalish tanlashda ham, hujjatlarda ham juda ko\'p yordam berdi. 5 kunda qabul xatini oldim. Tavsiya qilaman!',
+			conclusion: 'Muhammadali uchun eng mos IT yo\'nalishi bo\'yicha variantlarni tanlab berdik, hujjatlarini to\'g\'ri formatda tayyorlab, qisqa muddatda qabul hatini olib berdik. Sizda ham shu kabi maqsad bo\'lsa, sizga ham yordam beramiz.'
+		}
+	};
+	
+	const case = caseData[caseId] || caseData[1];
+	
+	content.innerHTML = `
+		<!-- Specialist Intro Video -->
+		<div class="case-detail-section">
+			<h3 class="text-xl font-bold text-gray-900 mb-2" style="font-family: 'Inter', sans-serif;">
+				{% if lang == 'uz' %}Mutaxassis izohi:{% elif lang == 'ru' %}Комментарий специалиста:{% elif lang == 'tr' %}Uzman yorumu:{% else %}Expert Commentary:{% endif %} ${case.specialist}, ${case.specialistRole}
+			</h3>
+			<div class="specialist-video">
+				<video controls>
+					<source src="/static/video/heroVideo.mp4" type="video/mp4">
+				</video>
+			</div>
+			<p class="text-sm text-gray-600 mt-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Bu mijozimiz ${case.name}ga ${case.major} yo'nalishida universitet tanlashdan boshlab qabul xatigacha to'liq yordam berdik. Mana natija:{% elif lang == 'ru' %}Мы оказали полную помощь нашему клиенту ${case.name} от выбора университета по направлению ${case.major} до письма о приеме. Вот результат:{% elif lang == 'tr' %}Müşterimiz ${case.name}'a ${case.major} bölümünde üniversite seçiminden kabul mektubuna kadar tam destek verdik. İşte sonuç:{% else %}We provided full assistance to our client ${case.name} from university selection in ${case.major} to acceptance letter. Here's the result:{% endif %}
+			</p>
+		</div>
+		
+		<!-- Client Profile -->
+		<div class="case-detail-section">
+			<div class="client-profile-card">
+				<h3 class="text-xl font-bold text-gray-900 mb-4" style="font-family: 'Inter', sans-serif;">${case.name}</h3>
+				<div class="client-profile-grid">
+					<div class="client-profile-item">
+						<div class="client-profile-label">{% if lang == 'uz' %}Yo'nalish{% elif lang == 'ru' %}Направление{% elif lang == 'tr' %}Bölüm{% else %}Major{% endif %}</div>
+						<div class="client-profile-value">${case.major}</div>
+					</div>
+					<div class="client-profile-item">
+						<div class="client-profile-label">{% if lang == 'uz' %}Universitet{% elif lang == 'ru' %}Университет{% elif lang == 'tr' %}Üniversite{% else %}University{% endif %}</div>
+						<div class="client-profile-value">${case.university}</div>
+					</div>
+					<div class="client-profile-item">
+						<div class="client-profile-label">{% if lang == 'uz' %}Shahar{% elif lang == 'ru' %}Город{% elif lang == 'tr' %}Şehir{% else %}City{% endif %}</div>
+						<div class="client-profile-value">${case.city}</div>
+					</div>
+					<div class="client-profile-item">
+						<div class="client-profile-label">{% if lang == 'uz' %}Xizmat turi{% elif lang == 'ru' %}Тип услуги{% elif lang == 'tr' %}Hizmet türü{% else %}Service Type{% endif %}</div>
+						<div class="client-profile-value">${case.service}</div>
+					</div>
+					<div class="client-profile-item">
+						<div class="client-profile-label">{% if lang == 'uz' %}Yoshi{% elif lang == 'ru' %}Возраст{% elif lang == 'tr' %}Yaş{% else %}Age{% endif %}</div>
+						<div class="client-profile-value">${case.age}</div>
 					</div>
 				</div>
-				{% endfor %}
-				<!-- Seamless loop uchun takrorlash -->
-				{% for story in column1 %}
-				<div class="story-card">
-					<p class="story-text">"{{ story.text }}"</p>
-					<div class="story-author">
-						<div class="story-avatar">{{ story.name[0] }}</div>
-						<div class="story-info">
-							<p class="story-name">{{ story.name }}</p>
-							<p class="story-role">{{ story.role }}</p>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
 			</div>
 		</div>
 		
-		<!-- Ikkinchi ustun - pastdan tepaga -->
-		<div class="stories-column column-up">
-			<div class="column-inner">
-				{% set column2 = [
-					{'text': 'Qabul jarayoni juda tez va qulay bo\'ldi. Katta rahmat!', 'name': 'Nilufar Usmonova', 'role': 'Psixologiya, Yeditepe'},
-					{'text': 'StudyFans bilan ishlash juda qulay. Tavsiya qilaman!', 'name': 'Shohruh Bekmurodov', 'role': 'Arxitektura, ITU'},
-					{'text': 'Yashash ruxsatnomasi olishda katta yordam ko\'rsatdilar.', 'name': 'Otabek Ismoilov', 'role': 'Iqtisod, Bilgi'},
-					{'text': '24/7 qo\'llab-quvvatlash juda qulay. Rahmat!', 'name': 'Madina Yusupova', 'role': 'Tilshunoslik, Bogazici'},
-					{'text': 'Professional jamoaga ega. Hammasi o\'z vaqtida.', 'name': 'Sardor Toshmatov', 'role': 'Jurnalistika, Galatasaray'},
-					{'text': 'Ajoyib xizmat va tezkor yordam. Tashakkur!', 'name': 'Rustam Aliyev', 'role': 'Kimyo, Koc'},
-					{'text': 'Hujjatlar tayyorlashda professional yondashuv.', 'name': 'Dilshod Karimov', 'role': 'Tibbiyot, Acibadem'},
-					{'text': 'Katta rahmat! Barcha savollarga tez javob berishdi.', 'name': 'Zarina Usmonova', 'role': 'Dizayn, Bilgi'},
-				] %}
-				{% for story in column2 %}
-				<div class="story-card">
-					<p class="story-text">"{{ story.text }}"</p>
-					<div class="story-author">
-						<div class="story-avatar">{{ story.name[0] }}</div>
-						<div class="story-info">
-							<p class="story-name">{{ story.name }}</p>
-							<p class="story-role">{{ story.role }}</p>
-						</div>
+		<!-- Real Result Screenshots -->
+		<div class="case-detail-section">
+			<h3 class="text-xl font-bold text-gray-900 mb-4" style="font-family: 'Inter', sans-serif;">
+				{% if lang == 'uz' %}Real Natija Skrinshotlari{% elif lang == 'ru' %}Реальные скриншоты результатов{% elif lang == 'tr' %}Gerçek Sonuç Ekran Görüntüleri{% else %}Real Result Screenshots{% endif %}
+			</h3>
+			<div class="screenshots-slider">
+				<div class="screenshot-item">
+					<div style="background: #f3f4f6; border-radius: 8px; height: 200px; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 0.875rem;">
+						{% if lang == 'uz' %}Offer Letter skrinshoti{% elif lang == 'ru' %}Скриншот письма о приеме{% elif lang == 'tr' %}Kabul mektubu ekran görüntüsü{% else %}Offer Letter Screenshot{% endif %}
 					</div>
+					<p class="screenshot-caption">
+						{% if lang == 'uz' %}Mijozdan olingan real natija. Shaxsiy ma'lumotlar maxfiylashtirildi.{% elif lang == 'ru' %}Реальный результат от клиента. Личные данные зашифрованы.{% elif lang == 'tr' %}Müşteriden alınan gerçek sonuç. Kişisel bilgiler şifrelendi.{% else %}Real result from client. Personal information encrypted.{% endif %}
+					</p>
 				</div>
-				{% endfor %}
-				<!-- Seamless loop uchun takrorlash -->
-				{% for story in column2 %}
-				<div class="story-card">
-					<p class="story-text">"{{ story.text }}"</p>
-					<div class="story-author">
-						<div class="story-avatar">{{ story.name[0] }}</div>
-						<div class="story-info">
-							<p class="story-name">{{ story.name }}</p>
-							<p class="story-role">{{ story.role }}</p>
-						</div>
+				<div class="screenshot-item" style="margin-top: 1rem;">
+					<div style="background: #f3f4f6; border-radius: 8px; height: 200px; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 0.875rem;">
+						{% if lang == 'uz' %}Universitet emaili ("You are Accepted"){% elif lang == 'ru' %}Email университета ("Вы приняты"){% elif lang == 'tr' %}Üniversite e-postası ("Kabul Edildiniz"){% else %}University Email ("You are Accepted"){% endif %}
+			</div>
+					<p class="screenshot-caption">
+						{% if lang == 'uz' %}Mijozdan olingan real natija. Shaxsiy ma'lumotlar maxfiylashtirildi.{% elif lang == 'ru' %}Реальный результат от клиента. Личные данные зашифрованы.{% elif lang == 'tr' %}Müşteriden alınan gerçek sonuç. Kişisel bilgiler şifrelendi.{% else %}Real result from client. Personal information encrypted.{% endif %}
+					</p>
+				</div>
+				<div class="screenshot-item" style="margin-top: 1rem;">
+					<div style="background: #f3f4f6; border-radius: 8px; height: 200px; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 0.875rem;">
+						{% if lang == 'uz' %}Chat: "Aka rahmat qabul bo'ldiiim!"{% elif lang == 'ru' %}Чат: "Спасибо, брат, я принят!"{% elif lang == 'tr' %}Sohbet: "Ağabey teşekkürler kabul oldum!"{% else %}Chat: "Thanks bro, I got accepted!"{% endif %}
 					</div>
+					<p class="screenshot-caption">
+						{% if lang == 'uz' %}Mijozdan olingan real natija. Shaxsiy ma'lumotlar maxfiylashtirildi.{% elif lang == 'ru' %}Реальный результат от клиента. Личные данные зашифрованы.{% elif lang == 'tr' %}Müşteriden alınan gerçek sonuç. Kişisel bilgiler şifrelendi.{% else %}Real result from client. Personal information encrypted.{% endif %}
+					</p>
 				</div>
-				{% endfor %}
 			</div>
 		</div>
 		
-		<!-- Uchinchi ustun - tepadan pastga -->
-		<div class="stories-column column-down-2">
-			<div class="column-inner">
-				{% set column3 = [
-					{'text': 'Universitetga qabul qilinishim juda tez bo\'ldi. Rahmat StudyFans!', 'name': 'Kamola Rahimova', 'role': 'Marketing, Altinbas'},
-					{'text': 'Vizani olishda katta yordam berishdi. Ajoyib jamoa!', 'name': 'Akmal Tursunov', 'role': 'Kompyuter, Beykent'},
-					{'text': 'Stipendiya olishda yordam berishdi. Juda minnatdorman!', 'name': 'Sevinch Alimova', 'role': 'Moliya, Medipol'},
-					{'text': 'Turkiyada o\'qish orzuim amalga oshdi. Rahmat!', 'name': 'Jasur Kamolov', 'role': 'Sport, Marmara'},
-					{'text': 'Juda tez va professional xizmat. Tavsiya qilaman!', 'name': 'Nodira Yuldasheva', 'role': 'San\'at, Kultur'},
-					{'text': 'Barcha jarayonlarni o\'zlari hal qilishdi. Zo\'r!', 'name': 'Bekzod Normatov', 'role': 'Aviatsiya, Eskisehir'},
-					{'text': 'Eng yaxshi tanlov qildim. StudyFans - ishonchli!', 'name': 'Mohira Saidova', 'role': 'Pedagogika, Ankara'},
-					{'text': 'Hujjatlarim to\'g\'ri tayyorlandi. Muammosiz o\'tdim!', 'name': 'Ulugbek Rashidov', 'role': 'Energetika, Gazi'},
-				] %}
-				{% for story in column3 %}
-				<div class="story-card">
-					<p class="story-text">"{{ story.text }}"</p>
-					<div class="story-author">
-						<div class="story-avatar">{{ story.name[0] }}</div>
-						<div class="story-info">
-							<p class="story-name">{{ story.name }}</p>
-							<p class="story-role">{{ story.role }}</p>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
-				<!-- Seamless loop uchun takrorlash -->
-				{% for story in column3 %}
-				<div class="story-card">
-					<p class="story-text">"{{ story.text }}"</p>
-					<div class="story-author">
-						<div class="story-avatar">{{ story.name[0] }}</div>
-						<div class="story-info">
-							<p class="story-name">{{ story.name }}</p>
-							<p class="story-role">{{ story.role }}</p>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
+		<!-- Client Testimonial -->
+		<div class="case-detail-section">
+			<h3 class="text-xl font-bold text-gray-900 mb-4" style="font-family: 'Inter', sans-serif;">
+				{% if lang == 'uz' %}Mijozning fikri{% elif lang == 'ru' %}Мнение клиента{% elif lang == 'tr' %}Müşteri görüşü{% else %}Client's Opinion{% endif %}
+			</h3>
+			<div class="client-testimonial">
+				<video controls style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+					<source src="/static/video/heroVideo.mp4" type="video/mp4">
+				</video>
+				<p class="client-testimonial-text">"${case.testimonial}"</p>
 			</div>
+		</div>
+		
+		<!-- Specialist Conclusion -->
+		<div class="case-detail-section">
+			<h3 class="text-xl font-bold text-gray-900 mb-4" style="font-family: 'Inter', sans-serif;">
+				{% if lang == 'uz' %}Mutaxassisning yakuniy izohi{% elif lang == 'ru' %}Заключительный комментарий специалиста{% elif lang == 'tr' %}Uzmanın son yorumu{% else %}Specialist's Final Commentary{% endif %}
+			</h3>
+			<div class="specialist-conclusion">
+				<p class="specialist-conclusion-text">"${case.conclusion}"</p>
 		</div>
 	</div>
-</div>
+
+	<!-- CTA Section -->
+		<div class="case-detail-section">
+			<div class="cta-section">
+				<h3 class="text-2xl font-bold text-white mb-2" style="font-family: 'Inter', sans-serif;">
+					{% if lang == 'uz' %}Siz ham shunday natija xohlaysizmi?{% elif lang == 'ru' %}Хотите такой же результат?{% elif lang == 'tr' %}Siz de böyle bir sonuç ister misiniz?{% else %}Do you want such a result too?{% endif %}
+				</h3>
+				<div class="cta-buttons">
+					<a href="https://wa.me/998901234567" target="_blank" class="cta-btn">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+						</svg>
+					WhatsApp
+				</a>
+					<a href="https://t.me/studyfans" target="_blank" class="cta-btn">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15.056-.216.06-.103.16-.17.28-.17.12 0 .24.052.307.143.09.117.24.31.336.445.19.27.39.535.56.861.144.271.29.56.13.92-.13.31-.19.52-.38.8-.19.29-.39.58-.55.78-.19.25-.38.51-.17.99.02.08.05.16.08.25.04.12.08.25.12.38.17.52.35 1.01.6 1.45.12.2.24.4.12.64-.09.18-.27.3-.55.48-.48.31-1.06.58-1.82.84-.82.29-1.72.5-2.64.6-1.1.13-2.15.08-3.15-.05-.95-.12-1.87-.35-2.72-.68-.68-.26-1.3-.59-1.82-1.01-.52-.42-.95-.92-1.33-1.42-.38-.5-.7-1.03-.96-1.58-.26-.55-.46-1.12-.6-1.7-.14-.58-.22-1.17-.24-1.76-.02-.59.02-1.18.1-1.76.08-.58.22-1.15.4-1.7.18-.55.4-1.08.66-1.58.26-.5.56-.98.9-1.43.34-.45.72-.87 1.13-1.26.41-.39.85-.74 1.32-1.05.47-.31.97-.58 1.49-.81.52-.23 1.06-.42 1.61-.57.55-.15 1.12-.26 1.69-.33.57-.07 1.15-.1 1.73-.08.58.02 1.16.07 1.73.15.57.08 1.13.2 1.68.35.55.15 1.09.33 1.61.54.52.21 1.03.45 1.52.72.49.27.96.57 1.41.9.45.33.88.69 1.28 1.08.4.39.77.81 1.11 1.26.34.45.65.93.92 1.43.27.5.5 1.03.68 1.58.18.55.32 1.12.4 1.7.08.58.12 1.17.1 1.76-.02.59-.1 1.18-.24 1.76-.14.58-.34 1.15-.6 1.7-.26.55-.58 1.08-.96 1.58-.38.5-.81 1-1.33 1.42-.52.42-1.14.75-1.82 1.01-.68.26-1.41.48-2.17.64-.76.16-1.54.26-2.33.3-.79.04-1.59.02-2.38-.06-.79-.08-1.57-.22-2.33-.42-.76-.2-1.5-.46-2.21-.78-.71-.32-1.39-.7-2.03-1.14-.64-.44-1.24-.94-1.79-1.5-.55-.56-1.05-1.17-1.49-1.82-.44-.65-.82-1.33-1.14-2.04-.32-.71-.58-1.45-.78-2.21-.2-.76-.34-1.54-.42-2.33-.08-.79-.1-1.59-.06-2.38.04-.79.14-1.57.3-2.33.16-.76.38-1.5.64-2.17.26-.68.59-1.14 1.01-1.82.42-.68.92-1.24 1.5-1.79.58-.55 1.24-1.05 1.94-1.49.7-.44 1.44-.82 2.21-1.14.77-.32 1.57-.58 2.38-.78.81-.2 1.64-.34 2.48-.42.84-.08 1.69-.1 2.53-.06.84.04 1.67.14 2.48.3.81.16 1.6.38 2.36.64.76.26 1.49.59 2.17 1.01.68.42 1.32.92 1.9 1.5.58.58 1.1 1.22 1.54 1.92.44.7.8 1.44 1.08 2.21.28.77.48 1.57.6 2.38.12.81.16 1.64.12 2.48-.04.84-.18 1.67-.4 2.48-.22.81-.5 1.6-.84 2.36-.34.76-.74 1.49-1.2 2.17-.46.68-.98 1.32-1.56 1.9-.58.58-1.22 1.1-1.92 1.54-.7.44-1.44.8-2.21 1.08-.77.28-1.57.48-2.38.6-.81.12-1.64.16-2.48.12-.84-.04-1.67-.18-2.48-.4-.81-.22-1.6-.5-2.36-.84-.76-.34-1.49-.74-2.17-1.2-.68-.46-1.32-.98-1.9-1.56-.58-.58-1.1-1.22-1.54-1.92-.44-.7-.8-1.44-1.08-2.21-.28-.77-.48-1.57-.6-2.38-.12-.81-.16-1.64-.12-2.48.04-.84.18-1.67.4-2.48.22-.81.5-1.6.84-2.36.34-.76.74-1.49 1.2-2.17.46-.68.98-1.32 1.56-1.9.58-.58 1.22-1.1 1.92-1.54.7-.44 1.44-.8 2.21-1.08.77-.28 1.57-.48 2.38-.6.81-.12 1.64-.16 2.48-.12.84.04 1.67.18 2.48.4.81.22 1.6.5 2.36.84.76.34 1.49.74 2.17 1.2.68.46 1.32.98 1.9 1.56.58.58 1.1 1.22 1.54 1.92.44.7.8 1.44 1.08 2.21.28.77.48 1.57.6 2.38.12.81.16 1.64.12 2.48-.04.84-.18 1.67-.4 2.48-.22.81-.5 1.6-.84 2.36-.34.76-.74 1.49-1.2 2.17-.46.68-.98 1.32-1.56 1.9-.58.58-1.22 1.1-1.92 1.54-.7.44-1.44.8-2.21 1.08-.77.28-1.57.48-2.38.6-.81.12-1.64.16-2.48.12z"/>
+						</svg>
+						Telegram
+					</a>
+					<a href="{{ url_for('contact', lang=lang) }}" class="cta-btn">
+						{% if lang == 'uz' %}Bepul konsultatsiya formasi{% elif lang == 'ru' %}Форма бесплатной консультации{% elif lang == 'tr' %}Ücretsiz danışmanlık formu{% else %}Free Consultation Form{% endif %}
+					</a>
+				</div>
+			</div>
+		</div>
+	`;
+	
+	modal.classList.add('active');
+	document.body.style.overflow = 'hidden';
+}
+
+function closeCaseDetail() {
+	const modal = document.getElementById('caseDetailModal');
+	modal.classList.remove('active');
+	document.body.style.overflow = '';
+}
+
+// Close modal on background click
+document.getElementById('caseDetailModal').addEventListener('click', function(e) {
+	if (e.target === this) {
+		closeCaseDetail();
+	}
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown', function(e) {
+	if (e.key === 'Escape') {
+		closeCaseDetail();
+	}
+});
+</script>
+
 {% endblock %}
