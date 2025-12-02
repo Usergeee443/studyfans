@@ -298,8 +298,8 @@
 							<img src="{{ url_for('static', filename=service[5]) }}" alt="{% if lang == 'uz' %}{{ service[0].split(':')[1] }}{% elif lang == 'ru' %}{{ service[1].split(':')[1] }}{% elif lang == 'tr' %}{{ service[2].split(':')[1] }}{% else %}{{ service[3].split(':')[1] }}{% endif %}" class="service-icon">
 						</div>
 						<h3 class="text-lg font-medium text-gray-900 leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{% if lang == 'uz' %}{{ service[0].split(':')[1] }}{% elif lang == 'ru' %}{{ service[1].split(':')[1] }}{% elif lang == 'tr' %}{{ service[2].split(':')[1] }}{% else %}{{ service[3].split(':')[1] }}{% endif %}
-						</h3>
+						{% if lang == 'uz' %}{{ service[0].split(':')[1] }}{% elif lang == 'ru' %}{{ service[1].split(':')[1] }}{% elif lang == 'tr' %}{{ service[2].split(':')[1] }}{% else %}{{ service[3].split(':')[1] }}{% endif %}
+					</h3>
 					</div>
 					<p class="text-sm text-gray-600 font-normal mb-4 leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 						{% if lang == 'uz' %}{{ service[7].split(':')[1] }}{% elif lang == 'ru' %}{{ service[8].split(':')[1] }}{% elif lang == 'tr' %}{{ service[9].split(':')[1] }}{% else %}{{ service[10].split(':')[1] }}{% endif %}
@@ -363,194 +363,197 @@
 			</p>
 		</div>
 		
-		<!-- Packages Comparison Table -->
-		<div class="bg-white rounded-3xl border border-gray-200 overflow-hidden mb-8">
-			<div class="overflow-x-auto">
-				<table class="packages-table w-full">
-					<thead>
-						<tr>
-							<th class="text-left">{% if lang == 'uz' %}Xizmatlar{% elif lang == 'ru' %}Услуги{% elif lang == 'tr' %}Hizmetler{% else %}Services{% endif %}</th>
-							<th class="text-center">
-								<div class="flex flex-col items-center">
-									<span class="font-bold text-gray-900">START PACK</span>
-									<span class="text-xs text-gray-500 line-through">299$</span>
-									<span class="text-xs text-gray-500">{% if lang == 'uz' %}7 kun ichida -100${% elif lang == 'ru' %}В течение 7 дней -100${% elif lang == 'tr' %}7 gün içinde -100${% else %}Within 7 days -100${% endif %}</span>
-									<span class="text-2xl font-bold text-gray-900 mt-1">199.9$</span>
-								</div>
-							</th>
-							<th class="text-center">
-								<div class="flex flex-col items-center">
-									<span class="font-bold text-gray-900">PRO PACK</span>
-									<span class="text-xs text-gray-500 line-through">499.9$</span>
-									<span class="text-xs text-gray-500">{% if lang == 'uz' %}7 kun ichida -100${% elif lang == 'ru' %}В течение 7 дней -100${% elif lang == 'tr' %}7 gün içinde -100${% else %}Within 7 days -100${% endif %}</span>
-									<span class="text-2xl font-bold text-gray-900 mt-1">399.9$</span>
-								</div>
-							</th>
-							<th class="text-center">
-								<div class="flex flex-col items-center">
-									<span class="font-bold text-gray-900">VIP ALL-INCLUSIVE</span>
-									<span class="text-xs text-gray-500 line-through">999.9$</span>
-									<span class="text-xs text-gray-500">{% if lang == 'uz' %}7 kun ichida -100${% elif lang == 'ru' %}В течение 7 дней -100${% elif lang == 'tr' %}7 gün içinde -100${% else %}Within 7 days -100${% endif %}</span>
-									<span class="text-2xl font-bold text-gray-900 mt-1">899.9$</span>
-								</div>
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						<!-- Universitetga kirish -->
-						<tr>
-							<td>
-								<span class="service-name" onclick="openServiceModal('admission')">
-									{% if lang == 'uz' %}Universitetga kirish (3 ta universitetga hujjat, qabul maktubi){% elif lang == 'ru' %}Поступление в университет (3 университета, документы, письмо о приеме){% elif lang == 'tr' %}Üniversite kabulü (3 üniversite, belgeler, kabul mektubu){% else %}University Admission (3 universities, documents, acceptance letter){% endif %}
-								</span>
-							</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}To'liq{% elif lang == 'ru' %}Полное{% elif lang == 'tr' %}Tam{% else %}Full{% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}To'liq{% elif lang == 'ru' %}Полное{% elif lang == 'tr' %}Tam{% else %}Full{% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}Tezlashtirilgan + ustuvor navbat{% elif lang == 'ru' %}Ускоренное + приоритетная очередь{% elif lang == 'tr' %}Hızlandırılmış + öncelikli sıra{% else %}Accelerated + Priority Queue{% endif %}</td>
-						</tr>
-						<!-- Yashash ruxsatnomasi -->
-						<tr>
-							<td>
-								<span class="service-name" onclick="openServiceModal('residence')">
-									{% if lang == 'uz' %}Yashash ruxsatnomasi (İkamet){% elif lang == 'ru' %}Вид на жительство (İkamet){% elif lang == 'tr' %}İkamet izni{% else %}Residence Permit (İkamet){% endif %}
-								</span>
-							</td>
-							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}To'liq ko'mak{% elif lang == 'ru' %}Полная помощь{% elif lang == 'tr' %}Tam destek{% else %}Full Support{% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}To'liq + oila va farzandlar uchun{% elif lang == 'ru' %}Полное + для семьи и детей{% elif lang == 'tr' %}Tam + aile ve çocuklar için{% else %}Full + Family & Children{% endif %}</td>
-						</tr>
-						<!-- Aeroportdan kutib olish -->
-						<tr>
-							<td>
-								<span class="service-name" onclick="openServiceModal('airport')">
-									{% if lang == 'uz' %}Aeroportdan kutib olish (Airport pick-up){% elif lang == 'ru' %}Встреча в аэропорту{% elif lang == 'tr' %}Havalimanı karşılama{% else %}Airport Pickup{% endif %}
-								</span>
-							</td>
-							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}1 marotaba{% elif lang == 'ru' %}1 раз{% elif lang == 'tr' %}1 kez{% else %}1 time{% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}VIP kutib olish + moslashtirilgan vaqt + oila{% elif lang == 'ru' %}VIP встреча + адаптированное время + семья{% elif lang == 'tr' %}VIP karşılama + uyarlanmış zaman + aile{% else %}VIP Pickup + Customized Time + Family{% endif %}</td>
-						</tr>
-						<!-- Viza & Deport -->
-						<tr>
-							<td>
-								<span class="service-name" onclick="openServiceModal('visa')">
-									{% if lang == 'uz' %}Viza & Deport konsultatsiyasi{% elif lang == 'ru' %}Консультация по визам и депортации{% elif lang == 'tr' %}Vize & Deport danışmanlığı{% else %}Visa & Deport Consultation{% endif %}
-								</span>
-							</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}Bepul maslahat (asosiy){% elif lang == 'ru' %}Бесплатная консультация (базовая){% elif lang == 'tr' %}Ücretsiz danışmanlık (temel){% else %}Free Consultation (Basic){% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}Bepul maslahat (chuqurroq){% elif lang == 'ru' %}Бесплатная консультация (глубже){% elif lang == 'tr' %}Ücretsiz danışmanlık (daha derin){% else %}Free Consultation (Deeper){% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}Bepul tahlil + yuristga ulashish (agar kerak){% elif lang == 'ru' %}Бесплатный анализ + связь с юристом (при необходимости){% elif lang == 'tr' %}Ücretsiz analiz + avukat bağlantısı (gerekirse){% else %}Free Analysis + Lawyer Connection (if needed){% endif %}</td>
-						</tr>
-						<!-- Hujjatlar -->
-						<tr>
-							<td>
-								<span class="service-name" onclick="openServiceModal('documents')">
-									{% if lang == 'uz' %}Hujjatlar (Tarjima + Noter){% elif lang == 'ru' %}Документы (Перевод + Нотариус){% elif lang == 'tr' %}Belgeler (Çeviri + Noter){% else %}Documents (Translation + Notary){% endif %}
-								</span>
-							</td>
-							<td class="text-center" style="color: #6b7280;">{% if lang == 'uz' %}(alohida buyurtma){% elif lang == 'ru' %}(отдельный заказ){% elif lang == 'tr' %}(ayrı sipariş){% else %}(separate order){% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}Asosiy hujjatlar{% elif lang == 'ru' %}Основные документы{% elif lang == 'tr' %}Temel belgeler{% else %}Basic Documents{% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}Kengaytirilgan hujjatlar seti{% elif lang == 'ru' %}Расширенный набор документов{% elif lang == 'tr' %}Genişletilmiş belge seti{% else %}Extended Documents Set{% endif %}</td>
-						</tr>
-						<!-- Turar-joy -->
-						<tr>
-							<td>
-								<span class="service-name" onclick="openServiceModal('accommodation')">
-									{% if lang == 'uz' %}Turar-joy topish (yotoqxona/uy){% elif lang == 'ru' %}Поиск жилья (общежитие/квартира){% elif lang == 'tr' %}Konaklama bulma (yurt/ev){% else %}Accommodation Finding (dorm/apartment){% endif %}
-								</span>
-							</td>
-							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
-							<td class="text-center partial">🟡 {% if lang == 'uz' %}Yuzaki yo'l-yo'riq{% elif lang == 'ru' %}Поверхностное руководство{% elif lang == 'tr' %}Yüzeysel rehberlik{% else %}Basic Guidance{% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}Shaxsiy yordam + variantlar ro'yxati{% elif lang == 'ru' %}Личная помощь + список вариантов{% elif lang == 'tr' %}Kişisel destek + seçenekler listesi{% else %}Personal Help + Options List{% endif %}</td>
-						</tr>
-						<!-- Ish bo'yicha yordam -->
-						<tr>
-							<td>
-								<span class="service-name" onclick="openServiceModal('job')">
-									{% if lang == 'uz' %}Ish bo'yicha yordam{% elif lang == 'ru' %}Помощь в трудоустройстве{% elif lang == 'tr' %}İş yardımı{% else %}Job Assistance{% endif %}
-								</span>
-							</td>
-							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
-							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}Shaxsiy yordam + variantlar ro'yxati{% elif lang == 'ru' %}Личная помощь + список вариантов{% elif lang == 'tr' %}Kişisel destek + seçenekler listesi{% else %}Personal Help + Options List{% endif %}</td>
-						</tr>
-						<!-- Talaba sug'urtasi -->
-						<tr>
-							<td>
-								<span class="service-name" onclick="openServiceModal('insurance')">
-									{% if lang == 'uz' %}Talaba sug'urtasi (Health insurance){% elif lang == 'ru' %}Студенческая страховка{% elif lang == 'tr' %}Öğrenci sigortası{% else %}Student Insurance{% endif %}
-								</span>
-							</td>
-							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}Ikametga mos polis{% elif lang == 'ru' %}Полис для вида на жительство{% elif lang == 'tr' %}İkamet için uygun poliçe{% else %}Residence Permit Compatible Policy{% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}To'liq konsultatsiya + polisni yuritish{% elif lang == 'ru' %}Полная консультация + оформление полиса{% elif lang == 'tr' %}Tam danışmanlık + poliçe işleme{% else %}Full Consultation + Policy Processing{% endif %}</td>
-						</tr>
-						<!-- Bank hisobi -->
-						<tr>
-							<td>
-								<span class="service-name" onclick="openServiceModal('bank')">
-									{% if lang == 'uz' %}Bank hisobi (Student account){% elif lang == 'ru' %}Банковский счет (Студенческий){% elif lang == 'tr' %}Banka hesabı (Öğrenci){% else %}Bank Account (Student){% endif %}
-								</span>
-							</td>
-							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
-							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}To'liq yordam berish{% elif lang == 'ru' %}Полная помощь{% elif lang == 'tr' %}Tam destek{% else %}Full Assistance{% endif %}</td>
-						</tr>
-						<!-- Sim karta -->
-						<tr>
-							<td>
-								<span class="service-name" onclick="openServiceModal('sim')">
-									{% if lang == 'uz' %}Sim karta (Turkcell va b.){% elif lang == 'ru' %}SIM карта (Turkcell и др.){% elif lang == 'tr' %}SIM kart (Turkcell vb.){% else %}SIM Card (Turkcell etc.){% endif %}
-								</span>
-							</td>
-							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
-							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}Operator tanlash + rasmiy ro'yxatdan o'tkazish{% elif lang == 'ru' %}Выбор оператора + официальная регистрация{% elif lang == 'tr' %}Operatör seçimi + resmi kayıt{% else %}Operator Selection + Official Registration{% endif %}</td>
-						</tr>
-						<!-- Transport kartasi -->
-						<tr>
-							<td>
-								<span class="service-name" onclick="openServiceModal('transport')">
-									{% if lang == 'uz' %}Transport kartasi (İstanbulkart){% elif lang == 'ru' %}Транспортная карта (İstanbulkart){% elif lang == 'tr' %}Ulaşım kartı (İstanbulkart){% else %}Transport Card (İstanbulkart){% endif %}
-								</span>
-							</td>
-							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
-							<td class="text-center cross">⛔ {% if lang == 'uz' %}Yo'q{% elif lang == 'ru' %}Нет{% elif lang == 'tr' %}Yok{% else %}No{% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}Kartani olib berish + talaba tarifiga o'tkazish{% elif lang == 'ru' %}Получение карты + перевод на студенческий тариф{% elif lang == 'tr' %}Kartı alma + öğrenci tarifesine geçirme{% else %}Card Delivery + Student Tariff Transfer{% endif %}</td>
-						</tr>
-						<!-- Shaxsiy support -->
-						<tr>
-							<td>
-								<span class="service-name" onclick="openServiceModal('support')">
-									{% if lang == 'uz' %}Shaxsiy support (Premium care){% elif lang == 'ru' %}Личная поддержка (Премиум уход){% elif lang == 'tr' %}Kişisel destek (Premium bakım){% else %}Personal Support (Premium Care){% endif %}
-								</span>
-							</td>
-							<td class="text-center partial">🟡 {% if lang == 'uz' %}Oddiy support (09–00){% elif lang == 'ru' %}Обычная поддержка (09–00){% elif lang == 'tr' %}Normal destek (09–00){% else %}Basic Support (09–00){% endif %}</td>
-							<td class="text-center partial">🟡 {% if lang == 'uz' %}Pro support (kengroq yordam){% elif lang == 'ru' %}Pro поддержка (более широкая помощь){% elif lang == 'tr' %}Pro destek (daha geniş yardım){% else %}Pro Support (Wider Help){% endif %}</td>
-							<td class="text-center check">✅ {% if lang == 'uz' %}7/24 shaxsiy mas'ul + reminder va kuzatuv{% elif lang == 'ru' %}7/24 личный ответственный + напоминания и мониторинг{% elif lang == 'tr' %}7/24 kişisel sorumlu + hatırlatma ve izleme{% else %}7/24 Personal Manager + Reminders & Monitoring{% endif %}</td>
-						</tr>
-					</tbody>
-				</table>
+		<!-- Packages Cards (Old Design) -->
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+			<!-- START PACK -->
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-300">
+				<div class="mb-4">
+					<h3 class="text-xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						START PACK
+					</h3>
+					<div class="flex items-baseline gap-2 mb-2">
+						<span class="text-3xl font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">199.9$</span>
+						<span class="text-sm text-gray-500 line-through">299$</span>
+					</div>
+					<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}7 kun ichida -100${% elif lang == 'ru' %}В течение 7 дней -100${% elif lang == 'tr' %}7 gün içinde -100${% else %}Within 7 days -100${% endif %}
+					</p>
+					<p class="text-xs text-gray-500 font-normal mt-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Boshlang'ich qabul paketi{% elif lang == 'ru' %}Начальный пакет приема{% elif lang == 'tr' %}Başlangıç kabul paketi{% else %}Basic admission package{% endif %}
+					</p>
+				</div>
+				<ul class="space-y-3 mb-6">
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Universitetga kirish (To'liq){% elif lang == 'ru' %}Поступление в университет (Полное){% elif lang == 'tr' %}Üniversite kabulü (Tam){% else %}University Admission (Full){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-red-600 font-bold">⛔</span>
+						<span>{% if lang == 'uz' %}Yashash ruxsatnomasi (Yo'q){% elif lang == 'ru' %}Вид на жительство (Нет){% elif lang == 'tr' %}İkamet izni (Yok){% else %}Residence Permit (No){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-red-600 font-bold">⛔</span>
+						<span>{% if lang == 'uz' %}Aeroportdan kutib olish (Yo'q){% elif lang == 'ru' %}Встреча в аэропорту (Нет){% elif lang == 'tr' %}Havalimanı karşılama (Yok){% else %}Airport Pickup (No){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Viza konsultatsiyasi (Bepul asosiy){% elif lang == 'ru' %}Консультация по визам (Бесплатная базовая){% elif lang == 'tr' %}Vize danışmanlığı (Ücretsiz temel){% else %}Visa Consultation (Free Basic){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-gray-600 font-bold">📄</span>
+						<span>{% if lang == 'uz' %}Hujjatlar (Alohida buyurtma){% elif lang == 'ru' %}Документы (Отдельный заказ){% elif lang == 'tr' %}Belgeler (Ayrı sipariş){% else %}Documents (Separate order){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-yellow-600 font-bold">🟡</span>
+						<span>{% if lang == 'uz' %}Support (Oddiy 09-00){% elif lang == 'ru' %}Поддержка (Обычная 09-00){% elif lang == 'tr' %}Destek (Normal 09-00){% else %}Support (Basic 09-00){% endif %}</span>
+					</li>
+				</ul>
+				<a href="{{ url_for('contact') }}?package=start&lang={{ lang }}" class="block w-full text-center px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}START paketini tanlash{% elif lang == 'ru' %}Выбрать пакет START{% elif lang == 'tr' %}START paketini seç{% else %}Choose START Pack{% endif %}
+				</a>
+			</div>
+			
+			<!-- PRO PACK -->
+			<div class="bg-white border-2 border-gray-900 rounded-3xl p-6 hover:shadow-lg transition-all duration-300 relative">
+				<div class="absolute top-4 right-4">
+					<span class="px-3 py-1 bg-gray-900 text-white text-xs font-medium rounded-full" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Eng ko'p tanlangan{% elif lang == 'ru' %}Самый популярный{% elif lang == 'tr' %}En çok seçilen{% else %}Most Popular{% endif %}
+					</span>
+				</div>
+				<div class="mb-4">
+					<h3 class="text-xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						PRO PACK
+					</h3>
+					<div class="flex items-baseline gap-2 mb-2">
+						<span class="text-3xl font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">399.9$</span>
+						<span class="text-sm text-gray-500 line-through">499.9$</span>
+					</div>
+					<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}7 kun ichida -100${% elif lang == 'ru' %}В течение 7 дней -100${% elif lang == 'tr' %}7 gün içinde -100${% else %}Within 7 days -100${% endif %}
+					</p>
+					<p class="text-xs text-gray-500 font-normal mt-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Eng ko'p tanlangan paket{% elif lang == 'ru' %}Самый популярный пакет{% elif lang == 'tr' %}En çok seçilen paket{% else %}Most popular package{% endif %}
+					</p>
+				</div>
+				<ul class="space-y-3 mb-6">
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Universitetga kirish (To'liq){% elif lang == 'ru' %}Поступление в университет (Полное){% elif lang == 'tr' %}Üniversite kabulü (Tam){% else %}University Admission (Full){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Yashash ruxsatnomasi (To'liq ko'mak){% elif lang == 'ru' %}Вид на жительство (Полная помощь){% elif lang == 'tr' %}İkamet izni (Tam destek){% else %}Residence Permit (Full Support){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Aeroportdan kutib olish (1 marotaba){% elif lang == 'ru' %}Встреча в аэропорту (1 раз){% elif lang == 'tr' %}Havalimanı karşılama (1 kez){% else %}Airport Pickup (1 time){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Viza konsultatsiyasi (Bepul chuqurroq){% elif lang == 'ru' %}Консультация по визам (Бесплатная глубже){% elif lang == 'tr' %}Vize danışmanlığı (Ücretsiz daha derin){% else %}Visa Consultation (Free Deeper){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Hujjatlar (Kengaytirilgan seti){% elif lang == 'ru' %}Документы (Расширенный набор){% elif lang == 'tr' %}Belgeler (Genişletilmiş set){% else %}Documents (Extended Set){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-yellow-600 font-bold">🟡</span>
+						<span>{% if lang == 'uz' %}Turar-joy (Yuzaki yo'l-yo'riq){% elif lang == 'ru' %}Жилье (Поверхностное руководство){% elif lang == 'tr' %}Konaklama (Yüzeysel rehberlik){% else %}Accommodation (Basic Guidance){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Talaba sug'urtasi (İkametga mos){% elif lang == 'ru' %}Студенческая страховка (Для вида на жительство){% elif lang == 'tr' %}Öğrenci sigortası (İkamet için uygun){% else %}Student Insurance (Residence Compatible){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-yellow-600 font-bold">🟡</span>
+						<span>{% if lang == 'uz' %}Support (Pro kengroq yordam){% elif lang == 'ru' %}Поддержка (Pro более широкая помощь){% elif lang == 'tr' %}Destek (Pro daha geniş yardım){% else %}Support (Pro Wider Help){% endif %}</span>
+					</li>
+				</ul>
+				<a href="{{ url_for('contact') }}?package=pro&lang={{ lang }}" class="block w-full text-center px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}PRO paketini bron qilish{% elif lang == 'ru' %}Забронировать пакет PRO{% elif lang == 'tr' %}PRO paketini rezerve et{% else %}Book PRO Pack{% endif %}
+				</a>
+			</div>
+			
+			<!-- VIP PACK -->
+			<div class="bg-white border border-yellow-500 rounded-3xl p-6 hover:shadow-lg transition-all duration-300 relative">
+				<div class="absolute top-4 right-4">
+					<span class="px-3 py-1 bg-yellow-500 text-white text-xs font-medium rounded-full" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Premium{% elif lang == 'ru' %}Премиум{% elif lang == 'tr' %}Premium{% else %}Premium{% endif %}
+					</span>
+				</div>
+				<div class="mb-4">
+					<h3 class="text-xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						VIP ALL-INCLUSIVE
+					</h3>
+					<div class="flex items-baseline gap-2 mb-2">
+						<span class="text-3xl font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">899.9$</span>
+						<span class="text-sm text-gray-500 line-through">999.9$</span>
+					</div>
+					<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}7 kun ichida -100${% elif lang == 'ru' %}В течение 7 дней -100${% elif lang == 'tr' %}7 gün içinde -100${% else %}Within 7 days -100${% endif %}
+					</p>
+					<p class="text-xs text-gray-500 font-normal mt-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Ota-onalar uchun eng sokin variant{% elif lang == 'ru' %}Самый спокойный вариант для родителей{% elif lang == 'tr' %}Ebeveynler için en sakin seçenek{% else %}Most peaceful option for parents{% endif %}
+					</p>
+				</div>
+				<ul class="space-y-3 mb-6">
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Universitetga kirish (Tezlashtirilgan + ustuvor){% elif lang == 'ru' %}Поступление (Ускоренное + приоритет){% elif lang == 'tr' %}Üniversite kabulü (Hızlandırılmış + öncelik){% else %}University Admission (Accelerated + Priority){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Yashash ruxsatnomasi (Oila + farzandlar){% elif lang == 'ru' %}Вид на жительство (Семья + дети){% elif lang == 'tr' %}İkamet izni (Aile + çocuklar){% else %}Residence Permit (Family + Children){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Aeroportdan kutib olish (VIP + moslashtirilgan vaqt + oila){% elif lang == 'ru' %}Встреча в аэропорту (VIP + адаптированное время + семья){% elif lang == 'tr' %}Havalimanı karşılama (VIP + uyarlanmış zaman + aile){% else %}Airport Pickup (VIP + Customized Time + Family){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Viza konsultatsiyasi (Bepul tahlil + yurist){% elif lang == 'ru' %}Консультация по визам (Бесплатный анализ + юрист){% elif lang == 'tr' %}Vize danışmanlığı (Ücretsiz analiz + avukat){% else %}Visa Consultation (Free Analysis + Lawyer){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Hujjatlar (Kengaytirilgan oila seti){% elif lang == 'ru' %}Документы (Расширенный семейный набор){% elif lang == 'tr' %}Belgeler (Genişletilmiş aile seti){% else %}Documents (Extended Family Set){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Turar-joy (Shaxsiy yordam + variantlar){% elif lang == 'ru' %}Жилье (Личная помощь + варианты){% elif lang == 'tr' %}Konaklama (Kişisel destek + seçenekler){% else %}Accommodation (Personal Help + Options){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Ish bo'yicha yordam (Shaxsiy yordam){% elif lang == 'ru' %}Помощь в трудоустройстве (Личная помощь){% elif lang == 'tr' %}İş yardımı (Kişisel destek){% else %}Job Assistance (Personal Help){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Talaba sug'urtasi (To'liq konsultatsiya){% elif lang == 'ru' %}Студенческая страховка (Полная консультация){% elif lang == 'tr' %}Öğrenci sigortası (Tam danışmanlık){% else %}Student Insurance (Full Consultation){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Bank hisobi (To'liq yordam){% elif lang == 'ru' %}Банковский счет (Полная помощь){% elif lang == 'tr' %}Banka hesabı (Tam destek){% else %}Bank Account (Full Assistance){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}SIM karta (Operator tanlash + rasmiy ro'yxat){% elif lang == 'ru' %}SIM карта (Выбор оператора + официальная регистрация){% elif lang == 'tr' %}SIM kart (Operatör seçimi + resmi kayıt){% else %}SIM Card (Operator Selection + Official Registration){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Transport kartasi (Kartani olib berish + talaba tarifi){% elif lang == 'ru' %}Транспортная карта (Получение карты + студенческий тариф){% elif lang == 'tr' %}Ulaşım kartı (Kartı alma + öğrenci tarifesi){% else %}Transport Card (Card Delivery + Student Tariff){% endif %}</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-700">
+						<span class="text-green-600 font-bold">✅</span>
+						<span>{% if lang == 'uz' %}Support (7/24 shaxsiy mas'ul + reminder){% elif lang == 'ru' %}Поддержка (7/24 личный ответственный + напоминания){% elif lang == 'tr' %}Destek (7/24 kişisel sorumlu + hatırlatma){% else %}Support (7/24 Personal Manager + Reminders){% endif %}</span>
+					</li>
+				</ul>
+				<a href="{{ url_for('contact') }}?package=vip&lang={{ lang }}" class="block w-full text-center px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}VIP bo'yicha mutaxassis bilan gaplashish{% elif lang == 'ru' %}Поговорить со специалистом по VIP{% elif lang == 'tr' %}VIP için uzmanla konuş{% else %}Talk to Specialist about VIP{% endif %}
+				</a>
 			</div>
 		</div>
 		
-		<!-- CTA Buttons for Packages -->
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-			<!-- START PACK CTA -->
-			<a href="{{ url_for('contact') }}?package=start&lang={{ lang }}" class="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				{% if lang == 'uz' %}START paketini tanlash{% elif lang == 'ru' %}Выбрать пакет START{% elif lang == 'tr' %}START paketini seç{% else %}Choose START Pack{% endif %}
-			</a>
-			
-			<!-- PRO PACK CTA -->
-			<a href="{{ url_for('contact') }}?package=pro&lang={{ lang }}" class="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				{% if lang == 'uz' %}PRO paketini bron qilish{% elif lang == 'ru' %}Забронировать пакет PRO{% elif lang == 'tr' %}PRO paketini rezerve et{% else %}Book PRO Pack{% endif %}
-			</a>
-			
-			<!-- VIP PACK CTA -->
-			<a href="{{ url_for('contact') }}?package=vip&lang={{ lang }}" class="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				{% if lang == 'uz' %}VIP bo'yicha mutaxassis bilan gaplashish{% elif lang == 'ru' %}Поговорить со специалистом по VIP{% elif lang == 'tr' %}VIP için uzmanla konuş{% else %}Talk to Specialist about VIP{% endif %}
-			</a>
-		</div>
+	</div>
+</section>
 		
 		<!-- Old Package Cards (Hidden, keeping for reference) -->
 		<div style="display: none;">

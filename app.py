@@ -11,10 +11,20 @@ from openai import OpenAI
 from sqlalchemy import or_
 
 # Load environment variables
-load_dotenv('config.env')
+# Try to load from config.env file (for local development)
+# On Render.com, environment variables are set directly in the dashboard
+if os.path.exists('config.env'):
+    load_dotenv('config.env')
 
 # OpenAI Configuration
+# First try to get from environment (Render.com), then from config.env
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+if not OPENAI_API_KEY and os.path.exists('config.env'):
+    # Fallback to config.env if not in environment
+    from dotenv import dotenv_values
+    config = dotenv_values('config.env')
+    OPENAI_API_KEY = config.get('OPENAI_API_KEY')
+
 openai_client = None
 if OPENAI_API_KEY and OPENAI_API_KEY != 'your-openai-api-key-here' and len(OPENAI_API_KEY) > 20:
     env_backup = {}
@@ -1109,74 +1119,100 @@ Recommend the top 3 most suitable universities and briefly explain each. Answer 
 
 @app.route('/api/chat', methods=['POST'])
 def api_chat():
-    """AI Chat API endpoint"""
-    try:
-        if not openai_client:
-            return jsonify({
-                'success': False,
-                'error': 'OpenAI API is not configured'
-            }), 500
-        
-        data = request.get_json()
-        message = data.get('message', '')
-        lang = data.get('lang', 'uz')
-        conversation_history = data.get('history', [])
-        
-        if not message:
-            return jsonify({
-                'success': False,
-                'error': 'Message is required'
-            }), 400
-        
-        # System prompt based on language
-        system_prompts = {
-            'uz': """Siz Study Fans kompaniyasining yordamchi AI asistentisiz. Siz Turkiya, Kipr, Gruziya va Malayziyadagi universitetlar haqida ma'lumot berasiz, talabalarga yordam berasiz va maslahat berasiz. 
+	"""AI Chat API endpoint"""
+	global openai_client
+	try:
+		# Check if OpenAI client is available, if not try to reinitialize
+		if not openai_client:
+			# Try to get API key from environment (for Render.com)
+			api_key = os.getenv('OPENAI_API_KEY')
+			if not api_key and os.path.exists('config.env'):
+				from dotenv import dotenv_values
+				config = dotenv_values('config.env')
+				api_key = config.get('OPENAI_API_KEY')
+			
+			if api_key and api_key != 'your-openai-api-key-here' and len(api_key) > 20:
+				try:
+					openai_client = OpenAI(api_key=api_key)
+					print("✅ OpenAI client reinitialized")
+				except Exception as e:
+					print(f"⚠️ Failed to reinitialize OpenAI client: {e}")
+					return jsonify({
+						'success': False,
+						'error': 'OpenAI API is not configured properly'
+					}), 500
+			else:
+				return jsonify({
+					'success': False,
+					'error': 'OpenAI API key is not configured. Please set OPENAI_API_KEY environment variable in Render.com dashboard.'
+				}), 500
+		
+		data = request.get_json()
+		message = data.get('message', '')
+		lang = data.get('lang', 'uz')
+		conversation_history = data.get('history', [])
+		
+		if not message:
+			return jsonify({
+				'success': False,
+				'error': 'Message is required'
+			}), 400
+		
+		# System prompt based on language
+		system_prompts = {
+			'uz': """Siz Study Fans kompaniyasining yordamchi AI asistentisiz. Siz Turkiya, Kipr, Gruziya va Malayziyadagi universitetlar haqida ma'lumot berasiz, talabalarga yordam berasiz va maslahat berasiz. 
 Javoblar qisqa, aniq va foydali bo'lishi kerak. Agar savol universitetlar yoki ta'lim bilan bog'liq bo'lmasa, buni tushuntirib, ta'lim masalalariga qaytishingizni so'rang.""",
-            'ru': """Вы AI-ассистент компании Study Fans. Вы предоставляете информацию об университетах в Турции, на Кипре, в Грузии и Малайзии, помогаете студентам и даете советы.
+			'ru': """Вы AI-ассистент компании Study Fans. Вы предоставляете информацию об университетах в Турции, на Кипре, в Грузии и Малайзии, помогаете студентам и даете советы.
 Ответы должны быть краткими, точными и полезными. Если вопрос не связан с университетами или образованием, объясните это и попросите вернуться к вопросам образования.""",
-            'tr': """Study Fans şirketinin yardımcı AI asistanısınız. Türkiye, Kıbrıs, Gürcistan ve Malezya'daki üniversiteler hakkında bilgi veriyorsunuz, öğrencilere yardımcı oluyorsunuz ve tavsiyelerde bulunuyorsunuz.
+			'tr': """Study Fans şirketinin yardımcı AI asistanısınız. Türkiye, Kıbrıs, Gürcistan ve Malezya'daki üniversiteler hakkında bilgi veriyorsunuz, öğrencilere yardımcı oluyorsunuz ve tavsiyelerde bulunuyorsunuz.
 Yanıtlar kısa, net ve yararlı olmalıdır. Soru üniversiteler veya eğitimle ilgili değilse, bunu açıklayın ve eğitim konularına dönmelerini isteyin.""",
-            'en': """You are an AI assistant for Study Fans company. You provide information about universities in Turkey, Cyprus, Georgia, and Malaysia, help students, and give advice.
+			'en': """You are an AI assistant for Study Fans company. You provide information about universities in Turkey, Cyprus, Georgia, and Malaysia, help students, and give advice.
 Responses should be brief, accurate, and helpful. If the question is not related to universities or education, explain this and ask to return to education topics."""
-        }
-        
-        system_prompt = system_prompts.get(lang, system_prompts['en'])
-        
-        # Build messages array
-        messages = [{"role": "system", "content": system_prompt}]
-        
-        # Add conversation history
-        for msg in conversation_history[-10:]:  # Keep last 10 messages for context
-            if msg.get('role') and msg.get('content'):
-                messages.append({
-                    "role": msg['role'],
-                    "content": msg['content']
-                })
-        
-        # Add current message
-        messages.append({"role": "user", "content": message})
-        
-        # Call OpenAI API
-        response = openai_client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=messages,
-            temperature=0.7,
-            max_tokens=500
-        )
-        
-        ai_response = response.choices[0].message.content
-        
-        return jsonify({
-            'success': True,
-            'response': ai_response
-        })
-        
-    except Exception as e:
-        print(f"Error in chat API: {e}")
-        return jsonify({
-            'success': False,
-            'error': str(e)
-        }), 500
+		}
+		
+		system_prompt = system_prompts.get(lang, system_prompts['en'])
+		
+		# Build messages array
+		messages = [{"role": "system", "content": system_prompt}]
+		
+		# Add conversation history
+		for msg in conversation_history[-10:]:  # Keep last 10 messages for context
+			if msg.get('role') and msg.get('content'):
+				messages.append({
+					"role": msg['role'],
+					"content": msg['content']
+				})
+		
+		# Add current message
+		messages.append({"role": "user", "content": message})
+		
+		# Call OpenAI API
+		print(f"🔍 Sending request to OpenAI API...")
+		response = openai_client.chat.completions.create(
+			model="gpt-3.5-turbo",
+			messages=messages,
+			temperature=0.7,
+			max_tokens=500
+		)
+		
+		ai_response = response.choices[0].message.content
+		
+		if ai_response:
+			print(f"✅ OpenAI API response received: {len(ai_response)} characters")
+		else:
+			raise Exception("Empty response from OpenAI API")
+		
+		return jsonify({
+			'success': True,
+			'response': ai_response
+		})
+		
+	except Exception as e:
+		print(f"Error in chat API: {e}")
+		return jsonify({
+			'success': False,
+			'error': str(e)
+		}), 500
 
 @app.route('/static/uploads/<path:filename>')
 def uploaded_file(filename):

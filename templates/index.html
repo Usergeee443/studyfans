@@ -374,22 +374,30 @@
 	.stats-grid {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		gap: 1.5rem;
+		gap: 1rem;
 	}
 	
 	@media (max-width: 768px) {
 		.stats-grid {
 			grid-template-columns: repeat(2, 1fr);
+			gap: 0.75rem;
 		}
 	}
 	
 	.stat-card {
 		text-align: center;
-		padding: 2rem 1.5rem;
+		padding: 1.25rem 1rem;
 		background: white;
-		border-radius: 32px;
+		border-radius: 20px;
 		transition: all 0.3s ease;
 		border: 1px solid rgba(59, 130, 246, 0.15);
+	}
+	
+	@media (max-width: 768px) {
+		.stat-card {
+			padding: 1rem 0.75rem;
+			border-radius: 16px;
+		}
 	}
 	
 	.stat-card:hover {
@@ -399,11 +407,28 @@
 	}
 	
 	.stat-number {
-		font-size: 3rem;
+		font-size: 2rem;
 		font-weight: 700;
 		color: #111;
 		line-height: 1;
 		margin-bottom: 0.5rem;
+	}
+	
+	@media (max-width: 768px) {
+		.stat-number {
+			font-size: 1.5rem;
+			margin-bottom: 0.25rem;
+		}
+	}
+	
+	.stat-label {
+		font-size: 0.875rem;
+	}
+	
+	@media (max-width: 768px) {
+		.stat-label {
+			font-size: 0.75rem;
+		}
 	}
 	
 	/* Feature Cards */
@@ -898,12 +923,12 @@
 </section>
 
 <!-- StudyFans AI - Universitet Tavsiya Qidiruv -->
-<section class="py-20 bg-white">
-	<div class="max-w-6xl mx-auto px-6">
-		<div class="text-center mb-12">
-			<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 inline-flex items-center gap-3" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
+<section class="py-12 md:py-20 bg-white">
+	<div class="max-w-6xl mx-auto px-4 md:px-6">
+		<div class="text-center mb-8 md:mb-12">
+			<h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4 inline-flex items-center gap-2 md:gap-3" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
 				<span>{% if lang == 'uz' %}StudyFans AI{% elif lang == 'ru' %}StudyFans AI{% elif lang == 'tr' %}StudyFans AI{% else %}StudyFans AI{% endif %}</span>
-				<img src="{{ url_for('static', filename='microscope.svg') }}" alt="AI" class="w-8 h-8 text-blue-600" style="filter: brightness(0) saturate(100%) invert(27%) sepia(95%) saturate(2878%) hue-rotate(212deg) brightness(98%) contrast(96%);">
+				<img src="{{ url_for('static', filename='microscope.svg') }}" alt="AI" class="w-6 h-6 md:w-8 md:h-8 text-blue-600" style="filter: brightness(0) saturate(100%) invert(27%) sepia(95%) saturate(2878%) hue-rotate(212deg) brightness(98%) contrast(96%);">
 			</h2>
 			</div>
 			
@@ -1131,6 +1156,13 @@
 	margin-top: 2rem;
 }
 
+@media (max-width: 768px) {
+	.why-banner {
+		padding: 1.5rem 1rem;
+		border-radius: 24px;
+	}
+}
+
 .why-banner-content {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -1140,8 +1172,8 @@
 
 @media (max-width: 768px) {
 	.why-banner-content {
-		grid-template-columns: 1fr;
-		gap: 1.5rem;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.75rem;
 	}
 }
 
@@ -1156,10 +1188,24 @@
 	font-family: 'Inter', sans-serif;
 }
 
+@media (max-width: 768px) {
+	.why-banner-number {
+		font-size: 1.25rem;
+		margin-bottom: 0.25rem;
+	}
+}
+
 .why-banner-text {
 	font-size: 1rem;
 	opacity: 0.95;
 	font-family: 'Inter', sans-serif;
+}
+
+@media (max-width: 768px) {
+	.why-banner-text {
+		font-size: 0.625rem;
+		line-height: 1.2;
+	}
 }
 </style>
 
@@ -2309,8 +2355,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </style>
 
 <!-- 10. Statistics -->
-<section class="py-20 bg-white">
-	<div class="max-w-6xl mx-auto px-6">
+<section class="py-12 md:py-20 bg-white">
+	<div class="max-w-6xl mx-auto px-4 md:px-6">
 		<div class="stats-grid">
 			<div class="stat-card">
 				<div class="stat-number">10 000+</div>
@@ -2327,42 +2373,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			<div class="stat-card">
 				<div class="stat-number">30+</div>
 				<p class="stat-label">{% if lang == 'uz' %}Davlat{% elif lang == 'ru' %}Стран{% elif lang == 'tr' %}Ülke{% else %}Countries{% endif %}</p>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- 11. Jamoa (Team) -->
-<section class="py-20 bg-gray-50">
-	<div class="max-w-6xl mx-auto px-6">
-		<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
-			{% if lang == 'uz' %}Bizning jamoa{% elif lang == 'ru' %}Наша команда{% elif lang == 'tr' %}Ekibimiz{% else %}Our Team{% endif %}
-			</h2>
-		<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-			{% if lang == 'uz' %}Sizning muvaffaqiyatingiz uchun ishlaydigan professional mutaxassislar{% elif lang == 'ru' %}Профессиональные специалисты, работающие для вашего успеха{% elif lang == 'tr' %}Başarınız için çalışan profesyonel uzmanlar{% else %}Professional experts working for your success{% endif %}
-			</p>
-		
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-			<div class="team-card">
-				<div class="team-avatar">
-					<img src="/static/images/team/IMG_20250920_153304_162.jpg" alt="Director">
-			</div>
-				<h3 class="text-xl font-bold text-gray-900 mb-2">{% if lang == 'uz' %}Direktor{% elif lang == 'ru' %}Директор{% elif lang == 'tr' %}Müdür{% else %}Director{% endif %}</h3>
-				<p class="text-gray-600">{% if lang == 'uz' %}12 yillik tajriba{% elif lang == 'ru' %}12 лет опыта{% elif lang == 'tr' %}12 yıllık deneyim{% else %}12 years experience{% endif %}</p>
-			</div>
-			<div class="team-card">
-				<div class="team-avatar">
-					<img src="/static/images/team/IMG_7247.jpg" alt="Senior Consultant">
-				</div>
-				<h3 class="text-xl font-bold text-gray-900 mb-2">{% if lang == 'uz' %}Senior konsultant{% elif lang == 'ru' %}Старший консультант{% elif lang == 'tr' %}Kıdemli danışman{% else %}Senior Consultant{% endif %}</h3>
-				<p class="text-gray-600">{% if lang == 'uz' %}Universitet tanlash va qabul{% elif lang == 'ru' %}Выбор университета и поступление{% elif lang == 'tr' %}Üniversite seçimi ve kabul{% else %}University selection & admission{% endif %}</p>
-			</div>
-			<div class="team-card">
-				<div class="team-avatar">
-					<img src="/static/images/team/IMG_8823 (2).jpg" alt="Documents Specialist">
-				</div>
-				<h3 class="text-xl font-bold text-gray-900 mb-2">{% if lang == 'uz' %}Hujjatlar mutaxassisi{% elif lang == 'ru' %}Специалист по документам{% elif lang == 'tr' %}Belge uzmanı{% else %}Documents Specialist{% endif %}</h3>
-				<p class="text-gray-600">{% if lang == 'uz' %}Hujjatlar tayyorlash va rasmiylashtirish{% elif lang == 'ru' %}Подготовка и оформление документов{% elif lang == 'tr' %}Belge hazırlama ve düzenleme{% else %}Document preparation & processing{% endif %}</p>
 			</div>
 		</div>
 	</div>
@@ -2646,7 +2656,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				<div class="team-avatar">
 					<img src="{{ url_for('static', filename='images/team/IMG_7247.jpg') }}" alt="Team member" onerror="this.style.display='none'">
 			</div>
-				<h3 class="text-lg font-bold text-gray-900 mb-1" style="font-family: 'Inter', sans-serif;">Bobur Akbarov</h3>
+				<h3 class="text-lg font-bold text-gray-900 mb-1" style="font-family: 'Inter', sans-serif;">Islam Shaakiriy</h3>
 				<p class="text-gray-500 text-sm mb-3">{% if lang == 'uz' %}Asoschi va Direktor{% elif lang == 'ru' %}Основатель и Директор{% elif lang == 'tr' %}Kurucu ve Direktör{% else %}Founder & Director{% endif %}</p>
 				<p class="text-gray-600 text-sm">{% if lang == 'uz' %}12 yillik tajriba{% elif lang == 'ru' %}12 лет опыта{% elif lang == 'tr' %}12 yıllık deneyim{% else %}12 years experience{% endif %}</p>
 			</div>
@@ -2805,7 +2815,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		// Top Universities Swiper
 		if (document.querySelector('.top-universities-swiper')) {
 			const topUniversitiesSwiper = new Swiper('.top-universities-swiper', {
-				slidesPerView: 2, // Default for mobile
+				slidesPerView: 1, // Mobile: 1 ta
 				spaceBetween: 16,
 				loop: true,
 				autoplay: {
@@ -2823,11 +2833,11 @@ document.addEventListener('DOMContentLoaded', function() {
 				},
 				breakpoints: {
 					768: {
-						slidesPerView: 3, // Tablet
+						slidesPerView: 2, // Tablet: 2 ta
 						spaceBetween: 20,
 					},
 					1024: {
-						slidesPerView: 4, // Desktop
+						slidesPerView: 4, // Desktop: 4 ta
 						spaceBetween: 24,
 					},
 				},
