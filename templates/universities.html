@@ -909,7 +909,7 @@
 			</p>
 		</div>
 		
-		<div id="universitiesGrid" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+		<div id="universitiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
 			{% for university in universities %}
 			<div class="university-card bg-white rounded-3xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-200 group" data-country="{% if lang == 'uz' %}{{ university.country_uz }}{% elif lang == 'ru' %}{{ university.country_ru }}{% elif lang == 'tr' %}{{ university.country_tr }}{% else %}{{ university.country_en }}{% endif %}">
 				<!-- 1. Universitet rasmi -->
@@ -1096,7 +1096,7 @@
 // Initialize Top Universities Swiper - New Premium Design
 if (document.querySelector('.top-universities-swiper-new')) {
 	new Swiper('.top-universities-swiper-new', {
-		slidesPerView: 2,
+		slidesPerView: 1, // Mobile: 1 ta
 		spaceBetween: 16,
 		loop: {% if top_universities|length > 1 %}true{% else %}false{% endif %},
 		autoplay: {% if top_universities|length > 1 %}{
@@ -1114,11 +1114,11 @@ if (document.querySelector('.top-universities-swiper-new')) {
 		},
 		breakpoints: {
 			640: {
-				slidesPerView: 3,
+				slidesPerView: 2, // Tablet: 2 ta
 				spaceBetween: 20,
 			},
 			1024: {
-				slidesPerView: 4,
+				slidesPerView: 4, // Desktop: 4 ta
 				spaceBetween: 24,
 			},
 	},
