@@ -6,22 +6,20 @@
 
 {% block content %}
 
-<div class="page-container" style="margin-top: 0; padding-top: 0;">
 <!-- Hero Section -->
-<section class="pt-12 pb-8 bg-white relative overflow-hidden">
-	<div class="contact-shuffle-bg"></div>
-	<div class="max-w-7xl mx-auto px-6 relative z-10">
-		<div class="text-center mb-8">
-			<h1 class="text-3xl md:text-4xl font-medium text-gray-900 mb-3" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
-				{% if lang == 'uz' %}Biz bilan bog'laning. Jarayonni osonlashtiramiz.{% elif lang == 'ru' %}Свяжитесь с нами. Мы упростим процесс.{% elif lang == 'tr' %}Bizimle iletişime geçin. Süreci kolaylaştırıyoruz.{% else %}Contact us. We simplify the process.{% endif %}
+<section class="py-20 bg-white">
+	<div class="max-w-6xl mx-auto px-6">
+		<div class="text-center mb-12">
+			<h1 class="text-4xl md:text-5xl font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+				{% if lang == 'uz' %}Biz bilan bog'laning{% elif lang == 'ru' %}Свяжитесь с нами{% elif lang == 'tr' %}Bizimle iletişime geçin{% else %}Contact Us{% endif %}
 			</h1>
-			<p class="text-base text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+			<p class="text-lg text-gray-600 font-normal max-w-2xl mx-auto" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 				{% if lang == 'uz' %}Talabalar, ota-onalar, agentlar uchun kundalik yordam: 09:00 — 18:00{% elif lang == 'ru' %}Ежедневная помощь для студентов, родителей, агентов: 09:00 — 18:00{% elif lang == 'tr' %}Öğrenciler, ebeveynler, ajanlar için günlük destek: 09:00 — 18:00{% else %}Daily support for students, parents, agents: 09:00 — 18:00{% endif %}
 			</p>
 		</div>
 		
 		<!-- Talaba/Agent bo'linishi -->
-		<div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+		<div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
 			<button onclick="showStudentSection()" id="studentBtn" class="px-8 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-base font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 				{% if lang == 'uz' %}Talabaman{% elif lang == 'ru' %}Я студент{% elif lang == 'tr' %}Öğrenciyim{% else %}I'm a Student{% endif %}
 			</button>
@@ -33,60 +31,85 @@
 </section>
 
 <!-- Talabalar uchun aloqa bo'limi -->
-<section id="studentSection" class="py-8 bg-white">
-	<div class="max-w-7xl mx-auto px-6">
-		<h2 class="text-2xl font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
-			{% if lang == 'uz' %}Talabalar uchun tezkor bog'lanish{% elif lang == 'ru' %}Быстрая связь для студентов{% elif lang == 'tr' %}Öğrenciler için hızlı iletişim{% else %}Quick Contact for Students{% endif %}
-		</h2>
-		<p class="text-sm text-gray-600 font-normal mb-6" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-			{% if lang == 'uz' %}Qabul, ikamet, viza, hujjatlar — hammasi bo'yicha bepul maslahat beramiz.{% elif lang == 'ru' %}Консультации по поступлению, виду на жительство, визам, документам — все бесплатно.{% elif lang == 'tr' %}Kabul, ikamet, vize, belgeler hakkında ücretsiz danışmanlık veriyoruz.{% else %}Free consultation on admission, residence permit, visas, documents.{% endif %}
-		</p>
+<section id="studentSection" class="py-20 bg-gray-50">
+	<div class="max-w-6xl mx-auto px-6">
+		<div class="text-center mb-12">
+			<h2 class="text-3xl md:text-4xl font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+				{% if lang == 'uz' %}Talabalar uchun tezkor bog'lanish{% elif lang == 'ru' %}Быстрая связь для студентов{% elif lang == 'tr' %}Öğrenciler için hızlı iletişim{% else %}Quick Contact for Students{% endif %}
+			</h2>
+			<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Qabul, ikamet, viza, hujjatlar — hammasi bo'yicha bepul maslahat beramiz.{% elif lang == 'ru' %}Консультации по поступлению, виду на жительство, визам, документам — все бесплатно.{% elif lang == 'tr' %}Kabul, ikamet, vize, belgeler hakkında ücretsiz danışmanlık veriyoruz.{% else %}Free consultation on admission, residence permit, visas, documents.{% endif %}
+			</p>
+		</div>
 		
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 text-center">
-				<div class="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center mx-auto mb-4">
+		<!-- Kontakt kartalari -->
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+			<!-- Telefon -->
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200 text-center">
+				<div class="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mx-auto mb-4">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white">
 						<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
 					</svg>
 				</div>
-				<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% elif lang == 'tr' %}Telefon{% else %}Phone{% endif %}
 				</h3>
-				<a href="tel:+905011571111" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors block" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					+90 501 157 11 11
-				</a>
-				<a href="tel:+998901234567" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors block mt-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					+998 90 123 45 67
-				</a>
+				<div class="space-y-2 mb-4">
+					<a href="tel:+905011571111" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors block" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						+90 501 157 11 11
+					</a>
+					<a href="tel:+998901234567" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors block" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						+998 90 123 45 67
+					</a>
+				</div>
+				<div class="flex items-center justify-center gap-2">
+					<a href="https://t.me/studyfans" target="_blank" class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-white">
+							<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.169 1.858-.896 6.728-.896 6.728-.465 2.411-1.153 2.85-1.153 2.85s-1.153.72-2.41-.36c-1.257-1.08-1.896-1.68-3.225-2.7-1.329-1.02-1.896-1.68-1.896-1.68s-1.153-.72-.72-1.68c.432-.96 1.896-1.68 1.896-1.68s.72-.36 1.329.36c.608.72 1.896 1.68 1.896 1.68s.72.36 1.329-.36c.608-.72.72-1.68.72-1.68s.432-.36.72.36c.288.72.432 1.68.432 1.68z"/>
+						</svg>
+					</a>
+					<a href="https://wa.me/905011571111" target="_blank" class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center hover:bg-green-600 transition-colors">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-white">
+							<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+						</svg>
+					</a>
+					<a href="tel:+905011571111" class="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center hover:bg-gray-800 transition-colors">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+							<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+						</svg>
+					</a>
+				</div>
 			</div>
 			
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 text-center">
-				<div class="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center mx-auto mb-4">
+			<!-- Manzil -->
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200 text-center">
+				<div class="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mx-auto mb-4">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white">
 						<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
 						<circle cx="12" cy="10" r="3"/>
 					</svg>
 				</div>
-				<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}Manzil{% elif lang == 'ru' %}Адрес{% elif lang == 'tr' %}Adres{% else %}Address{% endif %}
 				</h3>
-				<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				<a href="https://maps.google.com/?q=Istanbul,Turkey" target="_blank" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors block" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}Istanbul / Toshkent{% elif lang == 'ru' %}Стамбул / Ташкент{% elif lang == 'tr' %}İstanbul / Taşkent{% else %}Istanbul / Tashkent{% endif %}
-				</p>
+				</a>
 			</div>
 			
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 text-center">
-				<div class="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center mx-auto mb-4">
+			<!-- Email -->
+			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200 text-center">
+				<div class="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mx-auto mb-4">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white">
 						<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
 						<polyline points="22,6 12,13 2,6"/>
 					</svg>
 				</div>
-				<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					Email
 				</h3>
-				<a href="mailto:info@studyfans.com" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors block" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					info@studyfans.com
+				<a href="mailto:info@studyfans.uz" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors block" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					info@studyfans.uz
 				</a>
 			</div>
 		</div>
@@ -111,7 +134,7 @@
 				</div>
 				<div>
 					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}WhatsApp raqamingiz (telefon raqamim bilan bir xil){% elif lang == 'ru' %}Ваш WhatsApp (тот же номер телефона){% elif lang == 'tr' %}WhatsApp numaranız (telefon numaramla aynı){% else %}Your WhatsApp (same as phone number){% endif %}
+						{% if lang == 'uz' %}WhatsApp raqamingiz{% elif lang == 'ru' %}Ваш WhatsApp{% elif lang == 'tr' %}WhatsApp numaranız{% else %}Your WhatsApp{% endif %}
 					</label>
 					<input type="tel" name="whatsapp" id="whatsappInput" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					<button type="button" onclick="copyPhoneToWhatsApp()" class="mt-2 text-xs text-blue-600 hover:text-blue-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
@@ -194,7 +217,7 @@
 			</div>
 			<div>
 				<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}WhatsApp raqamingiz (telefon raqamim bilan bir xil){% elif lang == 'ru' %}Ваш WhatsApp (тот же номер телефона){% elif lang == 'tr' %}WhatsApp numaranız (telefon numaramla aynı){% else %}Your WhatsApp (same as phone number){% endif %}
+					{% if lang == 'uz' %}WhatsApp raqamingiz{% elif lang == 'ru' %}Ваш WhatsApp{% elif lang == 'tr' %}WhatsApp numaranız{% else %}Your WhatsApp{% endif %}
 				</label>
 				<input type="tel" name="whatsapp" id="agentWhatsAppInput" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 				<button type="button" onclick="copyPhoneToWhatsAppAgent()" class="mt-2 text-xs text-blue-600 hover:text-blue-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
@@ -240,225 +263,18 @@
 	</div>
 </div>
 
-<!-- Offices Section -->
-<section class="py-8 bg-white">
-	<div class="max-w-7xl mx-auto px-6">
-		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
-			{% if lang == 'uz' %}Ofislarimiz{% elif lang == 'ru' %}Наши офисы{% elif lang == 'tr' %}Ofislerimiz{% else %}Our Offices{% endif %}
-		</h2>
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-			<!-- Turkey Office -->
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
-				<div class="flex items-start gap-4 mb-4">
-					<div class="flex-shrink-0">
-						<div class="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center">
-							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white">
-								<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-								<circle cx="12" cy="10" r="3"/>
-							</svg>
-						</div>
-					</div>
-					<div class="flex-1">
-						<h3 class="text-lg font-medium text-gray-900 mb-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{% if lang == 'uz' %}Istanbul, Turkiya{% elif lang == 'ru' %}Стамбул, Турция{% elif lang == 'tr' %}İstanbul, Türkiye{% else %}Istanbul, Türkiye{% endif %}
-						</h3>
-						<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{% if lang == 'uz' %}Asosiy ofis{% elif lang == 'ru' %}Главный офис{% elif lang == 'tr' %}Ana ofis{% else %}Main Office{% endif %}
-						</p>
-					</div>
-				</div>
-				<div class="space-y-3">
-					<div class="flex items-start gap-3">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 mt-0.5 flex-shrink-0">
-							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-							<circle cx="12" cy="10" r="3"/>
-						</svg>
-						<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{% if lang == 'uz' %}Maslak Mahallesi, Büyükdere Caddesi No:123, Sarıyer, Istanbul{% elif lang == 'ru' %}Maslak Mahallesi, Büyükdere Caddesi No:123, Sarıyer, Стамбул{% elif lang == 'tr' %}Maslak Mahallesi, Büyükdere Caddesi No:123, Sarıyer, İstanbul{% else %}Maslak Mahallesi, Büyükdere Caddesi No:123, Sarıyer, Istanbul{% endif %}
-						</p>
-					</div>
-					<div class="flex items-center gap-3">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 flex-shrink-0">
-							<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-						</svg>
-						<a href="tel:+905011571111" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							+90 501 157 11 11
-						</a>
-					</div>
-					<div class="flex items-center gap-3">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 flex-shrink-0">
-							<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-							<polyline points="22,6 12,13 2,6"/>
-						</svg>
-						<a href="mailto:istanbul@studyfans.com" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							istanbul@studyfans.com
-						</a>
-					</div>
-					<div class="flex items-start gap-3">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 mt-0.5 flex-shrink-0">
-							<circle cx="12" cy="12" r="10"/>
-							<polyline points="12,6 12,12 16,14"/>
-						</svg>
-						<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{% if lang == 'uz' %}Dushanba - Juma: 09:00 - 18:00<br>Shanba: 10:00 - 16:00{% elif lang == 'ru' %}Понедельник - Пятница: 09:00 - 18:00<br>Суббота: 10:00 - 16:00{% elif lang == 'tr' %}Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi: 10:00 - 16:00{% else %}Monday - Friday: 09:00 - 18:00<br>Saturday: 10:00 - 16:00{% endif %}
-						</p>
-					</div>
-				</div>
-			</div>
-			
-			<!-- Uzbekistan Office -->
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
-				<div class="flex items-start gap-4 mb-4">
-					<div class="flex-shrink-0">
-						<div class="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center">
-							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white">
-								<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-								<circle cx="12" cy="10" r="3"/>
-							</svg>
-						</div>
-					</div>
-					<div class="flex-1">
-						<h3 class="text-lg font-medium text-gray-900 mb-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{% if lang == 'uz' %}Toshkent, O'zbekiston{% elif lang == 'ru' %}Ташкент, Узбекистан{% elif lang == 'tr' %}Taşkent, Özbekistan{% else %}Tashkent, Uzbekistan{% endif %}
-						</h3>
-						<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{% if lang == 'uz' %}Filial ofis{% elif lang == 'ru' %}Филиал{% elif lang == 'tr' %}Şube ofis{% else %}Branch Office{% endif %}
-						</p>
-					</div>
-				</div>
-				<div class="space-y-3">
-					<div class="flex items-start gap-3">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 mt-0.5 flex-shrink-0">
-							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-							<circle cx="12" cy="10" r="3"/>
-						</svg>
-						<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{% if lang == 'uz' %}Amir Temur ko'chasi, 108-uy, Toshkent shahri{% elif lang == 'ru' %}Улица Амира Темура, дом 108, город Ташкент{% elif lang == 'tr' %}Emir Timur Caddesi, 108 numara, Taşkent şehri{% else %}Amir Temur Street, Building 108, Tashkent City{% endif %}
-						</p>
-					</div>
-					<div class="flex items-center gap-3">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 flex-shrink-0">
-							<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-						</svg>
-						<a href="tel:+998901234567" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							+998 90 123 45 67
-						</a>
-					</div>
-					<div class="flex items-center gap-3">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 flex-shrink-0">
-							<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-							<polyline points="22,6 12,13 2,6"/>
-						</svg>
-						<a href="mailto:tashkent@studyfans.com" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							tashkent@studyfans.com
-						</a>
-					</div>
-					<div class="flex items-start gap-3">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 mt-0.5 flex-shrink-0">
-							<circle cx="12" cy="12" r="10"/>
-							<polyline points="12,6 12,12 16,14"/>
-						</svg>
-						<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{% if lang == 'uz' %}Dushanba - Juma: 09:00 - 18:00<br>Shanba: 10:00 - 16:00{% elif lang == 'ru' %}Понедельник - Пятница: 09:00 - 18:00<br>Суббота: 10:00 - 16:00{% elif lang == 'tr' %}Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi: 10:00 - 16:00{% else %}Monday - Friday: 09:00 - 18:00<br>Saturday: 10:00 - 16:00{% endif %}
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Contact Methods -->
-<section class="py-8 bg-white">
-	<div class="max-w-7xl mx-auto px-6">
-		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
-			{% if lang == 'uz' %}Aloqa usullari{% elif lang == 'ru' %}Способы связи{% elif lang == 'tr' %}İletişim yöntemleri{% else %}Contact Methods{% endif %}
-		</h2>
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200 text-center">
-				<div class="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mx-auto mb-4">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white">
-						<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-					</svg>
-				</div>
-				<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% elif lang == 'tr' %}Telefon{% else %}Phone{% endif %}
-				</h3>
-				<a href="tel:+905011571111" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors block" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					+90 501 157 11 11
-				</a>
-				<a href="tel:+998901234567" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors block mt-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					+998 90 123 45 67
-				</a>
-			</div>
-			
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200 text-center">
-				<div class="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mx-auto mb-4">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white">
-						<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-						<polyline points="22,6 12,13 2,6"/>
-					</svg>
-				</div>
-				<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Email{% elif lang == 'ru' %}Электронная почта{% elif lang == 'tr' %}E-posta{% else %}Email{% endif %}
-				</h3>
-				<a href="mailto:info@studyfans.com" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors block" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					info@studyfans.com
-				</a>
-			</div>
-			
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200 text-center">
-				<div class="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mx-auto mb-4">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white">
-						<path d="M18 2h-3a4 4 0 0 0-4 4v3H7v3h4v8a2 2 0 0 0 2 2h3v-8h3l1-3h-4V6a1 1 0 0 1 1h3z"/>
-					</svg>
-				</div>
-				<h3 class="text-lg font-medium text-gray-900 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Ijtimoiy tarmoqlar{% elif lang == 'ru' %}Социальные сети{% elif lang == 'tr' %}Sosyal medya{% else %}Social Media{% endif %}
-				</h3>
-				<div class="flex items-center justify-center gap-3">
-					<a href="#" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						Facebook
-					</a>
-					<span class="text-gray-300">•</span>
-					<a href="#" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						Instagram
-					</a>
-					<span class="text-gray-300">•</span>
-					<a href="#" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						Telegram
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Agentlar uchun bo'lim -->
-<section id="agentSection" class="py-8 bg-white hidden">
-	<div class="max-w-7xl mx-auto px-6">
-		<h2 class="text-2xl font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
-			{% if lang == 'uz' %}Agentlar uchun hamkorlik{% elif lang == 'ru' %}Партнерство для агентов{% elif lang == 'tr' %}Ajanlar için ortaklık{% else %}Partnership for Agents{% endif %}
-		</h2>
-		<p class="text-sm text-gray-600 font-normal mb-6" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-			{% if lang == 'uz' %}Biz bilan hamkorlik qilish va yuqori komissiyalar olish.{% elif lang == 'ru' %}Сотрудничайте с нами и получайте высокие комиссии.{% elif lang == 'tr' %}Bizimle ortaklık kurun ve yüksek komisyonlar kazanın.{% else %}Partner with us and earn high commissions.{% endif %}
-		</p>
-		<button onclick="showAgentModal()" class="px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-			{% if lang == 'uz' %}Hamkorlik so'rovini yuborish{% elif lang == 'ru' %}Отправить запрос на партнерство{% elif lang == 'tr' %}Ortaklık talebini gönder{% else %}Send Partnership Request{% endif %}
-		</button>
-	</div>
-</section>
-
 <!-- FAQ Section -->
-<section class="py-12 bg-gray-50">
-	<div class="max-w-7xl mx-auto px-6">
-		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
-			{% if lang == 'uz' %}Tez-tez so'raladigan savollar{% elif lang == 'ru' %}Часто задаваемые вопросы{% elif lang == 'tr' %}Sık sorulan sorular{% else %}Frequently Asked Questions{% endif %}
-		</h2>
+<section class="py-20 bg-white">
+	<div class="max-w-6xl mx-auto px-6">
+		<div class="text-center mb-12">
+			<h2 class="text-3xl md:text-4xl font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+				{% if lang == 'uz' %}Tez-tez so'raladigan savollar{% elif lang == 'ru' %}Часто задаваемые вопросы{% elif lang == 'tr' %}Sık sorulan sorular{% else %}Frequently Asked Questions{% endif %}
+			</h2>
+		</div>
 		
 		<!-- Talabalar FAQ -->
-		<div id="studentFAQ" class="space-y-4">
-			<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden">
+		<div id="studentFAQ" class="space-y-4 max-w-3xl mx-auto">
+			<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-gray-300 transition-all duration-200">
 				<button onclick="toggleFAQ(this)" class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
 					<span class="text-base font-medium text-gray-900" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 						{% if lang == 'uz' %}Qabul jarayoni qancha davom etadi?{% elif lang == 'ru' %}Сколько длится процесс поступления?{% elif lang == 'tr' %}Kabul süreci ne kadar sürer?{% else %}How long does the admission process take?{% endif %}
@@ -474,7 +290,7 @@
 				</div>
 			</div>
 			
-			<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden">
+			<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-gray-300 transition-all duration-200">
 				<button onclick="toggleFAQ(this)" class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
 					<span class="text-base font-medium text-gray-900" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 						{% if lang == 'uz' %}Qaysi hujjatlar kerak bo'ladi?{% elif lang == 'ru' %}Какие документы потребуются?{% elif lang == 'tr' %}Hangi belgeler gerekli?{% else %}What documents are required?{% endif %}
@@ -491,26 +307,7 @@
 			</div>
 		</div>
 		
-		<!-- Agentlar FAQ -->
-		<div id="agentFAQ" class="hidden space-y-4 mt-8">
-			<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden">
-				<button onclick="toggleFAQ(this)" class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
-					<span class="text-base font-medium text-gray-900" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Komissiya qanday?{% elif lang == 'ru' %}Какова комиссия?{% elif lang == 'tr' %}Komisyon nasıl?{% else %}What is the commission?{% endif %}
-					</span>
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400 transform transition-transform">
-						<polyline points="6 9 12 15 18 9"/>
-					</svg>
-				</button>
-				<div class="hidden px-6 pb-4">
-					<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Komissiyalar yo'nalishga qarab 300$ — 3000$ gacha. Ba'zi premium yo'nalishlar va universitetlarda bundan ham yuqori komissiya bo'ladi.{% elif lang == 'ru' %}Комиссии варьируются от 300$ до 3000$ в зависимости от направления. В некоторых премиум направлениях и университетах комиссия может быть еще выше.{% elif lang == 'tr' %}Komisyonlar bölüme göre 300$ — 3000$ arasında değişir. Bazı premium bölümler ve üniversitelerde daha yüksek komisyon olabilir.{% else %}Commissions range from $300 to $3000 depending on the major. In some premium majors and universities, the commission can be even higher.{% endif %}
-					</p>
-				</div>
-			</div>
-		</div>
-		
-		<div class="mt-6 text-center">
+		<div class="mt-8 text-center">
 			<a href="{{ url_for('faq') }}" class="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 				{% if lang == 'uz' %}Barcha savollarni ko'rish{% elif lang == 'ru' %}Посмотреть все вопросы{% elif lang == 'tr' %}Tüm soruları gör{% else %}View all questions{% endif %}
 				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -521,232 +318,29 @@
 	</div>
 </section>
 
-<!-- Contact Form -->
-<section class="py-8 bg-white">
-	<div class="max-w-2xl mx-auto px-6">
-		<h2 class="text-2xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
-			{% if lang == 'uz' %}Xabar yuborish{% elif lang == 'ru' %}Отправить сообщение{% elif lang == 'tr' %}Mesaj gönder{% else %}Send Message{% endif %}
-		</h2>
-		<div class="bg-white border border-gray-200 rounded-3xl p-8">
-			<form class="space-y-5" action="{{ url_for('contact') }}" method="POST">
-				<div>
-					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Ism{% elif lang == 'ru' %}Имя{% elif lang == 'tr' %}İsim{% else %}Name{% endif %} *
-					</label>
-					<input type="text" name="name" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				</div>
-				<div>
-					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Email{% elif lang == 'ru' %}Электронная почта{% elif lang == 'tr' %}E-posta{% else %}Email{% endif %} *
-					</label>
-					<input type="email" name="email" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				</div>
-				<div>
-					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% elif lang == 'tr' %}Telefon{% else %}Phone{% endif %}
-					</label>
-					<input type="tel" name="phone" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				</div>
-				<div>
-					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Mavzu{% elif lang == 'ru' %}Тема{% elif lang == 'tr' %}Konu{% else %}Subject{% endif %}
-					</label>
-					<input type="text" name="subject" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				</div>
-				<div>
-					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Xabar{% elif lang == 'ru' %}Сообщение{% elif lang == 'tr' %}Mesaj{% else %}Message{% endif %} *
-					</label>
-					<textarea name="message" rows="5" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></textarea>
-				</div>
-				<button type="submit" class="w-full px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Yuborish{% elif lang == 'ru' %}Отправить{% elif lang == 'tr' %}Gönder{% else %}Send{% endif %}
-				</button>
-			</form>
-		</div>
-	</div>
-</section>
-
-<!-- Additional Info -->
-<section class="py-8 bg-white">
-	<div class="max-w-7xl mx-auto px-6">
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
-				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Ish vaqti{% elif lang == 'ru' %}Время работы{% elif lang == 'tr' %}Çalışma saatleri{% else %}Working Hours{% endif %}
-				</h3>
-				<p class="text-sm text-gray-600 font-normal leading-relaxed mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}<strong>Dushanba - Juma:</strong> 09:00 - 18:00<br><strong>Shanba:</strong> 10:00 - 16:00<br><strong>Yakshanba:</strong> Dam olish kuni{% elif lang == 'ru' %}<strong>Понедельник - Пятница:</strong> 09:00 - 18:00<br><strong>Суббота:</strong> 10:00 - 16:00<br><strong>Воскресенье:</strong> Выходной{% elif lang == 'tr' %}<strong>Pazartesi - Cuma:</strong> 09:00 - 18:00<br><strong>Cumartesi:</strong> 10:00 - 16:00<br><strong>Pazar:</strong> Tatil günü{% else %}<strong>Monday - Friday:</strong> 09:00 - 18:00<br><strong>Saturday:</strong> 10:00 - 16:00<br><strong>Sunday:</strong> Day off{% endif %}
-				</p>
-			</div>
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
-				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Tezkor javob{% elif lang == 'ru' %}Быстрый ответ{% elif lang == 'tr' %}Hızlı yanıt{% else %}Quick Response{% endif %}
-				</h3>
-				<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Biz sizning so'rovingizga 24 soat ichida javob beramiz. Shoshilinch holatlar uchun telefon orqali darhol bog'laning.{% elif lang == 'ru' %}Мы ответим на ваш запрос в течение 24 часов. Для срочных случаев свяжитесь с нами по телефону немедленно.{% elif lang == 'tr' %}Sorgunuzu 24 saat içinde yanıtlayacağız. Acil durumlar için hemen telefonla iletişime geçin.{% else %}We will respond to your inquiry within 24 hours. For urgent cases, contact us by phone immediately.{% endif %}
-				</p>
-			</div>
-		</div>
-	</div>
-</section>
-
 <!-- CTA Section -->
-<section class="py-20 cta-section relative overflow-hidden">
-	<div class="cta-wave-container">
-		<svg class="cta-wave" viewBox="0 0 1200 120" preserveAspectRatio="none">
-			<path d="M0,60 Q300,20 600,60 T1200,60 L1200,120 L0,120 Z" fill="url(#waveGradientYellow)"/>
-			<defs>
-				<linearGradient id="waveGradientYellow" x1="0%" y1="0%" x2="100%" y2="0%">
-					<stop offset="0%" style="stop-color:rgba(250, 204, 21, 0.12);stop-opacity:1" />
-					<stop offset="50%" style="stop-color:rgba(250, 204, 21, 0.18);stop-opacity:1" />
-					<stop offset="100%" style="stop-color:rgba(250, 204, 21, 0.12);stop-opacity:1" />
-				</linearGradient>
-			</defs>
-		</svg>
-		<svg class="cta-wave cta-wave-delayed" viewBox="0 0 1200 120" preserveAspectRatio="none">
-			<path d="M0,60 Q300,40 600,60 T1200,60 L1200,120 L0,120 Z" fill="url(#waveGradientYellow2)"/>
-			<defs>
-				<linearGradient id="waveGradientYellow2" x1="0%" y1="0%" x2="100%" y2="0%">
-					<stop offset="0%" style="stop-color:rgba(253, 224, 71, 0.08);stop-opacity:1" />
-					<stop offset="50%" style="stop-color:rgba(253, 224, 71, 0.12);stop-opacity:1" />
-					<stop offset="100%" style="stop-color:rgba(253, 224, 71, 0.08);stop-opacity:1" />
-				</linearGradient>
-			</defs>
-		</svg>
-	</div>
-	<div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-20">
-		<h2 class="text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900 mb-3 sm:mb-4 leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; position: relative; z-index: 10;">
+<section class="py-20 bg-gray-50">
+	<div class="max-w-6xl mx-auto px-6 text-center">
+		<h2 class="text-3xl md:text-4xl font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
 			{% if lang == 'uz' %}Savollaringiz bormi?{% elif lang == 'ru' %}Есть вопросы?{% elif lang == 'tr' %}Sorularınız var mı?{% else %}Have questions?{% endif %}
 		</h2>
-		<p class="text-sm sm:text-base text-gray-600 font-normal mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto px-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; position: relative; z-index: 10;">
+		<p class="text-lg text-gray-600 font-normal mb-8 max-w-2xl mx-auto" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 			{% if lang == 'uz' %}Bizning mutaxassislarimiz sizga yordam berishga tayyor{% elif lang == 'ru' %}Наши специалисты готовы помочь вам{% elif lang == 'tr' %}Uzmanlarımız size yardımcı olmaya hazır{% else %}Our specialists are ready to help you{% endif %}
 		</p>
-		<div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full px-2" style="position: relative; z-index: 10;">
-			<a href="{{ url_for('chat', lang=lang) }}" class="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors text-sm sm:text-base font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+		<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+			<a href="{{ url_for('chat', lang=lang) }}" class="px-8 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors text-base font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 				{% if lang == 'uz' %}Study Fans AI{% elif lang == 'ru' %}Study Fans AI{% elif lang == 'tr' %}Study Fans AI{% else %}Study Fans AI{% endif %}
 			</a>
-			<a href="tel:+905011571111" class="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 bg-white text-gray-900 border border-gray-200 rounded-full hover:bg-gray-50 transition-colors text-sm sm:text-base font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+			<a href="tel:+905011571111" class="px-8 py-3 bg-white text-gray-900 border border-gray-200 rounded-full hover:bg-gray-50 transition-colors text-base font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 				{% if lang == 'uz' %}Qo'ng'iroq qilish{% elif lang == 'ru' %}Позвонить{% elif lang == 'tr' %}Aramak{% else %}Call{% endif %}
 			</a>
 		</div>
 	</div>
 </section>
 
-</div>
-
-<style>
-/* Shuffle background animation */
-.contact-shuffle-bg {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: 
-		radial-gradient(circle at 20% 30%, rgba(250, 204, 21, 0.08) 0%, transparent 50%),
-		radial-gradient(circle at 80% 70%, rgba(250, 204, 21, 0.06) 0%, transparent 50%),
-		radial-gradient(circle at 50% 50%, rgba(250, 204, 21, 0.04) 0%, transparent 50%);
-	pointer-events: none;
-	z-index: 1;
-	animation: shuffleMove 15s ease-in-out infinite;
-}
-
-@keyframes shuffleMove {
-	0%, 100% {
-		transform: translate(0, 0) scale(1);
-		opacity: 0.6;
-	}
-	25% {
-		transform: translate(20px, -15px) scale(1.1);
-		opacity: 0.8;
-	}
-	50% {
-		transform: translate(-15px, 20px) scale(0.9);
-		opacity: 0.7;
-	}
-	75% {
-		transform: translate(15px, 15px) scale(1.05);
-		opacity: 0.75;
-	}
-}
-
-/* CTA Section Styles */
-.cta-section {
-	background: transparent;
-	position: relative;
-	padding-top: 80px;
-	padding-bottom: 80px;
-}
-
-@media (max-width: 768px) {
-	.cta-section {
-		padding-top: 40px;
-		padding-bottom: 40px;
-		overflow: visible;
-		margin-left: 0;
-		margin-right: 0;
-		width: 100%;
-	}
-	
-	.cta-section .max-w-5xl {
-		padding-left: 1rem;
-		padding-right: 1rem;
-	}
-}
-
-.cta-wave-container {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	width: 100%;
-	height: 120px;
-	overflow: hidden;
-	z-index: 1;
-}
-
-@media (max-width: 768px) {
-	.cta-wave-container {
-		left: 0;
-		right: 0;
-		width: 100%;
-		height: 100px;
-	}
-	
-	.cta-wave {
-		width: 200%;
-		height: 100px;
-	}
-}
-
-.cta-wave {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 200%;
-	height: 120px;
-	transform: translateX(-50%);
-	transform-origin: center bottom;
-}
-
-.cta-wave-delayed {
-	opacity: 0.7;
-}
-
-#agentSection {
-	display: none;
-}
-
-#agentSection.active {
-	display: block;
-}
-</style>
-
 <script>
 function showStudentSection() {
 	document.getElementById('studentSection').style.display = 'block';
-	document.getElementById('agentSection').style.display = 'none';
 	document.getElementById('studentBtn').classList.add('bg-gray-900', 'text-white');
 	document.getElementById('studentBtn').classList.remove('bg-white', 'text-gray-900', 'border');
 	document.getElementById('agentBtn').classList.remove('bg-gray-900', 'text-white');
@@ -755,7 +349,6 @@ function showStudentSection() {
 
 function showAgentSection() {
 	document.getElementById('studentSection').style.display = 'none';
-	document.getElementById('agentSection').style.display = 'block';
 	document.getElementById('agentBtn').classList.add('bg-gray-900', 'text-white');
 	document.getElementById('agentBtn').classList.remove('bg-white', 'text-gray-900', 'border');
 	document.getElementById('studentBtn').classList.remove('bg-gray-900', 'text-white');

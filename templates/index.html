@@ -1774,47 +1774,49 @@
 		<h2 class="text-3xl md:text-4xl font-bold mb-4 text-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
 			<span class="text-gray-900">{% if lang == 'uz' %}O'qish{% elif lang == 'ru' %}Обучение{% elif lang == 'tr' %}Eğitim{% else %}Study{% endif %}</span>
 			<span class="text-blue-600">{% if lang == 'uz' %} Yo'nalishlari{% elif lang == 'ru' %} Направления{% elif lang == 'tr' %} Bölümleri{% else %} Directions{% endif %}</span>
-		</h2>
+			</h2>
 		<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
 			{% if lang == 'uz' %}60+ universitetda 2000+ dan ortiq o'quv dasturlari{% elif lang == 'ru' %}Более 2000+ учебных программ в 60+ университетах{% elif lang == 'tr' %}60+ üniversitede 2000+ üzeri eğitim programı{% else %}Over 2000+ study programs in 60+ universities{% endif %}
 		</p>
 		
-		<!-- Majors Carousel -->
-		<div class="majors-carousel-wrapper relative">
-			<div class="swiper majors-swiper">
+		<!-- Majors Swiper (Top Universities Style) -->
+		<div class="majors-slider relative">
+			<div class="swiper majors-swiper-new">
 				<div class="swiper-wrapper">
 					{% set majors = [
-						('uz:Aviation', 'ru:Авиация', 'tr:Havacılık', 'en:Aviation', 'airplane.svg', '150', 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)', 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800'),
-						('uz:Psixologiya', 'ru:Психология', 'tr:Psikoloji', 'en:Psychology', 'brain.svg', '180', 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)', 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800'),
-						('uz:Dizayn va San\'at', 'ru:Дизайн и искусство', 'tr:Tasarım ve Sanat', 'en:Design & Art', 'palette.svg', '250', 'linear-gradient(135deg, #ec4899 0%, #db2777 100%)', 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800'),
-						('uz:Arxitektura', 'ru:Архитектура', 'tr:Mimarlık', 'en:Architecture', 'building.svg', '220', 'linear-gradient(135deg, #1f2937 0%, #111827 100%)', 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800')
+						('uz:Tibbiyot', 'ru:Медицина', 'tr:Tıp', 'en:Medicine', '450'),
+						('uz:Stomatologiya', 'ru:Стоматология', 'tr:Diş Hekimliği', 'en:Dentistry', '200'),
+						('uz:IT va Komputer', 'ru:ИТ и Компьютер', 'tr:BT ve Bilgisayar', 'en:IT & Computer', '380'),
+						('uz:Biznes va Menejment', 'ru:Бизнес и Менеджмент', 'tr:İşletme ve Yönetim', 'en:Business & Management', '320'),
+						('uz:Aviation', 'ru:Авиация', 'tr:Havacılık', 'en:Aviation', '150'),
+						('uz:Psixologiya', 'ru:Психология', 'tr:Psikoloji', 'en:Psychology', '180'),
+						('uz:Dizayn va San\'at', 'ru:Дизайн и искусство', 'tr:Tasarım ve Sanat', 'en:Design & Art', '250'),
+						('uz:Arxitektura', 'ru:Архитектура', 'tr:Mimarlık', 'en:Architecture', '220')
 					] %}
 					{% for major in majors %}
 					<div class="swiper-slide">
-						<a href="{{ url_for('universities') }}?major={% if lang == 'uz' %}{{ major[0].split(':')[1] }}{% elif lang == 'ru' %}{{ major[1].split(':')[1] }}{% elif lang == 'tr' %}{{ major[2].split(':')[1] }}{% else %}{{ major[3].split(':')[1] }}{% endif %}" class="major-card-new">
-							<div class="major-card-bg" style="background: {{ major[6] }};">
-								<div class="major-card-overlay"></div>
-								<div class="major-card-bg-image" style="background-image: url('{{ major[7] }}');"></div>
-					</div>
-							<div class="major-card-content">
-								<div class="major-card-icon">
-									<img src="{{ url_for('static', filename=major[4]) }}" alt="{% if lang == 'uz' %}{{ major[0].split(':')[1] }}{% elif lang == 'ru' %}{{ major[1].split(':')[1] }}{% elif lang == 'tr' %}{{ major[2].split(':')[1] }}{% else %}{{ major[3].split(':')[1] }}{% endif %}" class="major-icon-img">
-				</div>
-								<h3 class="major-card-title">{% if lang == 'uz' %}{{ major[0].split(':')[1] }}{% elif lang == 'ru' %}{{ major[1].split(':')[1] }}{% elif lang == 'tr' %}{{ major[2].split(':')[1] }}{% else %}{{ major[3].split(':')[1] }}{% endif %}</h3>
-								<p class="major-card-programs">{{ major[5] }}+ {% if lang == 'uz' %}dastur{% elif lang == 'ru' %}программ{% elif lang == 'tr' %}program{% else %}programs{% endif %}</p>
-								<button class="major-card-btn">{% if lang == 'uz' %}Ko'rish{% elif lang == 'ru' %}Смотреть{% elif lang == 'tr' %}Görüntüle{% else %}View{% endif %}</button>
-			</div>
-						</a>
+						<div class="major-card-university-style bg-white rounded-3xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-200 group h-full">
+							<div class="p-6">
+								<h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{% if lang == 'uz' %}{{ major[0].split(':')[1] }}{% elif lang == 'ru' %}{{ major[1].split(':')[1] }}{% elif lang == 'tr' %}{{ major[2].split(':')[1] }}{% else %}{{ major[3].split(':')[1] }}{% endif %}
+								</h3>
+								<p class="text-2xl font-bold text-blue-600 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{{ major[4] }}+
+								</p>
+								<p class="text-sm text-gray-600 mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{% if lang == 'uz' %}dastur{% elif lang == 'ru' %}программ{% elif lang == 'tr' %}program{% else %}programs{% endif %}
+								</p>
+								<a href="{{ url_for('universities') }}?major={% if lang == 'uz' %}{{ major[0].split(':')[1] }}{% elif lang == 'ru' %}{{ major[1].split(':')[1] }}{% elif lang == 'tr' %}{{ major[2].split(':')[1] }}{% else %}{{ major[3].split(':')[1] }}{% endif %}&lang={{ lang }}" class="block w-full px-4 py-2.5 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-center text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{% if lang == 'uz' %}Ko'rish{% elif lang == 'ru' %}Смотреть{% elif lang == 'tr' %}Gör{% else %}View{% endif %}
+								</a>
+							</div>
+						</div>
 					</div>
 					{% endfor %}
 				</div>
-				
-				<!-- Navigation arrows -->
-				<div class="swiper-button-next majors-nav-next"></div>
-				<div class="swiper-button-prev majors-nav-prev"></div>
-				
-				<!-- Pagination -->
-				<div class="swiper-pagination majors-pagination"></div>
+				<div class="swiper-pagination"></div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
 			</div>
 		</div>
 	</div>
@@ -1828,6 +1830,15 @@
 
 .majors-swiper {
 	padding-bottom: 3rem;
+}
+
+.majors-swiper-new {
+	padding-bottom: 3rem;
+	position: relative;
+}
+
+.majors-slider {
+	position: relative;
 }
 
 .major-card-new {
@@ -2009,33 +2020,56 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-	// Majors Swiper
-	if (document.querySelector('.majors-swiper')) {
-		new Swiper('.majors-swiper', {
-			slidesPerView: 1,
-			spaceBetween: 24,
+	// Majors Swiper (Top Universities Style)
+	if (document.querySelector('.majors-swiper-new')) {
+		const majorsSwiper = new Swiper('.majors-swiper-new', {
+			slidesPerView: 1, // Mobile: 1 ta
+			spaceBetween: 16,
 			loop: true,
 			autoplay: {
-				delay: 4000,
+				delay: 3000,
 				disableOnInteraction: false,
 			},
 			navigation: {
-				nextEl: '.majors-nav-next',
-				prevEl: '.majors-nav-prev',
+				nextEl: '.majors-swiper-new .swiper-button-next',
+				prevEl: '.majors-swiper-new .swiper-button-prev',
 			},
 			pagination: {
-				el: '.majors-pagination',
+				el: '.majors-swiper-new .swiper-pagination',
 				clickable: true,
 				dynamicBullets: true,
 			},
 			breakpoints: {
-				640: {
-					slidesPerView: 2,
+				768: {
+					slidesPerView: 2, // Tablet: 2 ta
 					spaceBetween: 20,
 				},
-				968: {
-					slidesPerView: 4,
+				1024: {
+					slidesPerView: 4, // Desktop: 4 ta
 					spaceBetween: 24,
+				},
+			},
+			on: {
+				init: function() {
+					if (this.slides.length <= this.params.slidesPerView) {
+						if (this.navigation.nextEl) this.navigation.nextEl.style.display = 'none';
+						if (this.navigation.prevEl) this.navigation.prevEl.style.display = 'none';
+						if (this.pagination.el) this.pagination.el.style.display = 'none';
+						this.autoplay.stop();
+					}
+				},
+				resize: function() {
+					if (this.slides.length <= this.params.slidesPerView) {
+						if (this.navigation.nextEl) this.navigation.nextEl.style.display = 'none';
+						if (this.navigation.prevEl) this.navigation.prevEl.style.display = 'none';
+						if (this.pagination.el) this.pagination.el.style.display = 'none';
+						this.autoplay.stop();
+					} else {
+						if (this.navigation.nextEl) this.navigation.nextEl.style.display = 'flex';
+						if (this.navigation.prevEl) this.navigation.prevEl.style.display = 'flex';
+						if (this.pagination.el) this.pagination.el.style.display = 'block';
+						this.autoplay.start();
+					}
 				},
 			},
 		});
@@ -2067,7 +2101,9 @@ document.addEventListener('DOMContentLoaded', function() {
 					<span>1</span>
 					</div>
 				<div class="step-content step-top">
-					<div class="step-icon">💬</div>
+					<div class="step-icon">
+						<img src="{{ url_for('static', filename='messages-2.svg') }}" alt="Consultation" class="w-10 h-10">
+					</div>
 					<h3>{% if lang == 'uz' %}Konsultatsiya{% elif lang == 'ru' %}Консультация{% elif lang == 'tr' %}Danışmanlık{% else %}Consultation{% endif %}</h3>
 					<p>{% if lang == 'uz' %}Bepul maslahat, yo'nalish va universitet tanlashda yordam{% elif lang == 'ru' %}Бесплатная консультация, помощь в выборе направления{% elif lang == 'tr' %}Ücretsiz danışmanlık, bölüm seçiminde yardım{% else %}Free consultation, help with choosing major{% endif %}</p>
 				</div>
@@ -2079,7 +2115,9 @@ document.addEventListener('DOMContentLoaded', function() {
 					<span>2</span>
 				</div>
 				<div class="step-content step-bottom">
-					<div class="step-icon">📄</div>
+					<div class="step-icon">
+						<img src="{{ url_for('static', filename='document-text.svg') }}" alt="Documents" class="w-10 h-10">
+					</div>
 					<h3>{% if lang == 'uz' %}Hujjatlar{% elif lang == 'ru' %}Документы{% elif lang == 'tr' %}Belgeler{% else %}Documents{% endif %}</h3>
 					<p>{% if lang == 'uz' %}Barcha hujjatlarni tayyorlash va to'g'ri rasmiylashtirishda yordam{% elif lang == 'ru' %}Помощь в подготовке и правильном оформлении документов{% elif lang == 'tr' %}Belgelerin hazırlanması ve düzenlenmesinde yardım{% else %}Help with preparing and formatting documents{% endif %}</p>
 				</div>
@@ -2091,7 +2129,9 @@ document.addEventListener('DOMContentLoaded', function() {
 					<span>3</span>
 				</div>
 				<div class="step-content step-top">
-					<div class="step-icon">✉️</div>
+					<div class="step-icon">
+						<img src="{{ url_for('static', filename='like-shapes.svg') }}" alt="Admission" class="w-10 h-10">
+					</div>
 					<h3>{% if lang == 'uz' %}Qabul{% elif lang == 'ru' %}Зачисление{% elif lang == 'tr' %}Kabul{% else %}Admission{% endif %}</h3>
 					<p>{% if lang == 'uz' %}Qabul xatini olish, viza va jo'nashga tayyorgarlik{% elif lang == 'ru' %}Получение письма о зачислении, виза и подготовка{% elif lang == 'tr' %}Kabul mektubunu alma, vize ve hazırlık{% else %}Getting acceptance letter, visa and preparation{% endif %}</p>
 				</div>
@@ -2105,7 +2145,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			<div class="mobile-step">
 				<div class="mobile-step-dot"><span>1</span></div>
 				<div class="mobile-step-content">
-					<div class="mobile-step-icon">💬</div>
+					<div class="mobile-step-icon">
+						<img src="{{ url_for('static', filename='messages-2.svg') }}" alt="Consultation" class="w-8 h-8">
+					</div>
 					<h3>{% if lang == 'uz' %}Konsultatsiya{% elif lang == 'ru' %}Консультация{% elif lang == 'tr' %}Danışmanlık{% else %}Consultation{% endif %}</h3>
 					<p>{% if lang == 'uz' %}Bepul maslahat, yo'nalish va universitet tanlashda yordam{% elif lang == 'ru' %}Бесплатная консультация, помощь в выборе направления{% elif lang == 'tr' %}Ücretsiz danışmanlık, bölüm seçiminde yardım{% else %}Free consultation, help with choosing major{% endif %}</p>
 				</div>
@@ -2114,7 +2156,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			<div class="mobile-step">
 				<div class="mobile-step-dot"><span>2</span></div>
 				<div class="mobile-step-content">
-					<div class="mobile-step-icon">📄</div>
+					<div class="mobile-step-icon">
+						<img src="{{ url_for('static', filename='document-text.svg') }}" alt="Documents" class="w-8 h-8">
+					</div>
 					<h3>{% if lang == 'uz' %}Hujjatlar{% elif lang == 'ru' %}Документы{% elif lang == 'tr' %}Belgeler{% else %}Documents{% endif %}</h3>
 					<p>{% if lang == 'uz' %}Barcha hujjatlarni tayyorlash va to'g'ri rasmiylashtirishda yordam{% elif lang == 'ru' %}Помощь в подготовке и правильном оформлении документов{% elif lang == 'tr' %}Belgelerin hazırlanması ve düzenlenmesinde yardım{% else %}Help with preparing and formatting documents{% endif %}</p>
 				</div>
@@ -2123,7 +2167,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			<div class="mobile-step">
 				<div class="mobile-step-dot"><span>3</span></div>
 				<div class="mobile-step-content">
-					<div class="mobile-step-icon">✉️</div>
+					<div class="mobile-step-icon">
+						<img src="{{ url_for('static', filename='like-shapes.svg') }}" alt="Admission" class="w-8 h-8">
+					</div>
 					<h3>{% if lang == 'uz' %}Qabul{% elif lang == 'ru' %}Зачисление{% elif lang == 'tr' %}Kabul{% else %}Admission{% endif %}</h3>
 					<p>{% if lang == 'uz' %}Qabul xatini olish, viza va jo'nashga tayyorgarlik{% elif lang == 'ru' %}Получение письма о зачислении, виза и подготовка{% elif lang == 'tr' %}Kabul mektubunu alma, vize ve hazırlık{% else %}Getting acceptance letter, visa and preparation{% endif %}</p>
 				</div>
@@ -2159,25 +2205,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 .wave-line {
 	stroke-dasharray: 8,8;
-	animation: dash 20s linear infinite;
 }
 
 .wave-line-active {
-	stroke-dasharray: 1000;
-	stroke-dashoffset: 1000;
-	animation: drawLine 3s ease-in-out forwards;
-}
-
-@keyframes drawLine {
-	to {
-		stroke-dashoffset: 0;
-	}
-}
-
-@keyframes dash {
-	to {
-		stroke-dashoffset: -100;
-	}
+	stroke-dasharray: 8,8;
 }
 
 /* Roadmap Steps */
@@ -2222,18 +2253,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	color: white;
 	position: relative;
 	z-index: 3;
-	animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-	0%, 100% {
-		transform: scale(1);
-		box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-	}
-	50% {
-		transform: scale(1.05);
-		box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
-	}
 }
 
 .step-content {
@@ -2258,8 +2277,16 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 .step-icon {
-	font-size: 2.5rem;
 	margin-bottom: 0.75rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.step-icon img {
+	width: 40px;
+	height: 40px;
+	filter: brightness(0) saturate(100%) invert(27%) sepia(95%) saturate(2878%) hue-rotate(212deg) brightness(98%) contrast(96%);
 }
 
 .step-content h3 {
@@ -2334,8 +2361,16 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 .mobile-step-icon {
-	font-size: 2rem;
 	margin-bottom: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.mobile-step-icon img {
+	width: 32px;
+	height: 32px;
+	filter: brightness(0) saturate(100%) invert(27%) sepia(95%) saturate(2878%) hue-rotate(212deg) brightness(98%) contrast(96%);
 }
 
 .mobile-step-content h3 {

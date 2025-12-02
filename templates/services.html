@@ -27,132 +27,6 @@
 	filter: brightness(0) saturate(100%) invert(20%) sepia(10%) saturate(500%) hue-rotate(180deg) brightness(95%) contrast(90%);
 }
 
-/* Service Modal Styles */
-.service-modal {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0, 0, 0, 0.5);
-	z-index: 1000;
-	overflow-y: auto;
-	padding: 2rem;
-}
-
-.service-modal.active {
-	display: flex;
-	align-items: flex-start;
-	justify-content: center;
-}
-
-.service-modal-content {
-	background: white;
-	border-radius: 24px;
-	max-width: 800px;
-	width: 100%;
-	margin: 2rem auto;
-	position: relative;
-	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-.service-modal-header {
-	padding: 2rem;
-	border-bottom: 1px solid #e5e7eb;
-	position: relative;
-}
-
-.service-modal-close {
-	position: absolute;
-	top: 1.5rem;
-	right: 1.5rem;
-	width: 36px;
-	height: 36px;
-	border-radius: 50%;
-	background: #f3f4f6;
-	border: none;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transition: all 0.2s ease;
-}
-
-.service-modal-close:hover {
-	background: #e5e7eb;
-}
-
-.service-modal-body {
-	padding: 2rem;
-	max-height: calc(100vh - 200px);
-	overflow-y: auto;
-}
-
-.service-modal-section {
-	margin-bottom: 2rem;
-}
-
-.service-modal-section h3 {
-	font-size: 1.25rem;
-	font-weight: 700;
-	color: #111;
-	margin-bottom: 1rem;
-	font-family: 'Inter', sans-serif;
-}
-
-.service-modal-section p,
-.service-modal-section ul {
-	font-size: 0.9375rem;
-	color: #6b7280;
-	line-height: 1.6;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-}
-
-.service-modal-section ul {
-	list-style: none;
-	padding: 0;
-}
-
-.service-modal-section ul li {
-	padding: 0.5rem 0;
-	padding-left: 1.5rem;
-	position: relative;
-}
-
-.service-modal-section ul li::before {
-	content: "•";
-	position: absolute;
-	left: 0;
-	color: #2563eb;
-	font-weight: bold;
-}
-
-.service-modal-cta {
-	padding: 2rem;
-	border-top: 1px solid #e5e7eb;
-	text-align: center;
-}
-
-.service-modal-cta button {
-	padding: 0.875rem 2rem;
-	background: #2563eb;
-	color: white;
-	border: none;
-	border-radius: 100px;
-	font-weight: 600;
-	font-size: 0.9375rem;
-	cursor: pointer;
-	transition: all 0.2s ease;
-	font-family: 'Inter', sans-serif;
-}
-
-.service-modal-cta button:hover {
-	background: #1d4ed8;
-	transform: translateY(-1px);
-	box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-}
-
 /* Packages Comparison Table */
 .packages-table {
 	width: 100%;
@@ -208,20 +82,6 @@
 }
 
 @media (max-width: 768px) {
-	.service-modal {
-		padding: 1rem;
-	}
-	
-	.service-modal-content {
-		margin: 1rem auto;
-	}
-	
-	.service-modal-header,
-	.service-modal-body,
-	.service-modal-cta {
-		padding: 1.5rem;
-	}
-	
 	.packages-table {
 		font-size: 0.75rem;
 	}
@@ -277,7 +137,7 @@
 		<div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 			{% set services = [
 				('uz:Universitetga qabul', 'ru:Поступление в университет', 'tr:Üniversite kabulü', 'en:University Admission', 'admission', 'teacher.svg', 'uz:Turkiyadagi universitetlarga qabul jarayonida to\'liq yordam. Hujjatlar tayyorlash, ariza topshirish va qabul natijalarini kuzatish.', 'ru:Полная помощь в процессе поступления в турецкие университеты. Подготовка документов, подача заявок и отслеживание результатов приема.', 'tr:Türkiye\'deki üniversitelere kabul sürecinde tam destek. Belge hazırlama, başvuru yapma ve kabul sonuçlarını takip etme.', 'en:Full support in the admission process to Turkish universities. Document preparation, application submission and tracking admission results.'),
-				('uz:Hujjatlar tayyorlash', 'ru:Подготовка документов', 'tr:Belge hazırlama', 'en:Documents Preparation', 'documents', 'uz:Barcha kerakli hujjatlarni to\'liq tayyorlash va notarial tasdiqlash xizmatlari. Pasport, diplom, transkript va boshqalar.', 'ru:Полная подготовка и нотариальное заверение всех необходимых документов. Паспорт, диплом, транскрипт и другие.', 'tr:Tüm gerekli belgelerin tam hazırlanması ve noter onayı hizmetleri. Pasaport, diploma, transkript ve diğerleri.', 'en:Full preparation and notarization of all required documents. Passport, diploma, transcript and others.'),
+				('uz:Hujjatlar tayyorlash', 'ru:Подготовка документов', 'tr:Belge hazırlama', 'en:Documents Preparation', 'documents', 'document-text.svg', 'uz:Barcha kerakli hujjatlarni to\'liq tayyorlash va notarial tasdiqlash xizmatlari. Pasport, diplom, transkript va boshqalar.', 'ru:Полная подготовка и нотариальное заверение всех необходимых документов. Паспорт, диплом, транскрипт и другие.', 'tr:Tüm gerekli belgelerin tam hazırlanması ve noter onayı hizmetleri. Pasaport, diploma, transkript ve diğerleri.', 'en:Full preparation and notarization of all required documents. Passport, diploma, transcript and others.'),
 				('uz:Yashash ruxsatnomasi (İkamet)', 'ru:Вид на жительство (İkamet)', 'tr:İkamet izni', 'en:Residence Permit (İkamet)', 'residence', 'house.svg', 'uz:Turkiyada yashash ruxsatnomasi olish uchun to\'liq yordam. Hujjatlar to\'plash, ariza topshirish va ruxsatnoma olish.', 'ru:Полная помощь в получении вида на жительство в Турции. Сбор документов, подача заявки и получение разрешения.', 'tr:Türkiye\'de ikamet izni almak için tam destek. Belge toplama, başvuru yapma ve izin alma.', 'en:Full support for obtaining a residence permit in Turkey. Document collection, application submission and permit acquisition.'),
 				('uz:Yashash joyi', 'ru:Жилье', 'tr:Konaklama', 'en:Accommodation', 'accommodation', 'home.svg', 'uz:Turkiyada qulay va xavfsiz yashash joyi topish. Talabalar uchun maxsus kvartiralar va yotoqxonalar.', 'ru:Поиск удобного и безопасного жилья в Турции. Специальные квартиры и общежития для студентов.', 'tr:Türkiye\'de rahat ve güvenli konaklama bulma. Öğrenciler için özel daireler ve yurtlar.', 'en:Finding comfortable and safe accommodation in Turkey. Special apartments and dormitories for students.'),
 				('uz:Aeroportdan olib ketish', 'ru:Встреча в аэропорту', 'tr:Havalimanı karşılama', 'en:Airport Pickup', 'airport', 'arrow-up.svg', 'uz:Aeroportdan yashash joyingizgacha xavfsiz tashish xizmati. Professional haydovchilar va qulay transport.', 'ru:Безопасная транспортировка из аэропорта до места проживания. Профессиональные водители и удобный транспорт.', 'tr:Havalimanından konaklama yerinize güvenli ulaşım hizmeti. Profesyonel şoförler ve rahat ulaşım.', 'en:Safe transportation from airport to your accommodation. Professional drivers and comfortable transport.'),
@@ -304,12 +164,12 @@
 					<p class="text-sm text-gray-600 font-normal mb-4 leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 						{% if lang == 'uz' %}{{ service[7].split(':')[1] }}{% elif lang == 'ru' %}{{ service[8].split(':')[1] }}{% elif lang == 'tr' %}{{ service[9].split(':')[1] }}{% else %}{{ service[10].split(':')[1] }}{% endif %}
 					</p>
-					<button onclick="openServiceModal('{{ service[4] }}')" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					<a href="{{ url_for('service_detail', service_id=service[4], lang=lang) }}" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 						<span>{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Learn more{% endif %}</span>
 						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							<polyline points="9 18 15 12 9 6"/>
 						</svg>
-					</button>
+					</a>
 				</div>
 			</div>
 			{% endfor %}
@@ -328,28 +188,6 @@
 		</div>
 	</div>
 </section>
-
-<!-- Service Modal -->
-<div id="serviceModal" class="service-modal">
-	<div class="service-modal-content">
-		<div class="service-modal-header">
-			<h2 id="modalTitle" class="text-2xl font-bold text-gray-900 mb-2" style="font-family: 'Inter', sans-serif;"></h2>
-			<p id="modalIntro" class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
-			<button class="service-modal-close" onclick="closeServiceModal()">
-				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-					<line x1="18" y1="6" x2="6" y2="18"></line>
-					<line x1="6" y1="6" x2="18" y2="18"></line>
-				</svg>
-			</button>
-		</div>
-		<div class="service-modal-body">
-			<div id="modalContent"></div>
-		</div>
-		<div class="service-modal-cta">
-			<button id="modalCTA" onclick="closeServiceModal()"></button>
-		</div>
-	</div>
-</div>
 
 <!-- Paketlar & Narxlar Section -->
 <section id="packagesSection" class="py-12 bg-gray-50 packages-section relative">
@@ -831,7 +669,84 @@ function performSearch() {
 
 document.getElementById('searchInput').addEventListener('input', performSearch);
 
-// Simple minimalistic design - no animations
+// Service Modal Functions
+// Service data removed - using separate page instead of modal
+/* const serviceData = {
+	'admission': {
+		title: {% if lang == 'uz' %}'Turkiyada o\'qishga kirish — xatosiz va asab buzilmasdan'{% elif lang == 'ru' %}'Поступление в университет Турции — без ошибок и стресса'{% elif lang == 'tr' %}'Türkiye\'de üniversiteye giriş — hatasız ve stresiz'{% else %}'University Admission in Turkey — error-free and stress-free'{% endif %},
+		intro: {% if lang == 'uz' %}'Turkiyada 60+ universitet bilan ishlaymiz. Siz yo\'nalishni tanlaysiz, biz hujjat va qabulni o\'zimiz yuritamiz.'{% elif lang == 'ru' %}'Мы работаем с 60+ университетами в Турции. Вы выбираете направление, мы сами ведем документы и прием.'{% elif lang == 'tr' %}'Türkiye\'de 60+ üniversite ile çalışıyoruz. Siz bölümü seçersiniz, biz belgeleri ve kabulü kendimiz yürütürüz.'{% else %}'We work with 60+ universities in Turkey. You choose the major, we handle documents and admission ourselves.'{% endif %},
+		content: `
+			<div class="service-modal-section">
+				<h3>{% if lang == 'uz' %}Kimlar uchun?{% elif lang == 'ru' %}Для кого?{% elif lang == 'tr' %}Kimler için?{% else %}Who is it for?{% endif %}</h3>
+				<ul>
+					<li>{% if lang == 'uz' %}11-sinf, litsey, kollej bitiruvchilari{% elif lang == 'ru' %}Выпускники 11 класса, лицея, колледжа{% elif lang == 'tr' %}11. sınıf, lise, kolej mezunları{% else %}11th grade, lyceum, college graduates{% endif %}</li>
+					<li>{% if lang == 'uz' %}Boshqa davlatdan Turkiyaga o\'qishni ko\'chirmoqchi bo\'lganlar (transfer){% elif lang == 'ru' %}Те, кто хочет перевести учебу в Турцию из другой страны (трансфер){% elif lang == 'tr' %}Başka ülkeden Türkiye\'ye eğitim transfer etmek isteyenler{% else %}Those who want to transfer studies to Turkey from another country{% endif %}</li>
+					<li>{% if lang == 'uz' %}Bakalavrdan magistraturaga o\'tmoqchi bo\'lganlar{% elif lang == 'ru' %}Те, кто хочет перейти с бакалавриата на магистратуру{% elif lang == 'tr' %}Lisans\'tan yüksek lisans\'a geçmek isteyenler{% else %}Those who want to transition from bachelor\'s to master\'s{% endif %}</li>
+				</ul>
+			</div>
+			<div class="service-modal-section">
+				<h3>{% if lang == 'uz' %}Xizmat ichiga nimalar kiradi?{% elif lang == 'ru' %}Что входит в услугу?{% elif lang == 'tr' %}Hizmet içeriği nedir?{% else %}What is included in the service?{% endif %}</h3>
+				<ul>
+					<li>{% if lang == 'uz' %}Qiziqish, budjet va tilga qarab 3–5 ta mos universitet tanlab berish{% elif lang == 'ru' %}Подбор 3–5 подходящих университетов по интересам, бюджету и языку{% elif lang == 'tr' %}İlgi, bütçe ve dile göre 3–5 uygun üniversite seçimi{% else %}Selection of 3–5 suitable universities based on interests, budget and language{% endif %}</li>
+					<li>{% if lang == 'uz' %}3 tagacha universitetga hujjat topshirish{% elif lang == 'ru' %}Подача документов в до 3 университетов{% elif lang == 'tr' %}3 üniversiteye kadar belge başvurusu{% else %}Application to up to 3 universities{% endif %}</li>
+					<li>{% if lang == 'uz' %}Hujjatlarni to\'g\'ri formatda tayyorlash va yuklash{% elif lang == 'ru' %}Подготовка и загрузка документов в правильном формате{% elif lang == 'tr' %}Belgeleri doğru formatta hazırlama ve yükleme{% else %}Preparing and uploading documents in the correct format{% endif %}</li>
+					<li>{% if lang == 'uz' %}Qabul maktubi (Offer / Acceptance) chiqquncha jarayonni kuzatish{% elif lang == 'ru' %}Отслеживание процесса до получения письма о приеме{% elif lang == 'tr' %}Kabul mektubu çıkana kadar süreci takip etme{% else %}Tracking the process until acceptance letter is received{% endif %}</li>
+				</ul>
+			</div>
+			<div class="service-modal-section">
+				<h3>{% if lang == 'uz' %}Jarayon qanday o\'tadi?{% elif lang == 'ru' %}Как проходит процесс?{% elif lang == 'tr' %}Süreç nasıl ilerler?{% else %}How does the process work?{% endif %}</h3>
+				<ul>
+					<li>{% if lang == 'uz' %}1. Bepul konsultatsiya – sizdan ma\'lumot olamiz: yo\'nalish, til, budjet, mamlakat.{% elif lang == 'ru' %}1. Бесплатная консультация – мы получаем от вас информацию: направление, язык, бюджет, страна.{% elif lang == 'tr' %}1. Ücretsiz danışmanlık – sizden bilgi alıyoruz: bölüm, dil, bütçe, ülke.{% else %}1. Free consultation – we get information from you: major, language, budget, country.{% endif %}</li>
+					<li>{% if lang == 'uz' %}2. Variantlar – sizga mos 3–5 ta universitet ro\'yxatini chiqaramiz.{% elif lang == 'ru' %}2. Варианты – мы предоставляем список из 3–5 подходящих университетов.{% elif lang == 'tr' %}2. Seçenekler – size uygun 3–5 üniversite listesi çıkarıyoruz.{% else %}2. Options – we provide a list of 3–5 suitable universities.{% endif %}</li>
+					<li>{% if lang == 'uz' %}3. Hujjat yig\'ish – kerakli fayllar ro\'yxatini beramiz, topganlaringizni tekshiramiz.{% elif lang == 'ru' %}3. Сбор документов – мы предоставляем список необходимых файлов, проверяем найденные вами.{% elif lang == 'tr' %}3. Belge toplama – gerekli dosyaların listesini veriyoruz, bulduklarınızı kontrol ediyoruz.{% else %}3. Document collection – we provide a list of required files, check what you found.{% endif %}</li>
+					<li>{% if lang == 'uz' %}4. Ariza topshirish – hujjatlaringizni universitet tizimlariga o\'zimiz kiritamiz.{% elif lang == 'ru' %}4. Подача заявки – мы сами вводим ваши документы в системы университетов.{% elif lang == 'tr' %}4. Başvuru yapma – belgelerinizi üniversite sistemlerine kendimiz giriyoruz.{% else %}4. Application submission – we enter your documents into university systems ourselves.{% endif %}</li>
+					<li>{% if lang == 'uz' %}5. Natija – qabul maktubi kelgach, keyingi qadamlar bo\'yicha yo\'l-yo\'riq beramiz.{% elif lang == 'ru' %}5. Результат – когда придет письмо о приеме, мы предоставим руководство по следующим шагам.{% elif lang == 'tr' %}5. Sonuç – kabul mektubu geldiğinde, sonraki adımlar için rehberlik sağlıyoruz.{% else %}5. Result – when acceptance letter arrives, we provide guidance for next steps.{% endif %}</li>
+				</ul>
+			</div>
+			<div class="service-modal-section">
+				<h3>{% if lang == 'uz' %}Nega aynan StudyFans orqali topshirgan ma\'qul?{% elif lang == 'ru' %}Почему лучше подавать через StudyFans?{% elif lang == 'tr' %}Neden StudyFans üzerinden başvurmak daha iyi?{% else %}Why is it better to apply through StudyFans?{% endif %}</h3>
+				<ul>
+					<li>{% if lang == 'uz' %}Har bir xato – 1 yilni yo\'qotishi mumkin. Biz xatoni oldini olamiz.{% elif lang == 'ru' %}Каждая ошибка может стоить 1 года. Мы предотвращаем ошибки.{% elif lang == 'tr' %}Her hata 1 yıl kaybettirebilir. Biz hataları önlüyoruz.{% else %}Each mistake can cost 1 year. We prevent mistakes.{% endif %}</li>
+					<li>{% if lang == 'uz' %}Bizda "taxmin" yo\'q – har bir universitetning real talablari bizda bor.{% elif lang == 'ru' %}У нас нет "предположений" – у нас есть реальные требования каждого университета.{% elif lang == 'tr' %}Bizde "tahmin" yok – her üniversitenin gerçek gereksinimleri bizde var.{% else %}We don't have "guesses" – we have real requirements of each university.{% endif %}</li>
+					<li>{% if lang == 'uz' %}Siz 1 marta hujjat yuborasiz, biz uni bir nechta universitetga moslab ishlaymiz.{% elif lang == 'ru' %}Вы отправляете документы 1 раз, мы адаптируем их для нескольких университетов.{% elif lang == 'tr' %}Belgeleri 1 kez gönderirsiniz, biz bunları birkaç üniversiteye uyarlarız.{% else %}You send documents once, we adapt them for multiple universities.{% endif %}</li>
+				</ul>
+			</div>
+		`,
+		cta: {% if lang == 'uz' %}'Menga mos universitetlarni tanlab bering'{% elif lang == 'ru' %}'Подберите мне подходящие университеты'{% elif lang == 'tr' %}'Bana uygun üniversiteleri seçin'{% else %}'Select suitable universities for me'{% endif %}
+	},
+	'documents': {
+		title: {% if lang == 'uz' %}'Hujjatlaringiz – xalqaro talabga mos holatda'{% elif lang == 'ru' %}'Ваши документы – в соответствии с международными требованиями'{% elif lang == 'tr' %}'Belgeleriniz – uluslararası gereksinimlere uygun'{% else %}'Your documents – in accordance with international requirements'{% endif %},
+		intro: {% if lang == 'uz' %}'Noto\'g\'ri tarjima yoki notarius – qabul va ikametda eng ko\'p rad sababi. Biz shuni to\'g\'ri qilamiz.'{% elif lang == 'ru' %}'Неправильный перевод или нотариус – самая частая причина отказа при приеме и виде на жительство. Мы делаем это правильно.'{% elif lang == 'tr' %}'Yanlış çeviri veya noter – kabul ve ikamette en çok red nedeni. Biz bunu doğru yapıyoruz.'{% else %}'Incorrect translation or notary – the most common reason for rejection in admission and residence permit. We do it right.'{% endif %},
+		content: `
+			<div class="service-modal-section">
+				<h3>{% if lang == 'uz' %}Kimlar uchun?{% elif lang == 'ru' %}Для кого?{% elif lang == 'tr' %}Kimler için?{% else %}Who is it for?{% endif %}</h3>
+				<ul>
+					<li>{% if lang == 'uz' %}Universitetga hujjat topshirayotganlar{% elif lang == 'ru' %}Те, кто подает документы в университет{% elif lang == 'tr' %}Üniversiteye belge başvurusu yapanlar{% else %}Those applying to university{% endif %}</li>
+					<li>{% if lang == 'uz' %}İkametga tayyorlanayotganlar{% elif lang == 'ru' %}Те, кто готовится к виду на жительство{% elif lang == 'tr' %}İkamet için hazırlananlar{% else %}Those preparing for residence permit{% endif %}</li>
+					<li>{% if lang == 'uz' %}Viza jarayonida rasmiy hujjatlar kerak bo\'lganlar{% elif lang == 'ru' %}Те, кому нужны официальные документы в процессе визы{% elif lang == 'tr' %}Vize sürecinde resmi belgeler gerekenler{% else %}Those who need official documents in visa process{% endif %}</li>
+				</ul>
+			</div>
+			<div class="service-modal-section">
+				<h3>{% if lang == 'uz' %}Nimalar kiradi?{% elif lang == 'ru' %}Что входит?{% elif lang == 'tr' %}Neler dahil?{% else %}What is included?{% endif %}</h3>
+				<ul>
+					<li>{% if lang == 'uz' %}Attestat/diplom tarjimasi{% elif lang == 'ru' %}Перевод аттестата/диплома{% elif lang == 'tr' %}Lise/diploma çevirisi{% else %}High school diploma/degree translation{% endif %}</li>
+					<li>{% if lang == 'uz' %}Transkript tarjimasi{% elif lang == 'ru' %}Перевод транскрипта{% elif lang == 'tr' %}Transkript çevirisi{% else %}Transcript translation{% endif %}</li>
+					<li>{% if lang == 'uz' %}Pasport tarjimasi (kerak bo\'lsa){% elif lang == 'ru' %}Перевод паспорта (при необходимости){% elif lang == 'tr' %}Pasaport çevirisi (gerekirse){% else %}Passport translation (if needed){% endif %}</li>
+					<li>{% if lang == 'uz' %}Notarius tasdiqlari{% elif lang == 'ru' %}Нотариальные заверения{% elif lang == 'tr' %}Noter onayları{% else %}Notary certifications{% endif %}</li>
+					<li>{% if lang == 'uz' %}Apostil bo\'yicha yo\'l-yo\'riq{% elif lang == 'ru' %}Руководство по апостилю{% elif lang == 'tr' %}Apostil rehberliği{% else %}Apostille guidance{% endif %}</li>
+				</ul>
+			</div>
+			<div class="service-modal-section">
+				<h3>{% if lang == 'uz' %}Jarayon:{% elif lang == 'ru' %}Процесс:{% elif lang == 'tr' %}Süreç:{% else %}Process:{% endif %}</h3>
+				<ul>
+					<li>{% if lang == 'uz' %}1. Siz hujjatlaringizni fotosurat/scan orqali yuborasiz.{% elif lang == 'ru' %}1. Вы отправляете документы через фото/скан.{% elif lang == 'tr' %}1. Belgelerinizi fotoğraf/tarama yoluyla gönderirsiniz.{% else %}1. You send your documents via photo/scan.{% endif %}</li>
+					<li>{% if lang == 'uz' %}2. Biz tarjima va notarius bo\'yicha aniq reja beramiz.{% elif lang == 'ru' %}2. Мы предоставляем четкий план по переводу и нотариусу.{% elif lang == 'tr' %}2. Çeviri ve noter için net plan veriyoruz.{% else %}2. We provide a clear plan for translation and notary.{% endif %}</li>
+					<li>{% if lang == 'uz' %}3. Tayyor hujjatlarni sizga elektron yoki hard copy ko\'rinishida topshiramiz.{% elif lang == 'ru' %}3. Готовые документы мы предоставляем вам в электронном или бумажном виде.{% elif lang == 'tr' %}3. Hazır belgeleri elektronik veya basılı kopya olarak size teslim ediyoruz.{% else %}3. We deliver ready documents to you in electronic or hard copy format.{% endif %}</li>
+				</ul>
+			</div>
+		`,
+		cta: {% if lang == 'uz' %}'Hujjatlarimni tekshirtirib olaman'{% elif lang == 'ru' %}'Проверить мои документы'{% elif lang == 'tr' %}'Belgelerimi kontrol ettirebilirim'{% else %}'I can have my documents checked'{% endif %}
+} */
 
 </script>
 

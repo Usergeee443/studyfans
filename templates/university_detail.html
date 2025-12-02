@@ -4,6 +4,28 @@
 	{% if lang == 'uz' %}{{ university.name_uz }} - Study Fans{% elif lang == 'ru' %}{{ university.name_ru }} - Study Fans{% elif lang == 'tr' %}{{ university.name_tr }} - Study Fans{% else %}{{ university.name_en }} - Study Fans{% endif %}
 {% endblock %}
 
+{% block extra_css %}
+<style>
+	/* Hide main sidebar on university detail page */
+	#sidebar {
+		display: none !important;
+	}
+	
+	/* Full width content */
+	#main-content {
+		margin-left: 0 !important;
+		width: 100% !important;
+	}
+	
+	.page-container {
+		margin-left: 0 !important;
+		width: 100% !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+</style>
+{% endblock %}
+
 {% block content %}
 
 <div class="page-container" style="margin-top: 0; padding-top: 0;">
