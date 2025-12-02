@@ -38,13 +38,16 @@
 	.chat-page-container {
 		position: relative;
 		height: calc(100vh - 0px);
-		margin-left: 224px;
-		width: calc(100% - 224px);
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+		max-width: 100%;
 	}
 	
-	.sidebar-collapsed ~ #main-content .chat-page-container {
-		margin-left: 72px;
-		width: calc(100% - 72px);
+	#chatMessages .max-w-4xl,
+	.chat-input-wrapper .max-w-4xl {
+		margin-left: auto;
+		margin-right: auto;
 	}
 }
 
