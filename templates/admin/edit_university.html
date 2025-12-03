@@ -345,36 +345,65 @@
                     </div>
                 </div>
 
-                <!-- Logo Upload Section -->
-                <div class="border-b border-gray-200 pb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Universitet Logosi</h2>
-                    <div class="space-y-4">
-                        <!-- Current Logo -->
-                        {% if university.logo_url %}
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Joriy logo:</label>
-                            <div class="w-32 h-32 border-2 border-gray-300 rounded-lg flex items-center justify-center overflow-hidden bg-gray-50">
-                                <img src="{{ url_for('static', filename=university.logo_url) }}" alt="Current logo" class="w-full h-full object-contain">
+                <!-- Logo & Cover Image Upload Section -->
+                <div class="border-b border-gray-200 pb-8 space-y-10">
+                    <!-- Logo -->
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900 mb-6">Universitet Logosi</h2>
+                        <div class="space-y-4">
+                            <!-- Current Logo -->
+                            {% if university.logo_url %}
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Joriy logo:</label>
+                                <div class="w-32 h-32 border-2 border-gray-300 rounded-lg flex items-center justify-center overflow-hidden bg-gray-50">
+                                    <img src="{{ url_for('static', filename=university.logo_url) }}" alt="Current logo" class="w-full h-full object-contain">
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    <i class="fas fa-image mr-2 text-purple-500"></i>Yangi logo faylini tanlang
+                                </label>
+                                <input type="file" name="logo" accept="image/*" id="logo-input"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200">
+                                <p class="text-sm text-gray-500 mt-2">
+                                    Ruxsat etilgan formatlar: PNG, JPG, JPEG, GIF, WEBP. Maksimal hajm: 16MB
+                                </p>
+                            </div>
+                            
+                            <!-- Logo Preview -->
+                            <div id="logo-preview" class="hidden">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Yangi logo ko'rinishi:</label>
+                                <div class="w-32 h-32 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center overflow-hidden">
+                                    <img id="preview-image" src="" alt="Logo preview" class="w-full h-full object-contain">
+                                </div>
                             </div>
                         </div>
-                        {% endif %}
-                        
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                <i class="fas fa-image mr-2 text-purple-500"></i>Yangi logo faylini tanlang
-                            </label>
-                            <input type="file" name="logo" accept="image/*" id="logo-input"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200">
-                            <p class="text-sm text-gray-500 mt-2">
-                                Ruxsat etilgan formatlar: PNG, JPG, JPEG, GIF, WEBP. Maksimal hajm: 16MB
-                            </p>
-                        </div>
-                        
-                        <!-- Logo Preview -->
-                        <div id="logo-preview" class="hidden">
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Yangi logo ko'rinishi:</label>
-                            <div class="w-32 h-32 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center overflow-hidden">
-                                <img id="preview-image" src="" alt="Logo preview" class="w-full h-full object-contain">
+                    </div>
+
+                    <!-- Cover Image -->
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Katta rasm (cover)</h2>
+                        <div class="space-y-4">
+                            {% if university.cover_image_url %}
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Joriy cover rasm:</label>
+                                <div class="w-full max-w-xl h-40 md:h-48 border-2 border-gray-300 rounded-lg overflow-hidden bg-gray-50">
+                                    <img src="{{ url_for('static', filename=university.cover_image_url) }}" alt="Current cover" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    <i class="fas fa-image mr-2 text-blue-500"></i>Yangi cover rasmni tanlang
+                                </label>
+                                <input type="file" name="cover_image" accept="image/*"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200">
+                                <p class="text-sm text-gray-500 mt-2">
+                                    Tavsiya: gorizontal rasm (16:9 yoki 4:3), yuqori sifatli, maksimal 16MB.
+                                </p>
                             </div>
                         </div>
                     </div>

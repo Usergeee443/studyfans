@@ -1,0 +1,269 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% if lang == 'uz' %}Case #{{ case_id }} - Study Fans{% elif lang == 'ru' %}Кейс #{{ case_id }} - Study Fans{% elif lang == 'tr' %}Vaka #{{ case_id }} - Study Fans{% else %}Case #{{ case_id }} - Study Fans{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="page-container" style="margin-top: 0; padding-top: 0;">
+<!-- Minimalistic Header -->
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+	<div class="w-full px-6">
+		<div class="flex items-center gap-4 py-3">
+			<a href="{{ url_for('success_stories', lang=lang) }}" class="flex items-center justify-center w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
+				<img src="{{ url_for('static', filename='arrow-left.svg') }}" alt="Back" class="w-5 h-5">
+			</a>
+			<h1 id="headerTitle" class="text-base font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
+				{% if lang == 'uz' %}Muvaffaqiyat hikoyasi{% elif lang == 'ru' %}История успеха{% elif lang == 'tr' %}Başarı hikayesi{% else %}Success Story{% endif %}
+			</h1>
+		</div>
+	</div>
+</header>
+
+<!-- Content -->
+<main class="max-w-4xl mx-auto px-6 py-12" id="caseContent">
+	<!-- Content loaded by JavaScript -->
+</main>
+</div>
+
+<style>
+	.case-section {
+		margin-bottom: 2rem;
+	}
+	.section-title {
+		font-size: 1rem;
+		font-weight: 600;
+		color: #111;
+		margin-bottom: 1rem;
+		font-family: 'Inter', sans-serif;
+	}
+	.expert-video video {
+		width: 100%;
+		border-radius: 16px;
+	}
+	.expert-text {
+		font-size: 0.9rem;
+		color: #6b7280;
+		font-style: italic;
+		line-height: 1.6;
+		margin-top: 0.75rem;
+	}
+	.client-profile {
+		background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+		border-radius: 20px;
+		padding: 1.5rem;
+		border: 1px solid #e2e8f0;
+	}
+	.client-name {
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: #111;
+		margin-bottom: 1.25rem;
+	}
+	.client-details {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+		gap: 1rem;
+	}
+	.detail-item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+	.detail-label {
+		font-size: 0.7rem;
+		font-weight: 500;
+		color: #9ca3af;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+	.detail-value {
+		font-size: 0.9rem;
+		font-weight: 500;
+		color: #111;
+	}
+	.screenshots-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+	}
+	.screenshot-item {
+		background: #f9fafb;
+		border-radius: 16px;
+		padding: 1.25rem;
+		border: 1px solid #e5e7eb;
+		text-align: center;
+	}
+	.screenshot-placeholder {
+		background: #e5e7eb;
+		border-radius: 12px;
+		height: 100px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #6b7280;
+		font-size: 0.85rem;
+		margin-bottom: 0.75rem;
+	}
+	.screenshot-caption {
+		font-size: 0.7rem;
+		color: #9ca3af;
+		font-style: italic;
+	}
+	.testimonial-box {
+		background: #fef3c7;
+		border-radius: 16px;
+		padding: 1.5rem;
+		border: 1px solid #fde68a;
+	}
+	.testimonial-text {
+		font-size: 0.95rem;
+		color: #92400e;
+		line-height: 1.7;
+		font-style: italic;
+	}
+	.conclusion-box {
+		background: #eff6ff;
+		border-radius: 16px;
+		padding: 1.5rem;
+		border: 1px solid #bfdbfe;
+	}
+	.conclusion-text {
+		font-size: 0.95rem;
+		color: #1e40af;
+		line-height: 1.7;
+	}
+	.cta-section {
+		background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+		border-radius: 20px;
+		padding: 2rem;
+		text-align: center;
+		color: white;
+	}
+	.cta-title {
+		font-size: 1.25rem;
+		font-weight: 600;
+		margin-bottom: 1.25rem;
+	}
+	.cta-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	.cta-btn {
+		padding: 0.75rem 2rem;
+		background: white;
+		color: #2563eb;
+		border: none;
+		border-radius: 50px;
+		font-weight: 500;
+		font-size: 0.9rem;
+		cursor: pointer;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		transition: all 0.2s;
+	}
+	.cta-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+	}
+	
+	@media (max-width: 768px) {
+		.screenshots-grid {
+			grid-template-columns: 1fr;
+		}
+		.cta-buttons {
+			flex-direction: column;
+		}
+		.cta-btn {
+			width: 100%;
+			justify-content: center;
+		}
+	}
+</style>
+
+<script>
+const caseData = {
+	1: { name: 'Muhammadali Mamatov', major: 'Computer Engineering', university: 'Istanbul Kent University', city: 'Istanbul', service: 'Qabul + Hujjatlar', age: 18, expert: 'Akmal Toshmatov', expertRole: 'Senior Admission Consultant', expertText: 'Bu mijozimiz Muhammadali Mamatovga IT yo\'nalishida universitet tanlashdan boshlab qabul xatigacha to\'liq yordam berdik. Mana natija:', testimonial: 'StudyFans jamoasi menga yo\'nalish tanlashda ham, hujjatlarda ham juda ko\'p yordam berdi. 5 kunda qabul xatini oldim. Tavsiya qilaman!', conclusion: 'Muhammadali uchun eng mos IT yo\'nalishi bo\'yicha variantlarni tanlab berdik, hujjatlarini to\'g\'ri formatda tayyorlab, qisqa muddatda qabul xatini olib berdik.' },
+	2: { name: 'Aziza Karimova', major: 'Medicine', university: 'IGU', city: 'Istanbul', service: 'Qabul', age: 19, expert: 'Dilshoda Toshmatova', expertRole: 'Admission Specialist', expertText: 'Aziza Karimovaga tibbiyot yo\'nalishida eng yaxshi universitetlarni tanlab berdik.', testimonial: 'Tibbiyot yo\'nalishida qabul olish qiyin edi, lekin StudyFans yordami bilan muvaffaqiyatli qabul oldim. Rahmat!', conclusion: 'Aziza uchun tibbiyot yo\'nalishida eng yaxshi variantlarni tanlab, qabul jarayonini tezlashtirdik.' },
+	3: { name: 'Bobur Mirzaev', major: 'Business', university: 'Atlas University', city: 'Istanbul', service: 'İkamet', age: 20, expert: 'Javohir Karimov', expertRole: 'Residence Permit Specialist', expertText: 'Bobur Mirzaevning ikamet hujjatlarini to\'g\'ri tayyorlab, jarayonni tezlashtirdik.', testimonial: 'İkamet jarayoni juda qiyin ko\'rinardi, lekin StudyFans yordami bilan hammasi oson bo\'ldi. 2 haftada ikamet oldim.', conclusion: 'Bobur uchun ikamet hujjatlarini to\'g\'ri tayyorlab, jarayonni tezlashtirdik.' },
+	4: { name: 'Dilshoda Toshmatova', major: 'Design', university: 'MEF University', city: 'Istanbul', service: 'Qabul', age: 18, expert: 'Farhod Rustamov', expertRole: 'Admission Consultant', expertText: 'Dilshoda uchun dizayn yo\'nalishida eng mos universitetlarni tanlab berdik.', testimonial: 'Dizayn yo\'nalishida qabul olish uchun yordam so\'radim. StudyFans jamoasi juda professional ishladi.', conclusion: 'Dilshoda uchun dizayn yo\'nalishida eng mos universitetlarni tanlab, qabul jarayonini muvaffaqiyatli yakunladik.' },
+	5: { name: 'Javohir Karimov', major: 'Engineering', university: 'Okan University', city: 'Istanbul', service: 'Viza', age: 21, expert: 'Muhammadali Mamatov', expertRole: 'Visa Specialist', expertText: 'Javohir Karimovning viza masalasini hal qilib, qabul jarayonini davom ettirdik.', testimonial: 'Viza masalasi bor edi, lekin StudyFans yordami bilan hammasi hal qilindi. Rahmat!', conclusion: 'Javohir uchun viza masalasini hal qilib, qabul jarayonini davom ettirdik.' },
+	6: { name: 'Farhod Rustamov', major: 'Law', university: 'Bahcesehir University', city: 'Istanbul', service: 'Turar-joy', age: 19, expert: 'Aziza Karimova', expertRole: 'Accommodation Specialist', expertText: 'Farhod Rustamov uchun qulay va xavfsiz turar-joy topib berdik.', testimonial: 'Turar-joy topish qiyin edi, lekin StudyFans yordami bilan 1 haftada topildi. Juda qulay joy.', conclusion: 'Farhod uchun qulay va xavfsiz turar-joy topib, 1 haftada hammasini tayyorladik.' }
+};
+
+const lang = '{{ lang }}';
+const texts = {
+	uz: { expertIntro: 'Mutaxassis izohi:', clientProfile: 'Mijoz profili', major: 'Yo\'nalish', university: 'Universitet', city: 'Shahar', service: 'Xizmat', age: 'Yosh', screenshots: 'Real natija skrinshotlari', screenshotNote: 'Mijozdan olingan real natija.', clientOpinion: 'Mijozning fikri', expertConclusion: 'Mutaxassisning yakuniy izohi', ctaTitle: 'Siz ham shunday natija xohlaysizmi?', consultation: 'Bepul konsultatsiya' },
+	ru: { expertIntro: 'Комментарий эксперта:', clientProfile: 'Профиль клиента', major: 'Направление', university: 'Университет', city: 'Город', service: 'Услуга', age: 'Возраст', screenshots: 'Реальные скриншоты', screenshotNote: 'Реальный результат от клиента.', clientOpinion: 'Мнение клиента', expertConclusion: 'Заключение эксперта', ctaTitle: 'Хотите такой же результат?', consultation: 'Бесплатная консультация' },
+	tr: { expertIntro: 'Uzman yorumu:', clientProfile: 'Müşteri profili', major: 'Bölüm', university: 'Üniversite', city: 'Şehir', service: 'Hizmet', age: 'Yaş', screenshots: 'Gerçek ekran görüntüleri', screenshotNote: 'Müşteriden alınan sonuç.', clientOpinion: 'Müşteri görüşü', expertConclusion: 'Uzmanın son yorumu', ctaTitle: 'Böyle bir sonuç ister misiniz?', consultation: 'Ücretsiz danışmanlık' },
+	en: { expertIntro: 'Expert commentary:', clientProfile: 'Client profile', major: 'Major', university: 'University', city: 'City', service: 'Service', age: 'Age', screenshots: 'Real screenshots', screenshotNote: 'Real result from client.', clientOpinion: 'Client opinion', expertConclusion: 'Expert conclusion', ctaTitle: 'Want such a result?', consultation: 'Free consultation' }
+};
+const t = texts[lang] || texts.uz;
+
+const caseId = {{ case_id }};
+const c = caseData[caseId] || caseData[1];
+
+// Update header title
+document.getElementById('headerTitle').textContent = c.name;
+
+document.getElementById('caseContent').innerHTML = `
+	<div class="case-section">
+		<h3 class="section-title">${t.expertIntro} ${c.expert}, ${c.expertRole}</h3>
+		<div class="expert-video">
+			<video controls>
+				<source src="/static/video/heroVideo.mp4" type="video/mp4">
+			</video>
+		</div>
+		<p class="expert-text">"${c.expertText}"</p>
+	</div>
+	
+	<div class="case-section">
+		<h3 class="section-title">${t.clientProfile}</h3>
+		<div class="client-profile">
+			<div class="client-name">${c.name}</div>
+			<div class="client-details">
+				<div class="detail-item"><div class="detail-label">${t.major}</div><div class="detail-value">${c.major}</div></div>
+				<div class="detail-item"><div class="detail-label">${t.university}</div><div class="detail-value">${c.university}</div></div>
+				<div class="detail-item"><div class="detail-label">${t.city}</div><div class="detail-value">${c.city}</div></div>
+				<div class="detail-item"><div class="detail-label">${t.service}</div><div class="detail-value">${c.service}</div></div>
+				<div class="detail-item"><div class="detail-label">${t.age}</div><div class="detail-value">${c.age}</div></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="case-section">
+		<h3 class="section-title">${t.screenshots}</h3>
+		<div class="screenshots-grid">
+			<div class="screenshot-item"><div class="screenshot-placeholder">📄 Offer Letter</div><p class="screenshot-caption">${t.screenshotNote}</p></div>
+			<div class="screenshot-item"><div class="screenshot-placeholder">✉️ Email</div><p class="screenshot-caption">${t.screenshotNote}</p></div>
+			<div class="screenshot-item"><div class="screenshot-placeholder">💬 Chat</div><p class="screenshot-caption">${t.screenshotNote}</p></div>
+		</div>
+	</div>
+	
+	<div class="case-section">
+		<h3 class="section-title">${t.clientOpinion}</h3>
+		<div class="testimonial-box"><p class="testimonial-text">"${c.testimonial}"</p></div>
+	</div>
+	
+	<div class="case-section">
+		<h3 class="section-title">${t.expertConclusion}</h3>
+		<div class="conclusion-box"><p class="conclusion-text">"${c.conclusion}"</p></div>
+	</div>
+	
+	<div class="case-section">
+		<div class="cta-section">
+			<div class="cta-title">${t.ctaTitle}</div>
+			<div class="cta-buttons">
+				<a href="https://wa.me/998901234567" target="_blank" class="cta-btn">WhatsApp</a>
+				<a href="https://t.me/studyfans" target="_blank" class="cta-btn">Telegram</a>
+				<a href="{{ url_for('contact', lang=lang) }}" class="cta-btn">${t.consultation}</a>
+			</div>
+		</div>
+	</div>
+`;
+</script>
+{% endblock %}

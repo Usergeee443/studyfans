@@ -171,6 +171,7 @@ class University(db.Model):
     description_tr = db.Column(db.Text, nullable=False)
     website = db.Column(db.String(200))
     logo_url = db.Column(db.String(200))
+    cover_image_url = db.Column(db.String(200))  # Katta rasm (homepage va kartalar uchun)
     ranking = db.Column(db.Integer)
     founded_year = db.Column(db.Integer)
     university_type = db.Column(db.String(50))  # Public, Private
@@ -193,6 +194,7 @@ class University(db.Model):
             'description': getattr(self, f'description_{lang}'),
             'website': self.website,
             'logo_url': self.logo_url,
+            'cover_image_url': self.cover_image_url,
             'ranking': self.ranking,
             'founded_year': self.founded_year,
             'university_type': self.university_type,
@@ -279,6 +281,69 @@ def universities():
     # Get top universities for slider (1-2 universities)
     top_universities = University.query.limit(2).all()
     return render_template('universities.html', universities=universities, lang=lang, top_universities=top_universities)
+
+@app.route('/api/university/<int:university_id>')
+def api_university_detail(university_id):
+    lang = request.args.get('lang', 'en')
+    university = University.query.get_or_404(university_id)
+    
+    # Get description based on language
+    description = ''
+    if lang == 'uz':
+        description = university.description_uz or ''
+    elif lang == 'ru':
+        description = university.description_ru or ''
+    elif lang == 'tr':
+        description = university.description_tr or ''
+    else:
+        description = university.description_en or ''
+    
+    # Get courses for this university
+    courses = Course.query.filter(
+        (Course.university_uz == university.name_uz) |
+        (Course.university_en == university.name_en) |
+        (Course.university_ru == university.name_ru)
+    ).all()
+    
+    courses_data = []
+    for course in courses:
+        course_name = ''
+        if lang == 'uz':
+            course_name = course.title_uz or ''
+        elif lang == 'ru':
+            course_name = course.title_ru or ''
+        elif lang == 'tr':
+            course_name = course.title_tr or ''
+        else:
+            course_name = course.title_en or ''
+        
+        courses_data.append({
+            'name': course_name,
+            'language': course.language or '',
+            'tuition_fee': course.tuition_fee or ''
+        })
+    
+    return jsonify({
+        'id': university.id,
+        'name': university.name_uz if lang == 'uz' else (university.name_ru if lang == 'ru' else (university.name_tr if lang == 'tr' else university.name_en)),
+        'description': description,
+        'city': university.city_uz if lang == 'uz' else (university.city_ru if lang == 'ru' else (university.city_tr if lang == 'tr' else university.city_en)),
+        'country': university.country_uz if lang == 'uz' else (university.country_ru if lang == 'ru' else (university.country_tr if lang == 'tr' else university.country_en)),
+        'tuition_fee_min': university.tuition_fee_min,
+        'tuition_fee_max': university.tuition_fee_max,
+        'founded_year': university.founded_year,
+        'student_count': university.student_count,
+        'scholarship_available': university.scholarship_available,
+        'accommodation_available': university.accommodation_available,
+        'university_type': university.university_type,
+        'language_requirements': university.language_requirements,
+        'ranking': university.ranking,
+        'logo_url': university.logo_url,
+        'website': university.website,
+        'admission_requirements': university.admission_requirements,
+        'application_deadline': university.application_deadline,
+        'courses': courses_data
+    })
 
 @app.route('/university/<int:university_id>')
 def university_detail(university_id):
@@ -386,6 +451,11 @@ def contact():
 def success_stories():
     lang = request.args.get('lang', 'uz')
     return render_template('success_stories.html', lang=lang)
+
+@app.route('/case/<int:case_id>')
+def case_detail(case_id):
+    lang = request.args.get('lang', 'uz')
+    return render_template('case_detail.html', lang=lang, case_id=case_id)
 
 @app.route('/faq')
 def faq():
@@ -544,7 +614,14 @@ def admin_add_university():
             logo_file = request.files['logo']
             if logo_file and logo_file.filename:
                 logo_url = save_uploaded_file(logo_file, 'universities')
-        
+
+        # Handle cover image upload (katalog/hero uchun to'liq rasm)
+        cover_image_url = None
+        if 'cover_image' in request.files:
+            cover_file = request.files['cover_image']
+            if cover_file and cover_file.filename:
+                cover_image_url = save_uploaded_file(cover_file, 'universities')
+
         university = University(
             name_uz=request.form.get('name_uz'),
             name_en=request.form.get('name_en'),
@@ -565,6 +642,7 @@ def admin_add_university():
             website=request.form.get('website'),
             ranking=request.form.get('ranking'),
             logo_url=logo_url,
+            cover_image_url=cover_image_url,
             founded_year=request.form.get('founded_year'),
             university_type=request.form.get('university_type'),
             student_count=request.form.get('student_count'),
@@ -599,6 +677,14 @@ def admin_edit_university(university_id):
                 logo_url = save_uploaded_file(logo_file, 'universities')
                 if logo_url:
                     university.logo_url = logo_url
+
+        # Handle cover image upload
+        if 'cover_image' in request.files:
+            cover_file = request.files['cover_image']
+            if cover_file and cover_file.filename:
+                cover_image_url = save_uploaded_file(cover_file, 'universities')
+                if cover_image_url:
+                    university.cover_image_url = cover_image_url
         
         university.name_uz = request.form.get('name_uz')
         university.name_en = request.form.get('name_en')

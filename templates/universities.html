@@ -15,52 +15,6 @@
 		width: auto;
 	}
 	
-	/* Top Universities Swiper - New Premium Design */
-	.top-universities-swiper-new {
-		padding-bottom: 3rem;
-		position: relative;
-	}
-
-	.universities-slider {
-		position: relative;
-	}
-
-	.swiper-button-next,
-	.swiper-button-prev {
-		color: #2563eb;
-		background: white;
-		width: 44px;
-		height: 44px;
-		border-radius: 50%;
-		box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-		transition: all 0.3s ease;
-	}
-
-	.swiper-button-next:hover,
-	.swiper-button-prev:hover {
-		background: #2563eb;
-		color: white;
-		transform: scale(1.1);
-	}
-
-	.swiper-button-next::after,
-	.swiper-button-prev::after {
-		font-size: 18px;
-		font-weight: 700;
-	}
-
-	.swiper-pagination-bullet {
-		background: #cbd5e1;
-		opacity: 1;
-		width: 10px;
-		height: 10px;
-	}
-
-	.swiper-pagination-bullet-active {
-		background: #2563eb;
-		width: 24px;
-		border-radius: 5px;
-	}
 
 	/* Top University Card - New Premium Design */
 	.top-university-card-new {
@@ -403,6 +357,29 @@
 	border-color: #1d4ed8;
 }
 
+/* Filter Badge */
+.filter-badge {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	min-width: 18px;
+	height: 18px;
+	padding: 0 5px;
+	background: #2563eb;
+	color: white;
+	font-size: 0.7rem;
+	font-weight: 600;
+	border-radius: 9px;
+	margin-left: 4px;
+}
+
+/* Multi-select chip with checkmark */
+.filter-chip.active::before {
+	content: '✓';
+	margin-right: 4px;
+	font-size: 0.7rem;
+}
+
 @media (max-width: 768px) {
 	#filterPanel {
 		max-height: calc(100vh - 200px);
@@ -638,230 +615,125 @@
 	</div>
 </section>
 
-<!-- Top Universities Slider - New Premium Design -->
-<section class="py-20 bg-white">
+<!-- Top Universities - Minimalistic Grid (no swiper) -->
+<section class="py-16 bg-white">
 	<div class="max-w-7xl mx-auto px-6">
 		<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2 text-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">
 			{% if lang == 'uz' %}Top <span class="text-blue-600">Universitetlar</span>{% elif lang == 'ru' %}Топ <span class="text-blue-600">университеты</span>{% elif lang == 'tr' %}En İyi <span class="text-blue-600">Üniversiteler</span>{% else %}Top <span class="text-blue-600">Universities</span>{% endif %}
 		</h2>
-		<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+		<p class="text-gray-600 text-center mb-10 max-w-2xl mx-auto text-sm md:text-base" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 			{% if lang == 'uz' %}Turkiyaning eng yaxshi universitetlarida o'qish imkoniyati{% elif lang == 'ru' %}Возможность учиться в лучших университетах Турции{% elif lang == 'tr' %}Türkiye'nin en iyi üniversitelerinde eğitim fırsatı{% else %}Opportunity to study at Turkey's best universities{% endif %}
 		</p>
 		
-		<div class="universities-slider relative">
-			<div class="swiper top-universities-swiper-new">
-		<div class="swiper-wrapper">
-					{% if top_universities %}
-						{% for university in top_universities %}
-			<div class="swiper-slide">
-							<div class="university-card bg-white rounded-3xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-200 group h-full" data-country="{% if lang == 'uz' %}{{ university.country_uz }}{% elif lang == 'ru' %}{{ university.country_ru }}{% elif lang == 'tr' %}{{ university.country_tr }}{% else %}{{ university.country_en }}{% endif %}">
-								<!-- 1. Universitet rasmi -->
-								<div class="relative h-48 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
-									{% if university.logo_url %}
-									<img src="/static/{{ university.logo_url }}" alt="{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}" class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300">
-									{% else %}
-									<div class="w-full h-full flex items-center justify-center">
-										<span class="text-6xl text-gray-300 font-light">{% if lang == 'uz' %}{{ university.name_uz[0] if university.name_uz else 'U' }}{% elif lang == 'ru' %}{{ university.name_ru[0] if university.name_ru else 'U' }}{% elif lang == 'tr' %}{{ university.name_tr[0] if university.name_tr else 'U' }}{% else %}{{ university.name_en[0] if university.name_en else 'U' }}{% endif %}</span>
-			</div>
-									{% endif %}
-			</div>
-								
-								<div class="p-5">
-									<!-- 2. Universitet nomi -->
-									<h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-										{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}
-									</h3>
-									
-									<!-- 3. Shahar + davlat -->
-									<div class="flex items-center gap-1.5 text-gray-600 mb-3">
-										<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 flex-shrink-0">
-											<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-											<circle cx="12" cy="10" r="3"/>
-										</svg>
-										<p class="text-xs font-normal text-gray-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-											{% if lang == 'uz' %}{{ university.city_uz }}, {{ university.country_uz }}{% elif lang == 'ru' %}{{ university.city_ru }}, {{ university.country_ru }}{% elif lang == 'tr' %}{{ university.city_tr }}, {{ university.country_tr }}{% else %}{{ university.city_en }}, {{ university.country_en }}{% endif %}
-										</p>
-			</div>
-									
-									<!-- 4. O'qish tili -->
-									<div class="mb-3">
-										{% set lang_text = university.language_requirements or 'English, Turkish' %}
-										<span class="inline-flex items-center gap-1 px-2.5 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-											<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-												<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
-												<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-												<line x1="12" y1="19" x2="12" y2="23"></line>
-												<line x1="8" y1="23" x2="16" y2="23"></line>
-											</svg>
-											{% if lang == 'uz' %}Ingliz, Turk{% elif lang == 'ru' %}Английский, Турецкий{% elif lang == 'tr' %}İngilizce, Türkçe{% else %}English, Turkish{% endif %}
-										</span>
-									</div>
-									
-									<!-- 5. Eng mashhur yo'nalishlar -->
-									<div class="mb-4">
-										<p class="text-xs font-medium text-gray-700 mb-1.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-											{% if lang == 'uz' %}Mashhur yo'nalishlar:{% elif lang == 'ru' %}Популярные направления:{% elif lang == 'tr' %}Popüler bölümler:{% else %}Popular majors:{% endif %}
-										</p>
-										<div class="flex flex-wrap gap-1.5">
-											<span class="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-md text-xs font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-												{% if lang == 'uz' %}Tibbiyot{% elif lang == 'ru' %}Медицина{% elif lang == 'tr' %}Tıp{% else %}Medicine{% endif %}
-											</span>
-											<span class="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-md text-xs font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-												{% if lang == 'uz' %}IT{% elif lang == 'ru' %}ИТ{% elif lang == 'tr' %}BT{% else %}IT{% endif %}
-											</span>
-											<span class="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-md text-xs font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-												{% if lang == 'uz' %}Biznes{% elif lang == 'ru' %}Бизнес{% elif lang == 'tr' %}İşletme{% else %}Business{% endif %}
-											</span>
-										</div>
-									</div>
-									
-									<!-- 6. Narx yoki "Chegirma mavjud" -->
-									<div class="mb-4 pb-4 border-b border-gray-100">
-										{% if university.scholarship_available %}
-											<div class="flex items-center gap-2">
-												<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-yellow-600">
-													<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-												</svg>
-												<p class="text-base font-semibold text-yellow-700" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-													{% if lang == 'uz' %}Chegirma mavjud{% elif lang == 'ru' %}Есть скидка{% elif lang == 'tr' %}İndirim var{% else %}Discount available{% endif %}
-												</p>
-											</div>
-										{% elif university.tuition_fee_min and university.tuition_fee_max %}
-										<p class="text-xl font-semibold text-gray-900 mb-0.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-											{{ university.tuition_fee_min }}$ - {{ university.tuition_fee_max }}$
-										</p>
-										<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-											{% if lang == 'uz' %}yillik{% elif lang == 'ru' %}в год{% elif lang == 'tr' %}yıllık{% else %}per year{% endif %}
-										</p>
-										{% else %}
-											<p class="text-sm text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-												{% if lang == 'uz' %}Narxni so'rang{% elif lang == 'ru' %}Уточнить цену{% elif lang == 'tr' %}Fiyat sor{% else %}Ask for price{% endif %}
-											</p>
-										{% endif %}
-									</div>
-									
-									<!-- 7. Tugmalar -->
-									<div class="flex flex-col gap-2">
-										<a href="/university/{{ university.id }}?lang={{ lang }}" class="block w-full px-4 py-2.5 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-center text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-											{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Details{% endif %}
-										</a>
-										<a href="{{ url_for('contact') }}?university={{ university.id }}&lang={{ lang }}" class="block w-full px-4 py-2.5 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 transition-all duration-300 text-center text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-											{% if lang == 'uz' %}Maslahat olish{% elif lang == 'ru' %}Получить консультацию{% elif lang == 'tr' %}Danışmanlık al{% else %}Get Consultation{% endif %}
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						{% endfor %}
+		{% if top_universities %}
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
+			{% for university in top_universities %}
+			<div class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-200 flex flex-col h-full group js-university-card" data-university-id="{{ university.id }}" data-university-name="{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}" data-university-city="{% if lang == 'uz' %}{{ university.city_uz }}{% elif lang == 'ru' %}{{ university.city_ru }}{% elif lang == 'tr' %}{{ university.city_tr }}{% else %}{{ university.city_en }}{% endif %}" data-university-country="{% if lang == 'uz' %}{{ university.country_uz }}{% elif lang == 'ru' %}{{ university.country_ru }}{% elif lang == 'tr' %}{{ university.country_tr }}{% else %}{{ university.country_en }}{% endif %}" data-university-fee-min="{{ university.tuition_fee_min }}" data-university-fee-max="{{ university.tuition_fee_max }}" data-university-lang="{{ university.language_requirements or '' }}" data-university-type="{{ university.university_type or '' }}" data-university-accommodation="{{ 'yes' if university.accommodation_available else 'no' }}" data-university-founded="{{ university.founded_year or '' }}" data-university-students="{{ university.student_count or '' }}" data-university-scholarship="{{ 'yes' if university.scholarship_available else 'no' }}" data-country="{% if lang == 'uz' %}{{ university.country_uz }}{% elif lang == 'ru' %}{{ university.country_ru }}{% elif lang == 'tr' %}{{ university.country_tr }}{% else %}{{ university.country_en }}{% endif %}">
+				<!-- Full cover image with overlayed info -->
+				<div class="relative h-52 sm:h-56 lg:h-60">
+					{% if university.cover_image_url %}
+					<img src="{{ url_for('static', filename=university.cover_image_url) }}" alt="{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}" class="w-full h-full object-cover transform group-hover:scale-[1.03] transition-transform duration-300">
+					{% elif university.logo_url %}
+					<img src="{{ url_for('static', filename=university.logo_url) }}" alt="{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}" class="w-full h-full object-cover transform group-hover:scale-[1.03] transition-transform duration-300">
 					{% else %}
-						{% for university in universities[:4] %}
-			<div class="swiper-slide">
-							<div class="university-card bg-white rounded-3xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-200 group h-full" data-country="{% if lang == 'uz' %}{{ university.country_uz }}{% elif lang == 'ru' %}{{ university.country_ru }}{% elif lang == 'tr' %}{{ university.country_tr }}{% else %}{{ university.country_en }}{% endif %}">
-								<!-- 1. Universitet rasmi -->
-								<div class="relative h-48 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
-									{% if university.logo_url %}
-									<img src="/static/{{ university.logo_url }}" alt="{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}" class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300">
-									{% else %}
-									<div class="w-full h-full flex items-center justify-center">
-										<span class="text-6xl text-gray-300 font-light">{% if lang == 'uz' %}{{ university.name_uz[0] if university.name_uz else 'U' }}{% elif lang == 'ru' %}{{ university.name_ru[0] if university.name_ru else 'U' }}{% elif lang == 'tr' %}{{ university.name_tr[0] if university.name_tr else 'U' }}{% else %}{{ university.name_en[0] if university.name_en else 'U' }}{% endif %}</span>
+					<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-600">
+						<span class="text-5xl md:text-6xl text-white font-semibold">
+							{% if lang == 'uz' %}{{ university.name_uz[0] if university.name_uz else 'U' }}{% elif lang == 'ru' %}{{ university.name_ru[0] if university.name_ru else 'U' }}{% elif lang == 'tr' %}{{ university.name_tr[0] if university.name_tr else 'U' }}{% else %}{{ university.name_en[0] if university.name_en else 'U' }}{% endif %}
+						</span>
 			</div>
-									{% endif %}
-								</div>
-								
-								<div class="p-5">
-									<!-- 2. Universitet nomi -->
-									<h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-										{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}
-									</h3>
-									
-									<!-- 3. Shahar + davlat -->
-									<div class="flex items-center gap-1.5 text-gray-600 mb-3">
-										<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 flex-shrink-0">
-											<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-											<circle cx="12" cy="10" r="3"/>
-										</svg>
-										<p class="text-xs font-normal text-gray-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-											{% if lang == 'uz' %}{{ university.city_uz }}, {{ university.country_uz }}{% elif lang == 'ru' %}{{ university.city_ru }}, {{ university.country_ru }}{% elif lang == 'tr' %}{{ university.city_tr }}, {{ university.country_tr }}{% else %}{{ university.city_en }}, {{ university.country_en }}{% endif %}
-										</p>
-									</div>
-									
-									<!-- 4. O'qish tili -->
-									<div class="mb-3">
-										{% set lang_text = university.language_requirements or 'English, Turkish' %}
-										<span class="inline-flex items-center gap-1 px-2.5 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-											<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-												<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
-												<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-												<line x1="12" y1="19" x2="12" y2="23"></line>
-												<line x1="8" y1="23" x2="16" y2="23"></line>
-											</svg>
-											{% if lang == 'uz' %}Ingliz, Turk{% elif lang == 'ru' %}Английский, Турецкий{% elif lang == 'tr' %}İngilizce, Türkçe{% else %}English, Turkish{% endif %}
-										</span>
-									</div>
-									
-									<!-- 5. Eng mashhur yo'nalishlar -->
-									<div class="mb-4">
-										<p class="text-xs font-medium text-gray-700 mb-1.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-											{% if lang == 'uz' %}Mashhur yo'nalishlar:{% elif lang == 'ru' %}Популярные направления:{% elif lang == 'tr' %}Popüler bölümler:{% else %}Popular majors:{% endif %}
-										</p>
-										<div class="flex flex-wrap gap-1.5">
-											<span class="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-md text-xs font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-												{% if lang == 'uz' %}Tibbiyot{% elif lang == 'ru' %}Медицина{% elif lang == 'tr' %}Tıp{% else %}Medicine{% endif %}
-											</span>
-											<span class="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-md text-xs font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-												{% if lang == 'uz' %}IT{% elif lang == 'ru' %}ИТ{% elif lang == 'tr' %}BT{% else %}IT{% endif %}
-											</span>
-											<span class="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-md text-xs font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-												{% if lang == 'uz' %}Biznes{% elif lang == 'ru' %}Бизнес{% elif lang == 'tr' %}İşletme{% else %}Business{% endif %}
-											</span>
-										</div>
-									</div>
-									
-									<!-- 6. Narx yoki "Chegirma mavjud" -->
-									<div class="mb-4 pb-4 border-b border-gray-100">
-										{% if university.scholarship_available %}
-											<div class="flex items-center gap-2">
-												<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-yellow-600">
-													<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-												</svg>
-												<p class="text-base font-semibold text-yellow-700" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-													{% if lang == 'uz' %}Chegirma mavjud{% elif lang == 'ru' %}Есть скидка{% elif lang == 'tr' %}İndirim var{% else %}Discount available{% endif %}
-												</p>
-											</div>
-										{% elif university.tuition_fee_min and university.tuition_fee_max %}
-										<p class="text-xl font-semibold text-gray-900 mb-0.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-											{{ university.tuition_fee_min }}$ - {{ university.tuition_fee_max }}$
-										</p>
-										<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-											{% if lang == 'uz' %}yillik{% elif lang == 'ru' %}в год{% elif lang == 'tr' %}yıllık{% else %}per year{% endif %}
-										</p>
-										{% else %}
-											<p class="text-sm text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-												{% if lang == 'uz' %}Narxni so'rang{% elif lang == 'ru' %}Уточнить цену{% elif lang == 'tr' %}Fiyat sor{% else %}Ask for price{% endif %}
-											</p>
-										{% endif %}
-									</div>
-									
-									<!-- 7. Tugmalar -->
-									<div class="flex flex-col gap-2">
-										<a href="/university/{{ university.id }}?lang={{ lang }}" class="block w-full px-4 py-2.5 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-center text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-											{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Details{% endif %}
-										</a>
-										<a href="{{ url_for('contact') }}?university={{ university.id }}&lang={{ lang }}" class="block w-full px-4 py-2.5 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 transition-all duration-300 text-center text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-											{% if lang == 'uz' %}Maslahat olish{% elif lang == 'ru' %}Получить консультацию{% elif lang == 'tr' %}Danışmanlık al{% else %}Get Consultation{% endif %}
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						{% endfor %}
 					{% endif %}
-		</div>
-		<div class="swiper-pagination"></div>
+					
+					<!-- Dark gradient overlay -->
+					<div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent"></div>
+					
+					<!-- Top tags -->
+					<div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 text-[11px] sm:text-xs">
+						{% if university.university_type %}
+						<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-white/90 text-gray-900 font-medium shadow-sm" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if university.university_type == 'Private' %}
+								{% if lang == 'tr' %}Vakıf{% elif lang == 'uz' %}Xususiy{% elif lang == 'ru' %}Частный{% else %}Private{% endif %}
+							{% else %}
+								{% if lang == 'tr' %}Devlet{% elif lang == 'uz' %}Davlat{% elif lang == 'ru' %}Государственный{% else %}Public{% endif %}
+							{% endif %}
+						</span>
+						{% else %}
+						<span></span>
+						{% endif %}
+						
+						{% if university.accommodation_available %}
+						<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-blue-500 text-white font-medium shadow-sm" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Yotoqxona{% elif lang == 'ru' %}Общежитие{% elif lang == 'tr' %}Yurt{% else %}Dormitory{% endif %}
+						</span>
+						{% endif %}
 			</div>
-			<div class="swiper-button-next"></div>
-			<div class="swiper-button-prev"></div>
+					
+					<!-- Bottom info -->
+					<div class="absolute bottom-3 left-3 right-3 text-white">
+						<h3 class="text-sm sm:text-base font-semibold leading-snug mb-1 line-clamp-2" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}
+						</h3>
+						<p class="flex items-center gap-1 text-[11px] sm:text-xs text-white/90 mb-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="flex-shrink-0">
+								<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
+								<circle cx="12" cy="10" r="3"/>
+							</svg>
+							<span>
+								{% if lang == 'uz' %}{{ university.city_uz }}, {{ university.country_uz }}{% elif lang == 'ru' %}{{ university.city_ru }}, {{ university.country_ru }}{% elif lang == 'tr' %}{{ university.city_tr }}, {{ university.country_tr }}{% else %}{{ university.city_en }}, {{ university.country_en }}{% endif %}
+							</span>
+						</p>
+						<div class="flex items-center justify-between text-[11px] sm:text-xs text-white/80">
+							{% if university.founded_year %}
+							<div class="flex items-center gap-1">
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+									<circle cx="12" cy="12" r="10"/>
+									<polyline points="12 6 12 12 16 14"/>
+								</svg>
+								<span>{{ university.founded_year }}</span>
+			</div>
+							{% endif %}
+							{% if university.student_count %}
+							<div class="flex items-center gap-1 ml-auto">
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+									<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+									<circle cx="9" cy="7" r="4"/>
+									<path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+									<path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+								</svg>
+								<span>{{ university.student_count }}+</span>
+			</div>
+							{% endif %}
 		</div>
+					</div>
+				</div>
+				
+				<!-- Bottom content & CTA -->
+				<div class="p-4 sm:p-5 flex flex-col gap-2">
+					{% if university.tuition_fee_min and university.tuition_fee_max %}
+					<div>
+						<p class="text-sm font-semibold text-gray-900 leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{{ university.tuition_fee_min }}$ - {{ university.tuition_fee_max }}$
+						</p>
+						<p class="text-xs text-gray-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}yillik o'qish to'lovi{% elif lang == 'ru' %}стоимость за год{% elif lang == 'tr' %}yıllık eğitim ücreti{% else %}annual tuition fee{% endif %}
+						</p>
+					</div>
+					{% elif university.scholarship_available %}
+					<p class="inline-flex items-center gap-1.5 text-xs font-medium text-yellow-700 bg-yellow-50 border border-yellow-100 rounded-full px-3 py-1 w-max" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+							<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+						</svg>
+						{% if lang == 'uz' %}Chegirma va grantlar mavjud{% elif lang == 'ru' %}Доступны скидки и гранты{% elif lang == 'tr' %}Burs ve indirimler mevcut{% else %}Scholarships and discounts available{% endif %}
+					</p>
+					{% endif %}
+					
+					<a href="{{ url_for('contact') }}?university={{ university.id }}&lang={{ lang }}" class="mt-2 inline-flex items-center justify-center w-full px-4 py-2.5 rounded-full text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'tr' %}Hemen Başvur{% elif lang == 'uz' %}Hozir ariza topshirish{% elif lang == 'ru' %}Подать заявку сейчас{% else %}Apply now{% endif %}
+					</a>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		{% endif %}
 	</div>
 </section>
 
@@ -911,114 +783,108 @@
 		
 		<div id="universitiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
 			{% for university in universities %}
-			<div class="university-card bg-white rounded-3xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-200 group" data-country="{% if lang == 'uz' %}{{ university.country_uz }}{% elif lang == 'ru' %}{{ university.country_ru }}{% elif lang == 'tr' %}{{ university.country_tr }}{% else %}{{ university.country_en }}{% endif %}">
-				<!-- 1. Universitet rasmi -->
-				<div class="relative h-48 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
-					{% if university.logo_url %}
-					<img src="/static/{{ university.logo_url }}" alt="{{ university.name_uz }}" class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300">
+			<div
+				class="university-card bg-white rounded-3xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-200 flex flex-col h-full group js-university-card"
+				data-university-id="{{ university.id }}"
+				data-university-name="{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}"
+				data-university-city="{% if lang == 'uz' %}{{ university.city_uz }}{% elif lang == 'ru' %}{{ university.city_ru }}{% elif lang == 'tr' %}{{ university.city_tr }}{% else %}{{ university.city_en }}{% endif %}"
+				data-university-country="{% if lang == 'uz' %}{{ university.country_uz }}{% elif lang == 'ru' %}{{ university.country_ru }}{% elif lang == 'tr' %}{{ university.country_tr }}{% else %}{{ university.country_en }}{% endif %}"
+				data-university-fee-min="{{ university.tuition_fee_min or '' }}"
+				data-university-fee-max="{{ university.tuition_fee_max or '' }}"
+				data-university-lang="{{ university.language_requirements or '' }}"
+				data-country="{% if lang == 'uz' %}{{ university.country_uz }}{% elif lang == 'ru' %}{{ university.country_ru }}{% elif lang == 'tr' %}{{ university.country_tr }}{% else %}{{ university.country_en }}{% endif %}"
+			>
+				<!-- To'liq rasm + overlay -->
+				<div class="relative h-52 sm:h-56 lg:h-60">
+					{% if university.cover_image_url %}
+					<img src="{{ url_for('static', filename=university.cover_image_url) }}" alt="{{ university.name_uz }}" class="w-full h-full object-cover transform group-hover:scale-[1.03] transition-transform duration-300">
+					{% elif university.logo_url %}
+					<img src="{{ url_for('static', filename=university.logo_url) }}" alt="{{ university.name_uz }}" class="w-full h-full object-cover transform group-hover:scale-[1.03] transition-transform duration-300">
 					{% else %}
-					<div class="w-full h-full flex items-center justify-center">
-						<span class="text-6xl text-gray-300 font-light">{{ university.name_uz[0] if university.name_uz else 'U' }}</span>
+					<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-600">
+						<span class="text-5xl md:text-6xl text-white font-semibold">
+							{{ university.name_uz[0] if university.name_uz else 'U' }}
+						</span>
 					</div>
 					{% endif %}
-				</div>
-				
-				<div class="p-5">
-					<!-- 2. Universitet nomi -->
-					<h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}
-					</h3>
 					
-					<!-- 3. Shahar + davlat -->
-					<div class="flex items-center gap-1.5 text-gray-600 mb-3">
-						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-gray-400 flex-shrink-0">
-							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-							<circle cx="12" cy="10" r="3"/>
-						</svg>
-						<p class="text-xs font-normal text-gray-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{% if lang == 'uz' %}{{ university.city_uz }}, {{ university.country_uz }}{% elif lang == 'ru' %}{{ university.city_ru }}, {{ university.country_ru }}{% elif lang == 'tr' %}{{ university.city_tr }}, {{ university.country_tr }}{% else %}{{ university.city_en }}, {{ university.country_en }}{% endif %}
-						</p>
-					</div>
+					<!-- Qoraytirilgan gradient -->
+					<div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent"></div>
 					
-					<!-- 4. O'qish tili -->
-					<div class="mb-3">
-						{% set lang_text = university.language_requirements or 'English, Turkish' %}
-						{% if 'English' in lang_text or 'Ingliz' in lang_text or 'Английский' in lang_text %}
-							<span class="inline-flex items-center gap-1 px-2.5 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-								<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-									<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
-									<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-									<line x1="12" y1="19" x2="12" y2="23"></line>
-									<line x1="8" y1="23" x2="16" y2="23"></line>
-								</svg>
-								{% if lang == 'uz' %}Ingliz, Turk{% elif lang == 'ru' %}Английский, Турецкий{% elif lang == 'tr' %}İngilizce, Türkçe{% else %}English, Turkish{% endif %}
+					<!-- Yuqori teglari -->
+					<div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 text-[11px] sm:text-xs">
+						{% if university.university_type %}
+						<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-white/90 text-gray-900 font-medium shadow-sm" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if university.university_type == 'Private' %}
+								{% if lang == 'tr' %}Vakıf{% elif lang == 'uz' %}Xususiy{% elif lang == 'ru' %}Частный{% else %}Private{% endif %}
+							{% else %}
+								{% if lang == 'tr' %}Devlet{% elif lang == 'uz' %}Davlat{% elif lang == 'ru' %}Государственный{% else %}Public{% endif %}
+							{% endif %}
 						</span>
 						{% else %}
-							<span class="inline-flex items-center gap-1 px-2.5 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-								<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-									<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
-									<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-									<line x1="12" y1="19" x2="12" y2="23"></line>
-									<line x1="8" y1="23" x2="16" y2="23"></line>
-								</svg>
-								{% if lang == 'uz' %}Ingliz, Turk{% elif lang == 'ru' %}Английский, Турецкий{% elif lang == 'tr' %}İngilizce, Türkçe{% else %}English, Turkish{% endif %}
+						<span></span>
+						{% endif %}
+						
+						{% if university.accommodation_available %}
+						<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-blue-500 text-white font-medium shadow-sm" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							{% if lang == 'uz' %}Yotoqxona{% elif lang == 'ru' %}Общежитие{% elif lang == 'tr' %}Yurt{% else %}Dormitory{% endif %}
 						</span>
 						{% endif %}
-					</div>
-					
-					<!-- 5. Eng mashhur yo'nalishlar -->
-					<div class="mb-4">
-						<p class="text-xs font-medium text-gray-700 mb-1.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{% if lang == 'uz' %}Mashhur yo'nalishlar:{% elif lang == 'ru' %}Популярные направления:{% elif lang == 'tr' %}Popüler bölümler:{% else %}Popular majors:{% endif %}
+				</div>
+				
+					<!-- Bottom info (hamma ma'lumot rasm ustida) -->
+					<div class="absolute bottom-3 left-3 right-3 text-white">
+						<h3 class="text-sm sm:text-base font-semibold leading-snug mb-1 line-clamp-2" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}{{ university.name_uz }}{% elif lang == 'ru' %}{{ university.name_ru }}{% elif lang == 'tr' %}{{ university.name_tr }}{% else %}{{ university.name_en }}{% endif %}
+					</h3>
+						<p class="flex items-center gap-1 text-[11px] sm:text-xs text-white/90 mb-1 location-text" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="flex-shrink-0">
+								<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
+							<circle cx="12" cy="10" r="3"/>
+						</svg>
+							<span>
+								{% if lang == 'uz' %}{{ university.city_uz }}, {{ university.country_uz }}{% elif lang == 'ru' %}{{ university.city_ru }}, {{ university.country_ru }}{% elif lang == 'tr' %}{{ university.city_tr }}, {{ university.country_tr }}{% else %}{{ university.city_en }}, {{ university.country_en }}{% endif %}
+							</span>
 						</p>
-						<div class="flex flex-wrap gap-1.5">
-							<span class="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-md text-xs font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-								{% if lang == 'uz' %}Tibbiyot{% elif lang == 'ru' %}Медицина{% elif lang == 'tr' %}Tıp{% else %}Medicine{% endif %}
-							</span>
-							<span class="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-md text-xs font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-								{% if lang == 'uz' %}IT{% elif lang == 'ru' %}ИТ{% elif lang == 'tr' %}BT{% else %}IT{% endif %}
-							</span>
-							<span class="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-md text-xs font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-								{% if lang == 'uz' %}Biznes{% elif lang == 'ru' %}Бизнес{% elif lang == 'tr' %}İşletme{% else %}Business{% endif %}
-							</span>
-						</div>
-					</div>
-					
-					<!-- 6. Narx yoki "Chegirma mavjud" -->
-					<div class="mb-4 pb-4 border-b border-gray-100">
-						{% if university.scholarship_available %}
-							<div class="flex items-center gap-2">
-								<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-yellow-600">
-									<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+						<div class="flex items-center justify-between text-[11px] sm:text-xs text-white/80 mb-1.5">
+							{% if university.founded_year %}
+							<div class="flex items-center gap-1">
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+									<circle cx="12" cy="12" r="10"/>
+									<polyline points="12 6 12 12 16 14"/>
 								</svg>
-								<p class="text-base font-semibold text-yellow-700" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-									{% if lang == 'uz' %}Chegirma mavjud{% elif lang == 'ru' %}Есть скидка{% elif lang == 'tr' %}İndirim var{% else %}Discount available{% endif %}
-								</p>
+								<span>{{ university.founded_year }}</span>
+					</div>
+						{% endif %}
+							{% if university.student_count %}
+							<div class="flex items-center gap-1 ml-auto">
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+									<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+									<circle cx="9" cy="7" r="4"/>
+									<path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+									<path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+								</svg>
+								<span>{{ university.student_count }}+</span>
 							</div>
-						{% elif university.tuition_fee_min and university.tuition_fee_max %}
-						<p class="text-xl font-semibold text-gray-900 mb-0.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{{ university.tuition_fee_min }}$ - {{ university.tuition_fee_max }}$
+						{% endif %}
+					</div>
+					{% if university.tuition_fee_min and university.tuition_fee_max %}
+						<p class="text-[11px] sm:text-xs text-white/90">
+							{{ university.tuition_fee_min }}$ - {{ university.tuition_fee_max }}$ · {% if lang == 'uz' %}yillik{% elif lang == 'ru' %}в год{% elif lang == 'tr' %}yıllık{% else %}per year{% endif %}
 						</p>
-						<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{% if lang == 'uz' %}yillik{% elif lang == 'ru' %}в год{% elif lang == 'tr' %}yıllık{% else %}per year{% endif %}
+						{% elif university.scholarship_available %}
+						<p class="text-[11px] sm:text-xs text-yellow-100">
+							{% if lang == 'uz' %}Chegirma mavjud{% elif lang == 'ru' %}Есть скидка{% elif lang == 'tr' %}İndirim var{% else %}Discount available{% endif %}
 						</p>
-						{% else %}
-							<p class="text-sm text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-								{% if lang == 'uz' %}Narxni so'rang{% elif lang == 'ru' %}Уточнить цену{% elif lang == 'tr' %}Fiyat sor{% else %}Ask for price{% endif %}
-							</p>
 					{% endif %}
 					</div>
-					
-					<!-- 7. "Batafsil" tugmasi -->
-					<!-- 8. "Maslahat olish" tugmasi -->
-					<div class="flex flex-col gap-2">
-						<a href="/university/{{ university.id }}?lang={{ lang }}" class="block w-full px-4 py-2.5 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-center text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Details{% endif %}
+				</div>
+				
+				<!-- Pastki kontent: faqat CTA tugma -->
+				<div class="p-4 sm:p-5 flex flex-col gap-2">
+					<a href="{{ url_for('contact') }}?university={{ university.id }}&lang={{ lang }}" class="inline-flex items-center justify-center w-full px-4 py-2.5 rounded-full text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'tr' %}Hemen Başvur{% elif lang == 'uz' %}Hozir ariza topshirish{% elif lang == 'ru' %}Подать заявку сейчас{% else %}Apply now{% endif %}
 					</a>
-						<a href="/contact?lang={{ lang }}&university={{ university.id }}" class="block w-full px-4 py-2 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 transition-all duration-300 text-center text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-							{% if lang == 'uz' %}Maslahat olish{% elif lang == 'ru' %}Получить консультацию{% elif lang == 'tr' %}Danışmanlık al{% else %}Get consultation{% endif %}
-					</a>
-					</div>
 				</div>
 			</div>
 			{% endfor %}
@@ -1093,37 +959,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-// Initialize Top Universities Swiper - New Premium Design
-if (document.querySelector('.top-universities-swiper-new')) {
-	new Swiper('.top-universities-swiper-new', {
-		slidesPerView: 1, // Mobile: 1 ta
-		spaceBetween: 16,
-		loop: {% if top_universities|length > 1 %}true{% else %}false{% endif %},
-		autoplay: {% if top_universities|length > 1 %}{
-		delay: 3000,
-		disableOnInteraction: false,
-		}{% else %}false{% endif %},
-		navigation: {
-			nextEl: '.swiper-button-next',
-			prevEl: '.swiper-button-prev',
-	},
-	pagination: {
-		el: '.swiper-pagination',
-		clickable: true,
-			dynamicBullets: true,
-		},
-		breakpoints: {
-			640: {
-				slidesPerView: 2, // Tablet: 2 ta
-				spaceBetween: 20,
-			},
-			1024: {
-				slidesPerView: 4, // Desktop: 4 ta
-				spaceBetween: 24,
-			},
-	},
-});
-}
 
 // Initialize Small Swiper for Categories
 const smallSwiper = new Swiper('.small-swiper', {
@@ -1138,17 +973,17 @@ document.getElementById('filterBtn').addEventListener('click', function() {
 	panel.classList.toggle('hidden');
 });
 
-// Filter State
+// Filter State (Multi-select arrays)
 const filterState = {
-	country: '',
-	language: '',
-	major: '',
-	price: '',
-	grant: '',
-	city: ''
+	country: [],
+	language: [],
+	major: [],
+	price: [],
+	grant: [],
+	city: []
 };
 
-// Search and Filter Function
+// Search and Filter Function (Multi-select support)
 function performSearch() {
 	const searchTerm = document.getElementById('searchInput').value.toLowerCase();
 	
@@ -1156,8 +991,8 @@ function performSearch() {
 	const activeCategory = document.querySelector('.category-btn.active');
 	const categoryCountry = activeCategory ? activeCategory.getAttribute('data-country') : '';
 	
-	// Use category country if no filter country selected
-	const filterCountry = filterState.country || categoryCountry;
+	// Use category country if no filter countries selected
+	const filterCountries = filterState.country.length > 0 ? filterState.country : (categoryCountry ? [categoryCountry] : []);
 	
 	const cards = document.querySelectorAll('.university-card');
 	let visibleCount = 0;
@@ -1176,52 +1011,70 @@ function performSearch() {
 			matches = false;
 		}
 		
-		// Country filter
-		if (filterCountry && cardCountry !== filterCountry) {
+		// Country filter (multi-select)
+		if (filterCountries.length > 0 && !filterCountries.includes(cardCountry)) {
 			matches = false;
 		}
 		
-		// Language filter
-		if (filterState.language) {
+		// Language filter (multi-select)
+		if (filterState.language.length > 0) {
 			const langMap = {
 				'English': ['English', 'Ingliz', 'Английский', 'İngilizce'],
 				'Turkish': ['Turkish', 'Turk', 'Турецкий', 'Türkçe'],
 				'Russian': ['Russian', 'Rus', 'Русский', 'Rusça']
 			};
-			const langOptions = langMap[filterState.language] || [];
-			if (!langOptions.some(lang => cardLanguage.includes(lang))) {
-				matches = false;
+			let langMatch = false;
+			for (const selectedLang of filterState.language) {
+				const langOptions = langMap[selectedLang] || [];
+				if (langOptions.some(lang => cardLanguage.includes(lang))) {
+					langMatch = true;
+					break;
+				}
 			}
+			if (!langMatch) matches = false;
 		}
 		
-		// City filter
-		if (filterState.city && !cardCity.toLowerCase().includes(filterState.city.toLowerCase())) {
-			matches = false;
+		// City filter (multi-select)
+		if (filterState.city.length > 0) {
+			let cityMatch = false;
+			for (const selectedCity of filterState.city) {
+				if (cardCity.toLowerCase().includes(selectedCity.toLowerCase())) {
+					cityMatch = true;
+					break;
+				}
+			}
+			if (!cityMatch) matches = false;
 		}
 		
-		// Price filter
-		if (filterState.price) {
+		// Price filter (multi-select)
+		if (filterState.price.length > 0) {
 			const priceMatch = priceText.match(/(\d+)/g);
+			let priceInRange = false;
+			
 			if (priceMatch && priceMatch.length >= 2) {
 				const minPrice = parseInt(priceMatch[0]);
 				const maxPrice = parseInt(priceMatch[1]);
 				
-				if (filterState.price === '1500-3000') {
-					if (minPrice < 1500 || maxPrice > 3000) matches = false;
-				} else if (filterState.price === '3000-5000') {
-					if (minPrice < 3000 || maxPrice > 5000) matches = false;
-				} else if (filterState.price === '5000+') {
-					if (minPrice < 5000) matches = false;
+				for (const range of filterState.price) {
+					if (range === '1500-3000' && minPrice >= 1500 && maxPrice <= 3000) {
+						priceInRange = true;
+						break;
+					} else if (range === '3000-5000' && minPrice >= 3000 && maxPrice <= 5000) {
+						priceInRange = true;
+						break;
+					} else if (range === '5000+' && minPrice >= 5000) {
+						priceInRange = true;
+						break;
+					}
 				}
-			} else {
-				matches = false;
 			}
+			if (!priceInRange) matches = false;
 		}
 		
-		// Grant filter
-		if (filterState.grant) {
+		// Grant filter (multi-select)
+		if (filterState.grant.length > 0) {
 			const hasGrant = card.querySelector('.bg-yellow-50') !== null;
-			if (filterState.grant === 'discount' && !hasGrant) {
+			if (filterState.grant.includes('discount') && !hasGrant) {
 				matches = false;
 			}
 		}
@@ -1244,51 +1097,81 @@ function performSearch() {
 	}
 }
 
-// Filter Chip Click Handler
+// Filter Chip Click Handler (Multi-select)
 document.querySelectorAll('.filter-chip').forEach(chip => {
 	chip.addEventListener('click', function() {
 		const filterType = this.getAttribute('data-filter');
 		const filterValue = this.getAttribute('data-value');
 		
-		// Toggle active state
-		const siblings = document.querySelectorAll(`[data-filter="${filterType}"]`);
-		siblings.forEach(s => s.classList.remove('active'));
-		
-		if (filterValue) {
+		// "Barcha" (All) button - clears all selections in this group
+		if (!filterValue) {
+			filterState[filterType] = [];
+			const siblings = document.querySelectorAll(`[data-filter="${filterType}"]`);
+			siblings.forEach(s => s.classList.remove('active'));
 			this.classList.add('active');
-			filterState[filterType] = filterValue;
 		} else {
-			filterState[filterType] = '';
+			// Remove "Barcha" active state
+			const allBtn = document.querySelector(`[data-filter="${filterType}"][data-value=""]`);
+			if (allBtn) allBtn.classList.remove('active');
+			
+			// Toggle this chip
+			if (this.classList.contains('active')) {
+				// Remove from array
+				this.classList.remove('active');
+				const index = filterState[filterType].indexOf(filterValue);
+				if (index > -1) {
+					filterState[filterType].splice(index, 1);
+				}
+				// If no filters selected, activate "Barcha"
+				if (filterState[filterType].length === 0 && allBtn) {
+					allBtn.classList.add('active');
+				}
+			} else {
+				// Add to array
+				this.classList.add('active');
+				if (!filterState[filterType].includes(filterValue)) {
+					filterState[filterType].push(filterValue);
+				}
+			}
 		}
 		
-		// If country filter changed, update category buttons
-		if (filterType === 'country') {
-			document.querySelectorAll('.category-btn').forEach(btn => {
-				btn.classList.remove('active', 'bg-blue-50', 'text-blue-600');
-				btn.classList.add('bg-gray-50', 'text-gray-600');
-				
-				if (btn.getAttribute('data-country') === filterValue) {
-					btn.classList.add('active', 'bg-blue-50', 'text-blue-600');
-					btn.classList.remove('bg-gray-50', 'text-gray-600');
-				} else if (!filterValue && btn.getAttribute('data-country') === '') {
-					btn.classList.add('active', 'bg-blue-50', 'text-blue-600');
-					btn.classList.remove('bg-gray-50', 'text-gray-600');
-				}
-			});
-		}
+		// Update filter count badge
+		updateFilterBadge();
 		
 		performSearch();
 	});
 });
 
+// Update filter badge count
+function updateFilterBadge() {
+	const totalFilters = filterState.country.length + filterState.language.length + 
+						 filterState.major.length + filterState.price.length + 
+						 filterState.grant.length + filterState.city.length;
+	
+	const filterBtn = document.getElementById('filterBtn');
+	let badge = filterBtn.querySelector('.filter-badge');
+	
+	if (totalFilters > 0) {
+		if (!badge) {
+			badge = document.createElement('span');
+			badge.className = 'filter-badge';
+			filterBtn.appendChild(badge);
+		}
+		badge.textContent = totalFilters;
+		badge.style.display = 'flex';
+	} else if (badge) {
+		badge.style.display = 'none';
+	}
+}
+
 // Clear Filters
 document.getElementById('clearFilters').addEventListener('click', function() {
-	filterState.country = '';
-	filterState.language = '';
-	filterState.major = '';
-	filterState.price = '';
-	filterState.grant = '';
-	filterState.city = '';
+	filterState.country = [];
+	filterState.language = [];
+	filterState.major = [];
+	filterState.price = [];
+	filterState.grant = [];
+	filterState.city = [];
 	
 	document.querySelectorAll('.filter-chip').forEach(chip => {
 		chip.classList.remove('active');
@@ -1311,6 +1194,9 @@ document.getElementById('clearFilters').addEventListener('click', function() {
 	// Clear search input
 	document.getElementById('searchInput').value = '';
 	
+	// Update badge
+	updateFilterBadge();
+	
 	performSearch();
 });
 
@@ -1332,8 +1218,8 @@ document.querySelectorAll('.category-btn').forEach(btn => {
 		// Update country filter chip if category has country
 		const categoryCountry = this.getAttribute('data-country');
 		if (categoryCountry) {
-			// Update filter state
-			filterState.country = categoryCountry;
+			// Update filter state (single selection from category buttons)
+			filterState.country = [categoryCountry];
 			
 			// Update filter chips
 			document.querySelectorAll('[data-filter="country"]').forEach(chip => {
@@ -1344,7 +1230,7 @@ document.querySelectorAll('.category-btn').forEach(btn => {
 			});
 		} else {
 			// Reset country filter
-			filterState.country = '';
+			filterState.country = [];
 			document.querySelectorAll('[data-filter="country"]').forEach(chip => {
 				chip.classList.remove('active');
 				if (chip.getAttribute('data-value') === '') {
@@ -1353,10 +1239,665 @@ document.querySelectorAll('.category-btn').forEach(btn => {
 			});
 		}
 		
+		// Update badge
+		updateFilterBadge();
+		
 		// Perform search with category filter
 		performSearch();
 	});
 });
+	
+	// Bottom Sheet for University Cards (Mobile)
+	document.addEventListener('DOMContentLoaded', function() {
+		const universityCards = document.querySelectorAll('.js-university-card');
+		const bottomSheet = document.getElementById('universityBottomSheet');
+		const bottomSheetOverlay = document.getElementById('universityBottomSheetOverlay');
+		const bottomSheetClose = document.getElementById('universityBottomSheetClose');
+		
+		async function openBottomSheet(card) {
+			const name = card.getAttribute('data-university-name');
+			const city = card.getAttribute('data-university-city');
+			const country = card.getAttribute('data-university-country');
+			const feeMin = card.getAttribute('data-university-fee-min');
+			const feeMax = card.getAttribute('data-university-fee-max');
+			const lang = card.getAttribute('data-university-lang') || 'English, Turkish';
+			const universityId = card.getAttribute('data-university-id');
+			const langParam = new URLSearchParams(window.location.search).get('lang') || 'uz';
+			const foundedYear = card.getAttribute('data-university-founded');
+			const studentCount = card.getAttribute('data-university-students');
+			const scholarship = card.getAttribute('data-university-scholarship');
+			const accommodation = card.getAttribute('data-university-accommodation');
+			const universityType = card.getAttribute('data-university-type');
+			
+			// Populate basic info
+			document.getElementById('bottomSheetUniversityName').textContent = name;
+			document.getElementById('bottomSheetUniversityLocation').textContent = `${city}, ${country}`;
+			document.getElementById('bottomSheetUniversityLang').textContent = lang;
+			
+			// Clear badges
+			const badgesContainer = document.getElementById('bottomSheetUniversityBadges');
+			if (badgesContainer) {
+				badgesContainer.innerHTML = '';
+			}
+			
+			// Price
+			if (feeMin && feeMax) {
+				document.getElementById('bottomSheetUniversityPrice').textContent = `${feeMin}$ - ${feeMax}$`;
+				document.getElementById('bottomSheetUniversityPrice').classList.remove('hidden');
+			} else {
+				document.getElementById('bottomSheetUniversityPrice').classList.add('hidden');
+			}
+			
+			// Statistics
+			const statsContainer = document.getElementById('bottomSheetUniversityStats');
+			statsContainer.innerHTML = '';
+			if (foundedYear) {
+				const statDiv = document.createElement('div');
+				statDiv.className = 'text-center';
+				statDiv.innerHTML = `
+					<p class="text-2xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', sans-serif;">${foundedYear}</p>
+					<p class="text-xs text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Asos solingan{% elif lang == 'ru' %}Основан{% elif lang == 'tr' %}Kuruluş{% else %}Founded{% endif %}
+					</p>
+				`;
+				statsContainer.appendChild(statDiv);
+			}
+			if (studentCount) {
+				const statDiv = document.createElement('div');
+				statDiv.className = 'text-center';
+				statDiv.innerHTML = `
+					<p class="text-2xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', sans-serif;">${studentCount}</p>
+					<p class="text-xs text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Talabalar{% elif lang == 'ru' %}Студенты{% elif lang == 'tr' %}Öğrenci{% else %}Students{% endif %}
+					</p>
+				`;
+				statsContainer.appendChild(statDiv);
+			}
+			if (scholarship === 'yes') {
+				const statDiv = document.createElement('div');
+				statDiv.className = 'text-center';
+				statDiv.innerHTML = `
+					<p class="text-2xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', sans-serif;">✓</p>
+					<p class="text-xs text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Grant mavjud{% elif lang == 'ru' %}Грант доступен{% elif lang == 'tr' %}Burs mevcut{% else %}Scholarship{% endif %}
+					</p>
+				`;
+				statsContainer.appendChild(statDiv);
+			}
+			if (accommodation === 'yes') {
+				const statDiv = document.createElement('div');
+				statDiv.className = 'text-center';
+				statDiv.innerHTML = `
+					<p class="text-2xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', sans-serif;">✓</p>
+					<p class="text-xs text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Yotoqxona{% elif lang == 'ru' %}Общежитие{% elif lang == 'tr' %}Yurt{% else %}Accommodation{% endif %}
+					</p>
+				`;
+				statsContainer.appendChild(statDiv);
+			}
+			
+			// Load full details via API
+			try {
+				const response = await fetch(`/api/university/${universityId}?lang=${langParam}`);
+				if (response.ok) {
+					const data = await response.json();
+					
+					// Logo
+					const logoContainer = document.getElementById('bottomSheetUniversityLogo');
+					if (data.logo_url && logoContainer) {
+						const logoImg = logoContainer.querySelector('img');
+						if (logoImg) {
+							logoImg.src = `/static/${data.logo_url}`;
+							logoImg.alt = name;
+							logoContainer.classList.remove('hidden');
+						}
+					} else if (logoContainer) {
+						logoContainer.classList.add('hidden');
+					}
+					
+					// Badges (ranking, type)
+					const badgesContainer = document.getElementById('bottomSheetUniversityBadges');
+					if (badgesContainer) {
+						badgesContainer.innerHTML = '';
+						if (data.ranking) {
+							const badge = document.createElement('span');
+							badge.className = 'text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full font-normal';
+							badge.textContent = `#${data.ranking}`;
+							badgesContainer.appendChild(badge);
+						}
+						if (data.university_type) {
+							const badge = document.createElement('span');
+							badge.className = 'text-xs px-2.5 py-1 bg-gray-100 text-gray-700 rounded-full font-normal';
+							badge.textContent = data.university_type === 'Private' 
+								? (langParam === 'tr' ? 'Vakıf' : langParam === 'uz' ? 'Xususiy' : langParam === 'ru' ? 'Частный' : 'Private')
+								: (langParam === 'tr' ? 'Devlet' : langParam === 'uz' ? 'Davlat' : langParam === 'ru' ? 'Государственный' : 'Public');
+							badgesContainer.appendChild(badge);
+						}
+					}
+					
+					// Description
+					const descContainer = document.getElementById('bottomSheetUniversityDescription');
+					const descSection = document.getElementById('bottomSheetUniversityDescriptionSection');
+					if (data.description && descContainer && descSection) {
+						descContainer.textContent = data.description;
+						descSection.classList.remove('hidden');
+					} else if (descSection) {
+						descSection.classList.add('hidden');
+					}
+					
+					// Tuition Fees
+					const tuitionSection = document.getElementById('bottomSheetUniversityTuitionSection');
+					const tuitionContainer = document.getElementById('bottomSheetUniversityTuition');
+					if ((data.tuition_fee_min || data.tuition_fee_max) && tuitionSection && tuitionContainer) {
+						tuitionContainer.innerHTML = '';
+						const feeText = data.tuition_fee_min && data.tuition_fee_max 
+							? `${data.tuition_fee_min}$ - ${data.tuition_fee_max}$`
+							: data.tuition_fee_min ? `${data.tuition_fee_min}$+` : `${data.tuition_fee_max}$`;
+						
+						const degrees = [
+							{ name: '{% if lang == "uz" %}Bakalavr{% elif lang == "ru" %}Бакалавр{% elif lang == "tr" %}Lisans{% else %}Bachelor{% endif %}', key: 'bachelor' },
+							{ name: '{% if lang == "uz" %}Magistr{% elif lang == "ru" %}Магистр{% elif lang == "tr" %}Yüksek Lisans{% else %}Master{% endif %}', key: 'master' },
+							{ name: '{% if lang == "uz" %}Doktorantura{% elif lang == "ru" %}Докторантура{% elif lang == "tr" %}Doktora{% else %}PhD{% endif %}', key: 'phd' }
+						];
+						
+						degrees.forEach(degree => {
+							const feeDiv = document.createElement('div');
+							feeDiv.className = 'bg-white border border-gray-200 rounded-2xl p-4';
+							feeDiv.innerHTML = `
+								<h4 class="text-base font-medium text-gray-900 mb-2" style="font-family: 'Inter', sans-serif;">${degree.name}</h4>
+								<p class="text-xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', sans-serif;">${feeText}</p>
+								<p class="text-xs text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{% if lang == 'uz' %}yiliga{% elif lang == 'ru' %}в год{% elif lang == 'tr' %}yıllık{% else %}per year{% endif %}
+								</p>
+							`;
+							tuitionContainer.appendChild(feeDiv);
+						});
+						tuitionSection.classList.remove('hidden');
+					} else if (tuitionSection) {
+						tuitionSection.classList.add('hidden');
+					}
+					
+					// Programs/Majors
+					const programsSection = document.getElementById('bottomSheetUniversityProgramsSection');
+					const programsContainer = document.getElementById('bottomSheetUniversityPrograms');
+					if (data.courses && data.courses.length > 0 && programsSection && programsContainer) {
+						programsContainer.innerHTML = '';
+						data.courses.forEach(course => {
+							const courseDiv = document.createElement('div');
+							courseDiv.className = 'bg-gray-50 border border-gray-200 rounded-xl p-3';
+							courseDiv.innerHTML = `
+								<div class="flex items-start justify-between gap-2">
+									<div class="flex-1">
+										<p class="text-sm font-medium text-gray-900 mb-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">${course.name || ''}</p>
+										<p class="text-xs text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+											${course.language || ''}
+										</p>
+									</div>
+									${course.tuition_fee ? `<p class="text-sm font-medium text-gray-900" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">${course.tuition_fee}</p>` : ''}
+								</div>
+							`;
+							programsContainer.appendChild(courseDiv);
+						});
+						programsSection.classList.remove('hidden');
+					} else if (programsSection) {
+						programsSection.classList.add('hidden');
+					}
+					
+					// Admission Requirements
+					const admissionSection = document.getElementById('bottomSheetUniversityAdmissionSection');
+					if (admissionSection) {
+						// Required Documents (always show)
+						const documentsList = document.getElementById('bottomSheetUniversityDocuments');
+						if (documentsList) {
+							const documents = [
+								'{% if lang == "uz" %}Passport nusxasi{% elif lang == "ru" %}Копия паспорта{% elif lang == "tr" %}Pasaport kopyası{% else %}Passport Copy{% endif %}',
+								'{% if lang == "uz" %}Diplom yoki attestat nusxasi{% elif lang == "ru" %}Копия диплома или аттестата{% elif lang == "tr" %}Diploma veya lise diploması kopyası{% else %}Diploma or Certificate Copy{% endif %}',
+								'{% if lang == "uz" %}Transkript{% elif lang == "ru" %}Транскрипт{% elif lang == "tr" %}Transkript{% else %}Transcript{% endif %}',
+								'{% if lang == "uz" %}IELTS yoki boshqa til sertifikati{% elif lang == "ru" %}IELTS или другой языковой сертификат{% elif lang == "tr" %}IELTS veya diğer dil sertifikası{% else %}IELTS or other language certificate{% endif %}',
+								'{% if lang == "uz" %}Fotosuratlar{% elif lang == "ru" %}Фотографии{% elif lang == "tr" %}Fotoğraflar{% else %}Photos{% endif %}'
+							];
+							documentsList.innerHTML = '';
+							documents.forEach(doc => {
+								const li = document.createElement('li');
+								li.className = 'flex items-start gap-2';
+								li.innerHTML = `
+									<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400 mt-0.5 flex-shrink-0">
+										<polyline points="20 6 9 17 4 12"/>
+									</svg>
+									<span class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">${doc}</span>
+								`;
+								documentsList.appendChild(li);
+							});
+						}
+						
+						// Language Requirements
+						const langReqDiv = document.getElementById('bottomSheetUniversityLanguageReq');
+						if (data.language_requirements && langReqDiv) {
+							langReqDiv.querySelector('p').textContent = data.language_requirements;
+							langReqDiv.classList.remove('hidden');
+						} else if (langReqDiv) {
+							langReqDiv.classList.add('hidden');
+						}
+						
+						// Admission Process
+						const admissionProcessDiv = document.getElementById('bottomSheetUniversityAdmissionProcess');
+						if (data.admission_requirements && admissionProcessDiv) {
+							admissionProcessDiv.querySelector('p').textContent = data.admission_requirements;
+							admissionProcessDiv.classList.remove('hidden');
+						} else if (admissionProcessDiv) {
+							admissionProcessDiv.classList.add('hidden');
+						}
+						
+						// Application Deadline
+						const deadlineDiv = document.getElementById('bottomSheetUniversityDeadline');
+						if (data.application_deadline && deadlineDiv) {
+							deadlineDiv.querySelector('p').textContent = data.application_deadline;
+							deadlineDiv.classList.remove('hidden');
+						} else if (deadlineDiv) {
+							deadlineDiv.classList.add('hidden');
+						}
+						
+						admissionSection.classList.remove('hidden');
+					}
+					
+					// Location
+					const locationSection = document.getElementById('bottomSheetUniversityLocationSection');
+					if (locationSection && data.city && data.country) {
+						const campusLocation = document.getElementById('bottomSheetUniversityCampusLocation');
+						const mapLink = document.getElementById('bottomSheetUniversityMapLink');
+						if (campusLocation) {
+							campusLocation.textContent = `${data.city}, ${data.country}`;
+						}
+						if (mapLink) {
+							mapLink.href = `https://maps.google.com/?q=${data.city},${data.country}`;
+						}
+						locationSection.classList.remove('hidden');
+					} else if (locationSection) {
+						locationSection.classList.add('hidden');
+					}
+					
+					// Advantages
+					const advantagesSection = document.getElementById('bottomSheetUniversityAdvantagesSection');
+					const advantagesContainer = document.getElementById('bottomSheetUniversityAdvantages');
+					if (advantagesSection && advantagesContainer) {
+						advantagesContainer.innerHTML = '';
+						
+						if (data.scholarship_available) {
+							const advantageDiv = document.createElement('div');
+							advantageDiv.className = 'bg-white border border-gray-200 rounded-2xl p-4';
+							advantageDiv.innerHTML = `
+								<div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center mb-3">
+									<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-600">
+										<path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+									</svg>
+								</div>
+								<h4 class="text-base font-medium text-gray-900 mb-1" style="font-family: 'Inter', sans-serif;">
+									{% if lang == 'uz' %}Grant imkoniyati{% elif lang == 'ru' %}Возможность получения гранта{% elif lang == 'tr' %}Burs imkanı{% else %}Scholarship Available{% endif %}
+								</h4>
+								<p class="text-xs text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{% if lang == 'uz' %}Talabalar uchun grant va stipendiya dasturlari{% elif lang == 'ru' %}Программы грантов и стипендий для студентов{% elif lang == 'tr' %}Öğrenciler için burs ve stipend programları{% else %}Grant and scholarship programs for students{% endif %}
+								</p>
+							`;
+							advantagesContainer.appendChild(advantageDiv);
+						}
+						
+						if (data.accommodation_available) {
+							const advantageDiv = document.createElement('div');
+							advantageDiv.className = 'bg-white border border-gray-200 rounded-2xl p-4';
+							advantageDiv.innerHTML = `
+								<div class="w-10 h-10 bg-yellow-50 rounded-xl flex items-center justify-center mb-3">
+									<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-yellow-600">
+										<path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"/>
+										<path d="M9 22V12H15V22"/>
+									</svg>
+								</div>
+								<h4 class="text-base font-medium text-gray-900 mb-1" style="font-family: 'Inter', sans-serif;">
+									{% if lang == 'uz' %}Yotoqxona{% elif lang == 'ru' %}Общежитие{% elif lang == 'tr' %}Yurt{% else %}Accommodation{% endif %}
+								</h4>
+								<p class="text-xs text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+									{% if lang == 'uz' %}Talabalar uchun qulay yashash sharoitlari{% elif lang == 'ru' %}Удобные условия проживания для студентов{% elif lang == 'tr' %}Öğrenciler için rahat konaklama koşulları{% else %}Comfortable living conditions for students{% endif %}
+								</p>
+							`;
+							advantagesContainer.appendChild(advantageDiv);
+						}
+						
+						// Always show High Quality
+						const advantageDiv = document.createElement('div');
+						advantageDiv.className = 'bg-white border border-gray-200 rounded-2xl p-4';
+						advantageDiv.innerHTML = `
+							<div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center mb-3">
+								<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-600">
+									<path d="M12 2L2 7L12 12L22 7L12 2Z"/>
+									<path d="M2 17L12 22L22 17"/>
+									<path d="M2 12L12 17L22 12"/>
+								</svg>
+							</div>
+							<h4 class="text-base font-medium text-gray-900 mb-1" style="font-family: 'Inter', sans-serif;">
+								{% if lang == 'uz' %}Yuqori sifat{% elif lang == 'ru' %}Высокое качество{% elif lang == 'tr' %}Yüksek kalite{% else %}High Quality{% endif %}
+							</h4>
+							<p class="text-xs text-gray-600 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+								{% if lang == 'uz' %}Yuqori sifatli ta'lim va xalqaro tan olinish{% elif lang == 'ru' %}Высококачественное образование и международное признание{% elif lang == 'tr' %}Yüksek kaliteli eğitim ve uluslararası tanınma{% else %}High-quality education and international recognition{% endif %}
+							</p>
+						`;
+						advantagesContainer.appendChild(advantageDiv);
+						
+						if (advantagesContainer.children.length > 0) {
+							advantagesSection.classList.remove('hidden');
+						} else {
+							advantagesSection.classList.add('hidden');
+						}
+					}
+				}
+			} catch (error) {
+				console.error('Error loading university details:', error);
+				document.getElementById('bottomSheetUniversityDescription')?.parentElement?.classList.add('hidden');
+				document.getElementById('bottomSheetUniversityTuitionSection')?.classList.add('hidden');
+				document.getElementById('bottomSheetUniversityProgramsSection')?.classList.add('hidden');
+				document.getElementById('bottomSheetUniversityAdmissionSection')?.classList.add('hidden');
+				document.getElementById('bottomSheetUniversityLocationSection')?.classList.add('hidden');
+				document.getElementById('bottomSheetUniversityAdvantagesSection')?.classList.add('hidden');
+			}
+			
+			// Update consultation button link
+			const consultationBtn = document.getElementById('bottomSheetConsultationBtn');
+			consultationBtn.href = `/contact?university=${universityId}&lang=${langParam}`;
+			
+			// Hide mobile bottom navigation
+			const mobileNav = document.querySelector('nav.fixed.bottom-0');
+			if (mobileNav && window.innerWidth <= 768) {
+				mobileNav.style.display = 'none';
+			}
+			
+			// Show bottom sheet
+			bottomSheet.classList.add('active');
+			bottomSheetOverlay.classList.add('active');
+			document.body.style.overflow = 'hidden';
+		}
+		
+		function closeBottomSheet() {
+			// Show mobile bottom navigation
+			const mobileNav = document.querySelector('nav.fixed.bottom-0');
+			if (mobileNav && window.innerWidth <= 768) {
+				mobileNav.style.display = '';
+			}
+			
+			bottomSheet.classList.remove('active');
+			bottomSheetOverlay.classList.remove('active');
+			document.body.style.overflow = '';
+		}
+		
+		// Add click handlers to cards
+		universityCards.forEach(card => {
+			const button = card.querySelector('a[href*="contact"]');
+			const universityId = card.getAttribute('data-university-id');
+			const langParam = new URLSearchParams(window.location.search).get('lang') || 'uz';
+			
+			// Prevent card click from triggering when button is clicked
+			if (button) {
+				button.addEventListener('click', function(e) {
+					e.stopPropagation();
+				});
+			}
+			
+			// Card click handler
+			card.addEventListener('click', function(e) {
+				// Don't open if clicking on the button
+				if (e.target.closest('a[href*="contact"]')) {
+					return;
+				}
+				
+				// Desktop: navigate to detail page
+				if (window.innerWidth > 768) {
+					window.location.href = `/university/${universityId}?lang=${langParam}`;
+				} else {
+					// Mobile: open bottom sheet
+					e.preventDefault();
+					openBottomSheet(card);
+				}
+			});
+		});
+		
+		// Close handlers
+		if (bottomSheetClose) {
+			bottomSheetClose.addEventListener('click', closeBottomSheet);
+		}
+		
+		if (bottomSheetOverlay) {
+			bottomSheetOverlay.addEventListener('click', closeBottomSheet);
+		}
+		
+		// Close on escape key
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape' && bottomSheet.classList.contains('active')) {
+				closeBottomSheet();
+			}
+	});
+});
 </script>
+
+<!-- Bottom Sheet for University Details (Mobile) -->
+<div id="universityBottomSheetOverlay" class="university-bottom-sheet-overlay"></div>
+<div id="universityBottomSheet" class="university-bottom-sheet">
+	<div class="university-bottom-sheet-header">
+		<div class="flex items-center gap-3 flex-1 min-w-0">
+			<div id="bottomSheetUniversityLogo" class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center p-2 flex-shrink-0 hidden">
+				<img src="" alt="" class="w-full h-full object-contain" onerror="this.parentElement.style.display='none';">
+			</div>
+			<div class="flex-1 min-w-0">
+				<h3 id="bottomSheetUniversityName" class="text-lg font-semibold text-gray-900 line-clamp-1" style="font-family: 'Inter', sans-serif;"></h3>
+				<div id="bottomSheetUniversityBadges" class="flex items-center gap-2 mt-1"></div>
+			</div>
+		</div>
+		<button id="universityBottomSheetClose" class="university-bottom-sheet-close flex-shrink-0" aria-label="Close">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+				<line x1="18" y1="6" x2="6" y2="18"></line>
+				<line x1="6" y1="6" x2="18" y2="18"></line>
+			</svg>
+		</button>
+	</div>
+	<div class="university-bottom-sheet-content">
+		<div class="space-y-6 pb-4">
+			<!-- Basic Info -->
+			<div class="space-y-4">
+				<div>
+					<p class="text-sm text-gray-600 mb-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Joylashuvi{% elif lang == 'ru' %}Местоположение{% elif lang == 'tr' %}Konum{% else %}Location{% endif %}
+					</p>
+					<p id="bottomSheetUniversityLocation" class="text-base font-medium text-gray-900" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
+				</div>
+				<div>
+					<p class="text-sm text-gray-600 mb-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}O'qish tili{% elif lang == 'ru' %}Язык обучения{% elif lang == 'tr' %}Eğitim dili{% else %}Language of instruction{% endif %}
+					</p>
+					<p id="bottomSheetUniversityLang" class="text-base font-medium text-gray-900" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
+				</div>
+				<div id="bottomSheetUniversityPrice" class="hidden">
+					<p class="text-sm text-gray-600 mb-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Narx{% elif lang == 'ru' %}Цена{% elif lang == 'tr' %}Fiyat{% else %}Price{% endif %}
+					</p>
+					<p class="text-base font-semibold text-gray-900" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
+				</div>
+			</div>
+			
+			<!-- Statistics -->
+			<div id="bottomSheetUniversityStats" class="grid grid-cols-2 gap-4 py-4 bg-gray-50 rounded-2xl px-4"></div>
+			
+			<!-- Description -->
+			<div id="bottomSheetUniversityDescriptionSection" class="hidden">
+				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: 'Inter', sans-serif;">
+					{% if lang == 'uz' %}Umumiy ma'lumot{% elif lang == 'ru' %}Общая информация{% elif lang == 'tr' %}Genel bilgi{% else %}General Information{% endif %}
+				</h3>
+				<p id="bottomSheetUniversityDescription" class="text-base text-gray-700 font-normal leading-relaxed whitespace-pre-line" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
+			</div>
+			
+			<!-- Tuition Fees -->
+			<div id="bottomSheetUniversityTuitionSection" class="hidden">
+				<h3 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', sans-serif;">
+					{% if lang == 'uz' %}O'qish to'lovi{% elif lang == 'ru' %}Стоимость обучения{% elif lang == 'tr' %}Öğrenim ücreti{% else %}Tuition Fees{% endif %}
+				</h3>
+				<div id="bottomSheetUniversityTuition" class="grid grid-cols-1 gap-4"></div>
+			</div>
+			
+			<!-- Programs/Majors -->
+			<div id="bottomSheetUniversityProgramsSection" class="hidden">
+				<h3 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', sans-serif;">
+					{% if lang == 'uz' %}Yo'nalishlar va dasturlar{% elif lang == 'ru' %}Направления и программы{% elif lang == 'tr' %}Bölümler ve programlar{% else %}Majors & Programs{% endif %}
+				</h3>
+				<div id="bottomSheetUniversityPrograms" class="space-y-2"></div>
+			</div>
+			
+			<!-- Admission Requirements -->
+			<div id="bottomSheetUniversityAdmissionSection" class="hidden">
+				<h3 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', sans-serif;">
+					{% if lang == 'uz' %}Qabul talablari{% elif lang == 'ru' %}Требования к поступлению{% elif lang == 'tr' %}Kabul gereksinimleri{% else %}Admission Requirements{% endif %}
+				</h3>
+				<div class="bg-white border border-gray-200 rounded-2xl p-4 space-y-4">
+					<div>
+						<h4 class="text-base font-medium text-gray-900 mb-3" style="font-family: 'Inter', sans-serif;">
+							{% if lang == 'uz' %}Kerakli hujjatlar{% elif lang == 'ru' %}Необходимые документы{% elif lang == 'tr' %}Gerekli belgeler{% else %}Required Documents{% endif %}
+						</h4>
+						<ul id="bottomSheetUniversityDocuments" class="space-y-2"></ul>
+					</div>
+					<div id="bottomSheetUniversityLanguageReq" class="hidden">
+						<h4 class="text-base font-medium text-gray-900 mb-3" style="font-family: 'Inter', sans-serif;">
+							{% if lang == 'uz' %}Til talablari{% elif lang == 'ru' %}Языковые требования{% elif lang == 'tr' %}Dil gereksinimleri{% else %}Language Requirements{% endif %}
+						</h4>
+						<p class="text-sm text-gray-700 font-normal leading-relaxed whitespace-pre-line" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
+					</div>
+					<div id="bottomSheetUniversityAdmissionProcess" class="hidden">
+						<h4 class="text-base font-medium text-gray-900 mb-3" style="font-family: 'Inter', sans-serif;">
+							{% if lang == 'uz' %}Qabul jarayoni{% elif lang == 'ru' %}Процесс поступления{% elif lang == 'tr' %}Kabul süreci{% else %}Admission Process{% endif %}
+						</h4>
+						<p class="text-sm text-gray-700 font-normal leading-relaxed whitespace-pre-line" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
+					</div>
+					<div id="bottomSheetUniversityDeadline" class="hidden">
+						<h4 class="text-base font-medium text-gray-900 mb-3" style="font-family: 'Inter', sans-serif;">
+							{% if lang == 'uz' %}Ariza berish muddati{% elif lang == 'ru' %}Срок подачи заявлений{% elif lang == 'tr' %}Başvuru tarihi{% else %}Application Deadline{% endif %}
+						</h4>
+						<p class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Location -->
+			<div id="bottomSheetUniversityLocationSection" class="hidden">
+				<h3 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', sans-serif;">
+					{% if lang == 'uz' %}Manzil{% elif lang == 'ru' %}Адрес{% elif lang == 'tr' %}Adres{% else %}Location{% endif %}
+				</h3>
+				<div class="bg-gray-50 border border-gray-200 rounded-2xl p-4">
+					<h4 class="text-base font-medium text-gray-900 mb-2" style="font-family: 'Inter', sans-serif;">
+						{% if lang == 'uz' %}Kampus manzili{% elif lang == 'ru' %}Адрес кампуса{% elif lang == 'tr' %}Kampüs adresi{% else %}Campus Location{% endif %}
+					</h4>
+					<p id="bottomSheetUniversityCampusLocation" class="text-sm text-gray-700 font-normal mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
+					<a id="bottomSheetUniversityMapLink" href="#" target="_blank" class="text-sm text-gray-900 font-normal hover:underline inline-flex items-center gap-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Xaritada ko'rish{% elif lang == 'ru' %}Посмотреть на карте{% elif lang == 'tr' %}Haritada görüntüle{% else %}View on map{% endif %}
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<path d="M5 12h14M12 5l7 7-7 7"/>
+						</svg>
+					</a>
+				</div>
+			</div>
+			
+			<!-- Advantages -->
+			<div id="bottomSheetUniversityAdvantagesSection" class="hidden">
+				<h3 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', sans-serif;">
+					{% if lang == 'uz' %}Afzalliklar{% elif lang == 'ru' %}Преимущества{% elif lang == 'tr' %}Avantajlar{% else %}Advantages{% endif %}
+				</h3>
+				<div id="bottomSheetUniversityAdvantages" class="grid grid-cols-1 gap-4"></div>
+			</div>
+		</div>
+	</div>
+	<div class="university-bottom-sheet-footer">
+		<a id="bottomSheetConsultationBtn" href="#" class="w-full inline-flex items-center justify-center px-6 py-3.5 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-200 text-base font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+			{% if lang == 'uz' %}Maslahat olish{% elif lang == 'ru' %}Получить консультацию{% elif lang == 'tr' %}Danışmanlık al{% else %}Get Consultation{% endif %}
+		</a>
+	</div>
+</div>
+
+<style>
+.university-bottom-sheet-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 10000;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.university-bottom-sheet-overlay.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.university-bottom-sheet {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: white;
+	border-radius: 24px 24px 0 0;
+	z-index: 10001;
+	height: 95vh;
+	max-height: 95vh;
+	display: flex;
+	flex-direction: column;
+	transform: translateY(100%);
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.university-bottom-sheet.active {
+	transform: translateY(0);
+}
+
+.university-bottom-sheet-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 20px 24px;
+	border-bottom: 1px solid #e5e7eb;
+	flex-shrink: 0;
+}
+
+.university-bottom-sheet-close {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 8px;
+	color: #6b7280;
+	transition: color 0.2s;
+}
+
+.university-bottom-sheet-close:hover {
+	color: #111827;
+}
+
+.university-bottom-sheet-content {
+	flex: 1;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 24px;
+	min-height: 0;
+	-webkit-overflow-scrolling: touch;
+}
+
+.university-bottom-sheet-footer {
+	padding: 20px 24px;
+	border-top: 1px solid #e5e7eb;
+	background: white;
+}
+
+@media (min-width: 769px) {
+	.university-bottom-sheet-overlay,
+	.university-bottom-sheet {
+		display: none;
+	}
+}
+</style>
 
 {% endblock %}

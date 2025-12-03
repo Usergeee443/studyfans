@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-	{% if lang == 'uz' %}Kalkulyator - Study Fans{% elif lang == 'ru' %}Калькулятор - Study Fans{% elif lang == 'tr' %}Hesap Makinesi - Study Fans{% else %}Calculator - Study Fans{% endif %}
+	{% if lang == 'uz' %}Visa Kalkulyatori - Study Fans{% elif lang == 'ru' %}Калькулятор визы - Study Fans{% elif lang == 'tr' %}Vize Hesaplayıcı - Study Fans{% else %}Visa Calculator - Study Fans{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -14,10 +14,10 @@
 			<!-- Title Section -->
 			<div class="flex-1">
 				<h1 class="text-2xl font-medium text-gray-900 mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
-					{% if lang == 'uz' %}Kalkulyator{% elif lang == 'ru' %}Калькулятор{% elif lang == 'tr' %}Hesap Makinesi{% else %}Calculator{% endif %}
+					{% if lang == 'uz' %}Visa Kalkulyatori{% elif lang == 'ru' %}Калькулятор визы{% elif lang == 'tr' %}Vize Hesaplayıcı{% else %}Visa Calculator{% endif %}
 				</h1>
 				<p class="text-sm text-gray-500 font-normal mt-0.5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Narx, grant va vaqt hisoblovchi{% elif lang == 'ru' %}Калькулятор стоимости, грантов и времени{% elif lang == 'tr' %}Fiyat, burs ve süre hesaplayıcı{% else %}Price, grant and time calculator{% endif %}
+					{% if lang == 'uz' %}Turkiya vizasi tugash sanasini hisoblang{% elif lang == 'ru' %}Рассчитайте дату окончания визы в Турции{% elif lang == 'tr' %}Türkiye vizesi bitiş tarihini hesaplayın{% else %}Calculate Turkey visa expiration date{% endif %}
 				</p>
 			</div>
 		</div>
@@ -27,69 +27,69 @@
 <!-- Calculator Section -->
 <section class="py-8 bg-white">
 	<div class="max-w-4xl mx-auto px-6">
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-			<!-- Narx Kalkulyatori -->
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
-				<div class="flex items-center gap-3 mb-4">
-					<div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center">
-						<img src="/static/calculator.svg" alt="Calculator" class="w-6 h-6">
-					</div>
-					<h3 class="text-lg font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Narx{% elif lang == 'ru' %}Стоимость{% elif lang == 'tr' %}Fiyat{% else %}Price{% endif %}
-					</h3>
+		<!-- Visa Calculator Card -->
+		<div class="bg-white border border-gray-200 rounded-3xl p-8">
+			<div class="flex items-center gap-3 mb-6">
+				<div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center">
+					<img src="{{ url_for('static', filename='calculator.svg') }}" alt="Calculator" class="w-7 h-7">
 				</div>
-				<p class="text-sm text-gray-600 font-normal mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}O'qish narxini hisoblang{% elif lang == 'ru' %}Рассчитайте стоимость обучения{% elif lang == 'tr' %}Eğitim maliyetini hesaplayın{% else %}Calculate tuition cost{% endif %}
-				</p>
-				<button onclick="openPriceCalculator()" class="w-full px-4 py-2.5 bg-gray-900 text-white rounded-full text-sm font-normal hover:bg-gray-800 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				<h2 class="text-xl font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Turkiya Vizasi Tugash Sanasi{% elif lang == 'ru' %}Дата окончания визы в Турции{% elif lang == 'tr' %}Türkiye Vizesi Bitiş Tarihi{% else %}Turkey Visa Expiration Date{% endif %}
+				</h2>
+			</div>
+			
+			<p class="text-sm text-gray-600 font-normal mb-6 leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				{% if lang == 'uz' %}Turkiya vizasi 90 kun davom etadi. Visa berilgan kunni kiriting va tugash sanasini bilib oling.{% elif lang == 'ru' %}Виза в Турцию действует 90 дней. Введите дату выдачи визы и узнайте дату окончания.{% elif lang == 'tr' %}Türkiye vizesi 90 gün geçerlidir. Vize verilme tarihini girin ve bitiş tarihini öğrenin.{% else %}Turkey visa is valid for 90 days. Enter the visa issue date and find out the expiration date.{% endif %}
+			</p>
+			
+			<div class="space-y-6">
+				<div>
+					<label class="block text-sm font-medium text-gray-900 mb-2" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Visa berilgan sana{% elif lang == 'ru' %}Дата выдачи визы{% elif lang == 'tr' %}Vize verilme tarihi{% else %}Visa Issue Date{% endif %}
+					</label>
+					<input type="date" id="visaIssueDate" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 font-normal focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					<p class="text-xs text-gray-500 font-normal mt-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						{% if lang == 'uz' %}Vizangiz berilgan sanani tanlang{% elif lang == 'ru' %}Выберите дату выдачи вашей визы{% elif lang == 'tr' %}Vizenizin verildiği tarihi seçin{% else %}Select the date your visa was issued{% endif %}
+					</p>
+				</div>
+				
+				<button onclick="calculateVisaExpiration()" class="w-full px-6 py-3.5 bg-gray-900 text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 					{% if lang == 'uz' %}Hisobla{% elif lang == 'ru' %}Рассчитать{% elif lang == 'tr' %}Hesapla{% else %}Calculate{% endif %}
 				</button>
-			</div>
-
-			<!-- Grant Kalkulyatori -->
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
-				<div class="flex items-center gap-3 mb-4">
-					<div class="w-12 h-12 bg-yellow-50 rounded-2xl flex items-center justify-center">
-						<img src="/static/calculator.svg" alt="Calculator" class="w-6 h-6">
+				
+				<!-- Result Section -->
+				<div id="visaResult" class="hidden mt-6 p-6 bg-blue-50 border border-blue-200 rounded-2xl">
+					<div class="flex items-start gap-3 mb-4">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-600 flex-shrink-0 mt-0.5">
+							<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+							<polyline points="22 4 12 14.01 9 11.01"/>
+						</svg>
+						<div class="flex-1">
+							<h3 class="text-base font-medium text-gray-900 mb-2" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+								{% if lang == 'uz' %}Visa tugash sanasi{% elif lang == 'ru' %}Дата окончания визы{% elif lang == 'tr' %}Vize bitiş tarihi{% else %}Visa Expiration Date{% endif %}
+							</h3>
+							<div class="space-y-2">
+								<div>
+									<p class="text-xs text-gray-600 font-normal mb-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+										{% if lang == 'uz' %}Visa berilgan sana:{% elif lang == 'ru' %}Дата выдачи визы:{% elif lang == 'tr' %}Vize verilme tarihi:{% else %}Visa Issue Date:{% endif %}
+									</p>
+									<p id="issueDateDisplay" class="text-lg font-semibold text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
+								</div>
+								<div class="pt-2 border-t border-blue-200">
+									<p class="text-xs text-gray-600 font-normal mb-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+										{% if lang == 'uz' %}Visa tugash sanasi (90 kundan keyin):{% elif lang == 'ru' %}Дата окончания визы (через 90 дней):{% elif lang == 'tr' %}Vize bitiş tarihi (90 gün sonra):{% else %}Visa Expiration Date (after 90 days):{% endif %}
+									</p>
+									<p id="expirationDateDisplay" class="text-2xl font-bold text-blue-600" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
+								</div>
+								<div class="pt-2">
+									<p class="text-xs text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+										{% if lang == 'uz' %}⚠️ Eslatma: Visa muddati 90 kun. Tugash sanasidan oldin mamlakatni tark etish yoki vizani uzaytirish kerak.{% elif lang == 'ru' %}⚠️ Примечание: Срок действия визы 90 дней. Необходимо покинуть страну или продлить визу до даты окончания.{% elif lang == 'tr' %}⚠️ Not: Vize süresi 90 gündür. Bitiş tarihinden önce ülkeyi terk etmeli veya vizeyi uzatmalısınız.{% else %}⚠️ Note: Visa validity is 90 days. You must leave the country or extend your visa before the expiration date.{% endif %}
+									</p>
+								</div>
+							</div>
+						</div>
 					</div>
-					<h3 class="text-lg font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Grant{% elif lang == 'ru' %}Грант{% elif lang == 'tr' %}Burs{% else %}Grant{% endif %}
-					</h3>
 				</div>
-				<p class="text-sm text-gray-600 font-normal mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Grant imkoniyatlarini bilib oling{% elif lang == 'ru' %}Узнайте возможности гранта{% elif lang == 'tr' %}Burs fırsatlarını öğrenin{% else %}Learn about grant opportunities{% endif %}
-				</p>
-				<button onclick="openGrantCalculator()" class="w-full px-4 py-2.5 bg-gray-900 text-white rounded-full text-sm font-normal hover:bg-gray-800 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Hisobla{% elif lang == 'ru' %}Рассчитать{% elif lang == 'tr' %}Hesapla{% else %}Calculate{% endif %}
-				</button>
-			</div>
-
-			<!-- Vaqt Kalkulyatori -->
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200">
-				<div class="flex items-center gap-3 mb-4">
-					<div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center">
-						<img src="/static/calculator.svg" alt="Calculator" class="w-6 h-6">
-					</div>
-					<h3 class="text-lg font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Vaqt{% elif lang == 'ru' %}Время{% elif lang == 'tr' %}Süre{% else %}Time{% endif %}
-					</h3>
-				</div>
-				<p class="text-sm text-gray-600 font-normal mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Qabul jarayoni vaqtini hisoblang{% elif lang == 'ru' %}Рассчитайте время процесса поступления{% elif lang == 'tr' %}Başvuru süresini hesaplayın{% else %}Calculate admission process time{% endif %}
-				</p>
-				<button onclick="openTimeCalculator()" class="w-full px-4 py-2.5 bg-gray-900 text-white rounded-full text-sm font-normal hover:bg-gray-800 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Hisobla{% elif lang == 'ru' %}Рассчитать{% elif lang == 'tr' %}Hesapla{% else %}Calculate{% endif %}
-				</button>
-			</div>
-		</div>
-
-		<!-- Calculator Content Area -->
-		<div id="calculatorContent" class="bg-white border border-gray-200 rounded-3xl p-8">
-			<div class="text-center py-12">
-				<img src="/static/calculator.svg" alt="Calculator" class="w-16 h-16 mx-auto mb-4 opacity-50">
-				<p class="text-gray-500 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Yuqoridagi kalkulyatorlardan birini tanlang{% elif lang == 'ru' %}Выберите один из калькуляторов выше{% elif lang == 'tr' %}Yukarıdaki hesaplayıcılardan birini seçin{% else %}Select one of the calculators above{% endif %}
-				</p>
 			</div>
 		</div>
 	</div>
@@ -97,160 +97,69 @@
 </div>
 
 <script>
-function openPriceCalculator() {
-	const content = document.getElementById('calculatorContent');
-	content.innerHTML = `
-		<h2 class="text-xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-			{% if lang == 'uz' %}Narx Kalkulyatori{% elif lang == 'ru' %}Калькулятор стоимости{% elif lang == 'tr' %}Fiyat Hesaplayıcı{% else %}Price Calculator{% endif %}
-		</h2>
-		<div class="space-y-4">
-			<div>
-				<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Yo'nalish{% elif lang == 'ru' %}Направление{% elif lang == 'tr' %}Bölüm{% else %}Major{% endif %}
-				</label>
-				<select id="majorSelect" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 font-normal focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					<option value="">{% if lang == 'uz' %}Tanlang...{% elif lang == 'ru' %}Выберите...{% elif lang == 'tr' %}Seçin...{% else %}Select...{% endif %}</option>
-					<option value="engineering">{% if lang == 'uz' %}Muhandislik{% elif lang == 'ru' %}Инженерия{% elif lang == 'tr' %}Mühendislik{% else %}Engineering{% endif %}</option>
-					<option value="medicine">{% if lang == 'uz' %}Tibbiyot{% elif lang == 'ru' %}Медицина{% elif lang == 'tr' %}Tıp{% else %}Medicine{% endif %}</option>
-					<option value="business">{% if lang == 'uz' %}Biznes{% elif lang == 'ru' %}Бизнес{% elif lang == 'tr' %}İşletme{% else %}Business{% endif %}</option>
-				</select>
-			</div>
-			<div>
-				<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Daraja{% elif lang == 'ru' %}Степень{% elif lang == 'tr' %}Derece{% else %}Degree{% endif %}
-				</label>
-				<select id="degreeSelect" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 font-normal focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					<option value="">{% if lang == 'uz' %}Tanlang...{% elif lang == 'ru' %}Выберите...{% elif lang == 'tr' %}Seçin...{% else %}Select...{% endif %}</option>
-					<option value="bachelor">{% if lang == 'uz' %}Bakalavr{% elif lang == 'ru' %}Бакалавр{% elif lang == 'tr' %}Lisans{% else %}Bachelor{% endif %}</option>
-					<option value="master">{% if lang == 'uz' %}Magistr{% elif lang == 'ru' %}Магистр{% elif lang == 'tr' %}Yüksek Lisans{% else %}Master{% endif %}</option>
-					<option value="phd">{% if lang == 'uz' %}Doktorantura{% elif lang == 'ru' %}Докторантура{% elif lang == 'tr' %}Doktora{% else %}PhD{% endif %}</option>
-				</select>
-			</div>
-			<button onclick="calculatePrice()" class="w-full px-4 py-2.5 bg-gray-900 text-white rounded-full text-sm font-normal hover:bg-gray-800 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				{% if lang == 'uz' %}Hisobla{% elif lang == 'ru' %}Рассчитать{% elif lang == 'tr' %}Hesapla{% else %}Calculate{% endif %}
-			</button>
-			<div id="priceResult" class="mt-6 p-4 bg-gray-50 rounded-xl hidden">
-				<p class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
-			</div>
-		</div>
-	`;
-}
-
-function openGrantCalculator() {
-	const content = document.getElementById('calculatorContent');
-	content.innerHTML = `
-		<h2 class="text-xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-			{% if lang == 'uz' %}Grant Kalkulyatori{% elif lang == 'ru' %}Калькулятор гранта{% elif lang == 'tr' %}Burs Hesaplayıcı{% else %}Grant Calculator{% endif %}
-		</h2>
-		<div class="space-y-4">
-			<div>
-				<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}O'rtacha ball{% elif lang == 'ru' %}Средний балл{% elif lang == 'tr' %}Ortalama puan{% else %}Average Score{% endif %}
-				</label>
-				<input type="number" id="averageScore" min="0" max="100" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 font-normal focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;" placeholder="{% if lang == 'uz' %}Masalan: 85{% elif lang == 'ru' %}Например: 85{% elif lang == 'tr' %}Örneğin: 85{% else %}Example: 85{% endif %}">
-			</div>
-			<div>
-				<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}IELTS balli{% elif lang == 'ru' %}Балл IELTS{% elif lang == 'tr' %}IELTS puanı{% else %}IELTS Score{% endif %}
-				</label>
-				<input type="number" id="ieltsScore" min="0" max="9" step="0.5" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 font-normal focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;" placeholder="{% if lang == 'uz' %}Masalan: 6.5{% elif lang == 'ru' %}Например: 6.5{% elif lang == 'tr' %}Örneğin: 6.5{% else %}Example: 6.5{% endif %}">
-			</div>
-			<button onclick="calculateGrant()" class="w-full px-4 py-2.5 bg-gray-900 text-white rounded-full text-sm font-normal hover:bg-gray-800 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				{% if lang == 'uz' %}Hisobla{% elif lang == 'ru' %}Рассчитать{% elif lang == 'tr' %}Hesapla{% else %}Calculate{% endif %}
-			</button>
-			<div id="grantResult" class="mt-6 p-4 bg-gray-50 rounded-xl hidden">
-				<p class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
-			</div>
-		</div>
-	`;
-}
-
-function openTimeCalculator() {
-	const content = document.getElementById('calculatorContent');
-	content.innerHTML = `
-		<h2 class="text-xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-			{% if lang == 'uz' %}Vaqt Kalkulyatori{% elif lang == 'ru' %}Калькулятор времени{% elif lang == 'tr' %}Süre Hesaplayıcı{% else %}Time Calculator{% endif %}
-		</h2>
-		<div class="space-y-4">
-			<div>
-				<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Qabul boshlanish sanasi{% elif lang == 'ru' %}Дата начала приема{% elif lang == 'tr' %}Başvuru başlangıç tarihi{% else %}Admission Start Date{% endif %}
-				</label>
-				<input type="date" id="startDate" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 font-normal focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-			</div>
-			<button onclick="calculateTime()" class="w-full px-4 py-2.5 bg-gray-900 text-white rounded-full text-sm font-normal hover:bg-gray-800 transition-colors" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				{% if lang == 'uz' %}Hisobla{% elif lang == 'ru' %}Рассчитать{% elif lang == 'tr' %}Hesapla{% else %}Calculate{% endif %}
-			</button>
-			<div id="timeResult" class="mt-6 p-4 bg-gray-50 rounded-xl hidden">
-				<p class="text-sm text-gray-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
-			</div>
-		</div>
-	`;
-}
-
-function calculatePrice() {
-	const major = document.getElementById('majorSelect').value;
-	const degree = document.getElementById('degreeSelect').value;
-	const resultDiv = document.getElementById('priceResult');
+function calculateVisaExpiration() {
+	const issueDateInput = document.getElementById('visaIssueDate');
+	const issueDate = issueDateInput.value;
+	const resultDiv = document.getElementById('visaResult');
 	
-	if (!major || !degree) {
-		alert('{% if lang == "uz" %}Iltimos, barcha maydonlarni to\'ldiring{% elif lang == "ru" %}Пожалуйста, заполните все поля{% elif lang == "tr" %}Lütfen tüm alanları doldurun{% else %}Please fill all fields{% endif %}');
+	if (!issueDate) {
+		alert('{% if lang == "uz" %}Iltimos, visa berilgan sanani tanlang{% elif lang == "ru" %}Пожалуйста, выберите дату выдачи визы{% elif lang == "tr" %}Lütfen vize verilme tarihini seçin{% else %}Please select the visa issue date{% endif %}');
 		return;
 	}
 	
-	// Simple calculation logic (can be enhanced)
-	let price = 0;
-	if (degree === 'bachelor') {
-		price = major === 'medicine' ? 15000 : major === 'engineering' ? 8000 : 6000;
-	} else if (degree === 'master') {
-		price = major === 'medicine' ? 12000 : major === 'engineering' ? 7000 : 5000;
-	} else {
-		price = major === 'medicine' ? 10000 : major === 'engineering' ? 6000 : 4000;
-	}
+	// Parse the issue date
+	const issue = new Date(issueDate);
 	
-	resultDiv.classList.remove('hidden');
-	resultDiv.querySelector('p').textContent = `{% if lang == "uz" %}Taxminiy narx: ${price} USD/yil{% elif lang == "ru" %}Примерная стоимость: ${price} USD/год{% elif lang == "tr" %}Tahmini fiyat: ${price} USD/yıl{% else %}Estimated price: ${price} USD/year{% endif %}`;
-}
-
-function calculateGrant() {
-	const avgScore = parseFloat(document.getElementById('averageScore').value);
-	const ielts = parseFloat(document.getElementById('ieltsScore').value);
-	const resultDiv = document.getElementById('grantResult');
-	
-	if (!avgScore || !ielts) {
-		alert('{% if lang == "uz" %}Iltimos, barcha maydonlarni to\'ldiring{% elif lang == "ru" %}Пожалуйста, заполните все поля{% elif lang == "tr" %}Lütfen tüm alanları doldurun{% else %}Please fill all fields{% endif %}');
+	// Check if date is valid
+	if (isNaN(issue.getTime())) {
+		alert('{% if lang == "uz" %}Noto\'g\'ri sana kiritildi{% elif lang == "ru" %}Введена неверная дата{% elif lang == "tr" %}Geçersiz tarih girildi{% else %}Invalid date entered{% endif %}');
 		return;
 	}
 	
-	let grantChance = '{% if lang == "uz" %}Yuqori{% elif lang == "ru" %}Высокий{% elif lang == "tr" %}Yüksek{% else %}High{% endif %}';
-	if (avgScore < 80 || ielts < 6.0) {
-		grantChance = '{% if lang == "uz" %}O\'rtacha{% elif lang == "ru" %}Средний{% elif lang == "tr" %}Orta{% else %}Medium{% endif %}';
-	}
-	if (avgScore < 70 || ielts < 5.5) {
-		grantChance = '{% if lang == "uz" %}Past{% elif lang == "ru" %}Низкий{% elif lang == "tr" %}Düşük{% else %}Low{% endif %}';
-	}
+	// Calculate expiration date (90 days later)
+	const expiration = new Date(issue);
+	expiration.setDate(expiration.getDate() + 90);
 	
+	// Format dates for display
+	const formatDate = (date) => {
+		const day = String(date.getDate()).padStart(2, '0');
+		const month = String(date.getMonth() + 1).padStart(2, '0');
+		const year = date.getFullYear();
+		
+		// Get day name
+		const days = {
+			uz: ['Yakshanba', 'Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'],
+			ru: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+			tr: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
+			en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+		};
+		
+		const langCode = '{{ lang }}';
+		const dayName = days[langCode] ? days[langCode][date.getDay()] : days['en'][date.getDay()];
+		
+		// Get month name
+		const months = {
+			uz: ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'],
+			ru: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+			tr: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+			en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+		};
+		
+		const monthName = months[langCode] ? months[langCode][date.getMonth()] : months['en'][date.getMonth()];
+		
+		return `${dayName}, ${day} ${monthName} ${year}`;
+	};
+	
+	// Display results
+	document.getElementById('issueDateDisplay').textContent = formatDate(issue);
+	document.getElementById('expirationDateDisplay').textContent = formatDate(expiration);
+	
+	// Show result
 	resultDiv.classList.remove('hidden');
-	resultDiv.querySelector('p').textContent = `{% if lang == "uz" %}Grant imkoniyati: ${grantChance}{% elif lang == "ru" %}Возможность гранта: ${grantChance}{% elif lang == "tr" %}Burs fırsatı: ${grantChance}{% else %}Grant opportunity: ${grantChance}{% endif %}`;
-}
-
-function calculateTime() {
-	const startDate = document.getElementById('startDate').value;
-	const resultDiv = document.getElementById('timeResult');
 	
-	if (!startDate) {
-		alert('{% if lang == "uz" %}Iltimos, sanani tanlang{% elif lang == "ru" %}Пожалуйста, выберите дату{% elif lang == "tr" %}Lütfen tarih seçin{% else %}Please select a date{% endif %}');
-		return;
-	}
-	
-	const start = new Date(startDate);
-	const end = new Date(start);
-	end.setDate(end.getDate() + 42); // 6 weeks
-	
-	resultDiv.classList.remove('hidden');
-	resultDiv.querySelector('p').textContent = `{% if lang == "uz" %}Taxminiy yakunlanish sanasi: ${end.toLocaleDateString()}{% elif lang == "ru" %}Примерная дата завершения: ${end.toLocaleDateString()}{% elif lang == "tr" %}Tahmini bitiş tarihi: ${end.toLocaleDateString()}{% else %}Estimated completion date: ${end.toLocaleDateString()}{% endif %}`;
+	// Scroll to result
+	resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 </script>
 
 {% endblock %}
-

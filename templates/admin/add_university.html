@@ -306,28 +306,44 @@
                     </div>
                 </div>
 
-                <!-- Logo Upload Section -->
-                <div class="pb-6 mb-6">
-                    <h2 class="text-lg font-normal text-gray-900 mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">Logo</h2>
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                <i class="fas fa-image mr-2 text-purple-500"></i>Logo faylini tanlang
-                            </label>
-                            <input type="file" name="logo" accept="image/*" id="logo-input"
-                                class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-                            <p class="text-sm text-gray-500 mt-2">
-                                Ruxsat etilgan formatlar: PNG, JPG, JPEG, GIF, WEBP. Maksimal hajm: 16MB
-                            </p>
-                        </div>
-                        
-                        <!-- Logo Preview -->
-                        <div id="logo-preview" class="hidden">
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Logo ko'rinishi:</label>
-                            <div class="w-32 h-32 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center overflow-hidden">
-                                <img id="preview-image" src="" alt="Logo preview" class="w-full h-full object-contain">
+                <!-- Logo & Cover Image Upload Section -->
+                <div class="pb-6 mb-6 space-y-8">
+                    <!-- Logo -->
+                    <div>
+                        <h2 class="text-lg font-normal text-gray-900 mb-4" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">Logo</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    <i class="fas fa-image mr-2 text-purple-500"></i>Logo faylini tanlang
+                                </label>
+                                <input type="file" name="logo" accept="image/*" id="logo-input"
+                                    class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+                                <p class="text-sm text-gray-500 mt-2">
+                                    Ruxsat etilgan formatlar: PNG, JPG, JPEG, GIF, WEBP. Maksimal hajm: 16MB
+                                </p>
+                            </div>
+                            
+                            <!-- Logo Preview -->
+                            <div id="logo-preview" class="hidden">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Logo ko'rinishi:</label>
+                                <div class="w-32 h-32 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center overflow-hidden">
+                                    <img id="preview-image" src="" alt="Logo preview" class="w-full h-full object-contain">
+                                </div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Cover Image -->
+                    <div>
+                        <h2 class="text-lg font-normal text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">Katta rasm (cover)</h2>
+                        <p class="text-sm text-gray-500 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+                            Bu rasm asosiy sahifadagi <strong>Top universitetlar</strong> kartalarida va boshqa katta bannerlarda to'liq fon sifatida chiqadi.
+                        </p>
+                        <input type="file" name="cover_image" accept="image/*"
+                            class="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 text-sm font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+                        <p class="text-sm text-gray-500 mt-2">
+                            Tavsiya etiladi: gorizontal rasm (16:9 yoki 4:3), PNG/JPG, maksimal 16MB.
+                        </p>
                     </div>
                 </div>
 

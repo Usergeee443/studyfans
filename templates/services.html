@@ -151,7 +151,19 @@
 			] %}
 			
 			{% for service in services %}
-			<div class="service-card bg-white rounded-3xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-200" data-name="{% if lang == 'uz' %}{{ service[0].split(':')[1] }}{% elif lang == 'ru' %}{{ service[1].split(':')[1] }}{% elif lang == 'tr' %}{{ service[2].split(':')[1] }}{% else %}{{ service[3].split(':')[1] }}{% endif %}">
+			<div class="service-card bg-white rounded-3xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-200 js-service-card" 
+				data-name="{% if lang == 'uz' %}{{ service[0].split(':')[1] }}{% elif lang == 'ru' %}{{ service[1].split(':')[1] }}{% elif lang == 'tr' %}{{ service[2].split(':')[1] }}{% else %}{{ service[3].split(':')[1] }}{% endif %}"
+				data-service-id="{{ service[4] }}"
+				data-icon="{{ service[5] }}"
+				data-title-uz="{{ service[0].split(':')[1] }}"
+				data-title-ru="{{ service[1].split(':')[1] }}"
+				data-title-tr="{{ service[2].split(':')[1] }}"
+				data-title-en="{{ service[3].split(':')[1] }}"
+				data-description-uz="{{ service[7].split(':')[1] }}"
+				data-description-ru="{{ service[8].split(':')[1] }}"
+				data-description-tr="{{ service[9].split(':')[1] }}"
+				data-description-en="{{ service[10].split(':')[1] if service|length > 10 else '' }}"
+				>
 				<div class="p-6">
 					<div class="flex items-center gap-3 mb-3">
 						<div class="service-icon-wrapper flex-shrink-0">
@@ -162,14 +174,20 @@
 					</h3>
 					</div>
 					<p class="text-sm text-gray-600 font-normal mb-4 leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}{{ service[7].split(':')[1] }}{% elif lang == 'ru' %}{{ service[8].split(':')[1] }}{% elif lang == 'tr' %}{{ service[9].split(':')[1] }}{% else %}{{ service[10].split(':')[1] }}{% endif %}
+						{% if lang == 'uz' %}{{ service[7].split(':')[1] }}{% elif lang == 'ru' %}{{ service[8].split(':')[1] }}{% elif lang == 'tr' %}{{ service[9].split(':')[1] }}{% else %}{{ service[10].split(':')[1] if service|length > 10 else '' }}{% endif %}
 					</p>
-					<a href="{{ url_for('service_detail', service_id=service[4], lang=lang) }}" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					<a href="{{ url_for('service_detail', service_id=service[4], lang=lang) }}" class="js-service-button md:inline-flex hidden items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
 						<span>{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Learn more{% endif %}</span>
 						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							<polyline points="9 18 15 12 9 6"/>
 						</svg>
 					</a>
+					<button onclick="openServiceBottomSheet('{{ service[4] }}')" class="js-service-button-mobile md:hidden inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium w-full justify-center" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+						<span>{% if lang == 'uz' %}Batafsil{% elif lang == 'ru' %}Подробнее{% elif lang == 'tr' %}Detaylar{% else %}Learn more{% endif %}</span>
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<polyline points="9 18 15 12 9 6"/>
+						</svg>
+					</button>
 				</div>
 			</div>
 			{% endfor %}
@@ -633,6 +651,118 @@
 
 </div>
 
+<!-- Service Bottom Sheet (Mobile Only) -->
+<div id="serviceBottomSheetOverlay" class="service-bottom-sheet-overlay hidden md:hidden">
+	<div id="serviceBottomSheet" class="service-bottom-sheet">
+		<!-- Header -->
+		<div class="service-bottom-sheet-header">
+			<h2 id="serviceBottomSheetTitle" class="text-lg font-medium text-gray-900" style="font-family: 'Inter', sans-serif;"></h2>
+			<button onclick="closeServiceBottomSheet()" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-600">
+					<line x1="18" y1="6" x2="6" y2="18"/>
+					<line x1="6" y1="6" x2="18" y2="18"/>
+				</svg>
+			</button>
+		</div>
+		
+		<!-- Content -->
+		<div class="service-bottom-sheet-content">
+			<!-- Icon & Title -->
+			<div class="flex items-center gap-3 mb-4">
+				<div id="serviceBottomSheetIcon" class="service-icon-wrapper flex-shrink-0"></div>
+				<h3 id="serviceBottomSheetName" class="text-xl font-medium text-gray-900" style="font-family: 'Inter', sans-serif;"></h3>
+			</div>
+			
+			<!-- Description -->
+			<div id="serviceBottomSheetDescription" class="mb-6">
+				<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
+			</div>
+			
+			<!-- Details -->
+			<div id="serviceBottomSheetDetails" class="mb-6">
+				<p class="text-sm text-gray-700 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></p>
+			</div>
+			
+			<!-- FAQ Section -->
+			<div id="serviceBottomSheetFAQ" class="hidden">
+				<h3 class="text-lg font-medium text-gray-900 mb-4" style="font-family: 'Inter', sans-serif;">
+					{% if lang == 'uz' %}Tez-tez so'raladigan savollar{% elif lang == 'ru' %}Часто задаваемые вопросы{% elif lang == 'tr' %}Sık Sorulan Sorular{% else %}Frequently Asked Questions{% endif %}
+				</h3>
+				<div id="serviceBottomSheetFAQList" class="space-y-3"></div>
+			</div>
+			
+			<!-- CTA Button -->
+			<div class="mt-8 pt-6 border-t border-gray-200">
+				<a href="tel:+905011571111" class="block w-full text-center px-6 py-3.5 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+					{% if lang == 'uz' %}Maslahat olish{% elif lang == 'ru' %}Получить консультацию{% elif lang == 'tr' %}Danışmanlık al{% else %}Get Consultation{% endif %}
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+/* Service Bottom Sheet Styles */
+.service-bottom-sheet-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 10000;
+	display: flex;
+	align-items: flex-end;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.service-bottom-sheet-overlay.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.service-bottom-sheet {
+	background: white;
+	border-radius: 24px 24px 0 0;
+	width: 100%;
+	max-height: 95vh;
+	display: flex;
+	flex-direction: column;
+	transform: translateY(100%);
+	transition: transform 0.3s ease;
+	z-index: 10001;
+}
+
+.service-bottom-sheet-overlay.active .service-bottom-sheet {
+	transform: translateY(0);
+}
+
+.service-bottom-sheet-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1.25rem 1.5rem;
+	border-bottom: 1px solid #e5e7eb;
+	flex-shrink: 0;
+}
+
+.service-bottom-sheet-content {
+	padding: 1.5rem;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	min-height: 0;
+	overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+	.service-bottom-sheet-overlay {
+		display: none !important;
+	}
+}
+</style>
+
 <script>
 // Search Function
 function performSearch() {
@@ -668,6 +798,251 @@ function performSearch() {
 }
 
 document.getElementById('searchInput').addEventListener('input', performSearch);
+
+// Service Bottom Sheet Functions
+const serviceData = {
+	'admission': {
+		'uz': {'title': 'Universitetga qabul', 'description': 'Turkiyadagi universitetlarga qabul jarayonida to\'liq yordam. Hujjatlar tayyorlash, ariza topshirish va qabul natijalarini kuzatish.', 'details': 'Biz sizga Turkiyadagi universitetlarga qabul jarayonida to\'liq yordam ko\'rsatamiz. Hujjatlar tayyorlashdan tortib, ariza topshirishgacha barcha bosqichlarda sizga yordam beramiz.'},
+		'ru': {'title': 'Поступление в университет', 'description': 'Полная помощь в процессе поступления в турецкие университеты. Подготовка документов, подача заявок и отслеживание результатов приема.', 'details': 'Мы предоставляем полную поддержку в процессе поступления в турецкие университеты. От подготовки документов до подачи заявок - мы поможем вам на всех этапах.'},
+		'tr': {'title': 'Üniversite kabulü', 'description': 'Türkiye\'deki üniversitelere kabul sürecinde tam destek. Belge hazırlama, başvuru yapma ve kabul sonuçlarını takip etme.', 'details': 'Türkiye\'deki üniversitelere kabul sürecinde size tam destek sağlıyoruz. Belge hazırlamadan başvuru yapmaya kadar tüm aşamalarda size yardımcı oluyoruz.'},
+		'en': {'title': 'University Admission', 'description': 'Full support in the admission process to Turkish universities. Document preparation, application submission and tracking admission results.', 'details': 'We provide full support in the admission process to Turkish universities. From document preparation to application submission, we help you at all stages.'}
+	},
+	'documents': {
+		'uz': {'title': 'Hujjatlar tayyorlash', 'description': 'Barcha kerakli hujjatlarni to\'liq tayyorlash va notarial tasdiqlash xizmatlari. Pasport, diplom, transkript va boshqalar.', 'details': 'Biz sizga barcha kerakli hujjatlarni tayyorlashda yordam beramiz. Pasport, diplom, transkript va boshqa hujjatlarni notarial tasdiqlash xizmatlarini ko\'rsatamiz.'},
+		'ru': {'title': 'Подготовка документов', 'description': 'Полная подготовка и нотариальное заверение всех необходимых документов. Паспорт, диплом, транскрипт и другие.', 'details': 'Мы помогаем вам подготовить все необходимые документы. Предоставляем услуги по нотариальному заверению паспорта, диплома, транскрипта и других документов.'},
+		'tr': {'title': 'Belge hazırlama', 'description': 'Tüm gerekli belgelerin tam hazırlanması ve noter onayı hizmetleri. Pasaport, diploma, transkript ve diğerleri.', 'details': 'Tüm gerekli belgeleri hazırlamanızda size yardımcı oluyoruz. Pasport, diploma, transkript ve diğer belgelerin noter onayı hizmetlerini sağlıyoruz.'},
+		'en': {'title': 'Documents Preparation', 'description': 'Full preparation and notarization of all required documents. Passport, diploma, transcript and others.', 'details': 'We help you prepare all required documents. We provide notarization services for passport, diploma, transcript and other documents.'}
+	},
+	'residence': {
+		'uz': {'title': 'Yashash ruxsatnomasi (İkamet)', 'description': 'Turkiyada yashash ruxsatnomasi olish uchun to\'liq yordam. Hujjatlar to\'plash, ariza topshirish va ruxsatnoma olish.', 'details': 'Biz sizga Turkiyada yashash ruxsatnomasi olishda to\'liq yordam ko\'rsatamiz. Hujjatlar to\'plashdan tortib, ariza topshirishgacha barcha bosqichlarda sizga yordam beramiz.'},
+		'ru': {'title': 'Вид на жительство (İkamet)', 'description': 'Полная помощь в получении вида на жительство в Турции. Сбор документов, подача заявки и получение разрешения.', 'details': 'Мы предоставляем полную поддержку в получении вида на жительство в Турции. От сбора документов до подачи заявки - мы поможем вам на всех этапах.'},
+		'tr': {'title': 'İkamet izni', 'description': 'Türkiye\'de ikamet izni almak için tam destek. Belge toplama, başvuru yapma ve izin alma.', 'details': 'Türkiye\'de ikamet izni almanızda size tam destek sağlıyoruz. Belge toplamaktan başvuru yapmaya kadar tüm aşamalarda size yardımcı oluyoruz.'},
+		'en': {'title': 'Residence Permit (İkamet)', 'description': 'Full support for obtaining a residence permit in Turkey. Document collection, application submission and permit acquisition.', 'details': 'We provide full support for obtaining a residence permit in Turkey. From document collection to application submission, we help you at all stages.'}
+	},
+	'accommodation': {
+		'uz': {'title': 'Yashash joyi', 'description': 'Turkiyada qulay va xavfsiz yashash joyi topish. Talabalar uchun maxsus kvartiralar va yotoqxonalar.', 'details': 'Biz sizga Turkiyada qulay va xavfsiz yashash joyi topishda yordam beramiz. Talabalar uchun maxsus kvartiralar va yotoqxonalar bilan ishlaymiz.'},
+		'ru': {'title': 'Жилье', 'description': 'Поиск удобного и безопасного жилья в Турции. Специальные квартиры и общежития для студентов.', 'details': 'Мы помогаем вам найти удобное и безопасное жилье в Турции. Работаем со специальными квартирами и общежитиями для студентов.'},
+		'tr': {'title': 'Konaklama', 'description': 'Türkiye\'de rahat ve güvenli konaklama bulma. Öğrenciler için özel daireler ve yurtlar.', 'details': 'Türkiye\'de rahat ve güvenli konaklama bulmanızda size yardımcı oluyoruz. Öğrenciler için özel daireler ve yurtlarla çalışıyoruz.'},
+		'en': {'title': 'Accommodation', 'description': 'Finding comfortable and safe accommodation in Turkey. Special apartments and dormitories for students.', 'details': 'We help you find comfortable and safe accommodation in Turkey. We work with special apartments and dormitories for students.'}
+	},
+	'airport': {
+		'uz': {'title': 'Aeroportdan olib ketish', 'description': 'Aeroportdan yashash joyingizgacha xavfsiz tashish xizmati. Professional haydovchilar va qulay transport.', 'details': 'Biz sizga aeroportdan yashash joyingizgacha xavfsiz tashish xizmatini ko\'rsatamiz. Professional haydovchilar va qulay transport bilan ishlaymiz.'},
+		'ru': {'title': 'Встреча в аэропорту', 'description': 'Безопасная транспортировка из аэропорта до места проживания. Профессиональные водители и удобный транспорт.', 'details': 'Мы предоставляем безопасную транспортировку из аэропорта до места проживания. Работаем с профессиональными водителями и удобным транспортом.'},
+		'tr': {'title': 'Havalimanı karşılama', 'description': 'Havalimanından konaklama yerinize güvenli ulaşım hizmeti. Profesyonel şoförler ve rahat ulaşım.', 'details': 'Havalimanından konaklama yerinize güvenli ulaşım hizmeti sağlıyoruz. Profesyonel şoförler ve rahat ulaşımla çalışıyoruz.'},
+		'en': {'title': 'Airport Pickup', 'description': 'Safe transportation from airport to your accommodation. Professional drivers and comfortable transport.', 'details': 'We provide safe transportation from airport to your accommodation. We work with professional drivers and comfortable transport.'}
+	},
+	'translation': {
+		'uz': {'title': 'Tarjima xizmatlari', 'description': 'Barcha hujjatlarni rasmiy tarjima qilish. Notarial tasdiqlangan tarjimalar va tezkor xizmat.', 'details': 'Biz sizga barcha hujjatlarni rasmiy tarjima qilish xizmatini ko\'rsatamiz. Notarial tasdiqlangan tarjimalar va tezkor xizmat bilan ishlaymiz.'},
+		'ru': {'title': 'Услуги перевода', 'description': 'Официальный перевод всех документов. Нотариально заверенные переводы и быстрый сервис.', 'details': 'Мы предоставляем официальный перевод всех документов. Работаем с нотариально заверенными переводами и быстрым сервисом.'},
+		'tr': {'title': 'Çeviri hizmetleri', 'description': 'Tüm belgelerin resmi çevirisi. Noter onaylı çeviriler ve hızlı hizmet.', 'details': 'Tüm belgelerin resmi çevirisi hizmetini sağlıyoruz. Noter onaylı çeviriler ve hızlı hizmetle çalışıyoruz.'},
+		'en': {'title': 'Translation Services', 'description': 'Official translation of all documents. Notarized translations and fast service.', 'details': 'We provide official translation of all documents. We work with notarized translations and fast service.'}
+	},
+	'visa': {
+		'uz': {'title': 'Viza & Deport masalalari', 'description': 'Viza masalalari va deport holatlarida yuridik yordam. Mutaxassislar bilan maslahat va yechim topish.', 'details': 'Biz sizga viza masalalari va deport holatlarida yuridik yordam ko\'rsatamiz. Mutaxassislar bilan maslahat va yechim topishda yordam beramiz.'},
+		'ru': {'title': 'Визы и депортация', 'description': 'Юридическая помощь в вопросах виз и депортации. Консультации со специалистами и поиск решений.', 'details': 'Мы предоставляем юридическую помощь в вопросах виз и депортации. Помогаем с консультациями со специалистами и поиском решений.'},
+		'tr': {'title': 'Vize ve deport sorunları', 'description': 'Vize ve deport sorunlarında yasal destek. Uzmanlarla danışmanlık ve çözüm bulma.', 'details': 'Vize ve deport sorunlarında size yasal destek sağlıyoruz. Uzmanlarla danışmanlık ve çözüm bulmada yardımcı oluyoruz.'},
+		'en': {'title': 'Visa & Deport Issues', 'description': 'Legal assistance in visa and deportation matters. Consultation with specialists and finding solutions.', 'details': 'We provide legal assistance in visa and deportation matters. We help with consultation with specialists and finding solutions.'}
+	},
+	'insurance': {
+		'uz': {'title': 'Talaba sug\'urtasi', 'description': 'Turkiyada o\'qish uchun talaba sug\'urtasi rasmiylashtirish. Barcha sug\'urta kompaniyalari bilan hamkorlik.', 'details': 'Biz sizga Turkiyada o\'qish uchun talaba sug\'urtasi rasmiylashtirishda yordam beramiz. Barcha sug\'urta kompaniyalari bilan hamkorlik qilamiz.'},
+		'ru': {'title': 'Студенческая страховка', 'description': 'Оформление студенческой страховки для учебы в Турции. Сотрудничество со всеми страховыми компаниями.', 'details': 'Мы помогаем вам оформить студенческую страховку для учебы в Турции. Сотрудничаем со всеми страховыми компаниями.'},
+		'tr': {'title': 'Öğrenci sigortası', 'description': 'Türkiye\'de eğitim için öğrenci sigortası düzenleme. Tüm sigorta şirketleriyle işbirliği.', 'details': 'Türkiye\'de eğitim için öğrenci sigortası düzenlemenizde size yardımcı oluyoruz. Tüm sigorta şirketleriyle işbirliği yapıyoruz.'},
+		'en': {'title': 'Student Insurance', 'description': 'Registration of student insurance for studying in Turkey. Cooperation with all insurance companies.', 'details': 'We help you register student insurance for studying in Turkey. We cooperate with all insurance companies.'}
+	},
+	'bank': {
+		'uz': {'title': 'Bank hisobi', 'description': 'Turkiyada bank hisobi ochish. Barcha yirik banklar bilan ishlash va tezkor rasmiylashtirish.', 'details': 'Biz sizga Turkiyada bank hisobi ochishda yordam beramiz. Barcha yirik banklar bilan ishlaymiz va tezkor rasmiylashtirish xizmatini ko\'rsatamiz.'},
+		'ru': {'title': 'Банковский счет', 'description': 'Открытие банковского счета в Турции. Работа со всеми крупными банками и быстрое оформление.', 'details': 'Мы помогаем вам открыть банковский счет в Турции. Работаем со всеми крупными банками и предоставляем быстрое оформление.'},
+		'tr': {'title': 'Banka hesabı', 'description': 'Türkiye\'de banka hesabı açma. Tüm büyük bankalarla çalışma ve hızlı düzenleme.', 'details': 'Türkiye\'de banka hesabı açmanızda size yardımcı oluyoruz. Tüm büyük bankalarla çalışıyoruz ve hızlı düzenleme hizmeti sağlıyoruz.'},
+		'en': {'title': 'Bank Account', 'description': 'Opening a bank account in Turkey. Working with all major banks and quick registration.', 'details': 'We help you open a bank account in Turkey. We work with all major banks and provide quick registration.'}
+	},
+	'sim': {
+		'uz': {'title': 'SIM karta', 'description': 'Turkiyada mobil aloqa uchun SIM karta olish. Barcha operatorlar bilan ishlash va eng yaxshi tariflar.', 'details': 'Biz sizga Turkiyada mobil aloqa uchun SIM karta olishda yordam beramiz. Barcha operatorlar bilan ishlaymiz va eng yaxshi tariflar bilan tanishtiramiz.'},
+		'ru': {'title': 'SIM карта', 'description': 'Получение SIM-карты для мобильной связи в Турции. Работа со всеми операторами и лучшие тарифы.', 'details': 'Мы помогаем вам получить SIM-карту для мобильной связи в Турции. Работаем со всеми операторами и знакомим с лучшими тарифами.'},
+		'tr': {'title': 'SIM kart', 'description': 'Türkiye\'de mobil iletişim için SIM kart alma. Tüm operatörlerle çalışma ve en iyi tarifeler.', 'details': 'Türkiye\'de mobil iletişim için SIM kart almanızda size yardımcı oluyoruz. Tüm operatörlerle çalışıyoruz ve en iyi tarifelerle tanıştırıyoruz.'},
+		'en': {'title': 'SIM Card', 'description': 'Getting a SIM card for mobile communication in Turkey. Working with all operators and best rates.', 'details': 'We help you get a SIM card for mobile communication in Turkey. We work with all operators and introduce you to the best rates.'}
+	},
+	'transport': {
+		'uz': {'title': 'Transport kartasi', 'description': 'Turkiyada transport kartasi olish va to\'ldirish. Metro, avtobus va boshqa transport turlari uchun.', 'details': 'Biz sizga Turkiyada transport kartasi olish va to\'ldirishda yordam beramiz. Metro, avtobus va boshqa transport turlari uchun xizmat ko\'rsatamiz.'},
+		'ru': {'title': 'Транспортная карта', 'description': 'Получение и пополнение транспортной карты в Турции. Для метро, автобусов и других видов транспорта.', 'details': 'Мы помогаем вам получить и пополнить транспортную карту в Турции. Предоставляем услуги для метро, автобусов и других видов транспорта.'},
+		'tr': {'title': 'Ulaşım kartı', 'description': 'Türkiye\'de ulaşım kartı alma ve yükleme. Metro, otobüs ve diğer ulaşım türleri için.', 'details': 'Türkiye\'de ulaşım kartı alma ve yüklemenizde size yardımcı oluyoruz. Metro, otobüs ve diğer ulaşım türleri için hizmet sağlıyoruz.'},
+		'en': {'title': 'Transport Card', 'description': 'Getting and topping up a transport card in Turkey. For metro, buses and other types of transport.', 'details': 'We help you get and top up a transport card in Turkey. We provide services for metro, buses and other types of transport.'}
+	},
+	'support': {
+		'uz': {'title': 'Shaxsiy yordam', 'description': 'Turkiyada yashash va o\'qish davomida shaxsiy mutaxassis yordami. 24/7 qo\'llab-quvvatlash.', 'details': 'Biz sizga Turkiyada yashash va o\'qish davomida shaxsiy mutaxassis yordami ko\'rsatamiz. 24/7 qo\'llab-quvvatlash xizmatini taqdim etamiz.'},
+		'ru': {'title': 'Личная поддержка', 'description': 'Личная помощь специалиста во время проживания и учебы в Турции. Поддержка 24/7.', 'details': 'Мы предоставляем личную помощь специалиста во время проживания и учебы в Турции. Предоставляем поддержку 24/7.'},
+		'tr': {'title': 'Kişisel destek', 'description': 'Türkiye\'de yaşam ve eğitim sırasında kişisel uzman desteği. 7/24 destek.', 'details': 'Türkiye\'de yaşam ve eğitim sırasında size kişisel uzman desteği sağlıyoruz. 7/24 destek hizmeti sunuyoruz.'},
+		'en': {'title': 'Personal Support', 'description': 'Personal specialist assistance during living and studying in Turkey. 24/7 support.', 'details': 'We provide personal specialist assistance during living and studying in Turkey. We provide 24/7 support.'}
+	}
+};
+
+const serviceFAQs = {
+	'admission': [
+		['uz:Qabul jarayoni qancha vaqt davom etadi?', 'ru:Сколько времени занимает процесс поступления?', 'tr:Başvuru süreci ne kadar sürer?', 'en:How long does the admission process take?', 'uz:Bu tanlangan universitet va yo\'nalishga bog\'liq. Odatda 2 haftadan 6 haftagacha davom etadi.', 'ru:Это зависит от выбранного университета и направления. Обычно занимает от 2 до 6 недель.', 'tr:Seçilen üniversite ve bölüme bağlıdır. Genellikle 2 haftadan 6 haftaya kadar sürer.', 'en:This depends on the selected university and major. Usually takes 2 to 6 weeks.'],
+		['uz:Qanday hujjatlar kerak?', 'ru:Какие документы нужны?', 'tr:Hangi belgeler gerekli?', 'en:What documents are needed?', 'uz:Passport, diplom yoki attestat, IELTS yoki til sertifikati, transkript va boshqalar.', 'ru:Паспорт, диплом или аттестат, IELTS или языковой сертификат, транскрипт и другие.', 'tr:Pasaport, diploma veya lise diploması, IELTS veya dil sertifikası, transkript ve diğerleri.', 'en:Passport, diploma or certificate, IELTS or language certificate, transcript and others.'],
+		['uz:Qabul imtihoni bormi?', 'ru:Есть ли вступительный экзамен?', 'tr:Giriş sınavı var mı?', 'en:Is there an entrance exam?', 'uz:Ba\'zi universitetlar imtihon talab qiladi, ba\'zilari esa faqat hujjatlar asosida qabul qiladi.', 'ru:Некоторые университеты требуют экзамен, другие принимают только на основе документов.', 'tr:Bazı üniversiteler sınav talep eder, bazıları ise sadece belgelere dayalı olarak kabul eder.', 'en:Some universities require an exam, others accept based on documents only.']
+	],
+	'documents': [
+		['uz:Hujjatlarni qanday tayyorlash kerak?', 'ru:Как подготовить документы?', 'tr:Belgeler nasıl hazırlanır?', 'en:How to prepare documents?', 'uz:Biz sizga barcha kerakli hujjatlarni to\'plash va rasmiylashtirishda yordam beramiz.', 'ru:Мы поможем вам собрать и оформить все необходимые документы.', 'tr:Tüm gerekli belgeleri toplamanız ve düzenlemeniz için size yardımcı olacağız.', 'en:We will help you collect and process all necessary documents.'],
+		['uz:Hujjatlar tarjimasi kerakmi?', 'ru:Нужен ли перевод документов?', 'tr:Belge çevirisi gerekli mi?', 'en:Is document translation needed?', 'uz:Ha, ko\'pgina universitetlar hujjatlarning turk yoki ingliz tiliga rasmiy tarjimasini talab qiladi.', 'ru:Да, большинство университетов требуют официальный перевод документов на турецкий или английский язык.', 'tr:Evet, çoğu üniversite belgelerin Türkçe veya İngilizce\'ye resmi çevirisini talep eder.', 'en:Yes, most universities require official translation of documents into Turkish or English.']
+	],
+	'residence': [
+		['uz:İkamet jarayonini ham qilasizlarmi?', 'ru:Вы также занимаетесь процессом получения вида на жительство?', 'tr:İkamet sürecini de yapıyor musunuz?', 'en:Do you also handle the residence permit process?', 'uz:Ha, albatta. Biz ikamet online ariza, randevu, sug\'urta va hujjat tayyorlash — hammasini qilamiz.', 'ru:Да, конечно. Мы занимаемся онлайн-заявкой на вид на жительство, записью на прием, страховкой и подготовкой документов.', 'tr:Evet, kesinlikle. İkamet online başvurusu, randevu, sigorta ve belge hazırlama — hepsini yapıyoruz.', 'en:Yes, of course. We handle online residence permit application, appointment, insurance and document preparation.'],
+		['uz:İkamet uchun qancha vaqt ketadi?', 'ru:Сколько времени занимает получение вида на жительство?', 'tr:İkamet için ne kadar zaman gerekir?', 'en:How long does it take for a residence permit?', 'uz:Odatda 1 oydan 3 oygacha davom etadi. Jarayonni tezlashtirish uchun barcha hujjatlar to\'g\'ri bo\'lishi kerak.', 'ru:Обычно занимает от 1 до 3 месяцев. Для ускорения процесса все документы должны быть в порядке.', 'tr:Genellikle 1 ila 3 ay sürer. Süreci hızlandırmak için tüm belgelerin doğru olması gerekir.', 'en:It usually takes 1 to 3 months. All documents must be correct to speed up the process.']
+	],
+	'accommodation': [
+		['uz:Yashash joyini qanday topish mumkin?', 'ru:Как найти жилье?', 'tr:Konaklama nasıl bulunur?', 'en:How to find accommodation?', 'uz:Biz sizga Turkiyada qulay va xavfsiz yashash joyi topishda yordam beramiz. Talabalar uchun maxsus kvartiralar va yotoqxonalar bilan ishlaymiz.', 'ru:Мы помогаем вам найти удобное и безопасное жилье в Турции. Работаем со специальными квартирами и общежитиями для студентов.', 'tr:Türkiye\'de rahat ve güvenli konaklama bulmanızda size yardımcı oluyoruz. Öğrenciler için özel daireler ve yurtlarla çalışıyoruz.', 'en:We help you find comfortable and safe accommodation in Turkey. We work with special apartments and dormitories for students.'],
+		['uz:Yashash joyi narxi qancha?', 'ru:Сколько стоит жилье?', 'tr:Konaklama fiyatı ne kadar?', 'en:How much does accommodation cost?', 'uz:Narx joylashuv va turiga bog\'liq. Talabalar uchun maxsus narxlar mavjud.', 'ru:Цена зависит от местоположения и типа. Для студентов есть специальные цены.', 'tr:Fiyat konum ve türe bağlıdır. Öğrenciler için özel fiyatlar mevcuttur.', 'en:The price depends on location and type. Special prices are available for students.']
+	],
+	'airport': [
+		['uz:Aeroportdan olib ketish xizmati qancha turadi?', 'ru:Сколько стоит встреча в аэропорту?', 'tr:Havalimanı karşılama hizmeti ne kadar tutar?', 'en:How much does airport pickup service cost?', 'uz:Narx masofaga va transport turiga bog\'liq. Batafsil ma\'lumot uchun biz bilan bog\'laning.', 'ru:Цена зависит от расстояния и типа транспорта. Свяжитесь с нами для подробной информации.', 'tr:Fiyat mesafeye ve ulaşım türüne bağlıdır. Detaylı bilgi için bizimle iletişime geçin.', 'en:The price depends on distance and type of transport. Contact us for detailed information.'],
+		['uz:Qanday transportdan foydalaniladi?', 'ru:Какой транспорт используется?', 'tr:Hangi ulaşım kullanılır?', 'en:What transport is used?', 'uz:Biz professional haydovchilar va qulay transport bilan ishlaymiz. Avtomobil yoki minivan mavjud.', 'ru:Мы работаем с профессиональными водителями и удобным транспортом. Доступны автомобили или микроавтобусы.', 'tr:Profesyonel şoförler ve rahat ulaşımla çalışıyoruz. Araba veya minibüs mevcuttur.', 'en:We work with professional drivers and comfortable transport. Cars or minivans are available.']
+	],
+	'translation': [
+		['uz:Tarjima xizmati qancha turadi?', 'ru:Сколько стоит услуга перевода?', 'tr:Çeviri hizmeti ne kadar tutar?', 'en:How much does translation service cost?', 'uz:Narx hujjatlar soniga va tilga bog\'liq. Batafsil ma\'lumot uchun biz bilan bog\'laning.', 'ru:Цена зависит от количества документов и языка. Свяжитесь с нами для подробной информации.', 'tr:Fiyat belge sayısına ve dile bağlıdır. Detaylı bilgi için bizimle iletişime geçin.', 'en:The price depends on the number of documents and language. Contact us for detailed information.'],
+		['uz:Qancha vaqt ketadi?', 'ru:Сколько времени занимает?', 'tr:Ne kadar sürer?', 'en:How long does it take?', 'uz:Odatda 1-3 kun davom etadi. Shoshilinch holatda tezroq qilish mumkin.', 'ru:Обычно занимает 1-3 дня. В срочных случаях можно сделать быстрее.', 'tr:Genellikle 1-3 gün sürer. Acil durumlarda daha hızlı yapılabilir.', 'en:Usually takes 1-3 days. Can be done faster in urgent cases.']
+	],
+	'visa': [
+		['uz:Viza masalalarida qanday yordam berasiz?', 'ru:Какую помощь вы оказываете в вопросах виз?', 'tr:Vize konularında nasıl yardım ediyorsunuz?', 'en:What help do you provide in visa matters?', 'uz:Biz sizga viza masalalarida yuridik yordam ko\'rsatamiz. Mutaxassislar bilan maslahat va yechim topishda yordam beramiz.', 'ru:Мы предоставляем юридическую помощь в вопросах виз. Помогаем с консультациями со специалистами и поиском решений.', 'tr:Vize konularında size yasal destek sağlıyoruz. Uzmanlarla danışmanlık ve çözüm bulmada yardımcı oluyoruz.', 'en:We provide legal assistance in visa matters. We help with consultation with specialists and finding solutions.'],
+		['uz:Deport holatida nima qilish kerak?', 'ru:Что делать в случае депортации?', 'tr:Deport durumunda ne yapılmalı?', 'en:What to do in case of deportation?', 'uz:Biz sizga deport holatida yuridik yordam ko\'rsatamiz va yechim topishda yordam beramiz.', 'ru:Мы предоставляем юридическую помощь в случае депортации и помогаем найти решение.', 'tr:Deport durumunda size yasal destek sağlıyoruz ve çözüm bulmanızda yardımcı oluyoruz.', 'en:We provide legal assistance in case of deportation and help find a solution.']
+	],
+	'insurance': [
+		['uz:Talaba sug\'urtasi majburiymi?', 'ru:Обязательна ли студенческая страховка?', 'tr:Öğrenci sigortası zorunlu mu?', 'en:Is student insurance mandatory?', 'uz:Ha, Turkiyada o\'qish uchun talaba sug\'urtasi majburiy.', 'ru:Да, студенческая страховка обязательна для учебы в Турции.', 'tr:Evet, Türkiye\'de eğitim için öğrenci sigortası zorunludur.', 'en:Yes, student insurance is mandatory for studying in Turkey.'],
+		['uz:Sug\'urta narxi qancha?', 'ru:Сколько стоит страховка?', 'tr:Sigorta fiyatı ne kadar?', 'en:How much does insurance cost?', 'uz:Narx yosh va sug\'urta turiga bog\'liq. Batafsil ma\'lumot uchun biz bilan bog\'laning.', 'ru:Цена зависит от возраста и типа страховки. Свяжитесь с нами для подробной информации.', 'tr:Fiyat yaşa ve sigorta türüne bağlıdır. Detaylı bilgi için bizimle iletişime geçin.', 'en:The price depends on age and type of insurance. Contact us for detailed information.']
+	],
+	'bank': [
+		['uz:Bank hisobi ochish qancha turadi?', 'ru:Сколько стоит открытие банковского счета?', 'tr:Banka hesabı açma ne kadar tutar?', 'en:How much does opening a bank account cost?', 'uz:Bank hisobi ochish bepul, lekin xizmatlar narxi bankga bog\'liq.', 'ru:Открытие банковского счета бесплатно, но стоимость услуг зависит от банка.', 'tr:Banka hesabı açmak ücretsizdir, ancak hizmet fiyatı bankaya bağlıdır.', 'en:Opening a bank account is free, but the cost of services depends on the bank.'],
+		['uz:Qanday banklar bilan ishlaysiz?', 'ru:С какими банками вы работаете?', 'tr:Hangi bankalarla çalışıyorsunuz?', 'en:Which banks do you work with?', 'uz:Biz barcha yirik banklar bilan ishlaymiz: Ziraat, İş Bankası, Garanti va boshqalar.', 'ru:Мы работаем со всеми крупными банками: Ziraat, İş Bankası, Garanti и другие.', 'tr:Tüm büyük bankalarla çalışıyoruz: Ziraat, İş Bankası, Garanti ve diğerleri.', 'en:We work with all major banks: Ziraat, İş Bankası, Garanti and others.']
+	],
+	'sim': [
+		['uz:SIM karta olish qancha turadi?', 'ru:Сколько стоит получение SIM-карты?', 'tr:SIM kart alma ne kadar tutar?', 'en:How much does getting a SIM card cost?', 'uz:SIM karta olish bepul, lekin tariflar operatorga bog\'liq.', 'ru:Получение SIM-карты бесплатно, но тарифы зависят от оператора.', 'tr:SIM kart almak ücretsizdir, ancak tarifeler operatöre bağlıdır.', 'en:Getting a SIM card is free, but rates depend on the operator.'],
+		['uz:Qanday operatorlar bilan ishlaysiz?', 'ru:С какими операторами вы работаете?', 'tr:Hangi operatörlerle çalışıyorsunuz?', 'en:Which operators do you work with?', 'uz:Biz barcha operatorlar bilan ishlaymiz: Turkcell, Vodafone, Türk Telekom.', 'ru:Мы работаем со всеми операторами: Turkcell, Vodafone, Türk Telekom.', 'tr:Tüm operatörlerle çalışıyoruz: Turkcell, Vodafone, Türk Telekom.', 'en:We work with all operators: Turkcell, Vodafone, Türk Telekom.']
+	],
+	'transport': [
+		['uz:Transport kartasi qancha turadi?', 'ru:Сколько стоит транспортная карта?', 'tr:Ulaşım kartı ne kadar tutar?', 'en:How much does a transport card cost?', 'uz:Transport kartasi olish bepul, lekin to\'ldirish narxi mavjud.', 'ru:Получение транспортной карты бесплатно, но есть стоимость пополнения.', 'tr:Ulaşım kartı almak ücretsizdir, ancak yükleme ücreti vardır.', 'en:Getting a transport card is free, but there is a top-up fee.'],
+		['uz:Qanday transport turlarida ishlaydi?', 'ru:На каких видах транспорта работает?', 'tr:Hangi ulaşım türlerinde çalışır?', 'en:On what types of transport does it work?', 'uz:Metro, avtobus, tramvay va boshqa transport turlarida ishlaydi.', 'ru:Работает на метро, автобусах, трамваях и других видах транспорта.', 'tr:Metro, otobüs, tramvay ve diğer ulaşım türlerinde çalışır.', 'en:Works on metro, buses, trams and other types of transport.']
+	],
+	'support': [
+		['uz:24/7 yordam bormi?', 'ru:Есть ли помощь 24/7?', 'tr:7/24 yardım var mı?', 'en:Is there 24/7 support?', 'uz:Ha, biz sizga 24/7 yordam ko\'rsatamiz. Har qanday vaqtda biz bilan bog\'laning.', 'ru:Да, мы предоставляем помощь 24/7. Свяжитесь с нами в любое время.', 'tr:Evet, size 7/24 yardım sağlıyoruz. Herhangi bir zamanda bizimle iletişime geçin.', 'en:Yes, we provide 24/7 support. Contact us at any time.'],
+		['uz:Qanday tillarda yordam berasiz?', 'ru:На каких языках вы помогаете?', 'tr:Hangi dillerde yardım ediyorsunuz?', 'en:In what languages do you help?', 'uz:Biz o\'zbek, rus, turk va ingliz tillarida yordam beramiz.', 'ru:Мы помогаем на узбекском, русском, турецком и английском языках.', 'tr:Özbekçe, Rusça, Türkçe ve İngilizce dillerinde yardımcı oluyoruz.', 'en:We help in Uzbek, Russian, Turkish and English.']
+	]
+};
+
+function openServiceBottomSheet(serviceId) {
+	if (window.innerWidth > 768) return; // Only on mobile
+	
+	const langCode = '{{ lang }}';
+	const service = serviceData[serviceId]?.[langCode];
+	if (!service) return;
+	
+	const card = document.querySelector(`[data-service-id="${serviceId}"]`);
+	if (!card) return;
+	
+	const icon = card.getAttribute('data-icon');
+	const title = card.getAttribute(`data-title-${langCode}`);
+	
+	// Hide mobile bottom navigation
+	const mobileNav = document.querySelector('nav.fixed.bottom-0');
+	if (mobileNav && window.innerWidth <= 768) {
+		mobileNav.style.display = 'none';
+	}
+	
+	// Populate bottom sheet
+	document.getElementById('serviceBottomSheetTitle').textContent = service.title;
+	document.getElementById('serviceBottomSheetName').textContent = service.title;
+	
+	// Icon
+	const iconWrapper = document.getElementById('serviceBottomSheetIcon');
+	iconWrapper.innerHTML = `<img src="/static/${icon}" alt="${service.title}" class="service-icon">`;
+	
+	// Description
+	document.getElementById('serviceBottomSheetDescription').querySelector('p').textContent = service.description;
+	
+	// Details
+	document.getElementById('serviceBottomSheetDetails').querySelector('p').textContent = service.details;
+	
+	// FAQ
+	const faqs = serviceFAQs[serviceId];
+	const faqSection = document.getElementById('serviceBottomSheetFAQ');
+	const faqList = document.getElementById('serviceBottomSheetFAQList');
+	
+	if (faqs && faqs.length > 0) {
+		faqList.innerHTML = '';
+		faqs.forEach((faq, index) => {
+			const question = faq[langCode === 'uz' ? 0 : langCode === 'ru' ? 1 : langCode === 'tr' ? 2 : 3]?.split(':')[1] || '';
+			const answer = faq[langCode === 'uz' ? 4 : langCode === 'ru' ? 5 : langCode === 'tr' ? 6 : 7]?.split(':')[1] || '';
+			
+			const uniqueId = `service-${serviceId}-faq-${index}`;
+			
+			const faqItem = document.createElement('div');
+			faqItem.className = 'bg-white border border-gray-200 rounded-2xl overflow-hidden';
+			faqItem.innerHTML = `
+				<button onclick="toggleServiceBottomSheetFAQ('${uniqueId}')" class="w-full flex items-center justify-between text-left p-4 hover:bg-gray-50 transition-colors">
+					<h4 class="text-sm font-medium text-gray-900 pr-4 flex-1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">${question}</h4>
+					<svg id="service-faq-icon-${uniqueId}" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400 transform transition-transform flex-shrink-0">
+						<polyline points="6,9 12,15 18,9"/>
+					</svg>
+				</button>
+				<div id="service-faq-content-${uniqueId}" class="overflow-hidden max-h-0 transition-all duration-300">
+					<div class="px-4 pb-4 pt-0">
+						<div class="pt-3 border-t border-gray-100">
+							<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">${answer}</p>
+						</div>
+					</div>
+				</div>
+			`;
+			faqList.appendChild(faqItem);
+		});
+		faqSection.classList.remove('hidden');
+	} else {
+		faqSection.classList.add('hidden');
+	}
+	
+	// Show bottom sheet
+	const overlay = document.getElementById('serviceBottomSheetOverlay');
+	const bottomSheet = document.getElementById('serviceBottomSheet');
+	overlay.classList.remove('hidden');
+	overlay.classList.add('active');
+	document.body.style.overflow = 'hidden';
+}
+
+function closeServiceBottomSheet() {
+	// Show mobile bottom navigation
+	const mobileNav = document.querySelector('nav.fixed.bottom-0');
+	if (mobileNav && window.innerWidth <= 768) {
+		mobileNav.style.display = '';
+	}
+	
+	const overlay = document.getElementById('serviceBottomSheetOverlay');
+	const bottomSheet = document.getElementById('serviceBottomSheet');
+	overlay.classList.remove('active');
+	setTimeout(() => {
+		overlay.classList.add('hidden');
+	}, 300);
+	document.body.style.overflow = '';
+}
+
+function toggleServiceBottomSheetFAQ(uniqueId) {
+	const content = document.getElementById(`service-faq-content-${uniqueId}`);
+	const icon = document.getElementById(`service-faq-icon-${uniqueId}`);
+	
+	if (!content || !icon) return;
+	
+	if (content.classList.contains('max-h-0')) {
+		content.classList.remove('max-h-0');
+		content.style.maxHeight = content.scrollHeight + 'px';
+		icon.style.transform = 'rotate(180deg)';
+	} else {
+		content.style.maxHeight = '0';
+		icon.style.transform = 'rotate(0deg)';
+	}
+}
+
+// Close on overlay click
+document.getElementById('serviceBottomSheetOverlay')?.addEventListener('click', function(e) {
+	if (e.target === this) {
+		closeServiceBottomSheet();
+	}
+});
 
 // Service Modal Functions
 // Service data removed - using separate page instead of modal

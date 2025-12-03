@@ -4,409 +4,615 @@
 	{% if lang == 'uz' %}Aloqa - Study Fans{% elif lang == 'ru' %}Контакты - Study Fans{% elif lang == 'tr' %}İletişim - Study Fans{% else %}Contact - Study Fans{% endif %}
 {% endblock %}
 
-{% block content %}
+{% block extra_css %}
+<style>
+	/* Hero Section */
+	.contact-hero {
+		position: relative;
+		min-height: 400px;
+		overflow: hidden;
+		background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+	}
+	.contact-hero-pattern {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0.1;
+		background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+	}
+	.contact-hero-content {
+		position: relative;
+		z-index: 10;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		color: white;
+		padding: 4rem 1.5rem;
+	}
+	.hero-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.75rem; font-family: 'Inter', sans-serif; letter-spacing: -0.03em; }
+	.hero-subtitle { font-size: 1.125rem; opacity: 0.9; max-width: 600px; margin-bottom: 2rem; }
+	.hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+	.hero-btn {
+		padding: 1rem 2rem;
+		border-radius: 100px;
+		font-size: 1rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: all 0.2s;
+		border: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.hero-btn.primary { background: white; color: #2563eb; }
+	.hero-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+	.hero-btn.secondary { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
+	.hero-btn.secondary:hover { background: rgba(255,255,255,0.25); }
+	
+	/* Stats */
+	.stats-section { background: #f9fafb; padding: 3rem 0; }
+	.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+	.stat-card { text-align: center; padding: 1.5rem; background: white; border-radius: 24px; border: 1px solid #e5e7eb; }
+	.stat-number { font-size: 2rem; font-weight: 700; color: #2563eb; margin-bottom: 0.25rem; }
+	.stat-label { font-size: 0.875rem; color: #6b7280; }
+	
+	/* Contact Methods */
+	.contact-methods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+	.contact-method {
+		background: white;
+		border: 1px solid #e5e7eb;
+		border-radius: 24px;
+		padding: 2rem;
+		text-align: center;
+		transition: all 0.2s;
+	}
+	.contact-method:hover { border-color: #2563eb; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+	.method-icon {
+		width: 56px;
+		height: 56px;
+		background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+		border-radius: 16px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto 1rem;
+	}
+	.method-icon svg { color: #2563eb; }
+	.method-title { font-size: 1.125rem; font-weight: 600; color: #111; margin-bottom: 0.5rem; }
+	.method-text { font-size: 0.9rem; color: #6b7280; line-height: 1.6; margin-bottom: 1rem; }
+	.method-link { font-size: 0.9rem; color: #2563eb; text-decoration: none; font-weight: 500; }
+	.method-link:hover { text-decoration: underline; }
+	.method-actions { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem; }
+	.method-btn {
+		width: 40px; height: 40px;
+		border-radius: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.2s;
+		text-decoration: none;
+	}
+	.method-btn:hover { transform: scale(1.1); }
+	.method-btn.tg { background: #2563eb; }
+	.method-btn.wa { background: #22c55e; }
+	.method-btn.call { background: #111; }
+	
+	/* Offices */
+	.offices-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+	.office-card {
+		background: white;
+		border: 1px solid #e5e7eb;
+		border-radius: 24px;
+		overflow: hidden;
+		transition: all 0.2s;
+	}
+	.office-card:hover { border-color: #2563eb; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+	.office-map {
+		width: 100%;
+		height: 200px;
+		background: #f3f4f6;
+	}
+	.office-map iframe { width: 100%; height: 100%; border: none; }
+	.office-info { padding: 1.5rem; }
+	.office-flag { font-size: 2rem; margin-bottom: 0.75rem; }
+	.office-title { font-size: 1.125rem; font-weight: 600; color: #111; margin-bottom: 0.5rem; }
+	.office-address { font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem; }
+	.office-phone { font-size: 0.875rem; color: #111; font-weight: 500; margin-bottom: 0.75rem; }
+	.office-phone a { color: inherit; text-decoration: none; }
+	.office-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		font-size: 0.875rem;
+		color: #2563eb;
+		text-decoration: none;
+		font-weight: 500;
+	}
+	.office-link:hover { text-decoration: underline; }
+	
+	/* Quick Contact */
+	.quick-contact {
+		background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+		border-radius: 32px;
+		padding: 2.5rem;
+		margin-bottom: 3rem;
+		border: 1px solid #e2e8f0;
+	}
+	.quick-title { font-size: 1.5rem; font-weight: 600; color: #111; margin-bottom: 0.5rem; text-align: center; }
+	.quick-subtitle { font-size: 0.9rem; color: #6b7280; margin-bottom: 2rem; text-align: center; }
+	.quick-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+	.quick-btn {
+		padding: 1rem 2rem;
+		border-radius: 100px;
+		font-size: 0.9rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: all 0.2s;
+		border: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		text-decoration: none;
+	}
+	.quick-btn.whatsapp { background: #22c55e; color: white; }
+	.quick-btn.telegram { background: #2563eb; color: white; }
+	.quick-btn.call { background: #111; color: white; }
+	.quick-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+	
+	/* Social Section */
+	.social-section { text-align: center; padding: 2rem 0; }
+	.social-title { font-size: 1rem; font-weight: 600; color: #111; margin-bottom: 1rem; }
+	.social-links { display: flex; gap: 0.75rem; justify-content: center; margin-bottom: 1rem; }
+	.social-link {
+		width: 48px; height: 48px;
+		border-radius: 14px;
+		background: #f3f4f6;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.2s;
+		text-decoration: none;
+	}
+	.social-link:hover { background: #111; }
+	.social-link:hover svg { stroke: white; }
+	.social-link:hover path { fill: white; }
+	.social-text { font-size: 0.8rem; color: #9ca3af; }
+	
+	/* Modal Styles (Desktop) */
+	.modal-overlay {
+		display: none;
+		position: fixed;
+		top: 0; left: 0; right: 0; bottom: 0;
+		background: rgba(0,0,0,0.5);
+		backdrop-filter: blur(4px);
+		z-index: 10000;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+	}
+	.modal-overlay.active { display: flex; }
+	.modal-content {
+		background: white;
+		border-radius: 24px;
+		max-width: 600px;
+		width: 100%;
+		max-height: 90vh;
+		overflow-y: auto;
+		box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+	}
+	.modal-header {
+		padding: 1.5rem 2rem;
+		border-bottom: 1px solid #e5e7eb;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: sticky;
+		top: 0;
+		background: white;
+		z-index: 10;
+	}
+	.modal-title { font-size: 1.25rem; font-weight: 600; color: #111; }
+	.modal-close {
+		width: 36px; height: 36px;
+		border-radius: 50%;
+		background: #f3f4f6;
+		border: none;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.modal-close:hover { background: #e5e7eb; }
+	.modal-body { padding: 2rem; }
+	
+	/* Bottom Sheet (Mobile) */
+	.bs-overlay {
+		display: none;
+		position: fixed;
+		top: 0; left: 0; right: 0; bottom: 0;
+		background: rgba(0,0,0,0.5);
+		z-index: 10000;
+	}
+	.bs-overlay.active { display: block; }
+	.bottom-sheet {
+		position: fixed;
+		bottom: 0; left: 0; right: 0;
+		background: white;
+		border-radius: 24px 24px 0 0;
+		max-height: 95vh;
+		transform: translateY(100%);
+		transition: transform 0.3s ease;
+		z-index: 10001;
+		display: flex;
+		flex-direction: column;
+	}
+	.bottom-sheet.active { transform: translateY(0); }
+	.bs-handle { width: 40px; height: 4px; background: #d1d5db; border-radius: 2px; margin: 12px auto; }
+	.bs-header {
+		padding: 0 1.5rem 1rem;
+		border-bottom: 1px solid #e5e7eb;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.bs-title { font-size: 1.125rem; font-weight: 600; color: #111; }
+	.bs-close {
+		width: 32px; height: 32px;
+		border-radius: 50%;
+		background: #f3f4f6;
+		border: none;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.bs-content { flex: 1; overflow-y: auto; padding: 1.5rem; }
+	
+	/* Form Styles */
+	.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+	.form-group { margin-bottom: 1rem; }
+	.form-group.full { grid-column: span 2; }
+	.form-label { display: block; font-size: 0.8rem; font-weight: 500; color: #374151; margin-bottom: 0.5rem; }
+	.form-input {
+		width: 100%;
+		padding: 0.75rem 1rem;
+		background: #f9fafb;
+		border: 1px solid #e5e7eb;
+		border-radius: 12px;
+		font-size: 0.9rem;
+		color: #111;
+		transition: all 0.2s;
+	}
+	.form-input:focus { outline: none; border-color: #2563eb; background: white; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+	.form-select { cursor: pointer; }
+	.form-textarea { resize: none; min-height: 100px; }
+	.form-submit {
+		width: 100%;
+		padding: 1rem;
+		background: #111;
+		color: white;
+		border: none;
+		border-radius: 100px;
+		font-size: 0.9rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: all 0.2s;
+		margin-top: 1rem;
+	}
+	.form-submit:hover { background: #2563eb; }
+	.form-link { display: block; text-align: center; margin-top: 1rem; font-size: 0.8rem; color: #6b7280; }
+	.form-link a { color: #2563eb; text-decoration: none; }
+	.copy-btn { font-size: 0.75rem; color: #2563eb; background: none; border: none; cursor: pointer; margin-top: 0.25rem; }
+	
+	/* Responsive */
+	@media (max-width: 768px) {
+		.hero-title { font-size: 1.75rem; }
+		.hero-subtitle { font-size: 1rem; }
+		.hero-buttons { flex-direction: column; width: 100%; padding: 0 1rem; }
+		.hero-btn { width: 100%; justify-content: center; }
+		.stats-grid { grid-template-columns: repeat(2, 1fr); }
+		.contact-methods { grid-template-columns: 1fr; }
+		.offices-grid { grid-template-columns: 1fr; }
+		.quick-buttons { flex-direction: column; }
+		.quick-btn { width: 100%; justify-content: center; }
+		.form-grid { grid-template-columns: 1fr; }
+		.form-group.full { grid-column: span 1; }
+		.modal-overlay { display: none !important; }
+	}
+	@media (min-width: 769px) {
+		.bs-overlay, .bottom-sheet { display: none !important; }
+	}
+</style>
+{% endblock %}
 
+{% block content %}
+<div class="page-container" style="margin-top: 0; padding-top: 0;">
 <!-- Hero Section -->
-<section class="py-20 bg-white">
-	<div class="max-w-6xl mx-auto px-6">
-		<div class="text-center mb-12">
-			<h1 class="text-4xl md:text-5xl font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
-				{% if lang == 'uz' %}Biz bilan bog'laning{% elif lang == 'ru' %}Свяжитесь с нами{% elif lang == 'tr' %}Bizimle iletişime geçin{% else %}Contact Us{% endif %}
-			</h1>
-			<p class="text-lg text-gray-600 font-normal max-w-2xl mx-auto" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				{% if lang == 'uz' %}Talabalar, ota-onalar, agentlar uchun kundalik yordam: 09:00 — 18:00{% elif lang == 'ru' %}Ежедневная помощь для студентов, родителей, агентов: 09:00 — 18:00{% elif lang == 'tr' %}Öğrenciler, ebeveynler, ajanlar için günlük destek: 09:00 — 18:00{% else %}Daily support for students, parents, agents: 09:00 — 18:00{% endif %}
-			</p>
-		</div>
-		
-		<!-- Talaba/Agent bo'linishi -->
-		<div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-			<button onclick="showStudentSection()" id="studentBtn" class="px-8 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-base font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+	<section class="contact-hero">
+		<div class="contact-hero-pattern"></div>
+		<div class="contact-hero-content">
+			<h1 class="hero-title">{% if lang == 'uz' %}Biz bilan bog'laning{% elif lang == 'ru' %}Свяжитесь с нами{% elif lang == 'tr' %}Bizimle iletişime geçin{% else %}Contact Us{% endif %}</h1>
+			<p class="hero-subtitle">{% if lang == 'uz' %}Talabalar, ota-onalar va agentlar uchun professional yordam. Jarayonni osonlashtiramiz.{% elif lang == 'ru' %}Профессиональная помощь для студентов, родителей и агентов. Упростим процесс.{% elif lang == 'tr' %}Öğrenciler, ebeveynler ve ajanlar için profesyonel destek. Süreci kolaylaştırıyoruz.{% else %}Professional support for students, parents and agents. We simplify the process.{% endif %}</p>
+			<div class="hero-buttons">
+				<button class="hero-btn primary" onclick="openForm('student')">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
 				{% if lang == 'uz' %}Talabaman{% elif lang == 'ru' %}Я студент{% elif lang == 'tr' %}Öğrenciyim{% else %}I'm a Student{% endif %}
 			</button>
-			<button onclick="showAgentSection()" id="agentBtn" class="px-8 py-3 bg-white text-gray-900 border border-gray-200 rounded-full hover:bg-gray-50 transition-all duration-300 text-base font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+				<button class="hero-btn secondary" onclick="openForm('agent')">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
 				{% if lang == 'uz' %}Agentman{% elif lang == 'ru' %}Я агент{% elif lang == 'tr' %}Ajanım{% else %}I'm an Agent{% endif %}
 			</button>
 		</div>
 	</div>
 </section>
 
-<!-- Talabalar uchun aloqa bo'limi -->
-<section id="studentSection" class="py-20 bg-gray-50">
-	<div class="max-w-6xl mx-auto px-6">
-		<div class="text-center mb-12">
-			<h2 class="text-3xl md:text-4xl font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
-				{% if lang == 'uz' %}Talabalar uchun tezkor bog'lanish{% elif lang == 'ru' %}Быстрая связь для студентов{% elif lang == 'tr' %}Öğrenciler için hızlı iletişim{% else %}Quick Contact for Students{% endif %}
-			</h2>
-			<p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				{% if lang == 'uz' %}Qabul, ikamet, viza, hujjatlar — hammasi bo'yicha bepul maslahat beramiz.{% elif lang == 'ru' %}Консультации по поступлению, виду на жительство, визам, документам — все бесплатно.{% elif lang == 'tr' %}Kabul, ikamet, vize, belgeler hakkında ücretsiz danışmanlık veriyoruz.{% else %}Free consultation on admission, residence permit, visas, documents.{% endif %}
-			</p>
-		</div>
-		
-		<!-- Kontakt kartalari -->
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-			<!-- Telefon -->
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200 text-center">
-				<div class="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mx-auto mb-4">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white">
-						<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-					</svg>
+	<!-- Stats -->
+	<section class="stats-section">
+		<div class="max-w-6xl mx-auto px-6">
+			<div class="stats-grid">
+				<div class="stat-card">
+					<div class="stat-number">10K+</div>
+					<div class="stat-label">{% if lang == 'uz' %}Talabalar{% elif lang == 'ru' %}Студентов{% elif lang == 'tr' %}Öğrenci{% else %}Students{% endif %}</div>
 				</div>
-				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% elif lang == 'tr' %}Telefon{% else %}Phone{% endif %}
-				</h3>
-				<div class="space-y-2 mb-4">
-					<a href="tel:+905011571111" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors block" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						+90 501 157 11 11
-					</a>
-					<a href="tel:+998901234567" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors block" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						+998 90 123 45 67
-					</a>
-				</div>
-				<div class="flex items-center justify-center gap-2">
-					<a href="https://t.me/studyfans" target="_blank" class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
-						<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-white">
-							<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.169 1.858-.896 6.728-.896 6.728-.465 2.411-1.153 2.85-1.153 2.85s-1.153.72-2.41-.36c-1.257-1.08-1.896-1.68-3.225-2.7-1.329-1.02-1.896-1.68-1.896-1.68s-1.153-.72-.72-1.68c.432-.96 1.896-1.68 1.896-1.68s.72-.36 1.329.36c.608.72 1.896 1.68 1.896 1.68s.72.36 1.329-.36c.608-.72.72-1.68.72-1.68s.432-.36.72.36c.288.72.432 1.68.432 1.68z"/>
-						</svg>
-					</a>
-					<a href="https://wa.me/905011571111" target="_blank" class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center hover:bg-green-600 transition-colors">
-						<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-white">
-							<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-						</svg>
-					</a>
-					<a href="tel:+905011571111" class="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center hover:bg-gray-800 transition-colors">
-						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
-							<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-						</svg>
-					</a>
-				</div>
+				<div class="stat-card">
+					<div class="stat-number">60+</div>
+					<div class="stat-label">{% if lang == 'uz' %}Universitetlar{% elif lang == 'ru' %}Университетов{% elif lang == 'tr' %}Üniversite{% else %}Universities{% endif %}</div>
 			</div>
-			
-			<!-- Manzil -->
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200 text-center">
-				<div class="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mx-auto mb-4">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white">
-						<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-						<circle cx="12" cy="10" r="3"/>
-					</svg>
+				<div class="stat-card">
+					<div class="stat-number">12+</div>
+					<div class="stat-label">{% if lang == 'uz' %}Yillik tajriba{% elif lang == 'ru' %}Лет опыта{% elif lang == 'tr' %}Yıllık deneyim{% else %}Years Experience{% endif %}</div>
 				</div>
-				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Manzil{% elif lang == 'ru' %}Адрес{% elif lang == 'tr' %}Adres{% else %}Address{% endif %}
-				</h3>
-				<a href="https://maps.google.com/?q=Istanbul,Turkey" target="_blank" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors block" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Istanbul / Toshkent{% elif lang == 'ru' %}Стамбул / Ташкент{% elif lang == 'tr' %}İstanbul / Taşkent{% else %}Istanbul / Tashkent{% endif %}
-				</a>
-			</div>
-			
-			<!-- Email -->
-			<div class="bg-white border border-gray-200 rounded-3xl p-6 hover:shadow-lg transition-all duration-200 text-center">
-				<div class="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mx-auto mb-4">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white">
-						<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-						<polyline points="22,6 12,13 2,6"/>
-					</svg>
+				<div class="stat-card">
+					<div class="stat-number">24/7</div>
+					<div class="stat-label">{% if lang == 'uz' %}Yordam{% elif lang == 'ru' %}Поддержка{% elif lang == 'tr' %}Destek{% else %}Support{% endif %}</div>
 				</div>
-				<h3 class="text-lg font-medium text-gray-900 mb-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					Email
-				</h3>
-				<a href="mailto:info@studyfans.uz" class="text-sm text-gray-600 font-normal hover:text-gray-900 transition-colors block" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					info@studyfans.uz
-				</a>
-			</div>
-		</div>
-		
-		<!-- Talabalar formasi -->
-		<div class="bg-white border border-gray-200 rounded-3xl p-8 max-w-2xl mx-auto">
-			<h3 class="text-xl font-medium text-gray-900 mb-6" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				{% if lang == 'uz' %}Xabar yuborish{% elif lang == 'ru' %}Отправить сообщение{% elif lang == 'tr' %}Mesaj gönder{% else %}Send Message{% endif %}
-			</h3>
-			<form class="space-y-5" action="{{ url_for('contact') }}" method="POST">
-				<div>
-					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Ismingiz{% elif lang == 'ru' %}Имя{% elif lang == 'tr' %}İsim{% else %}Name{% endif %} *
-					</label>
-					<input type="text" name="name" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				</div>
-				<div>
-					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Telefon raqamingiz{% elif lang == 'ru' %}Ваш телефон{% elif lang == 'tr' %}Telefon numaranız{% else %}Your Phone{% endif %} *
-					</label>
-					<input type="tel" name="phone" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				</div>
-				<div>
-					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}WhatsApp raqamingiz{% elif lang == 'ru' %}Ваш WhatsApp{% elif lang == 'tr' %}WhatsApp numaranız{% else %}Your WhatsApp{% endif %}
-					</label>
-					<input type="tel" name="whatsapp" id="whatsappInput" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					<button type="button" onclick="copyPhoneToWhatsApp()" class="mt-2 text-xs text-blue-600 hover:text-blue-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Telefon raqamim bilan bir xil qilish{% elif lang == 'ru' %}Сделать таким же, как номер телефона{% elif lang == 'tr' %}Telefon numaramla aynı yap{% else %}Make same as phone number{% endif %}
-					</button>
-				</div>
-				<div>
-					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Telegram @username{% elif lang == 'ru' %}Telegram @username{% elif lang == 'tr' %}Telegram @username{% else %}Telegram @username{% endif %}
-					</label>
-					<input type="text" name="telegram" placeholder="@username" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				</div>
-				<div>
-					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Qaysi yo'nalishda o'qimoqchisiz?{% elif lang == 'ru' %}По какому направлению хотите учиться?{% elif lang == 'tr' %}Hangi bölümde okumak istiyorsunuz?{% else %}Which major do you want to study?{% endif %}
-					</label>
-					<select name="major" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						<option value="">{% if lang == 'uz' %}Tanlang{% elif lang == 'ru' %}Выберите{% elif lang == 'tr' %}Seçin{% else %}Select{% endif %}</option>
-						<option value="Medicine">{% if lang == 'uz' %}Tibbiyot{% elif lang == 'ru' %}Медицина{% elif lang == 'tr' %}Tıp{% else %}Medicine{% endif %}</option>
-						<option value="IT">IT</option>
-						<option value="Business">{% if lang == 'uz' %}Biznes{% elif lang == 'ru' %}Бизнес{% elif lang == 'tr' %}İşletme{% else %}Business{% endif %}</option>
-					</select>
-				</div>
-				<div>
-					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Qaysi davlatda?{% elif lang == 'ru' %}В какой стране?{% elif lang == 'tr' %}Hangi ülkede?{% else %}Which country?{% endif %}
-					</label>
-					<select name="country" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						<option value="">{% if lang == 'uz' %}Tanlang{% elif lang == 'ru' %}Выберите{% elif lang == 'tr' %}Seçin{% else %}Select{% endif %}</option>
-						<option value="TR">{% if lang == 'uz' %}Turkiya{% elif lang == 'ru' %}Турция{% elif lang == 'tr' %}Türkiye{% else %}Turkey{% endif %}</option>
-						<option value="CY">{% if lang == 'uz' %}Kipr{% elif lang == 'ru' %}Кипр{% elif lang == 'tr' %}Kıbrıs{% else %}Cyprus{% endif %}</option>
-						<option value="GE">{% if lang == 'uz' %}Gruziya{% elif lang == 'ru' %}Грузия{% elif lang == 'tr' %}Gürcistan{% else %}Georgia{% endif %}</option>
-						<option value="MY">{% if lang == 'uz' %}Malayziya{% elif lang == 'ru' %}Малайзия{% elif lang == 'tr' %}Malezya{% else %}Malaysia{% endif %}</option>
-					</select>
-				</div>
-				<div>
-					<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Xabar matni{% elif lang == 'ru' %}Текст сообщения{% elif lang == 'tr' %}Mesaj metni{% else %}Message{% endif %} *
-					</label>
-					<textarea name="message" rows="5" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></textarea>
-				</div>
-				<button type="submit" class="w-full px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Mutaxassisga yuborish{% elif lang == 'ru' %}Отправить специалисту{% elif lang == 'tr' %}Uzmana gönder{% else %}Send to Specialist{% endif %}
-				</button>
-			</form>
-			<p class="text-xs text-gray-500 font-normal mt-4 text-center" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				{% if lang == 'uz' %}FAQ ko'rmoqchimisiz? → <a href="{{ url_for('faq') }}" class="text-blue-600 hover:text-blue-700">Tez-tez so'raladigan savollar</a>{% elif lang == 'ru' %}Хотите посмотреть FAQ? → <a href="{{ url_for('faq') }}" class="text-blue-600 hover:text-blue-700">Часто задаваемые вопросы</a>{% elif lang == 'tr' %}FAQ görmek ister misiniz? → <a href="{{ url_for('faq') }}" class="text-blue-600 hover:text-blue-700">Sık sorulan sorular</a>{% else %}Want to see FAQ? → <a href="{{ url_for('faq') }}" class="text-blue-600 hover:text-blue-700">Frequently Asked Questions</a>{% endif %}
-			</p>
 		</div>
 	</div>
 </section>
 
-<!-- Agentlar uchun modal forma -->
-<div id="agentModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-	<div class="bg-white rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-		<div class="flex items-center justify-between mb-6">
-			<h2 class="text-2xl font-medium text-gray-900" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				{% if lang == 'uz' %}Agentlar uchun maxsus hamkorlik formasi{% elif lang == 'ru' %}Специальная форма партнерства для агентов{% elif lang == 'tr' %}Ajanlar için özel ortaklık formu{% else %}Special Partnership Form for Agents{% endif %}
-			</h2>
-			<button onclick="closeAgentModal()" class="text-gray-400 hover:text-gray-600">
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-					<line x1="18" y1="6" x2="6" y2="18"/>
-					<line x1="6" y1="6" x2="18" y2="18"/>
-				</svg>
-			</button>
-		</div>
-		<form class="space-y-5" action="{{ url_for('contact') }}" method="POST">
-			<input type="hidden" name="type" value="agent">
-			<div>
-				<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Agent ismi{% elif lang == 'ru' %}Имя агента{% elif lang == 'tr' %}Ajan adı{% else %}Agent Name{% endif %} *
-				</label>
-				<input type="text" name="agent_name" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-			</div>
-			<div>
-				<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Telefon raqamingiz{% elif lang == 'ru' %}Ваш телефон{% elif lang == 'tr' %}Telefon numaranız{% else %}Your Phone{% endif %} *
-				</label>
-				<input type="tel" name="phone" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-			</div>
-			<div>
-				<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}WhatsApp raqamingiz{% elif lang == 'ru' %}Ваш WhatsApp{% elif lang == 'tr' %}WhatsApp numaranız{% else %}Your WhatsApp{% endif %}
-				</label>
-				<input type="tel" name="whatsapp" id="agentWhatsAppInput" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				<button type="button" onclick="copyPhoneToWhatsAppAgent()" class="mt-2 text-xs text-blue-600 hover:text-blue-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Telefon raqamim bilan bir xil qilish{% elif lang == 'ru' %}Сделать таким же, как номер телефона{% elif lang == 'tr' %}Telefon numaramla aynı yap{% else %}Make same as phone number{% endif %}
-				</button>
-			</div>
-			<div>
-				<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Telegram @username{% elif lang == 'ru' %}Telegram @username{% elif lang == 'tr' %}Telegram @username{% else %}Telegram @username{% endif %}
-				</label>
-				<input type="text" name="telegram" placeholder="@username" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-			</div>
-			<div>
-				<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Ijtimoiy tarmoqdagi sahifangiz (IG/TG/FB){% elif lang == 'ru' %}Ваша страница в социальных сетях (IG/TG/FB){% elif lang == 'tr' %}Sosyal medya sayfanız (IG/TG/FB){% else %}Your Social Media Page (IG/TG/FB){% endif %}
-				</label>
-				<div id="socialMediaFields">
-					<input type="text" name="social_media[]" placeholder="https://..." class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+	<!-- Contact Methods -->
+	<section class="py-12 bg-white">
+		<div class="max-w-6xl mx-auto px-6">
+			<h2 class="text-2xl font-bold text-gray-900 mb-2 text-center" style="font-family: 'Inter', sans-serif;">{% if lang == 'uz' %}Bog'lanish usullari{% elif lang == 'ru' %}Способы связи{% elif lang == 'tr' %}İletişim yöntemleri{% else %}Contact Methods{% endif %}</h2>
+			<p class="text-gray-600 text-center mb-8">{% if lang == 'uz' %}Sizga qulay bo'lgan usulni tanlang{% elif lang == 'ru' %}Выберите удобный для вас способ{% elif lang == 'tr' %}Size uygun yöntemi seçin{% else %}Choose a convenient method for you{% endif %}</p>
+			
+			<div class="contact-methods">
+				<div class="contact-method">
+					<div class="method-icon">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+					</div>
+					<h3 class="method-title">{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% elif lang == 'tr' %}Telefon{% else %}Phone{% endif %}</h3>
+					<p class="method-text">{% if lang == 'uz' %}Tezkor aloqa uchun qo'ng'iroq qiling{% elif lang == 'ru' %}Позвоните для быстрой связи{% elif lang == 'tr' %}Hızlı iletişim için arayın{% else %}Call for quick contact{% endif %}</p>
+					<a href="tel:+905011571111" class="method-link">+90 501 157 11 11</a><br>
+					<a href="tel:+998901234567" class="method-link">+998 90 123 45 67</a>
+					<div class="method-actions">
+						<a href="https://t.me/studyfans" target="_blank" class="method-btn tg"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.14.122.1.155.234.17.329.03.186.013.43-.003.598z"/></svg></a>
+						<a href="https://wa.me/905011571111" target="_blank" class="method-btn wa"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+						<a href="tel:+905011571111" class="method-btn call"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+					</div>
 				</div>
-				<button type="button" onclick="addSocialMediaField()" class="text-xs text-blue-600 hover:text-blue-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					+ {% if lang == 'uz' %}Qo'shish{% elif lang == 'ru' %}Добавить{% elif lang == 'tr' %}Ekle{% else %}Add{% endif %}
-				</button>
+				
+				<div class="contact-method">
+					<div class="method-icon">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+					</div>
+					<h3 class="method-title">Email</h3>
+					<p class="method-text">{% if lang == 'uz' %}Rasmiy so'rovlar uchun yozing{% elif lang == 'ru' %}Напишите для официальных запросов{% elif lang == 'tr' %}Resmi talepler için yazın{% else %}Write for official requests{% endif %}</p>
+					<a href="mailto:info@studyfans.uz" class="method-link">info@studyfans.uz</a>
+					</div>
+				
+				<div class="contact-method">
+					<div class="method-icon">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+					</div>
+					<h3 class="method-title">{% if lang == 'uz' %}Ish vaqti{% elif lang == 'ru' %}Рабочее время{% elif lang == 'tr' %}Çalışma saatleri{% else %}Working Hours{% endif %}</h3>
+					<p class="method-text">{% if lang == 'uz' %}Dushanba - Shanba{% elif lang == 'ru' %}Понедельник - Суббота{% elif lang == 'tr' %}Pazartesi - Cumartesi{% else %}Monday - Saturday{% endif %}</p>
+					<span class="method-link">09:00 - 18:00</span>
+				</div>
 			</div>
-			<div>
-				<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Ofis manzilingiz{% elif lang == 'ru' %}Адрес офиса{% elif lang == 'tr' %}Ofis adresiniz{% else %}Office Address{% endif %}
-				</label>
-				<input type="text" name="office_address" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+			
+			<!-- Offices -->
+			<h2 class="text-2xl font-bold text-gray-900 mb-2 text-center" style="font-family: 'Inter', sans-serif;">{% if lang == 'uz' %}Ofislarimiz{% elif lang == 'ru' %}Наши офисы{% elif lang == 'tr' %}Ofislerimiz{% else %}Our Offices{% endif %}</h2>
+			<p class="text-gray-600 text-center mb-8">{% if lang == 'uz' %}Yuzma-yuz maslahat olish uchun tashrif buyuring{% elif lang == 'ru' %}Посетите для личной консультации{% elif lang == 'tr' %}Yüz yüze danışmanlık için ziyaret edin{% else %}Visit for face-to-face consultation{% endif %}</p>
+			
+			<div class="offices-grid">
+				<!-- Istanbul Office -->
+				<div class="office-card">
+					<div class="office-map">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.2755075456795!2d28.9505!3d41.0082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAwJzI5LjUiTiAyOMKwNTcnMDEuOCJF!5e0!3m2!1sen!2str!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+					</div>
+					<div class="office-info">
+						<div class="office-flag">🇹🇷</div>
+						<h3 class="office-title">{% if lang == 'uz' %}Istanbul ofisi{% elif lang == 'ru' %}Офис в Стамбуле{% elif lang == 'tr' %}İstanbul ofisi{% else %}Istanbul Office{% endif %}</h3>
+						<p class="office-address">Fatih, Aksaray, Istanbul, Turkey</p>
+						<p class="office-phone"><a href="tel:+905011571111">+90 501 157 11 11</a></p>
+						<a href="https://maps.google.com/?q=Fatih,Istanbul" target="_blank" class="office-link">{% if lang == 'uz' %}Xaritada ko'rish{% elif lang == 'ru' %}На карте{% elif lang == 'tr' %}Haritada{% else %}View on map{% endif %} →</a>
+					</div>
+				</div>
+				
+				<!-- Tashkent Office -->
+				<div class="office-card">
+					<div class="office-map">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.5!2d69.2787!3d41.3111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDE4JzQwLjAiTiA2OcKwMTYnNDMuMyJF!5e0!3m2!1sen!2suz!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+					</div>
+					<div class="office-info">
+						<div class="office-flag">🇺🇿</div>
+						<h3 class="office-title">{% if lang == 'uz' %}Toshkent ofisi{% elif lang == 'ru' %}Офис в Ташкенте{% elif lang == 'tr' %}Taşkent ofisi{% else %}Tashkent Office{% endif %}</h3>
+						<p class="office-address">Yakkasaroy tumani, Toshkent, O'zbekiston</p>
+						<p class="office-phone"><a href="tel:+998901234567">+998 90 123 45 67</a></p>
+						<a href="https://maps.google.com/?q=Yakkasaray,Tashkent" target="_blank" class="office-link">{% if lang == 'uz' %}Xaritada ko'rish{% elif lang == 'ru' %}На карте{% elif lang == 'tr' %}Haritada{% else %}View on map{% endif %} →</a>
+					</div>
+				</div>
 			</div>
-			<div>
-				<label class="block text-sm font-normal text-gray-700 mb-2" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-					{% if lang == 'uz' %}Izoh / Talaba haqida ma'lumot{% elif lang == 'ru' %}Комментарий / Информация о студенте{% elif lang == 'tr' %}Yorum / Öğrenci hakkında bilgi{% else %}Comment / Student Information{% endif %}
-				</label>
-				<textarea name="comment" rows="4" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;"></textarea>
+			
+			<!-- Quick Contact -->
+			<div class="quick-contact">
+				<h3 class="quick-title">{% if lang == 'uz' %}Tezkor bog'lanish{% elif lang == 'ru' %}Быстрая связь{% elif lang == 'tr' %}Hızlı iletişim{% else %}Quick Contact{% endif %}</h3>
+				<p class="quick-subtitle">{% if lang == 'uz' %}Bir bosish bilan bog'laning - biz 5 daqiqada javob beramiz{% elif lang == 'ru' %}Свяжитесь одним нажатием - мы ответим за 5 минут{% elif lang == 'tr' %}Tek tıklamayla iletişime geçin - 5 dakikada cevap veriyoruz{% else %}Contact with one click - we respond in 5 minutes{% endif %}</p>
+				<div class="quick-buttons">
+					<a href="https://wa.me/905011571111" target="_blank" class="quick-btn whatsapp">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+						WhatsApp
+					</a>
+					<a href="https://t.me/studyfans" target="_blank" class="quick-btn telegram">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.14.122.1.155.234.17.329.03.186.013.43-.003.598z"/></svg>
+						Telegram
+					</a>
+					<a href="tel:+905011571111" class="quick-btn call">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+						{% if lang == 'uz' %}Qo'ng'iroq{% elif lang == 'ru' %}Позвонить{% elif lang == 'tr' %}Ara{% else %}Call{% endif %}
+					</a>
+				</div>
 			</div>
-			<button type="submit" class="w-full px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 text-sm font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				{% if lang == 'uz' %}Hamkorlik so'rovini yuborish{% elif lang == 'ru' %}Отправить запрос на партнерство{% elif lang == 'tr' %}Ortaklık talebini gönder{% else %}Send Partnership Request{% endif %}
-			</button>
-		</form>
-		<p class="text-xs text-gray-500 font-normal mt-4 text-center" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-			{% if lang == 'uz' %}<a href="{{ url_for('partner') }}" class="text-blue-600 hover:text-blue-700">Komissiya siyosatini ko'rish →</a>{% elif lang == 'ru' %}<a href="{{ url_for('partner') }}" class="text-blue-600 hover:text-blue-700">Посмотреть политику комиссий →</a>{% elif lang == 'tr' %}<a href="{{ url_for('partner') }}" class="text-blue-600 hover:text-blue-700">Komisyon politikasını görüntüle →</a>{% else %}<a href="{{ url_for('partner') }}" class="text-blue-600 hover:text-blue-700">View Commission Policy →</a>{% endif %}
-		</p>
+			
+			<!-- Social -->
+			<div class="social-section">
+				<h4 class="social-title">{% if lang == 'uz' %}Ijtimoiy tarmoqlarda{% elif lang == 'ru' %}В социальных сетях{% elif lang == 'tr' %}Sosyal medyada{% else %}On Social Media{% endif %}</h4>
+				<div class="social-links">
+					<a href="https://instagram.com/studyfans" target="_blank" class="social-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+					<a href="https://t.me/studyfans" target="_blank" class="social-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="#111"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.14.122.1.155.234.17.329.03.186.013.43-.003.598z"/></svg></a>
+					<a href="https://youtube.com/@studyfans" target="_blank" class="social-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+					<a href="https://tiktok.com/@studyfans" target="_blank" class="social-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="#111"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></a>
+				</div>
+				<p class="social-text">{% if lang == 'uz' %}100 000+ kuzatuvchi • 10 000+ qabul qilingan talaba{% elif lang == 'ru' %}100 000+ подписчиков • 10 000+ принятых студентов{% elif lang == 'tr' %}100 000+ takipçi • 10 000+ kabul edilen öğrenci{% else %}100,000+ followers • 10,000+ admitted students{% endif %}</p>
+			</div>
+		</div>
+	</section>
+		</div>
+		
+<!-- Student Modal (Desktop) -->
+<div class="modal-overlay" id="studentModal">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h3 class="modal-title">{% if lang == 'uz' %}Talaba formasi{% elif lang == 'ru' %}Форма студента{% elif lang == 'tr' %}Öğrenci formu{% else %}Student Form{% endif %}</h3>
+			<button class="modal-close" onclick="closeForm('student')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+		</div>
+		<div class="modal-body">
+			<form action="{{ url_for('contact') }}" method="POST">
+				<input type="hidden" name="type" value="student">
+				<div class="form-grid">
+					<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Ismingiz{% elif lang == 'ru' %}Имя{% elif lang == 'tr' %}Adınız{% else %}Name{% endif %} *</label><input type="text" name="name" class="form-input" required></div>
+					<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% elif lang == 'tr' %}Telefon{% else %}Phone{% endif %} *</label><input type="tel" name="phone" id="studentPhoneModal" class="form-input" required></div>
+					<div class="form-group"><label class="form-label">WhatsApp</label><input type="tel" name="whatsapp" id="studentWhatsAppModal" class="form-input"><button type="button" class="copy-btn" onclick="document.getElementById('studentWhatsAppModal').value=document.getElementById('studentPhoneModal').value">{% if lang == 'uz' %}Telefon bilan bir xil{% elif lang == 'ru' %}Как телефон{% elif lang == 'tr' %}Telefon ile aynı{% else %}Same as phone{% endif %}</button></div>
+					<div class="form-group"><label class="form-label">Telegram</label><input type="text" name="telegram" placeholder="@username" class="form-input"></div>
+					<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Yo'nalish{% elif lang == 'ru' %}Направление{% elif lang == 'tr' %}Bölüm{% else %}Major{% endif %}</label><select name="major" class="form-input form-select"><option value="">{% if lang == 'uz' %}Tanlang{% elif lang == 'ru' %}Выберите{% elif lang == 'tr' %}Seçin{% else %}Select{% endif %}</option><option value="Medicine">{% if lang == 'uz' %}Tibbiyot{% elif lang == 'ru' %}Медицина{% elif lang == 'tr' %}Tıp{% else %}Medicine{% endif %}</option><option value="IT">IT</option><option value="Business">{% if lang == 'uz' %}Biznes{% elif lang == 'ru' %}Бизнес{% elif lang == 'tr' %}İşletme{% else %}Business{% endif %}</option><option value="Other">{% if lang == 'uz' %}Boshqa{% elif lang == 'ru' %}Другое{% elif lang == 'tr' %}Diğer{% else %}Other{% endif %}</option></select></div>
+					<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Davlat{% elif lang == 'ru' %}Страна{% elif lang == 'tr' %}Ülke{% else %}Country{% endif %}</label><select name="country" class="form-input form-select"><option value="">{% if lang == 'uz' %}Tanlang{% elif lang == 'ru' %}Выберите{% elif lang == 'tr' %}Seçin{% else %}Select{% endif %}</option><option value="TR">🇹🇷 {% if lang == 'uz' %}Turkiya{% elif lang == 'ru' %}Турция{% elif lang == 'tr' %}Türkiye{% else %}Turkey{% endif %}</option><option value="CY">🇨🇾 {% if lang == 'uz' %}Kipr{% elif lang == 'ru' %}Кипр{% elif lang == 'tr' %}Kıbrıs{% else %}Cyprus{% endif %}</option><option value="GE">🇬🇪 {% if lang == 'uz' %}Gruziya{% elif lang == 'ru' %}Грузия{% elif lang == 'tr' %}Gürcistan{% else %}Georgia{% endif %}</option><option value="MY">🇲🇾 {% if lang == 'uz' %}Malayziya{% elif lang == 'ru' %}Малайзия{% elif lang == 'tr' %}Malezya{% else %}Malaysia{% endif %}</option></select></div>
+					<div class="form-group full"><label class="form-label">{% if lang == 'uz' %}Xabar{% elif lang == 'ru' %}Сообщение{% elif lang == 'tr' %}Mesaj{% else %}Message{% endif %}</label><textarea name="message" class="form-input form-textarea"></textarea></div>
+				</div>
+				<button type="submit" class="form-submit">{% if lang == 'uz' %}Yuborish{% elif lang == 'ru' %}Отправить{% elif lang == 'tr' %}Gönder{% else %}Submit{% endif %}</button>
+			</form>
+			<p class="form-link"><a href="{{ url_for('faq', lang=lang) }}">{% if lang == 'uz' %}Tez-tez so'raladigan savollar{% elif lang == 'ru' %}Часто задаваемые вопросы{% elif lang == 'tr' %}Sık sorulan sorular{% else %}FAQ{% endif %} →</a></p>
+		</div>
 	</div>
 </div>
 
-<!-- FAQ Section -->
-<section class="py-20 bg-white">
-	<div class="max-w-6xl mx-auto px-6">
-		<div class="text-center mb-12">
-			<h2 class="text-3xl md:text-4xl font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
-				{% if lang == 'uz' %}Tez-tez so'raladigan savollar{% elif lang == 'ru' %}Часто задаваемые вопросы{% elif lang == 'tr' %}Sık sorulan sorular{% else %}Frequently Asked Questions{% endif %}
-			</h2>
-		</div>
-		
-		<!-- Talabalar FAQ -->
-		<div id="studentFAQ" class="space-y-4 max-w-3xl mx-auto">
-			<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-gray-300 transition-all duration-200">
-				<button onclick="toggleFAQ(this)" class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
-					<span class="text-base font-medium text-gray-900" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Qabul jarayoni qancha davom etadi?{% elif lang == 'ru' %}Сколько длится процесс поступления?{% elif lang == 'tr' %}Kabul süreci ne kadar sürer?{% else %}How long does the admission process take?{% endif %}
-					</span>
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400 transform transition-transform">
-						<polyline points="6 9 12 15 18 9"/>
-					</svg>
-				</button>
-				<div class="hidden px-6 pb-4">
-					<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Bu tanlangan universitet va yo'nalishga bog'liq. Odatda 2 haftadan 6 haftagacha davom etadi. Tibbiyot yo'nalishlari — ko'proq vaqt oladi. IT, biznes va ijtimoiy fanlar — tezroq.{% elif lang == 'ru' %}Это зависит от выбранного университета и направления. Обычно длится от 2 до 6 недель. Медицинские направления занимают больше времени. IT, бизнес и социальные науки — быстрее.{% elif lang == 'tr' %}Bu seçilen üniversite ve bölüme bağlıdır. Genellikle 2 haftadan 6 haftaya kadar sürer. Tıp bölümleri daha fazla zaman alır. IT, işletme ve sosyal bilimler daha hızlıdır.{% else %}This depends on the selected university and major. Usually takes 2 to 6 weeks. Medical majors take more time. IT, business and social sciences are faster.{% endif %}
-					</p>
-				</div>
+<!-- Agent Modal (Desktop) -->
+<div class="modal-overlay" id="agentModal">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h3 class="modal-title">{% if lang == 'uz' %}Agent formasi{% elif lang == 'ru' %}Форма агента{% elif lang == 'tr' %}Ajan formu{% else %}Agent Form{% endif %}</h3>
+			<button class="modal-close" onclick="closeForm('agent')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
 			</div>
-			
-			<div class="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-gray-300 transition-all duration-200">
-				<button onclick="toggleFAQ(this)" class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
-					<span class="text-base font-medium text-gray-900" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Qaysi hujjatlar kerak bo'ladi?{% elif lang == 'ru' %}Какие документы потребуются?{% elif lang == 'tr' %}Hangi belgeler gerekli?{% else %}What documents are required?{% endif %}
-					</span>
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400 transform transition-transform">
-						<polyline points="6 9 12 15 18 9"/>
-					</svg>
-				</button>
-				<div class="hidden px-6 pb-4">
-					<p class="text-sm text-gray-600 font-normal leading-relaxed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-						{% if lang == 'uz' %}Asosiylari: Pasport, Attestat yoki diplom, Transkript, 3×4 rasm, Sug'urta. Yo'nalishga qarab qo'shimcha hujjatlar bo'lishi mumkin.{% elif lang == 'ru' %}Основные: Паспорт, Аттестат или диплом, Транскрипт, Фото 3×4, Страховка. В зависимости от направления могут потребоваться дополнительные документы.{% elif lang == 'tr' %}Temel olanlar: Pasaport, Sertifika veya diploma, Transkript, 3×4 fotoğraf, Sigorta. Bölüme göre ek belgeler gerekebilir.{% else %}Main ones: Passport, Certificate or diploma, Transcript, 3×4 photo, Insurance. Additional documents may be required depending on the major.{% endif %}
-					</p>
-				</div>
+		<div class="modal-body">
+			<form action="{{ url_for('contact') }}" method="POST">
+				<input type="hidden" name="type" value="agent">
+				<div class="form-grid">
+					<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Agent ismi{% elif lang == 'ru' %}Имя агента{% elif lang == 'tr' %}Ajan adı{% else %}Agent Name{% endif %} *</label><input type="text" name="agent_name" class="form-input" required></div>
+					<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% elif lang == 'tr' %}Telefon{% else %}Phone{% endif %} *</label><input type="tel" name="phone" id="agentPhoneModal" class="form-input" required></div>
+					<div class="form-group"><label class="form-label">WhatsApp</label><input type="tel" name="whatsapp" id="agentWhatsAppModal" class="form-input"><button type="button" class="copy-btn" onclick="document.getElementById('agentWhatsAppModal').value=document.getElementById('agentPhoneModal').value">{% if lang == 'uz' %}Telefon bilan bir xil{% elif lang == 'ru' %}Как телефон{% elif lang == 'tr' %}Telefon ile aynı{% else %}Same as phone{% endif %}</button></div>
+					<div class="form-group"><label class="form-label">Telegram</label><input type="text" name="telegram" placeholder="@username" class="form-input"></div>
+					<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Ijtimoiy tarmoq{% elif lang == 'ru' %}Соцсети{% elif lang == 'tr' %}Sosyal medya{% else %}Social Media{% endif %}</label><input type="text" name="social_media" placeholder="https://..." class="form-input"></div>
+					<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Ofis manzili{% elif lang == 'ru' %}Адрес офиса{% elif lang == 'tr' %}Ofis adresi{% else %}Office Address{% endif %}</label><input type="text" name="office_address" class="form-input"></div>
+					<div class="form-group full"><label class="form-label">{% if lang == 'uz' %}Izoh{% elif lang == 'ru' %}Комментарий{% elif lang == 'tr' %}Yorum{% else %}Comment{% endif %}</label><textarea name="comment" class="form-input form-textarea"></textarea></div>
 			</div>
-		</div>
-		
-		<div class="mt-8 text-center">
-			<a href="{{ url_for('faq') }}" class="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-normal" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				{% if lang == 'uz' %}Barcha savollarni ko'rish{% elif lang == 'ru' %}Посмотреть все вопросы{% elif lang == 'tr' %}Tüm soruları gör{% else %}View all questions{% endif %}
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-					<polyline points="9 18 15 12 9 6"/>
-				</svg>
-			</a>
+				<button type="submit" class="form-submit">{% if lang == 'uz' %}Hamkorlik so'rovi yuborish{% elif lang == 'ru' %}Отправить запрос{% elif lang == 'tr' %}Ortaklık talebi gönder{% else %}Send Partnership Request{% endif %}</button>
+			</form>
+			<p class="form-link"><a href="{{ url_for('partner', lang=lang) }}">{% if lang == 'uz' %}Komissiya siyosati{% elif lang == 'ru' %}Политика комиссий{% elif lang == 'tr' %}Komisyon politikası{% else %}Commission Policy{% endif %} →</a></p>
 		</div>
 	</div>
-</section>
+</div>
 
-<!-- CTA Section -->
-<section class="py-20 bg-gray-50">
-	<div class="max-w-6xl mx-auto px-6 text-center">
-		<h2 class="text-3xl md:text-4xl font-medium text-gray-900 mb-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em;">
-			{% if lang == 'uz' %}Savollaringiz bormi?{% elif lang == 'ru' %}Есть вопросы?{% elif lang == 'tr' %}Sorularınız var mı?{% else %}Have questions?{% endif %}
-		</h2>
-		<p class="text-lg text-gray-600 font-normal mb-8 max-w-2xl mx-auto" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-			{% if lang == 'uz' %}Bizning mutaxassislarimiz sizga yordam berishga tayyor{% elif lang == 'ru' %}Наши специалисты готовы помочь вам{% elif lang == 'tr' %}Uzmanlarımız size yardımcı olmaya hazır{% else %}Our specialists are ready to help you{% endif %}
-		</p>
-		<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-			<a href="{{ url_for('chat', lang=lang) }}" class="px-8 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors text-base font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				{% if lang == 'uz' %}Study Fans AI{% elif lang == 'ru' %}Study Fans AI{% elif lang == 'tr' %}Study Fans AI{% else %}Study Fans AI{% endif %}
-			</a>
-			<a href="tel:+905011571111" class="px-8 py-3 bg-white text-gray-900 border border-gray-200 rounded-full hover:bg-gray-50 transition-colors text-base font-medium" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
-				{% if lang == 'uz' %}Qo'ng'iroq qilish{% elif lang == 'ru' %}Позвонить{% elif lang == 'tr' %}Aramak{% else %}Call{% endif %}
-			</a>
-		</div>
+<!-- Student Bottom Sheet (Mobile) -->
+<div class="bs-overlay" id="studentBsOverlay"></div>
+<div class="bottom-sheet" id="studentBs">
+	<div class="bs-handle"></div>
+	<div class="bs-header"><span class="bs-title">{% if lang == 'uz' %}Talaba formasi{% elif lang == 'ru' %}Форма студента{% elif lang == 'tr' %}Öğrenci formu{% else %}Student Form{% endif %}</span><button class="bs-close" onclick="closeBs('student')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+	<div class="bs-content">
+		<form action="{{ url_for('contact') }}" method="POST">
+			<input type="hidden" name="type" value="student">
+			<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Ismingiz{% elif lang == 'ru' %}Имя{% elif lang == 'tr' %}Adınız{% else %}Name{% endif %} *</label><input type="text" name="name" class="form-input" required></div>
+			<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% elif lang == 'tr' %}Telefon{% else %}Phone{% endif %} *</label><input type="tel" name="phone" id="studentPhoneBs" class="form-input" required></div>
+			<div class="form-group"><label class="form-label">WhatsApp</label><input type="tel" name="whatsapp" id="studentWhatsAppBs" class="form-input"><button type="button" class="copy-btn" onclick="document.getElementById('studentWhatsAppBs').value=document.getElementById('studentPhoneBs').value">{% if lang == 'uz' %}Telefon bilan bir xil{% elif lang == 'ru' %}Как телефон{% elif lang == 'tr' %}Telefon ile aynı{% else %}Same as phone{% endif %}</button></div>
+			<div class="form-group"><label class="form-label">Telegram</label><input type="text" name="telegram" placeholder="@username" class="form-input"></div>
+			<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Yo'nalish{% elif lang == 'ru' %}Направление{% elif lang == 'tr' %}Bölüm{% else %}Major{% endif %}</label><select name="major" class="form-input form-select"><option value="">{% if lang == 'uz' %}Tanlang{% elif lang == 'ru' %}Выберите{% elif lang == 'tr' %}Seçin{% else %}Select{% endif %}</option><option value="Medicine">{% if lang == 'uz' %}Tibbiyot{% elif lang == 'ru' %}Медицина{% elif lang == 'tr' %}Tıp{% else %}Medicine{% endif %}</option><option value="IT">IT</option><option value="Business">{% if lang == 'uz' %}Biznes{% elif lang == 'ru' %}Бизнес{% elif lang == 'tr' %}İşletme{% else %}Business{% endif %}</option><option value="Other">{% if lang == 'uz' %}Boshqa{% elif lang == 'ru' %}Другое{% elif lang == 'tr' %}Diğer{% else %}Other{% endif %}</option></select></div>
+			<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Davlat{% elif lang == 'ru' %}Страна{% elif lang == 'tr' %}Ülke{% else %}Country{% endif %}</label><select name="country" class="form-input form-select"><option value="">{% if lang == 'uz' %}Tanlang{% elif lang == 'ru' %}Выберите{% elif lang == 'tr' %}Seçin{% else %}Select{% endif %}</option><option value="TR">🇹🇷 {% if lang == 'uz' %}Turkiya{% elif lang == 'ru' %}Турция{% elif lang == 'tr' %}Türkiye{% else %}Turkey{% endif %}</option><option value="CY">🇨🇾 {% if lang == 'uz' %}Kipr{% elif lang == 'ru' %}Кипр{% elif lang == 'tr' %}Kıbrıs{% else %}Cyprus{% endif %}</option><option value="GE">🇬🇪 {% if lang == 'uz' %}Gruziya{% elif lang == 'ru' %}Грузия{% elif lang == 'tr' %}Gürcistan{% else %}Georgia{% endif %}</option><option value="MY">🇲🇾 {% if lang == 'uz' %}Malayziya{% elif lang == 'ru' %}Малайзия{% elif lang == 'tr' %}Malezya{% else %}Malaysia{% endif %}</option></select></div>
+			<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Xabar{% elif lang == 'ru' %}Сообщение{% elif lang == 'tr' %}Mesaj{% else %}Message{% endif %}</label><textarea name="message" class="form-input form-textarea"></textarea></div>
+			<button type="submit" class="form-submit">{% if lang == 'uz' %}Yuborish{% elif lang == 'ru' %}Отправить{% elif lang == 'tr' %}Gönder{% else %}Submit{% endif %}</button>
+		</form>
+		<p class="form-link"><a href="{{ url_for('faq', lang=lang) }}">FAQ →</a></p>
 	</div>
-</section>
+		</div>
+
+<!-- Agent Bottom Sheet (Mobile) -->
+<div class="bs-overlay" id="agentBsOverlay"></div>
+<div class="bottom-sheet" id="agentBs">
+	<div class="bs-handle"></div>
+	<div class="bs-header"><span class="bs-title">{% if lang == 'uz' %}Agent formasi{% elif lang == 'ru' %}Форма агента{% elif lang == 'tr' %}Ajan formu{% else %}Agent Form{% endif %}</span><button class="bs-close" onclick="closeBs('agent')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+	<div class="bs-content">
+		<form action="{{ url_for('contact') }}" method="POST">
+			<input type="hidden" name="type" value="agent">
+			<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Agent ismi{% elif lang == 'ru' %}Имя агента{% elif lang == 'tr' %}Ajan adı{% else %}Agent Name{% endif %} *</label><input type="text" name="agent_name" class="form-input" required></div>
+			<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Telefon{% elif lang == 'ru' %}Телефон{% elif lang == 'tr' %}Telefon{% else %}Phone{% endif %} *</label><input type="tel" name="phone" id="agentPhoneBs" class="form-input" required></div>
+			<div class="form-group"><label class="form-label">WhatsApp</label><input type="tel" name="whatsapp" id="agentWhatsAppBs" class="form-input"><button type="button" class="copy-btn" onclick="document.getElementById('agentWhatsAppBs').value=document.getElementById('agentPhoneBs').value">{% if lang == 'uz' %}Telefon bilan bir xil{% elif lang == 'ru' %}Как телефон{% elif lang == 'tr' %}Telefon ile aynı{% else %}Same as phone{% endif %}</button></div>
+			<div class="form-group"><label class="form-label">Telegram</label><input type="text" name="telegram" placeholder="@username" class="form-input"></div>
+			<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Ijtimoiy tarmoq{% elif lang == 'ru' %}Соцсети{% elif lang == 'tr' %}Sosyal medya{% else %}Social Media{% endif %}</label><input type="text" name="social_media" placeholder="https://..." class="form-input"></div>
+			<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Ofis manzili{% elif lang == 'ru' %}Адрес офиса{% elif lang == 'tr' %}Ofis adresi{% else %}Office Address{% endif %}</label><input type="text" name="office_address" class="form-input"></div>
+			<div class="form-group"><label class="form-label">{% if lang == 'uz' %}Izoh{% elif lang == 'ru' %}Комментарий{% elif lang == 'tr' %}Yorum{% else %}Comment{% endif %}</label><textarea name="comment" class="form-input form-textarea"></textarea></div>
+			<button type="submit" class="form-submit">{% if lang == 'uz' %}Hamkorlik so'rovi yuborish{% elif lang == 'ru' %}Отправить запрос{% elif lang == 'tr' %}Ortaklık talebi gönder{% else %}Send Partnership Request{% endif %}</button>
+		</form>
+		<p class="form-link"><a href="{{ url_for('partner', lang=lang) }}">{% if lang == 'uz' %}Komissiya siyosati{% elif lang == 'ru' %}Политика комиссий{% elif lang == 'tr' %}Komisyon politikası{% else %}Commission Policy{% endif %} →</a></p>
+	</div>
+</div>
 
 <script>
-function showStudentSection() {
-	document.getElementById('studentSection').style.display = 'block';
-	document.getElementById('studentBtn').classList.add('bg-gray-900', 'text-white');
-	document.getElementById('studentBtn').classList.remove('bg-white', 'text-gray-900', 'border');
-	document.getElementById('agentBtn').classList.remove('bg-gray-900', 'text-white');
-	document.getElementById('agentBtn').classList.add('bg-white', 'text-gray-900', 'border', 'border-gray-200');
-}
-
-function showAgentSection() {
-	document.getElementById('studentSection').style.display = 'none';
-	document.getElementById('agentBtn').classList.add('bg-gray-900', 'text-white');
-	document.getElementById('agentBtn').classList.remove('bg-white', 'text-gray-900', 'border');
-	document.getElementById('studentBtn').classList.remove('bg-gray-900', 'text-white');
-	document.getElementById('studentBtn').classList.add('bg-white', 'text-gray-900', 'border', 'border-gray-200');
-	showAgentModal();
-}
-
-function showAgentModal() {
-	document.getElementById('agentModal').classList.remove('hidden');
-}
-
-function closeAgentModal() {
-	document.getElementById('agentModal').classList.add('hidden');
-}
-
-function copyPhoneToWhatsApp() {
-	const phoneInput = document.querySelector('input[name="phone"]');
-	const whatsappInput = document.getElementById('whatsappInput');
-	if (phoneInput && whatsappInput) {
-		whatsappInput.value = phoneInput.value;
-	}
-}
-
-function copyPhoneToWhatsAppAgent() {
-	const phoneInput = document.querySelector('#agentModal input[name="phone"]');
-	const whatsappInput = document.getElementById('agentWhatsAppInput');
-	if (phoneInput && whatsappInput) {
-		whatsappInput.value = phoneInput.value;
-	}
-}
-
-function addSocialMediaField() {
-	const container = document.getElementById('socialMediaFields');
-	const newInput = document.createElement('input');
-	newInput.type = 'text';
-	newInput.name = 'social_media[]';
-	newInput.placeholder = 'https://...';
-	newInput.className = 'w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-normal text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all mb-2';
-	newInput.style.fontFamily = '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Helvetica Neue\', Arial, sans-serif';
-	container.appendChild(newInput);
-}
-
-function toggleFAQ(button) {
-	const content = button.nextElementSibling;
-	const icon = button.querySelector('svg');
-	
-	if (content.classList.contains('hidden')) {
-		content.classList.remove('hidden');
-		icon.style.transform = 'rotate(180deg)';
+function openForm(type) {
+	if (window.innerWidth > 768) {
+		document.getElementById(type + 'Modal').classList.add('active');
 	} else {
-		content.classList.add('hidden');
-		icon.style.transform = 'rotate(0deg)';
+		document.getElementById(type + 'BsOverlay').classList.add('active');
+		document.getElementById(type + 'Bs').classList.add('active');
+		const nav = document.querySelector('nav.fixed.bottom-0');
+		if (nav) nav.style.display = 'none';
 	}
+	document.body.style.overflow = 'hidden';
 }
 
-// Default to student section
-document.addEventListener('DOMContentLoaded', function() {
-	showStudentSection();
+function closeForm(type) {
+	document.getElementById(type + 'Modal').classList.remove('active');
+	document.body.style.overflow = '';
+}
+
+function closeBs(type) {
+	document.getElementById(type + 'BsOverlay').classList.remove('active');
+	document.getElementById(type + 'Bs').classList.remove('active');
+	document.body.style.overflow = '';
+	const nav = document.querySelector('nav.fixed.bottom-0');
+	if (nav) nav.style.display = '';
+}
+
+// Close on overlay click
+document.getElementById('studentModal').addEventListener('click', function(e) { if(e.target === this) closeForm('student'); });
+document.getElementById('agentModal').addEventListener('click', function(e) { if(e.target === this) closeForm('agent'); });
+document.getElementById('studentBsOverlay').addEventListener('click', function() { closeBs('student'); });
+document.getElementById('agentBsOverlay').addEventListener('click', function() { closeBs('agent'); });
+
+// Close on Escape
+document.addEventListener('keydown', function(e) {
+	if (e.key === 'Escape') { closeForm('student'); closeForm('agent'); closeBs('student'); closeBs('agent'); }
 });
 </script>
 
